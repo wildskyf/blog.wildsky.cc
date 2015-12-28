@@ -1,2 +1,2 @@
 # wi1d5ky.github.io
-My resume.
+Homepage of My Website
