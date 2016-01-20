@@ -2,6 +2,11 @@
 # Page options, layouts, aliases and proxies
 ###
 
+set :site_title, "Wildlog"
+set :site_url, "https://blog.wildsky.cc"
+#set :site_description, "Meta description."
+#set :site_keywords, "keyword-one, keyword-two"
+
 # Per-page layout changes:
 #
 # With no layout
@@ -32,8 +37,12 @@ page '/*.txt', layout: false
 # Build-specific configuration
 configure :build do
   # Minify CSS on build
-  # activate :minify_css
+  activate :minify_css
 
   # Minify Javascript on build
-  # activate :minify_javascript
+  activate :minify_javascript
+end
+
+after_build do |builder|
+	exec "surge build/"
 end
