@@ -1,5 +1,6 @@
-# wi1d5ky.github.io
-Using Middleman to build my new blog
+# Wildsky's Wild Sky
+This will be my new blog.
+Current blog is at <https://wildsky.cc>
 
 ## How to start?
 
