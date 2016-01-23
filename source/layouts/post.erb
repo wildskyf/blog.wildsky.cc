@@ -39,6 +39,26 @@
           <div class="content">
             <%= yield %>
           </div>
+          <% pages = sitemap.resources.find_all{|p| p.source_file.match(/posts\/.*\.html/)}.sort_by {|p| p.url} %>
+          <% pages.each_with_index do |p, index| %>
+            <% if p.url == current_page.url %>
+              <% next_page = pages[index+1]  %>
+              <% prev_page = pages[index-1] %>
+
+              <div class="switch">
+
+                <div class="pre">
+                  <%= link_to("《 上一頁", prev_page) unless index == 1 %>
+                </div>
+                 ☺
+                <div class="next">
+                  <%= link_to("下一頁 》", next_page) unless index == pages.size - 1 %>
+                </div>
+
+              </div>
+
+            <% end %>
+          <% end %>
         </article>
       </div>
     </div>

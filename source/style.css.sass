@@ -62,23 +62,25 @@ header
     border-bottom: 1px solid #ccc
     display: block
     font-family: Arial,sans-serif
-    height: 2rem
     padding: 0 2rem
     text-align: right
     ul
       margin: 0
-      height: 2rem
       padding: 0
       li
         display: inline-block
       a
         color: #888
         display: block
-        font-size: 10px
+        font-size: .6rem
         padding: .75rem 1rem
         text-decoration: none
+        &:hover
+          background: #ccc
+          color: #555
+          transition-duration: .2s
+
   h1
-    border-bottom: 1px solid #ccc
     color: $blue
     font-family: 'Raleway', sans-serif
     font-size: 2rem
@@ -116,6 +118,14 @@ footer
   text-align: left
   p
     padding: 0.75rem 1rem 1.5rem
+    &.page_num
+      background: #F5F5F5
+      border-bottom: 1px solid #ccc
+      color: #aaa
+      font-size: 10px
+      margin: 0
+      padding: .5rem 1rem
+      word-spacing: .25rem
 
   a
     color: #666
@@ -178,6 +188,18 @@ footer
       position: absolute
       width: 99vw
       z-index: -1
+
+#main .switch
+  padding: 1rem
+  text-align: center
+  div
+    display: inline-block
+    a
+      display: inline-block
+      margin: 0 .5rem
+      padding: .5rem
+    &.pre
+    &.next
 
 #main article .content
   padding: 1rem 0

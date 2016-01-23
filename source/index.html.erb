@@ -4,12 +4,8 @@ pageable: true
 per_page: 10
 ---
 
-<% if paginate && num_pages > 1 %>
-  <p>Page <%= page_number %> of <%= num_pages %></p>
-
-  <% if prev_page %>
-    <p><%= link_to 'Previous page', prev_page %></p>
-  <% end %>
+<% if paginate %>
+  <p class="page_num">Page <%= page_number %> of <%= num_pages %></p>
 <% end %>
 
 <% page_articles.each_with_index do |article, i| %>
@@ -25,8 +21,20 @@ per_page: 10
 <% end %>
 
 <% if paginate %>
-  <% if next_page %>
-    <p><%= link_to 'Next page', next_page %></p>
-  <% end %>
+  <div class="switch">
+
+    <div class="pre">
+      <% if num_pages > 1 and prev_page %>
+        <%= link_to '《 上一頁', prev_page %>
+      <% end %>
+    </div>
+     ☺
+    <div class="next">
+      <% if next_page %>
+        <%= link_to '下一頁 》', next_page %>
+      <% end %>
+    </div>
+
+  </div>
 <% end %>
 
