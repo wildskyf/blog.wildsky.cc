@@ -5,6 +5,7 @@ layout: false
 @import "sass/variable"
 
 body
+  background: #DBDCDD
   color: #666666
   display: flex
   flex-direction: column
@@ -13,30 +14,89 @@ body
   padding: 0
 
 ::selection
-  background: $yellow
+  background: $green
   color: white
 
 ::-moz-selection
-  background: $yellow
+  background: $green
   color: white
+
+.container
+  border-left: 1px solid #aaa
+  box-shadow: 0 0 3px #343434
+  display: flex
+  flex: 1
+  flex-direction: column
+  margin: 0 $side-width
+  min-height: 100vh
 
 
 header
+  @include t2b-gradient($white, $grey)
+  border-bottom: 1px solid #ccc
   text-align: center
-  background: #FAFAFA
+  padding-bottom: 4rem
   &.article_title
-    font-weight: 400
-    padding: 1rem 1rem 2rem
+    h1
+      border-bottom: 0
+      color: #aaa
+      font-family: Arial,sans-serif
+      font-weight: normal
+      font-size: .75rem
+      margin: 0 1rem
+      padding: .5rem 1rem
+      text-align: left
+    p
+      border-bottom: 1px solid #ccc
+      color: $blue
+      font-family: 'Raleway', sans-serif
+      font-size: 2rem
+      font-weight: 200
+      margin: 0 2rem
+      padding: 4rem 0 5px
+      text-align: left
+      a
+        color: $blue
+        text-decoration: none
+  nav
+    border-bottom: 1px solid #ccc
+    display: block
+    font-family: Arial,sans-serif
+    height: 2rem
+    padding: 0 2rem
+    text-align: right
+    ul
+      margin: 0
+      height: 2rem
+      padding: 0
+      li
+        display: inline-block
+      a
+        color: #888
+        display: block
+        font-size: 10px
+        padding: .75rem 1rem
+        text-decoration: none
   h1
+    border-bottom: 1px solid #ccc
+    color: $blue
     font-family: 'Raleway', sans-serif
-    font-size: 1.25rem
-    margin: 0
-    padding: 1rem
+    font-size: 2rem
+    font-weight: 200
+    margin: 0 2rem
+    padding: 4rem 0 5px
+    text-align: left
     a
-      border-bottom: 1px dashed #ccc
-      color: #666
-      font-weight: 600
+      color: $blue
       text-decoration: none
+  p
+    color: #ccc
+    font-family: Arial,sans-serif
+    font-weight: normal
+    font-size: .75rem
+    margin: 0 1rem
+    padding: .5rem 1rem
+    text-align: left
 
 footer
   background: $black
@@ -50,74 +110,115 @@ footer
     text-decoration: none
 
 #main
+  background: #fff
   flex: 1
-  padding: 3rem auto 1rem
-  text-align: center
+  padding: 0
+  text-align: left
   p
-    font-family: 'Cutive Mono', monospace
     padding: 0.75rem 1rem 1.5rem
-    text-align: left
 
   a
-    border-bottom: 1px dashed #ccc
     color: #666
-    text-align: left
     text-decoration: none
     &:hover
       color: #343434
       transition-duration: .25s
-  .article-summary
-    border: 1px solid #ccc
-    text-align: left
-    margin: 2rem auto
-    max-width: 700px
-    padding: 1rem 2rem
-    position: relative
-    time
-      float: right
-      background: #ccc
-      color: $white
-      font-family: 'Raleway', sans-serif
-      font-size: 1rem
-      top: 0
+  .article-wrapper
+    border-bottom: 1px solid #aaa
+    padding: 0 2rem 2rem
+    &::before
+      border-bottom: 1px solid #aaa
+      content: ""
       left: 0
-      padding: 0 1rem
       position: absolute
-  aside
-    border-top: 1px solid #ccc
-    padding: 3rem
-    text-align: center
-    .foot-section
-      border: 1px solid #ccc
-      display: inline-block
-      margin: 0 2rem
-      max-height: 300px
-      min-height: 300px
-      padding: .5rem 1.5rem
-      text-align: justify
-      vertical-align: top
-      width: 30%
-    .tags
-      overflow: hidden
+      width: 99vw
+      z-index: -1
+    .summary
+      margin: 0
+      max-width: 700px
+      padding: 1rem
+      position: relative
+      p
+        padding-left: 0
+      time
+        color: #666
+        float: right
+        font-family: 'Cutive Mono', monospace
+        font-size: 1rem
+        font-weight: 600
+        top: 2.5rem
+        left: -250px
+        padding: 0 1rem
+        position: absolute
+        &::before
+          content: '/* '
+        &:after
+          content: " */"
+    .readmore
+      text-align: right
+      width: 95%
       a
-        background: #ccc
-        color: $white
-        display: inline-block
-        font-size: .75rem
-        margin: .1rem
-        padding: 0 .25rem
+        background: #eee
+        padding: .5rem 2rem
+        transition-duration: .2s
         &:hover
-          background: #aaa
-          transition-duration: .2s
+          background: #343434
+          color: #eee
+
   article
     background: $white
-    border: 1px solid #ccc
-    margin: 0 auto
-    max-width: 700px
-    padding: 1rem 2rem
+    margin: 0
+    padding: 0 2rem 1rem
     text-align: left
-    img
-      height: auto
-      max-width: 100%
+    word-break: break-all
+    &::before
+      border-bottom: 1px solid #aaa
+      content: ""
+      left: 0
+      position: absolute
+      width: 99vw
+      z-index: -1
+
+#main article .content
+  padding: 1rem 0
+  h2
+    border-bottom: 1px solid #ccc
+    padding-bottom: .5rem
+    &::before
+      content: "#"
+      margin: 0
+      color: #aaa
+  h3
+    border-bottom: 1px solid #ccc
+    padding-bottom: .5rem
+    &::before
+      content: "##"
+      margin: 0
+      color: #aaa
+  p
+    padding: 0 0 1rem
+  ul li, ol li
+    line-height: 2rem
+  hr
+    color: #eee
+    margin: 2rem auto
+    width: 10px
+  pre, code
+    background: #eee
+    border: 1px solid #ccc
+    font-family: 'Cutive Mono', monospace
+    padding: .25rem
+    overflow: auto
+  blockquote
+    background: #EEEEEE
+    border-left: 5px solid $green
+    margin: 1rem 0 2rem
+    padding: 1rem
+    p
+      margin: 0
+      padding: 0
+  img
+    height: auto
+    max-width: 100%
 
 

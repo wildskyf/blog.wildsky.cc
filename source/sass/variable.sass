@@ -3,4 +3,12 @@ $white: #FFF
 $green :#bdd9bf
 $black: #2e4052
 $yellow: #FFC857
+$blue: #009DC4
+
+$side-width: 275px
+
+
+@mixin t2b-gradient($color1, $color2)
+  background: $color1
+  background: linear-gradient(to bottom, $color1 0%, $color1 53%, $color2 100%)
 
