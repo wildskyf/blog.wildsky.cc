@@ -14,11 +14,11 @@ body
   padding: 0
 
 ::selection
-  background: $green
+  background: $blue
   color: white
 
 ::-moz-selection
-  background: $green
+  background: $blue
   color: white
 
 .container
@@ -29,6 +29,10 @@ body
   flex-direction: column
   margin: 0 $side-width
   min-height: 100vh
+  @media #{$s-sc}
+    border-left: 0
+    box-shadow: 0
+    margin: 0
 
 
 header
@@ -36,6 +40,8 @@ header
   border-bottom: 1px solid #ccc
   text-align: center
   padding-bottom: 4rem
+  @media #{$s-sc}
+    padding-bottom: 2rem
   &.article_title
     h1
       border-bottom: 0
@@ -50,8 +56,8 @@ header
       border-bottom: 1px solid #ccc
       color: $blue
       font-family: 'Raleway', sans-serif
-      font-size: 2rem
       font-weight: 200
+      font-size: 2rem
       margin: 0 2rem
       padding: 4rem 0 5px
       text-align: left
@@ -64,6 +70,8 @@ header
     font-family: Arial,sans-serif
     padding: 0 2rem
     text-align: right
+    @media #{$s-sc}
+      padding: 0
     ul
       margin: 0
       padding: 0
@@ -89,6 +97,8 @@ header
     margin: 0 2rem
     padding: 4rem 0 5px
     text-align: left
+    @media #{$s-sc}
+      padding-top: 2rem
     a
       color: $blue
       text-decoration: none
@@ -119,6 +129,7 @@ footer
   text-align: left
   p
     padding: 0.75rem 1rem 1.5rem
+    text-align: justify
     &.page_num
       background: #F5F5F5
       border-bottom: 1px solid #ccc
@@ -134,9 +145,28 @@ footer
     &:hover
       color: #343434
       transition-duration: .25s
+  img, iframe
+    max-width: 100%
+    height: auto
+  blockquote
+    background: #EEEEEE
+    border-left: 5px solid $green
+    margin: 1rem 0 2rem
+    padding: 1rem
+    p
+      margin: 0
+      padding: 0
+  pre, code
+    background: #eee
+    border: 1px solid #ccc
+    font-family: 'Cutive Mono', monospace
+    overflow: auto
+    padding: .25rem
   .article-wrapper
     border-bottom: 1px solid #aaa
     padding: 0 2rem 2rem
+    @media #{$s-sc}
+      padding: 0 1rem 1rem
     &::before
       border-bottom: 1px solid #aaa
       content: ""
@@ -146,19 +176,23 @@ footer
       z-index: -1
     .summary
       margin: 0
-      max-width: 700px
       padding: 1rem
       position: relative
+      @media #{$l-sc}
+        max-width: 80%
+      h2
+        word-break: break-all
       p
-        padding-left: 0
+        overflow-x: hidden
+        padding: 0.75rem 0 1.5rem
       time
         color: #666
         float: right
         font-family: 'Cutive Mono', monospace
-        font-size: 1rem
         font-weight: 600
-        top: 2.5rem
-        left: -250px
+        font-size: 1rem
+        top: 2.75rem
+        left: -190px
         padding: 0 1rem
         position: absolute
         &::before
@@ -168,6 +202,8 @@ footer
     .readmore
       text-align: right
       width: 95%
+      @media #{$s-sc}
+        width: 100%
       a
         background: #eee
         padding: .5rem 2rem
@@ -199,28 +235,22 @@ footer
       display: inline-block
       margin: 0 .5rem
       padding: .5rem
-    &.pre
-    &.next
+  @media #{$s-sc}
+    padding: 0
 
 #disqus_thread
   border-top: 1px solid #aaa
   padding: 2rem 1rem
+
 #main article .content
   padding: 1rem 0
-  h2
+  h2, h3
     border-bottom: 1px solid #ccc
     padding-bottom: .5rem
     &::before
+      color: #aaa
       content: "#"
       margin: 0
-      color: #aaa
-  h3
-    border-bottom: 1px solid #ccc
-    padding-bottom: .5rem
-    &::before
-      content: "##"
-      margin: 0
-      color: #aaa
   p
     padding: 0 0 1rem
   ul li, ol li
@@ -233,8 +263,8 @@ footer
     background: #eee
     border: 1px solid #ccc
     font-family: 'Cutive Mono', monospace
-    padding: .25rem
     overflow: auto
+    padding: .25rem
   blockquote
     background: #EEEEEE
     border-left: 5px solid $green
@@ -243,7 +273,13 @@ footer
     p
       margin: 0
       padding: 0
-  img
+  img, iframe
     height: auto
     max-width: 100%
+  @media #{$s-sc}
+    p
+      line-height: 1.75rem
+      text-align: justify
+    ul
+      padding-left: 1rem
 
