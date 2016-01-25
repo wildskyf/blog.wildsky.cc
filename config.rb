@@ -69,4 +69,5 @@ end
 
 after_build do |builder|
   exec "surge build"
+  exec "git push origin master"
 end
