@@ -24,57 +24,11 @@ categories:
 
 #### 替代詞彙
 
-<table style="border-collapse: collapse; table-layout: fixed;" border="1" width="100%" cellspacing="0" cellpadding="2">
-  <tr>
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      原詞
-    </td>
-
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      可能的取代方案
-    </td>
-  </tr>
-
-  <tr>
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      Send
-    </td>
-
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      deliver, dispatch, announce, distribute, route
-    </td>
-  </tr>
-
-  <tr>
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      Find
-    </td>
-
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      search, extract, locate, recover
-    </td>
-  </tr>
-
-  <tr>
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      Start
-    </td>
-
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      launch, create, begin, open
-    </td>
-  </tr>
-
-  <tr>
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      Make
-    </td>
-
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      create, set up, build, generate, compose, add, new
-    </td>
-  </tr>
-</table>
+| 原詞  | 可能的取代方案                                     |
+| Send  | deliver, dispatch, announce, distribute, route     |
+| Find  | search, extract, locate, recover                   |
+| Start | launch, create, begin, open                        |
+| Make  | create, set up, build, generate, compose, add, new |
 
 #### 單位
 
@@ -85,77 +39,11 @@ categories:
 
 #### 其他重要屬性
 
-<table style="border-collapse: collapse; table-layout: fixed;" border="1" width="100%" cellspacing="0" cellpadding="2">
-  <tr>
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      情景
-    </td>
-
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      變數名稱
-    </td>
-
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      更好的名稱
-    </td>
-  </tr>
-
-  <tr>
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      以「明文」儲存的密碼，應先加密
-    </td>
-
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      password
-    </td>
-
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      plaintext_password
-    </td>
-  </tr>
-
-  <tr>
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      使用者提供的意見，顯示前須編碼
-    </td>
-
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      comment
-    </td>
-
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      unescpaed_comment
-    </td>
-  </tr>
-
-  <tr>
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      轉換為 UTF-8 的 html 資料
-    </td>
-
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      html
-    </td>
-
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      html_utf8
-    </td>
-  </tr>
-
-  <tr>
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      做過 url 編碼輸入資料
-    </td>
-
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      data
-    </td>
-
-    <td style="padding: 10.0px; margin: 0.0px; border: 1.0px solid #d9d9d9;" colspan="1" rowspan="1" valign="top">
-      data_urlenc
-    </td>
-  </tr>
-</table>
+| 情景                           | 變數名稱 | 更好的名稱         |
+| 以「明文」儲存的密碼，應先加密 | password | plaintext_password |
+| 使用者提供的意見，顯示前須編碼 | comment  | unescpaed_comment  |
+| 轉換為 UTF-8 的 html 資料      | html     | html_utf8          |
+| 做過 url 編碼輸入資料          | data     | data_urlenc        |
 
 - 小範圍 => 短名稱
 - 縮寫應被廣泛理解
