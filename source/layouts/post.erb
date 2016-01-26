@@ -17,6 +17,15 @@
 
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
 
+    <script>
+        (function() {  // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://wildsky.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
   </head>
   <body>
 
@@ -54,6 +63,7 @@
           <% end %>
         </article>
         <div id="disqus_thread"></div>
+        <noscript>請啟用 JavaScript 以便開啟 <a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus</a> 的留言功能！</noscript>
       </div>
     </div>
 
@@ -62,12 +72,3 @@
     </footer>
   </body>
 </html>
-<script>
-    (function() {  // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://wildsky.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
