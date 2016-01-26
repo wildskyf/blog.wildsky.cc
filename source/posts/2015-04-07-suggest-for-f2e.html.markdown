@@ -46,7 +46,7 @@ tags:
   </p>
 
   <p>
-    <a href="/wp-content/uploads/2015/04/f2e.png" target="_blank"><img class="alignnone wp-image-685 size-large" src="/wp-content/uploads/2015/04/f2e-927x1024.png" alt="f2e" width="629" height="695" srcset="/wp-content/uploads/2015/04/f2e-927x1024.png 927w, /wp-content/uploads/2015/04/f2e-900x995.png 900w, /wp-content/uploads/2015/04/f2e-1280x1414.png 1280w" sizes="(max-width: 629px) 100vw, 629px" /></a>
+    <a href="http://wildsky.cc/blog-images/2015/04/f2e.png" target="_blank"><img class="alignnone wp-image-685 size-large" src="http://wildsky.cc/blog-images/2015/04/f2e-927x1024.png" alt="f2e" width="629" height="695" srcset="http://wildsky.cc/blog-images/2015/04/f2e-927x1024.png 927w, http://wildsky.cc/blog-images/2015/04/f2e-900x995.png 900w, http://wildsky.cc/blog-images/2015/04/f2e-1280x1414.png 1280w" sizes="(max-width: 629px) 100vw, 629px" /></a>
   </p>
 
   <p>

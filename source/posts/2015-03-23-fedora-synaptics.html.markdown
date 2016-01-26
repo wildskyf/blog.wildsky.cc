@@ -76,7 +76,7 @@ tags:
   </p>
 
   <p>
-    <a class="lightbox" href="/wp-content/uploads/2015/03/2015-03-23-232726-的螢幕擷圖.png"><img class="alignnone size-full wp-image-289" src="/wp-content/uploads/2015/03/2015-03-23-232726-的螢幕擷圖.png" alt="打字時停用觸控板" width="734" height="339" srcset="/wp-content/uploads/2015/03/2015-03-23-232726-的螢幕擷圖-300x139.png 300w, /wp-content/uploads/2015/03/2015-03-23-232726-的螢幕擷圖.png 734w" sizes="(max-width: 734px) 100vw, 734px" /></a>
+    <a class="lightbox" href="http://wildsky.cc/blog-images/2015/03/2015-03-23-232726-的螢幕擷圖.png"><img class="alignnone size-full wp-image-289" src="http://wildsky.cc/blog-images/2015/03/2015-03-23-232726-的螢幕擷圖.png" alt="打字時停用觸控板" width="734" height="339" srcset="http://wildsky.cc/blog-images/2015/03/2015-03-23-232726-的螢幕擷圖-300x139.png 300w, http://wildsky.cc/blog-images/2015/03/2015-03-23-232726-的螢幕擷圖.png 734w" sizes="(max-width: 734px) 100vw, 734px" /></a>
   </p>
 
   <p>
@@ -84,7 +84,7 @@ tags:
   </p>
 
   <p>
-    <a class="lightbox" href="/wp-content/uploads/2015/03/2015-03-23-233046-的螢幕擷圖.png"><img class="alignnone size-full wp-image-290" src="/wp-content/uploads/2015/03/2015-03-23-233046-的螢幕擷圖.png" alt="觸控版關閉中" width="172" height="171" /></a>
+    <a class="lightbox" href="http://wildsky.cc/blog-images/2015/03/2015-03-23-233046-的螢幕擷圖.png"><img class="alignnone size-full wp-image-290" src="http://wildsky.cc/blog-images/2015/03/2015-03-23-233046-的螢幕擷圖.png" alt="觸控版關閉中" width="172" height="171" /></a>
   </p>
 
   <p>

@@ -129,7 +129,7 @@ tags:
   </p>
 
   <div id="attachment_277" style="width: 750px" class="wp-caption alignnone">
-    <a class="lightbox" href="/wp-content/uploads/2015/03/2015-03-02-161225-的螢幕擷圖.png"><img class="size-large wp-image-277" src="/wp-content/uploads/2015/03/2015-03-02-161225-的螢幕擷圖-1024x576.png" alt="atom screenshot" width="740" height="416" srcset="/wp-content/uploads/2015/03/2015-03-02-161225-的螢幕擷圖-300x169.png 300w, wp-content/uploads/2015/03/2015-03-02-161225-的螢幕擷圖-1024x576.png 1024w, /wp-content/uploads/2015/03/2015-03-02-161225-的螢幕擷圖.png 1366w" sizes="(max-width: 740px) 100vw, 740px" /></a>
+    <a class="lightbox" href="http://wildsky.cc/blog-images/2015/03/2015-03-02-161225-的螢幕擷圖.png"><img class="size-large wp-image-277" src="http://wildsky.cc/blog-images/2015/03/2015-03-02-161225-的螢幕擷圖-1024x576.png" alt="atom screenshot" width="740" height="416" srcset="http://wildsky.cc/blog-images/2015/03/2015-03-02-161225-的螢幕擷圖-300x169.png 300w, wp-content/uploads/2015/03/2015-03-02-161225-的螢幕擷圖-1024x576.png 1024w, http://wildsky.cc/blog-images/2015/03/2015-03-02-161225-的螢幕擷圖.png 1366w" sizes="(max-width: 740px) 100vw, 740px" /></a>
 
     <p class="wp-caption-text">
       使用 atom 編輯並同步預覽時的畫面，還可以在編輯時即時更新！
@@ -173,7 +173,7 @@ tags:
   </div>
 
   <div id="attachment_278" style="width: 750px" class="wp-caption alignnone">
-    <a class="lightbox" href="/wp-content/uploads/2015/03/2015-03-02-162609-的螢幕擷圖.png"><img class="size-large wp-image-278" src="/wp-content/uploads/2015/03/2015-03-02-162609-的螢幕擷圖-1024x580.png" alt="dropbox preview" width="740" height="419" srcset="sky.cc/wp-content/uploads/2015/03/2015-03-02-162609-的螢幕擷圖-300x170.png 300w, /wp-content/uploads/2015/03/2015-03-02-162609-的螢幕擷圖-1024x580.png 1024w, /wp-content/uploads/2015/03/2015-03-02-162609-的螢幕擷圖.png 1040w" sizes="(max-width: 740px) 100vw, 740px" /></a>
+    <a class="lightbox" href="http://wildsky.cc/blog-images/2015/03/2015-03-02-162609-的螢幕擷圖.png"><img class="size-large wp-image-278" src="http://wildsky.cc/blog-images/2015/03/2015-03-02-162609-的螢幕擷圖-1024x580.png" alt="dropbox preview" width="740" height="419" srcset="sky.cchttp://wildsky.cc/blog-images/2015/03/2015-03-02-162609-的螢幕擷圖-300x170.png 300w, http://wildsky.cc/blog-images/2015/03/2015-03-02-162609-的螢幕擷圖-1024x580.png 1024w, http://wildsky.cc/blog-images/2015/03/2015-03-02-162609-的螢幕擷圖.png 1040w" sizes="(max-width: 740px) 100vw, 740px" /></a>
 
     <p class="wp-caption-text">
       在dropbox 上還可以直接預覽呢！
