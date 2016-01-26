@@ -71,6 +71,5 @@ configure :build do
 end
 
 after_build do |builder|
-  exec "surge build"
-  exec "git push origin master"
+  exec "surge build && git push origin master"
 end
