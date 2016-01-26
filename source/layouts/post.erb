@@ -14,6 +14,7 @@
       <%= data.site.name %>
     </title>
 
+    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
     <link rel="stylesheet" href="/style.css">
 
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
@@ -23,13 +24,7 @@
 
     <div class="container">
       <header class="article_title">
-        <nav>
-          <ul>
-            <li><a href="/about.html">About</a></li>
-            <li><a href="/contact-me.html">Contact</a></li>
-            <li><a href="/fedora.html">Fedora</a></li>
-          </ul>
-        </nav>
+        <%= partial "inc/nav" %>
         <p><a href="/"><%= data.site.author %></a> : </p>
         <h1><%= current_page.data.title %></h1>
       </header>

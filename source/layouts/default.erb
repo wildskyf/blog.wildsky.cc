@@ -17,7 +17,6 @@
     </title>
 
     <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
-
     <link rel="stylesheet" href="/style.css">
 
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
@@ -27,13 +26,7 @@
 
     <div class="container">
       <header>
-        <nav>
-          <ul>
-            <li><a href="/about.html">About</a></li>
-            <li><a href="/contact-me.html">Contact</a></li>
-            <li><a href="/fedora.html">Fedora</a></li>
-          </ul>
-        </nav>
+        <%= partial "inc/nav" %>
         <h1><a href="/"><%= data.site.name %></a></h1>
         <p><%= data.site.slogan %></p>
       </header>
