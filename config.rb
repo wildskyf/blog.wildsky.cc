@@ -24,7 +24,7 @@ activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
   # blog.prefix = "posts"
 
-  blog.permalink = "posts/{title}.html"
+  blog.permalink = "posts/{title}/index.html"
   # Matcher for blog source files
   blog.sources = "posts/{year}-{month}-{day}-{title}.html"
   blog.taglink = "tags/{tag}.html"
