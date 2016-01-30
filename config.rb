@@ -5,12 +5,14 @@
 # Per-page layout changes:
 #
 # With no layout
+
 page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
 
 # With alternative layout
-page "*", layout: :default
+page "*.erb", layout: :default
+page "*.html", layout: :default
 
 # Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
