@@ -114,11 +114,11 @@ categories:
 
 因為每次都要下指令有點煩，所以我就直接在 config.rb 的最後面加入這一段程式碼:
 
-<pre>
-  after_build do |builder|
-    exec "surge build"
-  end
-</pre>
+```ruby
+after_build do |builder|
+  exec "surge build"
+end
+```
 
 這樣一來他就會在 跑完 `middlema build` 後直接跑 `surge build`，懶人的福音！
 

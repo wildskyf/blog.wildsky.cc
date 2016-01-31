@@ -25,12 +25,11 @@ tags:
 
 在重看的過程中有看到一篇文章說：
 
-```
-學工具怎麼用，還不如學這個工具的哲學。
-```
-```
-The best way to learn hard thing is to learn new thing.
-```
+> 學工具怎麼用，還不如學這個工具的哲學。
+
+還看到另一篇文章說：
+
+> The best way to learn hard thing is to learn new thing.
 
 雖然這兩句話的概念不盡相同，但他們都讓我想到過去曾經 po 過的 Jekyll 介紹文，
 重點不是學他要怎麼用，而是學習他為什麼這樣設計、這樣設計有什麼好處，

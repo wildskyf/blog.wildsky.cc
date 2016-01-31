@@ -24,11 +24,12 @@ categories:
 
 #### 替代詞彙
 
-| 原詞  | 可能的取代方案                                     |
-| Send  | deliver, dispatch, announce, distribute, route     |
-| Find  | search, extract, locate, recover                   |
-| Start | launch, create, begin, open                        |
-| Make  | create, set up, build, generate, compose, add, new |
+| 原詞   | 可能的取代方案                                     |
+| ------ | -------------------------------------------------- |
+| Send   | deliver, dispatch, announce, distribute, route     |
+| Find   | search, extract, locate, recover                   |
+| Start  | launch, create, begin, open                        |
+| Make   | create, set up, build, generate, compose, add, new |
 
 #### 單位
 
@@ -39,11 +40,12 @@ categories:
 
 #### 其他重要屬性
 
-| 情景                           | 變數名稱 | 更好的名稱         |
-| 以「明文」儲存的密碼，應先加密 | password | plaintext_password |
-| 使用者提供的意見，顯示前須編碼 | comment  | unescpaed_comment  |
-| 轉換為 UTF-8 的 html 資料      | html     | html_utf8          |
-| 做過 url 編碼輸入資料          | data     | data_urlenc        |
+| 情景                           | 變數名稱   | 更好的名稱          |
+| ------------------------------ | ---------- | ------------------- |
+| 以「明文」儲存的密碼，應先加密 | password   | plaintext_password  |
+| 使用者提供的意見，顯示前須編碼 | comment    | unescpaed_comment   |
+| 轉換為 UTF-8 的 html 資料      | html       | html_utf8           |
+| 做過 url 編碼輸入資料          | data       | data_urlenc         |
 
 - 小範圍 => 短名稱
 - 縮寫應被廣泛理解

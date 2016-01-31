@@ -6,6 +6,11 @@
 #
 # With no layout
 
+set :markdown_engine, :redcarpet
+set :markdown, :tables => true, :fenced_code_blocks => true, :smartypants => true
+
+activate :syntax, :line_numbers => true
+
 page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false

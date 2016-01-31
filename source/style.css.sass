@@ -138,6 +138,10 @@ footer
       margin: 0
       padding: .5rem 1rem
       word-spacing: .25rem
+    > code, pre
+      background: #F7F7F7
+      border: 1px solid #ccc
+      padding: 2px
 
   a
     color: #666
@@ -156,12 +160,7 @@ footer
     p
       margin: 0
       padding: 0
-  pre, code
-    background: #eee
-    border: 1px solid #ccc
-    font-family: 'Cutive Mono', monospace
-    overflow: auto
-    padding: .25rem
+
   table
     border: 1px solid #ccc
     border-collapse: collapse
@@ -268,12 +267,6 @@ footer
     color: #eee
     margin: 2rem auto
     width: 10px
-  pre, code
-    background: #eee
-    border: 1px solid #ccc
-    font-family: 'Cutive Mono', monospace
-    overflow: auto
-    padding: .25rem
   blockquote
     background: #EEEEEE
     border-left: 5px solid $green
@@ -300,4 +293,22 @@ footer
       text-align: justify
     ul
       padding-left: 1rem
+
+#main article .content .highlight
+  table
+    width: 100%
+    td
+      background: #F7F7F7
+      padding: 0 .25rem 0 0
+      &.gl
+        font-weight: 600
+        width: 2rem
+      &.code
+        color: #232323
+        padding: 0 1rem
+  pre
+    font-family: 'Consolas', 'Cutive Mono', monospace
+    line-height: 1.5rem
+    overflow: auto
+    padding: .25rem
 
