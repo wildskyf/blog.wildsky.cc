@@ -1,6 +1,6 @@
 ---
 title: 近日小記
-date: 2016-01-04T17:08:50+00:00
+date: 2016-01-04T17:08:50+08:00
 layout: post
 permalink: /2016-1-4-diary/
 categories:

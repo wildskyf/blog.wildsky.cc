@@ -1,7 +1,7 @@
 ---
 id: 721
 title: Fedora 安裝資料庫系統 (MariaDB、MongoDB、Radis)
-date: 2015-09-06T23:51:36+00:00
+date: 2015-09-06T23:51:36+08:00
 author: wildsky
 layout: post
 guid: https://wildsky.cc/?p=721

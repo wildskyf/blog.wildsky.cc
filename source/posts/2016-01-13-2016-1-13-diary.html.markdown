@@ -1,6 +1,6 @@
 ---
 title: '近日小記 - 學工具怎麼用，還不如學這個工具的哲學。'
-date: 2016-01-13T20:25:01+00:00
+date: 2016-01-13T20:25:01+08:00
 author: wildsky
 layout: post
 permalink: /2016-1-13-diary/

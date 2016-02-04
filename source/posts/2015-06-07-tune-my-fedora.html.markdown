@@ -1,7 +1,7 @@
 ---
 id: 295
 title: 我的 fedora 調校手冊
-date: 2015-06-07T01:53:05+00:00
+date: 2015-06-07T01:53:05+08:00
 author: wildsky
 layout: post
 permalink: /tune-my-fedora/

@@ -1,7 +1,7 @@
 ---
 id: 777
 title: '【筆記】易讀程式之美學 &#8211; 提升程式碼可讀性的簡單法則 (The Art of Readable Code)'
-date: 2015-11-25T20:01:03+00:00
+date: 2015-11-25T20:01:03+08:00
 author: wildsky
 layout: post
 guid: https://wildsky.cc/?p=777

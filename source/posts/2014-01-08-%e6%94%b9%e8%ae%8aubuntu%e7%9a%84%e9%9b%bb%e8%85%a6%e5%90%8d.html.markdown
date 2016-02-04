@@ -1,7 +1,7 @@
 ---
 id: 10
 title: 如何改變Ubuntu的電腦名稱?
-date: 2014-01-08T20:38:00+00:00
+date: 2014-01-08T20:38:00+08:00
 author: wildsky
 layout: post
 guid: http://wildsky.lionfree.net/?p=10
@@ -23,11 +23,11 @@ categories:
   <p>
     <span style="font-size: large;">1.按下 <span style="background-color: #cccccc;">ctrl + alt + T</span>  叫出終端機</span><span style="font-size: large;"><br /> </span><span style="font-size: large;"><br /> </span><span style="font-size: large;">2.輸入以下指令叫出 Gedit 並編輯你的電腦名稱</span>
   </p>
-  
+
   <p>
     <code> sudo gedit /etc/namehost </code>
   </p>
-  
+
   <p>
     <span style="font-size: large;">3.然後你就可以為所欲為了！XD</span>
   </p>

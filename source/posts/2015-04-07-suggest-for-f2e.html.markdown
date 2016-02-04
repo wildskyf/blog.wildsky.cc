@@ -1,7 +1,7 @@
 ---
 id: 302
 title: Facebook 上的前輩們給想走前端的人的建議
-date: 2015-04-07T00:00:24+00:00
+date: 2015-04-07T00:00:24+08:00
 author: wildsky
 layout: post
 guid: https://wildsky.cc/?p=302

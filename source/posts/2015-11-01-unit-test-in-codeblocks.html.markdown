@@ -1,7 +1,7 @@
 ---
 id: 761
 title: 在 Code::Blocks 開開心心 Unit Test
-date: 2015-11-01T14:13:38+00:00
+date: 2015-11-01T14:13:38+08:00
 author: wildsky
 layout: post
 guid: https://wildsky.cc/?p=761

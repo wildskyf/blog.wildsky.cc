@@ -9,6 +9,8 @@
 set :markdown_engine, :redcarpet
 set :markdown, :tables => true, :fenced_code_blocks => true, :smartypants => true
 
+Time.zone = "Taipei"
+
 activate :syntax, :line_numbers => true
 
 page '/*.xml', layout: false

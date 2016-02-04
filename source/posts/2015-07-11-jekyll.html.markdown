@@ -1,7 +1,7 @@
 ---
 id: 657
 title: 'Jekyll &#8211; 超好用靜態網站產生器'
-date: 2015-07-11T21:15:13+00:00
+date: 2015-07-11T21:15:13+08:00
 author: wildsky
 layout: post
 guid: https://wildsky.cc/?p=657

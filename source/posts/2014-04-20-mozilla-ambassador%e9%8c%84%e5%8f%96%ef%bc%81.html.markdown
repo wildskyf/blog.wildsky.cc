@@ -1,7 +1,7 @@
 ---
 id: 5
 title: Firefox Student Ambassadors 錄取！
-date: 2014-04-20T10:54:00+00:00
+date: 2014-04-20T10:54:00+08:00
 author: wildsky
 layout: post
 guid: http://wildsky.lionfree.net/?p=5

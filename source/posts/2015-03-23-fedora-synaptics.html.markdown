@@ -1,6 +1,6 @@
 ---
 title: Synaptics 在 Fedora 沒反應，救救我阿我救我！
-date: 2015-03-23T23:56:16+00:00
+date: 2015-03-23T23:56:16+08:00
 author: wildsky
 layout: post
 permalink: /fedora-synaptics/

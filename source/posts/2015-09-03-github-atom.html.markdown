@@ -1,7 +1,7 @@
 ---
 id: 714
 title: 'atom &#8211; 編輯神器'
-date: 2015-09-03T02:09:58+00:00
+date: 2015-09-03T02:09:58+08:00
 author: wildsky
 layout: post
 guid: https://wildsky.cc/?p=714
