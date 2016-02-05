@@ -1,6 +1,6 @@
 # Wildsky's Wild Sky
-This will be my new blog.
-Current blog is at <https://wildsky.cc>
+This is a repo for my blog, which is at <http://blog.wildsky.cc>.
+Built with [Middleman](http://middlemanapp.com).
 
 ## How to start?
 
