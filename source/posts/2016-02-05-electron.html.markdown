@@ -170,7 +170,7 @@ electron-packager 好像有個 --ignore="要忽略的檔案路徑" 選項可以�
 最糟的情況就是在 build 的指令裡面多寫個 `&& rm /path/to/folders` 而已…
 但這是最無腦的方法… 明明就有支援了，為什麼不能用呢…？
 
-## 後記
+## 後記 & 結論
 
 「建立可拋棄玩具」確實有幫助！
 在短短幾個小時內就學到了個新東西，
@@ -178,6 +178,23 @@ electron-packager 好像有個 --ignore="要忽略的檔案路徑" 選項可以�
 但總是玩個兩天還是沒半點成果，
 今次有建立起一個小玩具了，雖然沒有什麼太高深的技術，
 但至少讓我更熟悉一些我以後說不定會用到的技能了！
+
+### 優點
+
+方便！只要用前端的三個語言來寫，
+內容架構用 HTML，樣式風格用 CSS，互動用 JavaScript，
+寫桌面程式就跟寫網頁一樣，還可以跨平台！
+而且還可以搭配一堆框架什麼的 react.js、Angular.js 只要是寫網頁的資源，
+用了 Electron 就可以變成寫桌面程式的資源啦！
+
+### 缺點
+
+缺點也很明顯，Build 出來的成品檔案大小太龐大。
+
+一開始也有說了，基本概念就是 Chrome 拿掉不重要的東西再載入 HTML 檔，
+換句話說，也可以想作是一個 Electron App 就是一個 Chrome，
+所以如果電腦裡有 10 個這種 App，那就等於你電腦裡有十個 Chrome…
+光聽起來好恐怖…
 
 ## 參考資料
 
@@ -187,12 +204,4 @@ electron-packager 好像有個 --ignore="要忽略的檔案路徑" 選項可以�
 - 圈叉遊戲的 source code：<https://github.com/wi1d5ky/Tic-Tac-Toe-Game>
 - 圈叉遊戲的下載點：<https://github.com/wi1d5ky/Tic-Tac-Toe-Game/releases/tag/v1.0>
 - 討論 document.querySelectorAll 的 forEach 文章：<https://css-tricks.com/snippets/javascript/loop-queryselectorall-matches/>
-
-
-
-
-
-
-
-
 
