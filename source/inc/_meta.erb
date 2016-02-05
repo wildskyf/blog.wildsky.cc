@@ -1,6 +1,8 @@
 <%
   title = ""
-  title += current_page.data.title + " | " unless current_page.data.title == "homepage"
+  if current_page.data.title != nil
+    title += current_page.data.title + " | " unless current_page.data.title == "homepage"
+  end
   title += "wildsky's wild sky"
   description = "喜歡銀色更勝於灰色。有時候很上進，有時候很偷懶。"
   pic = "http://blog.wildsky.cc/images/wildsky_main_pic.jpg"
@@ -8,6 +10,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="s2JVNduYJKGlPRDUOwX2dCyZAkwYcjl1dmk4ClWE5v8" />
+<meta name="msvalidate.01" content="2D79718F62A974F9C335F6A7B616FACA" />
 <meta charset="utf-8" />
 
 <meta name="title" content="<%= title %>" />
