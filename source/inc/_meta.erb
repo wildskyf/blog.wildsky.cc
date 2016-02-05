@@ -1,19 +1,30 @@
+<%
+  title = ""
+  title += current_page.data.title + " | " unless current_page.data.title == "homepage"
+  title += "wildsky's wild sky"
+  description = "喜歡銀色更勝於灰色。有時候很上進，有時候很偷懶。"
+  pic = "http://blog.wildsky.cc/images/wildsky_main_pic.jpg"
+%>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="s2JVNduYJKGlPRDUOwX2dCyZAkwYcjl1dmk4ClWE5v8" />
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 
+<meta name="title" content="<%= title %>" />
 <meta name="author" content="Wildsky" />
-<meta name="description" content="喜歡銀色更勝於灰色。有時候很上進，有時候很偷懶。" />
+<meta name="description" content="<%= description %>" />
 
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Wildsky's wild sky">
-<meta property="og:locale" content="zh_TW">
-<meta property="og:url" content="http://blog.wildsky.cc/">
-<meta property="og:image" content="http://blog.wildsky.cc/images/wildsky_main_pic.jpg">
-<meta property="og:title" content="Wildsky's wild sky">
-<meta property="og:description" content="喜歡銀色更勝於灰色。有時候很上進，有時候很偷懶。">
-<meta property="fb:app_id" content="1521058658143315">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@w1id5ky">
-<meta name="twitter:domain" content="wildsky.cc">
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Wildsky's wild sky" />
+<meta property="og:locale" content="zh_TW" />
+<meta property="og:url" content="http://blog.wildsky.cc<%= current_page.url %>" />
+<meta property="og:image" content="<%= pic %>" />
+<meta property="og:title" content="<%= title %>" />
+<meta property="og:description" content="<%= description %>" />
+<meta property="fb:app_id" content="1521058658143315" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@w1id5ky" />
+<meta name="twitter:title" content="<%= title %>" />
+<meta name="twitter:description" content="<%= description %>" />
+<meta name="twitter:image" content="<%= pic %>" />
