@@ -1,18 +1,12 @@
 ---
-id: 777
 title: '【筆記】易讀程式之美學 &#8211; 提升程式碼可讀性的簡單法則 (The Art of Readable Code)'
 date: 2015-11-25T20:01:03+08:00
 author: wildsky
 layout: post
-guid: https://wildsky.cc/?p=777
 permalink: /the-art-of-readable-code/
-dsq_thread_id:
-  - 4349524331
 categories:
-  - Coding
   - 心得筆記
 ---
-
 
 終於讀完這本書了！在看的過程中一直把自己最近要交的作業拿回來改XD 之後可能還會再多看幾次～ 幸好當初有買下來哈哈！
 

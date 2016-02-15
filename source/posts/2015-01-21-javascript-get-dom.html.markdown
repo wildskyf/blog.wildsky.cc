@@ -5,7 +5,7 @@ author: wildsky
 layout: post
 permalink: /javascript-get-dom/
 categories:
-  - 'Web Design'
+  - 網站開發
 tags:
   - JavaScript
 ---

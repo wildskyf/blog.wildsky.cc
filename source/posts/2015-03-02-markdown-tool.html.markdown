@@ -7,7 +7,7 @@ permalink: /markdown-tool/
 categories:
   - Android
   - Linux
-  - windows
+  - Windows
 tags:
   - android
   - editor

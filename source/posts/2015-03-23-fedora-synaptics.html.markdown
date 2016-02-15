@@ -7,10 +7,8 @@ permalink: /fedora-synaptics/
 categories:
   - Linux
 tags:
-  - Ask Fedora Project
   - ASUS
   - Fedora
-  - Linux
   - Synaptics
   - 觸控板
   - 驅動程式
