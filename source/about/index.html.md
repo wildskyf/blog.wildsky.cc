@@ -37,6 +37,7 @@ layout: page
   - 鋼之鍊金術師
   - 死亡筆記本
   - 狼與辛香料
+  - 蝴蝶效應
 - 玩 Linux 作業系統
   - 過去用過 Ubuntu
   - 目前使用 Fedora 作業系統
