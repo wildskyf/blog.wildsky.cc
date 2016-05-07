@@ -1,12 +1,8 @@
 ---
-id: 740
 title: Fedora 調校
 date: 2015-10-06T22:23:25+00:00
 author: wildsky
 layout: page
-guid: https://wildsky.cc/?page_id=740
-dsq_thread_id:
-  -
 ---
 
 
@@ -15,7 +11,7 @@ dsq_thread_id:
 
 ## 開始動手！
 
-先讓找尋 mirror 的速度提升！
+先讓找尋 mirror 的速度提升！（不過社群中有人說，回應最快的不見得速度最快，你可以自己斟酌。）
 
 `sudo gedit /etc/dnf/dnf.conf`
 
@@ -31,7 +27,7 @@ dsq_thread_id:
 
 #### Terminal 背景透明化
 
-背景透明化可以在選單列的 編輯 > 設定檔偏好設定 裡面做更改。
+背景透明化可以在選單列的 `編輯 > 設定檔偏好設定 > 顏色` 裡面做更改。
 
 #### 安裝字體
 
@@ -45,21 +41,32 @@ dsq_thread_id:
 
 <https://fedora-tw.org/t/firefox-gnome-3/33>
 
-<hr />
+然後可以安裝一下獨立出來的 tab groups 套件，很潮！
+
+<https://github.com/Quicksaver/Tab-Groups/releases>
+
+---
 
 ### 值得一裝的 gnome-add-on
 
 - <a href="https://extensions.gnome.org/extension/358/activities-configurator/" target="_blank">Activities configurator</a>
 - <a href="https://extensions.gnome.org/extension/15/alternatetab/" target="_blank">Alternatetab</a>
 - Gpaste Integration `sudo dnf install gnome-shell-extension-gpaste -y`
-- Maximus-Two<br /> Fedora 21 之後似乎不支援了… 但 Firefox 上有一個 <a href="https://addons.mozilla.org/zh-tw/firefox/addon/htitle/" target="_blank">H Title</a> 的擴充元件可以讓 Firefox 達到這個效果。
 - <a href="https://extensions.gnome.org/extension/302/windowoverlay-icons/" target="_blank">WindowOverlay Icons</a>
-
-其他可以參考 <a href="http://fedora.linux.org.tw/tutorial/gnome/" target="_blank">http://fedora.linux.org.tw/tutorial/gnome/</a>
+- Maximus-Two
+  - Fedora 21 之後似乎停止支援了，不過 Firefox 上有一個叫做 [H Title](https://addons.mozilla.org/zh-tw/firefox/addon/htitle/) 的擴充元件可以讓 Firefox 達到這個效果。
+  - 有人好像修好了，可以參考一下 <https://github.com/wilfm/GnomeExtensionMaximusTwo/pull/43>，大家都很疑惑為什麼作者不收這個 PR…
+- 其他可以參考 <a href="http://fedora.linux.org.tw/tutorial/gnome/" target="_blank">http://fedora.linux.org.tw/tutorial/gnome/</a>
 
 ------
 
 ### 安裝日常生活所需的應用程式
+
+#### LibreOffice 中文界面
+
+LibreOffice 預設是英文界面，使用這個指令就可以讓他變中文的：
+
+`sudo dnf install libreoffice-langpack-zh-Hant`
 
 #### Android Studio
 
@@ -75,19 +82,12 @@ dsq_thread_id:
 
 `sudo dnf install -y atom_x86_64.rpm`
 
-#### Brackets
-
-```
-sudo dnf install dnf-plugins-core -y
-sudo dnf copr enable jgillich/brackets
-sudo dnf install brackets -y
-```
+之前有裝 Brackets，不過原本的 copr 不維護了，他叫大家去用 atom …XD
 
 #### Chrome
 
 
-Chrome 也有提供 .rpm 安裝包，還可以幫你把 repo 加入 <code>/etc/yum.repo.d/</code> 之下～
-
+Chrome 也有提供 .rpm 安裝包，還可以幫你把 repo 加入 <code>/etc/yum.repo.d/</code> 之下～覺得方便！
 
 `sudo dnf install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm -y`
 
@@ -104,17 +104,13 @@ baseurl=http://linux.dropbox.com/fedora/22/
 gpgkey=http://linux.dropbox.com/fedora/rpm-public-key.asc
 ```
 
-儲存退出後，再輸入 <code>sudo dnf -y install nautilus-dropbox</code> 就好囉！剩下的就是圖形界面的事情了～
-
-#### Evernote Web
-
-沒什麼好說的，就按安裝吧！<br /> <a href="https://marketplace.firefox.com/app/evernote-web">https://marketplace.firefox.com/app/evernote-web</a>
+儲存退出後，再輸入 `sudo dnf -y install nautilus-dropbox` 就好囉！剩下的就是圖形界面的事情了～
 
 #### Filezilla
 
 `sudo dnf install filezilla -y`
 
-不過自從 23 之後的 nautilus 支援 FTP 之後我就沒在裝這個了～
+不過自從 23 之後的 nautilus 支援 FTP 之後我就沒裝這個了～
 
 #### Gimp
 
@@ -122,13 +118,11 @@ Linux 上的 PhotoShop ！
 
 `sudo dnf install -y gimp`
 
-#### Gnome-paint
+#### Inkscape
 
-```
-sudo dnf install https://launchpadlibrarian.net/61492961/gnome-paint-0.4.0-0.x86_64.rpm -y
-```
+`sudo install inkscape -y`
 
-但目前他好像掛掉了，在 Fedora 23 上開不起來，可以試試 mypaint:
+#### Mypaint
 
 `sudo dnf install mypaint`
 
@@ -136,9 +130,7 @@ sudo dnf install https://launchpadlibrarian.net/61492961/gnome-paint-0.4.0-0.x86
 
 有在用 Onedrice 的人可以參考這篇文章： <a href="http://xmodulo.com/sync-microsoft-onedrive-linux.html">http://xmodulo.com/sync-microsoft-onedrive-linux.html</a>
 
-#### Telegram Web
-
-跟 Evernote-web 一樣：<a href="https://marketplace.firefox.com/app/telegram" target="_blank">https://marketplace.firefox.com/app/telegram</a>
+不過微軟好像取消 15GB 的空間了… 有點悲劇…
 
 #### Vim
 
@@ -159,13 +151,13 @@ sudo dnf -y install vlc gstreamer-plugins-bad gstreamer-plugins-bad-free-extras 
 
 #### 顯示卡問題：安裝 Bumblebee
 
-Fedora 22 只須安裝 bumblebee 然後再更新系統就好，不用也不要安裝 bumblebee-nvidia，不然會發生問題！（無法登入之類的，但偶爾又會成功，可以多試幾次…）
+我自己的話是安裝 bumblebee 然後再更新系統就好，安裝 bumblebee-nvidia 的話會發生問題！（無法登入之類的，但偶爾又會成功，可以多試幾次…）
 
-參考 <a href="https://fedoraproject.org/wiki/Bumblebee" target="_blank">https://fedoraproject.org/wiki/Bumblebee</a> ，過程很複雜，請加油。
+參考 <https://fedoraproject.org/wiki/Bumblebee> ，過程很複雜，請加油。
 
 #### 輸入法調整：安裝 fcitx
 
-在我最近一次的重灌後，發現輸入法似乎改進了不少，所以這一步目前是可做可不做。
+個人比較喜歡 fcitx 的感覺。
 
 ```
 sudo dnf install fcitx fcitx-table-chinese fcitx-configtool fcitx-qt4 fcitx-chewing im-chooser && gsettings set org.gnome.settings-daemon.plugins.keyboard active false && sudo gedit /etc/profile
@@ -185,9 +177,23 @@ export XMODIFIERS="@im=fcitx"
 
 ### 安裝開發工具
 
+#### Git, Tig, GCC, G++
+
+`sudo dnf install gcc gcc-c++ git tig -y`
+
 #### Node.js
 
-`sudo dnf install nodejs npm -y`
+```
+sudo dnf copr enable nibbler/nodejs
+sudo dnf install nodejs npm -y
+```
+
+不過 6.0 好像有點怪怪的，個人建議先安裝 5.10 就好。
+
+##### 安裝 surge
+
+`sudo npm install surge -g`
+
 
 #### Python3
 
@@ -198,7 +204,14 @@ export XMODIFIERS="@im=fcitx"
 ```
 sudo dnf -y install ruby ruby-devel rubygems
 sudo gem install github-pages --no-ri --no-rdoc #這個是因為我要用到 jekyll，不需要的人不用安裝
+sudo gem install bundle
 ```
+
+##### 修正小問題
+
+`echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`
+
+細節可以參考 <https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers>
 
 #### Codeblocks
 
@@ -213,8 +226,8 @@ sudo gem install github-pages --no-ri --no-rdoc #這個是因為我要用到 jek
 最常用的 RPM Fusion:
 
 ```
-sudo dnf install  http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install  http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm
+sudo dnf install http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm
 ```
 
 ### 其他設定
@@ -225,7 +238,11 @@ sudo dnf install  http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfr
 
 ## 尾聲
 
-做完了上面那些調校後，可以到 <a href="http://fedora.linux.org.tw">fedora 台灣社群的網站</a> 看看。此外，如果想幫忙提供意見或是尋求協助，也歡迎加入 <a href="https://www.facebook.com/groups/fedora.chinesegroup">fedora facebook 社團</a>！希望各位在 fedora 的世界裡遇到的困難都可以找到解法！最近還新開了個論壇 <a href="http://fedora-tw.org/" target="_blank">http://fedora-tw.org/</a>，可以去尋寶！有興趣也可以來 <a href="https://telegram.me/joinchat/BGbpBwIdS8gSkbxan-Lvmw" target="_blank">Fedora Telegram 群組</a>，有問題大家都可以即時討論！
+做完了上面那些調校後，可以到 [Fedora 台灣社群的網站](http://fedora.linux.org.tw) 看看。
+此外，如果想幫忙提供意見或是尋求協助，也歡迎加入 [Fedora Facebook 社團](https://www.facebook.com/groups/fedora.chinesegroup)！
+
+希望各位在 fedora 的世界裡遇到的困難都可以找到解法！最近還新開了個論壇 <http://fedora-tw.org/>，可以去尋寶！
+有興趣也可以來 [Fedora Telegram 群組](https://telegram.me/joinchat/BGbpBwIdS8gSkbxan-Lvmw)，有問題大家都可以即時討論！
 
 ## 參考
 
