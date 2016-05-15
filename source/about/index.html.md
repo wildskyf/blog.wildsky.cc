@@ -51,7 +51,9 @@ layout: page
 
 你可以在這些地方找到我。
 
-- E-Mail : wildsky at wildsky.cc &#124;&#124; poppin.wildsky at gmail.com
-- Twitter : <https://twitter.com/wi1d5ky>
+- Email : wildsky at wildsky.cc &#124;&#124; poppin.wildsky at gmail.com
+- Twitter : <https://twitter.com/wildskyf>
 - Github : <https://github.com/wi1d5ky>
-- Linkin : <https://www.linkedin.com/in/wildsky>
+<!--
+  - Linkin : <https://www.linkedin.com/in/wildsky>
+- -->
