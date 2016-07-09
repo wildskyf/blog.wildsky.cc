@@ -31,9 +31,9 @@ tags:
 
 這樣安裝就完工啦！非常地輕鬆寫意，要讓這幾個 Database 開啟，只要分別輸入下面三個指令就好囉！
 
-- `sudo service start redis`
-- `sudo service start mariadb`
-- `sudo service start mongodb`
+- `sudo service redis start`
+- `sudo service mariadb start`
+- `sudo service mongodb start`
 
 ### 首次使用
 
