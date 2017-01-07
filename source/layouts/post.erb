@@ -42,7 +42,7 @@
           <div class="content">
             <%= yield %>
           </div>
-          <% pages = sitemap.resources.find_all{|p| p.source_file.match(/posts\/.*\.html/)}.sort_by {|p| p.date} %>
+          <% pages = sitemap.resources.find_all{|p| p.source_file.match(/posts\/.*\.html/)} %>
           <% pages.each_with_index do |p, index| %>
             <% if p.url == current_page.url %>
               <% next_page = pages[index+1]  %>
