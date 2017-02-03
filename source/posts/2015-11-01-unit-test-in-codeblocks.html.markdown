@@ -1,20 +1,9 @@
 ---
 title: 在 Code::Blocks 開開心心 Unit Test
 date: 2015-11-01T14:13:38+08:00
-author: wildsky
-layout: post
-permalink: /unit-test-in-codeblocks/
 categories:
-  - Coding
-tags:
-  - C++
-  - codeblocks
-  - cpp
-  - gmock
-  - unit test
+  - Class
 ---
-
-## 前言
 
 最近軟體工程在教單元測試（Unit Test），可是因為老師是 C# 戰士，
 所以我們學的就是用 Visual Studio 的內建測試來測 C#，但我又不寫 C#！！

@@ -1,12 +1,7 @@
 ---
 title: '筆桿上的變色龍 &#8211; Notepad++'
 date: 2014-12-16T01:42:43+08:00
-author: wildsky
-layout: post
-permalink: /notepadplusplus-zencoding/
 categories:
-  - 編輯器
-tags:
   - 編輯器
 ---
 
@@ -73,4 +68,3 @@ Tidy2 可以幫你把原本醜不啦機的程式碼排得美美的,
 它還有很多其他優點: 因為是國貨所以對正體中文很友善,
 因為是自由開放原始碼軟體所以可以達成**自己的編輯器自己編譯**,
 其他諸如, 期待你跟我一起支持國貨XD
-

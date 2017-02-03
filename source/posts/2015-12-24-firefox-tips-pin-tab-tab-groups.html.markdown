@@ -1,14 +1,9 @@
 ---
 title: 'Firefox 小技巧 &#8211; 釘選分頁 &#038; 分頁群組'
 date: 2015-12-24T16:54:17+08:00
-author: wildsky
-layout: post
-permalink: /firefox-tips-pin-tab-tab-groups/
 categories:
-  - MOZILLA
+  - Mozilla
 ---
-
-## 前言
 
 前兩天是師大資訊研究社的服務學習說明會，邀請到 MozTW 的 Irvin 和教育部 ossacc 的 Eric 來我們學校跟大家開個說明會聊個天。今天要講的不是這個服務學習說明會要幹嘛，而是在跟 Irvin 聊天時發現他的 Firefox 有個神奇的功能「釘選分頁」！！較了幾個有在用 Firefox 的同學，結果大家都不知道這個功能XD 所以就想寫一下文章記錄一下，說不定會對剛好逛到這裏的人有所幫助。
 
@@ -44,4 +39,3 @@ categories:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Jm5PRtveE2o" frameborder="0" allowfullscreen></iframe>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PuBYfpDzFac" frameborder="0" allowfullscreen></iframe>
-

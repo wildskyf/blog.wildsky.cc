@@ -1,9 +1,6 @@
 ---
 title: 試用 Electron 的心得
 date: 2016-02-05T00:29:33+08:00
-author: wildsky
-layout: post
-permalink: /electron/
 categories:
   - Web
 ---
@@ -204,4 +201,3 @@ electron-packager 好像有個 --ignore="要忽略的檔案路徑" 選項可以�
 - 圈叉遊戲的 source code：<https://github.com/wi1d5ky/Tic-Tac-Toe-Game>
 - 圈叉遊戲的下載點：<https://github.com/wi1d5ky/Tic-Tac-Toe-Game/releases/tag/v1.0>
 - 討論 document.querySelectorAll 的 forEach 文章：<https://css-tricks.com/snippets/javascript/loop-queryselectorall-matches/>
-

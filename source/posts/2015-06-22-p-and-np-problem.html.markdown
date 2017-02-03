@@ -1,16 +1,8 @@
 ---
 title: P 與 NP 的情感糾葛
 date: 2015-06-22T19:38:46+08:00
-author: wildsky
-layout: post
-permalink: /p-and-np-problem/
 categories:
-  - 電腦科學
-tags:
-  - algorithm
-  - NP complete
-  - P/NP Problem
-  - 演算法
+  - Class
 ---
 
 這篇是關於演算法中 P 與 NP 問題的一點小整理。
@@ -58,5 +50,3 @@ P 問題可以用指數時間演算法計算答案，當然也可以用多項式
 
 - [論 p, np, np-hard, np-complete 問題](http://bluelove1968.pixnet.net/blog/post/222283186-論p,np,np-hard,np-complete問題)
 - [演算法筆記](http://www.csie.ntnu.edu.tw/~u91029/Algorithm.html)
-
-

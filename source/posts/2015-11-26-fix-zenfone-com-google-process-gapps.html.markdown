@@ -1,18 +1,8 @@
 ---
 title: 修復 zenfone 重複出現 com.google.process.gapps 的問題
 date: 2015-11-26T18:08:07+08:00
-author: wildsky
-layout: post
-permalink: /fix-zenfone-com-google-process-gapps/
 categories:
   - Android
-tags:
-  - bug
-  - com.google.process.gapps
-  - gapps
-  - google play
-  - zenfone
-  - 錯誤
 ---
 
 用 Zenfone 一段時間了（差不多久到要換了…吧），刷機、Root、降版、刪除內建應用<del>（雞肋）</del>程式…

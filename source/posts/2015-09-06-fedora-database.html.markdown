@@ -1,21 +1,11 @@
 ---
 title: Fedora 安裝資料庫系統 (MariaDB、MongoDB、Radis)
 date: 2015-09-06T23:51:36+08:00
-author: wildsky
-layout: post
-permalink: /fedora-database/
 categories:
-  - Fedora
-tags:
-  - fedora
   - Linux
-  - mariadb
-  - mongodb
-  - mysqldb
-  - redis
+tags:
+  - Fedora
 ---
-
-## 前言
 
 因為實習有用到，所以我就要安裝一下這三個資料庫，可是暑假都到尾聲了，為什麼現在才來安裝哩？其實我之前早就安裝好了，只是因為太忙而沒空寫，那位什麼現在寫呢？因為我前兩天電腦怪怪的，剛重灌就順便補一下這篇文章啦！
 
@@ -77,4 +67,3 @@ Reload privilege tables now? [Y/n] Y
 
 - <https://fedoraproject.org/wiki/MariaDB>
 - [如何使用 fedora 內建的 phpmyadmin](http://bug-note.blogspot.tw/2011/10/fedoraphpmyadmin.html)
-

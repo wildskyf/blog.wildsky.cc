@@ -1,11 +1,9 @@
 ---
 title: Preparation for building Firefox under Fedora
 date: 2016-03-01T22:31:51+08:00
-author: wildsky
-layout: post
-permalink: /preparation-for-building-firefox-under-fedora/
 categories:
-  - Firefox
+  - Linux
+tags:
   - Fedora
 ---
 
@@ -51,4 +49,3 @@ now I have 3.2.1 .... though this is not the really newest version of Mercurial,
 I don't know why it is fixed up, but it allow me to move on, so I think it's a solution for people who use Fedora & want to build Firefox but face the not-new-enough-version problem.
 
 Good luck!
-

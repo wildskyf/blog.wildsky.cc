@@ -1,11 +1,10 @@
 ---
 title: 讓 cairo-dock 不會再開機自行啟動
 date: 2014-01-18T00:30:00+08:00
-author: wildsky
-layout: post
-permalink: /%e8%ae%93-cairo-dock-%e4%b8%8d%e6%9c%83%e5%86%8d%e9%96%8b%e6%a9%9f%e8%87%aa%e8%a1%8c%e5%95%9f%e5%8b%95/
 categories:
   - Linux
+tags:
+  - Ubuntu
 ---
 
 很多人會安裝 cairo-dock 
@@ -44,6 +43,3 @@ categories:
 資料來源
 
 - <http://zhidao.baidu.com/question/572862892.html>
-
-
-

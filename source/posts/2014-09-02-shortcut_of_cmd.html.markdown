@@ -1,15 +1,7 @@
 ---
 title: Windows 的 CMD 小技巧
 date: 2014-09-02T17:21:28+08:00
-author: wildsky
-layout: post
-permalink: /shortcut_of_cmd/
 categories:
-  - windows
-tags:
-  - cmd
-  - shortcuts
-  - wildsky_is_handsome
   - windows
 ---
 
@@ -52,4 +44,3 @@ tags:
 <img src="https://farm4.staticflickr.com/3901/14929148149_2a88063ee0_b.jpg" alt="CMD (8)" width="1024" height="576" />
 
 資料來源：[浮出水面-建立Windows cmd.exe 的shortcut](http://favoritepili.blogspot.tw/2010/10/windows-cmdexe-shortcut.html)
-

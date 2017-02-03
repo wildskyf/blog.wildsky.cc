@@ -1,12 +1,8 @@
 ---
 title: 移植「封鎖內容農場」套件
 date: 2016-12-27T23:22:00+08:00
-author: wildsky
-layout: post
 categories:
-    - firefox
-tag:
-    - content farm blocker
+    - Notes
 ---
 
 ![content farm screenshot](http://wildsky.cc/blog-images/content farm blocker.png)

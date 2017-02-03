@@ -1,17 +1,8 @@
 ---
 title: Nunit 3.0.1 not working
 date: 2015-12-14T12:01:53+08:00
-author: wildsky
-layout: post
-permalink: /nunit-3-0-1-not-working/
 categories:
-  - Coding
-tags:
-  - Monodevelop
-  - nuget
-  - Nunit
-  - Visual Studio
-  - working
+  - Class
 ---
 
 I'm using monodevelop to run a project in class, and recently I found that Nunit 3.0.1 make my test not work.

@@ -1,16 +1,10 @@
 ---
 title: 'Jekyll &#8211; 超好用靜態網站產生器'
 date: 2015-07-11T21:15:13+08:00
-author: wildsky
-layout: post
-permalink: /jekyll/
 categories:
-  - 網站開發
+  - Web
 tags:
   - jekyll
-  - sass
-  - coffeescript
-  - github-pages
 ---
 
 依照慣例，在每一篇文章之前都要哀號一下：這篇其實想寫很久了，只是因為事情太多一直沒時間開始撰寫，還有許多文章想寫，只能趕快趕稿了QAQ

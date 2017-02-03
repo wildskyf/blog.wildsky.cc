@@ -1,8 +1,6 @@
 ---
 title: 讓 Mac 上的 Chrome 瘦身
 date: 2017-02-02T01:02:00+08:00
-author: wildsky
-layout: post
 categories:
   - Mac
 ---
@@ -31,4 +29,3 @@ categories:
 # 後話
 
 安全和方便之間的權衡真是麻煩啊⋯⋯
-

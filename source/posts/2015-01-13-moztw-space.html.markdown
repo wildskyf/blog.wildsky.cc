@@ -1,15 +1,8 @@
 ---
 title: 摩茲工寮一日遊
 date: 2015-01-13T13:43:38+08:00
-author: wildsky
-layout: post
-permalink: /moztw-space/
 categories:
   - Mozilla
-tags:
-  - Firefox Student Ambassadors
-  - Mozilla
-  - MozTW
 ---
 
 拖延真的不是個好習慣哈哈…明明距離上一次去工寮已經不知道是多久以前的事情了現在才來補寫這一篇文章，覺得自己真的有點混哈哈XD

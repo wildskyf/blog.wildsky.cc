@@ -1,14 +1,8 @@
 ---
 title: '一個決定 &#8211; 邁向前端的旅程'
 date: 2014-10-18T21:07:36+08:00
-author: wildsky
-layout: post
-permalink: /a_decision_way_to_f2e/
 categories:
-  - 網站開發
-tags:
-  - F2E
-  - Front-end
+  - Web
 ---
 
 最近一直在擔心自己畢業以後要做甚麼工作，程式設計能力基本上沒有太大的問題（基礎的解題還算過得去啦～），
@@ -56,4 +50,3 @@ tags:
 
 P.s：不知道甚麼是前端的就自己搜尋 &#8220;Front-end Engineer"，
 不想搜尋的就按 **<a title="Front-end Engineer" href="http://goo.gl/v8KKfO" target="_blank">這個</a>** 吧XD
-

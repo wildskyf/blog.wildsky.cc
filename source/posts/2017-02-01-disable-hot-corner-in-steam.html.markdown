@@ -1,8 +1,6 @@
 ---
 title: Mac 避免誤撞邊緣而啟動熱角功能
 date: 2017-02-01T16:38:00+08:00
-author: wildsky
-layout: post
 categories:
   - Mac
 ---
@@ -37,4 +35,3 @@ categories:
 不得不說，Mac 的設定真的是有點令人摸不著頭緒啊⋯⋯這種小 trick 都要查了才會知道，
 平常頂多按按 option 鍵來看有沒有什麼設定彩蛋，
 結果現在又多了這一種設定方式，真的是很神奇啊⋯⋯
-

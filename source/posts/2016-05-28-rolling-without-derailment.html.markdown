@@ -1,15 +1,9 @@
 ---
 title: 不出軌的輪子
 date: 2016-05-28T23:29:00+08:00
-author: wildsky
-layout: post
-permalink: /rolling-without-derailment/
 categories:
-  - physics
-  - interesting
+  - Class
 ---
-
-## 前前言
 
 因為報告的需要，所以就寫了這篇文章，之前上課上到的時候就想要記錄下來，
 但一直拖稿拖到現在XD 剛好藉著交報告的這次機會把這邊文章寫一寫。

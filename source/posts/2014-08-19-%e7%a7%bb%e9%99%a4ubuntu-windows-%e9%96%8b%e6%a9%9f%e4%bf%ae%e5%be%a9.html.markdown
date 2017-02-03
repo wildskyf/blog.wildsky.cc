@@ -1,19 +1,8 @@
 ---
 title: '移除ubuntu & Windows 開機修復'
 date: 2014-08-19T15:17:54+08:00
-author: wildsky
-layout: post
-permalink: /%e7%a7%bb%e9%99%a4ubuntu-windows-%e9%96%8b%e6%a9%9f%e4%bf%ae%e5%be%a9/
 categories:
   - Linux
-tags:
-  - boot
-  - fix
-  - grub
-  - Linux
-  - mbr
-  - recovery
-  - windows
 ---
 
 砍 ubuntu 砍太快了~ 完蛋了~
@@ -75,4 +64,3 @@ X:\Sources>C:
 // P.ss : 方法來自 <a title="在安裝 GRUB 之後修復 Windows 7 MBR" href="http://blog.xuite.net/jyoutw/xtech/62292941" target="_blank"><span class="titlename">在安裝 GRUB 之後修復 Windows 7 MBR</span> </a>
 
 // P.s3 : 其他會失敗的方法我就不寫了～畢竟寫了會失敗幹嘛寫 XD
-

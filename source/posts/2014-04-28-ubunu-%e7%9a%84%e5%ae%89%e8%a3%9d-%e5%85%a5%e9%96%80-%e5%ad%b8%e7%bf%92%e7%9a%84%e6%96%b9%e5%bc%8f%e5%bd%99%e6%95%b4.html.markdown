@@ -1,21 +1,16 @@
 ---
 title: Ubunu 的安裝, 調校, 學習的方式彙整
 date: 2014-04-28T11:42:40+08:00
-author: wildsky
-layout: post
-permalink: /ubunu-%e7%9a%84%e5%ae%89%e8%a3%9d-%e5%85%a5%e9%96%80-%e5%ad%b8%e7%bf%92%e7%9a%84%e6%96%b9%e5%bc%8f%e5%bd%99%e6%95%b4/
 categories:
   - Linux
 tags:
-  - Installation
-  - Linux
-  - Ubuntu14.04
+  - Ubuntu
 ---
 
 > **聲明**
 > 這篇文章只是用來記錄一下我自己是怎麼安裝 & 協助我朋友安裝 Ubuntu
 > 所以你必須自行承擔電腦可能會壞掉的風險
-> 若電腦不幸出問題, 我不會為你負任何責任
+> 若電腦不幸出問題，我不會為你負任何責任
 > 請自行評估風險。
 
 Windows Mac Linux 這三個是目前最多人使用的 電腦系統 ~
@@ -38,7 +33,7 @@ Linux 有很多發行版 : Fedora, Red Hat, Debian, Ubuntu &#8230;
 
 這邊要說的就是很多人初學 Linux 第一次接觸的系統 &#8212; <a href="http://www.ubuntu-tw.org">Ubuntu </a>!
 
-<a title="Flickr 上 kevin_boy3110 的 Ubuntu" href="https://www.flickr.com/photos/71353772@N04/14027125096/"><img src="https://farm8.staticflickr.com/7090/14027125096_4369026df6.jpg" alt="Ubuntu" width="475" height="278" /></a>
+<a title="Ubuntu" href="https://www.flickr.com/photos/71353772@N04/14027125096/"><img src="https://farm8.staticflickr.com/7090/14027125096_4369026df6.jpg" alt="Ubuntu" width="475" height="278" /></a>
 
 <del>雖然畫得很醜, 但我怕被告所以還是乖乖的自己畫 XD</del>
 

@@ -2,18 +2,10 @@
 title: Markdown 的工具們
 date: 2015-03-02T16:41:33+08:00
 author: wildsky
-layout: post
-permalink: /markdown-tool/
 categories:
   - Android
   - Linux
   - Windows
-tags:
-  - android
-  - editor
-  - markdown
-  - sync
-  - windows
 ---
 
 開學了，又是開始要記筆記的時候了！

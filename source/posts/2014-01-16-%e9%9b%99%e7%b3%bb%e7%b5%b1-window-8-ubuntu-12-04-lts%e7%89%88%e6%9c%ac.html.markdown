@@ -1,11 +1,10 @@
 ---
 title: 雙系統 window 8 + Ubuntu 12.04 LTS版本
 date: 2014-01-16T06:42:00+08:00
-author: wildsky
-layout: post
-permalink: /%e9%9b%99%e7%b3%bb%e7%b5%b1-window-8-ubuntu-12-04-lts%e7%89%88%e6%9c%ac/
 categories:
   - Linux
+tags:
+  - Ubuntu
 ---
 
 ![Win8+ubuntu](https://farm3.staticflickr.com/2908/14020836235_daa6aab161.jpg)

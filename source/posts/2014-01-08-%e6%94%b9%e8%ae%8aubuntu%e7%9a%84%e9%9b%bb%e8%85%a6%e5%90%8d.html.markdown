@@ -1,11 +1,10 @@
 ---
-title: 如何改變Ubuntu的電腦名稱?
+title: 如何改變 Ubuntu 的電腦名稱?
 date: 2014-01-08T20:38:00+08:00
-author: wildsky
-layout: post
-permalink: /%e6%94%b9%e8%ae%8aubuntu%e7%9a%84%e9%9b%bb%e8%85%a6%e5%90%8d/
 categories:
   - Linux
+tags:
+  - Ubuntu
 ---
 
 1. 按下 `ctrl + alt + T` 叫出終端機

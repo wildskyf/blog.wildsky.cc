@@ -1,9 +1,6 @@
 ---
 title: 新部落格新氣象
 date: 2016-01-25T20:03:37+08:00
-author: wildsky
-layout: post
-permalink: /newblog/
 categories:
   - Blog
 ---
@@ -131,4 +128,3 @@ end
 - [Middleman 官網](http://middlemanapp.com/)
 - [Middleman 論壇](https://forum.middlemanapp.com/)
 - [Surge.sh](http://surge.sh/)
-

@@ -1,18 +1,11 @@
 ---
-title: 在 fedora 上使用 Quartus II
+title: 在 Fedora 上使用 Quartus II
 date: 2015-10-18T15:01:47+08:00
-author: wildsky
-layout: post
-permalink: /quartus-ii-on-fedora/
 categories:
-  - Fedora
-tags:
-  - fedora
   - Linux
-  - quartus
+tags:
+  - Fedora
 ---
-
-## 前言
 
 因為這學期有修 VLSI，所以需要用到 Quartus II，研究了好幾天，今天終於 ok 了。歲寫這篇文章來做個記錄。
 
@@ -43,4 +36,3 @@ tags:
 
 - [Installing Quartus II v.13.1 64 bit on RHEL/Centos 6 64 bit](http://www.digitalsolutionslab.com/installing-quartus-ii-v-13-1-64-bit-on-rhelcentos-6-64-bit/)
 - [[SOLVED] Installing Quartus II Web Edition v9.1](http://www.linuxquestions.org/questions/slackware-14/%5Bsolved%5D-installing-quartus-ii-web-edition-v9-1-a-4175436463/)
-

@@ -1,18 +1,9 @@
 ---
 title: 'atom &#8211; 編輯神器'
 date: 2015-09-03T02:09:58+08:00
-author: wildsky
-layout: post
-permalink: /github-atom/
 categories:
-  - 編輯器
-tags:
-  - Atom
-  - GitHub
+  - Editor
 ---
-## 不用仔細看的前言
-
-
 
 看著 [過去文章吹捧的 notepad++](http://blog.wildsky.cc/posts/notepadplusplus-zencoding/)，頓時覺得很有趣，現在居然跳槽來玩其他編輯器了，一整個打臉自己以前說的那堆理由，但或許這就是人生吧（？），總是要不停的砍掉重練，才會在以前的經驗上獲得新的知識技能，進而成長茁壯。
 
@@ -51,4 +42,3 @@ tags:
 - Atom：<http://Atom.io>
 - Electron：<http://Electron.atom.io>
 - CSDN：<http://blog.csdn.net/a8154596/article/details/43573803>
-

@@ -1,17 +1,8 @@
 ---
 title: Firefox 十周年紀念party
 date: 2014-12-11T00:48:14+08:00
-author: wildsky
-layout: post
-permalink: /fx10party/
 categories:
   - Mozilla
-tags:
-  - ChooseIndependence
-  - firefox
-  - fx10
-  - Mozilla
-  - mozTW
 ---
 
 不知不覺, Firefox 已經十歲了, 有種很不可思議的感覺!
@@ -103,4 +94,3 @@ Firefox, 恭喜你十歲了, 希望你能夠繼續奮鬥個二三十年! 祝你�
 <img class="" src="https://farm6.staticflickr.com/5614/15609064069_e1293a68b5_z.jpg" alt="Firefox x Moztw 10th Party" width="643" height="431" />
 
 Firefox x Moztw 10th Party &#8211; 圖片由 <a href="https://www.flickr.com/photos/12452841@N00">othree</a> 提供
-

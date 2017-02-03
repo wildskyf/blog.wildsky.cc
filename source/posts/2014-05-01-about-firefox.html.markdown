@@ -1,18 +1,13 @@
 ---
 title: 關於 Firefox 的那檔事
 date: 2014-05-01T11:42:12+08:00
-author: wildsky
-layout: post
-permalink: /about-firefox/
 categories:
-  - MOZILLA
-tags:
-  - firefox
+  - Mozilla
 ---
 
 關於 firefox 的推廣文<del>或是護航文</del>或是反制文或是&#8230;.已經太多了!
 
-所以 <del>多我這一篇應該沒差 XD  </del>我今天想說說我的firefox使用經驗!
+所以 <del>多我這一篇應該沒差 XD  </del>我今天想說說我的 firefox 使用經驗!
 
 <a title="Flickr 上 kevin_boy3110 的 Firefox_Logo" href="https://www.flickr.com/photos/71353772@N04/14074288762/"><img src="https://farm6.staticflickr.com/5273/14074288762_4b26900369.jpg" alt="Firefox_Logo" width="500" height="375" /></a>
 

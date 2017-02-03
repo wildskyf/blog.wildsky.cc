@@ -1,16 +1,8 @@
 ---
 title: Godzilla? Mosaic? Mozilla!
 date: 2014-07-13T17:34:36+08:00
-author: wildsky
-layout: post
-permalink: /godzilla-mosaic-mozilla/
 categories:
-  - MOZILLA
-tags:
-  - Code Rush
-  - firefox
   - Mozilla
-  - 瀏覽器大戰
 ---
 
 不知道是甚麼緣故, 我身邊的親朋好友總是只聽過 Firefox , 而沒有聽過他幕後的功臣 &#8212; [Mozilla](http://mozilla.com.tw/).
@@ -46,4 +38,3 @@ Mozilla 裡面有大半比例是志工,
 下面是我自己做的 Mozilla Community Map XD
 
 <a title="Flickr 上 kevin_boy3110 的 Mozilla Community Map" href="https://www.flickr.com/photos/71353772@N04/14490438396/"><img src="https://farm3.staticflickr.com/2932/14490438396_5b84280900_o.jpg" alt="Mozilla Community Map" width="973" height="454" /></a>
-

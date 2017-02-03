@@ -1,15 +1,8 @@
 ---
 title: 一些 code 的筆記 ( C++ )
 date: 2014-05-28T00:58:31+08:00
-author: wildsky
-layout: post
-permalink: /c_code_note/
 categories:
   - C++
-tags:
-  - C++
-  - setcolor
-  - windows.h
 ---
 
 有時候寫 code 就是會手癢想美化一下
@@ -110,4 +103,3 @@ x, y 值的計算方式是以命令提示字元視窗的左上角開始算
 下面是我自己寫的賽車遊戲, 歡迎試玩 & 幫我 debug 唷**
 
 下載點 : <http://ppt.cc/VRXm">
-

@@ -35,6 +35,31 @@ body
     margin: 0
 
 
+nav
+  border-bottom: 1px solid #ccc
+  background-color: #fff
+  display: block
+  font-family: Arial,sans-serif
+  padding: 0 2rem
+  text-align: right
+  @media #{$s-sc}
+    padding: 0
+  ul
+    margin: 0
+    padding: 0
+    li
+      display: inline-block
+    a
+      color: #888
+      display: block
+      font-size: .6rem
+      padding: .75rem 1rem
+      text-decoration: none
+      &:hover
+        background: #ccc
+        color: #555
+        transition-duration: .2s
+
 header
   @include t2b-gradient($white, $grey)
   border-bottom: 1px solid #ccc
@@ -43,7 +68,7 @@ header
   @media #{$s-sc}
     padding-bottom: 2rem
   &.article_title
-    h1
+    .slogan
       border-bottom: 0
       color: #aaa
       font-family: Arial,sans-serif
@@ -64,30 +89,6 @@ header
       a
         color: $blue
         text-decoration: none
-  nav
-    border-bottom: 1px solid #ccc
-    display: block
-    font-family: Arial,sans-serif
-    padding: 0 2rem
-    text-align: right
-    @media #{$s-sc}
-      padding: 0
-    ul
-      margin: 0
-      padding: 0
-      li
-        display: inline-block
-      a
-        color: #888
-        display: block
-        font-size: .6rem
-        padding: .75rem 1rem
-        text-decoration: none
-        &:hover
-          background: #ccc
-          color: #555
-          transition-duration: .2s
-
   h1
     border-bottom: 1px solid #ccc
     color: $blue

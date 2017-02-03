@@ -5,8 +5,7 @@ author: wildsky
 layout: post
 permalink: /2016-1-13-diary/
 categories:
-  - 小記
-tags:
+  - Notes
 ---
 
 這兩天一直在消耗 Pocket 清單裡面的文章，過去曾經有使用過他的服務，
