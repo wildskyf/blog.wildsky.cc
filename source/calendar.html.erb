@@ -1,7 +1,9 @@
 ---
 pageable: true
+per_page: 12
+type: calendar
 ---
-<h1>Archive for
+<h1>發表於
   <% case page_type
      when 'day' %>
     <%= Date.new(year, month, day).strftime('%b %e %Y') %>
@@ -9,7 +11,7 @@ pageable: true
     <%= Date.new(year, month, 1).strftime('%b %Y') %>
   <% when 'year' %>
     <%= year %>
-  <% end %>
+  <% end %>的文章
 </h1>
 
 <% if paginate && num_pages > 1 %>

@@ -2,6 +2,12 @@
   def is_home
     current_page.data.title == "homepage"
   end
+  def is_tag
+    current_page.data.type == "tag"
+  end
+  def is_calendar
+    current_page.data.type == "calendar"
+  end
 %>
 
 <!doctype html>
@@ -12,7 +18,18 @@
     <%= partial "inc/meta" %>
 
     <title>
-      <% if current_page.data.title != "homepage" %>
+      <% if is_tag %>
+        <%= "Tag: " + tagname + " | " %>
+      <% elsif is_calendar %>
+        <% case page_type
+           when 'day' %>
+          <%= Date.new(year, month, day).strftime('%b %e %Y') %>
+        <% when 'month' %>
+          <%= Date.new(year, month, 1).strftime('%b %Y') %>
+        <% when 'year' %>
+          <%= year %>
+        <% end %> |
+      <% elsif current_page.data.title != "homepage" %>
         <%= current_page.data.title + " | " %>
       <% end %>
       <%= data.site.name %>
