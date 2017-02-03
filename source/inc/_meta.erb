@@ -15,7 +15,7 @@
 <meta name="author" content="Wildsky" />
 <meta name="description" content="<%= description %>" />
 
-<meta property="og:type" content="website" />
+<meta property="og:type" content=<%= title == "homepage" ? "website" : "article" %> />
 <meta property="og:site_name" content="<%= current_page.data.title %>" />
 <meta property="og:locale" content="zh_TW" />
 <meta property="og:url" content="http://blog.wildsky.cc<%= current_page.url %>" />
@@ -23,9 +23,11 @@
 <meta property="og:title" content="<%= title %>" />
 <meta property="og:description" content="<%= description %>" />
 <meta property="fb:app_id" content="1521058658143315" />
+<meta property='article:author' content='https://www.facebook.com/wi1d5ky'/>
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:site" content="@w1id5ky" />
+<meta name="twitter:site" content="@wildskyf" />
 <meta name="twitter:title" content="<%= title %>" />
 <meta name="twitter:description" content="<%= description %>" />
 <meta name="twitter:image" content="<%= pic %>" />
+
