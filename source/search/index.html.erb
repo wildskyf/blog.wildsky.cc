@@ -28,41 +28,32 @@ pageable: false
 <script>
 // TODO: show the matched paragraph
 
-var wSearch = {
-  article_list: null,
-
-  init: function(){
-    var me = this;
-    me.article_list = Array.from(document.querySelectorAll('.article-list li'));
-    me.searchbar = document.querySelector('#search');
-
-    if (/msie/i.test(navigator.userAgent))  //ie
-      me.searchbar.onpropertychange = me.searchbar_changed;
-    else
-      me.searchbar.addEventListener("input", me.searchbar_changed, false);
-  },
-
-  show: function(dom){
-    dom.classList.remove('hide');
-  },
-
-  hide: function(dom){
-    dom.classList.add('hide');
-  },
-
-  onChange: function(){
-    var search_str = me.searchbar.value;
-    var show_all = search_str.length === 0;
-
-    me.article_list.forEach(function(dom){
-      if (dom.textContent.match(search_str) || show_all)
-        me.show(dom);
-      else
-        me.hide(dom);
-    });
-  }
-};
 window.onload = function(){
+  var wSearch = {
+
+    init: function(){
+      var me = this;
+      var searchbar = document.querySelector('#search');
+
+      if (/msie/i.test(navigator.userAgent))  //ie
+        searchbar.onpropertychange = me.onChanged;
+      else
+        searchbar.addEventListener("input", me.onChanged, false);
+    },
+
+    onChanged: function(){
+      var me = this;
+      var search_str = document.querySelector('#search').value;
+      var show_all = search_str.length === 0;
+
+      Array.from(document.querySelectorAll('.article-list li')).forEach(function(dom){
+        if (dom.textContent.match(search_str) || show_all)
+          dom.classList.remove('hide');
+        else
+          dom.classList.add('hide');
+      });
+    }
+  };
   wSearch.init();
 };
 </script>
