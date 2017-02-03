@@ -1,0 +1,68 @@
+---
+title: Search
+pageable: false
+---
+
+<div id="searchbar">
+  全文搜尋：<input type="text" id="search" placeholder="在此輸入要搜尋的字串">
+</div>
+
+<ul class="article-list">
+  <% blog.articles.each do |article| %>
+    <li>
+
+      <a href="<%= article.url %>">
+        <time datetime="<%= article.data.date.strftime('%Y-%m-%d 00:00') %>"><%= article.data.date.strftime('%Y/%m/%d') %></time>
+        &dash;
+        <%= article.data.title %>
+      </a>
+
+      <div class="content" style="display:none">
+        <%=h article.body %>
+      </div>
+
+    </li>
+  <% end %>
+</ul>
+
+<script>
+// TODO: show the matched paragraph
+
+var wSearch = {
+  article_list: null,
+
+  init: function(){
+    var me = this;
+    me.article_list = Array.from(document.querySelectorAll('.article-list li'));
+    me.searchbar = document.querySelector('#search');
+
+    if (/msie/i.test(navigator.userAgent))  //ie
+      me.searchbar.onpropertychange = me.searchbar_changed;
+    else
+      me.searchbar.addEventListener("input", me.searchbar_changed, false);
+  },
+
+  show: function(dom){
+    dom.classList.remove('hide');
+  },
+
+  hide: function(dom){
+    dom.classList.add('hide');
+  },
+
+  onChange: function(){
+    var search_str = me.searchbar.value;
+    var show_all = search_str.length === 0;
+
+    me.article_list.forEach(function(dom){
+      if (dom.textContent.match(search_str) || show_all)
+        me.show(dom);
+      else
+        me.hide(dom);
+    });
+  }
+};
+window.onload = function(){
+  wSearch.init();
+};
+</script>
