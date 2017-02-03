@@ -3,7 +3,7 @@
   if current_page.data.title != nil
     title += current_page.data.title + " | " unless current_page.data.title == "homepage"
   end
-  title += "wildsky's wild sky"
+  title += data.site.name
   description = "喜歡銀色更勝於灰色。有時候很上進，有時候很偷懶。"
   pic = "http://blog.wildsky.cc/images/wildsky_main_pic.jpg"
 %>
@@ -16,7 +16,7 @@
 <meta name="description" content="<%= description %>" />
 
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="Wildsky's wild sky" />
+<meta property="og:site_name" content="<%= current_page.data.title %>" />
 <meta property="og:locale" content="zh_TW" />
 <meta property="og:url" content="http://blog.wildsky.cc<%= current_page.url %>" />
 <meta property="og:image" content="<%= pic %>" />
