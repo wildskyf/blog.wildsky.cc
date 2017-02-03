@@ -1,6 +1,5 @@
 ---
 title: Nunit 3.0.1 not working
-date: 2015-12-14T12:01:53+08:00
 categories:
   - Class
 ---

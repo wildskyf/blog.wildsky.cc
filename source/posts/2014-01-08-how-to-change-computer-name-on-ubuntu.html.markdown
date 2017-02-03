@@ -1,6 +1,5 @@
 ---
 title: 如何改變 Ubuntu 的電腦名稱?
-date: 2014-01-08T20:38:00+08:00
 categories:
   - Linux
 tags:

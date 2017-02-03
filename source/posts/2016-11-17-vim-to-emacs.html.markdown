@@ -1,6 +1,5 @@
 ---
 title: 從 vim 跳槽到 emacs
-date: 2016-11-17T17:06:00+08:00
 categories:
   - Editor
 ---

@@ -1,6 +1,5 @@
 ---
 title: 摩茲工寮一日遊
-date: 2015-01-13T13:43:38+08:00
 categories:
   - Mozilla
 ---

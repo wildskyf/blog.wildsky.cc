@@ -1,6 +1,5 @@
 ---
 title: 不出軌的輪子
-date: 2016-05-28T23:29:00+08:00
 categories:
   - Class
 ---

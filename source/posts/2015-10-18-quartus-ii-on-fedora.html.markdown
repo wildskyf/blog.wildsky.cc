@@ -1,6 +1,5 @@
 ---
 title: 在 Fedora 上使用 Quartus II
-date: 2015-10-18T15:01:47+08:00
 categories:
   - Linux
 tags:

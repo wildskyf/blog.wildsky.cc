@@ -1,6 +1,5 @@
 ---
 title: JavaScript 抓得住你
-date: 2015-01-21T16:02:30+08:00
 categories:
   - Web
 ---

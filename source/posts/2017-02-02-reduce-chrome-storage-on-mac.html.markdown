@@ -1,6 +1,5 @@
 ---
 title: 讓 Mac 上的 Chrome 瘦身
-date: 2017-02-02T01:02:00+08:00
 categories:
   - Mac
 ---

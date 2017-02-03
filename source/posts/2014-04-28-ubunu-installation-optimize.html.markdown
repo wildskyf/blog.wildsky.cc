@@ -1,6 +1,5 @@
 ---
 title: Ubunu 的安裝, 調校, 學習的方式彙整
-date: 2014-04-28T11:42:40+08:00
 categories:
   - Linux
 tags:

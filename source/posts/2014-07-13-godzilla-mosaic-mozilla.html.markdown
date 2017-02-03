@@ -1,6 +1,5 @@
 ---
 title: Godzilla? Mosaic? Mozilla!
-date: 2014-07-13T17:34:36+08:00
 categories:
   - Mozilla
 ---

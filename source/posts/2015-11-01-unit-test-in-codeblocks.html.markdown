@@ -1,6 +1,5 @@
 ---
 title: 在 Code::Blocks 開開心心 Unit Test
-date: 2015-11-01T14:13:38+08:00
 categories:
   - Class
 ---

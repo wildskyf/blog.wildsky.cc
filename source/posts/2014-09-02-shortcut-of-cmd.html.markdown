@@ -1,6 +1,5 @@
 ---
 title: Windows 的 CMD 小技巧
-date: 2014-09-02T17:21:28+08:00
 categories:
   - windows
 ---

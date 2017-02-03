@@ -1,6 +1,5 @@
 ---
 title: 'atom &#8211; 編輯神器'
-date: 2015-09-03T02:09:58+08:00
 categories:
   - Editor
 ---

@@ -1,6 +1,5 @@
 ---
 title: '移除ubuntu & Windows 開機修復'
-date: 2014-08-19T15:17:54+08:00
 categories:
   - Linux
 ---

@@ -1,6 +1,5 @@
 ---
 title: 製作 Win installer USB
-date: 2016-11-07T16:34:00+08:00
 categories:
   - Linux
   - Windows

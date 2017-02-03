@@ -1,6 +1,5 @@
 ---
 title: Preparation for building Firefox under Fedora
-date: 2016-03-01T22:31:51+08:00
 categories:
   - Linux
 tags:

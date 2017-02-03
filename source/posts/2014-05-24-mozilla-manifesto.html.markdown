@@ -1,6 +1,5 @@
 ---
 title: 我眼中的 Mozilla 宣言
-date: 2014-05-24T22:51:24+08:00
 categories:
   - Mozilla
 ---

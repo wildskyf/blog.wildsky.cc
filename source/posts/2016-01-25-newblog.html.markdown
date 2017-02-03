@@ -1,6 +1,5 @@
 ---
 title: 新部落格新氣象
-date: 2016-01-25T20:03:37+08:00
 categories:
   - Blog
 ---

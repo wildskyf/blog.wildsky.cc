@@ -1,6 +1,5 @@
 ---
 title: Mozilla 專案
-date: 2014-08-18T00:02:51+08:00
 categories:
   - Mozilla
 ---

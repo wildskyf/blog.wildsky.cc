@@ -17,7 +17,7 @@ type: tag
   <% page_articles.each_with_index do |article, i| %>
     <li>
       <a href="<%= article.url %>">
-        <time datetime="<%= article.data.date.strftime('%Y-%m-%d 00:00') %>"><%= article.data.date.strftime('%Y/%m/%d') %></time>
+        <time datetime="<%= article.date.strftime('%Y-%m-%d 00:00') %>"><%= article.date.strftime('%Y/%m/%d') %></time>
         &dash;
         <%= article.data.title %>
       </a>

@@ -1,6 +1,5 @@
 ---
 title: ubuntu 取得 root 權限
-date: 2014-05-16T23:10:26+08:00
 categories:
   - Linux
 ---

@@ -1,6 +1,5 @@
 ---
 title: 'Android 4.2.2  無法使用 morelocale 2'
-date: 2014-03-11T09:48:00+08:00
 categories:
   - Android
 ---

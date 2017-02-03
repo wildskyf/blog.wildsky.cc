@@ -1,6 +1,5 @@
 ---
 title: 關於 Firefox 的那檔事
-date: 2014-05-01T11:42:12+08:00
 categories:
   - Mozilla
 ---

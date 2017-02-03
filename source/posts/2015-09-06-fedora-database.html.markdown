@@ -1,6 +1,5 @@
 ---
 title: Fedora 安裝資料庫系統 (MariaDB、MongoDB、Radis)
-date: 2015-09-06T23:51:36+08:00
 categories:
   - Linux
 tags:

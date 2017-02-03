@@ -1,6 +1,5 @@
 ---
 title: P 與 NP 的情感糾葛
-date: 2015-06-22T19:38:46+08:00
 categories:
   - Class
 ---

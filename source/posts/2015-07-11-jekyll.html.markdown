@@ -1,6 +1,5 @@
 ---
 title: 'Jekyll &#8211; 超好用靜態網站產生器'
-date: 2015-07-11T21:15:13+08:00
 categories:
   - Web
 tags:

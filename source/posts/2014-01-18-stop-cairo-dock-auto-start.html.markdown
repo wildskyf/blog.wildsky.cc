@@ -1,6 +1,5 @@
 ---
 title: 讓 cairo-dock 不會再開機自行啟動
-date: 2014-01-18T00:30:00+08:00
 categories:
   - Linux
 tags:
