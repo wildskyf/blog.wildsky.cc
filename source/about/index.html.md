@@ -2,7 +2,6 @@
 title: About
 date: 2017-02-03T17:08:31+00:00
 author: wildsky
-layout: page
 ---
 
 # 關於我

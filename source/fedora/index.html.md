@@ -2,7 +2,6 @@
 title: Fedora 調校
 date: 2015-10-06T22:23:25+00:00
 author: wildsky
-layout: page
 ---
 
 

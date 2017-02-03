@@ -1,6 +1,6 @@
 <%
-  def is_post
-    /^\/posts\// =~ current_page.url
+  def is_home
+    current_page.data.title == "homepage"
   end
 %>
 
@@ -24,14 +24,14 @@
 
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
 
-    <% if is_post %>
+    <% unless is_home %>
       <script>
-          (function() {
-              var d = document, s = d.createElement('script');
-              s.src = 'https://wildsky.disqus.com/embed.js';
-              s.setAttribute('data-timestamp', +new Date());
-              (d.head || d.body).appendChild(s);
-          })();
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = 'https://wildsky.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
       </script>
     <% end %>
 
@@ -42,14 +42,14 @@
       <div id="site-header">
         <%= partial "inc/nav" %>
         <header>
-          <h1><a href="/"><%= data.site.name %></a></h1>
-          <p><%= data.site.slogan %></p>
+          <div class="site-title"><a href="/"><%= data.site.name %></a></div>
+          <p class="slogan"><%= data.site.slogan %></p>
         </header>
       </div>
 
       <div id="main" role="main">
 
-        <% unless is_post %>
+        <% if is_home %>
           <%= yield %>
         <% else %>
           <article>
@@ -59,7 +59,7 @@
             </div>
           </article>
           <%= partial "inc/article_footer" %>
-        <% end%>
+        <% end %>
 
       </div>
     </div>
