@@ -2,8 +2,6 @@
 title: 404 Page Not Found
 ---
 
-## 404 NOT FOUND
-
 你要找的頁面找不到！
 
 The page you are looking for is not found!
