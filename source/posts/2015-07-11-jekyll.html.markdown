@@ -89,6 +89,7 @@ tags:
 - YAML 官網：<http://yaml.org>
 - SASS 官網：<http://sass-lang.com>
 - CoffeeScript 官網：<http://coffeescript.org>
+- CoffeeScript Instruction: <http://www.whoishostingthis.com/resources/coffeescript/>
 - Json：<http://json.org>
 - Liquid：<http://liquidmarkup.org>
 - Ruby 台灣：<http://www.ruby-lang.org>
