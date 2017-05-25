@@ -4,9 +4,9 @@ categories:
   - Editor
 ---
 
-今天被 Othree 推坑，把 Vim 升上 8.0 了，其實感覺也沒有什麼太大的改變。
+今天在 Vim 的 Telegram 群組中被 OThree 推坑，把 Vim 升上 8.0 了，其實感覺也沒有什麼太大的改變。
 
-指令就下這個：
+升級指令就下這個：
 
 ```
 brew install vim --with-override-system-vi
@@ -29,17 +29,23 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 其他的環境或是 neovim 就有其他的指令，要看一下他的 Repo 的 README。
 
-再來就是把 Plugin list 掐頭去尾，只留下一串串 `Plugin 'plugin_name'` 就好。
+再來就是把 Plugin list 掐頭去尾，只留下一串串 `Plugin 'plugin_name'`，接著再把
+`Plugin` 換成 `Plug` 就好。
 
-然後就是前面加上 `call plug#begin()`，後面補個 `call plug#end()` 就完成了。
+然後就是列表的最前面加上 `call plug#begin()`，最後面補個 `call plug#end()` 就完成了。
 
-順便提一下，Vundle 放套件的目錄是 `~/.vim/bundle/`，所以我可以把前面換成 `call plug#begin('~/.vim/bundle')` 理論上就不需要重裝了～不過我還是乖乖地用了個不一樣的名字。
+值得提一下的事，Vundle 放套件的目錄是 `~/.vim/bundle/`，所以我可以把前面換成 `call plug#begin('~/.vim/bundle')` 理論上就不需要重裝了～
+不過我還是乖乖地用了個不一樣的名字並把全部套件都重裝。
 
 如果像我一樣，資料夾是用不一樣名字的話，就可以退出後下 `vim -c 'PlugInstall' -c 'qa!'` 他就會裝起來哩。
+
+之後有空再來研究其他東西吧，像是 ale 或是 true color 之類的⋯（最近深感沒時間Orz）
+有興趣的話可以先去參考 OThree 的 <https://blog.othree.net/log/2016/10/03/native-true-color-vim/>
+
 
 ## 相關連結
 
 - [vim-plug 的 repository](https://github.com/junegunn/vim-plug)
 - [stackoverflow 上的 How update vim to 8.0 version in OSX](https://stackoverflow.com/questions/39861793/how-update-vim-to-8-0-version-in-osx)
 - [我的 Vim config](https://github.com/wildskyf/vim.d)
-
+- [OThree 的 Blog](https://blog.othree.net/)
