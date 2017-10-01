@@ -124,6 +124,20 @@ footer
     font-family: 'Raleway', sans-serif
     font-weight: 600
     text-decoration: none
+  .footer-item
+    display: inline-block
+    font-size: 12px
+    opacity: .5
+    transition-duration: .3s
+    &:hover
+      opacity: .8
+    &::before
+      content: '-'
+    input[type=submit]
+      background: transparent
+      border: none
+      color: $white
+      cursor: pointer
 
 #main
   background: #fff
