@@ -1,8 +1,8 @@
 xml.instruct!
 xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
   site_url = "http://blog.wildsky.cc/"
-  xml.title "Wildsky's Wild sky"
-  xml.subtitle "F2e + Linux"
+  xml.title "ws://wildsky.cc"
+  xml.subtitle "風吹過什麼樣的地方，身上自然而然就會有那樣的氣息。"
   xml.id URI.join(site_url, blog.options.prefix.to_s)
   xml.link "href" => URI.join(site_url, blog.options.prefix.to_s)
   xml.link "href" => URI.join(site_url, current_page.path), "rel" => "self"
