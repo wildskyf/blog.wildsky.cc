@@ -4,7 +4,7 @@
     title += current_page.data.title + " | " unless current_page.data.title == "homepage"
   end
   title += data.site.name
-  description = data.site.slogan
+  description = current_page.path.include?('posts') ? strip_tags(current_page.summary(100)) : data.site.slogan
   pic = "http://blog.wildsky.cc/images/wildsky_main_pic.jpg"
 %>
 
