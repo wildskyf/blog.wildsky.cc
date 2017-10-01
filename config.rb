@@ -75,6 +75,9 @@ configure :build do
 
   # Minify JavaScript
   activate :minify_javascript
+
+  # Gzip Text Files
+  activate :gzip
 end
 
 after_build do |builder|
