@@ -36,8 +36,8 @@
     </title>
 
     <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/syntax.css">
+    <link rel="stylesheet" href="/style.css" media="bogus">
+    <link rel="stylesheet" href="/syntax.css" media="bogus">
 
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
 
@@ -84,5 +84,8 @@
     <footer>
       <a href="http://github.com/wildskyf">wildsky</a>
     </footer>
+
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/syntax.css">
   </body>
 </html>
