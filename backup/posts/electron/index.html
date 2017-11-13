@@ -1,0 +1,120 @@
+<!doctype html> <html prefix='og: http://ogp.me/ns#'> <head> <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50389098-1', 'auto');
+  ga('send', 'pageview');
+</script> <meta name=viewport content="width=device-width, initial-scale=1"> <meta charset=utf-8 /> <meta name=title content="試用 Electron 的心得 | ws://wildsky.cc"/> <meta name=description content="因為昨天在讀學徒模式，裡面提到了「建造可拋棄式玩具」這個模式，所以我就依循他的建議， 做了一個圈圈叉叉遊戲，目前只有弄出 Linux 和 Mac 版，Windows 版聽說比較麻煩， 所以等改天..."/> <meta property="og:type" content=article /> <meta property="og:site_name" content="試用 Electron 的心得"/> <meta property="og:locale" content=zh_TW /> <meta property="og:url" content="http://blog.wildsky.cc/posts/electron/"/> <meta property="og:image" content="http://blog.wildsky.cc/images/wildsky_main_pic.jpg"/> <meta property="og:title" content="試用 Electron 的心得 | ws://wildsky.cc"/> <meta property="og:description" content="因為昨天在讀學徒模式，裡面提到了「建造可拋棄式玩具」這個模式，所以我就依循他的建議， 做了一個圈圈叉叉遊戲，目前只有弄出 Linux 和 Mac 版，Windows 版聽說比較麻煩， 所以等改天..."/> <meta property="fb:app_id" content=1521058658143315 /> <meta property='article:author' content='https://www.facebook.com/wi1d5ky'/> <meta name="twitter:card" content=summary /> <meta name="twitter:site" content="@wildskyf"/> <meta name="twitter:title" content="試用 Electron 的心得 | ws://wildsky.cc"/> <meta name="twitter:description" content="因為昨天在讀學徒模式，裡面提到了「建造可拋棄式玩具」這個模式，所以我就依循他的建議， 做了一個圈圈叉叉遊戲，目前只有弄出 Linux 和 Mac 版，Windows 版聽說比較麻煩， 所以等改天..."/> <meta name="twitter:image" content="http://blog.wildsky.cc/images/wildsky_main_pic.jpg"/> <title> 試用 Electron 的心得 | ws://wildsky.cc </title> <link rel="shortcut icon" type="image/png" href="/favicon.png"/> <link rel=stylesheet href="/style.css" media=bogus> <link rel=stylesheet href="/syntax.css" media=bogus> <link rel=alternate type="application/atom+xml" title="Atom Feed" href="/feed.xml"/> <script>
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = 'https://wildsky.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script> </head> <body> <div class=container> <div id=site-header> <nav> <ul> <li><a href="/about/">About</a></li> <li><a href="/fedora/">Fedora</a></li> <li><a href="/subscribe/">Subscribe</a></li> <li><a href="/search/">Search</a></li> </ul> </nav> <header> <div class=site-title><a href="/">ws://wildsky.cc</a></div> <p class=slogan>風吹過什麼樣的地方，身上自然而然就會有那樣的氣息。</p> </header> </div> <div id=main role=main> <article> <div class=content> <h1>試用 Electron 的心得</h1> <p>因為昨天在讀學徒模式，裡面提到了「建造可拋棄式玩具」這個模式，所以我就依循他的建議， 做了一個圈圈叉叉遊戲，目前只有弄出 Linux 和 Mac 版，Windows 版聽說比較麻煩， 所以等改天心情好了再做。</p> <p>來講講這幾個小時的心境轉折。</p> <h3>Electron 的 Quick Start 真的超 Quick</h3> <p>超簡單，兩個指令就成功地跑起 electron app 了：</p> <div class=highlight><pre class="highlight shell"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class=rouge-code><pre>git clone https://github.com/atom/electron-quick-start
+<span class="nb">cd </span>electron-quick-start <span class="o">&amp;&amp;</span> npm install <span class="o">&amp;&amp;</span> npm start
+</pre></td></tr></tbody></table></code></pre></div> <p>這時就會跳出一個包含有 chrome dev tool 的超陽春視窗了！</p> <h3>Electron 的簡單概念</h3> <p>Electron 非常方便，你可以用 HTML + CSS + JavaScript 建立出一個 Desktop Application， 也就是俗稱的桌面應用程式， 以前寫桌面程式要用 C/C++ 、Java 或是一些比較硬底子、不那麼善解人意的語言去寫， 現在只要會寫網站的工程師就能夠寫桌面程式哩！</p> <p>那為什麼可以這樣呢？ 其實概念很簡單，你可以看看自己的 Chrome， 他有分頁標籤、工具列… 之類的東西， 當你把這些東西拿掉，看起來就是個桌面程式哩！ 這就是 Electrion 的最基本想法：</p> <blockquote> <p>Electron 就是 chrome 拿掉工具列，拿掉分頁標籤，再載入 HTML 檔罷了。</p> </blockquote> <p>大不了加些和系統對話的 API 給你用，其他基本上就是這個概念而已， 這也就是為什麼剛剛在試的時候會看到眼熟的東西的原因了。</p> <h3>開始動手！</h3> <p>圈叉遊戲其實也沒什麼，簡單寫一下我的架構:</p> <div class=highlight><pre class="highlight html"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td><td class=rouge-code><pre>
+<span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">""</span><span class="nt">&gt;&lt;div&gt;&lt;/div&gt;&lt;/label&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">""</span><span class="nt">&gt;&lt;div&gt;&lt;/div&gt;&lt;/label&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">""</span><span class="nt">&gt;&lt;div&gt;&lt;/div&gt;&lt;/label&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">""</span><span class="nt">&gt;&lt;div&gt;&lt;/div&gt;&lt;/label&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">""</span><span class="nt">&gt;&lt;div&gt;&lt;/div&gt;&lt;/label&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">""</span><span class="nt">&gt;&lt;div&gt;&lt;/div&gt;&lt;/label&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">""</span><span class="nt">&gt;&lt;div&gt;&lt;/div&gt;&lt;/label&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">""</span><span class="nt">&gt;&lt;div&gt;&lt;/div&gt;&lt;/label&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">""</span><span class="nt">&gt;&lt;div&gt;&lt;/div&gt;&lt;/label&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+
+</pre></td></tr></tbody></table></code></pre></div> <p>簡單地說，就是一個 3 * 3 的表格，裡面放 div 而已～ 詳細的程式碼在文末有附上連結，可以自行參考。</p> <h3>寫的過程中有用到什麼資源？遇到什麼問題？</h3> <p>畢竟還是在寫程式，寫著寫著總是會用到一些資源， 這邊就記錄一下我在寫的過程中有用到的東西～</p> <h4>漸層色</h4> <p>因為我很懶得選顏色，所以就直接用 uigradients 的顏色去著色， 目前的顏色是隨便放的，改天心情好再去做修改。</p> <h4>判斷式</h4> <p>圈叉的勝利判斷有 8 種，說多不多，但說少也確實不少， 目前是用窮舉法，把八種情況都列出來， 心情好再去看看別人有沒有更漂亮的寫法。</p> <h4>不能用 forEach</h4> <p>這個我當時就傻眼，還一直用 <code>[].forEach(()=&gt;{})</code> 確認他確實是可以跑得， 但我在寫的時候就真的不能用， 吃完飯後還是百思不得其解， 一查才發現原來 <code>document.querySelectorAll</code> 抓出來的元素並不是 array ，而是 NodeList… 於是我在 forEach 的前一行加上 <code>NodeList.prototype.forEach = Array.prototype.forEach;</code> 他就可以用了。</p> <p>順便提一下，不要什麼東西都要用 jQuery 啊，如果只是因為要選元素，那可以直接用 <code>document.querySelectorAll</code>， 用法就跟 jQuery 的 $(&ldquo;CSS selector&rdquo;) 一樣，像是：</p> <div class=highlight><pre class="highlight javascript"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class=rouge-code><pre><span class="kd">var</span> <span class="nx">divs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">"#main table tr td div"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div> <p>然後現在純 JS 也支援 classList 了，用法也很方便：</p> <div class=highlight><pre class="highlight javascript"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class=rouge-code><pre><span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"#yo"</span><span class="p">);</span>
+<span class="nx">div</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">);</span>
+<span class="nx">div</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">"red"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div> <p>再順帶一提，這次的寫法原本有好幾個全域變數，後來才把他們都塞進 game 這個全域變數裡面， 之後要再把他用 IIFE 包起來，不過這樣好像就要加不少 listener 了… 之後再研究。</p> <h3>打包</h3> <p>花了不少時間，終於把他寫完了，但總不能叫別人用我 APP 之前都要先 Build 一次吧， <del>又不是每個人都拿 Linux，</del> 所以還是要找方法打包，原本以為是官方文件裡面的 Application Packaging 那一章節， 但我怎麼看都看不懂，照他說的依樣畫葫蘆還是一樣不知道生出來的 asar 檔可以幹嘛， 後來去找了一下以後發現原來是在 Application Distribution 之下， 我看了以後，還是看不懂… 這時候心裡有個聲音：「想要找到解答嗎？想要的話可以全部給你，去 Youtube 找吧！我把所有的答案都放在那裡了。」 搜尋了一下，找到了 Kyle Robinson Young 的 《Packaging and Distributing Electron Desktop Apps》。 裡面提到了一個工具：「electron-packager」，簡單地看了一下他的影片，就開始動手打包了， 因為過程實在太簡單，這邊就不贅述，簡單寫一下步驟就好：</p> <ol> <li>安裝 electron-packager: <code>sudo npm i electron-packager -g</code></li> <li>在 package.json 加入要打包的指令 <code>electron-packager . --platform=linux --arch=x64 --version=0.36.5 Tic-Tac-Toe-Game</code></li> <li>執行 <code>npm run build</code></li> </ol> <p>打包完了以後，我發現了一件事… Mac 版的包居然有 100MB，而 Linux 居然高達 400MB， 這真的太誇張了！！！ 於是我就開始找資料、問人，後來在亂翻 build 出來的資料夾時，發現了 node_modules 這個資料夾， 想想好像不用把他加進來，就手動刪除，程式還是可以跑！ 所以我就把他刪掉啦！ electron-packager 好像有個 &ndash;ignore=&ldquo;要忽略的檔案路徑&rdquo; 選項可以用， 但我用了半天用不出來… 有空再來研究要怎麼讓他自動消失， 最糟的情況就是在 build 的指令裡面多寫個 <code>&amp;&amp; rm /path/to/folders</code> 而已… 但這是最無腦的方法… 明明就有支援了，為什麼不能用呢…？</p> <h2>後記 &amp; 結論</h2> <p>「建立可拋棄玩具」確實有幫助！ 在短短幾個小時內就學到了個新東西， 雖然之前就有玩過， 但總是玩個兩天還是沒半點成果， 今次有建立起一個小玩具了，雖然沒有什麼太高深的技術， 但至少讓我更熟悉一些我以後說不定會用到的技能了！</p> <h3>優點</h3> <p>方便！只要用前端的三個語言來寫， 內容架構用 HTML，樣式風格用 CSS，互動用 JavaScript， 寫桌面程式就跟寫網頁一樣，還可以跨平台！ 而且還可以搭配一堆框架什麼的 react.js、Angular.js 只要是寫網頁的資源， 用了 Electron 就可以變成寫桌面程式的資源啦！</p> <h3>缺點</h3> <p>缺點也很明顯，Build 出來的成品檔案大小太龐大。</p> <p>一開始也有說了，基本概念就是 Chrome 拿掉不重要的東西再載入 HTML 檔， 換句話說，也可以想作是一個 Electron App 就是一個 Chrome， 所以如果電腦裡有 10 個這種 App，那就等於你電腦裡有十個 Chrome… 光聽起來好恐怖…</p> <h2>參考資料</h2> <ul> <li>Electron 官網： <a href="http://electron.atom.io">http://electron.atom.io</a></li> <li>Kyle Robinson Young 的 Packaging and Distributing Electron Desktop Apps: <a href="https://www.youtube.com/watch?v=dz5SnmBzBXc">https://www.youtube.com/watch?v=dz5SnmBzBXc</a></li> <li>Electron-packager 的 npm 頁面：<a href="https://www.npmjs.com/package/electron-packager">https://www.npmjs.com/package/electron-packager</a></li> <li>圈叉遊戲的 source code：<a href="https://github.com/wi1d5ky/Tic-Tac-Toe-Game">https://github.com/wi1d5ky/Tic-Tac-Toe-Game</a></li> <li>圈叉遊戲的下載點：<a href="https://github.com/wi1d5ky/Tic-Tac-Toe-Game/releases/tag/v1.0">https://github.com/wi1d5ky/Tic-Tac-Toe-Game/releases/tag/v1.0</a></li> <li>討論 document.querySelectorAll 的 forEach 文章：<a href="https://css-tricks.com/snippets/javascript/loop-queryselectorall-matches/">https://css-tricks.com/snippets/javascript/loop-queryselectorall-matches/</a></li> </ul> </div> </article> <div class=switch> <div class=pre> <a href="/posts/concat-two-mp4-files/">《 上一頁</a> </div> ☺ <div class=next> <a href="/posts/p-and-np-problem/">下一頁 》</a> </div> </div> <div id=disqus_thread></div> <noscript>請啟用 JavaScript 以便開啟 <a href="https://disqus.com/?ref_noscript" rel=nofollow>Disqus</a> 的留言功能！</noscript> </div> </div> <footer> <a href="http://github.com/wildskyf">wildsky</a> <form action="https://www.paypal.com/cgi-bin/webscr" method=post target=_top class=footer-item> <input type=hidden name=cmd value=_s-xclick> <input type=hidden name=hosted_button_id value=92X2FP2T63MTN> <input type=submit border=0 name=submit value=Donate> <img alt="" border=0 src="https://www.paypalobjects.com/zh_TW/i/scr/pixel.gif" width=1 height=1> </form> </footer> <link rel=stylesheet href="/style.css"> <link rel=stylesheet href="/syntax.css"> </body> </html>

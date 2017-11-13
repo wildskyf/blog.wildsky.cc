@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ws://wildsky.cc</title>
+  <subtitle>風吹過什麼樣的地方，身上自然而然就會有那樣的氣息。</subtitle>
+  <id>http://blog.wildsky.cc/</id>
+  <link href="http://blog.wildsky.cc/"/>
+  <link href="http://blog.wildsky.cc/feed.xml" rel="self"/>
+  <updated>2017-11-05T01:02:00+08:00</updated>
+  <author>
+    <name>Wildsky</name>
+  </author>
+  <entry>
+    <title>error&amp;#58; could not install smartsocket listener&amp;#58; Address already in use</title>
+    <link rel="alternate" href="http://blog.wildsky.cc/posts/error-could-not-install-smartsocket-listener-address-already-in-use/"/>
+    <id>http://blog.wildsky.cc/posts/error-could-not-install-smartsocket-listener-address-already-in-use/</id>
+    <published>2017-11-05T01:02:00+08:00</published>
+    <updated>2017-11-05T01:11:36+08:00</updated>
+    <author>
+      <name>Wildsky</name>
+    </author>
+    <content type="html">&lt;p&gt;I like to flash my smartphone. There are two tools we should use when flashing: &lt;code&gt;adb&lt;/code&gt; and &lt;code&gt;fastbook&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;But I met a problem:
+I want to run new adb server, but it keep showing this message:
+&lt;code&gt;error: could not install *smartsocket* listener: Address already in use&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;and I gave a command &lt;code&gt;ps aux | grep adb&lt;/code&gt;, then I got:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;&lt;table class="rouge-table"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="rouge-gutter gl"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class="rouge-code"&gt;&lt;pre&gt;wildsky   7456  0.1  0.0   9988  1916 ?        Ss   20:43   0:01 /home/wildsky/Desktop/FlashTool/x10flasher_lib/adb.linux.64 status-window
+wildsky   7459  0.0  0.0      0     0 ?        Z    20:43   0:00 [adb.linux.64] &amp;lt;defunct&amp;gt;
+wildsky   7499  0.0  0.0      0     0 ?        Z    20:43   0:00 [adb.linux.64] &amp;lt;defunct&amp;gt;
+# ... there might be lots of defunct, just dismiss it.
+wildsky   9752  0.0  0.0      0     0 ?        Z    20:56   0:00 [adb.linux.64] &amp;lt;defunct&amp;gt;
+wildsky   9842  0.0  0.0 173840  2008 ?        Sl   20:57   0:00 adb -P 5037 fork-server server
+wildsky  10705  0.0  0.0 119456   984 pts/1    S+   21:00   0:00 grep --color=auto adb
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you kill 9842, it will become &lt;code&gt;&amp;lt;defunct&amp;gt;&lt;/code&gt;, and create anthor &lt;code&gt;adb -P 5037
+fork-server server&lt;/code&gt;, which means it seems I can&amp;rsquo;t kill adb server forever&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;However, I found that there are two special progress: &lt;code&gt;adb.linux.64&lt;/code&gt; &amp;amp; &lt;code&gt;adb -P 5037 fork-server server&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;just simply kill the first one: &lt;code&gt;adb.linux.64&lt;/code&gt; via:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;&lt;table class="rouge-table"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="rouge-gutter gl"&gt;&lt;pre class="lineno"&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class="rouge-code"&gt;&lt;pre&gt;kill 7456
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;then kill &lt;code&gt;adb -P 5037 fork-server server&lt;/code&gt; via:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;&lt;table class="rouge-table"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="rouge-gutter gl"&gt;&lt;pre class="lineno"&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class="rouge-code"&gt;&lt;pre&gt;kill 9842
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That&amp;rsquo;s it! now I could create adb server without showing any error message.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>concat two mp4 files</title>
+    <link rel="alternate" href="http://blog.wildsky.cc/posts/concat-two-mp4-files/"/>
+    <id>http://blog.wildsky.cc/posts/concat-two-mp4-files/</id>
+    <published>2017-10-14T10:47:00+08:00</published>
+    <updated>2017-10-14T14:28:33+08:00</updated>
+    <author>
+      <name>Wildsky</name>
+    </author>
+    <content type="html">&lt;p&gt;I want to combine two mp4 files together, so I found a command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;&lt;table class="rouge-table"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="rouge-gutter gl"&gt;&lt;pre class="lineno"&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class="rouge-code"&gt;&lt;pre&gt;ffmpeg -i "concat:input1.mp4|input2.mp4|input3.mp4" -c copy output.mp4
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;But it doesn&amp;rsquo;t work. After my searching, I finally got the solution:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;&lt;table class="rouge-table"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="rouge-gutter gl"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class="rouge-code"&gt;&lt;pre&gt;ffmpeg -i input1.mp4 -c copy -bsf:v h264_mp4toannexb -f mpegts intermediate1.ts
+ffmpeg -i input2.mp4 -c copy -bsf:v h264_mp4toannexb -f mpegts intermediate2.ts
+ffmpeg -i "concat:intermediate1.ts|intermediate2.ts" -c copy -bsf:a aac_adtstoasc output.mp4
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
+
+&lt;p&gt;ref: &lt;a href="https://superuser.com/a/1059261"&gt;https://superuser.com/a/1059261&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Vim 上 8.0, Vundle 換 vim-plug</title>
+    <link rel="alternate" href="http://blog.wildsky.cc/posts/update-to-vim8/"/>
+    <id>http://blog.wildsky.cc/posts/update-to-vim8/</id>
+    <published>2017-05-24T08:00:00+08:00</published>
+    <updated>2017-09-24T11:11:05+08:00</updated>
+    <author>
+      <name>Wildsky</name>
+    </author>
+    <content type="html">&lt;p&gt;今天在 Vim 的 Telegram 群組中被 OThree 推坑，把 Vim 升上 8.0 了，其實感覺也沒有什麼太大的改變。&lt;/p&gt;
+
+&lt;p&gt;升級指令就下這個：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;&lt;table class="rouge-table"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="rouge-gutter gl"&gt;&lt;pre class="lineno"&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class="rouge-code"&gt;&lt;pre&gt;brew install vim --with-override-system-vi
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;升級後重開 Terminal 就會是 8.0 的 Vim 了。
+升級完了以後就順便把之前用的 Vundle 換成 vim-plug，這樣就可以用到 8.0 的 async process，
+聽起來就是很潮。&lt;/p&gt;
+
+&lt;p&gt;其實換過去的步驟也蠻簡單的，這邊簡單記錄一下我做了什麼。&lt;/p&gt;
+
+&lt;p&gt;先把他的管理相關 script 丟進 &lt;code&gt;autoload&lt;/code&gt; 的目錄下。像我是 Mac 的純 vim 就跑這
+段：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;&lt;table class="rouge-table"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="rouge-gutter gl"&gt;&lt;pre class="lineno"&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class="rouge-code"&gt;&lt;pre&gt;curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;其他的環境或是 neovim 就有其他的指令，要看一下他的 Repo 的 README。&lt;/p&gt;
+
+&lt;p&gt;再來就是把 Plugin list 掐頭去尾，只留下一串串 &lt;code&gt;Plugin &amp;#39;plugin_name&amp;#39;&lt;/code&gt;，接著再把
+&lt;code&gt;Plugin&lt;/code&gt; 換成 &lt;code&gt;Plug&lt;/code&gt; 就好。&lt;/p&gt;
+
+&lt;p&gt;然後就是列表的最前面加上 &lt;code&gt;call plug#begin()&lt;/code&gt;，最後面補個 &lt;code&gt;call plug#end()&lt;/code&gt; 就完成了。&lt;/p&gt;
+
+&lt;p&gt;值得提一下的事，Vundle 放套件的目錄是 &lt;code&gt;~/.vim/bundle/&lt;/code&gt;，所以我可以把前面換成 &lt;code&gt;call plug#begin(&amp;#39;~/.vim/bundle&amp;#39;)&lt;/code&gt; 理論上就不需要重裝了～
+不過我還是乖乖地用了個不一樣的名字並把全部套件都重裝。&lt;/p&gt;
+
+&lt;p&gt;如果像我一樣，資料夾是用不一樣名字的話，就可以退出後下 &lt;code&gt;vim -c &amp;#39;PlugInstall&amp;#39; -c &amp;#39;qa!&amp;#39;&lt;/code&gt; 他就會裝起來哩。&lt;/p&gt;
+
+&lt;p&gt;之後有空再來研究其他東西吧，像是 ale 或是 true color 之類的⋯（最近深感沒時間Orz）
+有興趣的話可以先去參考 OThree 的 &lt;a href="https://blog.othree.net/log/2016/10/03/native-true-color-vim/"&gt;https://blog.othree.net/log/2016/10/03/native-true-color-vim/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;相關連結&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/junegunn/vim-plug"&gt;vim-plug 的 repository&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/39861793/how-update-vim-to-8-0-version-in-osx"&gt;stackoverflow 上的 How update vim to 8.0 version in OSX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/wildskyf/vim.d"&gt;我的 Vim config&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.othree.net/"&gt;OThree 的 Blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>讓 Mac 上的 Chrome 瘦身</title>
+    <link rel="alternate" href="http://blog.wildsky.cc/posts/reduce-chrome-storage-on-mac/"/>
+    <id>http://blog.wildsky.cc/posts/reduce-chrome-storage-on-mac/</id>
+    <published>2017-02-02T08:00:00+08:00</published>
+    <updated>2017-09-24T11:11:05+08:00</updated>
+    <author>
+      <name>Wildsky</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img src="http://wildsky.cc/blog-images/2017/02/02-chrome.png" alt="about chrome" /&gt;&lt;/p&gt;
+
+&lt;p&gt;剛剛在整理電腦時，發現 chrome 居然佔用了 2GB 的空間⋯⋯
+迅速查了一下才發現原來是他把一堆舊版本的資料全部都保留下來了。
+（都存放在 &lt;code&gt;/Applications/Google Chrome.app/Contents/Versions/&lt;/code&gt; 下面）&lt;/p&gt;
+
+&lt;p&gt;這種行為真的很詭異，所以就花了點時間看看有沒有人跟我有一樣的問題，
+才知道原來是權限問題。&lt;/p&gt;
+
+&lt;p&gt;因為 Chrome 本身沒有刪除資料的權限，（直接就有的話也太可怕），
+所以他就只好一直堆一直堆，堆到你的硬碟空間爆掉！&lt;/p&gt;
+
+&lt;p&gt;也有人提問說：「那怎麼不讓他在偵測到權限問題時，跳管理員權限要求框讓使用者輸入
+帳密呢？」chrome 得回答是因為這個偵測通常發生在自動更新時，但在這個 context 下，
+使用者應該是不會遭遇到任何突然跳出來的對話框，更何況是要求管理員權限的框框。&lt;/p&gt;
+
+&lt;p&gt;那有沒有什麼解法？總不能過一段時間等他又到 2GB 的時候再來刪吧？
+解法也很簡單，只要到左上角 &lt;code&gt;chrome &amp;gt; 關於 chrome&lt;/code&gt; 裡面看到版號的下方有個「自動
+為所有使用者更新 chrome」，點下去，輸入密碼後 chrome 就有權限可以刪除那些檔案
+了！&lt;/p&gt;
+
+&lt;h1&gt;後話&lt;/h1&gt;
+
+&lt;p&gt;安全和方便之間的權衡真是麻煩啊⋯⋯&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Mac 避免誤撞邊緣而啟動熱角功能</title>
+    <link rel="alternate" href="http://blog.wildsky.cc/posts/disable-hot-corner-in-steam/"/>
+    <id>http://blog.wildsky.cc/posts/disable-hot-corner-in-steam/</id>
+    <published>2017-02-01T08:00:00+08:00</published>
+    <updated>2017-09-24T11:11:05+08:00</updated>
+    <author>
+      <name>Wildsky</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img src="http://wildsky.cc/blog-images/2017/02/01-steam.png" alt="Steam Screenshot" /&gt;&lt;/p&gt;
+
+&lt;p&gt;最近過年很無聊，又把 Dota2 抓回來玩了。很幸運地在 Mac 上可以玩這款遊戲！
+但是一開進去後就發現一個問題，當我滑鼠撞到邊緣時就會觸發熱角（hot corners）&lt;/p&gt;
+
+&lt;p&gt;我不可能為了玩遊戲就把我最愛用的功能取消啊⋯⋯所以就花了一點時間在尋找「在特定應
+用程式中停用熱角」的解法，但 Irvin 說「這是系統底層的功能，沒得處理吧」，
+而 Steam 中也沒有暫時停用熱角的選項，因而作罷。&lt;/p&gt;
+
+&lt;p&gt;後來意外看到有人在 steam 的發問區有問到有類似的問題： &lt;a href="http://steamcommunity.com/discussions/forum/2/558747287401524377/"&gt;http://steamcommunity.com/discussions/forum/2/558747287401524377/&lt;/a&gt;
+看來挺不錯地，於是我就採用這個解法了。&lt;/p&gt;
+
+&lt;h1&gt;解法&lt;/h1&gt;
+
+&lt;p&gt;其實就是一句話而已，「按住特定鍵撞擊邊緣時才啟動熱角」。&lt;/p&gt;
+
+&lt;p&gt;對我來說這還是個很直觀地動作，而且若有別人想要暫時使用我的電腦時，
+他也不會再被超敏感的熱角而弄得很惱怒。&lt;/p&gt;
+
+&lt;p&gt;那，要怎麼設定呢？&lt;/p&gt;
+
+&lt;p&gt;其實就是去設定熱角的地方：&lt;code&gt;系統偏好設定 &amp;gt; Mission Control &amp;gt; 熱點&lt;/code&gt;
+然後按住你想要觸發的扭去點各個下拉選單，他就會變成按住鈕時撞擊才會觸發的功能了！&lt;/p&gt;
+
+&lt;h1&gt;後話&lt;/h1&gt;
+
+&lt;p&gt;不得不說，Mac 的設定真的是有點令人摸不著頭緒啊⋯⋯這種小 trick 都要查了才會知道，
+平常頂多按按 option 鍵來看有沒有什麼設定彩蛋，
+結果現在又多了這一種設定方式，真的是很神奇啊⋯⋯&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>移植「封鎖內容農場」套件</title>
+    <link rel="alternate" href="http://blog.wildsky.cc/posts/transplant-content-farm-blocker/"/>
+    <id>http://blog.wildsky.cc/posts/transplant-content-farm-blocker/</id>
+    <published>2016-12-27T08:00:00+08:00</published>
+    <updated>2017-09-24T11:11:05+08:00</updated>
+    <author>
+      <name>Wildsky</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img src="http://wildsky.cc/blog-images/content farm blocker.png" alt="content farm screenshot" /&gt;&lt;/p&gt;
+
+&lt;p&gt;最近一直在玩 Firefox 的擴充套件，
+不過剛開始用來上手的專案都跟新分頁替換有關，
+所以基本上架構大同小異。&lt;/p&gt;
+
+&lt;p&gt;前兩天在 chrome 上找到一個叫做「封鎖內容農場」的套件，
+稍微找了一下就找到他的 GitHub repo，
+赫然發現 issue 裡面有人想要 firefox 的版本，
+到 AMO 看了一下以後，真的沒有這類的套件。
+剛好最近在玩火狐的 WebExtension 套件，趁這個機會來練習，
+順便做點功德！&lt;/p&gt;
+
+&lt;p&gt;（這邊開始簡略地講程式相關的事，不想看可以直接跳最後一段XD）&lt;/p&gt;
+
+&lt;p&gt;移植的過程中主要處理幾件事情：require, chrome 變成 browser, 處理警告畫面的流程。&lt;/p&gt;
+
+&lt;h3&gt;require&lt;/h3&gt;
+
+&lt;p&gt;簡單地說就是，chrome 下可以像 node 專案那樣 &lt;code&gt;var a require(&amp;#39;package&amp;#39;);&lt;/code&gt;
+但 firefox 的 WebExtension 架構卻沒辦法做這種事，
+所以我直接用 &lt;code&gt;&amp;quot;background&amp;quot; : { &amp;quot;scripts&amp;quot;: [] }&lt;/code&gt; 把他們通通載進來，
+只是不確定是 sync 還是 async，總之現階段可以用就是了。&lt;/p&gt;
+
+&lt;h3&gt;chrome 變成 browser&lt;/h3&gt;
+
+&lt;p&gt;其實不改的話好像還是可以跑，但就是想要把它改成正常的樣子（？）
+最近在看「JavaScript 的優良部份」，書中提到這樣的一句話：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;偶爾很有用，偶爾會出錯的功能才是最可怕的！&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;（有點小改但語意不變啦）所以還是要自律一下啊。&lt;/p&gt;
+
+&lt;h3&gt;處理警告畫面的流程&lt;/h3&gt;
+
+&lt;p&gt;其實我也不太確定原作者在 tabs.onUpdate 時才去 handle(tab) 是為什麼，
+感覺直接在 beforeRequest 做掉應該就可以了，在 firefox 上用原作者的方法反而不會觸發 onUpdate
+所以我就直接改成在 beforeRequest 判斷是內容農場後直接把 request 處理掉了。&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h2&gt;功能&lt;/h2&gt;
+
+&lt;p&gt;這個套件的宗旨其實很簡單，
+就是希望大家不要再莫名其妙被驚呆了，
+一直看到這一類的標題看得智商跟著一直降，
+雖然可以裝 ublock 把廣告擋掉，但送流量給他就是讓人感覺不爽，
+其他自訂黑名單白名單之類的功能面我就不說了，可以自己去裝裝看玩玩看&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;原始碼在這裡： &lt;a href="https://github.com/wildskyf/ihatecontentfarm"&gt;https://github.com/wildskyf/ihatecontentfarm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;AMO 在這裡（審核中）： &lt;a href="https://addons.mozilla.org/zh-TW/firefox/addon/cfblocker/"&gt;https://addons.mozilla.org/zh-TW/firefox/addon/cfblocker/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;原專案在這裡： &lt;a href="https://github.com/benlau/ihatecontentfarms"&gt;https://github.com/benlau/ihatecontentfarms&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;還有不少東西可以調整，對這個套件有興趣的人歡迎開 issue 或是在下面留言，
+不知道我上面在說什麼的人，如果是在用 Firefox 的話也可以幫忙測試抓抓 bug 啊&lt;/p&gt;
+
+&lt;p&gt;下一個版本大概會修一下版面，順便 responsive 一下，支援一下 firefox on android。&lt;/p&gt;
+</content>
+  </entry>
+</feed>

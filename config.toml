@@ -1,0 +1,5 @@
+baseURL = "https://blog.wildsky.cc/"
+languageCode = "en-us"
+title = "ws://blog.wildsky.cc"
+slogan = "風吹過什麼樣的地方，身上自然而然就會有那樣的氣息。"
+theme = "kiss"

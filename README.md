@@ -1,10 +1,4 @@
 # ws://wildsky.cc
 This is a repo for my blog, which is at <http://blog.wildsky.cc>.
-Built with [Middleman](http://middlemanapp.com).
-
-## How to start?
-
-```
-bundle exec middleman
-```
+Built with [Hugo](https://gohugo.io/).
 
