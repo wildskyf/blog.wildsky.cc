@@ -1,5 +1,5 @@
 ---
-title: error&#58; could not install smartsocket listener&#58; Address already in use
+title: "error: could not install smartsocket listener: Address already in use"
 date: 2017-11-04T00:00:00+08:00
 tags: Linux, Android
 ---
