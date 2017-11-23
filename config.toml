@@ -10,7 +10,7 @@ log = true
 dataDir = "data"
 pygmentsCodeFencesGuessSyntax = true
 pygmentsStyle = "monokai"
-summaryLength = 170
+summaryLength = 100
 
 [[menu.main]]
     name = "About"
