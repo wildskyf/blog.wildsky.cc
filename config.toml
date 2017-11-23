@@ -1,7 +1,7 @@
 baseURL = "https://blog.wildsky.cc"
 languageCode = "zh-tw"
 copyright = "<a href=\"https://github.com/wildskyf\">Geng-Zhi Fann</a> &copy; 2017"
-theme = "kiss"
+theme = ""
 googleAnalytics = "UA-50389098-1"
 title = "ws://blog.wildsky.cc"
 enableRobotsTXT = true

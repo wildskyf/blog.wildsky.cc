@@ -4,6 +4,3 @@
 [submodule "kiss"]
 	path = themes/kiss
 	url = git://github.com/ribice/kiss.git
-[submodule "themes/kiss"]
-	path = themes/kiss
-	url = https://github.com/ribice/kiss
