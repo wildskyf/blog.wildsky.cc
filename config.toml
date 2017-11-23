@@ -1,7 +1,7 @@
 baseURL = "https://blog.wildsky.cc"
 languageCode = "zh-tw"
 copyright = "<a href=\"https://github.com/wildskyf\">Geng-Zhi Fann</a> &copy; 2017"
-theme = ""
+theme = "ws"
 googleAnalytics = "UA-50389098-1"
 title = "ws://blog.wildsky.cc"
 enableRobotsTXT = true
@@ -11,9 +11,29 @@ dataDir = "data"
 pygmentsCodeFencesGuessSyntax = true
 pygmentsStyle = "monokai"
 
+[[menu.main]]
+    name = "About"
+    pre = "<i class='fa fa-heart'></i>"
+    weight = -110
+    identifier = "about"
+    url = "/about/"
+[[menu.main]]
+    name = "Fedora"
+    pre = "<i class='fa fa-heart'></i>"
+    weight = 10
+    identifier = "fedora"
+    url = "/fedora/"
+[[menu.main]]
+    name = "Subscribe"
+    pre = "<i class='fa fa-heart'></i>"
+    weight = 5
+    identifier = "subscribe"
+    url = "/subscribe/"
+
 [author]
 name = "wildsky"
 email = "wildsky@moztw.org"
+
 
 [params]
 title = "ws://blog.wildsky.cc"
