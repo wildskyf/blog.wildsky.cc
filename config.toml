@@ -1,9 +1,36 @@
-baseURL = "https://blog.wildsky.cc/"
+baseURL = "https://blog.wildsky.cc"
 languageCode = "zh-tw"
-title = "ws://blog.wildsky.cc"
-slogan = "風吹過什麼樣的地方，身上自然而然就會有那樣的氣息。"
+copyright = "&copy; <a href=\"https://github.com/wilskyf\">Geng-Zhi Fann</a> 2017"
 theme = "kiss"
+googleAnalytics = "UA-50389098-1"
+title = "ws://blog.wildsky.cc"
+enableRobotsTXT = true
 
 [author]
-    name = "wildsky"
-    email = "wildsky@moztw.org"
+name = "wildsky"
+email = "wildsky@moztw.org"
+
+[params]
+  title = "ws://blog.wildsky.cc"
+  subtitle = "風吹過什麼樣的地方，身上自然而然就會有那樣的氣息。"
+  author = "Wildsky"
+
+[params.info]
+  enableSocial = true
+  poweredby = true # Adds powered by hugo and kiss below Copyright
+
+[params.social]
+
+twitter = "wildskyf"
+github = "wildskyf"
+email = "wildsky@moztw.org"
+linkedin = "wildsky"
+facebook = "wi1d5ky"
+instagram = "wildskyf"
+
+hasCJKLanguage = true
+log = true
+pygmentsCodeFencesGuessSyntax = true
+pygmentsStyle = "monokai"
+
+
