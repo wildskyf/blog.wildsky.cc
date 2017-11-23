@@ -10,6 +10,7 @@ log = true
 dataDir = "data"
 pygmentsCodeFencesGuessSyntax = true
 pygmentsStyle = "monokai"
+summaryLength = 170
 
 [[menu.main]]
     name = "About"
@@ -37,7 +38,7 @@ email = "wildsky@moztw.org"
 
 [params]
 title = "ws://blog.wildsky.cc"
-subtitle = "風吹過什麼樣的地方，身上自然而然就會有那樣的氣息。"
+subtitle = "Front-end Developer | Vimer | Firefox Add-on Reviewer | Golang beginner"
 author = "Wildsky"
 
 [params.assets]
