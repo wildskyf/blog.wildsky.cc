@@ -2,14 +2,16 @@
 title: '【筆記】易讀程式之美學 &#8211; 提升程式碼可讀性的簡單法則 (The Art of Readable Code)'
 date: 2015-11-25T00:00:00+08:00
 categories:
-  - Books
+  - Programing
+tags:
+  - book
 ---
 
 終於讀完這本書了！在看的過程中一直把自己最近要交的作業拿回來改XD 之後可能還會再多看幾次～ 幸好當初有買下來哈哈！
 
 ![the art of readable code](http://wildsky.cc/blog-images/the%20art%20of%20readable%20code.jpg)
 
-##改善表層
+## 改善表層
 
 ### 命名
 

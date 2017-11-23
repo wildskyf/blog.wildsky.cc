@@ -2,6 +2,8 @@
 title: 一些 code 的筆記 ( C++ )
 date: 2014-05-28T00:00:00+08:00
 categories:
+  - Programing
+tags:
   - C++
 ---
 

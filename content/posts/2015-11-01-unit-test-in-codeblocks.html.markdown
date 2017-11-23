@@ -2,7 +2,7 @@
 title: 在 Code::Blocks 開開心心 Unit Test
 date: 2015-11-01T00:00:00+08:00
 categories:
-  - Class
+  - Programing
 ---
 
 最近軟體工程在教單元測試（Unit Test），可是因為老師是 C# 戰士，

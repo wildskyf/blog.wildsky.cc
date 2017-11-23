@@ -1,7 +1,9 @@
 ---
 title: "error: could not install smartsocket listener: Address already in use"
 date: 2017-11-04T00:00:00+08:00
-tags: Linux, Android
+categories:
+  - Linux
+  - Android
 ---
 
 I like to flash my smartphone. There are two tools we should use when flashing: `adb` and `fastbook`.
