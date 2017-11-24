@@ -53,8 +53,7 @@ Firefox 57 之後通通不能用囉XD
 - Gpaste Integration `sudo dnf install gnome-shell-extension-gpaste -y`
 - <a href="https://extensions.gnome.org/extension/302/windowoverlay-icons/" target="_blank">WindowOverlay Icons</a>
 - Maximus-Two
-  - Fedora 21 之後似乎停止支援了，不過 Firefox 上有一個叫做 [H Title](https://addons.mozilla.org/zh-tw/firefox/addon/htitle/) 的擴充元件可以讓 Firefox 達到這個效果。
-  - 有人好像修好了，可以參考一下 <https://github.com/wilfm/GnomeExtensionMaximusTwo/pull/43>，大家都很疑惑為什麼作者不收這個 PR…
+  - <del>Fedora 21 之後似乎停止支援了，不過 Firefox 上有一個叫做 [H Title](https://addons.mozilla.org/zh-tw/firefox/addon/htitle/) 的擴充元件可以讓 Firefox 達到這個效果。</del> 一樣，Firefox 57 之後通通掰掰XD
 - 其他可以參考 <a href="http://fedora.linux.org.tw/tutorial/gnome/" target="_blank">http://fedora.linux.org.tw/tutorial/gnome/</a>
 
 ------
