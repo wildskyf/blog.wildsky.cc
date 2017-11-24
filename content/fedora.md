@@ -10,39 +10,39 @@ author: wildsky
 
 ## 開始動手！
 
-先讓找尋 mirror 的速度提升！（不過社群中有人說，回應最快的不見得速度最快，你可以自己斟酌。）
+先讓找尋 mirror 的速度提升（不過社群中有人說，回應最快的不見得速度最快，你可以自己斟酌。）
 
-`sudo gedit /etc/dnf/dnf.conf`
-
-在最下面加上 `fastestmirror=true`
+`sudo echo 'fastestmirror=true' >> /etc/dnf/dnf.conf`
 
 接著確認有沒有要升級的軟體
 
 `sudo dnf -y update`
 
-#### 先安裝 Gnome-Tweak-tool
+### 先安裝 Gnome-Tweak-tool
 
 `sudo dnf -y install gnome-tweak-tool`
 
-#### Terminal 背景透明化
+### Terminal 背景透明化
 
 背景透明化可以在選單列的 `編輯 > 設定檔偏好設定 > 顏色` 裡面做更改。
 
-#### 安裝字體
+### 安裝字體
 
 `sudo dnf -y install wqy*`
 
 裝好後記得去 tweak 調整。
 
-#### Firefox 的外觀
+### Firefox 的外觀
 
-你可以參考一下這一篇文章
+<del>你可以參考一下這一篇文章</del>
 
-<https://fedora-tw.org/t/firefox-gnome-3/33>
+<del><https://fedora-tw.org/t/firefox-gnome-3/33></del>
 
-然後可以安裝一下獨立出來的 tab groups 套件，很潮！
+<del>然後可以安裝一下獨立出來的 tab groups 套件，很潮！</del>
 
-<https://github.com/Quicksaver/Tab-Groups/releases>
+<del><https://github.com/Quicksaver/Tab-Groups/releases></del>
+
+Firefox 57 之後通通不能用囉XD
 
 ---
 
