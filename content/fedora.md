@@ -127,7 +127,7 @@ Linux 上的 PhotoShop ！
 
 #### Onedrive-d
 
-有在用 Onedrice 的人可以參考這篇文章： <a href="http://xmodulo.com/sync-microsoft-onedrive-linux.html">http://xmodulo.com/sync-microsoft-onedrive-linux.html</a>
+有在用 Onedrive 的人可以參考這篇文章： <a href="http://xmodulo.com/sync-microsoft-onedrive-linux.html">http://xmodulo.com/sync-microsoft-onedrive-linux.html</a>
 
 不過微軟好像取消 15GB 的空間了… 有點悲劇…
 
