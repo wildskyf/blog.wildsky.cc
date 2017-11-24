@@ -1,16 +1,16 @@
 baseURL = "https://blog.wildsky.cc"
 languageCode = "zh-tw"
-copyright = "<a href=\"https://github.com/wildskyf\">Geng-Zhi Fann</a> &copy; 2017"
+title = "ws://wildsky.cc"
 theme = "kiss"
+copyright = "<a href=\"https://github.com/wildskyf\">Geng-Zhi Fann</a> &copy; 2017"
 googleAnalytics = "UA-50389098-1"
-title = "ws://blog.wildsky.cc"
 enableRobotsTXT = true
+
 hasCJKLanguage = true
 log = true
 dataDir = "data"
 pygmentsCodeFencesGuessSyntax = true
 pygmentsStyle = "monokai"
-summaryLength = 100
 
 [[menu.main]]
     name = "About"
@@ -35,10 +35,8 @@ summaryLength = 100
 name = "wildsky"
 email = "wildsky@moztw.org"
 
-
 [params]
-title = "ws://wildsky.cc"
-subtitle = "Front-end Developer | Vimer | Firefox Add-on Reviewer | Golang beginner"
+subtitle = "耿 ． Front-end Developer ． Firefox Add-on Developer"
 author = "Wildsky"
 
 [params.assets]
