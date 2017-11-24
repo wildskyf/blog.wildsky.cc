@@ -1,3 +1,6 @@
 [submodule "themes/ws"]
 	path = themes/ws
 	url = https://github.com/wildskyf/hugo-theme-ws
+[submodule "themes/kiss"]
+	path = themes/kiss
+	url = https://github.com/ribice/kiss
