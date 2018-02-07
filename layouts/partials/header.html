@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" {{ with .Site.LanguageCode }} lang="{{ . }}"{{ end }}>
-<head>
+<head{{ if eq .IsHome false }} prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#" {{ end }}>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
   {{- partial "favicon" -}}
 
-  {{ if eq .IsHome false }}
-    <title>{{ .Title }} | {{ .Site.Title }}</title>
-  {{ else }}
+  {{ if eq .IsHome true }}
     <title>{{ .Site.Title }}</title>
+  {{ else }}
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
   {{ end }}
 
   {{ if .Site.Params.Info.enableSocial }}
