@@ -38,6 +38,7 @@ email = "wildsky@moztw.org"
 [params]
 subtitle = "耿 ． Front-end Developer ． Firefox Add-on Developer"
 author = "Wildsky"
+image = "https://blog.wildsky.cc/favicon/ms-icon-310x310.png"
 
 [params.assets]
 customCSS = ["css/custom.css"]
