@@ -15,6 +15,10 @@
   <meta name="name" itemprop="name" content="{{ .Title }} | {{ .Site.Title }}" />
   <meta name="description" itemprop="description" content="{{ .Summary }}⋯" />
   <title>{{ .Title }} | {{ .Site.Title }}</title>
+  <meta name="datePublished" itemprop="datePublished" content="{{ .PublishDate.Format $.Site.Params.ISO8601 }}" />
+  <meta name="headline" itemprop="headline" content="{{ .Title }}" />
+  <meta name="dateModified" itemprop="dateModified" content="{{ .Page.Lastmod.Format $.Site.Params.ISO8601 }}" />
+  <meta itemprop="mainEntityOfPage" content="{{ .Permalink }}" />
 {{ end }}
 {{ if .Site.Params.Info.enableSocial }}
   {{- partial "social/opengraph" . -}}
@@ -30,3 +34,12 @@
   {{- partial "favicon" -}}
 </head>
 <body>
+  <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization" style="display:none;">
+    <span itemprop="name">{{ .Site.Params.Author }}</span>
+      <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+      <img src="{{ .Site.Params.Image }}"/>
+      <meta itemprop="url" content="{{ .Site.Params.Image }}">
+      <meta itemprop="width" content="310">
+      <meta itemprop="height" content="310">
+    </div>
+  </div>
