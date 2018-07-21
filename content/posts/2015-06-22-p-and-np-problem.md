@@ -22,7 +22,7 @@ categories:
 
 P 問題可以用指數時間演算法計算答案，當然也可以用多項式時間驗證答案，所以 P 問題都屬於 NP 問題。
 
-![p/np 的關係](http://wildsky.cc/blog-images/2015/06/ntnucsie106.hackpad.com_ALvROjc4gl2_p.300160_1434875148642_2015-06-21-16-25-33-的螢幕擷圖.png)
+![p/np 的關係](//wildsky.cc/blog-images/2015/06/ntnucsie106.hackpad.com_ALvROjc4gl2_p.300160_1434875148642_2015-06-21-16-25-33-的螢幕擷圖.png)
 
 ## P、NP、NPC 與 NPH
 

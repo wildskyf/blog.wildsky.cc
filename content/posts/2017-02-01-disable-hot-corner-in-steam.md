@@ -5,7 +5,7 @@ categories:
   - Mac
 ---
 
-![Steam Screenshot](http://wildsky.cc/blog-images/2017/02/01-steam.png)
+![Steam Screenshot](//wildsky.cc/blog-images/2017/02/01-steam.png)
 
 
 最近過年很無聊，又把 Dota2 抓回來玩了。很幸運地在 Mac 上可以玩這款遊戲！

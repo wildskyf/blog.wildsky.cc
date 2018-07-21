@@ -9,7 +9,7 @@ tags:
 
 終於讀完這本書了！在看的過程中一直把自己最近要交的作業拿回來改XD 之後可能還會再多看幾次～ 幸好當初有買下來哈哈！
 
-![the art of readable code](http://wildsky.cc/blog-images/the%20art%20of%20readable%20code.jpg)
+![the art of readable code](//wildsky.cc/blog-images/the%20art%20of%20readable%20code.jpg)
 
 ## 改善表層
 

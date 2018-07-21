@@ -43,15 +43,15 @@ categories:
 將位於跳出的視窗上方的 tab 切換到 Linker setting，進行如下的設定（注意相對位置），
 我是習慣將 Gmock 資料夾放在專案的上層目錄，所以相對路徑會這樣，你可以自行更動。
 
-[Code:Blocks Linker setting](http://wildsky.cc/blog-images/2015-11-01-01-55-51-的螢幕擷圖-1024x576.png)
+![Code:Blocks Linker setting](//wildsky.cc/blog-images/2015-11-01-01-55-51-的螢幕擷圖-1024x576.png)
 
 接著，Tab 切換到 Search directories，加入下面的位置，一樣要注意相對目錄。
 
-[Code:Blocks Search directories - Compiler](http://wildsky.cc/blog-images/2015-11-01-01-13-10-的螢幕擷圖-1024x576.png)
+![Code:Blocks Search directories - Compiler](//wildsky.cc/blog-images/2015-11-01-01-13-10-的螢幕擷圖-1024x576.png)
 
 Sub-tab 切換到 Linker 一樣進行設定。
 
-[Code:Blocks Search directories - Linker](http://wildsky.cc/blog-images/2015-11-01-01-13-12-的螢幕擷圖-1024x576.png)
+![Code:Blocks Search directories - Linker](//wildsky.cc/blog-images/2015-11-01-01-13-12-的螢幕擷圖-1024x576.png)
 
 這樣環境就差不多設定完成了！
 
@@ -87,7 +87,7 @@ EXPECT_EQ(1,0);
 
 這時，按下 F9 就會跑測試了！！為了讓測試是真的有效，我就給了兩個最明顯的測試，1 == 1 以及 1 == 0，所以 run 出來的結果會有一個成功一個失敗，如下圖：
 
-[Running First Test](http://wildsky.cc/blog-images/2015-11-01-13-47-48-的螢幕擷圖.png)
+![Running First Test](//wildsky.cc/blog-images/2015-11-01-13-47-48-的螢幕擷圖.png)
 
 這樣就成功跑測試了！如果要測自己寫的 class 的方法，就直接像一般的專案那樣，在 test.h 中 include 要測的檔案，然後在 EXPECT_EQ 中輸入該輸入東西，
 因為我也是昨天才建起這個環境的，所以還需要一點時間來摸熟，如果想知道更多可以去翻翻 Gmock 的文件。

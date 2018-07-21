@@ -5,7 +5,7 @@ categories:
   - Mac
 ---
 
-![about chrome](http://wildsky.cc/blog-images/2017/02/02-chrome.png)
+![about chrome](//wildsky.cc/blog-images/2017/02/02-chrome.png)
 
 剛剛在整理電腦時，發現 chrome 居然佔用了 2GB 的空間⋯⋯
 迅速查了一下才發現原來是他把一堆舊版本的資料全部都保留下來了。

@@ -42,14 +42,14 @@ categories:
 |        |  甲輪  |  乙輪  |  丙輪  |
 |:-------|:-------|:-------|:-------|
 |輪圍差異|內外相等|外大內小|外小內大|
-|   圖   | ![甲輪](http://wildsky.cc/blog-images/160529/A.png)|![乙輪](http://wildsky.cc/blog-images/160529/B.png)|![丙輪](http://wildsky.cc/blog-images/160529/C.png)|
+|   圖   | ![甲輪](//wildsky.cc/blog-images/160529/A.png)|![乙輪](//wildsky.cc/blog-images/160529/B.png)|![丙輪](//wildsky.cc/blog-images/160529/C.png)|
 
 ### 理論解釋
 　　會出現這個現象，我們可以用兩種方式去探討，「力的分量」以及「角速度的不同」：
 
 #### 1.力的分量
 
-![力的分量](http://wildsky.cc/blog-images/160529/force.png)
+![力的分量](//wildsky.cc/blog-images/160529/force.png)
 
 　　每一個輪子都會有重量，所以自然地他們就會有一向正向方的力，
 在直線行走時這個力會向著輪子的正下方指，但當輪子從 A 點走到 B 點時，

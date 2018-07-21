@@ -26,11 +26,11 @@ sudo yum install synaptics -y && sudo reboot
 所以觸控版一直都是關閉的狀態，後來在fedora 設定的「滑鼠和觸控版」的選項中，
 發現了「打字時停用」的選項，所以就開開心心的把觸控版打開，結果…
 
-<img src="http://wildsky.cc/blog-images/2015/03/2015-03-23-232726-的螢幕擷圖.png" alt="打字時停用觸控板" width="734" height="339" />
+<img src="//wildsky.cc/blog-images/2015/03/2015-03-23-232726-的螢幕擷圖.png" alt="打字時停用觸控板" width="734" height="339" />
 
 咦？？？？？？？不管我按 fn + f9 （切換觸控版開關的組合鍵）多少次怎麼只給我出現這個圖示（下圖），那表情就好像在嘲笑我啊啊啊！！
 
-<img class="alignnone size-full wp-image-290" src="http://wildsky.cc/blog-images/2015/03/2015-03-23-233046-的螢幕擷圖.png" alt="觸控版關閉中" width="172" height="171" />
+<img class="alignnone size-full wp-image-290" src="//wildsky.cc/blog-images/2015/03/2015-03-23-233046-的螢幕擷圖.png" alt="觸控版關閉中" width="172" height="171" />
 
 不行！是可忍孰不可忍，立刻開 telegram 問拉我下坑的 WM 大大，結果得到的回應是…
 

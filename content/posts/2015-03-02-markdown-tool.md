@@ -48,7 +48,7 @@ Android 手機再下載 [Draft](https://play.google.com/store/apps/details?id=c
 
 稍微附一些截圖<del>來佔版面</del>好了：
 
-![Atom 截圖](http://wildsky.cc/blog-images/2015/03/2015-03-02-161225-的螢幕擷圖-1024x576.png)
+![Atom 截圖](//wildsky.cc/blog-images/2015/03/2015-03-02-161225-的螢幕擷圖-1024x576.png)
 
 使用 atom 編輯並同步預覽時的畫面，還可以在編輯時即時更新！左邊的資料夾是課程名稱，3-2則是指三月二號，我自己是這樣整理的～
 
@@ -68,7 +68,7 @@ Draft 的好處就是可以用資料夾整理他～
 
 這個是編輯時的畫面，目前只有用過縮排xD 未來可能會用到其他功能～
 
-<img src="http://wildsky.cc/blog-images/2015/03/2015-03-02-162609-的螢幕擷圖-1024x580.png"/>
+<img src="//wildsky.cc/blog-images/2015/03/2015-03-02-162609-的螢幕擷圖-1024x580.png"/>
 
 在dropbox 上還可以直接預覽呢！
 
