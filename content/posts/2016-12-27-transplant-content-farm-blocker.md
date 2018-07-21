@@ -7,7 +7,7 @@ tags:
   - Add-on
 ---
 
-![content farm screenshot](http://wildsky.cc/blog-images/content farm blocker.png)
+![content farm screenshot](http://wildsky.cc/blog-images/content_farm_blocker.png)
 
 
 最近一直在玩 Firefox 的擴充套件，
