@@ -1,0 +1,3 @@
+{{ range . }}
+  <a class="subtitle is-6 category" href="{{ "/categories/" | relURL }}{{ . | urlize }}">#{{ . }}</a>
+{{ end }}

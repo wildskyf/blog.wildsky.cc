@@ -56,10 +56,6 @@ linkedin = "wildsky"
 facebook = "wi1d5ky"
 instagram = "wildskyf"
 
-[taxonomies]
-category = "categories"
-tag = "tags"
-
 [outputFormats]
 [outputFormats.RSS]
 mediatype = "application/rss"

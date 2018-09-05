@@ -1,5 +1,37 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
 
+.subtitle .tag,
+.subtitle .category {
+  border-radius: 5px;
+  vertical-align: middle;
+  margin: 0 3px;
+  display: inline-flex;
+  align-items: center;
+  color: #42464c;
+  font-size: 12px;
+  height: 24px;
+  line-height: 16px;
+  padding: 2px 10px;
+}
+.subtitle .tag:hover,
+.subtitle .category:hover { border-bottom: 0; }
+
+.subtitle .tag {
+  background-color: #f5f7fa;
+}
+
+.subtitle .category {
+  background-color: #2792db;
+  color: #fff;
+}
+
+.subtitle .tag:hover { background-color: #dedede; }
+.subtitle .category:hover { background-color: #2077b2; }
+
+.content {
+  clear: both;
+}
+
 .avatar {
   opacity: 0.25;
   float: left;
