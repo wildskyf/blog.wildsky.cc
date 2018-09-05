@@ -1,5 +1,5 @@
 ---
-title: 雙系統 window 8 + Ubuntu 12.04 LTS版本
+title: 雙系統 windows 8 + Ubuntu 12.04 LTS 版本
 date: 2014-01-16T00:00:00+08:00
 categories:
   - Linux
