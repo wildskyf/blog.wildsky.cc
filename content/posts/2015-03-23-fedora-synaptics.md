@@ -1,11 +1,17 @@
 ---
-title: Synaptics 在 Fedora 沒反應，救救我阿我救我！
+title: Synaptics 觸控板在 Fedora 沒反應
 date: 2015-03-23T00:00:00+08:00
 categories:
   - Linux
 tags:
   - Fedora
+  - Synaptics
+  - ASUS
+  - 觸控板
+  - 踩雷人生
 ---
+
+## tl;dr
 
 ```
 sudo yum install synaptics -y && sudo reboot
@@ -13,20 +19,20 @@ sudo yum install synaptics -y && sudo reboot
 
 老實說這篇文章沒什麼好寫的XD 上面的指令敲下去就解決了一切問題，但總覺得還是應該寫一些什麼，所以就來認真一下我自己發生問題的始末吧～
 
-### 系統相關資訊
+## 系統相關資訊
 
 - 系統：Fedora 21
 - 電腦型號：ASUS A45VM
 - 觸控板品牌：Synaptics
 - 其他：略 （因為不重要
 
-### 發現問題
+## 發現問題
 
 其實我平常的時候，因為覺得打字時手碰到觸控版導致游標會跑來跑去，
 所以觸控版一直都是關閉的狀態，後來在fedora 設定的「滑鼠和觸控版」的選項中，
 發現了「打字時停用」的選項，所以就開開心心的把觸控版打開，結果…
 
-<img src="//wildsky.cc/blog-images/2015/03/2015-03-23-232726-的螢幕擷圖.png" alt="打字時停用觸控板" width="734" height="339" />
+![打字時停用觸控板](//wildsky.cc/blog-images/2015/03/2015-03-23-232726-的螢幕擷圖.png)
 
 咦？？？？？？？不管我按 fn + f9 （切換觸控版開關的組合鍵）多少次怎麼只給我出現這個圖示（下圖），那表情就好像在嘲笑我啊啊啊！！
 
@@ -59,7 +65,7 @@ sudo yum install synaptics -y && sudo reboot
 然而現在的我因為接觸 fedora 一段時間了，一些基本的東西也大致知道了，所以才能大事化小，小事化無。（這句用在這裡好像怪怪的）
 Anyway，真心覺得 Linux 用越久，就越知道自己多不會用 Linux，
 接下來的日子裡，除了跟瀏覽器以及各式各樣的學校作業搏鬥，要更努力把 TLCL 讀完，增進內功～～～！
-</p>
+
 
 ### 參考連結
 

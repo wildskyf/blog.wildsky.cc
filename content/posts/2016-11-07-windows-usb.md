@@ -4,6 +4,8 @@ date: 2016-11-07T00:00:00+08:00
 categories:
   - Linux
   - Windows
+tags:
+  - fedora
 ---
 
 這兩天想要把舊筆電從 Fedora 灌回 Win7，一方面幫助開發（IE 你懂得），另一方面想玩遊戲，

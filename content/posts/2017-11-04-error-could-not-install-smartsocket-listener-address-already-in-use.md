@@ -4,6 +4,8 @@ date: 2017-11-04T00:00:00+08:00
 categories:
   - Linux
   - Android
+tags:
+  - 踩雷人生
 ---
 
 I like to flash my smartphone. There are two tools we should use when flashing: `adb` and `fastboot`.

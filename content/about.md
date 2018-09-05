@@ -15,7 +15,7 @@ author: wildsky
 你可以在這裡找到我過去所做的專案： <https://wildskyf.github.io> <br />
 或是在這裡看看我在程式之外的生活： <https://medium.com/@wildsky/>
 
-這個部落格打算聚焦於程式方面的研究，至於其他興趣則是會發佈在 Medium。
+這個部落格和 Medium 會隨意發文，或許會兩邊同時出現，也或許哪天會全部搬過來（或搬過去）。
 
 ## 聯絡方式
 

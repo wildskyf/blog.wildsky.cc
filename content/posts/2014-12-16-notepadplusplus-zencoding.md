@@ -3,6 +3,7 @@ title: '筆桿上的變色龍 - Notepad++'
 date: 2014-12-16T00:00:00+08:00
 categories:
   - Editor
+  - windows
 ---
 
 最近一直瘋狂的練習寫網頁, 而這種時候, 好用的編輯器就非常必要啦!

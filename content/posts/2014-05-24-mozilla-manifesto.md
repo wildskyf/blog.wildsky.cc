@@ -3,6 +3,10 @@ title: 我眼中的 Mozilla 宣言
 date: 2014-05-24T00:00:00+08:00
 categories:
   - Mozilla
+tags:
+  - Manifesto
+  - 校園大使
+  - Firefox
 ---
 <a title="Flickr 上 kevin_boy3110 的 Mozilla Manifesto" href="https://www.flickr.com/photos/71353772@N04/14071447280/"><img src="https://farm6.staticflickr.com/5075/14071447280_a103b0f5e8.jpg" alt="Mozilla Manifesto" width="767" height="281" /></a>
 
@@ -65,4 +69,4 @@ categories:
 
 ### 其他
 
-前陣子有看到"Firefox將可能會加入廣告"這個消息, 雖然說增加收入維持營運是重要的, 但如果真的加入廣告, 我可能就不會繼續使用 firefox 了, 我個人覺得廣告很礙眼, 如果放入了廣告, 那等於是強迫使用者接收某個管道的資訊, 違反初衷是最難以原諒的事. 希望那只是假消息&#8230;
+前陣子有看到"Firefox 將可能會加入廣告"這個消息, 雖然說增加收入維持營運是重要的, 但如果真的加入廣告, 我可能就不會繼續使用 Firefox 了, 我個人覺得廣告很礙眼, 如果放入了廣告, 那等於是強迫使用者接收某個管道的資訊, 違反初衷是最難以原諒的事. 希望那只是假消息⋯

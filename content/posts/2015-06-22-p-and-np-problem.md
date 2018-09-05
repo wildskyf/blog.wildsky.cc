@@ -2,7 +2,7 @@
 title: P 與 NP 的情感糾葛
 date: 2015-06-22T00:00:00+08:00
 categories:
-  - Computer Science
+  - 資工
 ---
 
 這篇是關於演算法中 P 與 NP 問題的一點小整理。

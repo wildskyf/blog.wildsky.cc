@@ -3,6 +3,8 @@ title: 'atom - 編輯神器'
 date: 2015-09-03T00:00:00+08:00
 categories:
   - Editor
+tags:
+  - atom
 ---
 
 看著 [過去文章吹捧的 notepad++](/posts/notepadplusplus-zencoding/)，頓時覺得很有趣，現在居然跳槽來玩其他編輯器了，一整個打臉自己以前說的那堆理由，但或許這就是人生吧（？），總是要不停的砍掉重練，才會在以前的經驗上獲得新的知識技能，進而成長茁壯。

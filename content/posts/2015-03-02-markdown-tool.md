@@ -6,10 +6,18 @@ categories:
   - Android
   - Linux
   - Windows
+tags:
+  - firefox
+  - firefox-addon
 ---
 
+> 2018/9/5 更新: 結果這個方法我也用沒多久就棄置了XD
+> 還是乖乖地用 google keep 或 apple note 做純文字記錄吧。
+> 順帶一提，我開發了 [tab-notes](https://addons.mozilla.org/en-US/firefox/addon/tab-notes/)，
+> 歡迎試用看看啊！
+
 開學了，又是開始要記筆記的時候了！
-原本打算要和系上來個共筆計畫，所以上學期是使用 Evernote</a> 來作筆記，
+原本打算要和系上來個共筆計畫，所以上學期是使用 Evernote 來作筆記，
 可是因為他不能同時編輯，讓我覺得越用越不順手，
 後來接觸了 Hackpad，雖然覺得他有不少優點，但還是有我討厭的部份，像是用火狐登入時會有奇怪的問題之類的。
 因此下定決心要找尋新的工具，找著找著就找到了 _[幾個筆記的比較](http://www.hksilicon.com/kb/articles/417502/HackpadQuipOnenote)_這篇文章，

@@ -3,13 +3,16 @@ title: Firefox Student Ambassadors 錄取！
 date: 2014-04-20T00:00:00+08:00
 categories:
   - Mozilla
+tags:
+  - Firefox
+  - 校園大使
 ---
 
 ![FB_Firefox_band](http://mozilla.com.tw/media/img/mocotw/package/Graphic/Slogan/FB_Firefox_band.jpg)
 
 其實距離收到通知已經好一段時間了
 
-但因為種種原因一直沒有上來po心得文 (像是很忙或是很懶…
+但因為種種原因一直沒有上來 po 心得文 (像是很忙或是很懶…
 
 現在先發一篇佔板面一下 haha
 

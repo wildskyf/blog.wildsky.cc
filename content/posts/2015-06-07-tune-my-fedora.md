@@ -5,7 +5,10 @@ categories:
   - Linux
 tags:
   - Fedora
+  - ubuntu
 ---
+
+> 更新：可以直接前往獨立出來的文章，算是我最終版的調校文章吧： [Fedora](/fedora)
 
 ## 前言
 

@@ -3,6 +3,9 @@ title: 從 vim 跳槽到 emacs
 date: 2016-11-17T00:00:00+08:00
 categories:
   - Editor
+tags:
+  - vim
+  - emacs
 ---
 
 可能身邊的人都知道，我最近從 vim 跳到 emacs 了。

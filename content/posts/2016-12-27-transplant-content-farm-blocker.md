@@ -4,7 +4,8 @@ date: 2016-12-27T00:00:00+08:00
 categories:
   - Web
 tags:
-  - Add-on
+  - firefox-Addon
+  - f2e
 ---
 
 ![content farm screenshot](//wildsky.cc/blog-images/content_farm_blocker.png)

@@ -3,6 +3,11 @@ title: 'Android 4.2.2  無法使用 morelocale 2'
 date: 2014-03-11T00:00:00+08:00
 categories:
   - Android
+tags:
+  - HTC
+  - locales
+  - morelocal
+  - 踩雷人生
 ---
 
 會寫這篇文章是因為我妹的手機(HTC SV)不是台灣買的
@@ -13,7 +18,7 @@ categories:
 
 結果不能使用 !!!
 
-上網問問Google大神後
+上網問問 Google 大神後
 
 發現是因為 Android 4.2.2 的某個權限有所更改
 
@@ -50,15 +55,21 @@ HTC 的 root 我沒有把握 所以就選擇另一個比較簡單的方法 (adb)
 
 在剛剛打開的那個黑色底的視窗輸入下面的命令
 
-`adb shell`
+```
+adb shell
+```
 
 理論上等他跑完應該最後面會出現
 
-`shell@android:/ $`
+```
+shell@android:/ $
+```
 
 接著就輸入下面的命令
 
-`pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION`
+```
+pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION
+```
 
 ## 完成
 

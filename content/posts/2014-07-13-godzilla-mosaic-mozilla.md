@@ -3,6 +3,11 @@ title: Godzilla? Mosaic? Mozilla!
 date: 2014-07-13T00:00:00+08:00
 categories:
   - Mozilla
+  - web
+tags:
+  - Firefox
+  - 校園大使
+  - 瀏覽器
 ---
 
 不知道是甚麼緣故, 我身邊的親朋好友總是只聽過 Firefox , 而沒有聽過他幕後的功臣 &#8212; [Mozilla](http://mozilla.com.tw/).
@@ -20,8 +25,8 @@ Mozilla 最初其實只是 Netscape 的專案名稱,
 為避免牽扯太多東西模糊焦點, 這邊就先不贅述, 如果你有興趣可以先看看下面這部紀錄片 < Code Rush > 這部片寫實地記錄了 Mozilla 的緣起，
 算是一個能直接理解 Mozilla 的管道。
 
-簡單地說, 現在的 Mozilla 是個專案名稱, 而在 Firefox 等相關軟體後面的靠山則是 Mozilla Foundation(Mozilla 基金會),
-Mozilla 有許多的計畫, Firefox 瀏覽器就是其中一項, 另外還有 WebMaker, ThunderBird&#8230;.
+簡單地說, 現在的 Mozilla 是個專案名稱, 而在 Firefox 等相關軟體後面的靠山則是 Mozilla 基金會,
+這個基金會有許多的計畫, Firefox 瀏覽器就是其中一項, 另外還有 WebMaker, ThunderBird⋯
 這個專案算是一項實驗, &#8220;**以產品和客戶取代追求利潤的股東, 使研發者無須受到 [_必須獲利_] 這項要求的限制, 因而能專心於網路開放及提供選擇**" 讓使用者能自己決定自己想要的東西!
 
 ![Web you want](https://farm3.staticflickr.com/2925/14317868320_b2d427d81d_o.png)

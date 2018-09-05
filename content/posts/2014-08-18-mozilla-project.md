@@ -3,6 +3,10 @@ title: Mozilla 專案
 date: 2014-08-18T00:00:00+08:00
 categories:
   - Mozilla
+tags:
+  - Firefox
+  - 校園大使
+  - 貢獻
 ---
 其實在擔任校園大使之前，我沒什麼注意 Mozilla 這個組織，關於他的一切我也都不甚了解，可是經由過去幾個月的任務，我才對他越來越熟悉。這個月的任務是希望我們去認識 <a href="http://mozilla.com.tw/community/contribute/">Mozilla 的專案</a>，進而加入使用、測試，甚至開發的行列。
 

@@ -2,7 +2,12 @@
 title: Nunit 3.0.1 not working
 date: 2015-12-14T00:00:00+08:00
 categories:
-  - Programing
+  - 資工
+tags:
+  - NUnit
+  - monodevelop
+  - C#
+  - 踩雷人生
 ---
 
 I'm using monodevelop to run a project in class, and recently I found that Nunit 3.0.1 make my test not work.

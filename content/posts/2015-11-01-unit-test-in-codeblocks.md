@@ -2,13 +2,16 @@
 title: 在 Code::Blocks 開開心心 Unit Test
 date: 2015-11-01T00:00:00+08:00
 categories:
-  - Programing
+  - 資工
+tags:
+  - unit test
+  - C#
 ---
 
-最近軟體工程在教單元測試（Unit Test），可是因為老師是 C# 戰士，
+最近軟體工程在教單元測試（Unit Test），可是因為老師是 C# 聖戰士，
 所以我們學的就是用 Visual Studio 的內建測試來測 C#，但我又不寫 C#！！
 於是乎，這兩個禮拜就瘋狂地在網路上搜尋，但都沒有收穫（或是我太弱了看不懂QwQ），
-後來終於在 Facebook 看到 <http://www.github.com/aigecko/>旁門左道之神 - 師大貓耳控</a> 學長的動態：
+後來終於在 Facebook 看到 <http://www.github.com/aigecko/>師大貓耳控</a> 學長的動態：
 
 > 專題好像愈改愈炸
 > 效能更慘還多了BUG
@@ -32,6 +35,7 @@ categories:
 然後把他解壓縮到桌面，開啟 Terminal，前往該目錄底下，輸入下面的指令
 
 `./configure`
+
 他會開始跑東西，跑完後輸入
 
 `make`
@@ -66,22 +70,25 @@ Sub-tab 切換到 Linker 一樣進行設定。
 #include "gtest/gtest.h"
 #include "Test.h"
 #endif // TEST_MODE
+
 #if TEST_MODE==1
 int main(int argc,char **argv){
-::testing::InitGoogleTest(&argc, argv);
-return RUN_ALL_TESTS();
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+
 #else
-int main(){
-#endif // TEST_MODE
-printf("Run Test!\n");
-return 0;
-}
+  int main(){
+    #endif // TEST_MODE
+    printf("Run Test!\n");
+    return 0;
+  }
+
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
 class Happy : public ::testing::Test{};
 TEST_F(Happy,UnitTest){
-EXPECT_EQ(1,1);
-EXPECT_EQ(1,0);
+  EXPECT_EQ(1,1);
+  EXPECT_EQ(1,0);
 }
 ```
 

@@ -1,8 +1,13 @@
 ---
-title: '移除 ubuntu & Windows 開機修復'
+title: '移除 ubuntu & Windows 開機修復 (error: no such partition. grub rescue)'
 date: 2014-08-19T00:00:00+08:00
 categories:
   - Linux
+  - Windows
+tags:
+  - ubuntu
+  - grub
+  - 踩雷人生
 ---
 
 ## 前言

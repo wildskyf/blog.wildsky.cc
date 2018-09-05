@@ -3,6 +3,10 @@ title: JavaScript 抓得住你
 date: 2015-01-21T00:00:00+08:00
 categories:
   - Web
+tags:
+  - javascript
+  - 2e
+  - jekyll
 ---
 
 ### 前言

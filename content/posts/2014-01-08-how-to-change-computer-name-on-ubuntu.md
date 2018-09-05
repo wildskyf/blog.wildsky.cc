@@ -5,6 +5,9 @@ categories:
   - Linux
 tags:
   - Ubuntu
+  - 改名
+  - 電腦名稱
+  - namehost
 ---
 
 1. 按下 `ctrl + alt + T` 叫出終端機

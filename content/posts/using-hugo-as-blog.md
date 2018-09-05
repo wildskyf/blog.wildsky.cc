@@ -2,6 +2,10 @@
 title: "使用 Hugo 來建 blog"
 date: 2017-11-24T15:00:23+08:00
 draft: false
+categories:
+  - 部落格經營
+tags:
+  - hugo
 ---
 
 最近開始想要學點後端的東西，WM 便建議我可以去學 Golang，於是我就將身邊會用的幾

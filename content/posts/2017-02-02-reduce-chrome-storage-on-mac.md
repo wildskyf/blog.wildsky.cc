@@ -3,6 +3,8 @@ title: 讓 Mac 上的 Chrome 瘦身
 date: 2017-02-02T00:00:00+08:00
 categories:
   - Mac
+tags:
+  - 踩雷人生
 ---
 
 ![about chrome](//wildsky.cc/blog-images/2017/02/02-chrome.png)

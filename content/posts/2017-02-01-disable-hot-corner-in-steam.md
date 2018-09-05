@@ -3,6 +3,8 @@ title: Mac 避免誤撞邊緣而啟動熱角功能
 date: 2017-02-01T00:00:00+08:00
 categories:
   - Mac
+tags:
+  - 踩雷人生
 ---
 
 ![Steam Screenshot](//wildsky.cc/blog-images/2017/02/01-steam.png)

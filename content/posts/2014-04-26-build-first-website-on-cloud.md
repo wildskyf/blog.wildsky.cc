@@ -2,7 +2,11 @@
 title: 第一次成功在虛擬主機架網站
 date: 2014-04-26T00:00:00+08:00
 categories:
+  - 部落格經營
   - Web
+tags:
+  - 虛擬主機
+  - 架站
 ---
 
 終於!
@@ -10,19 +14,15 @@ categories:
 過去都在 yahoo 部落格(已關閉), 無名小站(也關了QQ), <a href="http://www.pixnet.net/">痞客邦</a>, <a href="https://www.blogger.com/home">google blogger </a>寄人籬下的我
 
 終於有了自己的網站了! (撒花)
-未來將會改成這個網址: <a href="http://wildsky.cc">http://wildsky.cc</a>
+未來將會改成這個網址: <a href="https://wildsky.cc">https://wildsky.cc</a>
 
-感謝 <a href="http://lionfree.net/">LIONFREE</a> 提供的免費虛擬主機
+感謝 <a href="https://lionfree.net/">LIONFREE</a> 的免費虛擬主機方案！
 
 <a title="LionFreeHost" href="https://www.flickr.com/photos/71353772@N04/14040839183/">
 <img src="https://farm8.staticflickr.com/7195/14040839183_8a839cd8c8.jpg"   alt="LionFreeHost" width="733" height="387" />
 </a>
 
-他的服務還不錯
-
-厲害的是
-
-管理人目前只有國中二年級而已!
+他除了服務還不錯之外，更厲害的是，管理人目前只有國中二年級而已!
 
 而且還是 <a href="http://3cschool.blogspot.tw/">3c玩物學堂</a> 的站長!
 
@@ -38,13 +38,11 @@ categories:
 
 免錢又大碗, 不用他們家還能用哪一家的呢?
 
-不過&#8230;.
+不過⋯
 
 有好的一面, 當然也就免不了一些缺點
 
 下面是我自己感受到比較不方便的部分
-
-有任何要補充的都可以在下面留言跟我說一下
 
 ### 帳號非常難記
 
@@ -82,21 +80,23 @@ categories:
 
 明明是 MIT (Made in Taiwan) 的網站
 
-每次登入的預設語言卻是 Chinese_simplified(殘體中文)
+每次登入的預設語言卻是 Chinese_simplified
 
 害我都要再去修改
 
 這樣就算了
 
-有時候一不小心忘了改語言就登入
+有時候一不小心忘了改語言就登入，載入後才發現是簡中
 
-想從 cpanel 直接設置? 抱歉, 沒辦法直接設置
+想直接從 cpanel 設定語言? 抱歉, 沒辦法直接設置
 
 你要先登出, 選語言, 再登入 才能完成你想要的動作
 
 我也不清楚是 cpanel 的問題還是當初設定的時候看太快
 
 把 Chinese_simplified 和 Chinese_traditional 看錯了
+
+但這個真的讓我用起來頗賭爛的
 
 ### 多餘的歡迎畫面
 
@@ -106,33 +106,27 @@ categories:
 
 就是這個畫面
 
-你可能會想說 &#8220;阿你就把 Don&#8217;t show this again勾上就好啦"
+你可能會想說 "阿你就把 Don't show this again勾上就好啦"
 
 很可惜, 我每次看到每次勾, 每次登入他依然每次跳出來跟我說 Hi
 
 雖然不是甚麼大問題
 
-但, 可以的話還是很想避免這個視窗跳出
+但可以的話還是很想避免這個視窗跳出
 
 ---
 
 大致上就是這些缺點吧
 
-希望站長大大有看到這篇文章的話願意幫忙修正/解釋/移除這些問題
-
 不是雞蛋裡挑骨頭, 只是希望好還要更好
 
 如果初學架站的話
 
-歡迎跟我一起用 <a href="http://lionfree.net">http://lionfree.net</a> 的虛擬主機服務
+歡迎跟我一起用 <a href="https://lionfree.net">https://lionfree.net</a> 的虛擬主機服務
 
 如果你有錢的話, 也歡迎贊助他
 
 讓站長可以讓他的主機更加完善,穩定
-
-創造幸福最大化XD
-
----
 
 ### 相關連結
 

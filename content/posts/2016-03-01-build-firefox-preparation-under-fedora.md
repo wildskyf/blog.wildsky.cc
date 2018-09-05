@@ -5,6 +5,7 @@ categories:
   - Linux
 tags:
   - Fedora
+  - firefox
 ---
 
 Today, I want to build Firefox myself. So I found this post: [Simple Firefox build](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Simple_Firefox_build), and there is a link, which could help me setup the prerequisites. The link is [Linux Build Prerequisites](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Simple_Firefox_build/Linux_and_MacOS_build_preparation). But when I followed the instruction and input this command:

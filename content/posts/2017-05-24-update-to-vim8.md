@@ -3,6 +3,9 @@ title: Vim 上 8.0, Vundle 換 vim-plug
 date: 2017-05-24T00:00:00+08:00
 categories:
   - Editor
+tags:
+  - vim
+  - 社群活動
 ---
 
 今天在 Vim 的 Telegram 群組中被 OThree 推坑，把 Vim 升上 8.0 了，其實感覺也沒有什麼太大的改變。

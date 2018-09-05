@@ -3,9 +3,12 @@ title: 關於 Firefox 的那檔事
 date: 2014-05-01T00:00:00+08:00
 categories:
   - Mozilla
+tags:
+  - Firefox
+  - 校園大使
 ---
 
-關於 firefox 的推廣文<del>或是護航文</del>或是反制文或是&#8230;.已經太多了!
+關於 Firefox 的推廣文<del>或是護航文</del>或是反制文或是⋯⋯已經太多了!
 
 所以 <del>多我這一篇應該沒差 XD  </del>我今天想說說我的 firefox 使用經驗!
 

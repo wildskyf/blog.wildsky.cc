@@ -3,13 +3,14 @@ title: 在 Fedora 上使用 Quartus II
 date: 2015-10-18T00:00:00+08:00
 categories:
   - Linux
+  - 資工
 tags:
+  - Quartus II
   - Fedora
+  - 踩雷人生
 ---
 
 因為這學期有修 VLSI，所以需要用到 Quartus II，研究了好幾天，今天終於 ok 了。歲寫這篇文章來做個記錄。
-
-<hr />
 
 ## 正文
 
@@ -19,18 +20,25 @@ tags:
 
 在下載的過程中可以先安裝一些依賴套件：
 
-`sudo dnf install glibc libXext libX11 libXau libXdmcp freetype fontconfig expat libSM.so.6 libXrender.so.1 libfontconfig.so.1 libXext.so.6 libfreetype.so.6`
+```
+sudo dnf install glibc libXext libX11 libXau libXdmcp freetype fontconfig expat libSM.so.6 libXrender.so.1 libfontconfig.so.1 libXext.so.6 libfreetype.so.6
+```
 
-上面的 tar 檔應該是叫做 91sp2_quartus_free_linux.tar，看到 tar 檔的第一個反應就是把他解壓縮，我自己是把 tar 在桌面上，所以也直接解壓縮在桌面上就好，出來的資料夾是叫做 quartus_free。
+上面的 tar 檔應該是叫做 `91sp2_quartus_free_linux.tar`，看到 tar 檔的第一個反應就是把他解壓縮，我自己是把 tar 在桌面上，所以也直接解壓縮在桌面上就好，出來的資料夾是叫做 quartus_free。
 
 然後就要開始安裝了。
 
-`cd ~/Desktop/quartus_free/ && sudo sh ./install`
+```
+cd ~/Desktop/quartus_free/ && sudo sh ./install
+```
 
 安裝過程中應該要按兩次 enter，等他跑完後，安裝至此告一段落。
 
 順帶一提，quartus 預設是安裝到 `/opt/altera9.1sp2/`，所以要執行的話，必須要下這個指令：
-`/opt/altera9.1sp2/quartus/bin/quartus`
+
+```
+/opt/altera9.1sp2/quartus/bin/quartus
+```
 
 ## 參考文章
 

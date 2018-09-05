@@ -2,9 +2,11 @@
 title: 雙系統 windows 8 + Ubuntu 12.04 LTS 版本
 date: 2014-01-16T00:00:00+08:00
 categories:
+  - Windows
   - Linux
 tags:
   - Ubuntu
+  - grub
 ---
 
 ![Win8+ubuntu](https://farm3.staticflickr.com/2908/14020836235_daa6aab161.jpg)
@@ -15,17 +17,17 @@ tags:
 ubuntu 13.10 似乎可以完整搭配 win8 安裝雙系統
 但 12.04 仍不行 所以我決定寫這篇文章 希望能幫助到想裝 ubuntu 的人 !
 
-如果你的系統是win7 你可以直接安裝
-之前安裝win7時 grub有抓到win7所以可以直接完成雙系統
-但win8似乎需要調整一下 請有心安裝的人繼續往下閱讀
+如果你的系統是 win7 你可以直接安裝
+之前安裝 win7 時 grub有抓到 win7 所以可以直接完成雙系統
+但 win8 似乎需要調整一下，請有心安裝的人繼續往下閱讀
 
-<hr />
+---
 
 最基本的就是要**先安裝好 win8**
 
 詳細過程就略過了
 
-(畢竟大部分想裝 ubuntu 的人的電腦都是已經有windows系統的
+(畢竟大部分想裝 ubuntu 的人的電腦都是已經有 windows 系統的
 
 然後你**需要有一片ubuntu 12.04 LTS版本** 的光碟
 
@@ -54,11 +56,15 @@ ubuntu 13.10 似乎可以完整搭配 win8 安裝雙系統
 按下 `ctrl + alt + T` 叫出終端機
 
 貼上這行指令
-`sudo add-apt-repository ppa:yannubuntu/boot-repair && sudo apt-get update`
+```
+sudo add-apt-repository ppa:yannubuntu/boot-repair && sudo apt-get update
+```
 等他跑完了以後
 
 再貼上這行指令
-`sudo apt-get install -y boot-repair && (boot-repair &)`
+```
+sudo apt-get install -y boot-repair && (boot-repair &)
+```
 然後就可以使用它了!
 
 接著執行 boot-repair
@@ -67,13 +73,13 @@ ubuntu 13.10 似乎可以完整搭配 win8 安裝雙系統
 
 (進階修復你有用再自己摸吧:P 此不贅述
 
-等他跑完以後你就可以在grub下叫出win8了
+等他跑完以後你就可以在 grub 下叫出 win8 了
 
 ((我自己是一項一項的試 等到找到可以開啟 win8 的選項時 記下他 等等會用到
 
 但這個時候的選單列會有一堆有的沒有的選項
 
-其中還有grub抓錯的win7
+其中還有 grub 抓錯的 win7
 
 這時該如何刪去那些無用選項呢?
 
@@ -84,11 +90,15 @@ ubuntu 13.10 似乎可以完整搭配 win8 安裝雙系統
 按下 `ctrl + alt + T` 叫出終端機
 
 貼上這行指令
-`sudo add-apt-repository ppa:danielrichter2007/grub-customizer && sudo apt-get update`
+```
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer && sudo apt-get update
+```
 等他跑完了以後
 
 再貼上這行指令
-`sudo apt-get install grub-customizer`
+```
+sudo apt-get install grub-customizer
+```
 等他跑完就完成了!
 
 
