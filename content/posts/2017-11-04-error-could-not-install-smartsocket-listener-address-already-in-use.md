@@ -6,11 +6,13 @@ categories:
   - Android
 ---
 
-I like to flash my smartphone. There are two tools we should use when flashing: `adb` and `fastbook`.
+I like to flash my smartphone. There are two tools we should use when flashing: `adb` and `fastboot`.
 
 But I met a problem:
 I want to run new adb server, but it keep showing this message:
-`error: could not install *smartsocket* listener: Address already in use`
+```
+error: could not install *smartsocket* listener: Address already in use
+```
 
 and I gave a command `ps aux | grep adb`, then I got:
 
