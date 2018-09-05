@@ -1,5 +1,5 @@
 ---
-title: '【筆記】易讀程式之美學 &#8211; 提升程式碼可讀性的簡單法則 (The Art of Readable Code)'
+title: '【筆記】易讀程式之美學 & 提升程式碼可讀性的簡單法則 (The Art of Readable Code)'
 date: 2015-11-25T00:00:00+08:00
 categories:
   - Programing

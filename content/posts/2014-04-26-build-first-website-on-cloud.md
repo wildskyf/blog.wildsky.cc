@@ -137,4 +137,4 @@ categories:
 ### 相關連結
 
 - <a href="http://lionfree.net/">獅子的免費虛擬主機</a>
-- <a href="https://www.facebook.com/lionhost">獅子的免費虛擬主機 &#8211; facebook粉絲專頁</a>
+- <a href="https://www.facebook.com/lionhost">獅子的免費虛擬主機 - facebook粉絲專頁</a>

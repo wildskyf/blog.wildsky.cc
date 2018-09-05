@@ -1,5 +1,5 @@
 ---
-title: 'atom &#8211; 編輯神器'
+title: 'atom - 編輯神器'
 date: 2015-09-03T00:00:00+08:00
 categories:
   - Editor

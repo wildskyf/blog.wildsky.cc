@@ -102,7 +102,7 @@ EXPECT_EQ(1,0);
 
 ## 相關連結
 
-- 旁門左道之神 &#8211; 師大貓耳控：<http://www.github.com/aigecko/>
+- 師大貓耳控：<http://www.github.com/aigecko/>
 - gmock：<https://code.google.com/p/googlemock/>
 - 我的完整專案目錄：<https://www.dropbox.com/s/6mnfw18cfemv0k4/runTest.zip?dl=1>
 - 學徒模式－優秀軟體開發者的養成之路：<http://www.tenlong.com.tw/items/986276256X?item_id=338410>

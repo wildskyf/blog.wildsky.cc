@@ -1,5 +1,5 @@
 ---
-title: '筆桿上的變色龍 &#8211; Notepad++'
+title: '筆桿上的變色龍 - Notepad++'
 date: 2014-12-16T00:00:00+08:00
 categories:
   - Editor
