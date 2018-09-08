@@ -1,3 +1,5 @@
 {{ range . }}
-  <a class="is-6 category" href="{{ "/categories/" | relURL }}{{ . | urlize }}">#{{ . }}</a>
+  <a class="is-6 category" href="{{ "/categories/" | relURL }}{{ . | urlize }}">
+    <i class="fas fa-bookmark"></i> {{ . }}
+  </a>
 {{ end }}

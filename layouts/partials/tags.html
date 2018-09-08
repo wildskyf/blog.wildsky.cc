@@ -1,3 +1,5 @@
 {{ range . }}
-  <a class="is-6 tag" href="{{ "/tags/" | relURL }}{{ . | urlize }}">#{{ . }}</a>
+  <a class="is-6 tag" href="{{ "/tags/" | relURL }}{{ . | urlize }}">
+    <i class="fas fa-tag"></i>{{ . }}
+  </a>
 {{ end }}

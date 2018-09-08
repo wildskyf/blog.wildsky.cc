@@ -12,7 +12,12 @@
   .category {
     background-color: #2792db;
     color: #fff;
-    &:hover { background-color: #2077b2; }
+    &:hover {
+      background-color: #2077b2;
+      color: #fff;
+    }
+
+    i { color: #fff; }
   }
 }
 

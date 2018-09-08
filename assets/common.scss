@@ -88,14 +88,24 @@
       border-bottom: 0;
       color: #777;
     }
+
+    i {
+      color: #aaa;
+      font-size: .75em;
+      margin-top: 2px;
+    }
   }
 
   .tag {
     background-color: transparent;
     &:hover { background-color: transparent; }
+
+    i { margin-right: 2px; }
   }
   .category {
     background-color: transparent;
     &:hover { background-color: transparent; }
+
+    i { margin-right: 3px; }
   }
 }
