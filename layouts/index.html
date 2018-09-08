@@ -1,5 +1,4 @@
 {{ partial "header" . }}
-{{ partial "nav" . }}
 <section class="section" id="article_index">
   <div class="container">
     {{ $paginator := .Paginate (where .Site.Pages "Type" "posts") }}
