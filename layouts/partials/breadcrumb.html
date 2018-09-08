@@ -7,7 +7,7 @@
     <ul itemscope itemtype="http://schema.org/BreadcrumbList">
       {{ if eq .IsHome true }}
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <span itemtype="http://schema.org/Thing" itemprop="item">
+          <span itemtype="http://schema.org/Thing" itemprop="item" content="{{ .Site.BaseURL }}">
             <span itemprop="name">首頁<span>
           </span>
           <meta itemprop="position" content="1" />
