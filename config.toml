@@ -1,4 +1,4 @@
-baseURL = "https://blog.wildsky.cc"
+baseURL = "https://blog.wildsky.cc/"
 languageCode = "zh-tw"
 title = "ws://wildsky.cc"
 theme = "kiss"
