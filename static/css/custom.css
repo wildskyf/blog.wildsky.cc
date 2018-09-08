@@ -4,7 +4,8 @@
 .subtitle .category {
   border-radius: 5px;
   vertical-align: middle;
-  margin: 0 3px;
+  margin: 0 0 5px;
+  margin-right: 6px;
   display: inline-flex;
   align-items: center;
   color: #42464c;
@@ -13,6 +14,7 @@
   line-height: 16px;
   padding: 2px 10px;
 }
+
 .subtitle .tag:hover,
 .subtitle .category:hover { border-bottom: 0; }
 
@@ -102,8 +104,10 @@ article time {
   font-size: 14px;
   line-height: 1.125;
   margin-top: -15px;
-  margin-bottom: 20px;
 }
+
+#article_index article time { margin-bottom: 0; }
+#article_show article time { margin-bottom: 20px; }
 
 .nav-footer {
   border-top: 1px solid #ccc;
@@ -113,4 +117,19 @@ article time {
 .nav-footer nav {
   margin: 0 auto;
   padding: 10px;
+}
+
+@media screen and (max-width: 640px) {
+  .labels .tag, .labels .category {
+    margin-right: 0;
+    padding: 0;
+    background-color: transparent;
+    color: #aaa;
+  }
+  .labels .tag:hover , .labels .category:hover {
+    background-color: transparent;
+    color: #777;
+  }
+  #article_show .title { margin-bottom: 10px; }
+  #article_show .labels { margin-bottom: 10px; }
 }

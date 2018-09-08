@@ -1,12 +1,22 @@
 {{ partial "header" . }}
 {{ partial "nav" . }}
-<section class="section">
+<section class="section" id="article_index">
   <div class="container">
     {{ $paginator := .Paginate (where .Site.Pages "Type" "posts") }}
     {{ range $paginator.Pages }}
     <article>
-      <h1 class="title"><a href="{{ .Permalink }}">{{ .Title }}</a>{{ if .Draft }} ::Draft{{ end }}</h1>
       <time>{{ .Date.Format "January 2, 2006" }}</time>
+      <h1 class="title"><a href="{{ .Permalink }}">{{ .Title }}</a>{{ if .Draft }} ::Draft{{ end }}</h1>
+
+      <div class="labels is-6 is-pulled-left">
+        {{ if .Params.categories }}
+          {{ partial "categories" .Params.categories }}
+        {{ end }}
+        {{ if .Params.tags }}
+          {{ partial "tags" .Params.tags }}
+        {{ end }}
+      </div>
+
       <div class="content">
         {{ .Summary | plainify | safeHTML }}
         {{ if .Truncated }}
