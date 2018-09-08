@@ -41,6 +41,16 @@
   .site-subtitle { line-height: 1.25rem; }
 }
 
+.breadcrumb {
+  margin-top: 50px;
+  margin-bottom: -40px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  /* TODO: (text-overflow) add ellipsis in the middle of text */
+
+  ul li { display: inline-block; }
+}
 
 .nav-main {
   border-bottom: 1px solid #ccc;
