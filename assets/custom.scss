@@ -36,3 +36,54 @@
   #article_show .labels { margin-bottom: 10px; }
 }
 
+.taxonomy_index {
+  .title:before {
+    content: '#';
+    color: #aaa;
+    margin-right: 5px;
+  }
+
+  .subtitle a {
+    text-transform: capitalize;
+    font-weight: 400;
+    color: #555;
+    font-size: 1.5em;
+
+    i {
+      font-size: .5em;
+      vertical-align: top;
+      margin-top: 10px;
+      margin-right: 6px;
+    }
+  }
+
+  .list {
+    padding: 20px 0;
+
+    ul {
+      padding-left: 10px;
+      padding-right: 20px;
+
+      li {
+        display: block;
+        line-height: 1.75em;
+        font-size: 18px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:before {
+          color: #aaa;
+          margin-right: 3px;
+        }
+
+        a {
+          color: #555;
+          font-weight: 400;
+
+          &:hover { border-bottom: 1px solid #aaa; }
+        }
+      }
+    }
+  }
+}
