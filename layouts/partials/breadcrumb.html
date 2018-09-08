@@ -4,11 +4,22 @@
     {{ $.Scratch.Add "path" .Site.BaseURL }}
     {{ $.Scratch.Add "currentURL" .URL }}
     {{ $pageNotFound := (eq (replace $.Site.BaseURL .Site.BaseURL "404.html") .URL) }}
-    <ul>
+    <ul itemscope itemtype="http://schema.org/BreadcrumbList">
       {{ if eq .IsHome true }}
-        <li>首頁</li>
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <span itemtype="http://schema.org/Thing" itemprop="item">
+            <span itemprop="name">首頁<span>
+          </span>
+          <meta itemprop="position" content="1" />
+        </li>
       {{ else }}
-        <li><a href="{{ .Site.BaseURL }}">首頁</a>{{ if not (eq .URL "/")  }} &raquo;{{ end }}</li>
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a itemtype="http://schema.org/Thing" itemprop="item" href="{{ .Site.BaseURL }}">
+            <span itemprop="name">首頁<span>
+          </a>
+          {{ if not (eq .URL "/")  }} &raquo;{{ end }}
+          <meta itemprop="position" content="1" />
+        </li>
       {{ end }}
 
       {{ range $index, $element := split $url "/" }}
@@ -19,11 +30,23 @@
 
         {{ if ne $element "" }}
           {{ if and (not $isLast) (not $pageNotFound) }}
-            <li><a href='{{ $.Scratch.Get "path" }}'>{{ title ( replace . "-" " ") }}</a> &raquo;</li>
+            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+              <a itemtype="http://schema.org/Thing" itemprop="item" href='{{ $.Scratch.Get "path" }}'>
+                <span itemprop="name">{{ title ( replace . "-" " ") }}<span>
+              </a> &raquo;
+              <meta itemprop="position" content="{{ add $index 2 }}" />
+            </li>
           {{ else if $pageNotFound }}
-            <li>404</li>
+            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+              404
+            </li>
           {{ else }}
-            <li>{{ $.Title }}</li>
+            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+              <span itemtype="http://schema.org/Thing" itemprop="item" content='{{ $.Scratch.Get "path" }}'>
+                <span itemprop="name">{{ $.Title }}<span>
+              </span>
+              <meta itemprop="position" content="{{ add $index 2 }}" />
+            </li>
           {{ end }}
         {{ end }}
       {{ end }}
