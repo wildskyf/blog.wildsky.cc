@@ -1,0 +1,100 @@
+---
+title: "作業系統 - interrupt"
+date: 2018-09-09T16:26:11+08:00
+categories:
+  - 資工
+tags:
+  - OS
+---
+
+I/O 也需要 CPU 控制
+
+
+## 重點
+
+- interrupt 的流程（軟硬體）
+- 什麼是 interrupt vector & interrupt routine
+- 為什麼要記住被打斷的 instruction 的 address
+
+
+## 內容
+
+1. Busy/Wait output
+2. interrupt I/O
+
+### Busy/Wait output
+
+CPU 一直看 I/O 好了沒，沒辦法去做其他事情，程式在運作時仍會霸佔著 CPU，
+沒有 multiprogramming。
+
+```
+// 讀檔
+var file = file.open('file1.txt');
+
+while(EOF) {
+  read_char(file);
+  while (peek_read_status());
+  current_char++;
+}
+
+```
+
+
+### Interrupt I/O
+
+- 現在的電腦都是這個架構
+- a.k.a event-driven
+- interrupt 可以改變 CPU 執行的 flow
+
+基本流程:
+
+1. CPU 跟 Controller 說：「你來幫我讀資料，讓我可以做事情 A，做完跟我說」
+  - 說完這句話 CPU 就去做其他的事情 B
+2. Controller 搬完資料後，就來跟 CPU 說：「事情 A 所需的資料好了，我都放在 XXX memory」
+3. CPU 可以來決定要繼續做 B，還是回去做 A，就看 CPU 的 scheduling
+
+這個流程也會根據細節微調，像「interrupt 是由軟體還是硬體產生的」就可能有不同
+的流程。
+
+- hardware 產生的 interrupt 就叫做 `signal`
+- software 的叫做 `trap`，有兩種狀況會產生
+  - 不預期的：像是 segmentation fault 之類的，caused by **error**
+  - system call: 所有的 system call 都是間接的，會丟出一個 interrupt 等 OS 去
+    接，OS 想接的時候才會安排相關的 handler 去處理，完成才通知你
+
+
+#### Signal: hardware interrupt 的流程
+
+1. hardware 會偵測到事情發生，對 OS 打一個 signal，並正在執行的程式資訊記下來
+2. OS 去查 function vector 找誰是主事者，然後 call 他（稱作 service routine）
+3. 執行完就 return，然後回去執行原本在跑的程式
+
+P.S: function vector 的數量是跟著硬體燒死的，所以是數量固定的 array (就是 vector)
+
+
+#### Signal: software interrupt 的流程
+
+1. user call 一個 system call （或是跑了個除以零的程式）
+2. trap 到 OS 去
+3. 查 switch case 表中要執行哪個程式
+4. 查到了就跑他
+5. 跑完就 return 到剛剛 call system call 的人身上
+
+因為是軟體，system call 的數量是無上限的，想訂幾個就幾個，
+所以步驟三會用 switch case 的方式去寫。
+
+
+#### 共同
+
+- 兩者都要有 interrupt vector & interrupt routine (handler)
+  - 用來對應 interrupt 和相關的 function
+  - interrupt vector 就是個表
+  - interrupt rountine 就是那個被對應到的 function
+- 必須要記住 被打斷的 instruction 的 address
+  - return 時才能 resume
+- 之後產生的 interrupt 要能夠被 mask 掉，避免一直被打斷
+  - 所以就會有不同 priority 的 interrupt，處理高時就會忽略低
+
+## ref
+
+- [清大開放課程作業系統 第 4 講](http://ocw.nthu.edu.tw/ocw/index.php?page=chapter&cid=141&chid=1840&video_url=http%3A%2F%2Focw.nthu.edu.tw%2Fvideosite%2Findex.php%3Fop%3Dwatch%26id%3D3911%26filename%3D1920_1080_3072.MP4%26type%3Dview%26cid%3D141%26chid%3D1840)
