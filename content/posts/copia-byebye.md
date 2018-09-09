@@ -4,7 +4,7 @@ date: 2017-12-03T19:22:56+08:00
 categories:
   - Mac
 tags:
-  - Copia beta
+  - tool
 ---
 
 I love a app called Copia, and there are also some media introduced it.

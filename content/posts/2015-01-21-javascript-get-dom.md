@@ -5,7 +5,7 @@ categories:
   - Web
 tags:
   - javascript
-  - 2e
+  - f2e
   - jekyll
 ---
 

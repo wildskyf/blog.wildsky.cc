@@ -5,7 +5,6 @@ categories:
   - Linux
 tags:
   - Ubuntu
-  - Cairo Dock
   - 踩雷人生
 ---
 

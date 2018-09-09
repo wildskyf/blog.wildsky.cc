@@ -4,9 +4,6 @@ date: 2014-03-11T00:00:00+08:00
 categories:
   - Android
 tags:
-  - HTC
-  - locales
-  - morelocal
   - 踩雷人生
 ---
 

@@ -4,7 +4,6 @@ date: 2014-05-24T00:00:00+08:00
 categories:
   - Mozilla
 tags:
-  - Manifesto
   - 校園大使
   - Firefox
 ---
