@@ -5,10 +5,11 @@ categories:
   - 資工
   - Windows
 tags:
-  - C/C++
+  - C.C++
   - SetColor
   - system call
   - gotoxy
+  - note
 ---
 
 有時候寫 code 就是會手癢想美化一下
@@ -25,7 +26,7 @@ tags:
 
 步驟很簡單~只要將下面這堆程式碼加到你的 .cpp 裡面
 
-然後&#8230;.就是個函式, 其他小細節(宣告還是甚麼其他的小東西)就不解釋了~
+然後⋯就是個函式, 其他小細節(宣告還是甚麼其他的小東西)就不解釋了~
 
 ```
 #include<windows.h>

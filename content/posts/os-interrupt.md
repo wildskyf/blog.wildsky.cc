@@ -5,10 +5,14 @@ categories:
   - 資工
 tags:
   - OS
+  - note
 ---
 
-I/O 也需要 CPU 控制
+最近在看 **清大開放課程作業系統** 還債XD 上次看的這次就忘了，所以想來記筆記，
+幫助未來自己不用再重看影片。
 
+這次看的是關於 interrupt 的部分，探討作業系統如何做到 event driven，避免 CPU
+一直在空轉或 idle。
 
 ## 重點
 
