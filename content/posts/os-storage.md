@@ -167,7 +167,7 @@ OS 要能夠區分一個 instruction 是來自 user program 還是 OS。
 1. 先 load base register，看 address 有無大於開始位置。
   - 若小於就丟一個 trap（因為 trigger by software）
 2. 檢查 base + limit，看 address 有無小於結束位址。
-3. 通過前面兩個判定後，才會把指令丟去 memory 的 bus，讓 momory controller 去做 data access。
+3. 通過前面兩個判定後，才會把指令丟去 memory 的 bus，讓 memory controller 去做 data access。
 
 所以 base register & limit register 這類用於檢查的 register 都是 privileged instructions。
 
