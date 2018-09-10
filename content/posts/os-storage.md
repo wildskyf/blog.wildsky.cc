@@ -180,7 +180,7 @@ OS 要能夠區分一個 instruction 是來自 user program 還是 OS。
   - 硬體支援： **Timer**
     - 會一直計時，時間到就丟 interrupt，執行 OS 的 scheduler，讓他決定繼續執行 or not。
 
-所以 load-time 也是個 privileged instruction。（這邊的 load 是指 laod 到 timer 不是讀出來）
+所以 load-time 也是個 privileged instruction。（這邊的 load 是把值 load 到 timer 不是讀出來）
 
 
 ## ref:
