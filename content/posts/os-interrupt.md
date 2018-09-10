@@ -86,7 +86,9 @@ while(EOF) {
 P.S: function vector 的數量是跟著硬體燒死的，所以是數量固定的 array (就是 vector)
 
 
-#### Signal: software interrupt 的流程
+#### Trap: software interrupt 的流程
+
+> It's a trap!
 
 1. user call 一個 system call （或是跑了個除以零的程式）
 2. trap 到 OS 去
