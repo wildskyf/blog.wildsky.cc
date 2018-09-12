@@ -1,5 +1,5 @@
 ---
-title: "作業系統 - interrupt"
+title: "作業系統 Ch2-1 - interrupt"
 date: 2018-09-09T16:26:11+08:00
 categories:
   - 資工
@@ -113,4 +113,4 @@ P.S: function vector 的數量是跟著硬體燒死的，所以是數量固定�
 
 ## ref
 
-- [清大開放課程作業系統 第 4 講](http://ocw.nthu.edu.tw/ocw/index.php?page=chapter&cid=141&chid=1840&video_url=http%3A%2F%2Focw.nthu.edu.tw%2Fvideosite%2Findex.php%3Fop%3Dwatch%26id%3D3911%26filename%3D1920_1080_3072.MP4%26type%3Dview%26cid%3D141%26chid%3D1840)
+- [清大開放課程作業系統 第四講第一節](http://ocw.nthu.edu.tw/ocw/index.php?page=chapter&cid=141&chid=1840&video_url=http%3A%2F%2Focw.nthu.edu.tw%2Fvideosite%2Findex.php%3Fop%3Dwatch%26id%3D3911%26filename%3D1920_1080_3072.MP4%26type%3Dview%26cid%3D141%26chid%3D1840)
