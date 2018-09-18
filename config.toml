@@ -45,6 +45,7 @@ ISO8601 = "2006-01-02T15:04:05JST"
 customCSS = ["css/custom.css"]
 
 [params.info]
+adsense = "3794486350703076"
 enableSocial = true
 poweredby = true # Adds powered by hugo and kiss below Copyright
 
