@@ -1,7 +1,12 @@
 ---
 title: "作業系統 Ch3-1 - Process"
 date: 2018-09-14T20:37:50+08:00
-draft: false
+categories:
+  - 資工
+tags:
+  - OS
+  - note
+draft: true
 ---
 
 什麼是 Process？和 Program 差在哪？
