@@ -17,7 +17,12 @@
   <title>{{ .Site.Title }}</title>
 {{ else }}
   <meta name="name" itemprop="name" content="{{ .Title }} | {{ .Site.Title }}" />
-  <meta name="description" itemprop="description" content="{{ .Summary }}⋯" />
+
+  {{ with .Page.Params.description }}
+    <meta name="description" itemprop="description" content='{{ . }}' />
+  {{else}}
+    <meta name="description" itemprop="description" content='{{ .Summary }}⋯' />
+  {{end}}
   <title>{{ .Title }} | {{ .Site.Title }}</title>
   {{ if .PublishDate.IsZero }}
     <meta name="datePublished" itemprop="datePublished" content="2014-04-26T12:34:56JST" />
