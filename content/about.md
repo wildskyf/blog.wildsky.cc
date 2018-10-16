@@ -17,6 +17,13 @@ author: wildsky
 
 這個部落格和 Medium 會隨意發文，或許會兩邊同時出現，也或許哪天會全部搬過來（或搬過去）。
 
+
+## 喜歡
+
+喜歡饒舌、喜歡 RnB。
+
+喜歡笑話，打算在未來某天開一個笑話網站。
+
 ## 聯絡方式
 
 你可以在這些地方找到我。
@@ -24,5 +31,5 @@ author: wildsky
 - Email : wildsky+blog at moztw.org
 - Twitter : <https://twitter.com/wildskyf>
 - Github : <https://github.com/wildskyf>
-- Linkin : <https://www.linkedin.com/in/wildsky>
+- LinkedIn : <https://www.linkedin.com/in/wildsky>
 
