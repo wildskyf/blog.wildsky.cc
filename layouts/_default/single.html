@@ -1,7 +1,11 @@
 {{ partial "header" . }}
 <section class="section" id="article_show">
   <div class="container">
-    <time class="is-6">{{ .Date.Format "January 2, 2006" }}</time>
+
+    {{ if not .Date.IsZero }}
+      <time class="is-6">{{ .Date.Format "January 2, 2006" }}</time>
+    {{ end }}
+
     <h1 class="title">{{ .Title }}</h1>
     {{ if and (.Site.Params.Info.adsense) (.Params.adsenseTop) }}
       {{ partial "adsense" . }}
