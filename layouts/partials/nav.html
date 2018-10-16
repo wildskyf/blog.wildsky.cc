@@ -3,7 +3,7 @@
     {{- if .Site.Menus.main -}}
       <ul>
         {{ range .Site.Menus.main }}
-          <li> <a class="nav-item" href="{{ .URL }}">{{ .Name }}</a> </li>
+          <li> <a class="nav-item" href="{{ .URL }}?ref=head-nav">{{ .Name }}</a> </li>
         {{ end }}
       </ul>
     {{ end }}
