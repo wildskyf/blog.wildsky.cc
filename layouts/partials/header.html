@@ -50,13 +50,11 @@
 {{ end }}
   {{- partial "favicon" -}}
 
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-      google_ad_client: "ca-pub-3794486350703076",
-      enable_page_level_ads: true
-    });
-  </script>
+{{ if eq .IsHome false }}
+  {{ if and (.Site.Params.Info.adsense)  (.Params.adsenseBottom) }}
+    {{ partial "adsense" . }}
+  {{ end}}
+{{ end}}
 </head>
 <body>
   <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization" style="display:none;">

@@ -23,9 +23,6 @@
     <div class="content">
       {{ .Content }}
     </div>
-    {{ if and (.Site.Params.Info.adsense)  (.Params.adsenseBottom) }}
-    {{ partial "adsense" . }}
-    {{ end}}
   </div>
 </section>
 {{ partial "disqus" . }}
