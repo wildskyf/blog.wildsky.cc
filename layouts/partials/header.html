@@ -48,7 +48,7 @@
 {{ else }}
   <link rel="stylesheet" href="{{ $custom_style.Permalink }}">
 {{ end }}
-  {{- partial "favicon" -}}
+  {{- partial "favicon" . -}}
 
 {{ if (ne .IsHome true) and (.Site.Params.Info.adsense) }}
     {{ partial "adsense" . }}
