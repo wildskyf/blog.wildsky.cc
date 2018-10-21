@@ -50,7 +50,7 @@
 {{ end }}
   {{- partial "favicon" -}}
 
-{{ if ne .IsHome true and .Site.Params.Info.adsense }}
+{{ if (ne .IsHome true) and (.Site.Params.Info.adsense) }}
     {{ partial "adsense" . }}
 {{ end }}
 </head>
