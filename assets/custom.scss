@@ -27,10 +27,13 @@
     padding: 0;
     background-color: transparent;
     color: #aaa;
-  }
-  .labels .tag:hover , .labels .category:hover {
-    background-color: transparent;
-    color: #777;
+
+    i { color: #ddd; }
+
+    &:hover {
+      background-color: transparent;
+      color: #777;
+    }
   }
   #article_show .title { margin-bottom: 10px; }
   #article_show .labels { margin-bottom: 10px; }
