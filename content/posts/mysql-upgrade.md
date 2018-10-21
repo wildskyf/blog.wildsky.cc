@@ -182,7 +182,7 @@ set global validate_password_policy=0;
 set password = password('你要設的密碼');
 ```
 
-才終於改成功了！離開再重新進來、再用 `show databasess;` 測試一次，就能正常使用 mysql 了。
+才終於改成功了！離開再重新進來、再用 `show databases;` 測試一次，就能正常使用 mysql 了。
 
 
 ## 參考資料
