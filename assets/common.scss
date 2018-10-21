@@ -67,6 +67,10 @@
   }
 }
 
+@media screen and (max-width: 640px) {
+  .nav-main { padding: 0 10px; }
+}
+
 .nav-footer {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
