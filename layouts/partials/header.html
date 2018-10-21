@@ -50,11 +50,9 @@
 {{ end }}
   {{- partial "favicon" -}}
 
-{{ if eq .IsHome false }}
-  {{ if and (.Site.Params.Info.adsense)  (.Params.adsenseBottom) }}
+{{ if ne .IsHome true and .Site.Params.Info.adsense }}
     {{ partial "adsense" . }}
-  {{ end}}
-{{ end}}
+{{ end }}
 </head>
 <body>
   <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization" style="display:none;">
