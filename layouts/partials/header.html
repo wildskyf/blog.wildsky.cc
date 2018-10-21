@@ -3,9 +3,7 @@
 {{ $custom_style := resources.Get "custom.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 
 <!DOCTYPE html>
-<html
-  xmlns="http://www.w3.org/1999/xhtml" {{ with .Site.LanguageCode }} lang="{{ . }}"{{ end }} itemscope
-  {{ if eq .IsHome true }} itemtype="http://schema.org/WebSite" {{ else }} itemtype="http://schema.org/Article" {{ end }}>
+<html xmlns="http://www.w3.org/1999/xhtml" {{ with .Site.LanguageCode }} lang="{{ . }}"{{ end }} >
 <head {{ if eq .IsHome false }} prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#" {{ end }}>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -24,13 +22,27 @@
     <meta name="description" itemprop="description" content='{{ .Summary }}⋯' />
   {{end}}
   <title>{{ .Title }} | {{ .Site.Title }}</title>
+  <meta name="headline" itemprop="headline" content="{{ .Title }}" />
+
+
   {{ if .PublishDate.IsZero }}
     <meta name="datePublished" itemprop="datePublished" content="2014-04-26T12:34:56JST" />
   {{ else }}
     <meta name="datePublished" itemprop="datePublished" content="{{ .PublishDate.Format $.Site.Params.ISO8601 }}" />
   {{ end }}
-  <meta name="headline" itemprop="headline" content="{{ .Title }}" />
-  <meta name="dateModified" itemprop="dateModified" content="{{ .Page.Lastmod.Format $.Site.Params.ISO8601 }}" />
+
+
+  {{ if .Page.Lastmod.IsZero }}
+    {{ if .Date.IsZero }}
+      <meta name="dateModified" itemprop="dateModified" content="2014-04-26T12:34:56JST" />
+    {{ else }}
+      <time name="dateModified" itemprop="dateModified" content="{{ .Date.Format $.Site.Params.ISO8601 }}"></time>
+    {{ end }}
+  {{ else }}
+    <time name="dateModified" itemprop="dateModified" content="{{ .Page.Lastmod.Format $.Site.Params.ISO8601 }}"></time>
+  {{ end }}
+
+
   <meta itemprop="mainEntityOfPage" content="{{ .Permalink }}" />
 {{ end }}
 {{ if .Site.Params.Info.enableSocial }}
@@ -50,6 +62,8 @@
 {{ end }}
   {{- partial "favicon" . -}}
 
+  {{ partial "json_website" . }}
+
 {{ if (ne .IsHome true) and (.Site.Params.Info.adsense) }}
     {{ partial "adsense" . }}
 {{ end }}
@@ -57,7 +71,8 @@
 <body>
   <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization" style="display:none;">
     <span itemprop="name">{{ .Site.Params.Author }}</span>
-      <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+    <meta itemprop="url" content="{{ .Site.Params.Image }}">
+    <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
       <img src="{{ .Site.Params.Image }}"/>
       <meta itemprop="url" content="{{ .Site.Params.Image }}">
       <meta itemprop="width" content="310">
