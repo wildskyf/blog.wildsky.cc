@@ -63,10 +63,6 @@
   {{- partial "favicon" . -}}
 
   {{ partial "json_website" . }}
-
-{{ if (ne .IsHome true) and (.Site.Params.Info.adsense) }}
-    {{ partial "adsense" . }}
-{{ end }}
 </head>
 <body>
   <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization" style="display:none;">

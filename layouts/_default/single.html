@@ -44,9 +44,6 @@
       <a href="{{ .Permalink }}" itemprop="url" class="article-title">
         <h1 class="title" itemprop="name headline">{{ .Title }}</h1>
       </a>
-      {{ if and (.Site.Params.Info.adsense) (.Params.adsenseTop) }}
-        {{ partial "adsense" . }}
-      {{ end }}
 
       <div class="labels is-6 is-pulled-right">
         {{ if .Params.categories }}
@@ -65,3 +62,6 @@
 </article>
 {{ partial "disqus" . }}
 {{ partial "footer" . }}
+{{ if .Site.Params.Info.adsense }}
+  {{ partial "adsense" . }}
+{{ end }}
