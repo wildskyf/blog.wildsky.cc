@@ -63,7 +63,7 @@ ref: <https://twitter.com/wildskyf/status/1061511004708790272>
 
 ## 2. Hoisting 到底是怎麼運作的？
 
-運作原理是，在跑程式的時候後面會有 Execute Context 記錄該 scope 下的相關資訊，
+運作原理是，在跑程式的時候後面會有 Execution Context 記錄該 scope 下的相關資訊，
 會用一個叫做 Variable Object（簡稱 VO）的東西去記錄。
 
 在跑程式的時候，其實主要也就是「取值」與「賦值」這兩件事，只要配合 VO 的規則就可以學
