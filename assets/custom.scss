@@ -21,6 +21,15 @@
   }
 }
 
+#after_article {
+  text-align: center;
+  line-height: 1.5em;
+
+  .twitter-mention-button {
+    vertical-align: top;
+  }
+}
+
 @media screen and (max-width: 640px) {
   .labels .tag, .labels .category {
     margin-right: 0;
@@ -37,6 +46,7 @@
   }
   #article_show .title { margin-bottom: 10px; }
   #article_show .labels { margin-bottom: 10px; }
+  #after_article { margin: 0 20px; }
 }
 
 .taxonomy_index {
