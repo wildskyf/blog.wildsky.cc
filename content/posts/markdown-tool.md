@@ -8,7 +8,6 @@ categories:
   - Windows
 tags:
   - firefox
-  - firefox-addon
 ---
 
 > 2018/9/5 更新: 結果這個方法我也用沒多久就棄置了XD

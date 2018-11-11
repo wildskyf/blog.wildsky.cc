@@ -2,9 +2,8 @@
 title: 移植「封鎖內容農場」套件
 date: 2016-12-27T00:00:00+08:00
 categories:
-  - Web
+  - Web-Extension
 tags:
-  - firefox-Addon
   - f2e
 ---
 
