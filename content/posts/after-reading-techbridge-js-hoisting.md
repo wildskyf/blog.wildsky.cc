@@ -14,7 +14,7 @@ tags:
 想要來好好地注意這個問題，避免只砸時間在不用細讀的文章。
 
 剛好小蟹貼了這篇
-[《我知道你懂 hoisting，可是你了解到多深？》](我知道你懂 hoisting，可是你了解到多深？)
+[《我知道你懂 hoisting，可是你了解到多深？》](https://blog.techbridge.cc/2018/11/10/javascript-hoisting/)
 給我，便決定在舒服的假日午後好好地閱讀一下。
 這篇文章就是在記錄自己閱讀過程中的 murmur，順便摘一下，
 略微地希望可以替未來的自己省下重新閱讀的時間。
@@ -122,7 +122,7 @@ this、prototype、clousre 跟 hoisting，而這幾個看似不相關的東西�
 
 ## 其他相關連結
 
-- [《我知道你懂 hoisting，可是你了解到多深？》](我知道你懂 hoisting，可是你了解到多深？)
+- [《我知道你懂 hoisting，可是你了解到多深？》](https://blog.techbridge.cc/2018/11/10/javascript-hoisting/)
 - [海總](https://twitter.com/tzangms/) 的 [《本末倒置的閱讀習慣》](https://tzangms.com/put-the-cart-before-the-horse-reading-habits/)
 - [小蟹](http://twitter.com/wildjcrt)
 - [本文的 murmur 推文版](https://twitter.com/wildskyf/status/1061511004708790272)
