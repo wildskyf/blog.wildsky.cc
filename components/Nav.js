@@ -7,11 +7,11 @@ const Nav = ({ menu_items }) => {
   })
 
   return (
-    <ul>
+    <ul className="flex flex-row">
       {
         items.map(item => {
           return (
-            <li key={item.guid}>
+            <li key={item.guid} className='font-bold py-3 mx-3'>
               <Link href={item.url}>
                 <a>{item.title}</a>
               </Link>

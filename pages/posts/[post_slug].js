@@ -7,10 +7,25 @@ const Post = (props) => {
   const { website_name, website_description, home_url, post_title, menu_items, post_content } = props
 
   return (
-    <Layout {...{ page_name: post_title, home_url, website_name, website_description, menu_items }}>
-      <main>
-        <article dangerouslySetInnerHTML={{__html: post_content }} />
-      </main>
+    <Layout {...{ home_url, website_name, website_description, menu_items }}>
+      <article>
+        <header className='mb-8'>
+          <h1
+            className='text-4xl font-semibold mb-4'
+            dangerouslySetInnerHTML={{ __html: post_title }}
+          />
+        </header>
+        <div
+          className='article-content text-lg leading-relaxed text-gray-700 font-serif'
+          dangerouslySetInnerHTML={{ __html: post_content }}
+        />
+      </article>
+
+      <style jsx global>{`
+        .article-content p {
+          margin-bottom: 40px;
+        }
+      `}</style>
     </Layout>
   )
 }

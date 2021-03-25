@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import fetch from 'isomorphic-fetch'
 
 import Layout from '../layout/page'
+import PostList from '../components/PostList'
 
 import { jsonify } from '../utils'
 import { BACKEND_ENDPOINT } from '../data'
@@ -17,29 +18,7 @@ const Home = ({ website_name, website_description, home_url, menu_items, postLis
   return (
     <Layout {...{ website_name, website_description, home_url, menu_items }}>
       <section className="article-list">
-        <ul>
-          {
-            postList.map(post => {
-              return (
-                <li key={post.guid}>
-                  <article>
-                    <Link href={`/posts/${post.slug}`}>
-                      <a>
-                        <h2 dangerouslySetInnerHTML={{ __html: post.title }} />
-                      </a>
-                    </Link>
-                    <div className="article-content">
-                      <div dangerouslySetInnerHTML={{ __html: post.excerpt }} />
-                    <Link href={`/posts/${post.slug}`}>
-                      <a>More</a>
-                    </Link>
-                    </div>
-                  </article>
-                </li>
-              )
-            })
-          }
-        </ul>
+        <PostList postList={postList} />
       </section>
       <section className='pagination'>
         <Link href='/?page=2'>

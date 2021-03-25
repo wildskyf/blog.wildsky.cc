@@ -1,13 +1,12 @@
 import Nav from '../components/Nav'
-import Link from 'next/link'
 
-const Header = ({ page_name, home_url, website_name, website_description, menu_items }) => {
+const Header = ({ home_url, website_name, website_description, menu_items }) => {
   return (
     <>
-      <h1>
-        {page_name} | <a href={home_url}>{website_name}</a>
+      <h1 className='font-bold my-8 text-6xl'>
+        <a href={home_url} className='text-6xl'>{website_name}</a>
       </h1>
-      <p>
+      <p className='mb-8 text-xs'>
         {website_description}
       </p>
       <nav>

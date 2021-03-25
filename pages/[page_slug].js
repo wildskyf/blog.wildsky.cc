@@ -7,10 +7,16 @@ const Page = (props) => {
   const { website_name, website_description, home_url, page_title, menu_items, page_content } = props
 
   return (
-    <Layout {...{ page_name: page_title, home_url, website_name, website_description, menu_items }}>
-      <main>
-        <article dangerouslySetInnerHTML={{__html: page_content }} />
-      </main>
+    <Layout {...{ home_url, website_name, website_description, menu_items }}>
+      <article>
+        <header>
+          <h1
+            className='text-3xl font-bold mb-4'
+            dangerouslySetInnerHTML={{ __html: page_title }}
+          />
+        </header>
+        <div dangerouslySetInnerHTML={{__html: page_content }} />
+      </article>
     </Layout>
   )
 }
