@@ -12,7 +12,7 @@ const Home = ({ website_name, website_description, home_url, menu_items, postLis
   const router = useRouter()
 
   if (router.query.page > 1) {
-    // redirect to /page/{router.query.page}
+    // TODO: pagination
   }
 
   return (
@@ -30,11 +30,11 @@ const Home = ({ website_name, website_description, home_url, menu_items, postLis
 }
 
 export const getStaticProps = async (context) => {
-  // TODO: i18n: RESTful API for Polylang is only in pro version
+  // TODO: i18n
   const [ blog_info, menu_info, post_info ] = await Promise.all([
     fetch(`${BACKEND_ENDPOINT}/wp-json/`).then(jsonify),
     fetch(`${BACKEND_ENDPOINT}/wp-json/menus/v1/menus/main-tw`).then(jsonify),
-    fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?_embed`).then(jsonify)
+    fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?tags=171`).then(jsonify) // tags 171 = 中文文章
   ])
 
   const ret_props = {
