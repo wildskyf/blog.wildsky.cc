@@ -1,3 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+.article-content h2,
+.article-content h3,
+.article-content h4 {
+  font-weight: 600;
+  font-family: sans-serif;
+  margin: 3rem auto 1.5rem;
+  position: relative;
+}
+
+.article-content h2:before,
+.article-content h3:before,
+.article-content h4:before {
+  color: #ddd;
+  position: absolute;
+  left: -2.5rem;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+}
+
+.article-content h2:before { content: 'h2'; }
+.article-content h3:before { content: 'h3'; }
+.article-content h4:before { content: 'h4'; }
+
+.article-content h3 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.article-content h4 {
+  font-size: 1.1rem;
+  line-height: 1.75rem;
+}
+
+.article-content ul {
+  padding: 0 0 0 2rem;
+  list-style-type: disc;
+  margin: 1rem auto 2rem;
+}
+
+.article-content a {
+  --tw-text-opacity: 1;
+  color: rgba(185, 28, 28, var(--tw-text-opacity));
+}
+
 .article-content p {
   margin-bottom: 40px;
 }

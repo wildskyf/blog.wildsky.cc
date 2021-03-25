@@ -9,9 +9,13 @@ const Article = ({ feature_image_url, date, title, content }) => {
           className='text-3xl font-bold mb-4 text-gray-800'
           dangerouslySetInnerHTML={{ __html: title }}
         />
-        <p className='text-lg text-gray-500 mb-4'>
-          Posted on <time dateTime={date}>{dayjs(date).format('YYYY 年 MM 月 DD 日')}</time>
-        </p>
+        {
+          date && (
+            <p className='text-lg text-gray-500 mb-4'>
+              Posted on <time dateTime={date}>{dayjs(date).format('YYYY 年 MM 月 DD 日')}</time>
+            </p>
+          )
+        }
       </header>
       {
         feature_image_url && (

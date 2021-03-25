@@ -5,13 +5,12 @@ import { jsonify } from '../utils'
 import { BACKEND_ENDPOINT } from '../data'
 
 const Page = (props) => {
-  const { website_name, website_description, home_url, page_feature_image_url, page_date, page_title, menu_items, page_content } = props
+  const { website_name, website_description, home_url, page_feature_image_url, page_title, menu_items, page_content } = props
 
   return (
     <Layout {...{ home_url, website_name, website_description, menu_items }}>
       <Article
         feature_image_url={page_feature_image_url}
-        date={page_date}
         title={page_title}
         content={page_content}
       />
@@ -51,7 +50,6 @@ export const getStaticProps = async ({ params }) => {
       })),
 
       page_feature_image_url: page_info?.better_featured_image?.source_url || null,
-      page_date: page_info?.date,
       page_title: page_info?.title.rendered,
       page_content: page_info?.content.rendered,
     }
