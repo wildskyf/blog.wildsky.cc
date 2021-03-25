@@ -1,6 +1,7 @@
 import dayjs from 'dayjs'
 import Link from 'next/link'
-import Image from 'next/image'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+
 import ReadMoreButton from '../components/ReadMoreButton'
 
 const PostList = ({ postList }) => {
@@ -28,13 +29,11 @@ const PostList = ({ postList }) => {
                   post.feature_image_url && (
                     <Link href={`/posts/${post.slug}`}>
                       <a>
-                        <Image
+                        <LazyLoadImage
                           src={post.feature_image_url}
                           alt=''
-                          layout="responsive"
                           width='750'
                           height='410'
-                          objectFit='contain'
                         />
                       </a>
                     </Link>
