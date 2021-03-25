@@ -2,11 +2,12 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import fetch from 'isomorphic-fetch'
 
-import Header from '../components/Header'
+import Layout from '../layout/page'
 
-const BACKEND_ENDPOINT = 'https://blog.wildsky.cc'
+import { jsonify } from '../utils'
+import { BACKEND_ENDPOINT } from '../data'
 
-const Home = ({ name, description, menu, home, postList }) => {
+const Home = ({ website_name, website_description, home_url, menu_items, postList }) => {
   const router = useRouter()
 
   if (router.query.page > 1) {
@@ -14,11 +15,7 @@ const Home = ({ name, description, menu, home, postList }) => {
   }
 
   return (
-    <div>
-      <header>
-        <Header {...{ home, name, description, menu }} />
-      </header>
-
+    <Layout {...{ website_name, website_description, home_url, menu_items }}>
       <section className="article-list">
         <ul>
           {
@@ -49,13 +46,11 @@ const Home = ({ name, description, menu, home, postList }) => {
           <a>Older posts →</a>
         </Link>
       </section>
-    </div>
+    </Layout>
   )
 }
 
 export const getStaticProps = async (context) => {
-  const jsonify = r => r.json()
-
   // TODO: i18n: RESTful API for Polylang is only in pro version
   const [ blog_info, menu_info, post_info ] = await Promise.all([
     fetch(`${BACKEND_ENDPOINT}/wp-json/`).then(jsonify),
@@ -64,10 +59,16 @@ export const getStaticProps = async (context) => {
   ])
 
   const ret_props = {
-    name: blog_info.name,
-    description: blog_info.description,
-    home: blog_info.home,
-    menu: menu_info,
+    website_name: blog_info.name,
+    website_description: blog_info.description,
+    home_url: blog_info.home,
+
+    menu_items: menu_info.items.map(item => ({
+      guid: item.guid,
+      url: `${item.url.replace('https://blog.wildsky.cc', '')}/`,
+      title: item.title
+    })),
+
     postList: post_info.map(post => ({
       guid: post?.guid?.rendered,
       slug: post?.slug,
