@@ -72,7 +72,7 @@ export const getStaticProps = async (context) => {
     postList: post_info.map(post => ({
       guid: post?.guid?.rendered,
       slug: post?.slug,
-      link: post?.link,
+      link: post?.link.replace('https://blog.wildsky.cc', ''),
       title: post?.title?.rendered,
       excerpt: post?.excerpt?.rendered,
     }))

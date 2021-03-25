@@ -4,13 +4,12 @@ import { jsonify } from '../utils'
 import { BACKEND_ENDPOINT } from '../data'
 
 const Page = (props) => {
-  const { website_name, website_description, home_url, page_title, menu_items, content } = props
-  console.log(props)
+  const { website_name, website_description, home_url, page_title, menu_items, page_content } = props
 
   return (
     <Layout {...{ page_name: page_title, home_url, website_name, website_description, menu_items }}>
       <main>
-        <article dangerouslySetInnerHTML={{__html: content }} />
+        <article dangerouslySetInnerHTML={{__html: page_content }} />
       </main>
     </Layout>
   )
@@ -48,7 +47,7 @@ export const getStaticProps = async ({ params }) => {
       })),
 
       page_title: page_info?.title.rendered,
-      content: page_info?.content.rendered,
+      page_content: page_info?.content.rendered,
     }
   }
 }
