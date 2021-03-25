@@ -11,7 +11,7 @@ const Nav = ({ menu_items }) => {
       {
         items.map(item => {
           return (
-            <li key={item.guid} className='font-bold py-3 mx-3'>
+            <li key={item.guid} className='text-gray-700 text-xl font-semibold px-3 py-3 mx-1 cursor-pointer hover:text-red-700 transition-colors'>
               <Link href={item.url}>
                 <a>{item.title}</a>
               </Link>

@@ -3,10 +3,10 @@ import Nav from '../components/Nav'
 const Header = ({ home_url, website_name, website_description, menu_items }) => {
   return (
     <>
-      <h1 className='font-bold my-8 text-6xl'>
+      <h1 className='font-bold mt-3 mb-6 text-6xl'>
         <a href={home_url} className='text-6xl'>{website_name}</a>
       </h1>
-      <p className='mb-8 text-xs'>
+      <p className='mb-8 text-sm'>
         {website_description}
       </p>
       <nav>

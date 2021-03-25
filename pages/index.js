@@ -34,7 +34,7 @@ export const getStaticProps = async (context) => {
   const [ blog_info, menu_info, post_info ] = await Promise.all([
     fetch(`${BACKEND_ENDPOINT}/wp-json/`).then(jsonify),
     fetch(`${BACKEND_ENDPOINT}/wp-json/menus/v1/menus/main-tw`).then(jsonify),
-    fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts`).then(jsonify)
+    fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?_embed`).then(jsonify)
   ])
 
   const ret_props = {
@@ -48,13 +48,17 @@ export const getStaticProps = async (context) => {
       title: item.title
     })),
 
-    postList: post_info.map(post => ({
-      guid: post?.guid?.rendered,
-      slug: post?.slug,
-      link: post?.link.replace('https://blog.wildsky.cc', ''),
-      title: post?.title?.rendered,
-      excerpt: post?.excerpt?.rendered,
-    }))
+    postList: post_info.map(post => {
+      return {
+        guid: post?.guid?.rendered,
+        date: post?.date,
+        slug: post?.slug,
+        link: post?.link.replace('https://blog.wildsky.cc', ''),
+        title: post?.title?.rendered,
+        excerpt: post?.excerpt?.rendered,
+        feature_image_url: post?.better_featured_image?.source_url || null
+      }
+    })
   }
 
   return {

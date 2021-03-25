@@ -1,22 +1,20 @@
 import Layout from '../layout/page'
+import Article from '../components/Article'
 
 import { jsonify } from '../utils'
 import { BACKEND_ENDPOINT } from '../data'
 
 const Page = (props) => {
-  const { website_name, website_description, home_url, page_title, menu_items, page_content } = props
+  const { website_name, website_description, home_url, page_feature_image_url, page_date, page_title, menu_items, page_content } = props
 
   return (
     <Layout {...{ home_url, website_name, website_description, menu_items }}>
-      <article>
-        <header>
-          <h1
-            className='text-3xl font-bold mb-4'
-            dangerouslySetInnerHTML={{ __html: page_title }}
-          />
-        </header>
-        <div dangerouslySetInnerHTML={{__html: page_content }} />
-      </article>
+      <Article
+        feature_image_url={page_feature_image_url}
+        date={page_date}
+        title={page_title}
+        content={page_content}
+      />
     </Layout>
   )
 }
@@ -35,7 +33,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const [ blog_info, menu_info, [page_info]] = await Promise.all([
+  const [ blog_info, menu_info, [page_info] ] = await Promise.all([
     fetch(`${BACKEND_ENDPOINT}/wp-json/`).then(jsonify),
     fetch(`${BACKEND_ENDPOINT}/wp-json/menus/v1/menus/main-tw`).then(jsonify),
     fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/pages/?slug=${params.page_slug}`).then(r => r.json())
@@ -52,6 +50,8 @@ export const getStaticProps = async ({ params }) => {
         title: item.title
       })),
 
+      page_feature_image_url: page_info?.better_featured_image?.source_url || null,
+      page_date: page_info?.date,
       page_title: page_info?.title.rendered,
       page_content: page_info?.content.rendered,
     }

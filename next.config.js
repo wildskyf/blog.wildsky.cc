@@ -1,12 +1,8 @@
 module.exports = () => {
   return {
+    images: {
+      domains: ['blog.wildsky.cc'],
+    },
     poweredByHeader: false,
-
-    // exportPathMap: async (defaultPathMap, { dev, dir, outDir, distDir, buildId }) => {
-    //   console.log(exportPath)
-
-    //   return exportPath
-    // },
-
   }
 }

@@ -10,6 +10,7 @@
     "out": "yarn build && yarn export"
   },
   "dependencies": {
+    "dayjs": "^1.10.4",
     "isomorphic-fetch": "^3.0.0",
     "next": "10.0.9",
     "react": "17.0.2",
