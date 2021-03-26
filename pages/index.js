@@ -22,7 +22,7 @@ export const getStaticProps = async (context) => {
   const ret_props = {
     website_name: blog_info.name,
     website_description: blog_info.description,
-    home_url: blog_info.home,
+    home_url: blog_info.home.replace('https://blog.wildsky.cc', ''),
 
     menu_items: menu_info.items.map(item => ({
       guid: item.guid,
