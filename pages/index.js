@@ -1,47 +1,14 @@
-import fetch from 'isomorphic-fetch'
-
 import Layout from '../layout/list'
-
-import { jsonify } from '../utils'
-import { BACKEND_ENDPOINT } from '../data'
+import fetchIndexData from '../libs/fetchIndexData'
 
 const Home = ({ website_name, website_description, home_url, menu_items, postList }) => {
   return (
-    <Layout {...{ postList, next_page_path: '/page/2', website_name, website_description, home_url, menu_items }} />
+    <Layout {...{ lang: 'tw', postList, next_page_path: '/page/2', website_name, website_description, home_url, menu_items }} />
   )
 }
 
-export const getStaticProps = async (context) => {
-  // TODO: i18n
-  const [ blog_info, menu_info, post_info ] = await Promise.all([
-    fetch(`${BACKEND_ENDPOINT}/wp-json/?_fields=name,description`).then(jsonify),
-    fetch(`${BACKEND_ENDPOINT}/wp-json/menus/v1/menus/main-tw`).then(jsonify),
-    fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?_fields=featured_media,better_featured_image,link,slug,date,guid,title,excerpt&tags=171`).then(jsonify) // tags 171 = 中文文章
-  ])
-
-  const ret_props = {
-    website_name: blog_info.name,
-    website_description: blog_info.description,
-    home_url: '/',
-
-    menu_items: menu_info.items.map(item => ({
-      guid: item.guid,
-      url: `${item.url.replace(/https?:\/\/blog\.wildsky\.cc/, '')}/`,
-      title: item.title
-    })),
-
-    postList: post_info.map(post => {
-      return {
-        guid: post?.guid?.rendered || null,
-        date: post?.date || null,
-        slug: post?.slug || null,
-        link: post?.link.replace(/https?:\/\/blog\.wildsky\.cc/, '') || null,
-        title: post?.title?.rendered || null,
-        excerpt: post?.excerpt?.rendered || null,
-        feature_image_url: post?.better_featured_image?.source_url || null
-      }
-    })
-  }
+export const getStaticProps = async () => {
+  const ret_props = await fetchIndexData({ lang: 'tw' })
 
   return {
     props: ret_props

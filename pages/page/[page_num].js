@@ -1,7 +1,6 @@
 import Layout from '../../layout/list'
-
-import { jsonify } from '../../utils'
-import { BACKEND_ENDPOINT } from '../../data'
+import fetchPaginationShowPath from '../../libs/fetchPaginationShowPath'
+import fetchPaginationShowData from '../../libs/fetchPaginationShowData'
 
 const PaginationPage = ({ website_name, website_description, home_url, menu_items, postList, total_page_num, current_page_num }) => {
   const is_last_page = total_page_num === current_page_num
@@ -9,8 +8,8 @@ const PaginationPage = ({ website_name, website_description, home_url, menu_item
   return (
     <Layout {...{
       postList,
-      previous_page_num: `/page/${current_page_num - 1}`,
-      next_page_num: !is_last_page && `/page/${current_page_num + 1}`,
+      previous_page_path: `/page/${current_page_num - 1}`,
+      next_page_path: !is_last_page && `/page/${current_page_num + 1}`,
       website_name,
       website_description,
       home_url,
@@ -20,13 +19,7 @@ const PaginationPage = ({ website_name, website_description, home_url, menu_item
 }
 
 export const getStaticPaths = async () => {
-  const post_res = await fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?tags=171`, { method: 'HEAD' }) // tags 171 = 中文文章
-  const totalPage = Number(post_res.headers.get('x-wp-totalpages'))
-
-  const paths = Array(totalPage)
-    .fill(0)
-    .map((_, i) => ({ params: { page_num: String(i + 1) } }))
-
+  const paths = await fetchPaginationShowPath({ lang: 'tw' })
   return { paths, fallback: false }
 }
 
@@ -40,42 +33,10 @@ export const getStaticProps = async ({ params }) => {
     }
   }
 
-  const [ blog_info, menu_info, post_res ] = await Promise.all([
-    fetch(`${BACKEND_ENDPOINT}/wp-json/?_fields=name,description`).then(jsonify),
-    fetch(`${BACKEND_ENDPOINT}/wp-json/menus/v1/menus/main-tw`).then(jsonify),
-    fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?_fields=featured_media,better_featured_image,link,slug,date,guid,title,excerpt&tags=171&page=${params.page_num}`) // tags 171 = 中文文章
-  ])
-
-  const totalPage = Number(post_res.headers.get('x-wp-totalpages'))
-  const post_info = await post_res.json()
+  const ret_props = await fetchPaginationShowData({ page_num: params.page_num, lang: 'tw' })
 
   return {
-    props: {
-      website_name: blog_info.name,
-      website_description: blog_info.description,
-      home_url: '/',
-
-      menu_items: menu_info.items.map(item => ({
-        guid: item.guid,
-        url: `${item.url.replace(/https?:\/\/blog\.wildsky\.cc/, '')}/`,
-        title: item.title
-      })),
-
-      postList: post_info.map(post => {
-        return {
-          guid: post?.guid?.rendered || null,
-          date: post?.date || null,
-          slug: post?.slug || null,
-          link: post?.link.replace(/https?:\/\/blog\.wildsky\.cc/, '') || null,
-          title: post?.title?.rendered || null,
-          excerpt: post?.excerpt?.rendered || null,
-          feature_image_url: post?.better_featured_image?.source_url || null
-        }
-      }),
-
-      current_page_num: Number(params.page_num),
-      total_page_num: Number(totalPage)
-    }
+    props: ret_props
   }
 }
 

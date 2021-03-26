@@ -1,8 +1,8 @@
-import Layout from '../layout/page'
-import Article from '../components/Article'
+import Layout from '../../layout/page'
+import Article from '../../components/Article'
 
-import fetchPageShowPath from '../libs/fetchPageShowPath'
-import fetchPageShowData from '../libs/fetchPageShowData'
+import fetchPageShowPath from '../../libs/fetchPageShowPath'
+import fetchPageShowData from '../../libs/fetchPageShowData'
 
 const Page = (props) => {
   const { website_name, website_description, home_url, page_feature_image_url, page_title, menu_items, page_content } = props
@@ -19,12 +19,12 @@ const Page = (props) => {
 }
 
 export const getStaticPaths = async () => {
-  const paths = await fetchPageShowPath({ lang: 'tw' })
+  const paths = await fetchPageShowPath({ lang: 'en' })
   return { paths, fallback: false }
 }
 
 export const getStaticProps = async ({ params }) => {
-  const ret_props = await fetchPageShowData({ page_slug: params.page_slug, lang: 'tw' })
+  const ret_props = await fetchPageShowData({ page_slug: params.page_slug, lang: 'en' })
   return {
     props: ret_props
   }

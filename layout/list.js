@@ -2,12 +2,12 @@ import Link from 'next/link'
 import Layout from './page'
 import PostList from '../components/PostList'
 
-const ListLayout = ({ postList, previous_page_path, next_page_path, home_url, website_name, website_description, menu_items }) => {
+const ListLayout = ({ lang, postList, previous_page_path, next_page_path, home_url, website_name, website_description, menu_items }) => {
   return (
     <>
       <Layout {...{ home_url, website_name, website_description, menu_items }}>
         <section className="article-list">
-          <PostList postList={postList} />
+          <PostList lang={lang} postList={postList} />
         </section>
         <section className='pagination flex flex-row justify-between'>
           {
