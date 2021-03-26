@@ -20,7 +20,7 @@ const Post = (props) => {
 }
 
 export const getStaticPaths = async () => {
-  const post_info = await fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts/`).then(r => r.json())
+  const post_info = await fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?tags=171`).then(jsonify) // tags 171 = 中文文章
 
   const posts = post_info
     .map(item => item.slug)
