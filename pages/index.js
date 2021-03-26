@@ -14,9 +14,9 @@ const Home = ({ website_name, website_description, home_url, menu_items, postLis
 export const getStaticProps = async (context) => {
   // TODO: i18n
   const [ blog_info, menu_info, post_info ] = await Promise.all([
-    fetch(`${BACKEND_ENDPOINT}/wp-json/`).then(jsonify),
+    fetch(`${BACKEND_ENDPOINT}/wp-json/?_fields=name,description`).then(jsonify),
     fetch(`${BACKEND_ENDPOINT}/wp-json/menus/v1/menus/main-tw`).then(jsonify),
-    fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?tags=171`).then(jsonify) // tags 171 = 中文文章
+    fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?_fields=featured_media,better_featured_image,link,slug,date,guid,title,excerpt&tags=171`).then(jsonify) // tags 171 = 中文文章
   ])
 
   const ret_props = {

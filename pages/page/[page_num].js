@@ -41,9 +41,9 @@ export const getStaticProps = async ({ params }) => {
   }
 
   const [ blog_info, menu_info, post_res ] = await Promise.all([
-    fetch(`${BACKEND_ENDPOINT}/wp-json/`).then(jsonify),
+    fetch(`${BACKEND_ENDPOINT}/wp-json/?_fields=name,description`).then(jsonify),
     fetch(`${BACKEND_ENDPOINT}/wp-json/menus/v1/menus/main-tw`).then(jsonify),
-    fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?tags=171&page=${params.page_num}`) // tags 171 = 中文文章
+    fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?_fields=featured_media,better_featured_image,link,slug,date,guid,title,excerpt&tags=171&page=${params.page_num}`) // tags 171 = 中文文章
   ])
 
   const totalPage = Number(post_res.headers.get('x-wp-totalpages'))
