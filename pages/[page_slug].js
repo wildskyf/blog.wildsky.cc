@@ -35,7 +35,7 @@ export const getStaticProps = async ({ params }) => {
   const [ blog_info, menu_info, [page_info] ] = await Promise.all([
     fetch(`${BACKEND_ENDPOINT}/wp-json/`).then(jsonify),
     fetch(`${BACKEND_ENDPOINT}/wp-json/menus/v1/menus/main-tw`).then(jsonify),
-    fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/pages/?slug=${params.page_slug}`).then(r => r.json())
+    fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/pages/?slug=${params.page_slug}`).then(jsonify)
   ])
 
   return {
