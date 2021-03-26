@@ -17,7 +17,7 @@ const fetchPaginationShowData = async ({ page_num, lang }) => {
   return {
     website_name: blog_info.name,
     website_description: blog_info.description,
-    home_url: '/',
+    home_url: lang === 'en' ? '/en/' : '/',
 
     menu_items: menu_info.items.map(item => ({
       guid: item.guid,
