@@ -1,31 +1,13 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
 import fetch from 'isomorphic-fetch'
 
-import Layout from '../layout/page'
-import PostList from '../components/PostList'
+import Layout from '../layout/list'
 
 import { jsonify } from '../utils'
 import { BACKEND_ENDPOINT } from '../data'
 
 const Home = ({ website_name, website_description, home_url, menu_items, postList }) => {
-  const router = useRouter()
-
-  if (router.query.page > 1) {
-    // TODO: pagination
-  }
-
   return (
-    <Layout {...{ website_name, website_description, home_url, menu_items }}>
-      <section className="article-list">
-        <PostList postList={postList} />
-      </section>
-      <section className='pagination'>
-        <Link href='/?page=2'>
-          <a>Older posts →</a>
-        </Link>
-      </section>
-    </Layout>
+    <Layout {...{ postList, next_page_num: 2, website_name, website_description, home_url, menu_items }} />
   )
 }
 
