@@ -50,8 +50,8 @@ export const getStaticProps = async ({ params }) => {
       })),
 
       page_feature_image_url: page_info?.better_featured_image?.source_url || null,
-      page_title: page_info?.title.rendered,
-      page_content: page_info?.content.rendered,
+      page_title: page_info?.title.rendered || null,
+      page_content: page_info?.content.rendered || null,
     }
   }
 }

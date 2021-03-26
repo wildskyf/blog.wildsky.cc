@@ -32,12 +32,12 @@ export const getStaticProps = async (context) => {
 
     postList: post_info.map(post => {
       return {
-        guid: post?.guid?.rendered,
-        date: post?.date,
-        slug: post?.slug,
-        link: post?.link.replace('https://blog.wildsky.cc', ''),
-        title: post?.title?.rendered,
-        excerpt: post?.excerpt?.rendered,
+        guid: post?.guid?.rendered || null,
+        date: post?.date || null,
+        slug: post?.slug || null,
+        link: post?.link.replace(/https?:\/\/blog\.wildsky\.cc/, '') || null,
+        title: post?.title?.rendered || null,
+        excerpt: post?.excerpt?.rendered || null,
         feature_image_url: post?.better_featured_image?.source_url || null
       }
     })

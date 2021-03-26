@@ -56,9 +56,9 @@ export const getStaticProps = async ({ params }) => {
       })),
 
       post_feature_image_url: post_info?.better_featured_image?.source_url || null,
-      post_date: post_info?.date,
-      post_title: post_info?.title.rendered,
-      post_content: post_info?.content.rendered,
+      post_date: post_info?.date || null,
+      post_title: post_info?.title.rendered || null,
+      post_content: post_info?.content.rendered || null,
     }
   }
 }
