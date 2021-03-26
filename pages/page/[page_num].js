@@ -9,8 +9,8 @@ const PaginationPage = ({ website_name, website_description, home_url, menu_item
   return (
     <Layout {...{
       postList,
-      previous_page_num: current_page_num - 1,
-      next_page_num: !is_last_page && (current_page_num + 1),
+      previous_page_num: `/page/${current_page_num - 1}`,
+      next_page_num: !is_last_page && `/page/${current_page_num + 1}`,
       website_name,
       website_description,
       home_url,

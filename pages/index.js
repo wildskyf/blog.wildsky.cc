@@ -7,7 +7,7 @@ import { BACKEND_ENDPOINT } from '../data'
 
 const Home = ({ website_name, website_description, home_url, menu_items, postList }) => {
   return (
-    <Layout {...{ postList, next_page_num: 2, website_name, website_description, home_url, menu_items }} />
+    <Layout {...{ postList, next_page_path: '/page/2', website_name, website_description, home_url, menu_items }} />
   )
 }
 
