@@ -26,12 +26,20 @@ export const getStaticPaths = async () => {
   const paths = Array(totalPage)
     .fill(0)
     .map((_, i) => ({ params: { page_num: String(i + 1) } }))
-    .filter((_, i) => i !== 0)
 
   return { paths, fallback: false }
 }
 
 export const getStaticProps = async ({ params }) => {
+  if (params.page_num === 1) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: true
+      }
+    }
+  }
+
   const [ blog_info, menu_info, post_res ] = await Promise.all([
     fetch(`${BACKEND_ENDPOINT}/wp-json/`).then(jsonify),
     fetch(`${BACKEND_ENDPOINT}/wp-json/menus/v1/menus/main-tw`).then(jsonify),
