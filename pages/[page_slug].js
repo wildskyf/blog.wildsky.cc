@@ -21,11 +21,11 @@ const Page = (props) => {
 export const getStaticPaths = async () => {
   const page_info = await fetch(`${BACKEND_ENDPOINT}/wp-json/menus/v1/menus/main-tw`).then(r => r.json())
   const pages = page_info.items
-    .map(item => item.url.replace('https://blog.wildsky.cc', ''))
+    .map(item => item.url.replace(/https?:\/\/blog\.wildsky\.cc/, ''))
     .filter(item => item && !['#pll_switcher'].includes(item)) // TODO: i18n
 
   const paths = pages.map((page) => ({
-    params: { page_slug: page.replace(/\//g, '') },
+    params: { page_slug: page.replace(/https?:\/\/blog\.wildsky\.cc/, '').replace(/\//g, '') },
   }))
 
   return { paths, fallback: false }
@@ -45,7 +45,7 @@ export const getStaticProps = async ({ params }) => {
       home_url: '/',
       menu_items: menu_info.items.map(item => ({
         guid: item.guid,
-        url: `${item.url.replace('https://blog.wildsky.cc', '')}/`,
+        url: `${item.url.replace(/https?:\/\/blog\.wildsky\.cc/, '')}/`,
         title: item.title
       })),
 

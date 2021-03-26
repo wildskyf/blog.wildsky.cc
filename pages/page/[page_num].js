@@ -57,7 +57,7 @@ export const getStaticProps = async ({ params }) => {
 
       menu_items: menu_info.items.map(item => ({
         guid: item.guid,
-        url: `${item.url.replace('https://blog.wildsky.cc', '')}/`,
+        url: `${item.url.replace(/https?:\/\/blog\.wildsky\.cc/, '')}/`,
         title: item.title
       })),
 
@@ -66,7 +66,7 @@ export const getStaticProps = async ({ params }) => {
           guid: post?.guid?.rendered || null,
           date: post?.date || null,
           slug: post?.slug || null,
-          link: post?.link.replace('https://blog.wildsky.cc', '') || null,
+          link: post?.link.replace(/https?:\/\/blog\.wildsky\.cc/, '') || null,
           title: post?.title?.rendered || null,
           excerpt: post?.excerpt?.rendered || null,
           feature_image_url: post?.better_featured_image?.source_url || null

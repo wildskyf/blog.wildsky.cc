@@ -51,7 +51,7 @@ export const getStaticProps = async ({ params }) => {
       home_url: '/',
       menu_items: menu_info.items.map(item => ({
         guid: item.guid,
-        url: `${item.url.replace('https://blog.wildsky.cc', '')}/`,
+        url: `${item.url.replace(/https:\/\/blog\.wildsky\.cc/, '')}/`,
         title: item.title
       })),
 
