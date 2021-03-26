@@ -20,11 +20,16 @@ const Post = (props) => {
 }
 
 export const getStaticPaths = async () => {
-  const post_info = await fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?tags=171`).then(jsonify) // tags 171 = 中文文章
+  const post_res = await fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?tags=171`, { method: 'HEAD' }) // tags 171 = 中文文章
+  const totalPage = Number(post_res.headers.get('x-wp-totalpages'))
 
-  const posts = post_info
-    .map(item => item.slug)
+  const post_slug_list_res = await Promise.all(
+    Array(totalPage - 1)
+      .fill(0)
+      .map((_,i) => fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?tags=171&page=${i + 1}`).then(jsonify))
+  )
 
+  const posts = post_slug_list_res.reduce((ret, cut) => [...ret, ...cut], []).map(item => item.slug)
   const paths = posts.map((post) => ({
     params: { post_slug: post },
   }))
