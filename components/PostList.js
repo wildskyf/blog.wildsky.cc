@@ -18,7 +18,7 @@ const PostList = ({ lang, postList }) => {
                   <Link href={`${root_path}/posts/${post.slug}`}>
                     <a>
                       <h2
-                        className='font-sans mb-4 text-2xl lg:text-3xl font-semibold text-gray-800 hover:text-red-700 transition-colors'
+                        className='font-sans mb-4 text-2xl lg:text-3xl font-semibold text-gray-800 hover:text-red-700'
                         dangerouslySetInnerHTML={{ __html: post.title }}
                         style={{ hyphens: 'auto' }}
                       />

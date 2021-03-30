@@ -8,7 +8,7 @@ const ReadMoreButton = ({ to }) => {
           text-sm
           float-right font-sans rounded py-2 px-4 mx-8 -mt-8
           border-solid border-2 border-red-700 bg-white text-red-700
-          hover:bg-red-700 hover:text-white transition-colors
+          hover:bg-red-700 hover:text-white
         `}>
           Read More
         </a>
