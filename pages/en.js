@@ -1,9 +1,13 @@
-import Layout from '../layout/list'
+import { HomeComponent } from './index'
 import fetchIndexData from '../libs/fetchIndexData'
 
-const EnHome = ({ website_name, website_description, home_url, menu_items, postList }) => {
+const EnHome = (props) => {
   return (
-    <Layout {...{ lang: 'en', postList, next_page_path: '/en/page/2', website_name, website_description, home_url, menu_items }} />
+    <HomeComponent {...props}
+      lang='en'
+      pageName='Home'
+      pageDesc='Hi I am Geng-Zhi, using Wildsky as my codename on the Internet. Currently working in Taiwan AI Labs, and I am a keyholder in Taiwan Mozilla Community. With this blog, I hope to find the answers for three big questions: who am I, Where am I from, and Where to go.'
+    />
   )
 }
 
