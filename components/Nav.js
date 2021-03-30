@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const Nav = ({ menu_items }) => {
   const { width } = useWindowSize()
-  const isDesktop = width >= 640
+  const isDesktop = width >= 1024
   const [isNavOpen, setNavOpen] = useState(false)
 
   // TODO: i18n
