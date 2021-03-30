@@ -5,7 +5,7 @@ import PostList from '../components/PostList'
 const ListLayout = ({ lang, postList, previous_page_path, next_page_path, home_url, website_name, website_description, menu_items }) => {
   return (
     <>
-      <Layout {...{ home_url, website_name, website_description, menu_items }}>
+      <Layout {...{ lang, home_url, website_name, website_description, menu_items }}>
         <section className="article-list">
           <PostList lang={lang} postList={postList} />
         </section>

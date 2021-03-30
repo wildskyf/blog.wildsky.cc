@@ -8,7 +8,7 @@ const PostList = ({ lang, postList }) => {
   const root_path = lang == 'en' ? '/en' : ''
 
   return (
-    <ul className="flex flex-col">
+    <ul className="flex flex-col px-4 lg:px-0" lang={lang === 'tw' ? 'zh-Hant-TW' : 'en'}>
       {
         postList.map(post => {
           return (
@@ -18,8 +18,9 @@ const PostList = ({ lang, postList }) => {
                   <Link href={`${root_path}/posts/${post.slug}`}>
                     <a>
                       <h2
-                        className='font-sans mb-4 text-3xl font-semibold text-gray-800 hover:text-red-700 transition-colors'
+                        className='font-sans mb-4 text-2xl lg:text-3xl font-semibold text-gray-800 hover:text-red-700 transition-colors'
                         dangerouslySetInnerHTML={{ __html: post.title }}
+                        style={{ hyphens: 'auto' }}
                       />
                     </a>
                   </Link>

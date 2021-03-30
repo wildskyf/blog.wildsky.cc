@@ -8,7 +8,7 @@ const Page = (props) => {
   const { website_name, website_description, home_url, page_feature_image_url, page_title, menu_items, page_content } = props
 
   return (
-    <Layout {...{ home_url, website_name, website_description, menu_items }}>
+    <Layout {...{ lang: 'en', home_url, website_name, website_description, menu_items }}>
       <Article
         feature_image_url={page_feature_image_url}
         title={page_title}

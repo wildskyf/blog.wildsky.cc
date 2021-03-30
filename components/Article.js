@@ -3,7 +3,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const Article = ({ feature_image_url, date, title, content }) => {
   return (
-    <article className='py-16'>
+    <article className='px-4 lg:px-0 py-16'>
       <header>
         <h1
           className='text-3xl font-bold mb-4 text-gray-800'
