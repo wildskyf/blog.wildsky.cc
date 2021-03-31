@@ -1,20 +1,34 @@
+import Head from '../components/Head'
 import Layout from '../layout/page'
 import Article from '../components/Article'
 
 import fetchPageShowPath from '../libs/fetchPageShowPath'
 import fetchPageShowData from '../libs/fetchPageShowData'
 
-const Page = (props) => {
-  const { website_name, website_description, home_url, page_feature_image_url, page_title, menu_items, page_content } = props
+export const PageComponent = (props) => {
+  const { pageName, pageDesc } = props
+  const { website_name, website_description, home_url, menu_items } = props
+  const { page_feature_image_url, page_title, page_content } = props
 
   return (
     <Layout {...{ lang: 'tw', home_url, website_name, website_description, menu_items }}>
+      <Head  {...{ pageName, pageDesc }} />
       <Article
         feature_image_url={page_feature_image_url}
         title={page_title}
         content={page_content}
       />
     </Layout>
+  )
+}
+
+const Page = (props) => {
+  return (
+    <PageComponent {...props}
+      lang='tw'
+      pageName={props.page_title}
+      pageDesc={props.page_content.substring(0, 70)}
+    />
   )
 }
 

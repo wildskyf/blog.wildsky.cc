@@ -1,21 +1,15 @@
-import Layout from '../../../layout/post'
-import Article from '../../../components/Article'
+import { PostComponent } from '../../posts/[post_slug]'
 
 import fetchPostShowPath from '../../../libs/fetchPostShowPath'
 import fetchPostShowData from '../../../libs/fetchPostShowData'
 
 const Post = (props) => {
-  const { website_name, website_description, home_url, post_feature_image_url, post_date, post_title, menu_items, post_content } = props
-
   return (
-    <Layout {...{ home_url, website_name, website_description, menu_items }}>
-      <Article
-        feature_image_url={post_feature_image_url}
-        date={post_date}
-        title={post_title}
-        content={post_content}
-      />
-    </Layout>
+    <PostComponent {...props}
+      lang='en'
+      pageName={props.post_title}
+      pageDesc={props.pageDesc}
+    />
   )
 }
 

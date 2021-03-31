@@ -1,21 +1,15 @@
-import Layout from '../../../layout/list'
+import { PaginationPageComponent } from '../../page/[page_num]'
+
 import fetchPaginationShowPath from '../../../libs/fetchPaginationShowPath'
 import fetchPaginationShowData from '../../../libs/fetchPaginationShowData'
 
-const EnPaginationPage = ({ website_name, website_description, home_url, menu_items, postList, total_page_num, current_page_num }) => {
-  const is_first_page = current_page_num === 1
-  const is_last_page = total_page_num === current_page_num
-
+const EnPaginationPage = (props) => {
   return (
-    <Layout {...{
-      postList,
-      previous_page_path: !is_first_page && `/en/page/${current_page_num - 1}`,
-      next_page_path: !is_last_page && `/en/page/${current_page_num + 1}`,
-      website_name,
-      website_description,
-      home_url,
-      menu_items
-    }} />
+    <PaginationPageComponent {...props}
+      lang='en'
+      pageName={`Article List Page ${props.current_page_num}`}
+      pageDesc='Hi I am Geng-Zhi, using Wildsky as my codename on the Internet. Currently working in Taiwan AI Labs, and I am a keyholder in Taiwan Mozilla Community. With this blog, I hope to find the answers for three big questions: who am I, Where am I from, and Where to go.'
+    />
   )
 }
 

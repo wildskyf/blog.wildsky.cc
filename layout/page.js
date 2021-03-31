@@ -8,7 +8,7 @@ const PageLayout = ({ lang, home_url, website_name, website_description, menu_it
       </header>
 
       <main className='flex justify-center items-center py-4' lang={lang === 'tw' ? 'zh-Hant-TW' : 'en'}>
-        <div className='flex flex-col max-w-full lg:max-w-3xl'>
+        <div className='flex flex-col w-full max-w-full lg:max-w-3xl'>
           {children}
         </div>
       </main>
