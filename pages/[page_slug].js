@@ -27,7 +27,7 @@ const Page = (props) => {
     <PageComponent {...props}
       lang='tw'
       pageName={props.page_title}
-      pageDesc={props.page_content.substring(0, 70)}
+      pageDesc={props.page_content && props.page_content.substring(0, 70)}
     />
   )
 }
