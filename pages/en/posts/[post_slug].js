@@ -9,6 +9,7 @@ const Post = (props) => {
       lang={LANG}
       pageName={props.post_title}
       pageDesc={props.pageDesc}
+      pageImage={props.post_feature_image_url}
     />
   )
 }

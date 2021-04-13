@@ -9,6 +9,7 @@ const Page = (props) => {
       lang={LANG}
       pageName={props.page_title}
       pageDesc={props.page_content && props.page_content.substring(0, 70)}
+      pageImage={props.page_feature_image_url}
     />
   )
 }
