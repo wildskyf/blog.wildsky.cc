@@ -6,7 +6,7 @@ const Nav = ({ lang, menu_items }) => {
   const { width } = useWindowSize()
   const isDesktop = width >= 1024
   const [isNavOpen, setNavOpen] = useState(false)
-  const homepage_link = lang === 'en' ? { label: '中文', path: '/' } : { label: 'English', path: '/en/' }
+  const homepage_link = lang === 'en' ? { label: '中文', path: '/' } : { label: 'english', path: '/en/' }
 
   const pages = menu_items.filter(item => !['Languages'].includes(item.title))
 
