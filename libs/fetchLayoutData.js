@@ -15,7 +15,7 @@ const fetchLayoutData = async ({ lang }) => {
 
     menu_items: menu_info.items.map(item => ({
       guid: item.guid,
-      url: `${item.url.replace(/https?:\/\/blog\.wildsky\.cc/, '')}/`,
+      url: `${item.url.replace(/https?:\/\/backend\.wildsky\.cc/, '')}/`,
       title: item.title
     }))
   }
