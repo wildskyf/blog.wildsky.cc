@@ -45,6 +45,7 @@
 .article-content a {
   --tw-text-opacity: 1;
   color: rgba(185, 28, 28, var(--tw-text-opacity));
+  word-break: break-all;
 }
 
 .article-content p {
