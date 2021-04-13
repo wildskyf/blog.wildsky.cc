@@ -2,15 +2,13 @@ import { useState } from 'react'
 import { useWindowSize } from 'react-use'
 import Link from 'next/link'
 
-const Nav = ({ menu_items }) => {
+const Nav = ({ lang, menu_items }) => {
   const { width } = useWindowSize()
   const isDesktop = width >= 1024
   const [isNavOpen, setNavOpen] = useState(false)
+  const homepage_link = lang === 'en' ? { label: '中文', path: '/' } : { label: 'English', path: '/en/' }
 
-  // TODO: i18n
-  const items = menu_items.filter(item => {
-    return !['Languages'].includes(item.title)
-  })
+  const pages = menu_items.filter(item => !['Languages'].includes(item.title))
 
   const toggleNav = () => setNavOpen(!isNavOpen)
 
@@ -26,7 +24,7 @@ const Nav = ({ menu_items }) => {
         (isDesktop || isNavOpen) && (
           <ul className="flex flex-col text-center lg:flex-row w-full lg:w-auto" onClick={toggleNav}>
             {
-              items.map(item => {
+              pages.map(item => {
                 return (
                   <li key={item.guid}>
                     <Link href={item.url}>
@@ -41,6 +39,16 @@ const Nav = ({ menu_items }) => {
                 )
               })
             }
+            <li>
+              <Link href={homepage_link.path}>
+                <a className={`
+                  text-gray-700 text-xl font-semibold px-3 py-3 mx-1 cursor-pointer hover:text-red-700 w-full block
+                  border-b-2 lg:border-b-0 border-gray-200 border-solid
+                `}>
+                  {homepage_link.label}
+                </a>
+              </Link>
+            </li>
           </ul>
         )
       }

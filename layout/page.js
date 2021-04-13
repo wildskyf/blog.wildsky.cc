@@ -4,7 +4,7 @@ const PageLayout = ({ lang, home_url, website_name, website_description, menu_it
   return (
     <>
       <header className='flex flex-col justify-center items-center px-4 py-12 bg-gray-100 border-b-2 border-gray-200 border-solid'>
-        <Header {...{ home_url, website_name, website_description, menu_items }} />
+        <Header {...{ lang, home_url, website_name, website_description, menu_items }} />
       </header>
 
       <main className='flex justify-center items-center py-4' lang={lang === 'tw' ? 'zh-Hant-TW' : 'en'}>
