@@ -1,1 +1,1 @@
-export const BACKEND_ENDPOINT = 'https://blog.wildsky.cc'
+export const BACKEND_ENDPOINT = 'https://backend.wildsky.cc'
