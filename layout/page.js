@@ -1,4 +1,5 @@
 import Header from '../components/Header'
+import PropTypes from 'prop-types'
 
 const PageLayout = ({ lang, home_url, website_name, website_description, menu_items, children }) => {
   const lang_code = lang === 'tw' ? 'zh-Hant-TW' : 'en'
@@ -20,6 +21,18 @@ const PageLayout = ({ lang, home_url, website_name, website_description, menu_it
       </footer>
     </div>
   )
+}
+
+PageLayout.propTypes = {
+  lang:                 PropTypes.string.isRequired,
+  home_url:             PropTypes.string.isRequired,
+  website_name:         PropTypes.string.isRequired,
+  website_description:  PropTypes.string.isRequired,
+  menu_items:           PropTypes.arrayOf(PropTypes.object).isRequired,
+  children:             PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element
+  ])
 }
 
 export default PageLayout

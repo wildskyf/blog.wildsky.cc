@@ -1,5 +1,5 @@
 import Head from '../../components/Head'
-import Layout from '../../layout/post'
+import Layout from '../../layout/page'
 import Article from '../../components/Article'
 
 import fetchPostShowPath from '../../libs/fetchPostShowPath'
