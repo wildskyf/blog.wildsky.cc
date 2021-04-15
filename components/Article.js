@@ -29,7 +29,7 @@ const Article = ({ feature_image_url, date, title, content }) => {
       }
       <div
       className='article-content leading-8 text-lg font-serif text-gray-700 mt-8 text-lg text-gray-700 pb-4'
-        dangerouslySetInnerHTML={{__html: content.replace('href="https://backend.wildsky.cc', 'href="https://blog.wildsky.cc') }}
+        dangerouslySetInnerHTML={{__html: content.replace(/href="https:\/\/backend\.wildsky\.cc/g, 'href="https://blog.wildsky.cc') }}
       />
     </article>
   )
