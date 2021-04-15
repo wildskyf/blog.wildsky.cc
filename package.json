@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "out": "yarn build && yarn export"
+    "out": "yarn build && yarn export && node ./scripts/sitemap_generator.js"
   },
   "dependencies": {
     "dayjs": "^1.10.4",
