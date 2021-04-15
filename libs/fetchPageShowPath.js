@@ -6,10 +6,17 @@ const fetchPageShowPath = async ({ lang }) => {
   const page_info = await fetch(`${BACKEND_ENDPOINT}/wp-json/menus/v1/menus/main-${lang}`).then(jsonify)
 
   return page_info.items
-    .map(item => item.url.replace(/^https?:\/\/backend\.wildsky\.cc/, ''))
+    .map(item => {
+      return item.url
+        .replace(/^https?:\/\/(blog|backend)\.wildsky\.cc\//, '')
+        .replace(/^https?:\/\/blog.wildsky.cc$/, '/')
+        .replace(/\/$/, '')
+        .replace(/^en\/?/, '')
+    })
     .filter(item => item && !['#pll_switcher'].includes(item))
     .map((page) => {
-      const page_slug = page.replace(/^https?:\/\/backend\.wildsky\.cc/, '').replace(/^\/en\//, '').replace(/\//g, '')
+      const page_slug = page
+
       return {
         params: { page_slug }
       }
