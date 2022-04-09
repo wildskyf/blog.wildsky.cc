@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import { jsonify } from '../utils'
-import { BACKEND_ENDPOINT } from '../data'
+import { BACKEND_ENDPOINT } from '../data/globalConfig'
 
 const fetchPageShowPath = async ({ lang }) => {
   const page_info = await fetch(`${BACKEND_ENDPOINT}/wp-json/menus/v1/menus/main-${lang}`).then(jsonify)

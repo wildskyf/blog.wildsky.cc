@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import { jsonify } from '../utils'
-import { BACKEND_ENDPOINT } from '../data'
+import { BACKEND_ENDPOINT } from '../data/globalConfig'
 
 const fetchPostShowPath = async ({ post_slug, lang }) => {
   const [ blog_info, menu_info, [post_info] ] = await Promise.all([

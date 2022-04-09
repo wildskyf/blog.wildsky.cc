@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import { jsonify } from '../utils'
-import { BACKEND_ENDPOINT } from '../data'
+import { BACKEND_ENDPOINT } from '../data/globalConfig'
 
 const fetchLayoutData = async ({ lang }) => {
   const [ blog_info, menu_info ] = await Promise.all([

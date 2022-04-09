@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import { jsonify } from '../utils'
-import { BACKEND_ENDPOINT } from '../data'
+import { BACKEND_ENDPOINT } from '../data/globalConfig'
 
 const fetchIndexData = async ({ lang }) => {
   const filterPostByTag = lang === 'en' ? 'tags_exclude=171' : 'tags=171' // tags 171 = 中文文章

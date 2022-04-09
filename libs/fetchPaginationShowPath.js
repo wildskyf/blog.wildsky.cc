@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-import { BACKEND_ENDPOINT } from '../data'
+import { BACKEND_ENDPOINT } from '../data/globalConfig'
 
 const fetchPaginationShowPath = async ({ lang }) => {
   const filterPostByTag = lang === 'en' ? 'tags_exclude=171' : 'tags=171'
