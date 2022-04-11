@@ -5,8 +5,9 @@ import { BACKEND_ENDPOINT } from '../data/globalConfig'
 const fetchIndexData = async ({ lang }) => {
   const filterPostByTag = lang === 'en' ? 'tags_exclude=171' : 'tags=171' // tags 171 = 中文文章
 
-  const [ blog_info, menu_info, post_info ] = await Promise.all([
-    fetch(`${BACKEND_ENDPOINT}/wp-json/?_fields=name,description`).then(jsonify),
+  const blog_info = require('../data/blog_info.json');
+
+  const [ menu_info, post_info ] = await Promise.all([
     fetch(`${BACKEND_ENDPOINT}/wp-json/menus/v1/menus/main-${lang}`).then(jsonify),
     fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?_fields=featured_media,better_featured_image,link,slug,date,guid,title,excerpt&${filterPostByTag}`).then(jsonify)
   ])

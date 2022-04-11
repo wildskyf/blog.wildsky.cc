@@ -3,8 +3,9 @@ import { jsonify } from '../utils'
 import { BACKEND_ENDPOINT } from '../data/globalConfig'
 
 const fetchPageShowData = async ({ page_slug, lang }) => {
-  const [ blog_info, menu_info, [page_info] ] = await Promise.all([
-    fetch(`${BACKEND_ENDPOINT}/wp-json/?_fields=name,description`).then(jsonify),
+  const blog_info = require('../data/blog_info.json');
+
+  const [ menu_info, [page_info] ] = await Promise.all([
     fetch(`${BACKEND_ENDPOINT}/wp-json/menus/v1/menus/main-${lang}`).then(jsonify),
     fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/pages/?_fields=featured_media,better_featured_image,date,title,content&slug=${page_slug}`).then(jsonify)
   ])

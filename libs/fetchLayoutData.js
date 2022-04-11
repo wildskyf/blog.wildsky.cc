@@ -3,8 +3,9 @@ import { jsonify } from '../utils'
 import { BACKEND_ENDPOINT } from '../data/globalConfig'
 
 const fetchLayoutData = async ({ lang }) => {
-  const [ blog_info, menu_info ] = await Promise.all([
-    fetch(`${BACKEND_ENDPOINT}/wp-json/?_fields=name,description`).then(jsonify),
+  const blog_info = require('../data/blog_info.json');
+
+  const [ menu_info ] = await Promise.all([
     fetch(`${BACKEND_ENDPOINT}/wp-json/menus/v1/menus/main-${lang}`).then(jsonify),
   ])
 
