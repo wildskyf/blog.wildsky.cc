@@ -1,0 +1,10 @@
+{
+  "guid": "https://blog.wildsky.cc/?p=1664",
+  "date": "2020-12-27T17:00:36",
+  "slug": "file-upload-bug-caused-by-k8s-ingress-nginx",
+  "link": "/posts/file-upload-bug-caused-by-k8s-ingress-nginx/",
+  "title": "K8S ingress 上傳檔案的雷（其實和 Nginx 比較有關）",
+  "excerpt": "<p>前陣子工作上有同事遇到個 bug： 如果在 local 跑檔案上傳，在上傳的過程中，會在後端 server 的&#8230;</p>\n",
+  "feature_image_url": "https://backend.wildsky.cc/wp-content/uploads/2020/12/ibrahim-boran-XdIrwH98K_E-unsplash.jpg",
+  "content": "\n<p>前陣子工作上有同事遇到個 bug：</p>\n\n\n\n<blockquote class=\"wp-block-quote\"><p>如果在 local 跑檔案上傳，在上傳的過程中，會在後端 server 的 file 暫存區看到一個檔案，檔案大小也會隨著上傳進度而漸增；然而，deploy 到我們公司的 k8s 上後，卻變成在上傳過程中會一直看不到暫存檔，直到上傳進度達到 100% 時才會看到檔案突然出現。</p></blockquote>\n\n\n\n<!--more-->\n\n\n\n<p>這個 bug 和 Nginx 有關，它會 default 對檔案做 buffering，相關設定值為 <code>proxy_request_buffering</code> 可以在 <a href=\"https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_request_buffering\" target=\"_blank\" rel=\"noreferrer noopener nofollow\">ngx_http_proxy_module 的文件</a> 裡看到這個預設值為 <code>on</code>。</p>\n\n\n\n<p>而 k8s 有 Nginx，所以理所當然地也會受到這個影響。如果不需要這個預設行為的話就要額外加上 annotation 才能改變這個預設行為：</p>\n\n\n\n<pre class=\"wp-block-code\"><code>nginx.ingress.kubernetes.io/proxy_request_buffering off;</code></pre>\n\n\n\n<p>是個沒遇過根本不會知道的雷⋯</p>\n\n\n\n<h2>參考：</h2>\n\n\n\n<ul><li><a href=\"https://stackoverflow.com/questions/64120525/nginx-controller-chunked-transfer-encoding-data-streaming-request-body-buffe\">https://stackoverflow.com/questions/64120525/nginx-controller-chunked-transfer-encoding-data-streaming-request-body-buffe</a></li><li><a href=\"https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_request_buffering\" target=\"_blank\" rel=\"noreferrer noopener nofollow\">Module ngx_http_proxy_module proxy_request_buffering section</a> </li></ul>\n"
+}
