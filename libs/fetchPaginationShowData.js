@@ -14,7 +14,17 @@ const fetchPaginationShowData = async ({ page_num, lang }) => {
 
   const current_page_post_infos = all_post_filenames
     .slice((page_num - 1) * PAGINATION_PER_PAGE_COUNT, page_num * PAGINATION_PER_PAGE_COUNT)
-    .map((filename) => require(`../data/posts-${lang}/${filename}`))
+    .map((filename) => {
+      const post_info = require(`../data/posts-${lang}/${filename}`)
+      return {
+        title: post_info.attributes.title,
+        slug: post_info.attributes.slug,
+        date: post_info.attributes.date,
+        guid: post_info.attributes.guid,
+        feature_image_url: post_info.attributes.feature_image ? `/images/${post_info.attributes.feature_image}` : null,
+        excerpt: post_info.attributes.excerpt,
+      }
+    })
 
   return {
     website_name: blog_info.name,
