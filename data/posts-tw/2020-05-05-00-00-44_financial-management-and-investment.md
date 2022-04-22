@@ -89,9 +89,7 @@ guid: "http://blog.wildsky.cc/?p=1014"
 
 而所謂的像資產的負債，就是那些「看起來好像應該要擁有、但實際上對增加收入沒有什麼幫助」的物品。像是開來很爽的車子、炫耀性質的名牌服飾，這些東西看起來好像是有錢的人必備用品，但其實我們只是被消費主義給洗腦了。
 
-![](/images/截圖-2020-05-04-下午10.48.37-1024x640.png)
-
-資本主義的糖衣！ – [【人民的法槌】社畜救星！ 教你如何爭取權益，徹底反抗慣老闆！｜反正我很閒](https://www.youtube.com/watch?v=X61d7PKHphI)
+![資本主義的糖衣](capitalism-sugar.png)
 
 至於要如何創造被動收入，這就是投資的部分了。
 
@@ -162,11 +160,11 @@ guid: "http://blog.wildsky.cc/?p=1014"
 這個觀念其實在很多講理財的書都有提到：[有錢人想的和你不一樣](https://www.books.com.tw/exep/assp.php/wildsky/products/0010316121?utm_source=wildsky&utm_medium=ap-books&utm_content=recommend&utm_campaign=ap-202005)、[駕馭金錢](https://www.books.com.tw/exep/assp.php/wildsky/products/0010823445?utm_source=wildsky&utm_medium=ap-books&utm_content=recommend&utm_campaign=ap-202005)。因為想法就好像要影印的那個檔案（而時間就是影印機），你不改變原本的檔案，那印出來的東西自然永遠都會是有問題的。
 
 > 無論你現在條件如何，只要思維改變，財務狀況就能改變。
-> 
+>
 > 有錢人想的和你不一樣
 
 > 想法轉為觀念，觀念形成決策，決策造就行動，行動孕育成果，經過反覆測試修正改善，最後提升規模。
-> 
+>
 > 駕馭金錢
 
 想法的力道非常強勁，舉個例子來說，前面提到不要怕失敗，這實在面對失敗這件事上面就有兩種迥然不同的想法：
