@@ -20,7 +20,7 @@ const Article = ({ feature_image_url, date, title, content }) => {
       {
         feature_image_url && (
           <LazyLoadImage
-            src={feature_image_url}
+            src={feature_image_url.includes('https://') ? feature_image_url : feature_image_url}
             alt=''
             width='750'
             height='410'

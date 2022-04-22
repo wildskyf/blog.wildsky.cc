@@ -1,26 +1,15 @@
-import fetch from 'isomorphic-fetch'
-import { jsonify } from '../utils'
-import { BACKEND_ENDPOINT } from '../data'
+import fs from 'fs'
 
-const fetchPostShowData = async ({ lang }) => {
-  const filterPostByTag = lang === 'en' ? 'tags_exclude=171' : 'tags=171' // tags 171 = 中文文章
+const fetchPostShowPath = async ({ lang }) => {
+  const post_filenames = fs
+    .readdirSync(`./data/posts-${lang}/`)
+    .map(f => f.replace(/.md$/, ''))
 
-  const post_res = await fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?${filterPostByTag}`, { method: 'HEAD' })
-  const totalPage = Number(post_res.headers.get('x-wp-totalpages'))
-
-  const post_slug_list_res = await Promise.all(
-    Array(totalPage)
-      .fill(0)
-      .map((_,i) => fetch(`${BACKEND_ENDPOINT}/wp-json/wp/v2/posts?${filterPostByTag}&page=${i + 1}`).then(jsonify))
-  )
-
-  const posts = post_slug_list_res.reduce((ret, cut) => [...ret, ...cut], []).map(item => item.slug)
-
-  const ret = posts.map((post) => ({
-    params: { post_slug: post },
+  const ret = post_filenames.map((post) => ({
+    params: { post_slug: post.split('_').pop() },
   }))
 
   return ret
 }
 
-export default fetchPostShowData
+export default fetchPostShowPath
