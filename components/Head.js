@@ -10,6 +10,7 @@ const Head = ({ pageName, pageDesc, pageImage }) => {
     <NextHead>
       <title>{pageTitle}</title>
       <meta name="description" content={desc} />
+      <link rel="alternate" type="application/rss+xml" title="Wildsky&#039;s BLOG &raquo; Feed" href="https://blog.wildsky.cc/rss.xml" />
       <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png" />
       <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png" />
       <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png" />

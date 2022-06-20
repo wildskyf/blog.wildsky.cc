@@ -11,3 +11,5 @@ $RECYCLE.BIN/
 node_modules/
 .next/
 out
+
+public/rss.xml
