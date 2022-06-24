@@ -43,7 +43,7 @@ Awards
 Volunteers
 ----------
 
-*   [Firefox Add-on Reviewer](https://wiki.mozilla.org/Add-ons/Reviewers)
+*   [Firefox Add-on Reviewer](https://wiki.mozilla.org/index.php?title=Add-ons/Reviewers&oldid=1223872)
 *   [MozTW Keyholder](https://moztw.org/space/)
 
 If you need a front-end engineer, feel free to contact me via email: poppin.wildsky+blog\[at\]gmail.com
