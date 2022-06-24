@@ -1,5 +1,5 @@
 ---
-title: "將搜尋引擎改成 Kagi Search"
+title: "將我的預設搜尋引擎換成 Kagi Search 了"
 date: 2022-06-24T20:14:14
 slug: "change-search-engine-to-kagi"
 excerpt: "<p>平常搜尋資料時很常被垃圾網站佔滿視線，之前嘗試過 DuckDuckGo，但出來的搜尋結果還是不太滿意。
