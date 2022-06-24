@@ -11,19 +11,20 @@ feature_image: null
 
 ### 鄭尹 Chas
 
-我女友，部落格主要在講藝術與求職相關的事情。
+我老婆，部落格主要在講藝術與職涯相關的事情。
 
 *   [https://blog.rarachasing.tw](https://blog.rarachasing.tw)
 
 ### kidwm
 
-我在 web 領域的師父，我的許多東西都是跟他學的，真的幫助了我非常多。
+我在 Web 領域的師父，如果說我會點前端技術，那也都是跟他學的，真的幫助了我非常多。
 
+*   [https://www.kidwm.tw/](https://www.kidwm.tw/)
 *   [http://blog.kidwm.net](http://blog.kidwm.net/)
 
 ### Irvin
 
-在 Mozilla 社群認識的前輩。我當初會進入 womany 實習、工作也是受了他的邀請。（第二個連結是他的粉專 – 摩茲戰神，歡迎跪拜。XD）
+在 Mozilla 社群認識的前輩。我當初會進入 womany 實習、工作也是受了他的邀請。（第二個連結是他的粉專 – 摩茲戰神，歡迎跪拜。）
 
 *   [http://irvin.sto.tw](http://irvin.sto.tw)
 *   [https://www.facebook.com/MozTWMars/](https://www.facebook.com/MozTWMars/)
@@ -36,7 +37,7 @@ feature_image: null
 
 ### iLog
 
-一個幫助了我許多的高中學長，是個神人。連這個站都可以算是他幫我才誕生的！
+一個幫助了我許多的高中學長，是個神人。這個部落格當初也是他協助才得以誕生的。
 
 *   [https://isite.tw/](https://isite.tw/)
 
@@ -63,8 +64,8 @@ feature_image: null
 
 專注於性別相關資訊的網站，內含女人全方位議題，從職場發展、旅行玩樂、時尚彩妝、生活風格到愛性情慾。是個深具教育意義的網站。
 
-*   [https://womany.net](https://womany.net/)  
-    
+*   [https://womany.net](https://womany.net/)
+
 
 ### Taiwan AI Labs
 
