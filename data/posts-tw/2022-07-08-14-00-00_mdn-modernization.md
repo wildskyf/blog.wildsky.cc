@@ -1,6 +1,6 @@
 ---
 title: "MDN 想要將 Code 變得更現代化"
-date: 2022-06-24T20:14:14
+date: 2022-07-08T14:00:00
 slug: "mdn-modernization"
 excerpt: "才在 murmur 說 MDN 上的 code 很老舊，就看到 Hacker News 上有人在討論
 要把 MDN 的 code 改成更現代一點⋯⋯"
