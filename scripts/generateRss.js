@@ -22,7 +22,7 @@ const getAllPosts = () => {
         src="https://blog.wildsky.cc/images/${data.feature_image}"
         alt="${data.title}'s feature image"
       /> ${data.excerpt}`,
-      link: 'https://blog.wildsky.cc/posts' + filename.replace('.md', ''),
+      link: 'https://blog.wildsky.cc/posts/' + data.slug,
     };
   });
   // Sort the blogposts by date
