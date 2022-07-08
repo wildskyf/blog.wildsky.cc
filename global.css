@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-.article-content h2,
-.article-content h3,
-.article-content h4 {
-  font-weight: 600;
-  font-family: sans-serif;
-  margin: 3rem auto 1.5rem;
-  position: relative;
-}
-
 .article-content h2:before,
 .article-content h3:before,
 .article-content h4:before {
@@ -17,8 +8,13 @@
   left: -2.5rem;
 }
 
-.article-content h2 {
-  font-size: 1.5rem;
+.article-content h2,
+.article-content h3,
+.article-content h4 {
+  font-weight: 600;
+  font-family: sans-serif;
+  margin: 3rem auto 1.5rem;
+  position: relative;
   line-height: 1.75rem;
 }
 
@@ -26,15 +22,11 @@
 .article-content h3:before { content: 'h3'; }
 .article-content h4:before { content: 'h4'; }
 
-.article-content h3 {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
+.article-content h2 { font-size: 1.5rem; }
+.article-content h3 { font-size: 1.25rem; }
+.article-content h4 { font-size: 1.1rem; }
 
-.article-content h4 {
-  font-size: 1.1rem;
-  line-height: 1.75rem;
-}
+.article-content hr { margin: 24px 0; }
 
 .article-content ul {
   padding: 0 0 0 2rem;
@@ -48,16 +40,38 @@
   word-break: break-all;
 }
 
+.article-content a:hover {
+  --tw-text-opacity: .75;
+  text-decoration: underline;
+}
+
 .article-content p {
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .article-content pre {
-  overflow-x: scroll;
+  overflow-x: auto;
   background-color: #eee;
   border: 1px solid #ddd;
   padding: 6px 6px;
   margin: 12px 0 16px;
+}
+
+.article-content code {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  padding: 1px 4px;
+  border-radius: 2px;
+  color: #777;
+  font-weight: 300;
+  font-family: monospace;
+  word-break: break-word;
+}
+
+.article-content pre code {
+  border: 0;
+  background-color: transparent;
+  word-break: initial;
 }
 
 .article-content blockquote {
@@ -80,4 +94,3 @@
   height: 500px;
   position: static !important;
 }
-
