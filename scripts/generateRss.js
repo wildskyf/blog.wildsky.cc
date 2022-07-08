@@ -7,25 +7,21 @@ const matter = require('gray-matter');
 // const matter = require('frontmatter-markdown-loader');
 
 const getAllPosts = () => {
-  // Read the posts directory and get blog posts' filenames
   const filenames = fs.readdirSync(path.join('data/posts-tw'));
   // const enFilenames = fs.readdirSync(path.join('data/posts-en'));
 
-  // Go through all filenames
   const posts = filenames.map((filename) => {
-    // Full path to the file from project root
     const filepath = path.join('data/posts-tw/', filename);
-
-    // Read the content of the file
     const markdownWithMeta = fs.readFileSync(filepath, 'utf-8');
-
-    // Get all data from the frontmatter
     const { data } = matter(markdownWithMeta);
-    // Return everything we need for the RSS feed
+
     return {
       title: data.title,
       date: data.date,
-      excerpt: data.excerpt,
+      excerpt: `<img
+        src="https://blog.wildsky.cc/images/${data.feature_image}"
+        alt="${data.title}'s feature image"
+      /> ${data.excerpt}`,
       link: 'https://blog.wildsky.cc/posts' + filename.replace('.md', ''),
     };
   });
@@ -33,45 +29,44 @@ const getAllPosts = () => {
   return posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 };
 
-const getXmlItems = (blogPosts) => {
-  return blogPosts
-    .map((post) => {
-      return `<item>
-            <title>${post.title}</title>
+const CDATA = (content) => `<![CDATA[${content}]]>`
+
+const getRssXml = (blogPosts, latestPostDate) => `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+>
+  <channel>
+      <title>Wildsky F.</title>
+      <atom:link href="https://blog.wildsky.cc/rss.xml" rel="self" type="application/rss+xml" />
+      <link>https://blog.wildsky.cc</link>
+      <description>Easy things should be easy, and hard things should be possible.</description>
+      <language>zh-tw</language>
+      <sy:updatePeriod>hourly</sy:updatePeriod>
+      <sy:updateFrequency>1</sy:updateFrequency>
+      <lastBuildDate>${new Date(latestPostDate).toUTCString()}</lastBuildDate>
+      ${blogPosts.map((post) => `
+        <item>
+            <title>${CDATA(post.title)}</title>
             <link>${post.link}</link>
             <guid>${post.link}</guid>
             <pubDate>${new Date(post.date).toUTCString()}</pubDate>
-            <description>${post.excerpt}</description>
-            <dc:creator>Geng-Zh W. Fann</dc:creator>
-        </item>
-        `;
-    })
-    .join(''); // Join the array of items into a single long string
-};
-
-const getRssXml = (xmlItems, latestPostDate) => {
-  return `<?xml version="1.0" ?>
-  <rss
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:content="http://purl.org/rss/1.0/modules/content/"
-    xmlns:atom="http://www.w3.org/2005/Atom"
-    version="2.0"
-  >
-    <channel>
-        <title>Wildsky F.</title>
-        <link>https://blog.wildsky.cc</link>
-        <description>Easy things should be easy, and hard things should be possible.</description>
-        <language>zh-tw</language>
-        <lastBuildDate>${new Date(latestPostDate).toUTCString()}</lastBuildDate>
-        ${xmlItems}
-    </channel>
-  </rss>`;
-};
+            <description>${CDATA(post.excerpt)}</description>
+            <dc:creator>${CDATA('Geng-Zh W. Fann')}</dc:creator>
+        </item>`
+      ).join('')}
+  </channel>
+</rss>`;
 
 (() => {
   const postData = getAllPosts();
-  const xmlItems = getXmlItems(postData);
-  const rssXml = getRssXml(xmlItems, postData[0].date);
+  const rssXml = getRssXml(postData, postData[0].date);
 
   fs.writeFile(path.join('public', 'rss.xml'), rssXml, (err) => {
     if (err) {
