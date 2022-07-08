@@ -2,7 +2,9 @@ import Button from './Button'
 
 const ReadMoreButton = ({ to }) => {
   return (
-    <Button to={to} text='Read More' />
+    <div className='flex justify-end'>
+      <Button to={to} text='Read More' />
+    </div>
   )
 }
 
