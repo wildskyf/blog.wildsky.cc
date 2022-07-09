@@ -1,6 +1,6 @@
 ---
 title: 關於我 —— Wildsky
-feature_image: me-in-womany.png
+feature_image: ""
 ---
 你好，我是 Wildsky 。
 

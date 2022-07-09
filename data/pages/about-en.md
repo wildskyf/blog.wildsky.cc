@@ -1,6 +1,6 @@
 ---
 title: "About me: Geng-Zhi Wildsky Fann"
-feature_image: "me-in-womany.png"
+feature_image: ""
 ---
 Hi, I am Wildsky
 
