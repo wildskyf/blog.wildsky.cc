@@ -1,6 +1,8 @@
 import dayjs from 'dayjs'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 
+import 'prismjs/themes/prism-okaidia.css'
+
 const Article = ({ feature_image_url, date, title, content }) => {
   return (
     <article className='px-4 lg:px-0 py-16'>
