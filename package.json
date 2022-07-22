@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "g:article": "node ./scripts/generateNewArticle.js",
     "dev": "next dev",
     "build": "next build",
     "genSiteMap": "node ./scripts/sitemap_generator.js",
