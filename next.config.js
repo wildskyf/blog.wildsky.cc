@@ -1,3 +1,6 @@
+const markdownIt = require('markdown-it');
+const markdownItPrism = require('markdown-it-prism');
+
 module.exports = () => {
   return {
     poweredByHeader: false,
@@ -7,7 +10,13 @@ module.exports = () => {
 
       config.module.rules.push({
         test: /\.md$/,
-        use: 'frontmatter-markdown-loader'
+        use: [{
+          loader: 'frontmatter-markdown-loader',
+          options: {
+            markdownIt: markdownIt({ html: true }).use(markdownItPrism),
+          }
+        }]
+
       })
 
       return config

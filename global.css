@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('prismjs/themes/prism-okaidia.css');
 
 .article-content h2,
 .article-content h3,
@@ -65,10 +66,16 @@
   font-family: monospace;
   font-size: 14px;
   overflow-x: auto;
-  background-color: #eee;
   border: 1px solid #ddd;
   padding: 6px 6px;
   margin: 12px 0 16px;
+  background: #272822;
+}
+
+.article-content pre:not([class]) {
+  line-height: 1.5;
+  color: #fff;
+  background: #272822;
 }
 
 .article-content blockquote {
