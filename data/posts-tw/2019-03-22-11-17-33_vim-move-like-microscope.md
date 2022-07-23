@@ -31,9 +31,8 @@ map <C-DOWN> 5gj
 其他連結
 ----
 
-*   本站其他和 Vim 相關的文章: [vim](http://blog.wildsky.cc/tags/vim/)
 *   [www.vim.tw](https://www.vim.tw/)
-*   Vim Taiwan 的 telegram group: [http://t.me/vim\_tw](http://t.me/vim_tw)
+*   Vim Taiwan 的 telegram group: [https://t.me/vim\_tw](https://t.me/vim_tw)
 
 原推文在這
 -----

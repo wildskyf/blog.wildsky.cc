@@ -57,8 +57,7 @@ sudo yum install synaptics -y && sudo reboot
 *   [ask.fedoraproject.org](https://ask.fedoraproject.org/en/question/25741/i-cannot-use-my-touchpad-in-fedora18/)
 
 *   [Telegram](https://telegram.org/)
-*   [fedora](http://fedora.linux.org.tw/)
 *   [關鍵時刻](https://tw.movies.yahoo.com/movieinfo_trailer.html/id=302)
-*   [TLCL](http://linuxcommand.org/tlcl.php)
+*   [TLCL](https://linuxcommand.org/tlcl.php)
 
-你可能會想看看我寫的 [Fedora 調校文](http://blog.wildsky.cc/posts/tune-my-fedora/)。
+你可能會想看看我寫的 [Fedora 調校文](/posts/tune-my-fedora/)。

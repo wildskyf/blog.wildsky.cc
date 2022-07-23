@@ -18,5 +18,3 @@ guid: 2015-11-26-22-32-21_fix-com-google-process-gapps-stop-problem
 6.  回到主畫面，重開機以後應該就不會再來煩你了！
 
 然而，如果他還是一直出來吵你呢？那我就沒辦法啦⋯⋯ 可以試著把有「Google」這個字樣的 App 都「清除資料」 + 「強制停止」試試，因為那個訊息看起來就跟 Google 有關，所以一定就是他的 App 出 Bug，一個一個試，說不定就成功清除啦～！
-
-參考： [出現 com.google.process.gapps 錯誤](http://www.asus.com/zentalk/tw/forum.php?mod=viewthread&tid=82226)

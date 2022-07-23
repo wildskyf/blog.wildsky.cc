@@ -30,7 +30,7 @@ guid: 2018-01-07-17-32-11_information-resource-classification
 
 *   [【如果你想】秋冬換季好心情，五種推薦你可以立即實做的好方法](https://womany.net/read/article/14767)
 *   [【型男髮型】４款短髮「經典瀏海」，調整風格還能修飾臉型！](https://mf.techbang.com/posts/5057-5-ways-of-handling-mens-bangs)
-*   [以柔克剛！13 首讓你勇敢前行的女力歌單](http://womany.net/read/article/11058)
+*   [以柔克剛！13 首讓你勇敢前行的女力歌單](https://womany.net/read/article/11058)
 *   [放過我吧！期末考、報告、死線快把你逼死？用這 7 句厭世金句讓你道盡人生的哀愁](https://tw.blog.voicetube.com/archives/61841)
 *   [CSS 奇技淫巧十八招](http://blog.kidwm.net/390)
 *   [20+ Docs and Guides for Front-end Developers](https://www.sitepoint.com/20-docs-guides-front-end-developers-8/)
@@ -39,7 +39,7 @@ guid: 2018-01-07-17-32-11_information-resource-classification
 
 *   [「穿搭靈感都來自他們！」型男必追的６個歐美潮人Instagram](https://mf.techbang.com/posts/5072-the-inspiration-comes-from-them-a-sportsman-must-chase-6-of-european-and-american-tide-people-instagram)
 *   [Medium 上有哪些值得追蹤的 UI/UX 設計資源？](https://medium.com/%E5%A5%B3%E4%BA%BA%E8%BF%B7%E8%A8%AD%E8%A8%88%E5%AF%A6%E9%A9%97%E5%AE%A4-womany-phd-lab/6bestuiuxpublications-307e9b530f3e)
-*   [我的投資書單 @ Mr. Market 市場先生 — 投資理財入門](http://www.rich01.com/p/blog-page_30.html)
+*   [我的投資書單 @ Mr. Market 市場先生 — 投資理財入門](https://www.rich01.com/p/blog-page_30.html)
 *   其他各種書單⋯
 
 單點型的文章，基本上就是「寫給你知道這件事」而已，如果比較深入則可能會進階成要點型的文章（後敘）。這類文章的 CTA 通常很明確，要你買、要你聽、要你跟著做，給你一些範例，讓你可以以小見大（？）
@@ -50,7 +50,6 @@ guid: 2018-01-07-17-32-11_information-resource-classification
 
 可能是因為領域關係，常會看到這類文章。
 
-*   [RWD 測試要點](http://blog.evendesign.tw/post/48853824439/rwd-test)
 *   [寫給不是設計師的-漸層配色(上)](https://medium.com/as-a-product-designer/%E5%AF%AB%E7%B5%A6%E4%B8%8D%E6%98%AF%E8%A8%AD%E8%A8%88%E5%B8%AB%E7%9A%84-%E6%BC%B8%E5%B1%A4%E9%85%8D%E8%89%B2-%E4%B8%8A-b1f9771dd803)
 *   [新趨勢！對話式設計的八種原則！](https://medium.com/uxeastmeetswest/%E6%96%B0%E8%B6%A8%E5%8B%A2-%E5%B0%8D%E8%A9%B1%E5%BC%8F%E8%A8%AD%E8%A8%88%E7%9A%84%E5%85%AB%E7%A8%AE%E5%8E%9F%E5%89%87-59aa90c4322c)
 
@@ -66,7 +65,6 @@ guid: 2018-01-07-17-32-11_information-resource-classification
 
 *   [\[教學\] Nodejs 學習筆記 (1) — 建立開發環境](https://clayliao.blogspot.tw/2011/08/build-nodejs-environment.html)
 *   [D3v4 工作坊 — 製作 D3 plugin 來繪製草圖風格長條圖](https://blog.techbridge.cc/2017/10/21/d3v4-sketchy-plugin/)
-*   [安裝教學 — fedora taiwan](http://fedora.linux.org.tw/guide/step-1/)
 *   [來養區塊鏈上的虛擬寵物吧](https://medium.com/taipei-ethereum-meetup/%E4%BE%86%E9%A4%8A%E5%8D%80%E5%A1%8A%E9%8F%88%E4%B8%8A%E7%9A%84%E8%99%9B%E6%93%AC%E5%AF%B5%E7%89%A9%E5%90%A7-a8970901e94)
 
 基本上有帶著你一步一步地走的就是這一類型啦！最大用處就是可以幫助不熟悉的人快速走一次流程。
@@ -77,7 +75,6 @@ guid: 2018-01-07-17-32-11_information-resource-classification
 
 我個人比較喜歡這類文章，主要就是文章內容大多是撰文者自己的觀點的文章就是這種類型，舉凡「參加活動的心得」、「開箱文」、「某某技術的優與劣」都可以算作是這類文章。
 
-*   [2015 PHP Conf 心得](http://cloud-say.com/2015-php-conf-%e5%bf%83%e5%be%97/)
 *   JSDC 2014 會後心得
 
 大概是這些吧。CTA 基本上就是看完後會很熱血，所以就會自己去研究文中提到的東西，或是很熱血地想「有機會一定要去」。這時候不妨可以寫一篇「讀ＸＸＸ文章後」之類的文章，記錄一下自己的心情。

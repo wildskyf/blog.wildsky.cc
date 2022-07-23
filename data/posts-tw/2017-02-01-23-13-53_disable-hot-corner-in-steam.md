@@ -12,7 +12,7 @@ guid: 2017-02-01-23-13-53_disable-hot-corner-in-steam
 
 我不可能為了玩遊戲就把我最愛用的功能取消啊⋯⋯所以就花了一點時間在尋找「在特定應 用程式中停用熱角」的解法，但 Irvin 說「這是系統底層的功能，沒得處理吧」， 而 Steam 中也沒有暫時停用熱角的選項，因而作罷。
 
-後來意外看到有人在 steam 的發問區有問到有類似的問題： [http://steamcommunity.com/discussions/forum/2/558747287401524377/](http://steamcommunity.com/discussions/forum/2/558747287401524377/) 看來挺不錯地，於是我就採用這個解法了。
+後來意外看到有人在 steam 的發問區有問到有類似的問題： <https://steamcommunity.com/discussions/forum/2/558747287401524377> 看來挺不錯地，於是我就採用這個解法了。
 
 解法
 ==

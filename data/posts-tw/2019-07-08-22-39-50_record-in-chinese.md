@@ -33,6 +33,6 @@ guid: 2019-07-08-22-39-50_record-in-chinese
 參考
 --
 
-*   [「記錄」與「紀錄」，應寫那一個？](http://blog.udn.com/glwang/3121001)
+*   [「記錄」與「紀錄」，應寫那一個？](https://blog.udn.com/glwang/3121001)
 *   [法律統一用字表](https://c.nknu.edu.tw/affair/fckeditor/ckfinder/userfiles/dbhp/files/2_%E6%B3%95%E5%BE%8B%E7%B5%B1%E4%B8%80%E7%94%A8%E5%AD%97%E8%A1%A8.pdf)
-*   [國家圖書館編目園地中的討論](http://catweb.ncl.edu.tw/portal_e2_page.php?button_num=&folder_id=4&cnt_id=1793)
+*   [國家圖書館編目園地中的討論](https://catweb.ncl.edu.tw/QandA/page/24348)

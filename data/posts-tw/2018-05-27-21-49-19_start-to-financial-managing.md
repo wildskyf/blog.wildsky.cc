@@ -59,7 +59,7 @@ Learn like a kid. (Photo by [Ben White](https://unsplash.com/photos/qDY9ahp0Mto?
 *   非常潛力股
 *   我的職業是股東
 
-其他可能沒列到的，可以去我的 aNobii 看，不定期更新（不過也有一些跟投資無關的書XD）：[**Wildsky – aNobii**](http://www.anobii.com/wildsky/profile#books_content)
+其他可能沒列到的，可以去我的 aNobii 看，不定期更新（不過也有一些跟投資無關的書XD）：[**Wildsky – aNobii**](https://www.anobii.com/wildsky/profile#books_content)
 
 看書看累了，也會想出去玩耍，所以我下一步做的事情就是⋯⋯
 

@@ -84,18 +84,18 @@ guid: "2015-07-11-22-41-34_static-generator-jekyll"
 相關連結
 ----
 
-*   Jekyll 官網：[http://jekyllrb.com](http://jekyllrb.com/)
+*   Jekyll 官網：[https://jekyllrb.com](https://jekyllrb.com/)
 *   Static Site Generators 排名網站：[staticgen](https://www.staticgen.com/)
-*   GitHub Pages：[http://pages.github.com](http://pages.github.com/)
-*   YAML 官網：[http://yaml.org](http://yaml.org/)
-*   SASS 官網：[http://sass-lang.com](http://sass-lang.com/)
-*   CoffeeScript 官網：[http://coffeescript.org](http://coffeescript.org/)
-*   CoffeeScript Instruction: [http://www.whoishostingthis.com/resources/coffeescript/](http://www.whoishostingthis.com/resources/coffeescript/)
-*   Json：[http://json.org](http://json.org/)
-*   Liquid：[http://liquidmarkup.org](http://liquidmarkup.org/)
-*   Ruby 台灣：[http://www.ruby-lang.org](http://www.ruby-lang.org/)
-*   Ruby Gem：[http://rubygems.org](http://rubygems.org/)
-*   Markdown 台灣：[http://markdown.tw](http://markdown.tw/)
+*   GitHub Pages：[https://pages.github.com](https://pages.github.com/)
+*   YAML 官網：[https://yaml.org](https://yaml.org/)
+*   SASS 官網：[https://sass-lang.com](https://sass-lang.com/)
+*   CoffeeScript 官網：[https://coffeescript.org](https://coffeescript.org/)
+*   CoffeeScript Instruction: [https://www.whoishostingthis.com/resources/coffeescript/](https://www.whoishostingthis.com/resources/coffeescript/)
+*   Json：[https://json.org](https://json.org/)
+*   Liquid：[https://liquidmarkup.org](https://liquidmarkup.org/)
+*   Ruby 台灣：[https://www.ruby-lang.org](https://www.ruby-lang.org/)
+*   Ruby Gem：[https://rubygems.org](https://rubygems.org/)
+*   Markdown 台灣：[https://markdown.tw](https://markdown.tw/)
 
 我手邊使用到 Jekyll 的專案
 -----------------
@@ -103,4 +103,4 @@ guid: "2015-07-11-22-41-34_static-generator-jekyll"
 *   Front-End Taiwan：[https://github.com/f2etw/f2etw.github.io](https://github.com/f2etw/f2etw.github.io)
 *   新酷音輸入法總部：[https://github.com/chewing/chewing.github.com](https://github.com/chewing/chewing.github.com)
 *   Fedora Taiwan 社群支援站：[https://github.com/linux-taiwan/fedora.linux.org.tw/](https://github.com/linux-taiwan/fedora.linux.org.tw/)
-*   師大學生會網站：[http://github.com/NTNUSA-info/NTNUSA-site](http://github.com/NTNUSA-info/NTNUSA-site)
+*   師大學生會網站：[https://github.com/NTNUSA-info/NTNUSA-site](https://github.com/NTNUSA-info/NTNUSA-site)

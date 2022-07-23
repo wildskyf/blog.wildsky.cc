@@ -10,34 +10,39 @@ Today, I want to build Firefox myself. So I found this post: [Simple Firefox bu
 
 Ok, so what happened? after I input this command in my terminal:
 
-`wget -q https://hg.mozilla.org/mozilla-central/raw-file/default/python/mozboot/bin/bootstrap.py -O bootstrap.py && python bootstrap.py`
+```
+wget -q https://hg.mozilla.org/mozilla-central/raw-file/default/python/mozboot/bin/bootstrap.py -O bootstrap.py && python bootstrap.py
+```
 
 The command I input looks like to download some python script file, and execute it. But when executing the script, It said that:
 
-    Your version of Mercurial (3.5.1) is not modern enough.
-    Traceback (most recent call last):
-      File "bootstrap.py", line 159, in <module>
-        sys.exit(main(sys.argv))
-      File "bootstrap.py", line 150, in main
-        dasboot.bootstrap()
-      File "/tmp/tmpTdL9Pv/mozboot/bootstrap.py", line 137, in bootstrap
+```
+Your version of Mercurial (3.5.1) is not modern enough.
+Traceback (most recent call last):
+  File "bootstrap.py", line 159, in <module>
+    sys.exit(main(sys.argv))
+  File "bootstrap.py", line 150, in main
+    dasboot.bootstrap()
+  File "/tmp/tmpTdL9Pv/mozboot/bootstrap.py", line 137, in bootstrap
 
-      File "/tmp/tmpTdL9Pv/mozboot/base.py", line 316, in ensure_mercurial_modern
-    TypeError: upgrade_mercurial() takes exactly 1 argument (2 given)
+  File "/tmp/tmpTdL9Pv/mozboot/base.py", line 316, in ensure_mercurial_modern
+TypeError: upgrade_mercurial() takes exactly 1 argument (2 given)
+```
 
 “ok,” I thought, “Mercurial (3.5.1) is not modern enough. Let me just easily upgrade it.”
 
 But no matter how many times I give `sudo dnf update -y` to my Terminal, it kept telling me that:
 
-    Last metadata expiration check performed 0:14:52 ago on Tue Mar  1 22:23:25 2016.
-    Dependencies resolved.
-    Nothing to do.
-    Complete!
-
+```
+Last metadata expiration check performed 0:14:52 ago on Tue Mar  1 22:23:25 2016.
+Dependencies resolved.
+Nothing to do.
+Complete!
+```
 
 So my Mercurial should be up-to-date. But I found that the official website of Mercurial shows the latest version of Mercurial is 3.7.1, and mine is 3.5.1!
 
-Ok, Fedora has copr, which means Cool Other Package Repo. So let’s find some cool package about Mercurial. And thanks to Google I got this repo: [nbecker/mercurial-3](http://copr-fe.cloud.fedoraproject.org/coprs/nbecker/mercurial-3/packages/), and try this command:
+Ok, Fedora has copr, which means Cool Other Package Repo. So let’s find some cool package about Mercurial. And thanks to Google I got this repo: [nbecker/mercurial-3](https://copr-fe.cloud.fedoraproject.org/coprs/nbecker/mercurial-3/packages/), and try this command:
 
 `sudo dnf copr enable nbecker/mercurial-3 && sudo dnf update`
 

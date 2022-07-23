@@ -54,4 +54,4 @@ pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION
 參考資料
 ----
 
-* [\[教程\] Morelocale2 4.2以上也能用 (免root)](http://apk.tw/forum.php?mod=viewthread&tid=378955&extra=page%3D1%26filter%3Dauthor%26orderby%3Ddateline%26orderby%3Ddateline)
+* [\[教程\] Morelocale2 4.2以上也能用 (免root)](https://apk.tw/forum.php?mod=viewthread&tid=378955&extra=page%3D1%26filter%3Dauthor%26orderby%3Ddateline%26orderby%3Ddateline)

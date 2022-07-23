@@ -12,12 +12,12 @@ guid: 2019-09-09-22-31-11_mac-install-wow-insufficient-space
 
 ![](/images/9345d688d43f87943e4357e8de1b0ef41ad53ab3-1024x654.png)
 
-明明還有一百多GB，卻仍提示空間不足。安裝畫面為示意圖，非當事畫面，圖來自  
+明明還有一百多GB，卻仍提示空間不足。安裝畫面為示意圖，非當事畫面，圖來自
 https://zhidao.baidu.com/question/878775030865866652.html
 
 稍微爬了一下文，才發現原來我不孤單！甚至還有看到暴雪客服在那邊說 WOW 現在不支援 Mac 哦（不支援最好是會給人安裝的入口啦 = = ）
 
-*   [http://bbs.wow.blizzard.cn/forum.php?mod=viewthread&tid=510173](http://bbs.wow.blizzard.cn/forum.php?mod=viewthread&tid=510173)
+*   <http://bbs.wow.blizzard.cn/forum.php?mod=viewthread&tid=510173>
 
 導因
 --

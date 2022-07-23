@@ -9,7 +9,7 @@ guid: "2014-01-26-00-00-26_dual-system-win-ubuntu"
 
 如果你的系統是 win7 你可以直接安裝，之前安裝 win7 時 grub 可以直接偵測到，所以可以直接完成雙系統，不用特殊的調整，但 win8 似乎需要有一些額外設定，請有心安裝的人繼續往下閱讀。
 
-最基本的就是要**先安裝好 win8**，然後你會**需要有一片 ubuntu 12.04 LTS 版本** 的光碟或 USB（可以從 [這裡](http://www.ubuntu-tw.org/modules/tinyd0/) 取得）發行版是**桌面版本**、版本選 **12.04LTS**，電腦架構不確定的可以選擇 **32位元版本**，然後就按開始下載吧！
+最基本的就是要**先安裝好 win8**，然後你會**需要有一片 ubuntu 12.04 LTS 版本** 的光碟或 USB（可以從 [這裡](https://www.ubuntu-tw.org/modules/tinyd0/) 取得）發行版是**桌面版本**、版本選 **12.04LTS**，電腦架構不確定的可以選擇 **32位元版本**，然後就按開始下載吧！
 
 我個人是將它燒成光碟而不是使用虛擬光碟機，以免玩壞電腦了卻沒有光碟可以開機。安裝的詳細過程我就略過了，一來其實蠻直覺的，二來很多 blog 都有教，搜尋一下應該都找得到。
 
@@ -65,4 +65,4 @@ sudo apt-get install grub-customizer
 ----
 
 * [https://help.ubuntu.com/community/Boot-Repair](https://help.ubuntu.com/community/Boot-Repair)
-* [http://www.noobslab.com/2012/11/install-grub-customizer-302-in-ubuntu.html](http://www.noobslab.com/2012/11/install-grub-customizer-302-in-ubuntu.html)
+* [https://www.noobslab.com/2012/11/install-grub-customizer-302-in-ubuntu.html](https://www.noobslab.com/2012/11/install-grub-customizer-302-in-ubuntu.html)

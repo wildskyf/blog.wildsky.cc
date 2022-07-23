@@ -9,7 +9,7 @@ guid: 2014-08-29-00-00-10_error-no-such-partition-grub-rescue
 前言
 --
 
-繼之前的 [這篇文章](http://blog.wildsky.cc/posts/dual-system-win-ubuntu/) 裝了 Ubuntu + windows 雙系統後，又會覺得好像空間變太少了，想要把 Ubuntu 移掉。
+繼之前的 [這篇文章](/posts/dual-system-win-ubuntu) 裝了 Ubuntu + windows 雙系統後，又會覺得好像空間變太少了，想要把 Ubuntu 移掉。
 原本想說移掉感覺很簡單，就把切給 Ubuntu 的分區清掉，然後還給 Windows 不就好了？
 
 做下去之後重開機，你就發現不是如此，電腦直接卡住，只看到一個好像很可怕的訊息：
@@ -65,4 +65,4 @@ C:\boot> exit
 參考
 --
 
-*   [在安裝 GRUB 之後修復 Windows 7 MBR](http://blog.xuite.net/jyoutw/xtech/62292941)
+*   [在安裝 GRUB 之後修復 Windows 7 MBR](https://blog.xuite.net/jyoutw/xtech/62292941)

@@ -14,7 +14,7 @@ Service Wroker（後面簡稱 SW）可以看作是介於瀏覽器、網路、和
 
 好啦，不要這麼悲觀。
 
-Native app 有個很重大的優勢就是可以有離線體驗，而使用 SW 你也可以讓 web app 達成這個夢想。順帶一提，這個叫做 [Offline First](http://offlinefirst.org/)。許多人選擇 native app 的重大理由之一就是因為這一點，現在 SW 出來應該可以解決這個問題了。（編著：但其他像是效能問題還是沒解決XD）
+Native app 有個很重大的優勢就是可以有離線體驗，而使用 SW 你也可以讓 web app 達成這個夢想。順帶一提，這個叫做 [Offline First](https://offlinefirst.org/)。許多人選擇 native app 的重大理由之一就是因為這一點，現在 SW 出來應該可以解決這個問題了。（編著：但其他像是效能問題還是沒解決XD）
 
 SW 的用途整理
 --------
