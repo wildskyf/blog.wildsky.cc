@@ -1,9 +1,8 @@
 ---
-title: "[Vim Protips] Let&#8217;s move faster &#8211; 顯微鏡式移動法"
+title: "[Vim Protips] Let's move faster - 顯微鏡式移動法"
 date: 2019-03-22T11:17:33
 slug: "vim-move-like-microscope"
-excerpt: "<p>我一直很喜歡自己 Vimrc 裡的一個設定，就是讓 ctrl 上下變成一次移動五行，使游標移動有像顯微鏡般的粗&#8230;</p>
-"
+excerpt: "我一直很喜歡自己 Vimrc 裡的一個設定，就是讓 ctrl 上下變成一次移動五行，使游標移動有像顯微鏡般的粗"
 feature_image: ousa-chea-552189-unsplash-e1553233367397.jpg
 guid: "http://blog.wildsky.cc/?p=578"
 ---
@@ -13,11 +12,13 @@ guid: "http://blog.wildsky.cc/?p=578"
 
 config 裡的設定其實也蠻簡單的，把這段放在 `~/.vimrc` 裡面就好。
 
-    " move cursor faster
-    map <C-k>  5gk
-    map <C-j>  5gj
-    map <C-UP> 5gk
-    map <C-DOWN> 5gj
+```vim
+" move cursor faster
+map <C-k>  5gk
+map <C-j>  5gj
+map <C-UP> 5gk
+map <C-DOWN> 5gj
+```
 
 如果覺得一次移動五行太多或太少也可以把 5 改成其他數字，反正粗細自己控制。
 
@@ -38,5 +39,5 @@ config 裡的設定其實也蠻簡單的，把這段放在 `~/.vimrc` 裡面就�
 -----
 
 > 話說，我一直很喜歡自己 Vimrc 的一個設定，就是讓 ctrl 上下變成一次移動五行，使游標移動有像顯微鏡般的粗細調節輪。這樣方便很多，不用再算有幾行[#vim](https://twitter.com/hashtag/vim?src=hash&ref_src=twsrc%5Etfw) [https://t.co/2jciYY6cKl](https://t.co/2jciYY6cKl)
-> 
+>
 > — Wildsky F. (@wildskyf) [February 17, 2019](https://twitter.com/wildskyf/status/1097171177317879813?ref_src=twsrc%5Etfw)

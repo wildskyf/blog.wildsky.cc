@@ -1,5 +1,5 @@
 ---
-title: "Jekyll &#8211; 超好用靜態網站產生器"
+title: "Jekyll – 超好用靜態網站產生器"
 date: 2015-07-11T22:41:34
 slug: "static-generator-jekyll"
 excerpt: "<p>依照慣例，在每一篇文章之前都要哀號一下：這篇其實想寫很久了，只是因為事情太多一直沒時間開始撰寫，還有許多文章想&#8230;</p>
@@ -76,7 +76,7 @@ guid: "http://blog.wildsky.cc/?p=367"
     ├── _base.scss
     ├── _layout.scss
     └── _syntax-highlighting.scss
-    
+
 
 上面的只是 Jekyll 自己預設的資料夾架構，你如果想把 main.scss 放在根目錄下，就直接在 \_config.yml 中設定就好，看到這裡你可能會疑惑：「為什麼有的檔案或資料夾前面會有底線？」這個底線的意思就是說 Jekyll 在產生網站時，會視他為特殊文件，不會將他當作一般的文件處理，在你將他跑起來的時候，Jekyll 會額外產生一個資料夾叫做 \_site，這個就是會 public 的完整檔案架構，有底線的檔案就不會出現在裡面，換句話說，他就不會被處理，只作為被 include 的檔案存在著。
 

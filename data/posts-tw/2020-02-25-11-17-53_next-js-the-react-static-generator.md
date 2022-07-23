@@ -1,5 +1,5 @@
 ---
-title: "Next.js &#8211; 使用 React.js 的靜態網站產生器"
+title: "Next.js - 使用 React.js 的靜態網站產生器"
 date: 2020-02-25T11:17:53
 slug: "next-js-the-react-static-generator"
 excerpt: "<p>最近因為工作上的需要，開始在研究 Next.js 這個框架。 Why 選擇一樣新技術/框架的時候總要從「為什麼&#8230;</p>
@@ -45,7 +45,7 @@ Why Next.js
 此外，今年稍早我又看到一個消息：
 
 > Google has been investing in a variety of web frameworks, including Next.js, to help developers build better web applications.
-> 
+>
 > [An insider’s look at Google’s web framework contributions to Next.js and more](https://www.techrepublic.com/article/insiders-look-at-googles-web-framework-contributions-to-next-js-and-more/)
 
 Google 來投資 Next.js 欸，我還不用爆！

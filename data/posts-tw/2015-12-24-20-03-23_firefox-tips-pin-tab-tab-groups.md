@@ -1,11 +1,11 @@
 ---
-title: "Firefox 小技巧 &#8211; 釘選分頁 &#038; 分頁群組"
+title: "Firefox 小技巧 - 釘選分頁 & 分頁群組"
 date: 2015-12-24T20:03:23
 slug: "firefox-tips-pin-tab-tab-groups"
-excerpt: "<p>前兩天是師大資訊研究社的服務學習說明會，邀請到 MozTW 的 Irvin 和教育部 ossacc 的 Eri&#8230;</p>
+excerpt: "前兩天是師大資訊研究社的服務學習說明會，邀請到 MozTW 的 Irvin 和教育部 ossacc 的
 "
 feature_image: null
-guid: "http://blog.wildsky.cc/?p=530"
+guid: "2015-12-24-20-03-23_firefox-tips-pin-tab-tab-groups"
 ---
 前兩天是師大資訊研究社的服務學習說明會，邀請到 MozTW 的 Irvin 和教育部 ossacc 的 Eric 來我們學校跟大家開個說明會聊個天。今天要講的不是這個服務學習說明會要幹嘛，而是在跟 Irvin 聊天時發現他的 Firefox 有個神奇的功能「釘選分頁」！！問了幾個有在用 Firefox 的同學，結果大家都不知道這個功能XD 所以就想寫一下文章記錄一下，說不定會對剛好逛到這裏的人有所幫助。
 
@@ -37,3 +37,8 @@ guid: "http://blog.wildsky.cc/?p=530"
 ![](/images/2015-12-24-16-30-32-的螢幕擷圖-1024x576-e1553233377916.png)
 
 這篇文章沒什麼內容，就只是想講一下釘選分頁這玩意兒而已。文末就用當時宣傳這兩個新功能的影片作為收尾吧！感謝 MozTw 幫忙翻譯字幕！！
+
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/PuBYfpDzFac" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Jm5PRtveE2o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

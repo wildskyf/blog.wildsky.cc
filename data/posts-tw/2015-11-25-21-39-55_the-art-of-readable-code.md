@@ -1,5 +1,5 @@
 ---
-title: "【筆記】易讀程式之美學 &#038; 提升程式碼可讀性的簡單法則 (The Art of Readable Code)"
+title: "【筆記】易讀程式之美學 & 提升程式碼可讀性的簡單法則 (The Art of Readable Code)"
 date: 2015-11-25T21:39:55
 slug: "the-art-of-readable-code"
 excerpt: "<p>終於讀完「 易讀程式之美學 」這本書了，在看的過程中一直把自己最近要交的作業拿回來改，由此就可以感受到這本書的&#8230;</p>
@@ -20,25 +20,12 @@ guid: "http://blog.wildsky.cc/?p=362"
 
 #### 替代詞彙
 
-原詞
-
-可能的取代方案
-
-Send
-
-deliver, dispatch, announce, distribute, route
-
-Find
-
-search, extract, locate, recover
-
-Start
-
-launch, create, begin, open
-
-Make
-
-create, set up, build, generate, compose, add, new
+| 原詞  | 可能的取代方案                                     |
+| :---: | :----:                                             |
+| Send  | deliver, dispatch, announce, distribute, route     |
+| Find  | search, extract, locate, recover                   |
+| Start | launch, create, begin, open                        |
+| Make  | create, set up, build, generate, compose, add, new |
 
 #### 單位
 
@@ -49,35 +36,13 @@ create, set up, build, generate, compose, add, new
 
 #### 其他重要屬性
 
-情景
 
-變數名稱
-
-更好的名稱
-
-以「明文」儲存的密碼，應先加密
-
-password
-
-plaintext\_password
-
-使用者提供的意見，顯示前須編碼
-
-comment
-
-unescpaed\_comment
-
-轉換為 UTF-8 的 html 資料
-
-html
-
-html\_utf8
-
-做過 url 編碼輸入資料
-
-data
-
-data\_urlenc
+| 情景 | 變數名稱 | 更好的名稱 |
+| :---: | :----: |  :----: |
+| 以「明文」儲存的密碼，應先加密  | password | plaintext\_password |
+| 使用者提供的意見，顯示前須編碼  | comment | unescpaed\_comment |
+| 轉換為 UTF-8 的 html 資料 | html | html\_utf8 |
+| 做過 url 編碼輸入資料  | data | data\_urlenc |
 
 *   小範圍 => 短名稱
 *   縮寫應被廣泛理解
@@ -105,7 +70,7 @@ data\_urlenc
     *   FIXME
     *   HACK
     *   XXX
-*   常數的註解  
+*   常數的註解
     *   // 只要…即可 → 讓讀者對常數的調整更有概念
     *   // 加上合理的限制——沒人能讀那麼多文章！ → 不加也可，加了不無小補
     *   // 使用者認為 0.72 在大小/品質上有最好的平衡 → 調校過後的結果
@@ -254,8 +219,4 @@ data\_urlenc
 *   選擇良好的測資：優先使用簡單、明確但仍能達到測試效果的輸入值
 *   test-friendly 的開發：單單在寫程式時考慮到測試，就能讓程式碼有很大的改善
 
-易讀程式之美學 大概是這樣。剛剛[](http://blog.wildsky.cc/tags/note/)才發現 [taaze](https://www.taaze.tw/goods/11100654124.html) 上居然絕版了⋯⋯
-
-也許也想看看其他我記下筆記的文章：[http://blog.wildsky.cc/tags/note/](http://blog.wildsky.cc/tags/note/)
-
-![易讀程式之美學 書籍照片](http://blog.wildsky.cc/wp-content/uploads/the%20art%20of%20readable%20code.jpg)
+易讀程式之美學 大概是這樣。

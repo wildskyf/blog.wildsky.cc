@@ -1,5 +1,5 @@
 ---
-title: "移除 ubuntu &#038; Windows 開機修復 (error: no such partition. grub rescue)"
+title: "移除 ubuntu & Windows 開機修復 (error: no such partition. grub rescue)"
 date: 2014-08-29T00:00:10
 slug: "error-no-such-partition-grub-rescue"
 excerpt: "<p>前言 繼之前的 這篇文章 裝了 Ubuntu + windows 雙系統後，又會覺得好像空間變太少了，想要把 &#8230;</p>
@@ -10,7 +10,7 @@ guid: "http://blog.wildsky.cc/?p=55"
 前言
 --
 
-繼之前的 [這篇文章](http://blog.wildsky.cc/posts/dual-system-win-ubuntu/) 裝了 Ubuntu + windows 雙系統後，又會覺得好像空間變太少了，想要把 Ubuntu 移掉。  
+繼之前的 [這篇文章](http://blog.wildsky.cc/posts/dual-system-win-ubuntu/) 裝了 Ubuntu + windows 雙系統後，又會覺得好像空間變太少了，想要把 Ubuntu 移掉。
 原本想說移掉感覺很簡單，就把切給 Ubuntu 的分區清掉，然後還給 Windows 不就好了？
 
 做下去之後重開機，你就發現不是如此，電腦直接卡住，只看到一個好像很可怕的訊息：
@@ -47,10 +47,12 @@ guid: "http://blog.wildsky.cc/?p=55"
 
 輸入下面這些指令，如果你的系統是在 C 槽,就不用更改指令, 但如果是其他地方，第一行就要改成你的系統所在碟！
 
-    X:\Sources> C:
-    C:\> cd boot
-    C:\boot> bootrec /fixmbr
-    C:\boot> exit
+```cmd
+X:\Sources> C:
+C:\> cd boot
+C:\boot> bootrec /fixmbr
+C:\boot> exit
+```
 
 重開機以後應該就會直接進入 Windows 了！
 
