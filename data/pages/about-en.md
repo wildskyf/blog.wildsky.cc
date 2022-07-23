@@ -28,9 +28,3 @@ You could find my via:
 *   Github : [https://github.com/wildskyf](https://github.com/wildskyf "Wildsky 的 GitHub")
 *   LinkedIn : [https://www.linkedin.com/in/wildsky](https://www.linkedin.com/in/wildsky "Wildsky 的 LinkedIn")
 
-The name of this site
----------------------
-
-WS = abbr. of Wildsky. Meanwhile, `ws://` is the protocol for web socket.
-
-This name is wish you and me could keep in touch, just like web socket. 🙂
