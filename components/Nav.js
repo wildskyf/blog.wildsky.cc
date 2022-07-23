@@ -30,7 +30,7 @@ const Nav = ({ lang, menu_items }) => {
                     <Link href={item.url}>
                       <a className={`
                         text-gray-700 text-xl font-semibold px-3 py-3 mx-1 cursor-pointer hover:text-red-700 w-full block
-                        border-b-2 lg:border-b-0 border-gray-200 border-solid
+                        border-b-2 lg:border-b-0 border-gray-200 border-solid capitalize
                       `}>
                         {item.title}
                       </a>
@@ -43,7 +43,7 @@ const Nav = ({ lang, menu_items }) => {
               <Link href={homepage_link.path}>
                 <a className={`
                   text-gray-700 text-xl font-semibold px-3 py-3 mx-1 cursor-pointer hover:text-red-700 w-full block
-                  border-b-2 lg:border-b-0 border-gray-200 border-solid
+                  border-b-2 lg:border-b-0 border-gray-200 border-solid capitalize
                 `}>
                   {homepage_link.label}
                 </a>
