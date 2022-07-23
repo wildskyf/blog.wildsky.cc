@@ -1,24 +1,22 @@
 const fetchPageShowPath = async ({ lang }) => {
-  const paramize = (list) => list.map(page_slug => ({ params: { page_slug } }))
-
   if (lang === 'tw') {
-    return paramize([
+    return [
       'about',
       'archives',
       'donate',
       'experiences',
       'more-links',
-    ])
+    ]
   }
 
   if (lang === 'en') {
-    return paramize([
+    return [
       'about-en',
       'archives-en',
       'donate-en',
       'experiences-en',
       'more-links-en',
-    ])
+    ]
   }
 
   throw new Error(`not accepted lang: ${lang}`)

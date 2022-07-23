@@ -28,7 +28,10 @@ export const PostComponentFactory = lang => (props) => {
 }
 
 export const getStaticPathsFactory = lang => async () => {
-  const paths = await fetchPostShowPath({ lang })
+  const list = await fetchPostShowPath({ lang })
+  const paths = list.map((post) => ({
+    params: { post_slug: post.split('_').pop() },
+  }))
   return { paths, fallback: false }
 }
 

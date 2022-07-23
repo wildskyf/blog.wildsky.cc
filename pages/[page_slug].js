@@ -25,7 +25,9 @@ export const PageComponentFactory = lang => (props) => {
 }
 
 export const getStaticPathsFactory = lang => async () => {
-  const paths = await fetchPageShowPath({ lang })
+  const list = await fetchPageShowPath({ lang })
+  const paths = list.map(page_slug => ({ params: { page_slug } }))
+
   return { paths, fallback: false }
 }
 

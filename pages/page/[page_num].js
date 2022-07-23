@@ -28,7 +28,9 @@ export const PaginationPageComponentFactory = lang => (props) => {
 }
 
 export const getStaticPathsFactory = lang => async () => {
-  const paths = await fetchPaginationShowPath({ lang })
+  const list = await fetchPaginationShowPath({ lang })
+  const paths = list.map((_, i) => ({ params: { page_num: String(i + 1) } }))
+
   return { paths, fallback: false }
 }
 
