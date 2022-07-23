@@ -1,11 +1,10 @@
 ---
-title: "那些年，我在女人迷 Womany 當工程師"
-date: 2019-03-16T16:50:44
-slug: "womany-from-intern-to-graduate"
-excerpt: "<p>2019 的農曆年前從 womany 畢業了，覺得好像可以來寫個心得，記錄一下在這邊的感覺、收穫以及歷程。順便&#8230;</p>
-"
+title: 那些年，我在女人迷 Womany 當工程師
+date: 2019-03-16T16:50:44.000Z
+slug: womany-from-intern-to-graduate
+excerpt: '<p>2019 的農曆年前從 womany 畢業了，覺得好像可以來寫個心得，記錄一下在這邊的感覺、收穫以及歷程。順便&#8230;</p> '
 feature_image: me-in-womany.png
-guid: "http://blog.wildsky.cc/?p=100"
+guid: 2019-03-16-16-50-44_womany-from-intern-to-graduate
 ---
 2019 的農曆年前從 womany 畢業了，覺得好像可以來寫個心得，記錄一下在這邊的感覺、收穫以及歷程。順便讓有興趣進去工作的朋友可以參考一下，看看自己適不適合這樣的工作環境。
 

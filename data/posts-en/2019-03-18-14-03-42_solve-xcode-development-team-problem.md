@@ -1,11 +1,12 @@
 ---
-title: "Signing for &#8220;name&#8221; requires a development team. Select a development team in the project editor. (in target &#8216;name&#8217;)"
-date: 2019-03-18T14:03:42
-slug: "solve-xcode-development-team-problem"
-excerpt: "<p>When developing iOS app, sometimes we might face this d&#8230;</p>
-"
+title: >-
+  Signing for &#8220;name&#8221; requires a development team. Select a
+  development team in the project editor. (in target &#8216;name&#8217;)
+date: 2019-03-18T14:03:42.000Z
+slug: solve-xcode-development-team-problem
+excerpt: '<p>When developing iOS app, sometimes we might face this d&#8230;</p> '
 feature_image: 2019-03-18-14.01.10-e1553233406372.png
-guid: "http://blog.wildsky.cc/?p=508"
+guid: 2019-03-18-14-03-42_solve-xcode-development-team-problem
 ---
 When developing iOS app, sometimes we might face this development team related problem:
 

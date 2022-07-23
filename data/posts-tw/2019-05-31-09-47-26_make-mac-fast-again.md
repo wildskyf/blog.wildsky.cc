@@ -1,11 +1,10 @@
 ---
-title: "讓 Mac 變快、加速的十個調整"
-date: 2019-05-31T09:47:26
-slug: "make-mac-fast-again"
-excerpt: "<p>最近有些朋友問我要怎麼讓電腦變快，這邊來彙整一下我知道或以前有查到的技巧，本文會介紹十個可以做的事，參考看看。</p>
-"
+title: 讓 Mac 變快、加速的十個調整
+date: 2019-05-31T09:47:26.000Z
+slug: make-mac-fast-again
+excerpt: '<p>最近有些朋友問我要怎麼讓電腦變快，這邊來彙整一下我知道或以前有查到的技巧，本文會介紹十個可以做的事，參考看看。</p> '
 feature_image: wesson-wang-110739-unsplash-e1559370414483.jpg
-guid: "http://blog.wildsky.cc/?p=601"
+guid: 2019-05-31-09-47-26_make-mac-fast-again
 ---
 最近有些朋友問我要怎麼讓電腦變快，這邊來彙整一下我知道或以前有查到的技巧，本文會介紹十個可以做的事，參考看看。
 

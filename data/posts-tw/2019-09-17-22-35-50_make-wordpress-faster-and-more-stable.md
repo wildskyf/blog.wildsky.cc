@@ -1,11 +1,10 @@
 ---
-title: "WordPress 加速、穩定計畫之一"
-date: 2019-09-17T22:35:50
-slug: "make-wordpress-faster-and-more-stable"
-excerpt: "<p>最近這幾週比較少寫文章，原因是我最近在嘗試把部落格的架構改掉。而會有這個打算的原因是，最近 host 這個部落&#8230;</p>
-"
+title: WordPress 加速、穩定計畫之一
+date: 2019-09-17T22:35:50.000Z
+slug: make-wordpress-faster-and-more-stable
+excerpt: '<p>最近這幾週比較少寫文章，原因是我最近在嘗試把部落格的架構改掉。而會有這個打算的原因是，最近 host 這個部落&#8230;</p> '
 feature_image: fikret-tozak-Zk-Ydz2IAs-unsplash.jpg
-guid: "http://blog.wildsky.cc/?p=1416"
+guid: 2019-09-17-22-35-50_make-wordpress-faster-and-more-stable
 ---
 最近這幾週比較少寫文章，原因是我最近在嘗試把部落格的架構改掉。而會有這個打算的原因是，最近 host 這個部落格的 server 開始不太穩，每天會有一到三次、每次十幾分鐘不等的停機——不過也可能之前就有，只是我最近打開 Jetpack 的停機時間監控才發現他起起落落——因為一直收到通知實在太煩，又不想只是把監控關掉掩耳盜鈴，便開始了這個計畫。
 

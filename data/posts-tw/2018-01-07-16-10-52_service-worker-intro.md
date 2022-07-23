@@ -1,11 +1,10 @@
 ---
-title: "初步理解 Service Worker"
-date: 2018-01-07T16:10:52
-slug: "service-worker-intro"
-excerpt: "<p>Service Wroker（後面簡稱 SW）可以看作是介於瀏覽器、網路、和 Web app 之間的 prox&#8230;</p>
-"
+title: 初步理解 Service Worker
+date: 2018-01-07T16:10:52.000Z
+slug: service-worker-intro
+excerpt: '<p>Service Wroker（後面簡稱 SW）可以看作是介於瀏覽器、網路、和 Web app 之間的 prox&#8230;</p> '
 feature_image: null
-guid: "http://blog.wildsky.cc/?p=167"
+guid: 2018-01-07-16-10-52_service-worker-intro
 ---
 Service Wroker（後面簡稱 SW）可以看作是介於瀏覽器、網路、和 Web app 之間的 proxy servers。 說穿了就是可以**寫程式來處理 request 和 response 的一種介面**，讓開發者可以藉以增進 offline 時網站的體驗，或是基於網路是否可用來自行決定 web app 應該做出怎樣的行為。其他還有一些**推送通知**或是**背景同步**的功能，標準正在火熱制定中。（寫這篇文章時是 2018/1/7，上次 SPEC 的更新時間是 2017/12/22，應該是去過聖誕節＆跨年了，真好 XD）
 

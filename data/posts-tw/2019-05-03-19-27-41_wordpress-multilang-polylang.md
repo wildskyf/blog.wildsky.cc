@@ -1,11 +1,10 @@
 ---
-title: "利用 Polylang 讓 WordPress 部落格變成多語言站"
-date: 2019-05-03T19:27:41
-slug: "wordpress-multilang-polylang"
-excerpt: "<p>有些人可能有注意到了，我的部落格最近把英文額外分出來。 其實有蠻多零零碎碎的東西可以講，就來用這篇文章記錄一下&#8230;</p>
-"
+title: 利用 Polylang 讓 WordPress 部落格變成多語言站
+date: 2019-05-03T19:27:41.000Z
+slug: wordpress-multilang-polylang
+excerpt: '<p>有些人可能有注意到了，我的部落格最近把英文額外分出來。 其實有蠻多零零碎碎的東西可以講，就來用這篇文章記錄一下&#8230;</p> '
 feature_image: nicola-nuttall-721063-unsplash-e1556882829604.jpg
-guid: "http://blog.wildsky.cc/?p=905"
+guid: 2019-05-03-19-27-41_wordpress-multilang-polylang
 ---
 有些人可能有注意到了，我的部落格最近把英文額外分出來。
 

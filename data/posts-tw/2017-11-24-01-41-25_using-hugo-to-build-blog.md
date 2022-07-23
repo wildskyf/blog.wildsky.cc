@@ -1,11 +1,10 @@
 ---
-title: "使用 Hugo 來建 blog"
-date: 2017-11-24T01:41:25
-slug: "using-hugo-to-build-blog"
-excerpt: "<p>最近開始想要學點後端的東西，WM 便建議我可以去學 Golang，於是我就將身邊會用的幾 個東西變得跟 Gol&#8230;</p>
-"
+title: 使用 Hugo 來建 blog
+date: 2017-11-24T01:41:25.000Z
+slug: using-hugo-to-build-blog
+excerpt: '<p>最近開始想要學點後端的東西，WM 便建議我可以去學 Golang，於是我就將身邊會用的幾 個東西變得跟 Gol&#8230;</p> '
 feature_image: null
-guid: "http://blog.wildsky.cc/?p=172"
+guid: 2017-11-24-01-41-25_using-hugo-to-build-blog
 ---
 最近開始想要學點後端的東西，WM 便建議我可以去學 Golang，於是我就將身邊會用的幾 個東西變得跟 Golang 相關：
 

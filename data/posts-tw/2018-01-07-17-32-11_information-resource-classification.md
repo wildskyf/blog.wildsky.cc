@@ -1,11 +1,10 @@
 ---
-title: "我的資訊來源分類學"
-date: 2018-01-07T17:32:11
-slug: "information-resource-classification"
-excerpt: "<p>對於不同的文章分類就該有不同的 CTA。 [註]: CTA，Call To Action，意謂下一步動作。 前&#8230;</p>
-"
+title: 我的資訊來源分類學
+date: 2018-01-07T17:32:11.000Z
+slug: information-resource-classification
+excerpt: '<p>對於不同的文章分類就該有不同的 CTA。 [註]: CTA，Call To Action，意謂下一步動作。 前&#8230;</p> '
 feature_image: 1_kcXPzJ_IyXDAlpGRINzaLA-e1553233495259.jpeg
-guid: "http://blog.wildsky.cc/?p=438"
+guid: 2018-01-07-17-32-11_information-resource-classification
 ---
 > 對於不同的文章分類就該有不同的 CTA。
 

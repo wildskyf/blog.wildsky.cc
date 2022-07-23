@@ -1,11 +1,10 @@
 ---
-title: "心得 &#8211; 用生活常識就能看懂財務報表"
-date: 2019-05-30T20:55:50
-slug: "note-common-sense-financial-statements"
-excerpt: "<p>前陣子看到海總在讀這本書，後來某天吃完午餐後在逛法雅客時剛好逛到，快速翻了幾個章節覺得不錯就順手買下來了。 裡&#8230;</p>
-"
+title: 心得 &#8211; 用生活常識就能看懂財務報表
+date: 2019-05-30T20:55:50.000Z
+slug: note-common-sense-financial-statements
+excerpt: '<p>前陣子看到海總在讀這本書，後來某天吃完午餐後在逛法雅客時剛好逛到，快速翻了幾個章節覺得不錯就順手買下來了。 裡&#8230;</p> '
 feature_image: img_0009-e1559367898572.jpg
-guid: "http://blog.wildsky.cc/?p=975"
+guid: 2019-05-30-20-55-50_note-common-sense-financial-statements
 ---
 前陣子看到海總在讀這本書，後來某天吃完午餐後在逛法雅客時剛好逛到，快速翻了幾個章節覺得不錯就順手買下來了。
 

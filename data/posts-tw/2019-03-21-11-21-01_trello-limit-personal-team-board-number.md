@@ -1,11 +1,10 @@
 ---
-title: "Trello 將開始限制 Personal Team 的看板數量"
-date: 2019-03-21T11:21:01
-slug: "trello-limit-personal-team-board-number"
-excerpt: "<p>一點進 Trello 的頁面就看到這個消息： 嗨！在此先預告，從 2019年5月1日 開始，免費版的團隊最多可&#8230;</p>
-"
+title: Trello 將開始限制 Personal Team 的看板數量
+date: 2019-03-21T11:21:01.000Z
+slug: trello-limit-personal-team-board-number
+excerpt: '<p>一點進 Trello 的頁面就看到這個消息： 嗨！在此先預告，從 2019年5月1日 開始，免費版的團隊最多可&#8230;</p> '
 feature_image: null
-guid: "http://blog.wildsky.cc/?p=565"
+guid: 2019-03-21-11-21-01_trello-limit-personal-team-board-number
 ---
 一點進 Trello 的頁面就看到這個消息：
 

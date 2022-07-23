@@ -1,11 +1,10 @@
 ---
-title: "how to concat two mp4 files via command line"
-date: 2017-10-14T23:07:48
-slug: "concat-two-mp4-files"
-excerpt: "<p>I want to concat two mp4 files together, so I found a c&#8230;</p>
-"
+title: how to concat two mp4 files via command line
+date: 2017-10-14T23:07:48.000Z
+slug: concat-two-mp4-files
+excerpt: '<p>I want to concat two mp4 files together, so I found a c&#8230;</p> '
 feature_image: null
-guid: "http://blog.wildsky.cc/?p=296"
+guid: 2017-10-14-23-07-48_concat-two-mp4-files
 ---
 I want to concat two mp4 files together, so I found a command:
 

@@ -1,11 +1,10 @@
 ---
-title: "理財與投資"
-date: 2020-05-05T00:00:44
-slug: "financial-management-and-investment"
-excerpt: "<p>研究投資理財好一陣子了，覺得可以來把一些觀念先寫下來。這篇文章會依照理財和投資兩個部分來講。 一般大眾都會很順&#8230;</p>
-"
+title: 理財與投資
+date: 2020-05-05T00:00:44.000Z
+slug: financial-management-and-investment
+excerpt: '<p>研究投資理財好一陣子了，覺得可以來把一些觀念先寫下來。這篇文章會依照理財和投資兩個部分來講。 一般大眾都會很順&#8230;</p> '
 feature_image: 構造改革.png
-guid: "http://blog.wildsky.cc/?p=1014"
+guid: 2020-05-05-00-00-44_financial-management-and-investment
 ---
 研究投資理財好一陣子了，覺得可以來把一些觀念先寫下來。這篇文章會依照理財和投資兩個部分來講。
 

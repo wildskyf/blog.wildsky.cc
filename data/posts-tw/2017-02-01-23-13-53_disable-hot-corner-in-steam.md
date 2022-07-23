@@ -4,7 +4,7 @@ date: 2017-02-01T23:13:53
 slug: "disable-hot-corner-in-steam"
 excerpt: "最近過年很無聊，又把 Dota2 抓回來玩了。很幸運地在 Mac 上可以玩這款遊戲！ 但是一開進去後就發現一個"
 feature_image: null
-guid: ""
+guid: 2017-02-01-23-13-53_disable-hot-corner-in-steam
 ---
 ![Steam Screenshot](/images/01-steam.png)
 

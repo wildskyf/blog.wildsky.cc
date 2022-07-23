@@ -1,11 +1,10 @@
 ---
-title: "投資股票一年後，我的一些體悟"
-date: 2019-03-06T01:13:02
-slug: "some-thought-after-stocking-one-year"
-excerpt: "<p>最近投資 股票 也接近一年了，開始有一點小小心得，便決定來寫一篇短文記錄一下。或許未來想法轉變時有個可以參考的&#8230;</p>
-"
+title: 投資股票一年後，我的一些體悟
+date: 2019-03-06T01:13:02.000Z
+slug: some-thought-after-stocking-one-year
+excerpt: '<p>最近投資 股票 也接近一年了，開始有一點小小心得，便決定來寫一篇短文記錄一下。或許未來想法轉變時有個可以參考的&#8230;</p> '
 feature_image: julie-marsh-708555-unsplash-e1553233560655.jpg
-guid: "http://blog.wildsky.cc/?p=314"
+guid: 2019-03-06-01-13-02_some-thought-after-stocking-one-year
 ---
 最近投資 股票 也接近一年了，開始有一點小小心得，便決定來寫一篇短文記錄一下。或許未來想法轉變時有個可以參考的、過去想法的對照組。
 

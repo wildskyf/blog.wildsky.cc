@@ -1,11 +1,10 @@
 ---
-title: "投資理財有賺有賠，但不理財一定賠"
-date: 2018-05-27T21:49:19
-slug: "start-to-financial-managing"
-excerpt: "<p>以前天天都在寫 Code，但最近開始不務正業，下班後都在研究理財相關的東西。持續了大約一兩個月，也是該寫篇文章&#8230;</p>
-"
+title: 投資理財有賺有賠，但不理財一定賠
+date: 2018-05-27T21:49:19.000Z
+slug: start-to-financial-managing
+excerpt: '<p>以前天天都在寫 Code，但最近開始不務正業，下班後都在研究理財相關的東西。持續了大約一兩個月，也是該寫篇文章&#8230;</p> '
 feature_image: william-iven-8514-unsplash-e1553233535307.jpg
-guid: "http://blog.wildsky.cc/?p=109"
+guid: 2018-05-27-21-49-19_start-to-financial-managing
 ---
 以前天天都在寫 Code，但最近開始不務正業，下班後都在研究理財相關的東西。持續了大約一兩個月，也是該寫篇文章來記錄記錄。
 

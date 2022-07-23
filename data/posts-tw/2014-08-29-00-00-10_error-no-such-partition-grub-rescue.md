@@ -1,11 +1,10 @@
 ---
-title: "移除 ubuntu & Windows 開機修復 (error: no such partition. grub rescue)"
-date: 2014-08-29T00:00:10
-slug: "error-no-such-partition-grub-rescue"
-excerpt: "<p>前言 繼之前的 這篇文章 裝了 Ubuntu + windows 雙系統後，又會覺得好像空間變太少了，想要把 &#8230;</p>
-"
+title: '移除 ubuntu & Windows 開機修復 (error: no such partition. grub rescue)'
+date: 2014-08-29T00:00:10.000Z
+slug: error-no-such-partition-grub-rescue
+excerpt: '<p>前言 繼之前的 這篇文章 裝了 Ubuntu + windows 雙系統後，又會覺得好像空間變太少了，想要把 &#8230;</p> '
 feature_image: null
-guid: "http://blog.wildsky.cc/?p=55"
+guid: 2014-08-29-00-00-10_error-no-such-partition-grub-rescue
 ---
 前言
 --
@@ -15,8 +14,10 @@ guid: "http://blog.wildsky.cc/?p=55"
 
 做下去之後重開機，你就發現不是如此，電腦直接卡住，只看到一個好像很可怕的訊息：
 
-    error: no such partition.
-    grub rescue>
+```
+error: no such partition.
+grub rescue>
+```
 
 這就是你為什麼來到這裡看文章的原因XD 沒有嘲笑你的意思，我也是因為遇過 不只一次，學到教訓後才有機會寫下這篇文章，這邊就帶你來看看要怎麼處理囉。
 
@@ -47,7 +48,7 @@ guid: "http://blog.wildsky.cc/?p=55"
 
 輸入下面這些指令，如果你的系統是在 C 槽,就不用更改指令, 但如果是其他地方，第一行就要改成你的系統所在碟！
 
-```cmd
+```powershell
 X:\Sources> C:
 C:\> cd boot
 C:\boot> bootrec /fixmbr

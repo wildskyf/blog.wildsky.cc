@@ -1,11 +1,10 @@
 ---
-title: "【筆記】易讀程式之美學 & 提升程式碼可讀性的簡單法則 (The Art of Readable Code)"
-date: 2015-11-25T21:39:55
-slug: "the-art-of-readable-code"
-excerpt: "<p>終於讀完「 易讀程式之美學 」這本書了，在看的過程中一直把自己最近要交的作業拿回來改，由此就可以感受到這本書的&#8230;</p>
-"
+title: 【筆記】易讀程式之美學 & 提升程式碼可讀性的簡單法則 (The Art of Readable Code)
+date: 2015-11-25T21:39:55.000Z
+slug: the-art-of-readable-code
+excerpt: '<p>終於讀完「 易讀程式之美學 」這本書了，在看的過程中一直把自己最近要交的作業拿回來改，由此就可以感受到這本書的&#8230;</p> '
 feature_image: null
-guid: "http://blog.wildsky.cc/?p=362"
+guid: 2015-11-25-21-39-55_the-art-of-readable-code
 ---
 終於讀完「 易讀程式之美學 」這本書了，在看的過程中一直把自己最近要交的作業拿回來改，由此就可以感受到這本書的好處。之後應該還會拿起來多看幾次，幸好當初有買下來！
 

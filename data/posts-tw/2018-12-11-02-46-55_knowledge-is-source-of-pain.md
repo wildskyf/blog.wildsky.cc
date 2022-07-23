@@ -1,11 +1,11 @@
 ---
-title: "知識帶來的其實不是快樂"
-date: 2018-12-11T02:46:55
-slug: "knowledge-is-source-of-pain"
-excerpt: "<p>你願意成為一個痛苦的哲學家，或是一隻快樂的豬？ 有些事，開始在意後才會覺得痛苦。</p>
-"
-feature_image: quote-evil-being-the-root-of-mystery-pain-is-the-root-of-knowledge-simone-weil-30-97-98.jpg
-guid: "http://blog.wildsky.cc/?p=602"
+title: 知識帶來的其實不是快樂
+date: 2018-12-11T02:46:55.000Z
+slug: knowledge-is-source-of-pain
+excerpt: '<p>你願意成為一個痛苦的哲學家，或是一隻快樂的豬？ 有些事，開始在意後才會覺得痛苦。</p> '
+feature_image: >-
+  quote-evil-being-the-root-of-mystery-pain-is-the-root-of-knowledge-simone-weil-30-97-98.jpg
+guid: 2018-12-11-02-46-55_knowledge-is-source-of-pain
 ---
 > 你願意成為一個痛苦的哲學家，或是一隻快樂的豬？
 
