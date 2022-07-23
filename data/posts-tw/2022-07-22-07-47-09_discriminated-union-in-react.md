@@ -17,7 +17,7 @@ guid: "2022-07-22-07-47-09_discriminated-union-in-react"
 
 原本想說可以利用 TypeScript 的 Union Types 來按情況給不同 props，寫成這樣：
 
-```typescript
+```tsx
 interface CommonParentProps {
   // blablabla
 }
@@ -52,7 +52,7 @@ TS2339: Property 'a' does not exist on type 'ParentProps'.
 
 看錯誤訊息很直觀地會想到這個有點蠢的解法：
 
-```typescript
+```tsx
 // ...
 
 interface FatherProps extends CommonParentProps {
@@ -73,7 +73,7 @@ interface MotherProps extends CommonParentProps {
 
 後來想了一下改成這樣：
 
-```typescript
+```tsx
 interface CommonParentProps {
   // blablabla
 }
