@@ -46,4 +46,4 @@ guid: "http://blog.wildsky.cc/?p=308"
 
 下一個版本大概會修一下版面，順便 responsive 一下，支援一下 firefox on android。
 
-![content farm screenshot](http://blog.wildsky.cc/wp-content/uploads/content_farm_blocker.png)
+![content farm screenshot](/images/content_farm_blocker.png)

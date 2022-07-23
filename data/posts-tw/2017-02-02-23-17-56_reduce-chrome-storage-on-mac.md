@@ -2,12 +2,11 @@
 title: "讓 Mac 上的 Chrome 瘦身"
 date: 2017-02-02T23:17:56
 slug: "reduce-chrome-storage-on-mac"
-excerpt: "<p>剛剛在整理電腦時，發現 chrome 居然佔用了 2GB 的空間⋯⋯ 迅速查了一下才發現原來是他把一堆舊版本的&#8230;</p>
-"
+excerpt: "剛剛在整理電腦時，發現 chrome 居然佔用了 2GB 的空間⋯⋯ 迅速查了一下才發現原來是他把一堆舊版本的"
 feature_image: null
-guid: "http://blog.wildsky.cc/?p=306"
+guid: "2017-02-02-23-17-56_reduce-chrome-storage-on-mac"
 ---
-![about chrome](http://blog.wildsky.cc/wp-content/uploads/2017/02/02-chrome.png)
+![about chrome](/images/02-chrome.png)
 
 剛剛在整理電腦時，發現 chrome 居然佔用了 2GB 的空間⋯⋯ 迅速查了一下才發現原來是他把一堆舊版本的資料全部都保留下來了。 （都存放在 `/Applications/Google Chrome.app/Contents/Versions/` 下面）
 

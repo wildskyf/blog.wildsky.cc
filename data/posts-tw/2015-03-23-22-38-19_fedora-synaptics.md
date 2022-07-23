@@ -2,17 +2,18 @@
 title: "Synaptics 觸控板在 Fedora 沒反應"
 date: 2015-03-23T22:38:19
 slug: "fedora-synaptics"
-excerpt: "<p>tl;dr Synaptics 觸控板不能動了怎麼辦？下面這串指令敲下去其實就解決了一切問題： 老實說這篇文章&#8230;</p>
-"
+excerpt: "tl;dr Synaptics 觸控板不能動了怎麼辦？下面這串指令敲下去其實就解決了一切問題： 老實說這篇文章"
 feature_image: null
-guid: "http://blog.wildsky.cc/?p=284"
+guid: "2015-03-23-22-38-19_fedora-synaptics"
 ---
 tl;dr
 -----
 
 Synaptics 觸控板不能動了怎麼辦？下面這串指令敲下去其實就解決了一切問題：
 
-    sudo yum install synaptics -y && sudo reboot
+```shell
+sudo yum install synaptics -y && sudo reboot
+```
 
 老實說這篇文章沒什麼好寫的XD 但既然都解決個我找很久找不到解法的問題了，總覺得還是應該寫一下，所以就來認真記錄下我自己發生問題的始末吧～
 
@@ -29,11 +30,11 @@ Synaptics 觸控板不能動了怎麼辦？下面這串指令敲下去其實就�
 
 其實我平常的時候，因為覺得打字時手碰到觸控版導致游標會跑來跑去， 所以觸控版一直都是關閉的狀態，後來在fedora 設定的「滑鼠和觸控版」的選項中， 發現了「打字時停用」的選項，所以就開開心心的把觸控版打開，結果…
 
-![打字時停用觸控板](http://blog.wildsky.cc/wp-content/uploads/2015/03/2015-03-23-232726-%E7%9A%84%E8%9E%A2%E5%B9%95%E6%93%B7%E5%9C%96.png)
+![打字時停用觸控板](/images/config-for-touchpad.png)
 
 咦？？？？？？？不管我按 fn + f9 （切換觸控版開關的組合鍵）多少次怎麼只給我出現這個圖示（下圖），那表情就好像在嘲笑我啊啊啊！！
 
-![Synaptics 觸控版關閉中](http://blog.wildsky.cc/wp-content/uploads/2015/03/2015-03-23-233046-%E7%9A%84%E8%9E%A2%E5%B9%95%E6%93%B7%E5%9C%96.png)
+![Synaptics 觸控版關閉中](/images/touchpad-not-active.png)
 
 不行！是可忍孰不可忍，立刻開 telegram 問拉我下坑的 WM 大大，結果得到的回應是…
 

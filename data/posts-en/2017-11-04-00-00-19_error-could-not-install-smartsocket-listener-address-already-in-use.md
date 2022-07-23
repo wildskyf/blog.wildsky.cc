@@ -28,7 +28,7 @@ and I gave terminal a command `ps aux | grep adb` to show all processes which is
 
 If I kill 9842 (adb -P 5037 fork-server server), it will become `<defunct>`, and create anthor `adb -P 5037 fork-server server`, which means if I just delete the surface progress, the criminal behind the scenes will still alive. In another words: I can’t kill adb server forever…
 
-![I already kill you but you still live. What's wrong with you, adb server?](http://blog.wildsky.cc/wp-content/uploads/2017/11/kyle-simmons-74218-unsplash-1024x683.jpg)
+![I already kill you but you still live. What's wrong with you, adb server?](/images/kyle-simmons-74218-unsplash-e1553233521391.jpg)
 
 However, I notice that there are two kinds of progress about adb: `adb.linux.64` & `adb -P 5037 fork-server server`
 

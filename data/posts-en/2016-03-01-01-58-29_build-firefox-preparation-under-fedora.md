@@ -22,7 +22,7 @@ The command I input looks like to download some python script file, and execute 
       File "bootstrap.py", line 150, in main
         dasboot.bootstrap()
       File "/tmp/tmpTdL9Pv/mozboot/bootstrap.py", line 137, in bootstrap
-    
+
       File "/tmp/tmpTdL9Pv/mozboot/base.py", line 316, in ensure_mercurial_modern
     TypeError: upgrade_mercurial() takes exactly 1 argument (2 given)
 
@@ -34,7 +34,7 @@ But no matter how many times I give `sudo dnf update -y` to my Terminal, it kep
     Dependencies resolved.
     Nothing to do.
     Complete!
-    
+
 
 So my Mercurial should be up-to-date. But I found that the official website of Mercurial shows the latest version of Mercurial is 3.7.1, and mine is 3.5.1!
 
@@ -46,8 +46,4 @@ now I have 3.2.1 …. though this is not the really newest version of Mercurial,
 
 It allow me to move on, so I think it’s a solution for people who use Fedora, and want to build Firefox, but face the not-new-enough-version mercurial problem. Hope this article could help you finish the preparation for building Firefox.
 
-… maybe you might be interested in my other articles about linux: [http://blog.wildsky.cc/categories/linux/](http://blog.wildsky.cc/categories/linux/)
-
-![Firefox is cute, isn't it?](http://blog.wildsky.cc/wp-content/uploads/2019/03/nathan-anderson-158540-unsplash-1024x684.jpg)
-
-Photo by [Nathan Anderson](https://unsplash.com/photos/KGNaQcD8zdM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/search/photos/fire-fox?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+![Firefox is cute, isn't it?](/images/firefox-is-cute-by-Fuu-J.jpg)

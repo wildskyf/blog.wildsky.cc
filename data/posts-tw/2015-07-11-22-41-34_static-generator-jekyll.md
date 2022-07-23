@@ -2,18 +2,17 @@
 title: "Jekyll – 超好用靜態網站產生器"
 date: 2015-07-11T22:41:34
 slug: "static-generator-jekyll"
-excerpt: "<p>依照慣例，在每一篇文章之前都要哀號一下：這篇其實想寫很久了，只是因為事情太多一直沒時間開始撰寫，還有許多文章想&#8230;</p>
-"
+excerpt: "依照慣例，在每一篇文章之前都要哀號一下：這篇其實想寫很久了，只是因為事情太多一直沒時間開始撰寫，還有許多文章想"
 feature_image: null
-guid: "http://blog.wildsky.cc/?p=367"
+guid: "2015-07-11-22-41-34_static-generator-jekyll"
 ---
 依照慣例，在每一篇文章之前都要哀號一下：這篇其實想寫很久了，只是因為事情太多一直沒時間開始撰寫，還有許多文章想寫，只能趕快趕稿了QAQ
 
-![Jekyll](http://blog.wildsky.cc/wp-content/uploads/2015/07/jekyll.png)
+![Jekyll](/images/jekyll.png)
 
 今天想介紹的是 Jekyll，他是一個近幾年來非常有名的靜態網站產生器，你可以用他來寫部落格。 有一個網站叫做 [staticgen](https://www.staticgen.com/)，他是專門統計靜態網站產生器的使用情況，一點進去就可以看到 Jekyll 非常霸氣地穩居第一名，他在 GitHub 的 repo 的星星數就算除以而還是大勝第二名的 Octopress，所以就讓我覺得應該好好介紹一下這個有趣的工具。
 
-![staticgen 靜態網站產生器排名](http://blog.wildsky.cc/wp-content/uploads/2015/07/2015-07-11-19-40-00-%E7%9A%84%E8%9E%A2%E5%B9%95%E6%93%B7%E5%9C%96.png)
+![staticgen 靜態網站產生器排名](/images/ssg-rank.png)
 
 講起 Jekyll 就不得不提到 GitHub Pages 了，這個產生器之所以會這麼有名，就是因為 GitHub 它使用這個服務來提供 GitHub Pages 的服務，那為什麼選擇 Jekyll 呢？他有許多厲害的特色，請聽我娓娓道來…
 

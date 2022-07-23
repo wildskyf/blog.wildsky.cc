@@ -4,7 +4,7 @@ const Head = ({ pageName, pageDesc, pageImage }) => {
   const site_name = 'Wildsky F.'
   const pageTitle = `${pageName} | ${site_name}`
   const desc = pageDesc
-  const imgUrl = pageImage || 'https://backend.wildsky.cc/wp-content/uploads/2019/02/10931296_1023005764381319_5713723914193790237_n.jpg'
+  const imgUrl = pageImage || '/images/lego-wildsky.jpg'
 
   return (
     <NextHead>

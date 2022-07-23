@@ -2,12 +2,11 @@
 title: "Mac 避免誤撞邊緣而啟動熱角功能"
 date: 2017-02-01T23:13:53
 slug: "disable-hot-corner-in-steam"
-excerpt: "<p>最近過年很無聊，又把 Dota2 抓回來玩了。很幸運地在 Mac 上可以玩這款遊戲！ 但是一開進去後就發現一個&#8230;</p>
-"
+excerpt: "最近過年很無聊，又把 Dota2 抓回來玩了。很幸運地在 Mac 上可以玩這款遊戲！ 但是一開進去後就發現一個"
 feature_image: null
-guid: "http://blog.wildsky.cc/?p=301"
+guid: ""
 ---
-![Steam Screenshot](http://blog.wildsky.cc/wp-content/uploads/2017/02/01-steam.png)
+![Steam Screenshot](/images/01-steam.png)
 
 最近過年很無聊，又把 Dota2 抓回來玩了。很幸運地在 Mac 上可以玩這款遊戲！ 但是一開進去後就發現一個問題，當我滑鼠撞到邊緣時就會觸發熱角（hot corners）
 
