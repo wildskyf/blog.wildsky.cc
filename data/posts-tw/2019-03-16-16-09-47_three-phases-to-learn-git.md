@@ -130,5 +130,3 @@ rebase 和 cherry-pick 我主要是用來整理版控記錄，而 stash 則是�
 
 *   [連猴子都能懂的Git入門指南](https://backlog.com/git-tutorial/tw/)
 *   [Riku 做的 Git cheatsheet](/images/git-cheat-sheet-by-riku.png)
-
-⋯⋯ 也許你也有興趣看看我其他和 [工程](http://blog.wildsky.cc/categories/engineering/) 相關的文章。

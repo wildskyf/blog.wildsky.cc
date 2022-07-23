@@ -171,5 +171,3 @@ womany 有個蠻好的東西叫做迷人體驗，可以讓申請者體驗到許�
 *   Womany 網站：[https://womany.net](https://womany.net)
 *   Womany 電商：[https://womany.net/shop](https://womany.net/)
 *   Womany 徵才頁：[https://womany.net/career](https://womany.net/career)
-
-也可以看看我其他和 [生活](http://blog.wildsky.cc/categories/life) 相關的文章。

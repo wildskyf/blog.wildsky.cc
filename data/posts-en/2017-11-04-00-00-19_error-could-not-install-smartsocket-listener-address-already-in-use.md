@@ -57,5 +57,3 @@ References:
 *   [https://bird512.github.io/2017/01/23/react-native1/](https://bird512.github.io/2017/01/23/react-native1/)
 *   [What does aux mean in \`ps aux\`?](https://unix.stackexchange.com/questions/106847/what-does-aux-mean-in-ps-aux)
 *   [Why does “ps aux | grep x” give better results than “pgrep x”?](https://askubuntu.com/questions/157075/why-does-ps-aux-grep-x-give-better-results-than-pgrep-x)
-
-… maybe you might be interested in my other posts about android: [http://blog.wildsky.cc/categories/android/](http://blog.wildsky.cc/categories/android/).

@@ -63,5 +63,3 @@ Make it work, make it right, make it fast，right 不代表一定要完美無錯
 除此之外，機會成本也很重要，A 和 B 在做不同事情時的效率可能不同，所以應該要在有需要時，儘速尋求專家協助，不要一個人默默苦幹燒掉時間。時時要把 Time Management 放在心上，才能活得毫不費力！
 
 > 你的時間值得更要緊的事！
-
-工程實在是博大精深，也許你有興趣看看我其他關於這方面的體悟：[http://blog.wildsky.cc/categories/工程心法/](http://blog.wildsky.cc/categories/工程心法/)
