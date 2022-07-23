@@ -1,9 +1,9 @@
 ---
-title: 成為工程師 &#8211; 職涯發展上，存在著兩種人
+title: 成為工程師 - 職涯發展上，存在著兩種人
 date: 2018-01-03T22:00:39.000Z
 slug: two-kinds-of-engineers
 excerpt: '<p>想要 成為工程師 ，也有很多種類型的工程師。 工程師有兩種，一種是做產品的人，另一種是搞技術的神。 今天和公司&#8230;</p> '
-feature_image: joshua-earle-234307-unsplash-e1553233527832.jpg
+feature_image: joshua-earle-234307-unsplash.jpg
 guid: 2018-01-03-22-00-39_two-kinds-of-engineers
 ---
 想要 成為工程師 ，也有很多種類型的工程師。
