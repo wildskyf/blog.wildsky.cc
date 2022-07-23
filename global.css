@@ -90,6 +90,13 @@
   align-items: center;
 }
 
+.article-content th,
+.article-content td {
+    border-collapse: collapse;
+    border: 1px solid #aaa;
+    padding: 5px 8px;
+}
+
 .article-content iframe {
   margin-bottom: 32px;
   max-width: 100%;
