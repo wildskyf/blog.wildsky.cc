@@ -14,22 +14,23 @@ const NotFoundPage = (props) => {
       <Head {...{ pageName, pageDesc }} />
       <Layout { ...{ lang: LANG, ...props } }>
 
-        <div className='flex flex-col justify-center border p-8'>
+        <div className={
+          `flex flex-col justify-center border p-8 opacity-20 hover:opacity-100 duration-200`
+        }>
           <div className='flex justify-center gap-x-2'>
-            <div className='text-9xl cursor-default duration-200 text-red-100 hover:text-red-700'>
+            <div className='text-9xl cursor-default text-red-700'>
               {errorCode}
             </div>
 
             <Button
               to='/'
-              className='text-4xl duration-200 opacity-20 hover:opacity-100'
+              className='text-4xl'
               text={<>Back<br/ >To<br />Home</>}
             />
           </div>
 
           <div className={`
-            flex justify-center text-9xl cursor-default duration-200
-            text-gray-200 hover:text-gray-700
+            flex justify-center text-9xl cursor-default text-gray-700
           `}>
             {pageName}
           </div>
