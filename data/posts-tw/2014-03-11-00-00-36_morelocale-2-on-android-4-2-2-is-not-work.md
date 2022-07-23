@@ -2,12 +2,11 @@
 title: "Android 4.2.2  無法使用 morelocale 2"
 date: 2014-03-11T00:00:36
 slug: "morelocale-2-on-android-4-2-2-is-not-work"
-excerpt: "<p>會寫這篇文章是因為我妹的手機(HTC SV)不是台灣買的，沒有台灣中文&nbsp;，因而需要變更語系&amp;&#8230;</p>
-"
-feature_image: null
-guid: "http://blog.wildsky.cc/?p=61"
+excerpt: "會寫這篇文章是因為我妹的手機(HTC SV)不是台灣買的，沒有台灣中文&nbsp;，因而需要變更語系&amp;&#8230;"
+guid: "2014-03-11-00-00-36_morelocale-2-on-android-4-2-2-is-not-work"
 ---
-會寫這篇文章是因為我妹的手機(HTC SV)不是台灣買的，沒有台灣中文 ，因而需要變更語系&所在地。
+
+會寫這篇文章是因為我妹的手機(HTC SV)不是台灣買的，沒有台灣中文，因而需要變更語系&所在地。
 
 按照過往經驗，我就習慣性地載了 morelocal 2，結果居然不能使用！
 
@@ -31,15 +30,21 @@ HTC 的 root 我沒有把握，不想把我妹的新手機弄壞。所以就選�
 
 在 **電腦** 端，在剛剛打開的那個黑色底的視窗輸入下面的命令
 
-    adb shell
+```
+adb shell
+```
 
 應該會在畫面上看到這排字出現
 
-    shell@android:/ $
+```
+shell@android:/ $
+```
 
 接著就輸入下面的命令
 
-    pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION
+```
+pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION
+```
 
 完成
 --
@@ -49,4 +54,4 @@ HTC 的 root 我沒有把握，不想把我妹的新手機弄壞。所以就選�
 參考資料
 ----
 
-*   [\[教程\] Morelocale2 4.2以上也能用 (免root)](http://apk.tw/forum.php?mod=viewthread&tid=378955&extra=page%3D1%26filter%3Dauthor%26orderby%3Ddateline%26orderby%3Ddateline)
+* [\[教程\] Morelocale2 4.2以上也能用 (免root)](http://apk.tw/forum.php?mod=viewthread&tid=378955&extra=page%3D1%26filter%3Dauthor%26orderby%3Ddateline%26orderby%3Ddateline)
