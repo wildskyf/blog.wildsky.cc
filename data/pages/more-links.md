@@ -11,8 +11,9 @@ feature_image: null
 
 ### 鄭尹 Chas
 
-我女友，部落格主要在講藝術與求職相關的事情。
+我老婆，部落格主要在講藝術與求職相關的事情。
 
+*   [https://rarachasing.tw](https://rarachasing.tw)
 *   [https://blog.rarachasing.tw](https://blog.rarachasing.tw)
 
 ### kidwm
@@ -63,8 +64,8 @@ feature_image: null
 
 專注於性別相關資訊的網站，內含女人全方位議題，從職場發展、旅行玩樂、時尚彩妝、生活風格到愛性情慾。是個深具教育意義的網站。
 
-*   [https://womany.net](https://womany.net/)  
-    
+*   [https://womany.net](https://womany.net/)
+
 
 ### Taiwan AI Labs
 
