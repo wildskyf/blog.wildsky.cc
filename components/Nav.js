@@ -27,26 +27,22 @@ const Nav = ({ lang, menu_items }) => {
               pages.map(item => {
                 return (
                   <li key={item.guid}>
-                    <Link href={item.url}>
-                      <a className={`
-                        text-gray-700 text-xl font-semibold px-3 py-3 mx-1 cursor-pointer hover:text-red-700 w-full block
-                        border-b-2 lg:border-b-0 border-gray-200 border-solid
-                      `}>
-                        {item.title}
-                      </a>
+                    <Link href={item.url} className={`
+                      text-gray-700 text-xl font-semibold px-3 py-3 mx-1 cursor-pointer hover:text-red-700 w-full block
+                      border-b-2 lg:border-b-0 border-gray-200 border-solid
+                    `}>
+                      {item.title}
                     </Link>
                   </li>
                 )
               })
             }
             <li>
-              <Link href={homepage_link.path}>
-                <a className={`
-                  text-gray-700 text-xl font-semibold px-3 py-3 mx-1 cursor-pointer hover:text-red-700 w-full block
-                  border-b-2 lg:border-b-0 border-gray-200 border-solid
-                `}>
-                  {homepage_link.label}
-                </a>
+              <Link href={homepage_link.path} className={`
+                text-gray-700 text-xl font-semibold px-3 py-3 mx-1 cursor-pointer hover:text-red-700 w-full block
+                border-b-2 lg:border-b-0 border-gray-200 border-solid
+              `}>
+                {homepage_link.label}
               </Link>
             </li>
           </ul>

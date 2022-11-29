@@ -16,13 +16,11 @@ const PostList = ({ lang, postList }) => {
               <article className='font-serif py-16 border-b-2 border-gray-100 border-solid'>
                 <header>
                   <Link href={`${root_path}/posts/${post.slug}`}>
-                    <a>
-                      <h2
-                        className='font-sans mb-4 text-2xl lg:text-3xl font-semibold text-gray-800 hover:text-red-700'
-                        dangerouslySetInnerHTML={{ __html: post.title }}
-                        style={{ hyphens: 'auto' }}
-                      />
-                    </a>
+                    <h2
+                      className='font-sans mb-4 text-2xl lg:text-3xl font-semibold text-gray-800 hover:text-red-700'
+                      dangerouslySetInnerHTML={{ __html: post.title }}
+                      style={{ hyphens: 'auto' }}
+                    />
                   </Link>
                   <p className='text-lg text-gray-500 mb-4'>
                     Posted on <time dateTime={post.date}>{dayjs(post.date).format('YYYY 年 MM 月 DD 日')}</time>
@@ -31,14 +29,12 @@ const PostList = ({ lang, postList }) => {
                 {
                   post.feature_image_url && (
                     <Link href={`${root_path}/posts/${post.slug}`}>
-                      <a>
-                        <LazyLoadImage
-                          src={post.feature_image_url}
-                          alt=''
-                          width='750'
-                          height='410'
-                        />
-                      </a>
+                      <LazyLoadImage
+                        src={post.feature_image_url}
+                        alt=''
+                        width='750'
+                        height='410'
+                      />
                     </Link>
                   )
                 }

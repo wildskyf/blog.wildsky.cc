@@ -12,15 +12,21 @@ const ListLayout = ({ lang, postList, previous_page_path, next_page_path, home_u
         <section className='pagination flex flex-row justify-between'>
           {
             previous_page_path ? (
-              <Link href={previous_page_path}>
-                <a className='p-4 text-xl text-gray-800 hover:text-red-700'>← Newer posts</a>
+              <Link
+                href={previous_page_path}
+                className='p-4 text-xl text-gray-800 hover:text-red-700'
+              >
+                ← Newer posts
               </Link>
             ) : (<span />)
           }
           {
             next_page_path ? (
-              <Link href={next_page_path}>
-                <a className='p-4 text-xl text-gray-800 hover:text-red-700'>Older posts →</a>
+              <Link
+                href={next_page_path}
+                className='p-4 text-xl text-gray-800 hover:text-red-700'
+              >
+                Older posts →
               </Link>
             ) : (<span />)
           }
