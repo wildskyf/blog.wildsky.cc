@@ -53,7 +53,7 @@
 }
 
 .article-content pre {
-  overflow-x: scroll;
+  overflow-x: auto;
   background-color: #eee;
   border: 1px solid #ddd;
   padding: 6px 6px;

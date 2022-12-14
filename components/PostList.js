@@ -39,8 +39,13 @@ const PostList = ({ lang, postList }) => {
                   )
                 }
                 <div className="article-content mt-8 text-lg text-gray-700 pb-4">
-                  <div dangerouslySetInnerHTML={{ __html: post.excerpt }} />
-                  <ReadMoreButton to={`${root_path}/posts/${post.slug}`} />
+                  <div
+                    className="break-all"
+                    dangerouslySetInnerHTML={{ __html: post.excerpt }}
+                  />
+                  <div>
+                    <ReadMoreButton to={`${root_path}/posts/${post.slug}`} />
+                  </div>
                 </div>
               </article>
             </li>
