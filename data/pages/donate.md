@@ -1,6 +1,6 @@
 ---
 title: 捐款贊助
-feature_image: null
+feature_image: 'do-something-great.jpg'
 ---
 嗨啊！不論你最後有沒有捐款，我都想先感謝你點進這一頁。在這個部落格裡，每一個觀看次數、每一個點擊對我都是很重要的，你點進了這一頁，不管是好奇或是真有打算贊助我，我都向你致上謝意！謝謝！
 
@@ -21,8 +21,9 @@ feature_image: null
 
 下面列一下曾經 donate 的朋友，謝謝你們！
 
-*   Jason Wingate
-*   Torsten
-*   Joher Coleman
-*   [Christos Keramitsis](https://www.keramitsis.net/)
-*   [manzoo](https://manzoo.medium.com/)
+* Jason Wingate
+* Torsten
+* Joher Coleman
+* [Christos Keramitsis](https://www.keramitsis.net/)
+* [manzoo](https://manzoo.medium.com/)
+* Richard Holland

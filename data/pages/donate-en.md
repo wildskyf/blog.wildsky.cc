@@ -1,6 +1,6 @@
 ---
 title: Give Wildsky Donation
-feature_image: null
+feature_image: 'do-something-great.jpg'
 ---
 Hi! No matter you donate me or not, I would like to thank you for accessing this page. In this blog, every pageview, every click is important to me. Thank you very much!
 
@@ -21,8 +21,9 @@ Thank-you list
 
 Here are people who donate something to me, THANK YOU ALL!
 
-*   Jason Wingate
-*   Torsten
-*   Joher Coleman
-*   [Christos Keramitsis](https://www.keramitsis.net/)
-*   [manzoo](https://manzoo.medium.com/)
+* Jason Wingate
+* Torsten
+* Joher Coleman
+* [Christos Keramitsis](https://www.keramitsis.net/)
+* [manzoo](https://manzoo.medium.com/)
+* Richard Holland
