@@ -52,12 +52,28 @@
   margin-bottom: 40px;
 }
 
+.article-content p code {
+  font-size: 14px;
+  font-family: monospace;
+  background: #efefef;
+  padding: 2px 4px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
 .article-content pre {
+  font-family: monospace;
+  font-size: 14px;
   overflow-x: auto;
   background-color: #eee;
   border: 1px solid #ddd;
   padding: 6px 6px;
   margin: 12px 0 16px;
+}
+
+.article-content blockquote {
+  border-left: 4px solid #ddd;
+  padding-left: 12px;
 }
 
 .article-content .wp-block-embed__wrapper {
