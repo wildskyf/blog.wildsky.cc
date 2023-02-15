@@ -26,7 +26,10 @@ const getAllPosts = () => {
       title: data.title,
       date: data.date,
       excerpt: data.excerpt,
-      link: 'https://blog.wildsky.cc/posts' + filename.replace('.md', ''),
+      link: 'https://blog.wildsky.cc/posts/' + filename
+        .replace('.md', '')
+        .split('_')
+        .pop(),
     };
   });
   // Sort the blogposts by date
