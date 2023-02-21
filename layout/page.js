@@ -1,3 +1,4 @@
+import SocialBar from '../components/SocialBar'
 import Header from '../components/Header'
 import PropTypes from 'prop-types'
 
@@ -6,6 +7,8 @@ const PageLayout = ({ lang, home_url, website_name, website_description, menu_it
 
   return (
     <div className='min-h-screen flex flex-col'>
+      <SocialBar />
+
       <header className='flex flex-col justify-center items-center px-4 py-12 bg-gray-100 border-b-2 border-gray-200 border-solid'>
         <Header {...{ lang, home_url, website_name, website_description, menu_items }} />
       </header>
