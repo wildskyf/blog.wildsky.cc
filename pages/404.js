@@ -6,8 +6,9 @@ import Button from '../components/Button'
 const LANG = 'en'
 
 const NotFoundPage = (props) => {
-  const pageName = '404 NotFound'
-  const pageDesc = "That page can't be found."
+  const pageName = '404 NotFound';
+  const pageDesc = <>That page <br />can not<br /> be found.</>;
+
   return (
     <>
       <Head {...{ pageName, pageDesc }} />
