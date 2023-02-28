@@ -22,7 +22,7 @@ export default () => {
         <AiFillLinkedin />
       </a>
 
-      <a href="/files/resume.pdf" target='_blank' download='wildsky.20220901.pdf'>
+      <a href="/files/reseme.pdf" target='_blank' download='wildsky.20220901.pdf'>
         <BiPaperclip />
       </a>
     </div>
