@@ -2,10 +2,10 @@ import Link from 'next/link'
 import Layout from './page'
 import PostList from '../components/PostList'
 
-const ListLayout = ({ lang, postList, previous_page_path, next_page_path, home_url, website_name, website_description }) => {
+const ListLayout = ({ lang, postList, previous_page_path, next_page_path, home_url }) => {
   return (
     <>
-      <Layout {...{ lang, home_url, website_name, website_description }}>
+      <Layout {...{ lang, home_url }}>
         <section className="article-list">
           <PostList lang={lang} postList={postList} />
         </section>

@@ -2,7 +2,6 @@ import fs from 'fs'
 import { PAGINATION_PER_PAGE_COUNT } from '../data/globalConfig'
 
 const fetchIndexData = async ({ lang }) => {
-  const blog_info = require('../data/blog_info.json');
   const post_info_list = fs
     .readdirSync(`./src/data/posts-${lang}/`)
     .sort()
@@ -22,8 +21,6 @@ const fetchIndexData = async ({ lang }) => {
 
 
   return {
-    website_name: blog_info.name,
-    website_description: blog_info.description,
     home_url: lang === 'en' ? '/en/' : '/',
     postList: post_info_list
   }

@@ -5,7 +5,7 @@ import fetchPaginationShowData from '../../libs/fetchPaginationShowData'
 
 export const PaginationPageComponentFactory = lang => (props) => {
   const { pageName, pageDesc } = props
-  const { website_name, website_description, home_url } = props
+  const { home_url } = props
   const { postList, current_page_num, total_page_num } = props
   const path_prefix = lang === 'en' ? '/en' : ''
   const is_last_page = total_page_num === current_page_num
@@ -18,8 +18,6 @@ export const PaginationPageComponentFactory = lang => (props) => {
         postList,
         previous_page_path: `${path_prefix}/page/${current_page_num - 1}`,
         next_page_path: !is_last_page && `${path_prefix}/page/${current_page_num + 1}`,
-        website_name,
-        website_description,
         home_url
       }} />
     </>
