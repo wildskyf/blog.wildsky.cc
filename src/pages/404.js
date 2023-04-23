@@ -1,6 +1,5 @@
 import Layout from '../layout/page'
 import Head from '../components/Head'
-import fetchLayoutData from '../libs/fetchLayoutData'
 import Button from '../components/Button'
 
 const LANG = 'en'
@@ -33,11 +32,6 @@ const NotFoundPage = (props) => {
       </Layout>
     </>
   )
-}
-
-export const getStaticProps = async () => {
-  const ret_props = await fetchLayoutData({ lang: LANG })
-  return { props: ret_props }
 }
 
 export default NotFoundPage

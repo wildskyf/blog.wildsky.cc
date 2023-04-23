@@ -9,13 +9,12 @@ const LANG = 'tw'
 
 export const PostComponentFactory = lang => (props) => {
   const { pageName, pageDesc, pageImage } = props
-  const { home_url } = props
   const { post_feature_image_url, post_date, post_title, post_content } = props
 
   return (
     <>
       <Head {...{ pageName, pageDesc, pageImage }} />
-      <Layout {...{ lang, home_url }}>
+      <Layout {...{ lang }}>
         <Article
           feature_image_url={post_feature_image_url}
           date={post_date}

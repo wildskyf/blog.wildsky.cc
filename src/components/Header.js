@@ -2,7 +2,8 @@ import Link from 'next/link'
 import Nav from '../components/Nav'
 import blog_info from '@/data/blog_info.json'
 
-const Header = ({ lang, home_url }) => {
+const Header = ({ lang }) => {
+  const home_url = lang === 'en' ? '/en/' : '/'
   return (
     <>
       <h1 className='font-title font-semibold lg:font-bold mt-3 mb-3 lg:mb-6 text-3xl lg:text-6xl text-gray-900 hover:text-red-700'>

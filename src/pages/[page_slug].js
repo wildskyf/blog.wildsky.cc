@@ -9,11 +9,10 @@ const LANG = 'tw'
 
 export const PageComponentFactory = lang => (props) => {
   const { pageName, pageDesc } = props
-  const { home_url } = props
   const { page_feature_image_url, page_title, page_content } = props
 
   return (
-    <Layout {...{ lang, home_url }}>
+    <Layout {...{ lang }}>
       <Head  {...{ pageName, pageDesc }} />
       <Article
         feature_image_url={page_feature_image_url}

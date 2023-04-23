@@ -8,7 +8,6 @@ const fetchPostShowData = async ({ post_slug, lang }) => {
   const post_info = require(`../data/posts-${lang}/${post_filename}`)
 
   return {
-    home_url: lang === 'en' ? '/en/' : '/',
     post_feature_image_url: post_info.attributes.feature_image ? `/images/${post_info.attributes.feature_image}` : null,
     post_date: post_info?.attributes.date || null,
     post_title: post_info?.attributes.title || null,

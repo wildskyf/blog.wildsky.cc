@@ -21,7 +21,6 @@ const fetchIndexData = async ({ lang }) => {
 
 
   return {
-    home_url: lang === 'en' ? '/en/' : '/',
     postList: post_info_list
   }
 }

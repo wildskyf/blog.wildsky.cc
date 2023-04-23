@@ -24,7 +24,6 @@ const fetchPaginationShowData = async ({ page_num, lang }) => {
     })
 
   return {
-    home_url: lang === 'en' ? '/en/' : '/',
     postList: current_page_post_infos,
     current_page_num: Number(page_num),
     total_page_num: Number(total_page_num)
