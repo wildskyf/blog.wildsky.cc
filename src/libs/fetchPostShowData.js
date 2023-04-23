@@ -5,7 +5,7 @@ const fetchPostShowData = async ({ post_slug, lang }) => {
   const main_menu_items = require(`../data/main-${lang}.json`);
 
   const post_filename = fs
-    .readdirSync(`./data/posts-${lang}/`)
+    .readdirSync(`./src/data/posts-${lang}/`)
     .find(filename => filename.match(new RegExp(post_slug + '.md$')))
 
   const post_info = require(`../data/posts-${lang}/${post_filename}`)

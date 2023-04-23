@@ -5,7 +5,7 @@ const fetchIndexData = async ({ lang }) => {
   const blog_info = require('../data/blog_info.json');
   const main_menu_items = require(`../data/main-${lang}.json`);
   const post_info_list = fs
-    .readdirSync(`./data/posts-${lang}/`)
+    .readdirSync(`./src/data/posts-${lang}/`)
     .sort()
     .reverse()
     .slice(0, PAGINATION_PER_PAGE_COUNT)

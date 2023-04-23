@@ -2,7 +2,7 @@ import fs from 'fs'
 
 const fetchPostShowPath = async ({ lang }) => {
   const post_filenames = fs
-    .readdirSync(`./data/posts-${lang}/`)
+    .readdirSync(`./src/data/posts-${lang}/`)
     .map(f => f.replace(/.md$/, ''))
 
   const ret = post_filenames.map((post) => ({

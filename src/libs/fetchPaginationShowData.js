@@ -6,7 +6,7 @@ const fetchPaginationShowData = async ({ page_num, lang }) => {
   const main_menu_items = require(`../data/main-${lang}.json`);
 
   const all_post_filenames = fs
-    .readdirSync(`./data/posts-${lang}/`)
+    .readdirSync(`./src/data/posts-${lang}/`)
     .sort()
     .reverse()
 
