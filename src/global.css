@@ -1,5 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 @import url('prismjs/themes/prism-okaidia.css');
+@import url("@fontsource/poppins/400.css");
+@import url("@fontsource/poppins/500.css");
+@import url("@fontsource/poppins/600.css");
+@import url("@fontsource/poppins/700.css");
+@import url("@fontsource/noto-sans-tc");
+@import url('tailwindcss/tailwind.css');
+
+@layer base {
+  html, body {
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+}
 
 .article-content h2,
 .article-content h3,

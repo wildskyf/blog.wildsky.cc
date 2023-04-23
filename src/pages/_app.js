@@ -2,7 +2,6 @@ import Router from "next/router"
 import withGA from "next-ga"
 
 import '../global.css'
-import 'tailwindcss/tailwind.css'
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />

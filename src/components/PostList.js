@@ -13,7 +13,9 @@ const PostList = ({ lang, postList }) => {
         postList.map(post => {
           return (
             <li key={post.guid}>
-              <article className='font-serif py-16 border-b-2 border-gray-100 border-solid'>
+              <article className={`py-16 border-b-2 border-gray-100 border-solid
+                ${lang === 'tw' ? 'tracking-tw-normal font-tw-paragraph' : 'font-en-paragraph'}
+              `}>
                 <header>
                   <Link href={`${root_path}/posts/${post.slug}`}>
                     <h2

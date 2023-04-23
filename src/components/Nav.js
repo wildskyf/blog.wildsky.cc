@@ -29,7 +29,7 @@ const Nav = ({ lang }) => {
       </div>
       {
         (isDesktop || isNavOpen) && (
-          <ul className="flex flex-col text-center lg:flex-row w-full lg:w-auto" onClick={toggleNav}>
+          <ul className="font-sans flex flex-col text-center lg:flex-row w-full lg:w-auto" onClick={toggleNav}>
             {
               pages.map(item => {
                 return (

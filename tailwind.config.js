@@ -22,9 +22,15 @@ module.exports = {
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
     },
+    letterSpacing: {
+      'tw-normal': '0.03em',
+      'en-normal': 'unset'
+    },
     extend: {
       fontFamily: {
-        'title': ['Poppins', 'sans-serif'],
+        'title': ['Poppins', 'Noto Sans TC', 'sans-serif'],
+        'tw-paragraph': ['Noto Sans TC', 'serif'],
+        'en-paragraph': ['Merriweather', 'serif']
       }
     },
   },

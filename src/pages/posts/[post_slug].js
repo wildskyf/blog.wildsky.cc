@@ -16,6 +16,7 @@ export const PostComponentFactory = lang => (props) => {
       <Head {...{ pageName, pageDesc, pageImage }} />
       <Layout {...{ lang }}>
         <Article
+          className={lang === 'tw' ? 'tracking-tw-normal font-tw-paragraph' : 'font-en-paragraph'}
           feature_image_url={post_feature_image_url}
           date={post_date}
           title={post_title}
