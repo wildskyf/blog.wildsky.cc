@@ -3,8 +3,6 @@ import { PAGINATION_PER_PAGE_COUNT } from '../data/globalConfig'
 
 const fetchPaginationShowData = async ({ page_num, lang }) => {
   const blog_info = require('../data/blog_info.json');
-  const main_menu_items = require(`../data/main-${lang}.json`);
-
   const all_post_filenames = fs
     .readdirSync(`./src/data/posts-${lang}/`)
     .sort()
@@ -30,7 +28,6 @@ const fetchPaginationShowData = async ({ page_num, lang }) => {
     website_name: blog_info.name,
     website_description: blog_info.description,
     home_url: lang === 'en' ? '/en/' : '/',
-    menu_items: main_menu_items,
     postList: current_page_post_infos,
     current_page_num: Number(page_num),
     total_page_num: Number(total_page_num)

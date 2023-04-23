@@ -1,14 +1,21 @@
 import { useState } from 'react'
 import { useWindowSize } from 'react-use'
 import Link from 'next/link'
+import main_menu_items_tw from '@/data/main-tw.json'
+import main_menu_items_en from '@/data/main-en.json'
 
-const Nav = ({ lang, menu_items }) => {
+const menu_items_mapping = {
+  tw: main_menu_items_tw,
+  en: main_menu_items_en
+}
+
+const Nav = ({ lang }) => {
   const { width } = useWindowSize()
   const isDesktop = width >= 1024
   const [isNavOpen, setNavOpen] = useState(false)
   const homepage_link = lang === 'en' ? { label: '中文', path: '/' } : { label: 'english', path: '/en/' }
 
-  const pages = menu_items.filter(item => !['Languages'].includes(item.title))
+  const pages = menu_items_mapping[lang].filter(item => !['Languages'].includes(item.title))
 
   const toggleNav = () => setNavOpen(!isNavOpen)
 
