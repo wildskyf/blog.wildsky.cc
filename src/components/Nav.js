@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { useWindowSize } from 'react-use'
-import Link from 'next/link'
+import { chakra } from '@chakra-ui/react'
+import Link from '@/components/Link'
 import main_menu_items_tw from '@/data/main-tw.json'
 import main_menu_items_en from '@/data/main-en.json'
+
+import { headerItemhoverEffect } from '@/components/Header'
 
 const menu_items_mapping = {
   tw: main_menu_items_tw,
@@ -20,7 +23,7 @@ const Nav = ({ lang }) => {
   const toggleNav = () => setNavOpen(!isNavOpen)
 
   return (
-    <>
+    <nav className='flex flex-col justify-center items-center w-full lg:w-auto select-none'>
       <div
         className='inline-block lg:hidden bg-white px-4 py-2 border-2 border-solid border-gray-200'
         onClick={toggleNav}
@@ -29,15 +32,25 @@ const Nav = ({ lang }) => {
       </div>
       {
         (isDesktop || isNavOpen) && (
-          <ul className="font-sans flex flex-col text-center lg:flex-row w-full lg:w-auto" onClick={toggleNav}>
+          <ul
+            className={`
+              capitalize
+              font-sans flex flex-col text-center lg:flex-row w-full lg:w-auto
+            `}
+            onClick={toggleNav}
+          >
             {
               pages.map(item => {
                 return (
                   <li key={item.guid}>
-                    <Link href={item.url} className={`
-                      text-gray-700 text-xl font-semibold px-3 py-3 mx-1 cursor-pointer hover:text-red-700 w-full block
-                      border-b-2 lg:border-b-0 border-gray-200 border-solid
-                    `}>
+                    <Link
+                      href={item.url}
+                      className={`
+                        text-xl font-thin px-3 py-3 mx-1 cursor-pointer w-full block
+                        border-b-2 lg:border-b-0 border-gray-200 border-solid
+                      `}
+                      sx={headerItemhoverEffect}
+                    >
                       {item.title}
                     </Link>
                   </li>
@@ -45,17 +58,21 @@ const Nav = ({ lang }) => {
               })
             }
             <li>
-              <Link href={homepage_link.path} className={`
-                text-gray-700 text-xl font-semibold px-3 py-3 mx-1 cursor-pointer hover:text-red-700 w-full block
-                border-b-2 lg:border-b-0 border-gray-200 border-solid
-              `}>
+              <Link
+                href={homepage_link.path}
+                className={`
+                  text-xl font-thin px-3 py-3 mx-1 cursor-pointer w-full block
+                  border-b-2 lg:border-b-0 border-gray-200 border-solid
+                `}
+                sx={headerItemhoverEffect}
+              >
                 {homepage_link.label}
               </Link>
             </li>
           </ul>
         )
       }
-    </>
+    </nav>
   )
 }
 
