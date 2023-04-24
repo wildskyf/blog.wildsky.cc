@@ -13,10 +13,10 @@
 @layer base {
   html, body {
     font-family: 'Noto Serif TC', sans-serif;
-    background: linear-gradient(-45deg, #003366, #375859, #2c4647, #001A33, #004080, #588c8e, #001A33);
+    background: linear-gradient(-25deg, #003366, #2c4647, #001A33, #004080);
     background-size: 400% 400%;
     background-attachment: fixed;
-    animation: gradient 20s ease-in-out infinite;
+    animation: gradient 13s ease-in-out infinite;
   }
 
   @keyframes gradient {
