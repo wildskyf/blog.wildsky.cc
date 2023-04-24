@@ -6,12 +6,10 @@ const PageLayout = ({ lang, children }) => {
   const lang_code = lang === 'tw' ? 'zh-Hant-TW' : 'en'
 
   return (
-    <div className='min-h-screen flex flex-col'>
+    <div className='min-h-screen flex flex-col bg-gradient-to-r from-brand-300 to-brand-900'>
       <SocialBar />
 
-      <header className='flex flex-col justify-center items-center px-4 py-12 bg-gray-100 border-b-2 border-gray-200 border-solid'>
-        <Header {...{ lang }} />
-      </header>
+      <Header {...{ lang }} />
 
       <main className='flex-grow flex justify-center items-start py-4' lang={lang_code}>
         <div className='flex flex-col w-full max-w-full lg:max-w-3xl'>

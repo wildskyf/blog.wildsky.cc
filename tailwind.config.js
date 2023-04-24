@@ -27,6 +27,20 @@ module.exports = {
       'en-normal': 'unset'
     },
     extend: {
+      colors: {
+        brand: {
+          50: '#D7E9F5',
+          100: '#B6D5EB',
+          200: '#7FBADC',
+          300: '#54A5D5',
+          400: '#3892C6',
+          500: '#0066CC',
+          600: '#0059B3',
+          700: '#004080',
+          800: '#003366',
+          900: '#001A33'
+        }
+      },
       fontFamily: {
         'title': ['Poppins', 'Noto Sans TC', 'sans-serif'],
         'tw-paragraph': ['Noto Sans TC', 'serif'],

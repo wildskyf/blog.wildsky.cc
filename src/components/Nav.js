@@ -20,7 +20,7 @@ const Nav = ({ lang }) => {
   const toggleNav = () => setNavOpen(!isNavOpen)
 
   return (
-    <>
+    <nav className='flex flex-col justify-center items-center w-full lg:w-auto select-none'>
       <div
         className='inline-block lg:hidden bg-white px-4 py-2 border-2 border-solid border-gray-200'
         onClick={toggleNav}
@@ -35,7 +35,7 @@ const Nav = ({ lang }) => {
                 return (
                   <li key={item.guid}>
                     <Link href={item.url} className={`
-                      text-gray-700 text-xl font-semibold px-3 py-3 mx-1 cursor-pointer hover:text-red-700 w-full block
+                      text-white text-xl font-semibold px-3 py-3 mx-1 cursor-pointer hover:text-brand-300 w-full block
                       border-b-2 lg:border-b-0 border-gray-200 border-solid
                     `}>
                       {item.title}
@@ -46,7 +46,7 @@ const Nav = ({ lang }) => {
             }
             <li>
               <Link href={homepage_link.path} className={`
-                text-gray-700 text-xl font-semibold px-3 py-3 mx-1 cursor-pointer hover:text-red-700 w-full block
+                text-white text-xl font-semibold px-3 py-3 mx-1 cursor-pointer hover:text-brand-300 w-full block
                 border-b-2 lg:border-b-0 border-gray-200 border-solid
               `}>
                 {homepage_link.label}
@@ -55,7 +55,7 @@ const Nav = ({ lang }) => {
           </ul>
         )
       }
-    </>
+    </nav>
   )
 }
 
