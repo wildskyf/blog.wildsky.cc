@@ -32,8 +32,23 @@ openssl rand -base64 32
 
 或是直接進入這個網站 <https://generate-secret.vercel.app/32> 產生。
 
-另外，因為我要串接的是 LINE，所以還需要設定 `LINE_ID` 和 `LINE_SECRET`。這部分網路上的文章已經很多了，因此我就不再特別贅述了。
+另外，因為我要串接的是 LINE，所以還需要設定 `LINE_ID` 和 `LINE_SECRET`。
 
+如果還需要跟使用者索取 email 權限的話，可以參考 [這篇文章](https://studyhost.blogspot.com/2019/04/clinebot30-line-loginemail.html)，
+
+至於 nextauth 的 provider 中的寫法則是寫成這樣：
+
+```JavaScript
+export const authOptions = {
+  providers: [
+    LineProvider({
+      clientId: process.env.LINE_ID,
+      clientSecret: process.env.LINE_SECRET,
+      authorization: { params: { scope: 'profile openid email' } },
+    }),
+  ],
+}
+```
 
 ## Ref
 
