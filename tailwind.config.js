@@ -23,7 +23,7 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     },
     letterSpacing: {
-      'tw-normal': '0.03em',
+      'tw-normal': '0.02em',
       'en-normal': 'unset'
     },
     extend: {

@@ -43,7 +43,9 @@ const PostList = ({ lang, postList }) => {
                 <div className="article-content mt-8 text-lg text-gray-700 pb-4">
                   <div
                     className="break-all"
-                    dangerouslySetInnerHTML={{ __html: post.excerpt }}
+                    dangerouslySetInnerHTML={{
+                      __html: post.excerpt.split('\n').map(a => `<p>${a}</p>`).join('')
+                    }}
                   />
                   <div>
                     <ReadMoreButton to={`${root_path}/posts/${post.slug}`} />

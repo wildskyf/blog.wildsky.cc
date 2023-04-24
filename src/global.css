@@ -81,6 +81,7 @@
   padding: 6px 6px;
   margin: 12px 0 16px;
   background: #272822;
+  letter-spacing: unset;
 }
 
 .article-content pre:not([class]) {

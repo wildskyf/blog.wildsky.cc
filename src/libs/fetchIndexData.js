@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { PAGINATION_PER_PAGE_COUNT } from '../data/globalConfig'
+import { PAGINATION_PER_PAGE_COUNT } from '@/data/globalConfig'
 
 const fetchIndexData = async ({ lang }) => {
   const post_info_list = fs

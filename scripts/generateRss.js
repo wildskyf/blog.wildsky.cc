@@ -8,13 +8,13 @@ const matter = require('gray-matter');
 
 const getAllPosts = () => {
   // Read the posts directory and get blog posts' filenames
-  const filenames = fs.readdirSync(path.join('data/posts-tw'));
+  const filenames = fs.readdirSync(path.join('./src/data/posts-tw'));
   // const enFilenames = fs.readdirSync(path.join('data/posts-en'));
 
   // Go through all filenames
   const posts = filenames.map((filename) => {
     // Full path to the file from project root
-    const filepath = path.join('data/posts-tw/', filename);
+    const filepath = path.join('./src/data/posts-tw/', filename);
 
     // Read the content of the file
     const markdownWithMeta = fs.readFileSync(filepath, 'utf-8');

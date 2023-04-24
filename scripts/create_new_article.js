@@ -8,7 +8,7 @@ if (process.argv.length !== 3) {
 const articleSlug = process.argv[2]
 const currentTimeObj = dayjs()
 const currentTimestamp = currentTimeObj.format('YYYY-MM-DD-hh-mm-ss')
-const filePath = `data/posts-tw/${currentTimestamp}_${articleSlug}.md`
+const filePath = `./src/data/posts-tw/${currentTimestamp}_${articleSlug}.md`
 const defaultContent = `---
 title: ""
 date: ${currentTimeObj.format()}
