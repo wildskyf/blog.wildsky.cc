@@ -8,7 +8,6 @@ export default () => {
     <div className={`
       text-white
       flex text-2xl px-4 py-1 gap-6 justify-end
-      bg-gradient-to-r from-brand-700 to-brand-900
     `}>
       <a href="https://twitter.com/wildskyf" target='_blank'>
         <AiFillTwitterSquare />
