@@ -6,12 +6,12 @@ const Article = ({ feature_image_url, date, title, content, className, ...props 
     <article className={`px-4 lg:px-0 py-16 ${className || ''}`} {...props}>
       <header>
         <h1
-          className='text-3xl font-bold mb-4 text-gray-800 font-title'
+          className='text-3xl font-bold mb-4 text-skadiWhite-300 font-title'
           dangerouslySetInnerHTML={{ __html: title }}
         />
         {
           date && (
-            <p className='text-lg text-gray-500 mb-4'>
+            <p className='text-lg text-skadiWhite-300 mb-4'>
               Posted on <time dateTime={date}>{dayjs(date).format('YYYY 年 MM 月 DD 日')}</time>
             </p>
           )
@@ -28,7 +28,7 @@ const Article = ({ feature_image_url, date, title, content, className, ...props 
         )
       }
       <div
-      className='article-content leading-8 text-lg text-gray-700 mt-8 text-lg text-gray-700 pb-4'
+      className='article-content leading-8 text-lg text-skadiWhite-300 mt-8 text-lg pb-4'
         dangerouslySetInnerHTML={{__html: content.replace(/href="https:\/\/backend\.wildsky\.cc/g, 'href="https://blog.wildsky.cc') }}
       />
     </article>

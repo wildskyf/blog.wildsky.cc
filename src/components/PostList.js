@@ -12,19 +12,27 @@ const PostList = ({ lang, postList }) => {
       {
         postList.map(post => {
           return (
-            <li key={post.guid}>
-              <article className={`py-16 border-b-2 border-gray-100 border-solid
-                ${lang === 'tw' ? 'tracking-tw-normal font-tw-paragraph' : 'font-en-paragraph'}
-              `}>
+            <li
+              key={post.guid}
+              className='rounded-xl mb-4'
+            >
+              <article className={
+                `bg-transparent
+                  text-skadiWhite-300
+                  px-3 py-16
+                  rounded-xl
+                  ${lang === 'tw' ? 'tracking-tw-normal font-tw-paragraph' : 'font-en-paragraph'}
+                `}
+              >
                 <header>
                   <Link href={`${root_path}/posts/${post.slug}`}>
                     <h2
-                      className='font-sans mb-4 text-2xl lg:text-3xl font-semibold text-gray-800 hover:text-red-700'
+                      className='font-sans mb-4 text-2xl lg:text-3xl font-semibold'
                       dangerouslySetInnerHTML={{ __html: post.title }}
                       style={{ hyphens: 'auto' }}
                     />
                   </Link>
-                  <p className='text-lg text-gray-500 mb-4'>
+                  <p className='text-lg mb-4'>
                     Posted on <time dateTime={post.date}>{dayjs(post.date).format('YYYY 年 MM 月 DD 日')}</time>
                   </p>
                 </header>
@@ -32,6 +40,7 @@ const PostList = ({ lang, postList }) => {
                   post.feature_image_url && (
                     <Link href={`${root_path}/posts/${post.slug}`}>
                       <LazyLoadImage
+                        className='opacity-70'
                         src={post.feature_image_url}
                         alt=''
                         width='750'
@@ -40,9 +49,9 @@ const PostList = ({ lang, postList }) => {
                     </Link>
                   )
                 }
-                <div className="article-content mt-8 text-lg text-gray-700 pb-4">
+                <div className="mt-8 text-lg pb-4">
                   <div
-                    className="break-all"
+                    className="break-all article-content"
                     dangerouslySetInnerHTML={{
                       __html: post.excerpt.split('\n').map(a => `<p>${a}</p>`).join('')
                     }}

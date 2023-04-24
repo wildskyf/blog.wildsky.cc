@@ -1,14 +1,39 @@
 @import url('prismjs/themes/prism-okaidia.css');
+/*
 @import url("@fontsource/poppins/400.css");
 @import url("@fontsource/poppins/500.css");
 @import url("@fontsource/poppins/600.css");
 @import url("@fontsource/poppins/700.css");
 @import url("@fontsource/noto-sans-tc");
+*/
+@import url("@fontsource/noto-serif-tc/200.css");
+@import url("@fontsource/noto-serif-tc");
 @import url('tailwindcss/tailwind.css');
 
 @layer base {
   html, body {
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: 'Noto Serif TC', sans-serif;
+    background: linear-gradient(-45deg, #003366, #375859, #2c4647, #001A33, #004080, #588c8e, #001A33);
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    animation: gradient 20s ease-in-out infinite;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  ::selection {
+    color: #d6cfdc;
+    background-color: rgba(186, 49, 45, 0.7);
   }
 }
 
@@ -56,7 +81,7 @@
 
 .article-content a {
   --tw-text-opacity: 1;
-  color: rgba(185, 28, 28, var(--tw-text-opacity));
+  color: #d3e2c8;
   word-break: break-all;
 }
 
@@ -68,6 +93,7 @@
   font-size: 14px;
   font-family: monospace;
   background: #efefef;
+  color: #272822;
   padding: 2px 4px;
   border: 1px solid #ddd;
   border-radius: 3px;
