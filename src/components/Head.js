@@ -26,8 +26,8 @@ const Head = ({ pageName, pageDesc, pageImage }) => {
       <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
       <link rel="manifest" href="/icons/manifest.json" />
       <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png" />
-      <meta name="msapplication-TileColor" content="#b91c1c" />
-      <meta name="theme-color" content="#b91c1c" />
+      <meta name="msapplication-TileColor" content="#004080" />
+      <meta name="theme-color" content="#004080" />
 
       <meta itemProp="name" content={pageTitle} />
       <meta itemProp="description" content={desc} />
