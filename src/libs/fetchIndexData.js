@@ -8,7 +8,7 @@ const fetchIndexData = async ({ lang }) => {
     .reverse()
     .slice(0, PAGINATION_PER_PAGE_COUNT)
     .map((filename) => {
-      const post_info = require(`../data/posts-${lang}/${filename}`)
+      const post_info = require(`@/data/posts-${lang}/${filename}`)
       return {
         title: post_info.attributes.title,
         slug: post_info.attributes.slug,
