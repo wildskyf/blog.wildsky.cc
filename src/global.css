@@ -1,18 +1,14 @@
 @import url('prismjs/themes/prism-okaidia.css');
-/*
-@import url("@fontsource/poppins/400.css");
-@import url("@fontsource/poppins/500.css");
-@import url("@fontsource/poppins/600.css");
-@import url("@fontsource/poppins/700.css");
-@import url("@fontsource/noto-sans-tc");
-*/
 @import url("@fontsource/noto-serif-tc/200.css");
-@import url("@fontsource/noto-serif-tc");
+@import url("@fontsource/noto-serif-tc/300.css");
+@import url("@fontsource/noto-serif-tc/400.css");
+@import url("@fontsource/noto-serif-tc/500.css");
+@import url("@fontsource/noto-serif-tc/600.css");
 @import url('tailwindcss/tailwind.css');
 
 @layer base {
   html, body {
-    font-family: 'Noto Serif TC', sans-serif;
+    font-family: 'Noto Serif TC', serif;
     background: linear-gradient(-25deg, #003366, #2c4647, #001A33, #004080);
     background-size: 400% 400%;
     background-attachment: fixed;
@@ -41,7 +37,6 @@
 .article-content h3,
 .article-content h4 {
   font-weight: 600;
-  font-family: sans-serif;
   margin: 3rem auto 1.5rem;
   position: relative;
 }
@@ -49,7 +44,7 @@
 .article-content h2:before,
 .article-content h3:before,
 .article-content h4:before {
-  color: #ddd;
+  color: #888;
   position: absolute;
   left: -2.5rem;
 }

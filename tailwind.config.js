@@ -61,13 +61,8 @@ module.exports = {
           800: '#95909a',
           900: '#807c84',
         }
-      },
-      fontFamily: {
-        'title': ['Noto Serif TC', 'sans-serif'],
-        'tw-paragraph': ['Noto Serif TC', 'serif'],
-        'en-paragraph': ['Merriweather', 'serif']
       }
-    },
+    }
   },
   variants: {
     extend: {},

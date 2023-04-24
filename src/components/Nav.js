@@ -35,7 +35,7 @@ const Nav = ({ lang }) => {
           <ul
             className={`
               capitalize
-              font-sans flex flex-col text-center lg:flex-row w-full lg:w-auto
+              flex flex-col text-center lg:flex-row w-full lg:w-auto
             `}
             onClick={toggleNav}
           >
@@ -46,7 +46,7 @@ const Nav = ({ lang }) => {
                     <Link
                       href={item.url}
                       className={`
-                        text-xl font-thin px-3 py-3 mx-1 cursor-pointer w-full block
+                        text-sm font-thin px-3 py-3 mx-1 cursor-pointer w-full block
                         border-b-2 lg:border-b-0 border-gray-200 border-solid
                       `}
                       sx={headerItemhoverEffect}
@@ -61,7 +61,7 @@ const Nav = ({ lang }) => {
               <Link
                 href={homepage_link.path}
                 className={`
-                  text-xl font-thin px-3 py-3 mx-1 cursor-pointer w-full block
+                  text-sm font-thin px-3 py-3 mx-1 cursor-pointer w-full block
                   border-b-2 lg:border-b-0 border-gray-200 border-solid
                 `}
                 sx={headerItemhoverEffect}

@@ -6,7 +6,7 @@ const Article = ({ feature_image_url, date, title, content, className, ...props 
     <article className={`px-4 lg:px-0 py-16 ${className || ''}`} {...props}>
       <header>
         <h1
-          className='text-3xl font-bold mb-4 text-skadiWhite-300 font-title'
+          className='text-3xl font-bold mb-4 text-skadiWhite-300'
           dangerouslySetInnerHTML={{ __html: title }}
         />
         {

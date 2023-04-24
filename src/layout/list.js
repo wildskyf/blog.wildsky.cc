@@ -14,7 +14,7 @@ const ListLayout = ({ lang, postList, previous_page_path, next_page_path }) => {
             previous_page_path ? (
               <Link
                 href={previous_page_path}
-                className='p-4 text-xl text-skadiWhite-300 hover:text-red-700'
+                className='p-4 text-xl text-skadiWhite-300 duration-300	hover:text-red-700'
               >
                 ← Newer posts
               </Link>
@@ -24,7 +24,7 @@ const ListLayout = ({ lang, postList, previous_page_path, next_page_path }) => {
             next_page_path ? (
               <Link
                 href={next_page_path}
-                className='p-4 text-xl text-skadiWhite-300 hover:text-red-700'
+                className='p-4 text-xl text-skadiWhite-300 duration-300	hover:text-red-700'
               >
                 Older posts →
               </Link>

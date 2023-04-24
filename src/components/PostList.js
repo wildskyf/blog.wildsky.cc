@@ -21,13 +21,13 @@ const PostList = ({ lang, postList }) => {
                   text-skadiWhite-300
                   px-3 py-16
                   rounded-xl
-                  ${lang === 'tw' ? 'tracking-tw-normal font-tw-paragraph' : 'font-en-paragraph'}
+                  ${lang === 'tw' ? 'tracking-tw-normal' : ''}
                 `}
               >
                 <header>
                   <Link href={`${root_path}/posts/${post.slug}`}>
                     <h2
-                      className='font-sans mb-4 text-2xl lg:text-3xl font-semibold'
+                      className='mb-4 text-2xl lg:text-3xl font-semibold'
                       dangerouslySetInnerHTML={{ __html: post.title }}
                       style={{ hyphens: 'auto' }}
                     />
