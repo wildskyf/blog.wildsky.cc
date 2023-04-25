@@ -10,7 +10,7 @@
   html, body {
     font-family: 'Noto Serif TC', serif;
     background: linear-gradient(-25deg, #003366, #2c4647, #001A33, #004080);
-    background-size: 400% 400%;
+    background-size: 200% 200%;
     background-attachment: fixed;
     animation: gradient 13s ease-in-out infinite;
   }

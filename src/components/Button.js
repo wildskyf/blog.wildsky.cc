@@ -10,7 +10,7 @@ const Button = ({ className, to, text }) => {
       text-sm
       text-skadiWhite-500
       duration-300
-      hover:bg-red-800 hover:border-red-800
+      hover:bg-skadiRed-700 hover:border-skadiRed-700
       ${className || ''}
     `}>
       {text}

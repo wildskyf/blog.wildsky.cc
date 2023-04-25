@@ -14,12 +14,12 @@ const PostList = ({ lang, postList }) => {
           return (
             <li
               key={post.guid}
-              className='rounded-xl mb-4'
+              className='rounded-xl mb-12'
             >
               <article className={
                 `bg-transparent
                   text-skadiWhite-300
-                  px-3 py-16
+                  px-3 py-6
                   rounded-xl
                   ${lang === 'tw' ? 'tracking-tw-normal' : ''}
                 `}

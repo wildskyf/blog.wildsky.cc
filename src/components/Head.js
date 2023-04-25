@@ -4,7 +4,7 @@ const Head = ({ pageName, pageDesc, pageImage }) => {
   const site_name = 'Wildsky F.'
   const pageTitle = `${pageName} | ${site_name}`
   const desc = pageDesc
-  const imgUrl = pageImage || 'https://backend.wildsky.cc/wp-content/uploads/2019/02/10931296_1023005764381319_5713723914193790237_n.jpg'
+  const imgUrl = pageImage || 'https://blog.wildsky.cc/icons/ms-icon-310x310.png'
 
   return (
     <NextHead>
@@ -20,14 +20,14 @@ const Head = ({ pageName, pageDesc, pageImage }) => {
       <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png" />
       <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png" />
       <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png" />
-      <link rel="icon" type="image/png" sizes="192x192"  href="/icons/android-icon-192x192.png" />
+      <link rel="icon" type="image/png" sizes="192x192" href="/icons/android-icon-192x192.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
       <link rel="manifest" href="/icons/manifest.json" />
       <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png" />
-      <meta name="msapplication-TileColor" content="#004080" />
-      <meta name="theme-color" content="#004080" />
+      <meta name="msapplication-TileColor" content="#001A33" />
+      <meta name="theme-color" content="#001A33" />
 
       <meta itemProp="name" content={pageTitle} />
       <meta itemProp="description" content={desc} />

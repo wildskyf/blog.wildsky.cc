@@ -1,6 +1,7 @@
 import { chakra } from '@chakra-ui/react'
 import Nav from '@/components/Nav'
 import Link from '@/components/Link'
+import HeaderDivider from '@/components/HeaderDivider'
 import blog_info from '@/data/blog_info.json'
 
 export const headerItemhoverEffect = {
@@ -17,7 +18,7 @@ const Header = ({ lang }) => {
     <chakra.header
       className={`
         flex flex-col justify-center items-center
-        px-4 pt-12 pb-4
+        px-4 pt-4 pb-2
         text-skadiWhite-400
       `}
       textShadow='1px 1px 5px #6EB0B2'
@@ -45,7 +46,10 @@ const Header = ({ lang }) => {
       `}>
         {blog_info.description}
       </p>
+
       <Nav {...{ lang }} />
+
+      <HeaderDivider />
     </chakra.header>
   )
 }
