@@ -56,3 +56,7 @@ TypeScript 會報錯，說 TypeScript 不認識你的 input & output type。
 中間有一個 `R.defaultTo` 是因為 `R.path` 如果找不到的話，會回 `undefined`，
 所以他 output type 會變成 `{ a: string }[] | undefined`，這樣沒辦法直接給 `R.pluck`，
 直接改的話 typescript 會報錯，所以必須加上 `R.defaultTo` 來把 undefined 的可能性處理掉才可以正常地 `R.pipe`。
+
+## 後記
+
+寫完文章的隔天發現，原來 ramda.js 有提供 `R.pathOr`。XD
