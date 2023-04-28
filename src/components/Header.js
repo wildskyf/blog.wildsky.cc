@@ -5,10 +5,13 @@ import HeaderDivider from '@/components/HeaderDivider'
 import blog_info from '@/data/blog_info.json'
 
 export const headerItemhoverEffect = {
+  color: '#ded8e3',
+  textShadow: '1px 1px 5px #6EB0B2',
   transitionDuration: '.3s',
+
   _hover: {
     color: '#fff',
-    textShadow: '1px 1px 5px #fff7dc'
+    textShadow: '1px 1px 5px #fff7dc',
   }
 }
 
@@ -19,9 +22,7 @@ const Header = ({ lang }) => {
       className={`
         flex flex-col justify-center items-center
         px-4 pt-4 pb-2
-        text-skadiWhite-400
       `}
-      textShadow='1px 1px 5px #6EB0B2'
     >
       <h1
         className={`
@@ -37,15 +38,18 @@ const Header = ({ lang }) => {
           {blog_info.name}
         </Link>
       </h1>
-      <p className={`
+      <chakra.p className={`
         mb-8
+        text-skadiWhite-400
         text-sm
         text-center
         lg:text-left
         font-thin
-      `}>
+      `}
+        textShadow='1px 1px 5px #6EB0B2'
+      >
         {blog_info.description}
-      </p>
+      </chakra.p>
 
       <Nav {...{ lang }} />
 
