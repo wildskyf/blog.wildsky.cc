@@ -16,6 +16,7 @@ export default () => {
       mt='20px'
       gap='40px'
       width='400px'
+      maxWidth='80%'
       height='50px'
     >
       <Divider />
