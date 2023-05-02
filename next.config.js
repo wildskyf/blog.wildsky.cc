@@ -3,6 +3,8 @@ const markdownItPrism = require('markdown-it-prism');
 
 module.exports = () => {
   return {
+    output: 'export',
+
     poweredByHeader: false,
 
     images: {

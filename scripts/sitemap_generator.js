@@ -9,4 +9,5 @@ sitemap({
   targetDirectory: "./out/",
   ignoredExtensions: ["css", "js", "map", "json", "xml"],
   ignoredPaths: ["assets", "_next", "icons"], // Exclude everything that isn't static page
+  allowFileExtensions: true
 });

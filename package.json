@@ -8,8 +8,7 @@
     "genSiteMap": "node ./scripts/sitemap_generator.js",
     "genRss": "node ./scripts/generateRss.js",
     "start": "next start",
-    "export": "next export",
-    "out": "yarn build && yarn genRss && yarn export && yarn genSiteMap",
+    "out": "yarn build && yarn genRss && yarn genSiteMap",
     "article:new": "node ./scripts/create_new_article.js"
   },
   "dependencies": {
