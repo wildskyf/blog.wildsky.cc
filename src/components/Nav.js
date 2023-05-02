@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useWindowSize } from 'react-use'
-import { chakra } from '@chakra-ui/react'
 import Link from '@/components/Link'
 import main_menu_items_tw from '@/data/main-tw.json'
 import main_menu_items_en from '@/data/main-en.json'
