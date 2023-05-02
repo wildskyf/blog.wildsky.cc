@@ -6,7 +6,7 @@ module.exports = () => {
     poweredByHeader: false,
 
     images: {
-      unoptimized: false
+      unoptimized: true
     },
 
     webpack: (config, { isServer }) => {
