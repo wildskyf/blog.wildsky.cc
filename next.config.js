@@ -5,6 +5,10 @@ module.exports = () => {
   return {
     poweredByHeader: false,
 
+    images: {
+      unoptimized: false
+    },
+
     webpack: (config, { isServer }) => {
       config.resolve.fallback = { fs: false };
 
