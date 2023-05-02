@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+import Image from 'next/image'
 
 const Article = ({ feature_image_url, date, title, content, className, ...props }) => {
   return (
@@ -19,7 +19,7 @@ const Article = ({ feature_image_url, date, title, content, className, ...props 
       </header>
       {
         feature_image_url && (
-          <LazyLoadImage
+          <Image
             src={feature_image_url.includes('https://') ? feature_image_url : feature_image_url}
             alt=''
             width='750'
