@@ -4,19 +4,18 @@
 @import url("@fontsource/noto-serif-tc/400.css");
 @import url("@fontsource/noto-serif-tc/500.css");
 @import url("@fontsource/noto-serif-tc/600.css");
+
 @import url('tailwindcss/tailwind.css');
 
-@layer base {
-  html, body {
-    font-family: 'Noto Serif TC', serif;
-    background: url('/assets/bg.svg');
-    background-attachment: fixed;
-  }
+html, body {
+  font-family: 'Noto Serif TC', serif;
+  background: url('/assets/bg.svg');
+  background-attachment: fixed;
+}
 
-  ::selection {
-    color: #d6cfdc;
-    background-color: rgba(186, 49, 45, 0.7);
-  }
+::selection {
+  color: #d6cfdc;
+  background-color: rgba(186, 49, 45, 0.7);
 }
 
 .article-content h2,
