@@ -25,7 +25,6 @@
     "framer-motion": "10.12.4",
     "fs": "0.0.1-security",
     "next": "13.3.1",
-    "next-ga": "2.3.4",
     "prop-types": "15.7.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
