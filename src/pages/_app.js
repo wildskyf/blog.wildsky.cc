@@ -13,7 +13,7 @@ export default ({ Component, pageProps }) => {
   return (
     <>
       <Component {...pageProps} />
-      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+      <Script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
       <Script id="google-analytics">
         {`
           window.dataLayer = window.dataLayer || [];
