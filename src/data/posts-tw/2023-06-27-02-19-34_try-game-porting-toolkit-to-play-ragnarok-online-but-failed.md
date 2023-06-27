@@ -1,5 +1,5 @@
 ---
-title: "嘗試使用 Game Porting Toolit 玩 RO （但失敗）的簡單記錄"
+title: "嘗試使用 Game Porting Toolkit 玩 RO （但失敗）的簡單記錄"
 date: 2023-06-27T14:19:34+08:00
 slug: "try-game-porting-toolkit-to-play-ragnarok-online-but-failed"
 excerpt: "這邊文章是想簡單地記錄一下這次的嘗試，雖然結果是以失敗告終，但也許某天會再需要，也希望有機會幫助到對這個議題有興趣的人。"
