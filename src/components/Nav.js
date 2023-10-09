@@ -13,7 +13,6 @@ const menu_items_mapping = {
 
 const Nav = ({ lang }) => {
   const { width } = useWindowSize()
-  const isDesktop = width >= 1024
   const [isNavOpen, setNavOpen] = useState(false)
   const homepage_link = lang === 'en' ? { label: '中文', path: '/' } : { label: 'english', path: '/en/' }
 
@@ -29,48 +28,53 @@ const Nav = ({ lang }) => {
       >
         Menu
       </div>
-      {
-        (isDesktop || isNavOpen) && (
-          <ul
+      <ul
+        className={`
+          block
+          ${isNavOpen ? '' : 'max-lg:hidden'}
+          capitalize flex text-center w-full lg:w-auto
+          flex-row max-lg:flex-wrap
+        `}
+        onClick={toggleNav}
+      >
+        {
+          pages.map(item => {
+            return (
+              <li key={item.guid} className={`
+                  w-full
+                  max-lg:w-1/3
+              `}>
+                <Link
+                  href={item.url}
+                  className={`
+                    w-full
+                    text-sm font-thin px-3 py-3 mx-1 cursor-pointer block
+                    border-b-2 lg:border-b-0 border-gray-200 border-solid
+                  `}
+                  sx={headerItemhoverEffect}
+                >
+                  {item.title}
+                </Link>
+              </li>
+            )
+          })
+        }
+        <li className={`
+            w-full
+            max-lg:w-1/3
+        `}>
+          <Link
+            href={homepage_link.path}
             className={`
-              capitalize
-              flex flex-col text-center lg:flex-row w-full lg:w-auto
+              text-sm font-thin px-3 py-3 mx-1 cursor-pointer w-full block
+              border-b-2 lg:border-b-0 border-gray-200 border-solid
             `}
-            onClick={toggleNav}
+            sx={headerItemhoverEffect}
           >
-            {
-              pages.map(item => {
-                return (
-                  <li key={item.guid}>
-                    <Link
-                      href={item.url}
-                      className={`
-                        text-sm font-thin px-3 py-3 mx-1 cursor-pointer w-full block
-                        border-b-2 lg:border-b-0 border-gray-200 border-solid
-                      `}
-                      sx={headerItemhoverEffect}
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                )
-              })
-            }
-            <li>
-              <Link
-                href={homepage_link.path}
-                className={`
-                  text-sm font-thin px-3 py-3 mx-1 cursor-pointer w-full block
-                  border-b-2 lg:border-b-0 border-gray-200 border-solid
-                `}
-                sx={headerItemhoverEffect}
-              >
-                {homepage_link.label}
-              </Link>
-            </li>
-          </ul>
-        )
-      }
+            {homepage_link.label}
+          </Link>
+        </li>
+      </ul>
     </nav>
   )
 }
