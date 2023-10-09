@@ -5,7 +5,7 @@ const Divider = chakra(ChaDivider, {
   baseStyle: {
     borderBottomWidth: '2px',
     borderBottomStyle: 'solid',
-    borderColor: '#921D25',
+    borderColor: '#e0515c',
     filter: 'drop-shadow(1px 1px 5px #BA312D)'
   }
 })
@@ -22,7 +22,7 @@ export default () => {
       <Divider />
 
       <RiAnchorLine
-        color='#BA312D'
+        color='#f25763'
         size='48px'
         style={{
           filter: 'drop-shadow(1px 1px 5px #BA312D)'

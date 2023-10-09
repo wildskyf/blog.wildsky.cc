@@ -11,22 +11,22 @@
   >
     <stop offset="0%" stop-color="#003366" stop-opacity="1">
       <animate attributeName="stop-color"
-        values="#003366;#2c4647;#001A33;#004080;#003366;" dur="10s" repeatCount="indefinite">
+        values="#003366;#2c4647;#001A33;#004080;#003366;" dur="15s" repeatCount="indefinite">
       </animate>
     </stop>
     <stop offset="33%" stop-color="#2c4647" stop-opacity="1">
       <animate attributeName="stop-color"
-        values="#2c4647;#001A33;#004080;#003366;#2c4647;" dur="10s" repeatCount="indefinite">
+        values="#2c4647;#001A33;#004080;#003366;#2c4647;" dur="15s" repeatCount="indefinite">
       </animate>
     </stop>
     <stop offset="66%" stop-color="#001A33" stop-opacity="1">
       <animate attributeName="stop-color"
-        values="#001A33;#004080;#003366;#2c4647;#001A33;" dur="10s" repeatCount="indefinite">
+        values="#001A33;#004080;#003366;#2c4647;#001A33;" dur="15s" repeatCount="indefinite">
       </animate>
     </stop>
     <stop offset="100%" stop-color="#004080" stop-opacity="1">
       <animate attributeName="stop-color"
-        values="#004080;#003366;#2c4647;#001A33;#004080;" dur="10s" repeatCount="indefinite">
+        values="#004080;#003366;#2c4647;#001A33;#004080;" dur="15s" repeatCount="indefinite">
       </animate>
     </stop>
   </linearGradient>
