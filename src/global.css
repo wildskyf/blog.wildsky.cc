@@ -4,11 +4,16 @@
 @import url("@fontsource/noto-serif-tc/400.css");
 @import url("@fontsource/noto-serif-tc/500.css");
 @import url("@fontsource/noto-serif-tc/600.css");
+@import url("@fontsource/noto-serif-tc/900.css");
+
+@import url("@fontsource/noto-sans-tc/400.css");
+@import url("@fontsource/noto-sans-tc/700.css");
 
 @import url('tailwindcss/tailwind.css');
 
 html, body {
   font-family: 'Noto Serif TC', serif;
+  font-weight: 400;
   background: url('/assets/bg.svg');
   background-attachment: fixed;
 }
@@ -18,13 +23,21 @@ html, body {
   background-color: rgba(186, 49, 45, 0.7);
 }
 
+.article-content {
+  color: #e5e5e5;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
 .article-content h2,
 .article-content h3,
 .article-content h4,
 .article-content h5 {
-  font-weight: 600;
+  letter-spacing: 0.01em;
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 700;
   margin: 3rem auto 1.5rem;
   position: relative;
+  color: #fff;
 }
 
 .article-content h2:before,
@@ -37,6 +50,7 @@ html, body {
 }
 
 .article-content h2 {
+  margin-top: 20px;
   font-size: 1.5rem;
   line-height: 1.75rem;
 }
@@ -62,10 +76,25 @@ html, body {
   margin: 1rem auto 2rem;
 }
 
+.article-content strong {
+  padding: 0 4px;
+  font-weight: 700;
+}
+
+.article-content em {
+  font-style: normal;
+  text-decoration: underline dotted;
+}
+
 .article-content a {
   --tw-text-opacity: 1;
-  color: #d3e2c8;
+  color: #e0515c;
   word-break: break-all;
+  text-decoration: underline;
+}
+
+.article-content a:hover {
+  color: #f25763;
 }
 
 .article-content p {
@@ -75,11 +104,14 @@ html, body {
 .article-content p code {
   font-size: 14px;
   font-family: monospace;
-  background: #efefef;
-  color: #272822;
-  padding: 2px 4px;
   border: 1px solid #ddd;
+  background: #272822;
+  color: #fff;
+  padding: 0 2px;
   border-radius: 3px;
+  line-height: 1.25em;
+  display: inline-block;
+  transform: translateY(-3px);
 }
 
 .article-content pre {
