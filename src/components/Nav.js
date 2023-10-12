@@ -22,12 +22,12 @@ const Nav = ({ lang }) => {
 
   return (
     <nav className='flex flex-col justify-center items-center w-full lg:w-auto select-none'>
-      <div
+      <button
         className='inline-block lg:hidden px-4 py-2 border-2 border-solid text-gray-200 border-gray-200'
         onClick={toggleNav}
       >
         Menu
-      </div>
+      </button>
       <ul
         className={`
           block
