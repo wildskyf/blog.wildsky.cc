@@ -8,6 +8,7 @@ const fetchPageShowPath = async ({ lang }) => {
       'donate',
       'experiences',
       'more-links',
+      'freelancer'
     ])
   }
 
@@ -18,6 +19,7 @@ const fetchPageShowPath = async ({ lang }) => {
       'donate-en',
       'experiences-en',
       'more-links-en',
+      'freelancer-en'
     ])
   }
 

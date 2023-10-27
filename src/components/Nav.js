@@ -61,7 +61,8 @@ const Nav = ({ lang }) => {
         }
         <li className={`
             w-full
-            max-lg:w-1/3
+            max-lg:w-full
+
         `}>
           <Link
             href={homepage_link.path}
