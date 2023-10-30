@@ -23,11 +23,6 @@ export default ({ Component, pageProps }) => {
           gtag('config', '${GA_ID}');
         `}
       </Script>
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3794486350703076"
-        crossorigin="anonymous"
-      />
     </>
   )
 }
