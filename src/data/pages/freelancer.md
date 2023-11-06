@@ -35,7 +35,7 @@ feature_image: '' # me-in-womany.png
 
 - <https://kaiming.org> （前端）
 - <https://superhero.chickenpoxguard.com.tw/> （前後端）
-- <https://tacd-wddwalkrun.com/> （前後端）
+- <https://tacd-wddwalkrun.netlify.app/> （前後端）
 - <https://www.tw23.org/> （前端）
 
 
