@@ -70,10 +70,18 @@ html, body {
   line-height: 1.75rem;
 }
 
-.article-content ul {
+.article-content ul,
+.article-content ol {
   padding: 0 0 0 2rem;
-  list-style-type: disc;
   margin: 1rem auto 2rem;
+}
+
+.article-content ul {
+  list-style-type: disc;
+}
+
+.article-content ol {
+  list-style-type: number;
 }
 
 .article-content strong {
