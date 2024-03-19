@@ -24,19 +24,6 @@ module.exports = () => {
       })
 
       return config
-    },
-
-    redirects: [
-      {
-        "source": "/.well-known/webfinger*",
-        "destination": "https://fed.brid.gy/.well-known/webfinger",
-        "permanent": false
-      },
-      {
-        "source": "/.well-known/host-meta*",
-        "destination": "https://fed.brid.gy/.well-known/host-meta:splat",
-        "permanent": false
-      }
-    ]
+    }
   }
 }
