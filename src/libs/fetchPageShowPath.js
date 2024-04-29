@@ -4,6 +4,7 @@ const fetchPageShowPath = async ({ lang }) => {
   if (lang === 'tw') {
     return paramize([
       'about',
+      'bookshelf',
       'donate',
       'experiences',
       'more-links',

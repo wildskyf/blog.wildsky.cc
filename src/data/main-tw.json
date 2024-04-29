@@ -5,6 +5,11 @@
     "title": "home"
   },
   {
+    "guid": "http://blog.wildsky.cc/bookshelf/",
+    "url": "/bookshelf/",
+    "title": "bookshelf"
+  },
+  {
     "guid": "http://blog.wildsky.cc/about/",
     "url": "/about/",
     "title": "about"
