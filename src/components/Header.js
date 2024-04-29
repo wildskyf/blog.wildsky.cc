@@ -31,7 +31,7 @@ const Header = ({ lang }) => {
           className={`
             font-thin
             mt-3 mb-3 lg:mb-6
-            text-3xl lg:text-3xl
+            text-2xl
           `}
         >
           <Link

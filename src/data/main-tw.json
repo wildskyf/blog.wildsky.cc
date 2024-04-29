@@ -10,26 +10,6 @@
     "title": "about"
   },
   {
-    "guid": "http://blog.wildsky.cc/experiences/",
-    "url": "/experiences/",
-    "title": "experiences"
-  },
-  {
-    "guid": "http://blog.wildsky.cc/blogrolls/",
-    "url": "/more-links/",
-    "title": "blogrolls"
-  },
-  {
-    "guid": "http://blog.wildsky.cc/donation/",
-    "url": "/donate/",
-    "title": "donation"
-  },
-  {
-    "guid": "http://blog.wildsky.cc/freelancer/",
-    "url": "/freelancer/",
-    "title": "freelancer"
-  },
-  {
     "guid": "http://blog.wildsky.cc/2019/09/03/language-switcher/",
     "url": "#pll_switcher",
     "title": "Languages"

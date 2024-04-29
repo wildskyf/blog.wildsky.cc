@@ -1,6 +1,6 @@
 ---
 title: "About me"
-feature_image: "me-in-womany.png"
+feature_image: ''
 ---
 Hi, I am Wildsky
 
@@ -10,3 +10,11 @@ Currently I am a software engineer in [Taiwan AILabs](https://ailabs.tw/ "Taiwan
 * If you would like to make websites, please refer to this page [As a Freelancer](https://blog.wildsky.cc/freelancer-en)
 
 Feel free to contact with me via Email: poppin.wildsky at gmail.com
+
+
+<!--
+## Blogroll
+
+- [blogroll](/more-links-en)
+
+-->

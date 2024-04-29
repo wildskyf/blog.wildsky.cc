@@ -48,7 +48,7 @@ const Nav = ({ lang }) => {
                   href={item.url}
                   className={`
                     w-full
-                    text-sm font-thin px-3 py-3 mx-1 cursor-pointer block
+                    text-md font-thin px-2 py-3 mx-1 cursor-pointer block
                     border-b-2 lg:border-b-0 border-gray-200 border-solid
                   `}
                   sx={headerItemhoverEffect}

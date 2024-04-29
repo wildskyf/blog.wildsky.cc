@@ -2,13 +2,23 @@ import Link from 'next/link'
 import Layout from './page'
 import PostList from '../components/PostList'
 
-const ListLayout = ({ lang, postList, previous_page_path, next_page_path }) => {
+const ListLayout = ({
+  isHomePage,
+  beforeLayout,
+  lang,
+  postList,
+  previous_page_path,
+  next_page_path,
+}) => {
   return (
     <>
       <Layout {...{ lang }}>
+        {beforeLayout}
+
         <section className="article-list">
           <PostList lang={lang} postList={postList} />
         </section>
+
         <section className='pagination flex flex-row justify-between'>
           {
             previous_page_path ? (

@@ -1,4 +1,3 @@
-import SocialBar from '../components/SocialBar'
 import Header from '../components/Header'
 import PropTypes from 'prop-types'
 
@@ -24,8 +23,6 @@ const PageLayout = ({ lang, children }) => {
 
 
         <footer className='bg-gray-800 text-white text-center pt-8 pb-10' lang='en'>
-          <SocialBar className='mb-4' />
-
           <div className='text-gray-500'>
             Wildsky's Blog © 2014-2024 All rights reserved
           </div>

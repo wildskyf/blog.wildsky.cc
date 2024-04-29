@@ -1,6 +1,6 @@
 ---
 title: 關於我
-feature_image: me-in-womany.png
+feature_image: ''
 ---
 你好，我是 Wildsky 。
 
@@ -11,10 +11,22 @@ feature_image: me-in-womany.png
 
 歡迎透過 Email 與我聯絡： poppin.wildsky at gmail.com 。
 
+
+## Blogroll
+
+人生已受了許多貴人的幫助，
+雖不免有疏漏，但仍想盡力地將他們都放進這個列表中。
+
+- [Blogroll](/more-links)
+
 <!--
 時間軸
 ---
 
 *   開始撰寫文章：2014/1/8
 *   首次架起本部落格：2014/4/26
+
+
 -->
+
+
