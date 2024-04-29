@@ -5,12 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next export",
     "lint": "next lint",
     "genSiteMap": "node ./scripts/sitemap_generator.js",
     "genRss": "node ./scripts/generateRss.js",
     "start": "next start",
-    "out": "yarn build && yarn genRss && yarn export && yarn genSiteMap",
+    "out": "yarn genRss && yarn build && yarn genSiteMap",
     "article:new": "node ./scripts/create_new_article.js"
   },
   "dependencies": {
