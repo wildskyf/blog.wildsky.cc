@@ -1,36 +1,12 @@
 ---
-title: "About me: Geng-Zhi Wildsky Fann"
+title: "About me"
 feature_image: "me-in-womany.png"
 ---
 Hi, I am Wildsky
 
-Who I am
---------
+Currently I am a software engineer in [Taiwan AILabs](https://ailabs.tw/ "Taiwan AILabs Official Website") , and I am a volunteer in [Mozilla Taiwan Community](https://moztw.org/).
 
-Currently I am a software engineer in [Taiwan AILabs](https://ailabs.tw/ "Taiwan AILabs 官網") , and I am one of keyholders in [Mozilla Taiwan Community](https://moztw.org/).
+* If you feel like work with me, you could find my projects in this page: [http://blog.wildsky.cc/experiences](http://blog.wildsky.cc/experiences)
+* If you would like to make websites, please refer to this page [As a Freelancer](https://blog.wildsky.cc/freelancer-en)
 
-If you are interested, you could find my projects in this page:[http://blog.wildsky.cc/experiences](http://blog.wildsky.cc/experiences)
-
-What I like
------------
-
-I like rap & RnB music.
-
-I like joke, and I plan to build a website for it.
-
-Connect
--------
-
-You could find my via:
-
-*   Email : wildsky+blog at moztw.org
-*   Twitter : [https://twitter.com/wildskyf](https://twitter.com/wildskyf "Wildsky 的 Twitter")
-*   Github : [https://github.com/wildskyf](https://github.com/wildskyf "Wildsky 的 GitHub")
-*   LinkedIn : [https://www.linkedin.com/in/wildsky](https://www.linkedin.com/in/wildsky "Wildsky 的 LinkedIn")
-
-The name of this site
----------------------
-
-WS = abbr. of Wildsky. Meanwhile, `ws://` is the protocol for web socket.
-
-This name is wish you and me could keep in touch, just like web socket. 🙂
+Feel free to contact with me via Email: poppin.wildsky at gmail.com

@@ -1,8 +1,8 @@
 import NextHead from 'next/head'
+import blog_info from '@/data/blog_info.json'
 
 const Head = ({ pageName, pageDesc, pageImage }) => {
-  const site_name = 'Wildsky F.'
-  const pageTitle = `${pageName} | ${site_name}`
+  const pageTitle = `${pageName} | ${blog_info.name}`
   const desc = pageDesc
   const imgUrl = pageImage || 'https://blog.wildsky.cc/icons/ms-icon-310x310.png'
 
@@ -51,7 +51,7 @@ const Head = ({ pageName, pageDesc, pageImage }) => {
       <meta property="og:title" content={pageTitle} />
       <meta property="og:image" content={imgUrl} />
       <meta property="og:description" content={desc} />
-      <meta property="og:site_name" content={site_name} />
+      <meta property="og:site_name" content={blog_info.name} />
       <meta property="article:section" content="Article Section" />
     </NextHead>
   )
