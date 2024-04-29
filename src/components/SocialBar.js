@@ -11,26 +11,28 @@ const StyledLink = chakra('a', {
   }
 })
 
-export default () => {
-  return (
-    <div className={`
-      flex text-2xl px-4 py-1 gap-6 justify-end
-    `}>
-      <StyledLink href="https://twitter.com/wildskyf" target='_blank'>
-        <AiFillTwitterSquare />
-      </StyledLink>
+export default ({ className, ...props }) => (
+  <div
+    className={`
+      flex text-2xl px-4 py-1 gap-6 justify-center
+      ${className}
+    `}
+    {...props}
+  >
+    <StyledLink href="https://twitter.com/wildskyf" target='_blank'>
+      <AiFillTwitterSquare />
+    </StyledLink>
 
-      <StyledLink href="https://github.com/wildskyf" target='_blank'>
-        <FaGithubSquare />
-      </StyledLink>
+    <StyledLink href="https://github.com/wildskyf" target='_blank'>
+      <FaGithubSquare />
+    </StyledLink>
 
-      <StyledLink href="https://www.linkedin.com/in/wildsky/" target='_blank'>
-        <AiFillLinkedin />
-      </StyledLink>
+    <StyledLink href="https://www.linkedin.com/in/wildsky/" target='_blank'>
+      <AiFillLinkedin />
+    </StyledLink>
 
-      <StyledLink href="/files/reseme.pdf" target='_blank' download='wildsky.20220901.pdf'>
-        <BiPaperclip />
-      </StyledLink>
-    </div>
-  )
-}
+    <StyledLink href="/files/reseme.pdf" target='_blank' download='wildsky.20220901.pdf'>
+      <BiPaperclip />
+    </StyledLink>
+  </div>
+)

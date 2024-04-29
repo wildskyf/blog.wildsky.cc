@@ -14,8 +14,6 @@ const PageLayout = ({ lang, children }) => {
           flex flex-col
         `}
       >
-        <SocialBar />
-
         <Header {...{ lang }} />
 
         <main className='flex-grow flex justify-center items-start py-4' lang={lang_code}>
@@ -24,8 +22,13 @@ const PageLayout = ({ lang, children }) => {
           </div>
         </main>
 
-        <footer className='bg-gray-800 text-white text-center py-16' lang='en'>
-          Geng Zhi W. Fann
+
+        <footer className='bg-gray-800 text-white text-center pt-8 pb-10' lang='en'>
+          <SocialBar className='mb-4' />
+
+          <div className='text-gray-500'>
+            Wildsky's Blog © 2014-2024 All rights reserved
+          </div>
         </footer>
       </div>
 
