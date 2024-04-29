@@ -15,6 +15,7 @@ export default ({ Component, pageProps }) => {
     <>
       <Head>
         <link rel="me" href="https://mozilla.social/@wildsky" />
+        <meta content="dark light" name="color-scheme" />
       </Head>
 
       <Component {...pageProps} />
