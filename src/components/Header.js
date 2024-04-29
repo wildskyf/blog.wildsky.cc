@@ -30,7 +30,7 @@ const Header = ({ lang }) => {
         <h1
           className={`
             font-thin
-            my-16 lg:my-3 lg:mb-6
+            my-16 lg:my-0
             text-4xl lg:text-2xl
           `}
         >
