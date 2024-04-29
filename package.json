@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+
     "lint": "next lint",
     "genSiteMap": "node ./scripts/sitemap_generator.js",
     "genRss": "node ./scripts/generateRss.js",
-    "start": "next start",
     "out": "yarn genRss && yarn build && yarn genSiteMap",
     "article:new": "node ./scripts/create_new_article.js"
   },
@@ -20,6 +22,7 @@
     "@fontsource/noto-sans-tc": "4.5.12",
     "@fontsource/noto-serif-tc": "4.5.12",
     "@fontsource/poppins": "4.5.10",
+    "astro": "^4.7.0",
     "dayjs": "1.11.7",
     "framer-motion": "10.12.4",
     "fs": "0.0.1-security",
