@@ -20,11 +20,11 @@ export const HomeComponentFactory = lang => (props) => {
         {...{ next_page_path: `${path_prefix}/page/2`, ...props }}
         beforeLayout={(
           <article className='block py-16 px-4'>
-            <h1 className='text-3xl font-bold mb-4'>
+            <h1 className='text-xl lg:text-3xl font-bold mb-4'>
               Welcome to my blog!
             </h1>
 
-            <p className='text-lg text-gray-400 mb-4'>
+            <p className='text-md lg:text-lg text-gray-400 mb-4'>
               Dev blog about server hosting, web dev, and some of my daily stuffs.
             </p>
 

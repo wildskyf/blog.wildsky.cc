@@ -23,8 +23,8 @@ const PageLayout = ({ lang, children }) => {
 
 
         <footer className='bg-gray-800 text-white text-center pt-8 pb-10' lang='en'>
-          <div className='text-gray-500'>
-            Wildsky's Blog © 2014-2024 All rights reserved
+          <div className='text-gray-500 tracking-[0.03em]'>
+            Wildsky&#39;s Blog &copy; 2014-2024 All rights reserved
           </div>
         </footer>
       </div>

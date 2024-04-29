@@ -15,7 +15,7 @@ const StyledLink = chakra('a', {
 export default ({ className, ...props }) => (
   <div
     className={`
-      flex text-4xl py-1 gap-6 justify-start
+      flex text-xl lg:text-4xl py-1 gap-6 justify-start
       ${className}
     `}
     {...props}

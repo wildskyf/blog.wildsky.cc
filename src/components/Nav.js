@@ -28,12 +28,14 @@ const Nav = ({ lang }) => {
       >
         Menu
       </button>
+
       <ul
         className={`
-          block
+          flex
           ${isNavOpen ? '' : 'max-lg:hidden'}
           capitalize flex text-center w-full lg:w-auto
-          flex-row max-lg:flex-wrap
+          justify-center items-center
+          flex-col lg:flex-row max-lg:flex-wrap
         `}
         onClick={toggleNav}
       >
@@ -41,8 +43,7 @@ const Nav = ({ lang }) => {
           pages.map(item => {
             return (
               <li key={item.guid} className={`
-                  w-full
-                  max-lg:w-1/3
+                  w-2/3 lg:w-full
               `}>
                 <Link
                   href={item.url}
@@ -60,9 +61,7 @@ const Nav = ({ lang }) => {
           })
         }
         <li className={`
-            w-full
-            max-lg:w-full
-
+            w-2/3 lg:w-full
         `}>
           <Link
             href={homepage_link.path}

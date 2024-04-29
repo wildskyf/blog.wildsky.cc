@@ -20,18 +20,18 @@ const Header = ({ lang }) => {
     <chakra.header
       className={`
         flex flex-row justify-center items-center
-        px-4 pt-3 pb-3
+        px-4 pt-3 pb-0 lg:pb-3
       `}
     >
       <div className={`
         w-full max-w-screen-lg
-        flex flex-row justify-between items-center
+        flex flex-col lg:flex-row justify-between items-center
       `}>
         <h1
           className={`
             font-thin
-            mt-3 mb-3 lg:mb-6
-            text-2xl
+            my-16 lg:my-3 lg:mb-6
+            text-4xl lg:text-2xl
           `}
         >
           <Link
