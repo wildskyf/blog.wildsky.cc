@@ -1,7 +1,7 @@
 ---
 import dayjs from 'dayjs'
 
-const { feature_image_url, date, title, content, ...props } = Astro.props
+const { feature_image_url, date, title, ...props } = Astro.props
 
 const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日')
 ---
@@ -23,15 +23,15 @@ const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日')
   {
     feature_image_url && (
       <img
-        src={feature_image_url.includes('https://') ? feature_image_url : `/images/${feature_image_url}`}
+        src={feature_image_url}
         alt=''
         width='750'
         height='410'
       />
     )
   }
-  <div
-    class='article-content leading-8 text-lg text-skadiWhite-300 mt-8 text-lg pb-4'
-    set:html={content.replace(/href="https:\/\/backend\.wildsky\.cc/g, 'href="https://blog.wildsky.cc')}
-  />
+
+  <div class='article-content leading-8 text-lg text-skadiWhite-300 mt-8 text-lg pb-4'>
+    <slot />
+  </div>
 </article>

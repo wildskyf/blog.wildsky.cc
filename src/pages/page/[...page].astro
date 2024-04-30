@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content'
 import { PAGINATION_PER_PAGE_COUNT } from '@/data/globalConfig'
 import PaginationPage from '@/components/pageFactory/pagination.astro'
+import { articleMapper } from '@/utils'
 import { lang } from '@/data/tw.json'
 
 export const getStaticPaths = async ({ paginate }) => {
@@ -9,11 +10,8 @@ export const getStaticPaths = async ({ paginate }) => {
 
   return paginate(
     allPost
-      .reverse()
-      .map(post_info => ({
-        ...post_info.data,
-        feature_image_url: post_info.data.feature_image ? `/images/${post_info.data.feature_image}` : ''
-      })),
+      .map(articleMapper)
+      .sort((a,b) => b.date - a.date),
     {
       pageSize: PAGINATION_PER_PAGE_COUNT
     }

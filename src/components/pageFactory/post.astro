@@ -1,24 +1,21 @@
 ---
 import PageLayout from '@/layouts/page.astro'
 import Article from '@/components/Article.astro'
+import { articleMapper } from '@/utils'
 
 const { lang, entry } = Astro.props
 const { Content } = await entry.render()
+const data = articleMapper(entry)
 ---
 
 <PageLayout
   lang={lang}
-  pageName={entry.data.title}
-  pageDesc={entry.data.excerpt}
-  pageImage={entry.data.feature_image}
+  pageName={data.title}
+  pageDesc={data.excerpt}
+  pageImage={data.abs_feature_image}
 >
-  <Article
-    feature_image_url={entry.data.feature_image}
-    title={entry.data.title}
-    content={''}
-  />
-  <div class='article-content leading-8 text-lg text-skadiWhite-300 mt-8 text-lg pb-4'>
+  <Article {...data}>
     <Content />
-  </div>
+  </Article>
 </PageLayout>
 

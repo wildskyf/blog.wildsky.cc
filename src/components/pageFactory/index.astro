@@ -5,6 +5,7 @@ import { getCollection } from 'astro:content'
 import ListLayout from '@/layouts/list.astro'
 import SocialBar from '@/components/SocialBar.astro'
 import Divider from '@/components/Divider.astro'
+import { articleMapper } from '@/utils'
 import { PAGINATION_PER_PAGE_COUNT } from '@/data/globalConfig'
 
 const path_prefix = lang === 'en' ? '/en' : ''
@@ -12,16 +13,7 @@ const path_prefix = lang === 'en' ? '/en' : ''
 const astroPostList = await getCollection(`posts-${lang}`)
 
 const postList = astroPostList
-  .map(post_info => {
-    return {
-      title: post_info.data.title,
-      slug: post_info.data.slug,
-      date: post_info.data.date,
-      guid: post_info.data.guid,
-      feature_image_url: post_info.data.feature_image ? `/images/${post_info.data.feature_image}` : '',
-      excerpt: post_info.data.excerpt,
-    }
-  })
+  .map(articleMapper)
   .sort((a,b) => b.date - a.date)
   .slice(0, PAGINATION_PER_PAGE_COUNT)
 

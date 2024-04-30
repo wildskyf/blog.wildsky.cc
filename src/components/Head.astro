@@ -4,6 +4,8 @@ import blog_info from '@/data/blog_info.json'
 const { pageName, pageDesc, pageImage } = Astro.props
 const pageTitle = `${pageName} | ${blog_info.name}`
 const desc = pageDesc
+
+console.log(pageImage)
 const imgUrl = pageImage || 'https://blog.wildsky.cc/icons/ms-icon-310x310.png'
 ---
 
@@ -32,7 +34,7 @@ const imgUrl = pageImage || 'https://blog.wildsky.cc/icons/ms-icon-310x310.png'
 <meta itemProp="description" content={desc} />
 <meta itemProp="image" content={imgUrl} />
 
-<meta name="twitter:card" content={pageImage} />
+<meta name="twitter:card" content={imgUrl} />
 <meta name="twitter:site" content="@wildskyf" />
 <meta name="twitter:title" content={pageTitle} />
 <meta name="twitter:description" content={desc} />
