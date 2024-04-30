@@ -22,13 +22,15 @@ const postList = astroPostList
       excerpt: post_info.data.excerpt,
     }
   })
-  .reverse()
+  .sort((a,b) => b.date - a.date)
   .slice(0, PAGINATION_PER_PAGE_COUNT)
+
+const pageName = lang === 'en' ? 'HomePage' : '首頁'
 ---
 
 <ListLayout
   lang={lang}
-  pageName='首頁'
+  pageName={pageName}
   pageDesc='Dev blog about server hosting, web dev, and some of my daily stuffs.'
   postList={postList}
   next_page_path={`${path_prefix}/page/2`}
