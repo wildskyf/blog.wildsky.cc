@@ -1,0 +1,42 @@
+---
+import RootLayout from './root.astro'
+import Header from '../components/Header.astro'
+
+const { lang } = (Astro.props.frontmatter || Astro.props) ?? { lang: 'tw' }
+const lang_code = lang === 'tw' ? 'zh-Hant-TW' : 'en'
+
+const {
+  pageName,
+  pageDesc,
+  pageImage
+} = Astro.props
+
+---
+
+<RootLayout
+  pageName={pageName}
+  pageDesc={pageDesc}
+  pageImage={pageImage}
+>
+  <div
+    id='page'
+    class={`
+      min-h-screen
+      flex flex-col
+    `}
+  >
+    <Header {...{ lang }} />
+
+    <main class='flex-grow flex justify-center items-start py-4' lang={lang_code}>
+      <div class='flex flex-col w-full max-w-full lg:max-w-3xl'>
+        <slot />
+      </div>
+    </main>
+
+    <footer class='bg-gray-800 text-white text-center pt-8 pb-10' lang='en'>
+      <div class='text-gray-500 tracking-[0.03em]'>
+        Wildsky&#39;s Blog &copy; 2014-2024 All rights reserved
+      </div>
+    </footer>
+  </div>
+</RootLayout>

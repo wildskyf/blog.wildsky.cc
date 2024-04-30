@@ -1,0 +1,50 @@
+---
+import PageLayout from './page.astro'
+import PostList from '@/components/PostList.astro'
+import Link from '@/components/Link.astro'
+
+const {
+  lang,
+  postList,
+  previous_page_path,
+  next_page_path,
+  pageName,
+  pageDesc
+} = Astro.props
+
+---
+
+<PageLayout
+  lang={lang}
+  pageName={pageName}
+  pageDesc={pageDesc}
+>
+  <slot />
+
+  <section class="article-list">
+    <PostList lang={lang} postList={postList} />
+  </section>
+
+  <section class='pagination flex flex-row justify-between'>
+    {
+      previous_page_path ? (
+        <Link
+          href={previous_page_path}
+          className='p-4 text-xl text-skadiWhite-300 duration-300	hover:text-red-700'
+        >
+          ← Newer posts
+        </Link>
+      ) : (<span />)
+    }
+    {
+      next_page_path ? (
+        <Link
+          href={next_page_path}
+          className='p-4 text-xl text-skadiWhite-300 duration-300	hover:text-red-700'
+        >
+          Older posts →
+        </Link>
+      ) : (<span />)
+    }
+  </section>
+</PageLayout>

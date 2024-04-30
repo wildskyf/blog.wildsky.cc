@@ -1,0 +1,2 @@
+/.well-known/webfinger:info* https://fed.brid.gy/.well-known/webfinger:info* 302
+/.well-known/host-meta:splat https://fed.brid.gy/.well-known/host-meta:splat* 302

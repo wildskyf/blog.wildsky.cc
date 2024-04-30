@@ -1,0 +1,12 @@
+---
+import Button from './Button.astro'
+
+const { to } = Astro.props
+---
+
+<div class='flex justify-end w-full'>
+  <Button
+    class='mr-4'
+    to={to} text='Read More'
+  />
+</div>

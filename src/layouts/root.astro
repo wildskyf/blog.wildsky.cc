@@ -1,0 +1,45 @@
+---
+import dayjs from 'dayjs'
+import timezone from 'dayjs/plugin/timezone'
+import Head from '@/components/Head.astro'
+import '../global.css'
+
+dayjs.extend(timezone)
+dayjs.tz.setDefault('Asia/Taipei')
+
+const {
+  pageName,
+  pageDesc,
+  pageImage
+} = Astro.props
+
+---
+
+<html lang='zh-hant-tw'>
+  <head>
+    <link rel="me" href="https://mozilla.social/@wildsky" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta content="dark light" name="color-scheme" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" >
+
+    <Head
+      pageName={pageName}
+      pageDesc={pageDesc}
+      pageImage={pageImage}
+    />
+  </head>
+
+  <body>
+    <slot />
+
+    <script async src='https://www.googletagmanager.com/gtag/js?id=G-QJC649ZTNK' />
+    <script id="google-analytics" is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QJC649ZTNK');
+    </script>
+  </body>
+</html>

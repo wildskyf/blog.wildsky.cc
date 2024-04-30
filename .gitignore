@@ -22,3 +22,6 @@ public/rss.xml
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# astro
+.astro

@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content'
+import { PAGINATION_PER_PAGE_COUNT } from '@/data/globalConfig'
+import PaginationPage from '@/components/pageFactory/pagination.astro'
+import { lang } from '@/data/en.json'
+
+export const getStaticPaths = async ({ paginate }) => {
+  const allPost = await getCollection(`posts-${lang}`)
+
+  return paginate(
+    allPost
+      .reverse()
+      .map(post_info => ({
+        ...post_info.data,
+        feature_image_url: post_info.data.feature_image ? `/images/${post_info.data.feature_image}` : ''
+      })),
+    {
+      pageSize: PAGINATION_PER_PAGE_COUNT
+    }
+  )
+}
+
+const { page } = Astro.props
+
+---
+
+<PaginationPage
+  lang={lang}
+  page={page}
+/>

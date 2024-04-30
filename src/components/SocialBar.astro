@@ -1,0 +1,27 @@
+---
+import HeaderLink from '@/components/HeaderLink.astro'
+
+const { class: className } = Astro.props
+---
+
+<div class={`flex text-xl lg:text-4xl py-1 gap-6 justify-start ${className}`}>
+  <HeaderLink href="https://twitter.com/wildskyf" target='_blank'>
+    <div class="i-ant-design:twitter-square-filled" />
+  </HeaderLink>
+
+  <HeaderLink href="https://github.com/wildskyf" target='_blank'>
+    <div class='i-fa:github-square' />
+  </HeaderLink>
+
+  <HeaderLink href="https://www.linkedin.com/in/wildsky/" target='_blank'>
+    <div class='i-ant-design:linkedin-filled' />
+  </HeaderLink>
+
+  <HeaderLink href="/files/reseme.pdf" target='_blank' download='wildsky.20220901.pdf'>
+    <div class='i-bx:paperclip' />
+  </HeaderLink>
+
+  <HeaderLink href="/rss.xml" target='_blank'>
+    <div class='i-mdi:rss-box' />
+  </HeaderLink>
+</div>

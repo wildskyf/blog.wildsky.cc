@@ -1,0 +1,30 @@
+---
+import PageLayout from '@/layouts/page.astro'
+import Head from '@/components/Head.astro'
+import Button from '@/components/Button.astro'
+
+
+const LANG = 'en'
+const pageName = '404 NotFound'
+const pageDesc = 'That page \n can not \n be found.'
+---
+
+<PageLayout { ...{ lang: LANG } }>
+  <div class='flex justify-center items-center'>
+    <div class='py-24 px-6 lg:px-0 lg:pl-48 w-full max-w-xl'>
+
+      <h1 class='text-5xl font-bold text-gray-800'>
+        { pageName }
+      </h1>
+
+      <p class='mb-8 inline-block text-5xl text-gray-300 whitespace-nowrap origin-bottom-left'>
+        { pageDesc }
+      </p>
+
+      <Button
+        to='/'
+        text='back to home'
+      />
+    </div>
+  </div>
+</PageLayout>

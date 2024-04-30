@@ -1,0 +1,18 @@
+---
+import ListLayout from '@/layouts/list.astro'
+
+const { lang, page } = Astro.props
+const { data, currentPage, lastPage } = page
+
+const previous_page_path = `/page/${Number(currentPage) - 1}`
+const next_page_path = lastPage === currentPage ? null : `/page/${Number(currentPage) + 1}`
+---
+
+<ListLayout
+  {...{
+    lang,
+    postList: data,
+    previous_page_path,
+    next_page_path
+  }}
+/>

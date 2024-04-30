@@ -1,0 +1,51 @@
+---
+const { lang } = (Astro.props.frontmatter || Astro.props) ?? { lang: 'tw' }
+
+import { getCollection } from 'astro:content'
+import ListLayout from '@/layouts/list.astro'
+import SocialBar from '@/components/SocialBar.astro'
+import Divider from '@/components/Divider.astro'
+import { PAGINATION_PER_PAGE_COUNT } from '@/data/globalConfig'
+
+const path_prefix = lang === 'en' ? '/en' : ''
+
+const astroPostList = await getCollection(`posts-${lang}`)
+
+const postList = astroPostList
+  .map(post_info => {
+    return {
+      title: post_info.data.title,
+      slug: post_info.data.slug,
+      date: post_info.data.date,
+      guid: post_info.data.guid,
+      feature_image_url: post_info.data.feature_image ? `/images/${post_info.data.feature_image}` : '',
+      excerpt: post_info.data.excerpt,
+    }
+  })
+  .reverse()
+  .slice(0, PAGINATION_PER_PAGE_COUNT)
+---
+
+<ListLayout
+  lang={lang}
+  pageName='首頁'
+  pageDesc='Dev blog about server hosting, web dev, and some of my daily stuffs.'
+  postList={postList}
+  next_page_path={`${path_prefix}/page/2`}
+>
+  <article class='block py-16 px-4'>
+    <h1 class='text-xl lg:text-3xl font-bold mb-4'>
+      Welcome to my blog!
+    </h1>
+
+    <p class='text-md lg:text-lg text-gray-400 mb-4'>
+      Dev blog about server hosting, web dev, and some of my daily stuffs.
+    </p>
+
+    <SocialBar class='mb-4' />
+
+    <div class='w-full flex justify-center'>
+      <Divider />
+    </div>
+  </article>
+</ListLayout>
