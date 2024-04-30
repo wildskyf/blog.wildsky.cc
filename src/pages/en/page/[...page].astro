@@ -10,8 +10,8 @@ export const getStaticPaths = async ({ paginate }) => {
 
   return paginate(
     allPost
-      .reverse()
-      .map(articleMapper),
+      .map(articleMapper)
+      .sort((a,b) => Number(b.date) - Number(a.date)),
     {
       pageSize: PAGINATION_PER_PAGE_COUNT
     }

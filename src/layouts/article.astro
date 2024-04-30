@@ -1,9 +1,10 @@
 ---
 import PageLayout from './page.astro'
 import Article from '@/components/Article.astro'
+import { articleMapper } from '@/utils'
 
-const { frontmatter, compiledContent } = Astro.props
-const { title, feature_image } = frontmatter
+const { frontmatter } = Astro.props
+const data = articleMapper({ data: frontmatter })
 
 const lang = 'tw'
 const path_prefix = lang === 'en' ? '/en' : ''
@@ -12,12 +13,10 @@ const path_prefix = lang === 'en' ? '/en' : ''
 
 <PageLayout
   lang={lang}
-  pageName={title}
-  pageDesc={frontmatter.excerpt}
+  pageName={data.title}
+  pageDesc={data.excerpt}
 >
-  <Article
-    feature_image_url={feature_image}
-    title={title}
-    content={compiledContent()}
-  />
+  <Article {...data}>
+    <slot />
+  </Article>
 </PageLayout>
