@@ -4,8 +4,6 @@ import blog_info from '@/data/blog_info.json'
 const { pageName, pageDesc, pageImage } = Astro.props
 const pageTitle = `${pageName} | ${blog_info.name}`
 const desc = pageDesc
-
-console.log(pageImage)
 const imgUrl = pageImage || 'https://blog.wildsky.cc/icons/ms-icon-310x310.png'
 ---
 
