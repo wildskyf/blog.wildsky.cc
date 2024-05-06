@@ -52,7 +52,7 @@ const root_path = lang == 'en' ? '/en' : ''
               <div
                 class="break-all article-content"
                 set:html={
-                  post.excerpt.split('\n').map(a => `<p>${a}</p>`).join('')
+                  post.excerpt?.split('\n').map(a => `<p>${a}</p>`).join('')
                 }
               />
               <div>

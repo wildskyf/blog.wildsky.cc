@@ -84,6 +84,14 @@ html, body {
   list-style-type: number;
 }
 
+.article-content mark {
+  display: inline-block;
+  padding: 3px 7px;
+  text-shadow: 1px 1px 7px #6EB0B2;
+  background: #08284D;
+  color: #fff;
+}
+
 .article-content strong {
   padding: 0 4px;
   font-weight: 700;
@@ -106,7 +114,8 @@ html, body {
 }
 
 .article-content p {
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .article-content p code {
@@ -149,6 +158,19 @@ html, body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.article-content table {
+  min-width: 50%;
+  background: rgba(0,0,0,0.25);
+  margin: 20px auto 30px;
+}
+.article-content table td {
+  padding: 5px 10px;
+}
+
+.article-content img {
+  margin-bottom: 32px;
 }
 
 .article-content iframe {
