@@ -3,7 +3,7 @@ title: "為什麼在定義 subspace 時，我們需要「零向量必須包含�
 date: 2024-09-18T23:18:37+08:00
 slug: "why-we-need-zero-vector-when-defining-subspace"
 excerpt: "最近在讀線性代數，遇到一個定義 subspace 的問題。"
-feature_image: null
+feature_image: "jeremy-thomas-4dpAqfTbvKA.jpg"
 ---
 
 ## 前言
