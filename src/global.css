@@ -14,7 +14,7 @@
 html, body {
   font-family: 'Noto Serif TC', serif;
   font-weight: 400;
-  background: url('/assets/bg.svg');
+  background: linear-gradient(to left, #2c4647, #003366);
   background-attachment: fixed;
 }
 
