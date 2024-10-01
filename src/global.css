@@ -11,10 +11,16 @@
 
 @import url('tailwindcss/tailwind.css');
 
-html, body {
+html {
+  background-image: url("/assets/bg-by-jeremy-thomas-4dpAqfTbvKA.jpg");
+  background-size: 100%;
+
+}
+
+body {
   font-family: 'Noto Serif TC', serif;
   font-weight: 400;
-  background: linear-gradient(to left, #2c4647, #003366);
+  background: linear-gradient(-135deg, rgba(44, 70, 71, 0.9), rgba(0, 51, 102, 0.9));
   background-attachment: fixed;
 }
 
@@ -40,25 +46,13 @@ html, body {
   color: #fff;
 }
 
-.article-content h2:before,
-.article-content h3:before,
-.article-content h4:before,
-.article-content h5:before {
-  color: #888;
-  position: absolute;
-  left: -2.5rem;
-}
-
 .article-content h2 {
   margin-top: 20px;
   font-size: 1.5rem;
   line-height: 1.75rem;
+  color: #EECA7C;
+  text-shadow: 0px 0px 2px #EECA7C;
 }
-
-.article-content h2:before { content: 'h2'; }
-.article-content h3:before { content: 'h3'; }
-.article-content h4:before { content: 'h4'; }
-.article-content h5:before { content: 'h5'; }
 
 .article-content h3 {
   font-size: 1.25rem;
