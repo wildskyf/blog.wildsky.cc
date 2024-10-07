@@ -247,9 +247,6 @@ In addition to helping with website adjustments, I was also a keyholder in the s
 In the past, I also held a browser package workshop with ettolong to teach everyone how to write packages.
 Later, I became a Firefox Addon Reviewer with him, which was an interesting experience.
 
-BTW, if you have a mastodon account, you are welcome to follow my account at [mozilla.social](https://mozilla.social/@wildsky)
-
-
 ### other
 
 * **Linux Taiwan Community Website**: There was a website for the Taiwan Linux community in the past, but unfortunately the domain

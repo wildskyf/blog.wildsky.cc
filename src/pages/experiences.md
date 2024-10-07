@@ -255,8 +255,6 @@ Google Form 的功能其實不錯，只可惜我們希望使用者能多留在�
 之前也會和 ettoolong 一起舉辦瀏覽器套件工作坊教大家寫套件，
 後來還和他一起去當了 Firefox Addon Reviewer，也算是有趣的經歷。
 
-BTW，如果你有 mastodon 的帳號的話，歡迎追蹤我的帳號，在 [mozilla.social](https://mozilla.social/@wildsky)
-
 
 ### 其他
 
