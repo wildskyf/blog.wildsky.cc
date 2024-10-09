@@ -15,6 +15,11 @@
     "title": "about"
   },
   {
+    "guid": "http://blog.wildsky.cc/more-links",
+    "url": "/more-links/",
+    "title": "Blogroll"
+  },
+  {
     "guid": "http://blog.wildsky.cc/2019/09/03/language-switcher/",
     "url": "#pll_switcher",
     "title": "Languages"

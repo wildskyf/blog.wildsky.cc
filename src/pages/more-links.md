@@ -3,7 +3,8 @@ layout: '@/layouts/article.astro'
 title: 友站連結
 feature_image: null
 ---
-本頁放了一些和我、我的朋友相關的連結。
+
+人生雖尚未有可誇口之成就，但已然受了許多貴人的幫助，即使難有疏漏，但仍想盡力地將他們都放進這個列表中。
 
 友人
 --
