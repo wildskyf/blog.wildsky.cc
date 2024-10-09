@@ -5,14 +5,12 @@ const { class: className } = Astro.props
 ---
 
 <div class={`flex text-xl lg:text-4xl py-1 gap-6 justify-start ${className}`}>
-  {
-    // <HeaderLink href="https://twitter.com/wildskyf" target='_blank'>
-    //   <div class="i-ant-design:twitter-square-filled" />
-    // </HeaderLink>
-  }
+  <HeaderLink href="https://g0v.social/wildsky" target='_blank'>
+    <div class="i-mdi:mastodon" />
+  </HeaderLink>
 
-  <HeaderLink href="https://github.com/wildskyf" target='_blank'>
-    <div class='i-fa:github-square' />
+  <HeaderLink href="https://github.com/wildskyf" target='_blank' class="flex items-center">
+    <div class='i-fa:github-square text-3xl' />
   </HeaderLink>
 
   <HeaderLink href="https://www.linkedin.com/in/wildsky/" target='_blank'>
