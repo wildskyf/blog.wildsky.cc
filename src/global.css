@@ -13,14 +13,15 @@
 
 html {
   background-image: url("/assets/bg-by-jeremy-thomas-4dpAqfTbvKA.jpg");
-  background-size: 100%;
-
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 body {
   font-family: 'Noto Serif TC', serif;
   font-weight: 400;
-  background: linear-gradient(-135deg, rgba(44, 70, 71, 0.9), rgba(0, 51, 102, 0.9));
+  background: linear-gradient(-135deg, rgba(44, 70, 71, 0.8), rgba(0, 51, 102, 0.8));
+  background-size: 100% 100%;
   background-attachment: fixed;
 }
 
