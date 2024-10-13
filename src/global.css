@@ -11,13 +11,13 @@
 
 @import url('tailwindcss/tailwind.css');
 
-html {
+body {
   background-image: url("/assets/bg-by-jeremy-thomas-4dpAqfTbvKA.jpg");
   background-size: cover;
   background-attachment: fixed;
 }
 
-body {
+.page-container {
   font-family: 'Noto Serif TC', serif;
   font-weight: 400;
   background: linear-gradient(-135deg, rgba(44, 70, 71, 0.8), rgba(0, 51, 102, 0.8));
