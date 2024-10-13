@@ -33,13 +33,14 @@ body {
 .article-content {
   color: #e5e5e5;
   font-family: 'Noto Sans TC', sans-serif;
+  letter-spacing: 1.5px;
 }
 
 .article-content h2,
 .article-content h3,
 .article-content h4,
 .article-content h5 {
-  letter-spacing: 0.01em;
+  letter-spacing: 2px;
   font-family: 'Noto Serif TC', serif;
   font-weight: 700;
   margin: 3rem auto 1.5rem;
