@@ -1,23 +1,27 @@
 @import url('prismjs/themes/prism-okaidia.css');
 @import "tailwindcss";
-@plugin "daisyui";
 
-body {
-  background: #f8f8f8;
+@plugin "daisyui" {
+  themes: lofi --default, dim --prefersdark;
 }
 
 .page-container {
+  @apply bg-base-200;
+
   font-family: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 400;
 }
 
+/*
 ::selection {
   color: #343434;
   background-color: rgba(186, 49, 45, 0.2);
 }
+ */
 
 .article-content {
-  color: #444;
+  @apply text-base-content/80;
+
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 0.5px;
@@ -33,7 +37,6 @@ article h1 {
 .article-content h3,
 .article-content h4,
 .article-content h5 {
-  color: #343434;
   letter-spacing: 1.2px;
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
@@ -88,14 +91,7 @@ article h1 {
 }
 
 .article-content a {
-  --tw-text-opacity: 1;
-  color: #edb53b;
-  word-break: break-all;
-  text-decoration: underline;
-}
-
-.article-content a:hover {
-  color: #EECA7C;
+  @apply link;
 }
 
 .article-content p {
@@ -128,7 +124,6 @@ article h1 {
 
 .article-content pre:not([class]) {
   line-height: 1.5;
-  color: #fff;
   background: #272822;
 }
 
@@ -154,10 +149,9 @@ article h1 {
 }
 
 .article-content img {
+  @apply w-full;
+
   margin-bottom: 32px;
-  width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
 }
 
 .article-content iframe {

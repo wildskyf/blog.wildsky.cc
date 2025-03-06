@@ -4,13 +4,7 @@ const { className, to, text } = Astro.props
 ---
 
 <Link href={to} className={`
-  font-sans
-  rounded
-  py-2 px-4
-  border-2 border-solid border-gray-300
-  text-sm
-  duration-300
-  hover:bg-gray-300 hover:text-white
+  btn
   ${className || ''}
 `}>
   {text}
