@@ -2,6 +2,8 @@ import { defineConfig } from 'astro/config'
 import loadConfig from 'tailwindcss/loadConfig'
 import tailwind from '@astrojs/tailwind'
 import sitemap from "@astrojs/sitemap"
+
+// for icons, replace it with react-icons in the future
 import UnoCSS from 'unocss/astro'
 
 // https://astro.build/config

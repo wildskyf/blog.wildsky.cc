@@ -1,16 +1,4 @@
 @import url('prismjs/themes/prism-okaidia.css');
-@import url("@fontsource/noto-serif-tc/200.css");
-@import url("@fontsource/noto-serif-tc/300.css");
-@import url("@fontsource/noto-serif-tc/400.css");
-@import url("@fontsource/noto-serif-tc/500.css");
-@import url("@fontsource/noto-serif-tc/600.css");
-@import url("@fontsource/noto-serif-tc/900.css");
-
-@import url("@fontsource/noto-sans-tc/300.css");
-@import url("@fontsource/noto-sans-tc/400.css");
-@import url("@fontsource/noto-sans-tc/700.css");
-
-@import url('tailwindcss/tailwind.css');
 
 body {
   background: #f8f8f8;
