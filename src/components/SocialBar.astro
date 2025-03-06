@@ -4,7 +4,9 @@ import HeaderLink from '@/components/HeaderLink.astro'
 const { class: className } = Astro.props
 ---
 
-<div class={`flex text-xl lg:text-4xl py-1 gap-6 justify-start ${className}`}>
+<div
+  class={`flex text-xl lg:text-4xl py-1 gap-6 justify-start text-gray-600 ${className}`}
+>
   <HeaderLink href="https://g0v.social/wildsky" target='_blank'>
     <div class="i-mdi:mastodon" />
   </HeaderLink>

@@ -6,54 +6,55 @@
 @import url("@fontsource/noto-serif-tc/600.css");
 @import url("@fontsource/noto-serif-tc/900.css");
 
+@import url("@fontsource/noto-sans-tc/300.css");
 @import url("@fontsource/noto-sans-tc/400.css");
 @import url("@fontsource/noto-sans-tc/700.css");
 
 @import url('tailwindcss/tailwind.css');
 
 body {
-  background-image: url("/assets/bg-by-jeremy-thomas-4dpAqfTbvKA.jpg");
-  background-size: cover;
-  background-attachment: fixed;
+  background: #f8f8f8;
 }
 
 .page-container {
-  font-family: 'Noto Serif TC', serif;
+  font-family: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 400;
-  background: linear-gradient(-135deg, rgba(44, 70, 71, 0.8), rgba(0, 51, 102, 0.8));
-  background-size: 100% 100%;
-  background-attachment: fixed;
 }
 
 ::selection {
-  color: #d6cfdc;
-  background-color: rgba(186, 49, 45, 0.7);
+  color: #343434;
+  background-color: rgba(186, 49, 45, 0.2);
 }
 
 .article-content {
-  color: #e5e5e5;
-  font-family: 'Noto Sans TC', sans-serif;
-  letter-spacing: 1.5px;
+  color: #444;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+article h1 {
+  font-size: 42px;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
 }
 
 .article-content h2,
 .article-content h3,
 .article-content h4,
 .article-content h5 {
-  letter-spacing: 2px;
-  font-family: 'Noto Serif TC', serif;
-  font-weight: 700;
+  color: #343434;
+  letter-spacing: 1.2px;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
   margin: 3rem auto 1.5rem;
   position: relative;
-  color: #fff;
 }
 
 .article-content h2 {
   margin-top: 20px;
   font-size: 1.5rem;
   line-height: 1.75rem;
-  text-shadow: 0px 0px 2px rgba(186, 49, 45, 0.3);
-  color: #f55b67;
 }
 
 .article-content h3 {
@@ -83,9 +84,7 @@ body {
 .article-content mark {
   display: inline-block;
   padding: 3px 7px;
-  text-shadow: 1px 1px 7px #6EB0B2;
-  background: #08284D;
-  color: #fff;
+  background: #fff6b3;
 }
 
 .article-content strong {
@@ -100,7 +99,7 @@ body {
 
 .article-content a {
   --tw-text-opacity: 1;
-  color: #ebbd59;
+  color: #edb53b;
   word-break: break-all;
   text-decoration: underline;
 }
@@ -118,24 +117,23 @@ body {
   font-size: 14px;
   font-family: monospace;
   border: 1px solid #ddd;
-  background: #272822;
-  color: #fff;
-  padding: 0 2px;
+  background: #eee;
+  color: #777;
+  padding: 2px 4px;
   border-radius: 3px;
   line-height: 1.25em;
   display: inline-block;
-  transform: translateY(-3px);
 }
 
 .article-content pre {
-  font-family: monospace;
+  font-family: source-code-pro, Menlo, Monaco, "Courier New", Courier, monospace;
   font-size: 14px;
   overflow-x: auto;
   border: 1px solid #ddd;
   padding: 6px 6px;
   margin: 12px 0 16px;
   background: #272822;
-  letter-spacing: unset;
+  letter-spacing: 0;
 }
 
 .article-content pre:not([class]) {
@@ -167,6 +165,9 @@ body {
 
 .article-content img {
   margin-bottom: 32px;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .article-content iframe {

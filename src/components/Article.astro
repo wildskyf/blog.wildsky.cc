@@ -9,13 +9,13 @@ const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日')
 <article class='px-4 lg:px-0 py-16' {...props}>
   <header>
     <h1
-      class='text-3xl font-bold mb-4 text-skadiWhite-300'
+      class='font-bold mb-4'
       set:html={title}
     />
     {
       date && (
-        <p class='text-lg text-skadiWhite-300 mb-4'>
-          Posted on <time dateTime={date}>{publish_time}</time>
+        <p class='text-sm font-semithin mb-4 text-gray-400'>
+          <time dateTime={date}>{publish_time}</time>
         </p>
       )
     }
@@ -31,7 +31,7 @@ const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日')
     )
   }
 
-  <div class='article-content leading-8 text-lg lg:text-xl text-skadiWhite-300 mt-8 pb-4'>
+  <div class='article-content leading-8 text-lg lg:text-xl mt-8 pb-4'>
     <slot />
   </div>
 </article>
