@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config'
-import loadConfig from 'tailwindcss/loadConfig'
+import tailwindcss from '@tailwindcss/vite'
 import tailwind from '@astrojs/tailwind'
 import sitemap from "@astrojs/sitemap"
 
@@ -18,13 +18,18 @@ export default defineConfig({
     '/page/1': '/',
     '/en/page/1': '/en'
   },
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
   integrations: [
     UnoCSS(),
-    tailwind({
-      configFile: './tailwind.config.js',
-      applyBaseStyles: true,
-      nesting: true
-    }),
+    // tailwind({
+    //   configFile: './tailwind.config.js',
+    //   applyBaseStyles: true,
+    //   nesting: true
+    // }),
     sitemap({
       i18n: {
         defaultLocale: 'tw',

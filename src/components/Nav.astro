@@ -35,7 +35,7 @@ const pages = menu_items_mapping[lang]?.filter(item => !['Languages'].includes(i
       pages.map(item => {
         return (
           <li key={item.guid} class={`
-              w-2/3 lg:w-full
+            text-gray-900 w-2/3 lg:w-full
           `}>
             <HeaderLink
               href={item.url}
@@ -52,7 +52,7 @@ const pages = menu_items_mapping[lang]?.filter(item => !['Languages'].includes(i
       })
     }
     <li class={`
-        w-2/3 lg:w-full
+        text-gray-900 w-2/3 lg:w-full
     `}>
       <HeaderLink
         href={homepage_link.path}

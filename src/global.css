@@ -1,4 +1,6 @@
 @import url('prismjs/themes/prism-okaidia.css');
+@import "tailwindcss";
+@plugin "daisyui";
 
 body {
   background: #f8f8f8;
