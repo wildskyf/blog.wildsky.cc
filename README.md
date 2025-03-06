@@ -7,3 +7,4 @@ Build with [Astro](https://astro.build/) & [Tailwind CSS](https://tailwindcss.co
 
 - theme switcher
 - better language switcher
+- better nav
