@@ -13,6 +13,11 @@ export const GET = async (context) => {
     items: [
       ...postsTw,
       ...postsEn
-    ]
+    ].map(post => ({
+      title: post.data.title,
+      pubDate: post.data.date,
+      description: post.data.excerpt,
+      link: `/blog/${post.id}/`,
+    }))
   })
 }
