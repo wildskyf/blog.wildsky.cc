@@ -3,8 +3,8 @@ import { getCollection } from 'astro:content';
 
 
 export const GET = async (context) => {
-  const postsTw = getCollection('posts-tw')
-  const postsEn = getCollection('posts-en')
+  const postsTw = await getCollection('posts-tw')
+  const postsEn = await getCollection('posts-en')
 
   return rss({
     title: "Wildsky's Blog",
