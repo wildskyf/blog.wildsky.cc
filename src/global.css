@@ -20,15 +20,14 @@
  */
 
 .article-content {
-  @apply text-base-content/80;
+  @apply text-base-content/80 text-[18px] lg:text-[20px];
 
-  font-size: 20px;
   font-weight: 400;
   letter-spacing: 0.5px;
 }
 
 article h1 {
-  font-size: 42px;
+  @apply text-[28px] lg:text-[42px];
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
 }
