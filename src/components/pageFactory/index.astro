@@ -4,7 +4,6 @@ const { lang } = (Astro.props.frontmatter || Astro.props) ?? { lang: 'tw' }
 import { getCollection } from 'astro:content'
 import ListLayout from '@/layouts/list.astro'
 import SocialBar from '@/components/SocialBar.astro'
-import Divider from '@/components/Divider.astro'
 import { articleMapper } from '@/utils'
 import { PAGINATION_PER_PAGE_COUNT } from '@/data/globalConfig'
 
@@ -39,7 +38,7 @@ const pageName = lang === 'en' ? 'HomePage' : '首頁'
     <SocialBar class='mb-4' />
 
     <div class='w-full flex justify-center'>
-      <Divider />
+      <div class='divider w-xs' />
     </div>
   </article>
 </ListLayout>

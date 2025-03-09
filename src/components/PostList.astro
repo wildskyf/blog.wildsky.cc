@@ -12,7 +12,6 @@ const root_path = lang == 'en' ? '/en' : ''
     postList.map(post => {
       return (
         <li
-          key={post.guid}
           class='rounded-xl mb-12'
         >
           <article class={
@@ -26,11 +25,11 @@ const root_path = lang == 'en' ? '/en' : ''
                 href={`${root_path}/posts/${post.slug}`}
                 class='group'
               >
-                <time class='text-gray-400' dateTime={post.date}>
+                <time class='text-sm text-base-content/60' datetime={post.date}>
                   {dayjs(post.date).format('YYYY/MM/DD')}
                 </time>
                 <div
-                  class='text-2xl group-hover:underline'
+                  class='text-xl lg:text-2xl group-hover:underline'
                   set:html={post.title}
                   style={{ hyphens: 'auto' }}
                 />
