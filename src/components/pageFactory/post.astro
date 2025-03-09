@@ -1,10 +1,12 @@
 ---
+import { render } from 'astro:content';
+
 import PageLayout from '@/layouts/page.astro'
 import Article from '@/components/Article.astro'
 import { articleMapper } from '@/utils'
 
 const { lang, entry } = Astro.props
-const { Content } = await entry.render()
+const { Content } = await render(entry)
 const data = articleMapper(entry)
 ---
 

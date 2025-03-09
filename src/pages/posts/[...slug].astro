@@ -5,8 +5,11 @@ import { lang } from '@/data/tw.json'
 
 export const getStaticPaths = async () => {
   const blogEntries = await getCollection(`posts-${lang}`)
+
+  console.log(blogEntries[0])
+
   return blogEntries.map(entry => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }))
 }
