@@ -1,6 +1,6 @@
 ---
 import PageLayout from './page.astro'
-import Article from '@/components/Article.astro'
+import ArticleSection from '@/components/Article.astro'
 import { articleMapper } from '@/utils'
 
 const { frontmatter } = Astro.props
@@ -16,7 +16,7 @@ const path_prefix = lang === 'en' ? '/en' : ''
   pageName={data.title}
   pageDesc={data.excerpt}
 >
-  <Article {...data}>
+  <ArticleSection {...data}>
     <slot />
-  </Article>
+  </ArticleSection>
 </PageLayout>

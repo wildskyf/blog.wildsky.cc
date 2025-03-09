@@ -1,5 +1,6 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions';
+
 import dayjs from 'dayjs'
 import timezone from 'dayjs/plugin/timezone'
 import Head from '@/components/Head.astro'
@@ -30,7 +31,7 @@ const {
       pageImage={pageImage}
     />
 
-    <ViewTransitions />
+    <ClientRouter />
   </head>
 
   <body>

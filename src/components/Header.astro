@@ -8,29 +8,17 @@ const home_url = lang === 'en' ? '/en/' : '/'
 ---
 
 <header
-  className={`
-    flex flex-row justify-center items-center
-    border-b border-b-gray-300
-    px-4 pt-1 pb-4 lg:pb-1
+  class={`
+    border-b border-b-base-content
+    px-4
+    navbar bg-base-100 shadow-sm
   `}
 >
-  <div class={`
-    w-full
-    flex flex-col lg:flex-row justify-between items-center
-  `}>
-    <h1
-        class={`
-        text-base-content
-        font-thin
-        my-16 lg:my-0
-        text-4xl lg:text-2xl
-      `}
-    >
-      <HeaderLink href={home_url}>
-        {blog_info.name}
-      </HeaderLink>
-    </h1>
-
-    <Nav {...{ lang }} />
-  </div>
+  <h1 class="flex-1">
+    <HeaderLink href={home_url}>
+      {blog_info.name}
+    </HeaderLink>
+  </h1>
+  
+  <Nav {...{ lang }} />
 </header>

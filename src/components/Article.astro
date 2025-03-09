@@ -6,7 +6,7 @@ const { feature_image_url, date, title, ...props } = Astro.props
 const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日')
 ---
 
-<article class='bg-base-100 px-6 lg:px-12 mt-10 pt-8 pb-16' {...props}>
+<article class='bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16' {...props}>
   <header>
     <h1
       class='text-base-content font-bold mb-4'
