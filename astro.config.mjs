@@ -12,7 +12,10 @@ export default defineConfig({
   outDir: './out',
   i18n: {
     defaultLocale: "tw",
-    locales: ["en", "tw"]
+    locales: ["en", "tw"],
+    routing: {
+      prefixDefaultLocale: false
+    }
   },
   redirects: {
     '/page/1': '/',

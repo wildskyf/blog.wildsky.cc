@@ -6,13 +6,12 @@ import { articleMapper } from '@/utils'
 const { frontmatter } = Astro.props
 const data = articleMapper({ data: frontmatter })
 
-const lang = 'tw'
-const path_prefix = lang === 'en' ? '/en' : ''
+const currentLocale = Astro.currentLocale || 'tw'
 
 ---
 
 <PageLayout
-  lang={lang}
+  lang={currentLocale}
   pageName={data.title}
   pageDesc={data.excerpt}
 >

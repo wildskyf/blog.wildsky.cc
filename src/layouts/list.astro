@@ -2,6 +2,7 @@
 import PageLayout from './page.astro'
 import PostList from '@/components/PostList.astro'
 import Link from '@/components/Link.astro'
+import { getTranslation } from '@/i18n/utils.ts'
 
 const {
   lang,
@@ -11,6 +12,9 @@ const {
   pageName,
   pageDesc
 } = Astro.props
+
+const currentLocale = Astro.currentLocale || lang || 'tw'
+const t = getTranslation(currentLocale)
 
 ---
 
@@ -32,7 +36,7 @@ const {
           href={previous_page_path}
           className='p-4 text-xl duration-300	text-base-content'
         >
-          ← Newer posts
+          {t.common.newerPosts}
         </Link>
       ) : (<span />)
     }
@@ -42,7 +46,7 @@ const {
           href={next_page_path}
           className='p-4 text-xl duration-300	text-base-content'
         >
-          Older posts →
+          {t.common.olderPosts}
         </Link>
       ) : (<span />)
     }

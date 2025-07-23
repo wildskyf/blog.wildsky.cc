@@ -1,16 +1,18 @@
 ---
 import ListLayout from '@/layouts/list.astro'
+import { getRelativeLocaleUrl } from 'astro:i18n'
 
-const { lang, page } = Astro.props
+const currentLocale = Astro.currentLocale || 'tw'
+const { page } = Astro.props
 const { data, currentPage, lastPage } = page
 
-const previous_page_path = `/page/${Number(currentPage) - 1}`
-const next_page_path = lastPage === currentPage ? null : `/page/${Number(currentPage) + 1}`
+const previous_page_path = getRelativeLocaleUrl(currentLocale, `page/${Number(currentPage) - 1}`)
+const next_page_path = lastPage === currentPage ? null : getRelativeLocaleUrl(currentLocale, `page/${Number(currentPage) + 1}`)
 ---
 
 <ListLayout
   {...{
-    lang,
+    lang: currentLocale,
     postList: data,
     previous_page_path,
     next_page_path

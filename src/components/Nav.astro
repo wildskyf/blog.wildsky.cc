@@ -1,16 +1,27 @@
 ---
 import HeaderLink from '@/components/HeaderLink.astro'
-import main_menu_items_tw from '@/data/main-tw.json'
-import main_menu_items_en from '@/data/main-en.json'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { getTranslation } from '@/i18n/utils.ts'
 
-const menu_items_mapping = {
-  tw: main_menu_items_tw,
-  en: main_menu_items_en
-}
+const currentLocale = Astro.currentLocale || 'tw'
+const otherLocale = currentLocale === 'tw' ? 'en' : 'tw'
+const t = getTranslation(currentLocale)
 
-const { lang } = Astro.props
-const homepage_link = lang === 'en' ? { label: '中文', path: '/' } : { label: 'english', path: '/en/' }
-const pages = menu_items_mapping[lang]?.filter(item => !['Languages'].includes(item.title)) ?? []
+// Navigation items based on current locale
+const pages = currentLocale === 'tw' 
+  ? [
+      { title: t.nav.home, url: '/' },
+      { title: t.nav.bookshelf, url: '/bookshelf/' },
+      { title: t.nav.about, url: '/about/' },
+      { title: t.nav.blogroll, url: '/more-links/' }
+    ]
+  : [
+      { title: t.nav.home, url: '/en/' },
+      { title: t.nav.about, url: '/en/about-en/' }
+    ]
+
+const otherLocaleUrl = getRelativeLocaleUrl(otherLocale, '')
+const otherLocaleLabel = otherLocale === 'tw' ? '中文' : 'english'
 
 ---
 
@@ -45,8 +56,8 @@ const pages = menu_items_mapping[lang]?.filter(item => !['Languages'].includes(i
         text-base-content
         w-2/3 lg:w-full
     `}>
-      <HeaderLink href={homepage_link.path}>
-        {homepage_link.label}
+      <HeaderLink href={otherLocaleUrl}>
+        {otherLocaleLabel}
       </HeaderLink>
     </li>
   </ul>

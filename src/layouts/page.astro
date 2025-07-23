@@ -2,8 +2,8 @@
 import RootLayout from './root.astro'
 import Header from '../components/Header.astro'
 
-const { lang } = (Astro.props.frontmatter || Astro.props) ?? { lang: 'tw' }
-const lang_code = lang === 'tw' ? 'zh-Hant-TW' : 'en'
+const currentLocale = Astro.currentLocale || 'tw'
+const lang_code = currentLocale === 'tw' ? 'zh-Hant-TW' : 'en'
 
 const {
   pageName,
@@ -25,7 +25,7 @@ const {
       flex flex-col
     `}
   >
-    <Header {...{ lang }} />
+    <Header />
 
     <main class='flex-grow flex justify-center items-start lg:py-4' lang={lang_code}>
       <div class='flex flex-col w-full max-w-full lg:max-w-4xl'>

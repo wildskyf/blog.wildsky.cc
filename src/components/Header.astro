@@ -1,10 +1,12 @@
 ---
 import Nav from '@/components/Nav.astro'
 import HeaderLink from '@/components/HeaderLink.astro'
-import blog_info from '@/data/blog_info.json'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { getTranslation } from '@/i18n/utils.ts'
 
-const { lang } = Astro.props
-const home_url = lang === 'en' ? '/en/' : '/'
+const currentLocale = Astro.currentLocale || 'tw'
+const t = getTranslation(currentLocale)
+const home_url = getRelativeLocaleUrl(currentLocale, '')
 ---
 
 <header
@@ -16,9 +18,9 @@ const home_url = lang === 'en' ? '/en/' : '/'
 >
   <h1 class="flex-1">
     <HeaderLink href={home_url}>
-      {blog_info.name}
+      {t.site.title}
     </HeaderLink>
   </h1>
   
-  <Nav {...{ lang }} />
+  <Nav />
 </header>

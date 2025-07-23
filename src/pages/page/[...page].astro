@@ -3,10 +3,9 @@ import { getCollection } from 'astro:content'
 import { PAGINATION_PER_PAGE_COUNT } from '@/data/globalConfig'
 import PaginationPage from '@/components/pageFactory/pagination.astro'
 import { articleMapper } from '@/utils'
-import { lang } from '@/data/tw.json'
 
 export const getStaticPaths = async ({ paginate }) => {
-  const allPost = await getCollection(`posts-${lang}`)
+  const allPost = await getCollection('posts-tw')
 
   return paginate(
     allPost
@@ -23,6 +22,5 @@ const { page } = Astro.props
 ---
 
 <PaginationPage
-  lang={lang}
   page={page}
 />

@@ -9,6 +9,9 @@ import '../global.css'
 dayjs.extend(timezone)
 dayjs.tz.setDefault('Asia/Taipei')
 
+const currentLocale = Astro.currentLocale || 'tw'
+const htmlLang = currentLocale === 'tw' ? 'zh-hant-tw' : 'en'
+
 const {
   pageName,
   pageDesc,
@@ -17,7 +20,7 @@ const {
 
 ---
 
-<html lang='zh-hant-tw'>
+<html lang={htmlLang}>
   <head>
     <link rel="me" href="https://g0v.social/@wildsky" />
     <link rel="sitemap" href="/sitemap-index.xml" />
