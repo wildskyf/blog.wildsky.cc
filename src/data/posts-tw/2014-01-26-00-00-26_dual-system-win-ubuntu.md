@@ -2,8 +2,7 @@
 title: "雙系統 windows 8 + Ubuntu 12.04 LTS 版本"
 date: 2014-01-26T00:00:26
 slug: "dual-system-win-ubuntu"
-excerpt: "<p>會寫這篇文章主要是為了幫忙我的同學安裝好 win8&nbsp;+ ubuntu 12.04 雙系統，ubunt&#8230;</p>
-"
+excerpt: "會寫這篇文章主要是為了幫忙我的同學安裝好 win8 + ubuntu 12.04 雙系統，ubuntu..."
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=56"
 ---
