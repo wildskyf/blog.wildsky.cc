@@ -3,8 +3,8 @@ import { getCollection } from 'astro:content';
 
 
 export const GET = async (context) => {
-  const postsTw = await getCollection('posts-tw')
-  const postsEn = await getCollection('posts-en')
+  const postsTw = await getCollection('posts', ({ id }) => id.startsWith('tw/'))
+  const postsEn = await getCollection('posts', ({ id }) => id.startsWith('en/'))
 
   // Function to clean HTML entities from description
   const cleanDescription = (html) => {
@@ -33,13 +33,18 @@ export const GET = async (context) => {
     description: 'Dev blog about server hosting, web dev, and some of my daily stuffs.',
     site: context.site,
     items: [
-      ...postsTw,
-      ...postsEn
-    ].map(post => ({
-      title: post.data.title,
-      pubDate: post.data.date,
-      description: cleanDescription(post.data.excerpt),
-      link: `/posts/${post.id}/`,
-    }))
+      ...postsTw.map(post => ({
+        title: post.data.title,
+        pubDate: post.data.date,
+        description: cleanDescription(post.data.excerpt),
+        link: `/posts/${post.data.slug}/`,
+      })),
+      ...postsEn.map(post => ({
+        title: post.data.title,
+        pubDate: post.data.date,
+        description: cleanDescription(post.data.excerpt),
+        link: `/en/posts/${post.data.slug}/`,
+      }))
+    ]
   })
 }

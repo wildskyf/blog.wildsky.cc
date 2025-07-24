@@ -5,7 +5,9 @@ import PaginationPage from '@/components/pageFactory/pagination.astro'
 import { articleMapper } from '@/utils'
 
 export const getStaticPaths = async ({ paginate }) => {
-  const allPost = await getCollection('posts-en')
+  const allPost = await getCollection('posts', ({ id }) => {
+    return id.startsWith('en/')
+  })
 
   return paginate(
     allPost

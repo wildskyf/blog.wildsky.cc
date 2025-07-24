@@ -10,15 +10,20 @@ import { getTranslation } from '@/i18n/utils.ts'
 const currentLocale = Astro.currentLocale || 'tw'
 const t = getTranslation(currentLocale)
 
-const astroPostList = await getCollection(`posts-${currentLocale}`)
+const astroPostList = await getCollection('posts', ({ id }) => {
+  return id.startsWith(`${currentLocale}/`)
+})
 
-const postList = astroPostList
+const sortedPosts = astroPostList
   .map(articleMapper)
   .sort((a,b) => Number(b.date) - Number(a.date))
-  .slice(0, PAGINATION_PER_PAGE_COUNT)
+
+const postList = sortedPosts.slice(0, PAGINATION_PER_PAGE_COUNT)
 
 const pageName = currentLocale === 'en' ? 'HomePage' : '首頁'
-const nextPagePath = getRelativeLocaleUrl(currentLocale, 'page/2')
+// Only show next page link if there are more posts than can fit on one page
+const hasNextPage = sortedPosts.length > PAGINATION_PER_PAGE_COUNT
+const nextPagePath = hasNextPage ? getRelativeLocaleUrl(currentLocale, 'page/2') : null
 ---
 
 <ListLayout
