@@ -7,14 +7,15 @@ export const translations = {
     },
     nav: {
       home: "home",
-      bookshelf: "bookshelf", 
+      bookshelf: "bookshelf",
       about: "about",
+      now: "now",
       blogroll: "Blogroll",
       languages: "Languages"
     },
     common: {
       readMore: "繼續閱讀",
-      previous: "上一頁", 
+      previous: "上一頁",
       next: "下一頁",
       page: "第",
       pageOf: "頁",
@@ -30,13 +31,13 @@ export const translations = {
     },
     nav: {
       home: "home",
-      about: "about", 
+      about: "about",
       languages: "Languages"
     },
     common: {
       readMore: "Read more",
       previous: "Previous",
-      next: "Next", 
+      next: "Next",
       page: "Page",
       pageOf: "of",
       newerPosts: "← Newer posts",

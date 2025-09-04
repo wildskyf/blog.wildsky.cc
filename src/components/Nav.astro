@@ -8,11 +8,12 @@ const otherLocale = currentLocale === 'tw' ? 'en' : 'tw'
 const t = getTranslation(currentLocale)
 
 // Navigation items based on current locale
-const pages = currentLocale === 'tw' 
+const pages = currentLocale === 'tw'
   ? [
       { title: t.nav.home, url: '/' },
       { title: t.nav.bookshelf, url: '/bookshelf/' },
       { title: t.nav.about, url: '/about/' },
+      { title: t.nav.now, url: '/now/' },
       { title: t.nav.blogroll, url: '/more-links/' }
     ]
   : [
@@ -36,7 +37,7 @@ const otherLocaleLabel = otherLocale === 'tw' ? '中文' : 'english'
       menu menu-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow
       capitalize
     `}
-    
+
   >
     {
       pages.map(item => {
