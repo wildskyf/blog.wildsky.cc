@@ -5,7 +5,7 @@ import { Icon } from 'astro-icon/components';
 const { class: className } = Astro.props;
 ---
 
-<div class={`flex text-xl lg:text-4xl py-1 gap-6 justify-start text-gray-600 ${className}`}>
+<nav class={`flex text-xl lg:text-4xl py-1 gap-6 justify-start text-gray-600 ${className}`}>
   <HeaderLink href="https://g0v.social/wildsky" target="_blank">
     <Icon name="mdi:mastodon" />
   </HeaderLink>
@@ -25,4 +25,4 @@ const { class: className } = Astro.props;
   <HeaderLink href="/rss.xml" target="_blank">
     <Icon name="mdi:rss-box" />
   </HeaderLink>
-</div>
+</nav>
