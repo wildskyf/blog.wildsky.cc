@@ -7,11 +7,12 @@ feature_image: "banana-ship-in-Boracay.jpeg"
 guid: "atlassian-buy-arc-dia"
 ---
 
-這兩天的一個很趣味的新聞是Jira 的母公司 Atlassian 居然收購了開發 Arc 和 Dia 瀏覽器的公司 The Browser Company。（附上[部落格文章連結](https://www.atlassian.com/blog/announcements/atlassian-acquires-the-browser-company)）
+這兩天的一個很趣味的新聞是 Jira 的母公司 Atlassian 居然收購了開發 Arc 和 Dia 瀏覽器的公司 The Browser Company。（附上[部落格文章連結](https://www.atlassian.com/blog/announcements/atlassian-acquires-the-browser-company)）
 
 有趣的是，他們還在官方推特上面宣告說
 
-> 是時候打造一款為工作而生的瀏覽器了
+> 是時候打造一款為<b>工作而生</b>的瀏覽器了<br/>
+> It’s time for a browser that’s actually <b>built for work</b> - a browser that helps you do, not just browse.
 
 （到底是誰覺得這句話會很吸引人XD）
 
@@ -28,7 +29,7 @@ guid: "atlassian-buy-arc-dia"
 
 <https://zen-browser.app/>
 
-基於 Firefox 的瀏覽器，充滿了向 Arc 致敬的設計元素。
+基於 Firefox 的瀏覽器，充滿了向 Arc 致敬的設計元素。（連官網都很 Arc）
 
 雖然透過 container 可以達成在不同 profile 的 space 中用另一個 profile 開分頁的進階用法，但是整體體驗完全追不上 Arc。
 
