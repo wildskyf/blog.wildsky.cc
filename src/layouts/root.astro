@@ -4,6 +4,7 @@ import { ClientRouter } from 'astro:transitions';
 import dayjs from 'dayjs'
 import timezone from 'dayjs/plugin/timezone'
 import Head from '@/components/Head.astro'
+import ThemeToggle from '@/components/ThemeToggle.astro'
 import '../global.css'
 
 dayjs.extend(timezone)
@@ -22,6 +23,20 @@ const {
 
 <html lang={htmlLang}>
   <head>
+    <script is:inline>
+      if (localStorage.getItem("theme") === null) {
+        document.documentElement.setAttribute("data-theme", "nord");
+      } else
+        document.documentElement.setAttribute(
+          "data-theme",
+          localStorage.getItem("theme")
+        );
+    </script>
+    <script>
+      import { themeChange } from 'theme-change';
+      themeChange();
+    </script>
+
     <link rel="me" href="https://g0v.social/@wildsky" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta content="light" name="color-scheme" />
@@ -41,6 +56,7 @@ const {
     <div class="page-container">
       <slot />
     </div>
+    <ThemeToggle />
 
     <script async src='https://www.googletagmanager.com/gtag/js?id=G-QJC649ZTNK' />
     <script id="google-analytics" is:inline>
