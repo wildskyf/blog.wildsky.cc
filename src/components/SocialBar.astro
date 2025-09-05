@@ -1,5 +1,6 @@
 ---
 import HeaderLink from '@/components/HeaderLink.astro'
+import { Icon } from 'astro-icon/components'
 
 const { class: className } = Astro.props
 ---
@@ -8,22 +9,22 @@ const { class: className } = Astro.props
   class={`flex text-xl lg:text-4xl py-1 gap-6 justify-start text-gray-600 ${className}`}
 >
   <HeaderLink href="https://g0v.social/wildsky" target='_blank'>
-    <div class="i-mdi:mastodon" />
+    <Icon name="mdi:mastodon" />
   </HeaderLink>
 
   <HeaderLink href="https://github.com/wildskyf" target='_blank' class="flex items-center">
-    <div class='i-fa:github-square text-lg lg:text-3xl' />
+    <Icon name="fa6-brands:github-square" class="text-lg lg:text-3xl" />
   </HeaderLink>
 
   <HeaderLink href="https://www.linkedin.com/in/wildsky/" target='_blank'>
-    <div class='i-ant-design:linkedin-filled' />
+    <Icon name="ant-design:linkedin-filled" />
   </HeaderLink>
 
   <HeaderLink href="/files/reseme.pdf" target='_blank' download='wildsky.20220901.pdf'>
-    <div class='i-bx:paperclip' />
+    <Icon name="bx:paperclip" />
   </HeaderLink>
 
   <HeaderLink href="/rss.xml" target='_blank'>
-    <div class='i-mdi:rss-box' />
+    <Icon name="mdi:rss-box" />
   </HeaderLink>
 </div>

@@ -2,9 +2,7 @@ import { defineConfig } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
 import tailwind from '@astrojs/tailwind'
 import sitemap from "@astrojs/sitemap"
-
-// for icons, replace it with react-icons in the future
-import UnoCSS from 'unocss/astro'
+import icon from 'astro-icon'
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,12 +25,7 @@ export default defineConfig({
   },
 
   integrations: [
-    UnoCSS(),
-    // tailwind({
-    //   configFile: './tailwind.config.js',
-    //   applyBaseStyles: true,
-    //   nesting: true
-    // }),
+    icon(),
     sitemap({
       i18n: {
         defaultLocale: 'tw',
