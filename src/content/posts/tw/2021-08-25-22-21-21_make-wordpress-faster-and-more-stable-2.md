@@ -7,18 +7,18 @@ excerpt: "<p>前篇是 WordPress 加速、穩定計畫之一。 這次改版採�
 feature_image: stephen-phillips-hostreviews-co-uk-sSPzmL7fpWc-unsplash-1.jpg
 guid: "https://blog.wildsky.cc/?p=1751"
 ---
+
 前篇是 [WordPress 加速、穩定計畫之一](https://blog.wildsky.cc/posts/make-wordpress-faster-and-more-stable)。
 
 這次改版採用了上次提到的「換前端不換後端」的方案，雖然一樣有上次提到的 jetpack 的問題，但目前我打算先忍著不管那個樣式，之後想到再修掉，反正用到的地方不多，影響相對不大。
 
-事前
---
+## 事前
 
 我的規劃如下：
 
-*   Data Provider 維持 WordPress，好讓我可以在後台寫文章，也恰好 WordPress 有提供 Restful API，所以就可以直接拿到大部分想要的資料（未來改版再來換掉）
-*   前台採用 Next.js 當作靜態網站產生器，每次更新部落格時再自動去 build & deploy
-*   host 搬到 Netlify
+- Data Provider 維持 WordPress，好讓我可以在後台寫文章，也恰好 WordPress 有提供 Restful API，所以就可以直接拿到大部分想要的資料（未來改版再來換掉）
+- 前台採用 Next.js 當作靜態網站產生器，每次更新部落格時再自動去 build & deploy
+- host 搬到 Netlify
 
 這次也順便嘗試了新的東西： Functional CSS，我直接使用了 Tailwind CSS 來幫助我把整個部落格的樣式都重寫了一遍。
 
@@ -35,10 +35,9 @@ guid: "https://blog.wildsky.cc/?p=1751"
 
 不過講歸講，我目前完成的部分還只有前台，中間的「按下發布後自動 trigger Netlify」的部分尚未實作，但因為使用的機會較少，待日後更常寫文章再來研究如何串接。
 
-* * *
+---
 
-遇到的困難
------
+## 遇到的困難
 
 雖然上面講得好像很輕鬆很美好，但實際上有遇到不少問題。
 
@@ -68,7 +67,6 @@ Next.js 沒有提供 serverless 的 i18n 解決方案，所以只能自己克難
 
 有些文章裡面會有 WordPress 內嵌的那種別的 WordPress 網站的文章，這個東西莫名在手機上會顯示不出來，de 了好久的 bug 才終於發現 WordPress 會在 iframe load 完成時把某些 style 加上或拿掉⋯ 這件事花了很多天，實在有點浪費時間。
 
-之後
---
+## 之後
 
 之後打算把 WordPress 換掉，看是要自己寫一個後台或是看有沒有其他適合當 data provider 的東西。屆時再來慢慢找，然後再出個「Blog 加速、穩定計畫之三」。

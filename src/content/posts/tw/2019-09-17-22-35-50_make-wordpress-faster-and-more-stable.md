@@ -7,12 +7,12 @@ excerpt: "<p>最近這幾週比較少寫文章，原因是我最近在嘗試把�
 feature_image: fikret-tozak-Zk-Ydz2IAs-unsplash.jpg
 guid: "http://blog.wildsky.cc/?p=1416"
 ---
+
 最近這幾週比較少寫文章，原因是我最近在嘗試把部落格的架構改掉。而會有這個打算的原因是，最近 host 這個部落格的 server 開始不太穩，每天會有一到三次、每次十幾分鐘不等的停機——不過也可能之前就有，只是我最近打開 Jetpack 的停機時間監控才發現他起起落落——因為一直收到通知實在太煩，又不想只是把監控關掉掩耳盜鈴，便開始了這個計畫。
 
 誰知道是個深坑⋯⋯
 
-過往經驗
-----
+## 過往經驗
 
 這邊先簡介一下過往經驗，因為過去有段時間我都是使用靜態網站產生器（Jekyll、Middleman、hugo）來架部落格，對於他可以自行掌控整個 html 感到非常自在清爽，甚是喜歡。
 
@@ -26,19 +26,17 @@ guid: "http://blog.wildsky.cc/?p=1416"
 
 有了靜態網站產生器的經驗的我，便異想天開地想：「能否使用 wordpress 作為靜態網站產生器？」一查才發現：我不孤單啊！甚至還有個叫做 shifter 的服務打算直接幫你處理這件事。於是我便開始研究該如何調整部落格架構以便達成這個願望。
 
-我的需求＆此次改版目標
------------
+## 我的需求＆此次改版目標
 
 在做事之前，要先知道目標，以及可以接受的妥協。
 
-*   我希望網站是 **純靜態** 的，不用在收到 request 後還在後端做 render，host service 就只要單純地做 host 就好（這樣我就可以把網站 publish 到更穩定的 netlify 上）
-*   我希望保有 **好的管理後台**，最好是直接沿用 wordpress 現在的後台，讓我可以舒爽寫文章、管 Tag
-*   繼續使用現在這個 server，後台可以繼續每天倒個幾分鐘，這樣我只要別在那些時間裡寫文章用後台就不會有問題，但後台倒掉不能影響前台也倒站（也就是希望 **前後台切開**）
+- 我希望網站是 **純靜態** 的，不用在收到 request 後還在後端做 render，host service 就只要單純地做 host 就好（這樣我就可以把網站 publish 到更穩定的 netlify 上）
+- 我希望保有 **好的管理後台**，最好是直接沿用 wordpress 現在的後台，讓我可以舒爽寫文章、管 Tag
+- 繼續使用現在這個 server，後台可以繼續每天倒個幾分鐘，這樣我只要別在那些時間裡寫文章用後台就不會有問題，但後台倒掉不能影響前台也倒站（也就是希望 **前後台切開**）
 
 ![](/images/estee-janssens-aQfhbxailCs-unsplash.jpg)
 
-解決方案
-----
+## 解決方案
 
 ### 方案一：將 wordpress 轉成靜態網站
 
@@ -98,26 +96,24 @@ guid: "http://blog.wildsky.cc/?p=1416"
 
 前面提到的方案二和方案三的方案都是要整個重刻前台，不能直接用 wordpress 的現有主題下去改，這實在也是有點勞累⋯⋯ 最近可能會先擱置這件事了。
 
-結果
---
+## 結果
 
 於是，上述幾個解方都還是不夠令人滿意，也許我還要再花點時間進行前置處理（像是最後提到的 jetpack 拔除）也可能應該耐心把一些該乖乖 debug 的地方處理好。因此，正如各位所見，我目前還是繼續使用 wordpress 的狀態，問題依舊未解決，倒站不能優美下降，所以本篇文章的標題有個「之一」。
 
 希望之後有天能真正解決這個問題，找到最佳解法，到時我就可以來寫個「之二」了。
 
-* * *
+---
 
 更新，前陣子終於偷了點閒，稍稍改進了一下部落格的架構，誕生了這篇文章的後續：「[Blog 加速、穩定計畫之二](https://blog.wildsky.cc/posts/make-wordpress-faster-and-more-stable-2/)」
 
-參考
---
+## 參考
 
-*   [wordpress plugin – jetpack](https://tw.wordpress.org/plugins/jetpack/)
-*   [Jekyll – 超好用靜態網站產生器](https://blog.wildsky.cc/posts/static-generator-jekyll/)
-*   [部落格搬家: 從 WordPress 搬家到 middleman](https://blog.wildsky.cc/posts/newblog/)
-*   [使用 Hugo 來建 blog](https://blog.wildsky.cc/posts/using-hugo-to-build-blog/)
-*   [https://wp2static.com/](https://wp2static.com/)
-*   [https://www.simplystatic.co/](https://www.simplystatic.co/)
-*   [Headless WordPress + Gatsby + Netlify continuous deployment](https://justinwhall.com/headless-wordpress-gatsby-netlify-continous-deployment/)
-*   [https://forestry.io](https://forestry.io)
-*   [https://www.netlifycms.org/](https://www.netlifycms.org/)
+- [wordpress plugin – jetpack](https://tw.wordpress.org/plugins/jetpack/)
+- [Jekyll – 超好用靜態網站產生器](https://blog.wildsky.cc/posts/static-generator-jekyll/)
+- [部落格搬家: 從 WordPress 搬家到 middleman](https://blog.wildsky.cc/posts/newblog/)
+- [使用 Hugo 來建 blog](https://blog.wildsky.cc/posts/using-hugo-to-build-blog/)
+- [https://wp2static.com/](https://wp2static.com/)
+- [https://www.simplystatic.co/](https://www.simplystatic.co/)
+- [Headless WordPress + Gatsby + Netlify continuous deployment](https://justinwhall.com/headless-wordpress-gatsby-netlify-continous-deployment/)
+- [https://forestry.io](https://forestry.io)
+- [https://www.netlifycms.org/](https://www.netlifycms.org/)

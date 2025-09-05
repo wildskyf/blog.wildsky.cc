@@ -1,11 +1,12 @@
 ---
-title: "雙系統 windows 8 + Ubuntu 12.04 LTS 版本"
+title: '雙系統 windows 8 + Ubuntu 12.04 LTS 版本'
 date: 2014-01-26T00:00:26
-slug: "dual-system-win-ubuntu"
-excerpt: "會寫這篇文章主要是為了幫忙我的同學安裝好 win8 + ubuntu 12.04 雙系統，ubuntu..."
+slug: 'dual-system-win-ubuntu'
+excerpt: '會寫這篇文章主要是為了幫忙我的同學安裝好 win8 + ubuntu 12.04 雙系統，ubuntu...'
 feature_image: null
-guid: "http://blog.wildsky.cc/?p=56"
+guid: 'http://blog.wildsky.cc/?p=56'
 ---
+
 會寫這篇文章主要是為了幫忙我的同學安裝好 win8 + ubuntu 12.04 雙系統，ubuntu 13.10 似乎可以完整搭配 win8 安裝雙系統，但 12.04 仍不行，所以我決定寫這篇文章，希望能幫助到想裝 ubuntu 的人！
 
 如果你的系統是 win7 你可以直接安裝，之前安裝 win7 時 grub 可以直接偵測到，所以可以直接完成雙系統，不用特殊的調整，但 win8 似乎需要有一些額外設定，請有心安裝的人繼續往下閱讀。
@@ -54,8 +55,7 @@ guid: "http://blog.wildsky.cc/?p=56"
 
 等他跑完就完成了！這時，我們可以執行 Grub Customizer，待他偵測完成後就會看到那些出現在 grub 選單的選項們了。剩下的就不用多說，自行編輯吧。
 
-參考連結
-----
+## 參考連結
 
-*   [https://help.ubuntu.com/community/Boot-Repair](https://help.ubuntu.com/community/Boot-Repair)
-*   [http://www.noobslab.com/2012/11/install-grub-customizer-302-in-ubuntu.html](http://www.noobslab.com/2012/11/install-grub-customizer-302-in-ubuntu.html)
+- [https://help.ubuntu.com/community/Boot-Repair](https://help.ubuntu.com/community/Boot-Repair)
+- [http://www.noobslab.com/2012/11/install-grub-customizer-302-in-ubuntu.html](http://www.noobslab.com/2012/11/install-grub-customizer-302-in-ubuntu.html)

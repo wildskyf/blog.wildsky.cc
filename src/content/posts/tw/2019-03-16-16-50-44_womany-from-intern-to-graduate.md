@@ -7,10 +7,10 @@ excerpt: "<p>2019 的農曆年前從 womany 畢業了，覺得好像可以來寫
 feature_image: me-in-womany.png
 guid: "http://blog.wildsky.cc/?p=100"
 ---
+
 2019 的農曆年前從 womany 畢業了，覺得好像可以來寫個心得，記錄一下在這邊的感覺、收穫以及歷程。順便讓有興趣進去工作的朋友可以參考一下，看看自己適不適合這樣的工作環境。
 
-在 womany 工作的好與壞
----------------
+## 在 womany 工作的好與壞
 
 免不了要評論一下在 womany 工作的好壞，而我現也已不在 womany 工作，所以這邊記錄的只有在我離開前所感受到的狀況，現狀如何可能要再和裡面的朋友們確認一下。
 
@@ -72,10 +72,9 @@ guid: "http://blog.wildsky.cc/?p=100"
 
 就我自己的感覺，如果是剛出學校的社會新鮮人，先專注在專案執行上也不失為一個好的階段學習目標。但如果不在乎什麼叫做專案執行、什麼叫做團隊合作的人，就不用考慮了。
 
-* * *
+---
 
-我在 womany 的學習
--------------
+## 我在 womany 的學習
 
 在這邊也是學了非常多的東西，下面列出一些我想到的，若有漏之後再補。
 
@@ -117,10 +116,9 @@ guid: "http://blog.wildsky.cc/?p=100"
 
 但後來在和夥伴討論東西時，因為已經可以抓到專案執行的拋接感，在一問一答、反問反答的過程中，我們便迅速建立共識能夠各司其職，迅速完成需求。而那一次的過程也讓我感覺到所謂的「合作愉快」原來是這麼一回事。
 
-* * *
+---
 
-我在 **womany** 的幾個值得記錄的專案
-------------------------
+## 我在 **womany** 的幾個值得記錄的專案
 
 為了避免時間過久，我的記憶漸漸消散，這邊我也來記錄一下幾個在 womany 值得一提的事項。
 
@@ -154,10 +152,9 @@ womany 有個蠻好的東西叫做迷人體驗，可以讓申請者體驗到許�
 >
 > 北非碟影
 
-* * *
+---
 
-結論
---
+## 結論
 
 說實話，在 womany 工作我很開心，在這邊工作的過程改變了我的許多面向，也交了不少知心好友。雖然別離令人難過，但過去的種種成就現在的我，如果時光倒回去再讓我重選一遍，我絕對還是會再走一次這段路。
 
@@ -165,11 +162,10 @@ womany 有個蠻好的東西叫做迷人體驗，可以讓申請者體驗到許�
 
 希望公司與我都可以更好，或許未來再相遇！
 
-[](https://womany.net/career)相關連結
----------------------------------
+## [](https://womany.net/career)相關連結
 
-*   Womany 網站：[https://womany.net](https://womany.net)
-*   Womany 電商：[https://womany.net/shop](https://womany.net/)
-*   Womany 徵才頁：[https://womany.net/career](https://womany.net/career)
+- Womany 網站：[https://womany.net](https://womany.net)
+- Womany 電商：[https://womany.net/shop](https://womany.net/)
+- Womany 徵才頁：[https://womany.net/career](https://womany.net/career)
 
 也可以看看我其他和 [生活](http://blog.wildsky.cc/categories/life) 相關的文章。

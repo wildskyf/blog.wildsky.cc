@@ -7,8 +7,8 @@ excerpt: "<p>前言 繼之前的 這篇文章 裝了 Ubuntu + windows 雙系統�
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=55"
 ---
-前言
---
+
+## 前言
 
 繼之前的 [這篇文章](http://blog.wildsky.cc/posts/dual-system-win-ubuntu/) 裝了 Ubuntu + windows 雙系統後，又會覺得好像空間變太少了，想要把 Ubuntu 移掉。  
 原本想說移掉感覺很簡單，就把切給 Ubuntu 的分區清掉，然後還給 Windows 不就好了？
@@ -24,8 +24,7 @@ guid: "http://blog.wildsky.cc/?p=55"
 
 本文的適用環境是 Windows 8, 8.1 & Ubuntu 12.04 LTS，其他版本可能大同小異，但若有差異請自行斟酌處理。
 
-正文
---
+## 正文
 
 首先需要一張安裝 windows 的光碟。
 
@@ -54,12 +53,10 @@ guid: "http://blog.wildsky.cc/?p=55"
 
 重開機以後應該就會直接進入 Windows 了！
 
-後記
---
+## 後記
 
 聽說還有 `bootsect /nt60 SYS /mbr` 這樣的指令，但我沒試過。
 
-參考
---
+## 參考
 
-*   [在安裝 GRUB 之後修復 Windows 7 MBR](http://blog.xuite.net/jyoutw/xtech/62292941)
+- [在安裝 GRUB 之後修復 Windows 7 MBR](http://blog.xuite.net/jyoutw/xtech/62292941)

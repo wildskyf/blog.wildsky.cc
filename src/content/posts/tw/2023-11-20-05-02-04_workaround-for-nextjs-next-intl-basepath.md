@@ -27,7 +27,6 @@ guid: "workaround-for-nextjs-next-intl-basepath"
 看了看 comment 也沒有什麼好的 workaround，幾天前有人發 PR，但看來 merge 應該還要一些時間，
 想來終究只能靠自己。
 
-
 ## 直接從錯誤訊息下手
 
 如果不使用 middleware 直接在 component call `useTranslation` 的話，會跳 `unable-to-find-locale` 的錯誤訊息，
@@ -46,53 +45,53 @@ guid: "workaround-for-nextjs-next-intl-basepath"
 ```tsx
 // /src/middleware.ts
 
-import { NextRequest, NextResponse } from 'next/server'
-import { locales } from '@/i18n'
-import { basePath } from '@/config'
-import { resolveLocale } from '@/utils'
+import { NextRequest, NextResponse } from 'next/server';
+import { locales } from '@/i18n';
+import { basePath } from '@/config';
+import { resolveLocale } from '@/utils';
 
 export default async function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl
+  const { pathname } = req.nextUrl;
 
   if (pathname.includes('_next')) {
-    return
+    return;
   }
 
   if (pathname === '/') {
     return NextResponse.redirect(new URL(`${basePath}/en`, req.url));
   }
 
-  const headers = new Headers(req.headers)
-  headers.set('X-NEXT-INTL-LOCALE', resolveLocale(req))
-  const res = NextResponse.rewrite(new URL(req.url, req.url), { request: { headers } })
+  const headers = new Headers(req.headers);
+  headers.set('X-NEXT-INTL-LOCALE', resolveLocale(req));
+  const res = NextResponse.rewrite(new URL(req.url, req.url), { request: { headers } });
 
-  return res
+  return res;
 }
 
 export const config = {
-  matcher: [ '/', '/((?!_next|images|videos|favicon).*)' ]
-}
+  matcher: ['/', '/((?!_next|images|videos|favicon).*)'],
+};
 ```
 
 ```tsx
 // /src/utils.ts
 
-import { NextRequest } from 'next/server'
-import { useTranslations } from 'next-intl'
-import { defaultLocale, locales } from '@/i18n'
+import { NextRequest } from 'next/server';
+import { useTranslations } from 'next-intl';
+import { defaultLocale, locales } from '@/i18n';
 
 const resolveLocale = (req: NextRequest) => {
-  const pathname = req.nextUrl.pathname
-  const [, locale] = pathname.split('/')
+  const pathname = req.nextUrl.pathname;
+  const [, locale] = pathname.split('/');
 
   if (!locale.includes(locale)) {
-    return defaultLocale
+    return defaultLocale;
   }
 
-  return locale || defaultLocale
-}
+  return locale || defaultLocale;
+};
 
-export { useTranslations, resolveLocale }
+export { useTranslations, resolveLocale };
 ```
 
 Problem solved!

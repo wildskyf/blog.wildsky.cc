@@ -7,10 +7,10 @@ excerpt: "<p>最近有些朋友問我要怎麼讓電腦變快，這邊來彙整�
 feature_image: wesson-wang-110739-unsplash-e1559370414483.jpg
 guid: "http://blog.wildsky.cc/?p=601"
 ---
+
 最近有些朋友問我要怎麼讓電腦變快，這邊來彙整一下我知道或以前有查到的技巧，本文會介紹十個可以做的事，參考看看。
 
-要怎麼讓 Mac 變快？
-------------
+## 要怎麼讓 Mac 變快？
 
 ### 1- 要記得關掉應用程式
 
@@ -116,14 +116,12 @@ Photo is from [https://www.mediaatelier.com/CheatSheet](https://www.mediaatelier
 
 大概是這樣。
 
-結語
---
+## 結語
 
 比起做一些有的沒的，還不如改變一下使用習慣，該關的程式要記得關，該刪的檔案要記得刪。
 
 順便分享個那天看到的貼文，覺得很有道理: <https://www.instagram.com/p/BxpYm18Fo_Q/>
 
-參考
---
+## 參考
 
-*   [增加工作效率：關閉 Mac 上切換視窗時的動畫效果](https://blog.gslin.org/archives/2019/03/10/8801/) by gslin
+- [增加工作效率：關閉 Mac 上切換視窗時的動畫效果](https://blog.gslin.org/archives/2019/03/10/8801/) by gslin

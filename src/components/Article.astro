@@ -1,37 +1,25 @@
 ---
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 
-const { feature_image_url, date, title, ...props } = Astro.props
+const { feature_image_url, date, title, ...props } = Astro.props;
 
-const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日')
+const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日');
 ---
 
-<article class='bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16' {...props}>
+<article class="bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16" {...props}>
   <header>
-    <h1
-      class='text-base-content font-bold mb-4'
-      set:html={title}
-    />
+    <h1 class="text-base-content font-bold mb-4" set:html={title} />
     {
       date && (
-        <p class='text-sm font-semithin mb-4 text-base-content/70'>
+        <p class="text-sm font-semithin mb-4 text-base-content/70">
           <time datetime={date}>{publish_time}</time>
         </p>
       )
     }
   </header>
-  {
-    feature_image_url && (
-      <img
-        src={feature_image_url}
-        alt=''
-        width='750'
-        height='410'
-      />
-    )
-  }
+  {feature_image_url && <img src={feature_image_url} alt="" width="750" height="410" />}
 
-  <div class='article-content leading-8 text-lg lg:text-xl mt-8 pb-4'>
+  <div class="article-content leading-8 text-lg lg:text-xl mt-8 pb-4">
     <slot />
   </div>
 </article>

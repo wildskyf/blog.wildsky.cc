@@ -1,28 +1,23 @@
 ---
-import { getCollection } from 'astro:content'
-import { PAGINATION_PER_PAGE_COUNT } from '@/data/globalConfig'
-import PaginationPage from '@/components/pageFactory/pagination.astro'
-import { articleMapper } from '@/utils'
+import { getCollection } from 'astro:content';
+import { PAGINATION_PER_PAGE_COUNT } from '@/data/globalConfig';
+import PaginationPage from '@/components/pageFactory/pagination.astro';
+import { articleMapper } from '@/utils';
 
 export const getStaticPaths = async ({ paginate }) => {
   const allPost = await getCollection('posts', ({ id }) => {
-    return id.startsWith('tw/')
-  })
+    return id.startsWith('tw/');
+  });
 
   return paginate(
-    allPost
-      .map(articleMapper)
-      .sort((a,b) => Number(b.date) - Number(a.date)),
+    allPost.map(articleMapper).sort((a, b) => Number(b.date) - Number(a.date)),
     {
-      pageSize: PAGINATION_PER_PAGE_COUNT
+      pageSize: PAGINATION_PER_PAGE_COUNT,
     }
-  )
-}
+  );
+};
 
-const { page } = Astro.props
-
+const { page } = Astro.props;
 ---
 
-<PaginationPage
-  page={page}
-/>
+<PaginationPage page={page} />

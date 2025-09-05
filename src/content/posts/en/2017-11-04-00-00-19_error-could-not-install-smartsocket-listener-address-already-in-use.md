@@ -7,12 +7,12 @@ excerpt: "<p>This article is about error message: &#8220;error: coul&#8230;</p>
 feature_image: kyle-simmons-74218-unsplash-e1553233521391.jpg
 guid: "http://blog.wildsky.cc/?p=30"
 ---
+
 This article is about error message: “error: could not install smartsocket listener: Address already in use”.
 
 I like to flash my android smartphone. As we all know, there are (at lease) two tools we could use when flashing phones: `adb` and `fastboot`. But I met a problem when I try to run new adb server, it keep showing the this message in my terminal:
 
-The Message “error: could not install smartsocket listener: Address already in use”
------------------------------------------------------------------------------------
+## The Message “error: could not install smartsocket listener: Address already in use”
 
 “Address already in use? so there must be someone using the address I need.” I thought, “ok, let me find the criminal”
 
@@ -42,20 +42,18 @@ then kill `adb -P 5037 fork-server server` via:
 
 and then problem solved! Now I could create adb server without showing any error message.
 
-Why I write this article
-------------------------
+## Why I write this article
 
 I found there is no article about this problem, but there are some people facing this problem. And also, I used to meet this problem before, but it still take me some time to find the final problem.
 
 So I decide to write down this problem, and copy the error message “error: could not install smartsocket listener: Address already in use”. Hope people who search this sentence could find this article, and they could save time from it. 🙂
 
-References:
------------
+## References:
 
-*   [ADB server didn’t ACK on macOS](https://stackoverflow.com/questions/43036124/adb-server-didnt-ack-on-macos)
-*   [adb cannot connect to daemon at tcp:5037](https://stackoverflow.com/questions/43131020/adb-cannot-connect-to-daemon-at-tcp5037)
-*   [https://bird512.github.io/2017/01/23/react-native1/](https://bird512.github.io/2017/01/23/react-native1/)
-*   [What does aux mean in \`ps aux\`?](https://unix.stackexchange.com/questions/106847/what-does-aux-mean-in-ps-aux)
-*   [Why does “ps aux | grep x” give better results than “pgrep x”?](https://askubuntu.com/questions/157075/why-does-ps-aux-grep-x-give-better-results-than-pgrep-x)
+- [ADB server didn’t ACK on macOS](https://stackoverflow.com/questions/43036124/adb-server-didnt-ack-on-macos)
+- [adb cannot connect to daemon at tcp:5037](https://stackoverflow.com/questions/43131020/adb-cannot-connect-to-daemon-at-tcp5037)
+- [https://bird512.github.io/2017/01/23/react-native1/](https://bird512.github.io/2017/01/23/react-native1/)
+- [What does aux mean in \`ps aux\`?](https://unix.stackexchange.com/questions/106847/what-does-aux-mean-in-ps-aux)
+- [Why does “ps aux | grep x” give better results than “pgrep x”?](https://askubuntu.com/questions/157075/why-does-ps-aux-grep-x-give-better-results-than-pgrep-x)
 
 … maybe you might be interested in my other posts about android: [http://blog.wildsky.cc/categories/android/](http://blog.wildsky.cc/categories/android/).

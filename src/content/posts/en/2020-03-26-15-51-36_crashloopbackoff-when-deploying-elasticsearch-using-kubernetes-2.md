@@ -7,12 +7,13 @@ excerpt: "<p>When we deploy elasticsearch via kubernetes, sometimes &#8230;</p>
 feature_image: benjamin-dada-EDZTb2SQ6j0-unsplash.jpg
 guid: "https://blog.wildsky.cc/?p=1597"
 ---
+
 When we deploy elasticsearch via kubernetes, sometimes we might get `CrashLoopBackOff`.
 
 We could use `kubectl logs $elasticPodName` to know more details. And here are some error I found in log:
 
-*   [https://discuss.elastic.co/t/exception-in-thread-main-java-nio-file-accessdeniedexception/165497](https://discuss.elastic.co/t/exception-in-thread-main-java-nio-file-accessdeniedexception/165497)
-*   [https://discuss.elastic.co/t/elasticsearch-is-not-starting-when-bootstrap-memory-lock-is-set-to-true/120962](https://discuss.elastic.co/t/elasticsearch-is-not-starting-when-bootstrap-memory-lock-is-set-to-true/120962)
+- [https://discuss.elastic.co/t/exception-in-thread-main-java-nio-file-accessdeniedexception/165497](https://discuss.elastic.co/t/exception-in-thread-main-java-nio-file-accessdeniedexception/165497)
+- [https://discuss.elastic.co/t/elasticsearch-is-not-starting-when-bootstrap-memory-lock-is-set-to-true/120962](https://discuss.elastic.co/t/elasticsearch-is-not-starting-when-bootstrap-memory-lock-is-set-to-true/120962)
 
 And I found a way to solve it, which is add some preporcess for init containers.
 

@@ -7,6 +7,7 @@ excerpt: "<p>Today, I want to build Firefox myself. So I found this &#8230;</p>
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=180"
 ---
+
 Today, I want to build Firefox myself. So I found this post: [Simple Firefox build](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Simple_Firefox_build), and there is a link, which could help me setup the prerequisites. The link is [Linux Build Prerequisites](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Simple_Firefox_build/Linux_and_MacOS_build_preparation). But I still got some problems when I followed the instruction. So I write down this article about preparation for building Firefox.
 
 Ok, so what happened? after I input this command in my terminal:
@@ -22,7 +23,7 @@ The command I input looks like to download some python script file, and execute 
       File "bootstrap.py", line 150, in main
         dasboot.bootstrap()
       File "/tmp/tmpTdL9Pv/mozboot/bootstrap.py", line 137, in bootstrap
-    
+
       File "/tmp/tmpTdL9Pv/mozboot/base.py", line 316, in ensure_mercurial_modern
     TypeError: upgrade_mercurial() takes exactly 1 argument (2 given)
 
@@ -34,7 +35,6 @@ But no matter how many times I give `sudo dnf update -y` to my Terminal, it kep
     Dependencies resolved.
     Nothing to do.
     Complete!
-    
 
 So my Mercurial should be up-to-date. But I found that the official website of Mercurial shows the latest version of Mercurial is 3.7.1, and mine is 3.5.1!
 

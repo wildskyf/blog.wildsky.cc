@@ -1,9 +1,9 @@
 ---
-title: "為什麼在定義 subspace 時，我們需要「零向量必須包含於其中」這項定義"
+title: '為什麼在定義 subspace 時，我們需要「零向量必須包含於其中」這項定義'
 date: 2024-09-18T23:18:37+08:00
-slug: "why-we-need-zero-vector-when-defining-subspace"
-excerpt: "最近在讀線性代數，遇到一個定義 subspace 的問題。"
-feature_image: "jeremy-thomas-4dpAqfTbvKA.jpg"
+slug: 'why-we-need-zero-vector-when-defining-subspace'
+excerpt: '最近在讀線性代數，遇到一個定義 subspace 的問題。'
+feature_image: 'jeremy-thomas-4dpAqfTbvKA.jpg'
 ---
 
 ## 前言
@@ -11,7 +11,6 @@ feature_image: "jeremy-thomas-4dpAqfTbvKA.jpg"
 最近在讀線性代數，但讀到 subspace 的時候產生了一些疑惑，問 chatGPT 也被打迷糊仗（說是因為零向量很特別⋯）
 
 某天在晚上快睡著時突然想通，便記下來，希望能給有一樣疑惑的人參考。如果有其他想法或指正，也歡迎與我聯絡討論。
-
 
 ## 正文
 

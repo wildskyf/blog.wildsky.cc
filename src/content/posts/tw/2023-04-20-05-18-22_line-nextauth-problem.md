@@ -1,10 +1,10 @@
 ---
-title: "使用 NextAuth.js 來串接 Line Login 時可能遇到的問題"
+title: '使用 NextAuth.js 來串接 Line Login 時可能遇到的問題'
 date: 2023-04-20T17:18:22+08:00
-slug: "line-nextauth-problem"
-excerpt: "最近有個機會要串接 Line Login API，而在實作的過程中遇到了一些問題，因此想要在這篇文章中記錄一下所遇到的問題和解決方式。"
-feature_image: "nextauth-line.jpg"
-guid: "line-nextauth-problem"
+slug: 'line-nextauth-problem'
+excerpt: '最近有個機會要串接 Line Login API，而在實作的過程中遇到了一些問題，因此想要在這篇文章中記錄一下所遇到的問題和解決方式。'
+feature_image: 'nextauth-line.jpg'
+guid: 'line-nextauth-problem'
 ---
 
 最近有個機會要串接 Line Login API，而在實作的過程中遇到了一些問題，因此想要在這篇文章中記錄一下所遇到的問題和解決方式。
@@ -21,8 +21,8 @@ NextAuth.js 提供了一些內建的設計和 function，例如可以直接搭�
 
 在把 NextAuth.js 部署到 production 環境時，要記得設定下列兩個變數：
 
-* `NEXTAUTH_URL`
-* `NEXTAUTH_SECRET`
+- `NEXTAUTH_URL`
+- `NEXTAUTH_SECRET`
 
 其中，`NEXTAUTH_URL` 基本上就是 production 網站的 domain，而 `NEXTAUTH_SECRET` 則可以使用以下命令產生：
 

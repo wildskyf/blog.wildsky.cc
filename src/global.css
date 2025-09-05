@@ -1,14 +1,16 @@
 @import url('prismjs/themes/prism-okaidia.css');
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @plugin "daisyui" {
-  themes: nord --default, dim --prefersdark;
+  themes:
+    nord --default,
+    dim --prefersdark;
 }
 
 .page-container {
   @apply bg-base-200;
 
-  font-family: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: source-serif-pro, Georgia, Cambria, 'Times New Roman', Times, serif;
   font-weight: 400;
 }
 
@@ -28,7 +30,7 @@
 
 article h1 {
   @apply text-[28px] lg:text-[42px];
-  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: sohne, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 600;
 }
 
@@ -37,7 +39,7 @@ article h1 {
 .article-content h4,
 .article-content h5 {
   letter-spacing: 1.2px;
-  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: sohne, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 600;
   margin: 3rem auto 1.5rem;
   position: relative;
@@ -111,7 +113,7 @@ article h1 {
 }
 
 .article-content pre {
-  font-family: source-code-pro, Menlo, Monaco, "Courier New", Courier, monospace;
+  font-family: source-code-pro, Menlo, Monaco, 'Courier New', Courier, monospace;
   font-size: 14px;
   overflow-x: auto;
   border: 1px solid #ddd;
@@ -140,7 +142,7 @@ article h1 {
 
 .article-content table {
   min-width: 50%;
-  background: rgba(0,0,0,0.25);
+  background: rgba(0, 0, 0, 0.25);
   margin: 20px auto 30px;
 }
 .article-content table td {
@@ -159,4 +161,3 @@ article h1 {
   height: 500px;
   position: static !important;
 }
-

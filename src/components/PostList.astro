@@ -1,35 +1,30 @@
 ---
-import dayjs from 'dayjs'
-import Link from '@/components/Link.astro'
-import ReadMoreButton from '../components/ReadMoreButton.astro'
+import dayjs from 'dayjs';
+import Link from '@/components/Link.astro';
+import ReadMoreButton from '../components/ReadMoreButton.astro';
 
-const { lang, postList } = Astro.props
-const root_path = lang == 'en' ? '/en' : ''
+const { lang, postList } = Astro.props;
+const root_path = lang == 'en' ? '/en' : '';
 ---
 
 <ul class="flex flex-col px-4 lg:px-0" lang={lang === 'tw' ? 'zh-Hant-TW' : 'en'}>
   {
-    postList.map(post => {
+    postList.map((post) => {
       return (
-        <li
-          class='rounded-xl mb-12'
-        >
-          <article class={
-            `bg-transparent
+        <li class="rounded-xl mb-12">
+          <article
+            class={`bg-transparent
               px-3
               ${lang === 'tw' ? 'tracking-tw-normal' : ''}
             `}
           >
             <header>
-              <Link
-                href={`${root_path}/posts/${post.slug}`}
-                class='group'
-              >
-                <time class='text-sm text-base-content/60' datetime={post.date}>
+              <Link href={`${root_path}/posts/${post.slug}`} class="group">
+                <time class="text-sm text-base-content/60" datetime={post.date}>
                   {dayjs(post.date).format('YYYY/MM/DD')}
                 </time>
                 <div
-                  class='text-xl lg:text-2xl group-hover:underline'
+                  class="text-xl lg:text-2xl group-hover:underline"
                   set:html={post.title}
                   style={{ hyphens: 'auto' }}
                 />
@@ -37,7 +32,7 @@ const root_path = lang == 'en' ? '/en' : ''
             </header>
           </article>
         </li>
-      )
+      );
     })
   }
 </ul>

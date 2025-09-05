@@ -7,14 +7,14 @@ excerpt: "<p>When developing iOS app, sometimes we might face this d&#8230;</p>
 feature_image: 2019-03-18-14.01.10-e1553233406372.png
 guid: "http://blog.wildsky.cc/?p=508"
 ---
+
 When developing iOS app, sometimes we might face this development team related problem:
 
     Signing for "name" requires a development team. Select a development team in the project editor. (in target 'name')
 
 This article is going to help you solve that problem.
 
-How to
-------
+## How to
 
 ### Step 1. Setup iOS Development Team
 
@@ -24,7 +24,6 @@ How to
 
 <figcaption>Click <code>Accounts</code>tab, and then add / edit Team</figcaption>
 ![](/images/螢幕快照-2019-03-18-12.04.33.png)
-
 
 ### Step 2. edit Project team setting
 
@@ -43,15 +42,13 @@ Remember to set both **Project** and **Targets**
 
 If you can’t find the left panel, the toggle icon is at left-top.
 
-Why I write this Article
-------------------------
+## Why I write this Article
 
 In fact, the StackOverflow Answer did solve my problem, but I just couldn’t find where the toggle icon is. Anyway, I hope this article could help you. Happy develop!
 
-References:
------------
+## References:
 
-*   [https://stackoverflow.com/questions/43145267/xcode-how-to-config-a-project-for-team-working](https://stackoverflow.com/questions/43145267/xcode-how-to-config-a-project-for-team-working)
-*   [https://stackoverflow.com/questions/39524148/xcode-error-code-signing-is-required-for-product-type-application-in-sdk-ios](https://stackoverflow.com/questions/39524148/xcode-error-code-signing-is-required-for-product-type-application-in-sdk-ios)
-*   The example project in the screenshots: [ios-ptt.ai](https://github.com/ailabstw/ios-ptt.ai)
-*   Maybe you will like my other experiences about [sweeping landmine](http://blog.wildsky.cc/tags/sweep-landmine/).
+- [https://stackoverflow.com/questions/43145267/xcode-how-to-config-a-project-for-team-working](https://stackoverflow.com/questions/43145267/xcode-how-to-config-a-project-for-team-working)
+- [https://stackoverflow.com/questions/39524148/xcode-error-code-signing-is-required-for-product-type-application-in-sdk-ios](https://stackoverflow.com/questions/39524148/xcode-error-code-signing-is-required-for-product-type-application-in-sdk-ios)
+- The example project in the screenshots: [ios-ptt.ai](https://github.com/ailabstw/ios-ptt.ai)
+- Maybe you will like my other experiences about [sweeping landmine](http://blog.wildsky.cc/tags/sweep-landmine/).

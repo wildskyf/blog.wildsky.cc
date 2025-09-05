@@ -11,21 +11,25 @@ guid: "typescript-generic-in-function"
 最近工作上在寫 TypeScript 時有個發現，有些寫法 typescript compiler 和 lint 都會
 不滿，不特別改寫法的話兩邊都會一直哇哇叫。
 
-```TypeScript
+```typescript
 function a<T extends unknown>(x:T, y: T) {}
 ```
+
 可以轉成
-```TypeScript
+
+```typescript
 const a = <T extends unknown>(x:T, y:T) => {}
 ```
 
 但
 
-```TypeScript
+```typescript
 function a<T>(x:T, y: T) {}
 ```
+
 不能轉成
-```TypeScript
+
+```typescript
 const a = <T>(x:T, y:T) => {}
 ```
 
@@ -34,7 +38,6 @@ lint 會自動做第一個轉換，會直接把 `function` 自動變成 `const`�
 
 如果我手動寫成 without extends 的格式（第四種）就會 compile error。
 
-
 而且更有趣的是，lint 做第一次轉換後 lint 還是會哇哇叫，
 他會說 `T extends unknown do nothing and is unnecessary` 然後噴 lint error。
 
@@ -42,7 +45,7 @@ lint 會自動做第一個轉換，會直接把 `function` 自動變成 `const`�
 
 所以最後就只能寫成第三種了。
 
-```TypeScript
+```typescript
 function a<T>(x:T, y: T) {}
 ```
 

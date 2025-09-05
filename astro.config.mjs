@@ -1,29 +1,26 @@
-import { defineConfig } from 'astro/config'
-import tailwindcss from '@tailwindcss/vite'
-import tailwind from '@astrojs/tailwind'
-import sitemap from "@astrojs/sitemap"
-import icon from 'astro-icon'
+import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
+import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://blog.wildsky.cc',
   outDir: './out',
   i18n: {
-    defaultLocale: "tw",
-    locales: ["en", "tw"],
+    defaultLocale: 'tw',
+    locales: ['en', 'tw'],
     routing: {
-      prefixDefaultLocale: false
-    }
+      prefixDefaultLocale: false,
+    },
   },
   redirects: {
     '/page/1': '/',
-    '/en/page/1': '/en'
+    '/en/page/1': '/en',
   },
-
   vite: {
     plugins: [tailwindcss()],
   },
-
   integrations: [
     icon(),
     sitemap({
@@ -34,6 +31,6 @@ export default defineConfig({
           en: 'en-US',
         },
       },
-    })
-  ]
+    }),
+  ],
 });

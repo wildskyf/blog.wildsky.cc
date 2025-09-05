@@ -1,11 +1,14 @@
 ---
-import Link from './Link.astro'
-const { className, to, text } = Astro.props
+import Link from './Link.astro';
+const { className, to, text } = Astro.props;
 ---
 
-<Link href={to} className={`
+<Link
+  href={to}
+  className={`
   btn
   ${className || ''}
-`}>
+`}
+>
   {text}
 </Link>

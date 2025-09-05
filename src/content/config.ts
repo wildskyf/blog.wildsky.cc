@@ -11,10 +11,10 @@ const posts = defineCollection({
     guid: z.string().optional(),
     updated: z.coerce.date().optional(),
     tags: z.array(z.string()).optional(),
-    reference: z.string().optional()
-  })
+    reference: z.string().optional(),
+  }),
 });
 
 export const collections = {
-    posts
+  posts,
 };

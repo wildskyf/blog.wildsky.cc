@@ -1,10 +1,10 @@
 ---
-title: "用 Caddy 來 host 靜態檔案"
+title: '用 Caddy 來 host 靜態檔案'
 date: 2024-03-19T13:58:33+08:00
-slug: "caddy-static-files-host"
-excerpt: "因為偶爾會需要找個地方來放不需要權限就能存取的檔案，剛好手上有台機器裡面有 Caddy，都說 Caddy 是新世紀的 nginx，還可以自動幫我處理 https，便想來試試看直接用它來作為靜態檔案 host。"
-feature_image: "viktor-talashuk-05HLFQu8bFw-unsplash.jpg"
-guid: "caddy-static-files-host"
+slug: 'caddy-static-files-host'
+excerpt: '因為偶爾會需要找個地方來放不需要權限就能存取的檔案，剛好手上有台機器裡面有 Caddy，都說 Caddy 是新世紀的 nginx，還可以自動幫我處理 https，便想來試試看直接用它來作為靜態檔案 host。'
+feature_image: 'viktor-talashuk-05HLFQu8bFw-unsplash.jpg'
+guid: 'caddy-static-files-host'
 ---
 
 因為偶爾會需要找個地方來放不需要權限就能存取的檔案，剛好手上有台機器裡面有 Caddy，
@@ -15,7 +15,7 @@ guid: "caddy-static-files-host"
 ```caddyfile
 my.domain.net {
    root * /home/username/path/to/folder
-   file_server 
+   file_server
 }
 ```
 

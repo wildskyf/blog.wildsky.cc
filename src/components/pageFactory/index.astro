@@ -1,29 +1,29 @@
 ---
-import { getCollection } from 'astro:content'
-import { getRelativeLocaleUrl } from 'astro:i18n'
-import ListLayout from '@/layouts/list.astro'
-import SocialBar from '@/components/SocialBar.astro'
-import { articleMapper } from '@/utils'
-import { PAGINATION_PER_PAGE_COUNT } from '@/data/globalConfig'
-import { getTranslation } from '@/i18n/utils.ts'
+import { getCollection } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import ListLayout from '@/layouts/list.astro';
+import SocialBar from '@/components/SocialBar.astro';
+import { articleMapper } from '@/utils';
+import { PAGINATION_PER_PAGE_COUNT } from '@/data/globalConfig';
+import { getTranslation } from '@/i18n/utils.ts';
 
-const currentLocale = Astro.currentLocale || 'tw'
-const t = getTranslation(currentLocale)
+const currentLocale = Astro.currentLocale || 'tw';
+const t = getTranslation(currentLocale);
 
 const astroPostList = await getCollection('posts', ({ id }) => {
-  return id.startsWith(`${currentLocale}/`)
-})
+  return id.startsWith(`${currentLocale}/`);
+});
 
 const sortedPosts = astroPostList
   .map(articleMapper)
-  .sort((a,b) => Number(b.date) - Number(a.date))
+  .sort((a, b) => Number(b.date) - Number(a.date));
 
-const postList = sortedPosts.slice(0, PAGINATION_PER_PAGE_COUNT)
+const postList = sortedPosts.slice(0, PAGINATION_PER_PAGE_COUNT);
 
-const pageName = currentLocale === 'en' ? 'HomePage' : '首頁'
+const pageName = currentLocale === 'en' ? 'HomePage' : '首頁';
 // Only show next page link if there are more posts than can fit on one page
-const hasNextPage = sortedPosts.length > PAGINATION_PER_PAGE_COUNT
-const nextPagePath = hasNextPage ? getRelativeLocaleUrl(currentLocale, 'page/2') : null
+const hasNextPage = sortedPosts.length > PAGINATION_PER_PAGE_COUNT;
+const nextPagePath = hasNextPage ? getRelativeLocaleUrl(currentLocale, 'page/2') : null;
 ---
 
 <ListLayout
@@ -33,19 +33,17 @@ const nextPagePath = hasNextPage ? getRelativeLocaleUrl(currentLocale, 'page/2')
   postList={postList}
   next_page_path={nextPagePath}
 >
-  <article class='block p-8 lg:px-4'>
-    <h1 class='text-xl font-bold mb-4'>
-      Welcome to my blog!
-    </h1>
+  <article class="block p-8 lg:px-4">
+    <h1 class="text-xl font-bold mb-4">Welcome to my blog!</h1>
 
-    <p class='text-md lg:text-lg text-gray-400 mb-4'>
+    <p class="text-md lg:text-lg text-gray-400 mb-4">
       {t.site.homeDescription}
     </p>
 
-    <SocialBar class='mb-4' />
+    <SocialBar class="mb-4" />
 
-    <div class='w-full flex justify-center'>
-      <div class='divider w-xs' />
+    <div class="w-full flex justify-center">
+      <div class="divider w-xs"></div>
     </div>
   </article>
 </ListLayout>

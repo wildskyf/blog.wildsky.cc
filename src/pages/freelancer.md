@@ -17,6 +17,7 @@ feature_image: '' # me-in-womany.png
 當然也能協助網址、機器的租用事宜。
 
 目前我接過的案子有以下這些功能：
+
 - 會員系統
 - LINE Login API 串接
 - 上傳檔案功能（圖片/影片）
@@ -26,11 +27,10 @@ feature_image: '' # me-in-womany.png
 - 資料視覺化
 - API 串接 / 實作
 
-
 ## 其他可以討論看看
+
 - 瀏覽器套件
 - 網站架設教學
-
 
 ## 也可以參考一下我過去開發過的案子
 
@@ -39,10 +39,8 @@ feature_image: '' # me-in-womany.png
 - <https://tacd-wddwalkrun.netlify.app/> （前後端）
 - <https://www.tw23.org/> （前端）
 
-
 ## 最後也附上我做的瀏覽器套件
 
 - <https://addons.mozilla.org/firefox/addon/foxmosa-with-you/>
 - <https://addons.mozilla.org/firefox/addon/textarea-cache/>
 - <https://addons.mozilla.org/firefox/addon/tab-notes/>
-

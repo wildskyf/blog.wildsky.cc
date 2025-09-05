@@ -33,7 +33,6 @@ Except for tricky situations where I need to use React to write svg to draw pict
 
 The technologies used are mainly React.js and TypeScript, and we use Mui.
 
-
 #### TW23 Genetic Test Reporting System (TW23 Report)
 
 Link: <https://my.tw23.org>
@@ -63,7 +62,6 @@ In this way, if the BD or PM wants to change something, they don't have to bothe
 
 In the past, the official websites of all departments within the company used Wordpress, but later because designers often had needs for style adjustments,
 Wordpress is not very good at maintaining the iteration history of these styles. After evaluating the frequency of updates, we decided to switch to this static web page generation solution.
-
 
 ### News/Public Opinion Analysis Group
 
@@ -97,7 +95,6 @@ In this product, I am responsible for _the construction of the website. In addit
 Another project that I find interesting is called the Lutein Project. Because social networking giants like Facebook have censorship
 rights, but the review standards are often confusing, so we have a website dedicated to collecting everyone’s banned content.
 
-
 ## Womany (2016/07 - 2019/01)
 
 I started working as a front-end engineer intern at Womany when I was in my third year of college. I also wrote [an article](/posts/womany-from-intern-to-graduate) before.
@@ -116,7 +113,6 @@ On our website, we will automatically generate a page containing a list of artic
 
 The advantage of this is that it can increase the number of pages on the website, making it easier for users to find what they are looking for, and search engines will favor our website more.
 
-
 ### Use Vue.js to help develop the shopping cart function, and work with the backend to build the template and data connection for the product list page
 
 This project started when I was in the army. I heard that it was originally because e-commerce pages did not have mobile versions. I hope it can be implemented.
@@ -125,7 +121,6 @@ To enhance the experience, but later, I don’t know why, the entire e-commerce 
 The project was halfway through when I joined, so I mainly assisted in development. Interestingly, I learned a lot of back-end technologies.
 
 My shopping cart development experience also allowed me to experience the complexity of e-commerce systems for the first time.
-
 
 ### Use Google Ad Manager to set up and operate Programmatic Advertising
 
@@ -139,7 +134,6 @@ Or the combination of manufacturers B and C with a half-and-half chance of adver
 However, I still don’t like watching ads, so I really don’t like this project.
 (The first thing after leaving womany is to reopen adblock XD)
 
-
 ### Build the backend for the company’s experience activity form
 
 Because we often cooperate with manufacturers to provide trial products to readers, and readers can write their experience on the website.
@@ -150,11 +144,9 @@ There are often many product-related coupons in this form, so we need to have a 
 The function of Google Form is actually good, but it's a pity that we hope users can stay on our website for a longer time.
 And use our membership system to register, so you still have to rely on yourself.
 
-
 ## Occasionally take on cases as a Freelancer
 
 After work, I occasionally take on some website production projects. Here are some of the larger ones recently.
-
 
 ### Kai Ming Official Website
 
@@ -169,7 +161,6 @@ In fact, it has been three or four years, including the maintenance of this case
 In this case, I am mainly responsible for the front-end, mainly responsible for cutting and data API connection.
 
 The technology used is Next.js, and the component library is chakara-ui.
-
 
 ### Best Cute Friend Children Photo Contest: Prevent chickenpox rings, good gifts are waiting for you
 
@@ -199,7 +190,6 @@ The point is, this option is not required, so users can still log in successfull
 
 As for the vote dumping issue mentioned earlier, I won’t talk about it here. If you are interested, please talk to me.
 
-
 ## Browser Suite
 
 I have developed several browser suites before. Here is a brief introduction:
@@ -213,7 +203,6 @@ Link: <https://addons.mozilla.org/en-US/firefox/addon/foxmosa-with-you/>
 Foxmosa is the mascot of the Mozilla Taiwan community. The only function of this browser suite is to be cute.
 After installing this browser suite, Xiaosha will occasionally pass by the bottom of your webpage when you surf the Internet.
 
-
 ### Textarea Cache
 
 Link: <https://addons.mozilla.org/en-US/firefox/addon/textarea-cache>
@@ -223,7 +212,6 @@ This browser suite picks up the pitfalls of its predecessors. The main reason is
 When you reopen the browser, you will find that everything has been cleared, which makes you very angry.
 
 After installing this suite, it will help you back up your form content, so you no longer have to worry about browser crashes.
-
 
 ### Tab Notes
 
@@ -249,18 +237,17 @@ Later, I became a Firefox Addon Reviewer with him, which was an interesting expe
 
 ### other
 
-* **Linux Taiwan Community Website**: There was a website for the Taiwan Linux community in the past, but unfortunately the domain
-   After the holder passed away, the domain was picked up by others and can no longer be seen.
-* [**Lollypop – Gnome Player Website**](https://wildskyf.github.io/lollypop-web/)：
-   This is a website for an open source music player on Linux. At that time, I saw that he was soliciting website development, so I went to help.
-* This blog: I also created this blog from scratch. The style I see now is taken from an event in the game Arknights - **Elegy of the Tide**.
+- **Linux Taiwan Community Website**: There was a website for the Taiwan Linux community in the past, but unfortunately the domain
+  After the holder passed away, the domain was picked up by others and can no longer be seen.
+- [**Lollypop – Gnome Player Website**](https://wildskyf.github.io/lollypop-web/)：
+  This is a website for an open source music player on Linux. At that time, I saw that he was soliciting website development, so I went to help.
+- This blog: I also created this blog from scratch. The style I see now is taken from an event in the game Arknights - **Elegy of the Tide**.
 
 ## Awards
 
-* [Granularity-Based Interactive Image Display](https://sigport.org/documents/granularity-based-interactive-image-display-0)
-* [National Collegiate Programming Contest 2014 Finalist](https://ncpc.idi.ntnu.no/ncpc2014/)
-* NTNU Certificate of English Proficiency
-
+- [Granularity-Based Interactive Image Display](https://sigport.org/documents/granularity-based-interactive-image-display-0)
+- [National Collegiate Programming Contest 2014 Finalist](https://ncpc.idi.ntnu.no/ncpc2014/)
+- NTNU Certificate of English Proficiency
 
 If you need a website engineer, please contact me via email: [poppin.wildsky+blog\[at\]gmail.com](mailto:poppin.wildsky+blog@gmail.com)
 

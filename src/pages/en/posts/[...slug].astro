@@ -1,32 +1,29 @@
 ---
-import { getCollection } from 'astro:content'
-import PostPage from '@/components/pageFactory/post.astro'
+import { getCollection } from 'astro:content';
+import PostPage from '@/components/pageFactory/post.astro';
 
 export const getStaticPaths = async () => {
   const blogEntries = await getCollection('posts', ({ id }) => {
-    return id.startsWith('en/')
-  })
-  
-  return blogEntries.map(entry => {
+    return id.startsWith('en/');
+  });
+
+  return blogEntries.map((entry) => {
     // Extract slug from frontmatter or filename
-    let slug = entry.data.slug
+    let slug = entry.data.slug;
     if (!slug) {
-      const filename = entry.id.replace('en/', '').replace('.md', '')
-      const match = filename.match(/^\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}_(.+)$/)
-      slug = match ? match[1] : filename
+      const filename = entry.id.replace('en/', '').replace('.md', '');
+      const match = filename.match(/^\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}_(.+)$/);
+      slug = match ? match[1] : filename;
     }
-    
+
     return {
       params: { slug },
       props: { entry },
-    }
-  })
-}
+    };
+  });
+};
 
-const { entry } = Astro.props
+const { entry } = Astro.props;
 ---
 
-<PostPage
-  lang="en"
-  entry={entry}
-/>
+<PostPage lang="en" entry={entry} />

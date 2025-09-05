@@ -1,54 +1,40 @@
 ---
-import PageLayout from './page.astro'
-import PostList from '@/components/PostList.astro'
-import Link from '@/components/Link.astro'
-import { getTranslation } from '@/i18n/utils.ts'
+import PageLayout from './page.astro';
+import PostList from '@/components/PostList.astro';
+import Link from '@/components/Link.astro';
+import { getTranslation } from '@/i18n/utils.ts';
 
-const {
-  lang,
-  postList,
-  previous_page_path,
-  next_page_path,
-  pageName,
-  pageDesc
-} = Astro.props
+const { lang, postList, previous_page_path, next_page_path, pageName, pageDesc } = Astro.props;
 
-const currentLocale = Astro.currentLocale || lang || 'tw'
-const t = getTranslation(currentLocale)
-
+const currentLocale = Astro.currentLocale || lang || 'tw';
+const t = getTranslation(currentLocale);
 ---
 
-<PageLayout
-  lang={lang}
-  pageName={pageName}
-  pageDesc={pageDesc}
->
+<PageLayout lang={lang} pageName={pageName} pageDesc={pageDesc}>
   <slot />
 
   <section class="article-list">
     <PostList lang={lang} postList={postList} />
   </section>
 
-  <section class='pagination text-gray-900 flex flex-row justify-between'>
+  <section class="pagination text-gray-900 flex flex-row justify-between">
     {
       previous_page_path ? (
-        <Link
-          href={previous_page_path}
-          className='p-4 text-xl duration-300	text-base-content'
-        >
+        <Link href={previous_page_path} className="p-4 text-xl duration-300	text-base-content">
           {t.common.newerPosts}
         </Link>
-      ) : (<span />)
+      ) : (
+        <span />
+      )
     }
     {
       next_page_path ? (
-        <Link
-          href={next_page_path}
-          className='p-4 text-xl duration-300	text-base-content'
-        >
+        <Link href={next_page_path} className="p-4 text-xl duration-300	text-base-content">
           {t.common.olderPosts}
         </Link>
-      ) : (<span />)
+      ) : (
+        <span />
+      )
     }
   </section>
 </PageLayout>

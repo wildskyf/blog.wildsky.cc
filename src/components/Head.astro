@@ -1,15 +1,20 @@
 ---
-import blog_info from '@/data/blog_info.json'
+import blog_info from '@/data/blog_info.json';
 
-const { pageName, pageDesc, pageImage } = Astro.props
-const pageTitle = `${pageName} | ${blog_info.name}`
-const desc = pageDesc
-const imgUrl = pageImage || 'https://blog.wildsky.cc/icons/ms-icon-310x310.png'
+const { pageName, pageDesc, pageImage } = Astro.props;
+const pageTitle = `${pageName} | ${blog_info.name}`;
+const desc = pageDesc;
+const imgUrl = pageImage || 'https://blog.wildsky.cc/icons/ms-icon-310x310.png';
 ---
 
 <title>{pageTitle}</title>
 <meta name="description" content={desc} />
-<link rel="alternate" type="application/rss+xml" title="RSS Feed for Wildsky's Blog" href="https://blog.wildsky.cc/rss.xml" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="RSS Feed for Wildsky's Blog"
+  href="https://blog.wildsky.cc/rss.xml"
+/>
 <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png" />
 <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png" />
 <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png" />

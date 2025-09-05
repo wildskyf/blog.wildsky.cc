@@ -1,6 +1,5 @@
 ---
-title: "首頁"
+title: '首頁'
 layout: '@/components/pageFactory/index.astro'
 lang: 'tw'
 ---
-

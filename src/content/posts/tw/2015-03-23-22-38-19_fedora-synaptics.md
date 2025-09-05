@@ -7,8 +7,8 @@ excerpt: "<p>tl;dr Synaptics 觸控板不能動了怎麼辦？下面這串指令
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=284"
 ---
-tl;dr
------
+
+## tl;dr
 
 Synaptics 觸控板不能動了怎麼辦？下面這串指令敲下去其實就解決了一切問題：
 
@@ -16,16 +16,14 @@ Synaptics 觸控板不能動了怎麼辦？下面這串指令敲下去其實就�
 
 老實說這篇文章沒什麼好寫的XD 但既然都解決個我找很久找不到解法的問題了，總覺得還是應該寫一下，所以就來認真記錄下我自己發生問題的始末吧～
 
-系統相關資訊
-------
+## 系統相關資訊
 
-*   系統：Fedora 21
-*   電腦型號：ASUS A45VM
-*   觸控板品牌：Synaptics
-*   其他：略 （因為不重要
+- 系統：Fedora 21
+- 電腦型號：ASUS A45VM
+- 觸控板品牌：Synaptics
+- 其他：略 （因為不重要
 
-發現問題
-----
+## 發現問題
 
 其實我平常的時候，因為覺得打字時手碰到觸控版導致游標會跑來跑去， 所以觸控版一直都是關閉的狀態，後來在fedora 設定的「滑鼠和觸控版」的選項中， 發現了「打字時停用」的選項，所以就開開心心的把觸控版打開，結果…
 
@@ -53,11 +51,11 @@ Synaptics 觸控板不能動了怎麼辦？下面這串指令敲下去其實就�
 
 ### 參考連結
 
-*   [ask.fedoraproject.org](https://ask.fedoraproject.org/en/question/25741/i-cannot-use-my-touchpad-in-fedora18/)
+- [ask.fedoraproject.org](https://ask.fedoraproject.org/en/question/25741/i-cannot-use-my-touchpad-in-fedora18/)
 
-*   [Telegram](https://telegram.org/)
-*   [fedora](http://fedora.linux.org.tw/)
-*   [關鍵時刻](https://tw.movies.yahoo.com/movieinfo_trailer.html/id=302)
-*   [TLCL](http://linuxcommand.org/tlcl.php)
+- [Telegram](https://telegram.org/)
+- [fedora](http://fedora.linux.org.tw/)
+- [關鍵時刻](https://tw.movies.yahoo.com/movieinfo_trailer.html/id=302)
+- [TLCL](http://linuxcommand.org/tlcl.php)
 
 你可能會想看看我寫的 [Fedora 調校文](http://blog.wildsky.cc/posts/tune-my-fedora/)。

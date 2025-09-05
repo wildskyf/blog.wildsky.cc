@@ -7,14 +7,14 @@ excerpt: "<p>有些人可能有注意到了，我的部落格最近把英文額�
 feature_image: nicola-nuttall-721063-unsplash-e1556882829604.jpg
 guid: "http://blog.wildsky.cc/?p=905"
 ---
+
 有些人可能有注意到了，我的部落格最近把英文額外分出來。
 
 其實有蠻多零零碎碎的東西可以講，就來用這篇文章記錄一下這段調整的過程。
 
 其實主要都是靠這個外掛：[Polylang](https://tw.wordpress.org/plugins/polylang/)
 
-Polylang 本身的語言設定功能
-------------------
+## Polylang 本身的語言設定功能
 
 安裝沒什麼好講的，跳過。裝完啟用後點他的設定就會出現這一頁：
 
@@ -39,8 +39,7 @@ URL modifications 可以設定網站的多語言網址是怎麼顯示，
 
 最後一個 Lingotek 我就沒有使用＆研究了，看起來像是他們家其他服務的廣告。
 
-原內容增加語言互連設定
------------
+## 原內容增加語言互連設定
 
 裝完之後也有許多地方都會多出額外語言的設定，像是文章、標籤、分類、頁面等等，都會多出像下面紅框中的資訊：
 
@@ -68,8 +67,7 @@ URL modifications 可以設定網站的多語言網址是怎麼顯示，
 
 這個部分就只是在幫內容之間做語言切換時的連結，還算直觀。
 
-其他可能沒注意到的
----------
+## 其他可能沒注意到的
 
 最主要的問題就是不小心連去不同語言的文章、頁面時，整個網站就會直接切換過去另一個語言了。
 
@@ -91,12 +89,10 @@ URL modifications 可以設定網站的多語言網址是怎麼顯示，
 
 其他可能就是要注意一下一些舊有網址轉換到新網址的問題吧，大概是這樣。
 
-結語
---
+## 結語
 
 其實設定起來沒有很難，Polylang 做得蠻好的，只是就有些地方稍微比較細瑣些。有興趣可以設定一下，讓網站變得好像很國際化。XD
 
-其他連結
-----
+## 其他連結
 
-*   Polylang 套件網站：[https://tw.wordpress.org/plugins/polylang/](https://tw.wordpress.org/plugins/polylang/)
+- Polylang 套件網站：[https://tw.wordpress.org/plugins/polylang/](https://tw.wordpress.org/plugins/polylang/)

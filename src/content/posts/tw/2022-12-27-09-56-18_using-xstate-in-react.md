@@ -1,10 +1,10 @@
 ---
-title: "xstate 在 react 中，不同的引入方式分別有何好處"
+title: 'xstate 在 react 中，不同的引入方式分別有何好處'
 date: 2022-12-27T21:56:18+08:00
-slug: "using-xstate-in-react"
-excerpt: "最近在工作上使用了 xstate。今天這篇文章想討論的是，xstate 這套工具在 react 中使用不同的引入方式分別有什麼好處。"
-feature_image: "harli-marten-two-talking.jpg"
-guid: "using-xstate-in-react"
+slug: 'using-xstate-in-react'
+excerpt: '最近在工作上使用了 xstate。今天這篇文章想討論的是，xstate 這套工具在 react 中使用不同的引入方式分別有什麼好處。'
+feature_image: 'harli-marten-two-talking.jpg'
+guid: 'using-xstate-in-react'
 ---
 
 最近在工作上使用了 xstate，這是一套狀態管理工具，其基底概念就是 state machine，
@@ -18,7 +18,6 @@ xstate 這個工具是 [基於 SCXML 的規範](https://xstate.js.org/docs/guide
 而 react 恰巧也有子母 component 的概念。這就出現了一個問題：
 
 > 我們應該要在 react 中維護這棵狀態樹，還是應該善用 xstate 的子母狀態機呢？
-
 
 首先講比較單純的部分：「將狀態樹維護全權交由 React 管理」。
 
@@ -52,13 +51,13 @@ machine 的存滅也就跟著 component 的生命週期，就是一切都跟著 
 可能也會因為 typing 的需求而要 export actor type：
 
 ```typescript
-import { createMachine, ActorRefFrom } from 'xstate'
+import { createMachine, ActorRefFrom } from 'xstate';
 
 const childMachine = createMachine({
-	/* config */
-})
+  /* config */
+});
 
-export type childMachineServiceType = ActorRefFrom<typeof childMachine>
+export type childMachineServiceType = ActorRefFrom<typeof childMachine>;
 ```
 
 本來想得很簡單，以為這樣就可以了，直到存擋後撞到 TypeScript 的抱怨：
@@ -73,8 +72,8 @@ service.children does not exist on type ActorRefWithDeprecatedState
 
 ```typescript
 export type childMachineServiceType = ActorRefFrom<typeof childMachine> & {
-	children:  Map<'child-machine-invoked-id', childMachineServiceType>
-}
+  children: Map<'child-machine-invoked-id', childMachineServiceType>;
+};
 ```
 
 看有幾個 child 就 & 起來，這樣 typing 就會是正確的了。

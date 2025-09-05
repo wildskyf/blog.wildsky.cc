@@ -7,7 +7,6 @@ feature_image: 'experiences.png'
 這個頁面記錄了我過往的一些開發經驗。
 排序照時間倒序來排。
 
-
 ## AILabs (2019/02 ~ Present)
 
 目前任職於 [Taiwan AI Labs](https://ailabs.tw)，
@@ -31,7 +30,6 @@ PGSB 的產品目標是 **希望能幫助醫師快速地 train 出自己的 poly
 除了比較刁鑽的情境需要自己用 React 寫 svg 來畫圖外，大多數情況我都會借助 Nivo 這個函式庫來加速開發。
 
 使用到的技術主要是 React.js、TypeScript，component library 我們是採用 Mui。
-
 
 #### TW23 基因檢測報告系統 (TW23 Report)
 
@@ -62,7 +60,6 @@ TW23 Report 是能讓醫院快速產出基因分析報告的產品。
 
 以前公司內個部門的官網都是用 Wordpress，但後來因為設計師那邊常常會有樣式調整的需求，
 Wordpress 也不是很好維護這些樣式的迭代歷史記錄，我們評估更新頻率後便決定改採這個靜態網頁生成的方案。
-
 
 ### 新聞/輿論分析組
 
@@ -96,13 +93,11 @@ Wordpress 也不是很好維護這些樣式的迭代歷史記錄，我們評估�
 另一個我覺得有趣的專案叫做 葉黃素計畫。因為 Facebook 這種社群網站巨頭握有審查
 的權利，但審核標準常常令人摸不著頭緒，我們便有個網站專門在收集大家被 ban 的內容。
 
-
 ### 其他在 AILabs 的經歷
 
 除了上述兩個組待得比較久外，其他也做了 Ptt.ai, Yating TTS, 人臉辨識打卡系統的前端及其管理後台。
 
 但這幾個都算是時間比較久遠、且沒那麼熟悉，所以暫不補充細節。
-
 
 ## Womany (2016/07 - 2019/01)
 
@@ -122,7 +117,6 @@ Google Search Console 裡面會有「大家是搜尋什麼關鍵字來找到你�
 
 這樣的好處是可以增加網站的頁面數量，讓使用者更容易找到想找的東西，搜尋引擎也就會更青睞我們網站。
 
-
 ### 用 Vue.js 協助開發購物車功能，並和後端一起建置商品列表頁面的模板及資料串接
 
 這個專案開始於我在當兵的時候，聽說本來是因為電商的頁面都沒有手機版，希望可以實
@@ -131,7 +125,6 @@ Google Search Console 裡面會有「大家是搜尋什麼關鍵字來找到你�
 我加入的時候專案已經進行到一半，所以我主要是協助開發的角色，有趣的是學了不少後端的技術。
 
 購物車的開發經驗也讓我首次體驗到什麼叫做電商系統的複雜。
-
 
 ### 使用 Google Ad Manager 進行 Programmatic Advertising 的設置及營運
 
@@ -145,7 +138,6 @@ Google Search Console 裡面會有「大家是搜尋什麼關鍵字來找到你�
 不過我還是不喜歡看廣告，所以對這個專案實在沒什麼愛。
 （離開 womany 之後的第一件事就是把 adblock 重新打開XD ）
 
-
 ### 替公司的體驗活動表單進行後台建置
 
 因為我們常會與廠商合作，讓廠商提供試用品給讀者，讀者們就可以來網站上寫使用心得，
@@ -156,11 +148,9 @@ Google Search Console 裡面會有「大家是搜尋什麼關鍵字來找到你�
 Google Form 的功能其實不錯，只可惜我們希望使用者能多留在我們網站裡，
 並使用我們的會員系統進行登記，所以還是只能靠自己。
 
-
 ## 偶爾接案當 Freelancer
 
 工作之餘，我偶爾會接一些網站製作的案子來做，最近比較大的幾個下面來介紹一下。
-
 
 ### Kai Ming Official Website
 
@@ -175,7 +165,6 @@ Google Form 的功能其實不錯，只可惜我們希望使用者能多留在�
 在這個案子裡我主要是擔任前端，主要負責切版及資料 API 串接。
 
 使用到的技術是 Next.js，而 component library 則是選擇 chakara-ui。
-
 
 ### 最佳萌友兒童寫真大賽：預防水痘輪狀，好禮等你拿
 
@@ -205,7 +194,6 @@ Google Form 的功能其實不錯，只可惜我們希望使用者能多留在�
 
 至於前面提到的灌票問題，這邊先不講，有興趣的再找我聊聊。
 
-
 ## 瀏覽器套件
 
 我之前也開發了幾個瀏覽器套件，這邊簡單介紹一下：
@@ -219,7 +207,6 @@ Google Form 的功能其實不錯，只可惜我們希望使用者能多留在�
 狐耳摩莎 Foxmosa 是 Mozilla 台灣社群的吉祥物，這個瀏覽器套件唯一的功用 **就是可愛**，
 裝了這個瀏覽器套件之後，在你上網的時候，小莎就會偶爾經過你的網頁下方。
 
-
 ### Textarea Cache
 
 連結：<https://addons.mozilla.org/en-US/firefox/addon/textarea-cache>
@@ -229,7 +216,6 @@ Google Form 的功能其實不錯，只可惜我們希望使用者能多留在�
 重新打開瀏覽器就會發現東西都被清空了，很生氣。
 
 裝了這個套件後，他就會幫你備份你的表單內容，再也不用怕瀏覽器 crash 了。
-
 
 ### Tab Notes
 
@@ -242,8 +228,6 @@ Google Form 的功能其實不錯，只可惜我們希望使用者能多留在�
 
 我也有寫篇 [文章](/posts/addon-tab-notes/) 介紹這個瀏覽器套件。
 
-
-
 ## 開源社群
 
 ### Mozilla Taiwan Community
@@ -255,21 +239,19 @@ Google Form 的功能其實不錯，只可惜我們希望使用者能多留在�
 之前也會和 ettoolong 一起舉辦瀏覽器套件工作坊教大家寫套件，
 後來還和他一起去當了 Firefox Addon Reviewer，也算是有趣的經歷。
 
-
 ### 其他
 
-* **Linux Taiwan Community Website**：以前有建置台灣 Linux 社群的網站，可惜 domain
+- **Linux Taiwan Community Website**：以前有建置台灣 Linux 社群的網站，可惜 domain
   持有者過世後，domain 被別人撿走，現在已經看不到了。
-* [**Lollypop – Gnome Player Website**](https://wildskyf.github.io/lollypop-web/)：
+- [**Lollypop – Gnome Player Website**](https://wildskyf.github.io/lollypop-web/)：
   這個是一個 Linux 上的開源音樂播放器的網站，那時是看到他在徵求網站開發，我便去協助。
-* 這個部落格：這個部落格也是我從零開始打造的。
+- 這個部落格：這個部落格也是我從零開始打造的。
 
 ## Awards
 
-* [Granularity-Based Interactive Image Display](https://sigport.org/documents/granularity-based-interactive-image-display-0)
-* [National Collegiate Programming Contest 2014 Finalist](https://ncpc.idi.ntnu.no/ncpc2014/)
-* NTNU Certificate of English Proficiency
-
+- [Granularity-Based Interactive Image Display](https://sigport.org/documents/granularity-based-interactive-image-display-0)
+- [National Collegiate Programming Contest 2014 Finalist](https://ncpc.idi.ntnu.no/ncpc2014/)
+- NTNU Certificate of English Proficiency
 
 如果你需要網站工程師的話，歡迎用 Email 與我聯絡： [poppin.wildsky+blog\[at\]gmail.com](mailto:poppin.wildsky+blog@gmail.com)
 

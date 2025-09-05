@@ -16,6 +16,7 @@ Here are some possible project types, and feel free to discuss any other ideas a
 In general, handling projects that are not as complex as e-commerce websites should not be a problem for me. I can also assist with domain and server hosting arrangements.
 
 Some of the features I have implemented in previous projects include:
+
 - Membership systems
 - Integration with LINE Login API
 - File upload functionality (images/videos)
@@ -26,6 +27,7 @@ Some of the features I have implemented in previous projects include:
 - API integration / implement
 
 ## Other Possibilities to Explore
+
 - Browser extensions
 - Website development tutorials
 

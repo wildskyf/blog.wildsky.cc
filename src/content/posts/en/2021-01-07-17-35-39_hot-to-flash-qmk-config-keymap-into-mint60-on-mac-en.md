@@ -7,8 +7,8 @@ excerpt: "<p>Foreword I just buy a keyboard named mint60 from ErgoTa&#8230;</p>
 feature_image: ergo-taiwan-mint60-2.jpg
 guid: "https://blog.wildsky.cc/?p=1706"
 ---
-Foreword
---------
+
+## Foreword
 
 I just buy a keyboard named mint60 from ErgoTawian due to my stiff shoulders, which must be caused by working too long hours lol.
 
@@ -16,8 +16,7 @@ The default keymap is much different from mac’s, so that I want to remap accor
 
 This article is about to flash a brand new keymap to Mint60.
 
-Prepare keymap
---------------
+## Prepare keymap
 
 First, we need to setup a new keymap we want, just go to [QMK Configurator](https://config.qmk.fm/#/mint60/LAYOUT), to start to modify it. While finishing, compile it & download both keymap.json and firmware.
 
@@ -31,8 +30,7 @@ click compile first, then click two buttons below (not the full code one)
 
 Making sure in your own localhost are one .json file and one hex file, you are able to go to next step.
 
-Setup Environment
------------------
+## Setup Environment
 
 If you have not install brew yet, please access [homebrew official site](https://brew.sh/), and install it. Then open terminal and type these commands:
 
@@ -41,16 +39,15 @@ If you have not install brew yet, please access [homebrew official site](https:/
     $ brew tap homebrew/cask-drivers
     $ brew cask install qmk-toolbox
 
-Flash!
-------
+## Flash!
 
 1.  goto `~/application` folder and open `QMK Toolbox.app`, if you happen to unverified developer, you could right click it and click open to ignore it.
 2.  click the open button on the top of window, then navigate to the .hex file we download earlier.
 3.  Make sure Mint60 is connect to your Mac.
 4.  Click the red button under the Mint60 with a thin bar, and you will see this message in the terminal below:
 
-    *** Caterina device connected
-        Found port: /dev/cu.usbmodem143201
+    \*\*\* Caterina device connected
+    Found port: /dev/cu.usbmodem143201
 
 At this moment, you could just click the flash button, and wait for some seconds. Then you might find the keyboard has finished the flash progress.
 
@@ -60,9 +57,8 @@ At this moment, you could just click the flash button, and wait for some seconds
 
 And last, enjoy it!
 
-Ref
----
+## Ref
 
-*   [https://ergotaiwan.tw/ergodash-qmk-configurator/](https://ergotaiwan.tw/ergodash-qmk-configurator/)
-*   [https://github.com/qmk/qmk\_toolbox](https://github.com/qmk/qmk_toolbox)
-*   [https://beta.docs.qmk.fm/tutorial/newbs\_getting\_started#macos](https://beta.docs.qmk.fm/tutorial/newbs_getting_started#macos)
+- [https://ergotaiwan.tw/ergodash-qmk-configurator/](https://ergotaiwan.tw/ergodash-qmk-configurator/)
+- [https://github.com/qmk/qmk_toolbox](https://github.com/qmk/qmk_toolbox)
+- [https://beta.docs.qmk.fm/tutorial/newbs_getting_started#macos](https://beta.docs.qmk.fm/tutorial/newbs_getting_started#macos)

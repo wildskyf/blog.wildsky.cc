@@ -1,10 +1,10 @@
 ---
-title: "BLOG 完全更新至 Astro"
+title: 'BLOG 完全更新至 Astro'
 date: 2025-09-05T13:45:37+08:00
-slug: "update-blog-framework-to-astro"
-excerpt: ""
-feature_image: ""
-guid: "update-blog-framework-to-astro"
+slug: 'update-blog-framework-to-astro'
+excerpt: ''
+feature_image: ''
+guid: 'update-blog-framework-to-astro'
 ---
 
 最近越來越厭煩一直滑 Instagram 和 Threads，所以想要多花點時間在「重要的事情」上。
@@ -35,5 +35,3 @@ guid: "update-blog-framework-to-astro"
 ---
 
 首先先已經拆到剩下幾個 Icon 的 unocss 給完全拔掉，讓這個部落格完全基於 TailwindCSS 和 Daisyui。
-
-

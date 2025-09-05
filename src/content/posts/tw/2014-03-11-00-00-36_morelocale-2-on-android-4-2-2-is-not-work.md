@@ -1,11 +1,12 @@
 ---
-title: "Android 4.2.2  無法使用 morelocale 2"
+title: 'Android 4.2.2  無法使用 morelocale 2'
 date: 2014-03-11T00:00:36
-slug: "morelocale-2-on-android-4-2-2-is-not-work"
-excerpt: "會寫這篇文章是因為我妹的手機(HTC SV)不是台灣買的，沒有台灣中文，因而需要變更語系..."
+slug: 'morelocale-2-on-android-4-2-2-is-not-work'
+excerpt: '會寫這篇文章是因為我妹的手機(HTC SV)不是台灣買的，沒有台灣中文，因而需要變更語系...'
 feature_image: null
-guid: "http://blog.wildsky.cc/?p=61"
+guid: 'http://blog.wildsky.cc/?p=61'
 ---
+
 會寫這篇文章是因為我妹的手機(HTC SV)不是台灣買的，沒有台灣中文，因而需要變更語系 & 所在地。
 
 按照過往經驗，我就習慣性地載了 morelocal 2，結果居然不能使用！
@@ -16,15 +17,13 @@ HTC 的 root 我沒有把握，不想把我妹的新手機弄壞。所以就選�
 
 下面就來介紹一下我的流程。
 
-安裝
---
+## 安裝
 
 在 **手機** 安裝 Morelocale2，可以從 google play 直接下載安裝，或是從 [這裡](https://wildsky.gumroad.com/l/morelocale-2-2-2-2-apk) 下載到手機安裝，記得要打開不明的來源 (unknown source)。
 
 接著在 **電腦（Windows）** 安裝開發工具，可以在這裡 [下載](https://wildsky.gumroad.com/l/minimal_adb_fastboot)。 安裝到最後一個步驟會問你是否執行 Minimal ADB and Fastboot 預設是打勾，所以直接按完成即可，這邊先不要把它關掉。
 
-預備
---
+## 預備
 
 在 **手機** 端，去設定 > 開發者選項 (Developer option) 裡面打開 USB 偵錯 (USB debugging) ，如果沒有的話，就去「關於手機」裡面找到開發版好，點個五下就會出現了，打開後就將它接上電腦。
 
@@ -46,12 +45,10 @@ HTC 的 root 我沒有把握，不想把我妹的新手機弄壞。所以就選�
     pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION
 ```
 
-完成
---
+## 完成
 
 這樣就大功告成，可以在手機上使用 morelocale 2 了 。
 
-參考資料
-----
+## 參考資料
 
-*   [\[教程\] Morelocale2 4.2以上也能用 (免root)](http://apk.tw/forum.php?mod=viewthread&tid=378955&extra=page%3D1%26filter%3Dauthor%26orderby%3Ddateline%26orderby%3Ddateline)
+- [\[教程\] Morelocale2 4.2以上也能用 (免root)](http://apk.tw/forum.php?mod=viewthread&tid=378955&extra=page%3D1%26filter%3Dauthor%26orderby%3Ddateline%26orderby%3Ddateline)

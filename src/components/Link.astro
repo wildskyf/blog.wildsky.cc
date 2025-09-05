@@ -1,12 +1,9 @@
 ---
-const props = Astro.props
+const props = Astro.props;
 
-const { class: className } = props
+const { class: className } = props;
 ---
 
-<a
-  class={className}
-  {...props}
->
-  <slot>
+<a class={className} {...props}>
+  <slot />
 </a>

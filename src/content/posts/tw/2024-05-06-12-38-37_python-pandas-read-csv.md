@@ -1,10 +1,10 @@
 ---
-title: "在 Python 中使用 Pandas 讀取 csv 檔案"
+title: '在 Python 中使用 Pandas 讀取 csv 檔案'
 date: 2024-05-06T12:38:37+08:00
-slug: "python-pandas-read-csv"
-excerpt: "最近工作上都在寫 Python，要寫一個 Csv 的 parser，結果遇到編碼問題。"
-feature_image: "hope-house-press-leather-diary-studio-h3sAF1cVURw-unsplash.jpg"
-guid: "python-pandas-read-csv"
+slug: 'python-pandas-read-csv'
+excerpt: '最近工作上都在寫 Python，要寫一個 Csv 的 parser，結果遇到編碼問題。'
+feature_image: 'hope-house-press-leather-diary-studio-h3sAF1cVURw-unsplash.jpg'
+guid: 'python-pandas-read-csv'
 ---
 
 最近工作上都在寫 Python，要寫一個 csv parser，結果遇到編碼問題。Code 大約是長這樣：

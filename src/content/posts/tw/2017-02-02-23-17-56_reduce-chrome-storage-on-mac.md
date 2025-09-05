@@ -7,6 +7,7 @@ excerpt: "<p>剛剛在整理電腦時，發現 chrome 居然佔用了 2GB 的空
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=306"
 ---
+
 ![about chrome](http://blog.wildsky.cc/wp-content/uploads/2017/02/02-chrome.png)
 
 剛剛在整理電腦時，發現 chrome 居然佔用了 2GB 的空間⋯⋯ 迅速查了一下才發現原來是他把一堆舊版本的資料全部都保留下來了。 （都存放在 `/Applications/Google Chrome.app/Contents/Versions/` 下面）
@@ -19,7 +20,6 @@ guid: "http://blog.wildsky.cc/?p=306"
 
 那有沒有什麼解法？總不能過一段時間等他又到 2GB 的時候再來刪吧？ 解法也很簡單，只要到左上角 `chrome > 關於 chrome` 裡面看到版號的下方有個「自動 為所有使用者更新 chrome」，點下去，輸入密碼後 chrome 就有權限可以刪除那些檔案 了！
 
-後話
-==
+# 後話
 
 安全和方便之間的權衡真是麻煩啊⋯⋯

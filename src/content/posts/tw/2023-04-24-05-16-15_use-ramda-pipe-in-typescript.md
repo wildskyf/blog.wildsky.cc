@@ -1,12 +1,12 @@
 ---
-title: "在 TypeScript 中使用 Ramda Pipe function"
+title: '在 TypeScript 中使用 Ramda Pipe function'
 date: 2023-04-24T17:16:15+08:00
-slug: "use-ramda-pipe-in-typescript"
+slug: 'use-ramda-pipe-in-typescript'
 excerpt: |
   今年的其中一個目標是熟悉 functional programming，所以前陣子很常在專案中嘗試 Ramda.js 這個 library。也因為公司習慣使用 TypeScript，所以我自己的專案中也通常會用 TypeScript。
   最近在 TypeScript 專案中使用 Ramda.js 時遇到了 type error，便想寫個文章記錄一下，方便以後再次遇到時能快速回想起如何調整。
-feature_image: "pipeline.jpg"
-guid: "use-ramda-pipe-in-typescript"
+feature_image: 'pipeline.jpg'
+guid: 'use-ramda-pipe-in-typescript'
 ---
 
 今年的其中一個目標是熟悉 functional programming，所以前陣子很常在專案中嘗試
@@ -15,16 +15,18 @@ Ramda.js 這個 library。也因為公司習慣使用 TypeScript，所以我自�
 最近在 TypeScript 專案中使用 Ramda.js 時遇到了 type error，解決問題後便想寫個文章記錄一下，方便以後再次遇到時能快速回想起如何調整。
 
 專案自然要先依循慣例，在最前面使用 import 來引入到 R 中。
+
 ```typescript
-import * as R from 'ramda'
+import * as R from 'ramda';
 ```
 
 如果在 `.ts` 檔中直接這樣寫的話：
 
 ```typescript
-R.pipe(
-	/* 其他 function */
-)
+R
+  .pipe
+  /* 其他 function */
+  ();
 ```
 
 TypeScript 會報錯，說 TypeScript 不認識你的 input & output type。
@@ -33,18 +35,13 @@ TypeScript 會報錯，說 TypeScript 不認識你的 input & output type。
 拿下面這段程式碼來解釋得更細一點：
 
 ```typescript
-  const getDiseases = R.pipe<
-    [TestData],
-    { a: string }[] | undefined,
-    { a: string }[],
-    string[],
-    string[]
-  >(
-    R.path(['path', 'to', 'data']),
-    R.defaultTo([] as { a: string }[]),
-    R.pluck('phenotype'),
-    R.uniq
-  )
+const getDiseases = R.pipe<
+  [TestData],
+  { a: string }[] | undefined,
+  { a: string }[],
+  string[],
+  string[]
+>(R.path(['path', 'to', 'data']), R.defaultTo([] as { a: string }[]), R.pluck('phenotype'), R.uniq);
 ```
 
 一開始的 input 是 `TestData`，所以寫在 `<>` 的第一個 argument，

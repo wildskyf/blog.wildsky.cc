@@ -7,6 +7,7 @@ excerpt: "<p>因為我很常把 vim 開開關關的，所以直接用 vim 來開
 feature_image: null
 guid: "https://blog.wildsky.cc/?p=1641"
 ---
+
     alias vgs='vim -p $(git status --porcelain | cut -c 4-)'
 
 這串指令可以用 `vgs` 直接開啟編輯到一半、尚未 commit 出去的檔案們，概念就是把 git status 的檔案名當成 `vim -p` 後面的參數。
@@ -15,8 +16,7 @@ guid: "https://blog.wildsky.cc/?p=1641"
 
 也可以把 vim 換成 code/sublimt/emacs 之類的其他編輯器，但可能不是 `-p`，就再請自行 `--help` 看怎麼開多個檔案。
 
-其他相關 alias
-----------
+## 其他相關 alias
 
     alias gs='git status'
     alias g='git'

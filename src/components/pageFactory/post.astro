@@ -1,13 +1,13 @@
 ---
 import { render } from 'astro:content';
 
-import PageLayout from '@/layouts/page.astro'
-import Article from '@/components/Article.astro'
-import { articleMapper } from '@/utils'
+import PageLayout from '@/layouts/page.astro';
+import Article from '@/components/Article.astro';
+import { articleMapper } from '@/utils';
 
-const { lang, entry } = Astro.props
-const { Content } = await render(entry)
-const data = articleMapper(entry)
+const { lang, entry } = Astro.props;
+const { Content } = await render(entry);
+const data = articleMapper(entry);
 ---
 
 <PageLayout
@@ -20,4 +20,3 @@ const data = articleMapper(entry)
     <Content />
   </Article>
 </PageLayout>
-

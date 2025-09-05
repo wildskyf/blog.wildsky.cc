@@ -7,6 +7,7 @@ excerpt: "<p>你願意成為一個痛苦的哲學家，或是一隻快樂的豬�
 feature_image: quote-evil-being-the-root-of-mystery-pain-is-the-root-of-knowledge-simone-weil-30-97-98.jpg
 guid: "http://blog.wildsky.cc/?p=602"
 ---
+
 > 你願意成為一個痛苦的哲學家，或是一隻快樂的豬？
 
 有些事，開始在意後才會覺得痛苦。
@@ -28,6 +29,6 @@ guid: "http://blog.wildsky.cc/?p=602"
 > 原來這就是登大人，大漢了後才知挫哩等  
 > 原來三分天註定，七分靠打拼，愛拼才會贏
 
-* * *
+---
 
 原文寫在 womany talk 室：[知識帶來的其實不是快樂](https://talk.womany.net/t/topic/1057)

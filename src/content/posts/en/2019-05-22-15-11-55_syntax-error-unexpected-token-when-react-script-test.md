@@ -7,17 +7,16 @@ excerpt: "<p>Environment I created my project by create-react-app, a&#8230;</p>
 feature_image: 螢幕快照-2019-05-22-15.06.12.png.webp
 guid: "http://blog.wildsky.cc/?p=929"
 ---
-Environment
------------
+
+## Environment
 
 I created my project by create-react-app, and running test using its `react-script test`.
 
-*   node version: 10.15.3
-*   npm version: 6.4.1
-*   react-scripts: 3.0.1
+- node version: 10.15.3
+- npm version: 6.4.1
+- react-scripts: 3.0.1
 
-What happened?
---------------
+## What happened?
 
 When running test command (`npm run test`), I got this error message:
 
@@ -95,9 +94,8 @@ so it will become like this:
 
 and jest will run without the SyntaxError. That’s it!
 
-References
-----------
+## References
 
-*   [https://github.com/facebook/create-react-app/issues/2537#issuecomment-390341713](https://github.com/facebook/create-react-app/issues/2537#issuecomment-390341713)
-*   [https://github.com/facebook/create-react-app/issues/5241#issuecomment-426986623](https://github.com/facebook/create-react-app/issues/5241#issuecomment-426986623)
-*   [https://facebook.github.io/create-react-app/docs/running-tests](https://facebook.github.io/create-react-app/docs/running-tests)
+- [https://github.com/facebook/create-react-app/issues/2537#issuecomment-390341713](https://github.com/facebook/create-react-app/issues/2537#issuecomment-390341713)
+- [https://github.com/facebook/create-react-app/issues/5241#issuecomment-426986623](https://github.com/facebook/create-react-app/issues/5241#issuecomment-426986623)
+- [https://facebook.github.io/create-react-app/docs/running-tests](https://facebook.github.io/create-react-app/docs/running-tests)

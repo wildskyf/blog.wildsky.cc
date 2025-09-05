@@ -7,12 +7,12 @@ excerpt: "<p>這篇文章是關於 Time Management 的筆記。很久以前看�
 feature_image: image-e1553233648798.jpg
 guid: "http://blog.wildsky.cc/?p=84"
 ---
+
 這篇文章是關於 Time Management 的筆記。很久以前看過這篇 [finding-time-to-become-a-better-developer](https://medium.freecodecamp.org/finding-time-to-become-a-better-developer-eebc154881b2)，但因為太久遠所以讀了什麼都忘光光。為了節省未來自己的時間，便做了這篇筆記，也把他放出來，或許能幫助到誰。
 
 > 找到時間成為更好的開發者
 
-正文
---
+## 正文
 
 文中列了五點解決這個問題：優先度、對好程式碼的堅持、Managing Expectation、投資報酬率、預排休息時間。
 
@@ -55,8 +55,7 @@ Make it work, make it right, make it fast，right 不代表一定要完美無錯
 
 情緒、專注力都會影響生產力，但人的狀態不可能一直維持在最高點，所以需要適度休息。而這樣的休息時間若是預排好的，就比較不會有罪惡感，可以好好休息，進而讓整體生產力提升。
 
-結語
---
+## 結語
 
 在業界也當了一兩年的工程師，深刻覺得 C. 提到的 Managing Expectation 非常重要。可以不必當生產力最強的人，但務必不要讓人難以掌控你的速度，不然就整個團隊而言，預想好的時程被突然延後更感困擾。
 

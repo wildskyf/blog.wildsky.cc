@@ -1,10 +1,10 @@
 ---
-title: "關於吉他的調與移調夾"
+title: '關於吉他的調與移調夾'
 date: 2024-10-13T16:52:37+08:00
-slug: "guitar-capo-and-key"
-excerpt: "最近上吉他課學到一個有趣的觀念，因為之前在看吉他自學的影片或文章時沒看到，所以來寫個文章把它記下來。"
-feature_image: "ronan-kruithof-hCLbV9yABxU-unsplash.jpg"
-guid: "guitar-capo-and-key"
+slug: 'guitar-capo-and-key'
+excerpt: '最近上吉他課學到一個有趣的觀念，因為之前在看吉他自學的影片或文章時沒看到，所以來寫個文章把它記下來。'
+feature_image: 'ronan-kruithof-hCLbV9yABxU-unsplash.jpg'
+guid: 'guitar-capo-and-key'
 ---
 
 最近上吉他課學到一個有趣的觀念，因為之前在看吉他自學的影片或文章時沒看到，所以來寫個文章把它記下來。
@@ -26,7 +26,6 @@ guid: "guitar-capo-and-key"
 
 以上是移調夾的功用，這部分資訊網路上蠻容易可以找到，可以找找看其他文章多方參考。
 
-
 ## 譜的調
 
 ![91 譜的螢幕截圖](/images/91-pu-screenshot.png)
@@ -47,7 +46,6 @@ guid: "guitar-capo-and-key"
 但彈出來的就會是 Bb 調的音了。
 
 這時心中可能會出現一個疑問。
-
 
 ## 如果有了移調夾，我也會彈 C 調的和弦，這樣不就等於我會全部的調了嗎？為什麼還要學其他調的譜和和弦？
 

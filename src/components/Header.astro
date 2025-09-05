@@ -1,12 +1,12 @@
 ---
-import Nav from '@/components/Nav.astro'
-import HeaderLink from '@/components/HeaderLink.astro'
-import { getRelativeLocaleUrl } from 'astro:i18n'
-import { getTranslation } from '@/i18n/utils.ts'
+import Nav from '@/components/Nav.astro';
+import HeaderLink from '@/components/HeaderLink.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getTranslation } from '@/i18n/utils.ts';
 
-const currentLocale = Astro.currentLocale || 'tw'
-const t = getTranslation(currentLocale)
-const home_url = getRelativeLocaleUrl(currentLocale, '')
+const currentLocale = Astro.currentLocale || 'tw';
+const t = getTranslation(currentLocale);
+const home_url = getRelativeLocaleUrl(currentLocale, '');
 ---
 
 <header
@@ -21,6 +21,6 @@ const home_url = getRelativeLocaleUrl(currentLocale, '')
       {t.site.title}
     </HeaderLink>
   </h1>
-  
+
   <Nav />
 </header>

@@ -7,6 +7,7 @@ excerpt: "<p>When enabling Autoptimize for wordpress site, there mig&#8230;</p>
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=1184"
 ---
+
 When enabling Autoptimize for wordpress site, there might be some error messages in console.
 
 ![](/images/Screen-Shot-2019-07-28-at-01.19.27-1024x445.png.webp)
@@ -25,7 +26,6 @@ Admin Sidenav > Setting > Autoptimize
 
 And that’s it! Enjoy your clean console. 🙂
 
-Reference
----------
+## Reference
 
-*   [Question ‘Various JavaScript console errors’ in WP support forum](https://wordpress.org/support/topic/various-javascript-console-errors/)
+- [Question ‘Various JavaScript console errors’ in WP support forum](https://wordpress.org/support/topic/various-javascript-console-errors/)

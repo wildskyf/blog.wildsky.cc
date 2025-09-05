@@ -1,20 +1,15 @@
 ---
-import PageLayout from './page.astro'
-import ArticleSection from '@/components/Article.astro'
-import { articleMapper } from '@/utils'
+import PageLayout from './page.astro';
+import ArticleSection from '@/components/Article.astro';
+import { articleMapper } from '@/utils';
 
-const { frontmatter } = Astro.props
-const data = articleMapper({ data: frontmatter })
+const { frontmatter } = Astro.props;
+const data = articleMapper({ data: frontmatter });
 
-const currentLocale = Astro.currentLocale || 'tw'
-
+const currentLocale = Astro.currentLocale || 'tw';
 ---
 
-<PageLayout
-  lang={currentLocale}
-  pageName={data.title}
-  pageDesc={data.excerpt}
->
+<PageLayout lang={currentLocale} pageName={data.title} pageDesc={data.excerpt}>
   <ArticleSection {...data}>
     <slot />
   </ArticleSection>

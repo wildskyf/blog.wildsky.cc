@@ -1,10 +1,10 @@
 ---
-title: "AI 工具與工程師的感觸"
+title: 'AI 工具與工程師的感觸'
 date: 2025-08-19T11:22:26+08:00
-slug: "engineer-with-ai-tool"
-excerpt: "最近開始用 Cursor 和 Claude Code 之類的Al協助寫程式的工具，工作效率確實提升了不少。以前要花一個下午能搞定的東西，現在可能不用半小時就完成了。但心情還是挺複雜的。"
-feature_image: "tamsui-sad-cat-draw.jpeg"
-guid: "engineer-with-ai-tool"
+slug: 'engineer-with-ai-tool'
+excerpt: '最近開始用 Cursor 和 Claude Code 之類的Al協助寫程式的工具，工作效率確實提升了不少。以前要花一個下午能搞定的東西，現在可能不用半小時就完成了。但心情還是挺複雜的。'
+feature_image: 'tamsui-sad-cat-draw.jpeg'
+guid: 'engineer-with-ai-tool'
 ---
 
 難得發個比較感性的文章小小哀嘆一下。
