@@ -2,8 +2,8 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 
 export const GET = async (context) => {
-  const postsTw = await getCollection('posts', ({ id }) => id.startsWith('tw/'));
-  const postsEn = await getCollection('posts', ({ id }) => id.startsWith('en/'));
+  const postsTw = await getCollection('posts-tw');
+  const postsEn = await getCollection('posts-en');
 
   // Function to clean HTML entities from description
   const cleanDescription = (html) => {

@@ -3,15 +3,13 @@ import { getCollection } from 'astro:content';
 import PostPage from '@/components/pageFactory/post.astro';
 
 export const getStaticPaths = async () => {
-  const blogEntries = await getCollection('posts', ({ id }) => {
-    return id.startsWith('tw/');
-  });
+  const blogEntries = await getCollection('posts-tw');
 
   return blogEntries.map((entry) => {
     // Extract slug from frontmatter or filename
     let slug = entry.data.slug;
     if (!slug) {
-      const filename = entry.id.replace('tw/', '').replace('.md', '');
+      const filename = entry.id.replace('.md', '');
       const match = filename.match(/^\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}_(.+)$/);
       slug = match ? match[1] : filename;
     }

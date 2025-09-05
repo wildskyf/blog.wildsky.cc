@@ -10,9 +10,7 @@ import { getTranslation } from '@/i18n/utils.ts';
 const currentLocale = Astro.currentLocale || 'tw';
 const t = getTranslation(currentLocale);
 
-const astroPostList = await getCollection('posts', ({ id }) => {
-  return id.startsWith(`${currentLocale}/`);
-});
+const astroPostList = await getCollection(`posts-${currentLocale}`);
 
 const sortedPosts = astroPostList
   .map(articleMapper)
