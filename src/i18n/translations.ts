@@ -32,6 +32,7 @@ export const translations = {
     nav: {
       home: 'home',
       about: 'about',
+      blogroll: 'Blogroll',
       languages: 'Languages',
     },
     common: {
