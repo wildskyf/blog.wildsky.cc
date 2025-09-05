@@ -16,7 +16,7 @@ const data = articleMapper(entry);
   pageDesc={data.excerpt}
   pageImage={data.abs_feature_image}
 >
-  <Article {...data}>
-    <Content />
+  <Article {...data} lang={lang}>
+    <Content class="article-content" />
   </Article>
 </PageLayout>

@@ -12,12 +12,14 @@ guid: 'try-game-porting-toolkit-to-play-ragnarok-online-but-failed'
 其實會開始這個嘗試也只是因為看到這部 YouTube 影片：
 
 <iframe
-  width="750"
-  height="200"
   src="https://www.youtube-nocookie.com/embed/pTanz71b8lM"
   title="YouTube video player"
   frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen
+  class="max-width:100%;width:100%;height:auto;"
+>
+</iframe>
 
 快速瀏覽後想說好像也不是很困難，便跟著跑一輪。下面就來簡易記錄我做了什麼。
 

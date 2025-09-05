@@ -21,6 +21,7 @@
     "@fontsource/noto-sans-tc": "4.5.12",
     "@fontsource/noto-serif-tc": "4.5.12",
     "@fontsource/poppins": "4.5.10",
+    "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "4.0.10",
     "astro": "5.13.5",
     "astro-icon": "1.1.5",

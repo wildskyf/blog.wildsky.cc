@@ -1,25 +1,44 @@
 ---
 import dayjs from 'dayjs';
 
-const { feature_image_url, date, title, ...props } = Astro.props;
+const { feature_image_url, date, title, lang, ...props } = Astro.props;
+const currentLocale = lang || Astro.currentLocale || 'tw';
 
 const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日');
 ---
 
-<article class="bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16" {...props}>
-  <header>
-    <h1 class="text-base-content font-bold mb-4" set:html={title} />
+<article 
+  class={`
+    prose prose-lg max-w-none
+    bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16
+    ${currentLocale === 'tw' ? 'prose-zh tracking-tw-normal' : 'prose-en'}
+  `} 
+  {...props}
+>
+  <header class="not-prose mb-8">
+    <h1 
+      class={`
+        text-3xl lg:text-4xl font-bold text-base-content mb-4
+        ${currentLocale === 'tw' ? 'tracking-tw-normal' : ''}
+      `} 
+      set:html={title} 
+    />
     {
       date && (
-        <p class="text-sm font-semithin mb-4 text-base-content/70">
+        <p class="text-sm text-base-content/70">
           <time datetime={date}>{publish_time}</time>
         </p>
       )
     }
   </header>
-  {feature_image_url && <img src={feature_image_url} alt="" width="750" height="410" />}
+  
+  {feature_image_url && (
+    <div class="not-prose mb-8">
+      <img src={feature_image_url} alt="" width="750" height="410" class="rounded-lg" />
+    </div>
+  )}
 
-  <div class="article-content leading-8 text-lg lg:text-xl mt-8 pb-4">
+  <div class={currentLocale === 'tw' ? 'tracking-tw-normal' : ''}>
     <slot />
   </div>
 </article>

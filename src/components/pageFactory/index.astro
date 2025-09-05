@@ -31,17 +31,30 @@ const nextPagePath = hasNextPage ? getRelativeLocaleUrl(currentLocale, 'page/2')
   postList={postList}
   next_page_path={nextPagePath}
 >
-  <article class="block p-8 lg:px-4">
-    <h1 class="text-xl font-bold mb-4">Welcome to my blog!</h1>
+  <article class={`
+    prose prose-lg max-w-none block p-8 lg:px-4
+    ${currentLocale === 'tw' ? 'prose-zh tracking-tw-normal' : 'prose-en'}
+  `}>
+    <div class="not-prose">
+      <h1 class={`
+        text-2xl lg:text-3xl font-bold mb-4 text-base-content
+        ${currentLocale === 'tw' ? 'tracking-tw-normal' : ''}
+      `}>
+        Welcome to my blog!
+      </h1>
 
-    <p class="text-md lg:text-lg text-gray-400 mb-4">
-      {t.site.homeDescription}
-    </p>
+      <p class={`
+        text-md lg:text-lg text-base-content/70 mb-4
+        ${currentLocale === 'tw' ? 'tracking-tw-normal' : ''}
+      `}>
+        {t.site.homeDescription}
+      </p>
 
-    <SocialBar class="mb-4" />
+      <SocialBar class="mb-4" />
 
-    <div class="w-full flex justify-center">
-      <div class="divider w-xs"></div>
+      <div class="w-full flex justify-center">
+        <div class="divider w-xs"></div>
+      </div>
     </div>
   </article>
 </ListLayout>

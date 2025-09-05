@@ -1,6 +1,7 @@
 @import url('prismjs/themes/prism-okaidia.css');
 @import 'tailwindcss';
 
+@plugin "@tailwindcss/typography";
 @plugin "daisyui" {
   themes:
     nord --default,

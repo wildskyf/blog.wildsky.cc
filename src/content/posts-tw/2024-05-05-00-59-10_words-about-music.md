@@ -63,7 +63,10 @@ C♯ 或 E♭，其他的 Re Mi Fa Sol La Si 自然也就會隨之移動，這�
   src="https://www.youtube-nocookie.com/embed/DQiFrxHh6x0"
   title="YouTube video player"
   frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen
+  class="max-width:100%;width:100%;height:auto;"
+></iframe>
 
 我這邊用文字簡單摘要：
 

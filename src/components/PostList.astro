@@ -23,8 +23,12 @@ const root_path = lang == 'en' ? '/en' : '';
                 <time class="text-sm text-base-content/60" datetime={post.date}>
                   {dayjs(post.date).format('YYYY/MM/DD')}
                 </time>
-                <div
-                  class="text-xl lg:text-2xl group-hover:underline"
+                <h2
+                  class={`
+                    text-xl lg:text-2xl font-bold text-base-content/90
+                    group-hover:underline mt-2
+                    ${lang === 'tw' ? 'tracking-tw-normal' : ''}
+                  `}
                   set:html={post.title}
                   style={{ hyphens: 'auto' }}
                 />
