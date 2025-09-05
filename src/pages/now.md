@@ -29,6 +29,7 @@ excerpt: ''
    - Bad Math 的 Party [Apple Music Link](https://music.apple.com/tw/album/party/1570827754?i=1570827755)
    - 惘聞 的 lonely god [Apple Music Link](https://music.apple.com/tw/album/lonely-god/1598036791?i=1598037216)
    - New Jeans 的 Ditto [Apple Music Link](https://music.apple.com/tw/album/ditto/1657231957?i=1657231962)
+- 最近在和伴侶一起看 **NaNa** ！
 
 下面也分享一下我的最愛歌單～
 
