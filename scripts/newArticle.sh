@@ -7,7 +7,7 @@ then
 fi
 
 SLUG=$1
-POST_PATH="src/content/posts/tw/"
+POST_PATH="src/content/posts-tw/"
 FILE_NAME="$(date +'%Y-%m-%d-%H-%M-%S')_$SLUG.md"
 FILE_PATH="$POST_PATH$FILE_NAME"
 
