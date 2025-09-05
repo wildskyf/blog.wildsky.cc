@@ -3,10 +3,17 @@
 ---
 
 <button
-  class="fixed bottom-6 left-6 z-50 transition-colors"
+  class="fixed bottom-8 left-8 z-50 transition-colors"
   data-toggle-theme="nord,dim"
   data-act-class="ACTIVECLASS"
 >
-  <div class="size-5 rounded-full border-2 border-gray-700 bg-base-content/90 hover:bg-base-content cursor-pointer">
-  </div>
+  <span class="relative flex size-4 cursor-pointer hover:opacity-75 transition-opacity">
+    <span
+      class="absolute inline-flex h-full w-full animate-ping rounded-full bg-base-content/90 hover:bg-base-content opacity-75"
+      style={{
+        animationDuration: "3s"
+      }}
+    ></span>
+    <span class="relative inline-flex size-4 rounded-full bg-base-content/90 hover:bg-base-content"></span>
+  </span>
 </button>
