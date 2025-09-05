@@ -14,7 +14,7 @@ excerpt: '這頁記錄一些我覺得不錯的書，也會提供博客來的購�
 ## 資訊工程相關
 
 - [學徒模式－優秀軟體開發者的養成之路](https://www.tenlong.com.tw/products/9789862762561)
-- [易讀程式之美學：提升程式碼可讀性的簡單法則](https://www.books.com.tw/exep/assp.php/wildsky/products/0010584840?sloc=main&utm_source=wildsky&utm_medium=ap-books&utm_content=recommend&utm_campaign=ap-202404)：蠻經典的一本書，不過翻譯得有點卡卡的⋯⋯ 能力足夠的話可以看看原文書： [The Art of Readable Code](https://www.books.com.tw/exep/assp.php/wildsky/products/F012213840?sloc=ms2_6&utm_source=wildsky&utm_medium=ap-books&utm_content=recommend&utm_campaign=ap-202404)
+- [易讀程式之美學：提升程式碼可讀性的簡單法則](https://www.tenlong.com.tw/products/9789862767191)：蠻經典的一本書，不過翻譯得有點卡卡的⋯⋯ 能力足夠的話可以看看原文書： [The Art of Readable Code](https://www.books.com.tw/exep/assp.php/wildsky/products/F012213840?sloc=ms2_6&utm_source=wildsky&utm_medium=ap-books&utm_content=recommend&utm_campaign=ap-202404)
 
 ## 財務相關
 
@@ -43,6 +43,7 @@ excerpt: '這頁記錄一些我覺得不錯的書，也會提供博客來的購�
 
 - [用生活常識就能看懂財務報表
   ](https://www.books.com.tw/exep/assp.php/wildsky/products/0010704573?sloc=main&utm_source=wildsky&utm_medium=ap-books&utm_content=recommend&utm_campaign=ap-202404)
+  - 心得可以見 [這篇文章](/posts/note-common-sense-financial-statements)
 
 這本內容很好吸收，只要是對投資理財有興趣的，想更了解資產、現金流等名詞的朋友我
 一律會大力推薦這本書。
@@ -57,8 +58,6 @@ excerpt: '這頁記錄一些我覺得不錯的書，也會提供博客來的購�
 - [為什麼我們這樣生活，那樣工作？](https://www.books.com.tw/exep/assp.php/wildsky/products/0010560033?utm_source=wildsky&utm_medium=ap-books&utm_content=recommend&utm_campaign=ap-202404)
   - 相關文章連結： [心得](/posts/note-the-power-of-habits)
 - [禁咒師 卷壹](https://www.books.com.tw/exep/assp.php/wildsky/products/0010710591?sloc=main&utm_source=wildsky&utm_medium=ap-books&utm_content=recommend&utm_campaign=ap-202404)： 我從小時候就很喜歡的一部小說！
-
-心得可以見 [這篇文章](/posts/note-common-sense-financial-statements)
 
 之後會再慢慢新增其他書！
 
