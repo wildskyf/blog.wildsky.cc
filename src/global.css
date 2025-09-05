@@ -16,6 +16,6 @@
   @apply bg-primary text-white;
 }
 
-article a {
+.article-content a {
   @apply link link-info link-hover;
 }
