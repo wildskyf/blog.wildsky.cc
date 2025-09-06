@@ -4,6 +4,9 @@ date: 2025-09-06T11:42:06+08:00
 slug: "why-do-socks-disappear-but-only-one"
 excerpt: "最近在摺衣服的時候又遇到了一個老問題：明明記得丟進洗衣機的是成雙成對的襪子，為什麼晾出來總是會少一隻？"
 feature_image: "black-cat.jpeg"
+feature_image_caption:
+  表面上：請不要再讓 Wildsky 損失襪子；
+  實際上：請不要讓 Wildsky 發現我讓他損失襪子
 guid: "why-do-socks-disappear-but-only-one"
 ---
 

@@ -22,6 +22,7 @@ export const articleMapper = (post_info) => {
     feature_image_url: post_info.data.feature_image
       ? `/images/${post_info.data.feature_image}`
       : '',
+    feature_image_caption: post_info.data.feature_image_caption ?? null,
     excerpt: post_info.data.excerpt,
   };
 };

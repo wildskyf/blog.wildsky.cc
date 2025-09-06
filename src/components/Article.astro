@@ -2,7 +2,14 @@
 import dayjs from 'dayjs';
 import { twMerge } from 'tailwind-merge'
 
-const { feature_image_url, date, title, lang, ...props } = Astro.props;
+const {
+  feature_image_url,
+  feature_image_caption,
+  date,
+  title,
+  lang,
+  ...props
+} = Astro.props;
 const currentLocale = lang || Astro.currentLocale || 'tw';
 
 const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日');
@@ -34,9 +41,23 @@ const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日');
   </header>
 
   {feature_image_url && (
-    <div class="not-prose mb-8">
-      <img src={feature_image_url} alt="" width="750" height="410" class="rounded-lg" />
-    </div>
+    <figure class="flex flex-col mb-8 bg-base-300 p-4 rounded">
+      <img
+        src={feature_image_url}
+        alt={feature_image_caption}
+        class="w-full max-w-full h-auto"
+        width="750"
+        height="410"
+        class="rounded-lg"
+      />
+
+      {feature_image_url && (
+        <figcaption
+          class="prose text-center mt-1"
+          set:html={feature_image_caption}
+        />
+      )}
+    </figure>
   )}
 
   <div class={twMerge('article-content', currentLocale === 'tw' && 'tracking-tw-normal')}>

@@ -6,6 +6,7 @@ const postSchema = z.object({
   slug: z.string().optional(),
   excerpt: z.string().optional(),
   feature_image: z.string().nullable().optional(),
+  feature_image_caption: z.string().nullable().optional(),
   guid: z.string().optional(),
   updated: z.coerce.date().optional(),
   tags: z.array(z.string()).optional(),

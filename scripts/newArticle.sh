@@ -17,6 +17,7 @@ date: $(date +"%Y-%m-%dT%H:%M:%S+08:00")\n\
 slug: \"$SLUG\"\n\
 excerpt: \"\"\n\
 feature_image: \"\"\n\
+feature_image_caption: \"\"\n\
 guid: \"$SLUG\"\n\
 ---\n\
 "

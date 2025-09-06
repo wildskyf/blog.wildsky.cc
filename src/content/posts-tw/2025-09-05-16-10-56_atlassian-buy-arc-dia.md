@@ -4,6 +4,7 @@ date: 2025-09-05T16:10:56+08:00
 slug: "atlassian-buy-arc-dia"
 excerpt: "這兩天的一個很趣味的新聞是 Jira 的母公司 Atlassian 居然收購了開發 arc 和 dia 瀏覽器的公司。"
 feature_image: "banana-ship-in-Boracay.jpeg"
+feature_image_caption: "這是去長灘島時玩香蕉船的照片（備註：右邊的船翻了XD）"
 guid: "atlassian-buy-arc-dia"
 ---
 
