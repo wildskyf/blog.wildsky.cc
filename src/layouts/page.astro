@@ -1,6 +1,7 @@
 ---
 import RootLayout from './root.astro';
 import Header from '../components/Header.astro';
+import dayjs from 'dayjs';
 
 const currentLocale = Astro.currentLocale || 'tw';
 const lang_code = currentLocale === 'tw' ? 'zh-Hant-TW' : 'en';
@@ -26,7 +27,7 @@ const { pageName, pageDesc, pageImage } = Astro.props;
 
     <footer class="bg-base-300 text-white text-center pt-8 pb-10" lang="en">
       <div class="text-gray-500 tracking-[0.03em]">
-        Wildsky&#39;s Blog &copy; 2014-2024 All rights reserved
+        2014-{dayjs().year()} &copy; All rights reserved
       </div>
     </footer>
   </div>
