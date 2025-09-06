@@ -7327,6 +7327,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tailwind-merge@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "tailwind-merge@npm:3.3.1"
+  checksum: ace3675227d86f1def95b25b7f6793268a6ab2f340b43ef64ad25646588d2b1d87714cd60db6947bfdb5bb85be3bb6ce1802021620c541ef7a9c3faa05915f2b
+  languageName: node
+  linkType: hard
+
 "tailwindcss@npm:4.0.10":
   version: 4.0.10
   resolution: "tailwindcss@npm:4.0.10"
@@ -8304,6 +8311,7 @@ __metadata:
     postcss-preset-env: 9.5.9
     prettier: 3.4.2
     prettier-plugin-astro: 0.14.1
+    tailwind-merge: ^3.3.1
     tailwindcss: 4.0.10
     theme-change: 2.5.0
     typescript: ^5.9.2

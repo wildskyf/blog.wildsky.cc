@@ -16,6 +16,18 @@
   @apply bg-primary text-white;
 }
 
+.article-content {
+  @apply tracking-wide;
+}
+
 .article-content a {
   @apply link link-info link-hover;
+}
+
+.article-content mark {
+  @apply bg-secondary text-base-100 p-0.5 rounded font-bold;
+}
+
+.article-content blockquote {
+  @apply py-1.5 not-italic bg-base-300 border-l-primary;
 }

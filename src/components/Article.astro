@@ -1,5 +1,6 @@
 ---
 import dayjs from 'dayjs';
+import { twMerge } from 'tailwind-merge'
 
 const { feature_image_url, date, title, lang, ...props } = Astro.props;
 const currentLocale = lang || Astro.currentLocale || 'tw';
@@ -7,21 +8,21 @@ const currentLocale = lang || Astro.currentLocale || 'tw';
 const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日');
 ---
 
-<article 
+<article
   class={`
-    prose prose-lg max-w-none
+    prose prose-xl max-md:prose-lg max-w-none
     bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16
     ${currentLocale === 'tw' ? 'prose-zh tracking-tw-normal' : 'prose-en'}
-  `} 
+  `}
   {...props}
 >
   <header class="not-prose mb-8">
-    <h1 
+    <h1
       class={`
         text-3xl lg:text-4xl font-bold text-base-content mb-4
         ${currentLocale === 'tw' ? 'tracking-tw-normal' : ''}
-      `} 
-      set:html={title} 
+      `}
+      set:html={title}
     />
     {
       date && (
@@ -31,14 +32,14 @@ const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日');
       )
     }
   </header>
-  
+
   {feature_image_url && (
     <div class="not-prose mb-8">
       <img src={feature_image_url} alt="" width="750" height="410" class="rounded-lg" />
     </div>
   )}
 
-  <div class={currentLocale === 'tw' ? 'tracking-tw-normal' : ''}>
+  <div class={twMerge('article-content', currentLocale === 'tw' && 'tracking-tw-normal')}>
     <slot />
   </div>
 </article>
