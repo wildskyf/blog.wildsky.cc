@@ -28,6 +28,7 @@ export const GET = async (context) => {
   };
 
   return rss({
+    stylesheet: '/assets/pretty-feed-v3.xsl',
     title: "Wildsky's Blog",
     description: 'Dev blog about server hosting, web dev, and some of my daily stuffs.',
     site: context.site,
