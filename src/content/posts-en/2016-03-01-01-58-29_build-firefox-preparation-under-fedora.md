@@ -6,6 +6,7 @@ excerpt: "<p>Today, I want to build Firefox myself. So I found this &#8230;</p>
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=180"
+tags: ["Firefox", "Fedora", "Linux", "Build", "Mercurial"]
 ---
 
 Today, I want to build Firefox myself. So I found this post: [Simple Firefox build](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Simple_Firefox_build), and there is a link, which could help me setup the prerequisites. The link is [Linux Build Prerequisites](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Simple_Firefox_build/Linux_and_MacOS_build_preparation). But I still got some problems when I followed the instruction. So I write down this article about preparation for building Firefox.

@@ -6,6 +6,7 @@ excerpt: "<p>I am a front-end developer, and I use vim as my editor &#8230;</p>
 "
 feature_image: null
 guid: "https://blog.wildsky.cc/?p=1670"
+tags: ["Vim", "TypeScript", "React", "Editor", "Syntax Highlighting"]
 ---
 
 I am a front-end developer, and I use vim as my editor for daily use. Sometimes I need to program React.js in TypeScript, but there are some troubles in vim when I want the syntax highlight for React.js & TypeScript.

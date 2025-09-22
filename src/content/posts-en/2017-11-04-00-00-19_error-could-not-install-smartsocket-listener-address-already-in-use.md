@@ -6,6 +6,7 @@ excerpt: "<p>This article is about error message: &#8220;error: coul&#8230;</p>
 "
 feature_image: kyle-simmons-74218-unsplash-e1553233521391.jpg
 guid: "http://blog.wildsky.cc/?p=30"
+tags: ["ADB", "Android", "Error Fix", "Troubleshooting", "Linux"]
 ---
 
 This article is about error message: “error: could not install smartsocket listener: Address already in use”.

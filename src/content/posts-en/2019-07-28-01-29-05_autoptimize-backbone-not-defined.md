@@ -6,6 +6,7 @@ excerpt: "<p>When enabling Autoptimize for wordpress site, there mig&#8230;</p>
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=1184"
+tags: ["WordPress", "Autoptimize", "JavaScript", "Backbone.js", "Error Fix"]
 ---
 
 When enabling Autoptimize for wordpress site, there might be some error messages in console.

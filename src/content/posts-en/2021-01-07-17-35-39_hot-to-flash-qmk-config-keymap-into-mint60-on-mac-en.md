@@ -6,6 +6,7 @@ excerpt: "<p>Foreword I just buy a keyboard named mint60 from ErgoTa&#8230;</p>
 "
 feature_image: ergo-taiwan-mint60-2.jpg
 guid: "https://blog.wildsky.cc/?p=1706"
+tags: ["QMK", "Keyboard", "Mint60", "Mac", "Hardware"]
 ---
 
 ## Foreword

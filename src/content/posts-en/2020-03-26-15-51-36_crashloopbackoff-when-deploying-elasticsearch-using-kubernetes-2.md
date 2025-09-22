@@ -6,6 +6,7 @@ excerpt: "<p>When we deploy elasticsearch via kubernetes, sometimes &#8230;</p>
 "
 feature_image: benjamin-dada-EDZTb2SQ6j0-unsplash.jpg
 guid: "https://blog.wildsky.cc/?p=1597"
+tags: ["Kubernetes", "Elasticsearch", "DevOps", "Troubleshooting", "Docker"]
 ---
 
 When we deploy elasticsearch via kubernetes, sometimes we might get `CrashLoopBackOff`.

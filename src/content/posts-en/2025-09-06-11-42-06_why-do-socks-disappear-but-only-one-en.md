@@ -5,6 +5,7 @@ slug: "why-do-socks-disappear-but-only-one-en"
 excerpt: "Recently, while folding laundry, I encountered an old problem again: I clearly remember putting pairs of socks into the washing machine, so why do I always end up with a single sock when hanging them out to dry?"
 feature_image: "black-cat.jpeg"
 guid: "why-do-socks-disappear-but-only-one-en"
+tags: ["Philosophy", "Silent Evidence", "Black Swan", "Life", "Thinking"]
 ---
 
 Recently, while folding laundry, I encountered an old problem again: I clearly remember putting pairs of socks into the washing machine, so why do I always end up with a single sock when hanging them out to dry?

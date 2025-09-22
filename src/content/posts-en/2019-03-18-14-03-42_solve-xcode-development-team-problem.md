@@ -6,6 +6,7 @@ excerpt: "<p>When developing iOS app, sometimes we might face this d&#8230;</p>
 "
 feature_image: 2019-03-18-14.01.10-e1553233406372.png
 guid: "http://blog.wildsky.cc/?p=508"
+tags: ["Xcode", "iOS", "Development Team", "Code Signing", "Error Fix"]
 ---
 
 When developing iOS app, sometimes we might face this development team related problem:
