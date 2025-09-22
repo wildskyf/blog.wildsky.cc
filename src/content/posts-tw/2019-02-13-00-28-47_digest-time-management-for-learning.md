@@ -6,6 +6,7 @@ excerpt: "<p>這篇文章是關於 Time Management 的筆記。很久以前看�
 "
 feature_image: image-e1553233648798.jpg
 guid: "http://blog.wildsky.cc/?p=84"
+tags: ["學習成長", "工程師", "時間管理", "專業發展", "工作態度"]
 ---
 
 這篇文章是關於 Time Management 的筆記。很久以前看過這篇 [finding-time-to-become-a-better-developer](https://medium.freecodecamp.org/finding-time-to-become-a-better-developer-eebc154881b2)，但因為太久遠所以讀了什麼都忘光光。為了節省未來自己的時間，便做了這篇筆記，也把他放出來，或許能幫助到誰。

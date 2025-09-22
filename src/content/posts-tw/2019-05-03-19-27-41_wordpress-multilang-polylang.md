@@ -6,6 +6,7 @@ excerpt: "<p>有些人可能有注意到了，我的部落格最近把英文額�
 "
 feature_image: nicola-nuttall-721063-unsplash-e1556882829604.jpg
 guid: "http://blog.wildsky.cc/?p=905"
+tags: [WordPress, 多語言網站, Polylang, 網站建置, 國際化]
 ---
 
 有些人可能有注意到了，我的部落格最近把英文額外分出來。

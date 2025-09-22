@@ -6,6 +6,7 @@ excerpt: "<p>最近有些朋友問我要怎麼讓電腦變快，這邊來彙整�
 "
 feature_image: wesson-wang-110739-unsplash-e1559370414483.jpg
 guid: "http://blog.wildsky.cc/?p=601"
+tags: [macOS, 系統優化, 效能調整, Mac, 系統管理]
 ---
 
 最近有些朋友問我要怎麼讓電腦變快，這邊來彙整一下我知道或以前有查到的技巧，本文會介紹十個可以做的事，參考看看。

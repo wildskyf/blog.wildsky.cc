@@ -6,6 +6,7 @@ excerpt: "這次的專案因為比較單純，想說來嘗試看看 next.js 的 
 過有人推薦 next-intl 和 next.js 的搭配，便嘗試了一下。結果卻發現不支援 basePath ..."
 feature_image: "maze.jpg"
 guid: "workaround-for-nextjs-next-intl-basepath"
+tags: [Next.js, next-intl, basePath, 國際化, i18n, 故障排除]
 ---
 
 ## 當初為什麼選 next-intl ？

@@ -6,6 +6,7 @@ excerpt: "<p>因為我很常把 vim 開開關關的，所以直接用 vim 來開
 "
 feature_image: null
 guid: "https://blog.wildsky.cc/?p=1641"
+tags: [Vim, Git, 編輯器, 開發技巧]
 ---
 
     alias vgs='vim -p $(git status --porcelain | cut -c 4-)'

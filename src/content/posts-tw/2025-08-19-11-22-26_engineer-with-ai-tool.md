@@ -5,6 +5,7 @@ slug: 'engineer-with-ai-tool'
 excerpt: '最近開始用 Cursor 和 Claude Code 之類的Al協助寫程式的工具，工作效率確實提升了不少。以前要花一個下午能搞定的東西，現在可能不用半小時就完成了。但心情還是挺複雜的。'
 feature_image: 'tamsui-sad-cat-draw.jpeg'
 guid: 'engineer-with-ai-tool'
+tags: ["工程師", "工作態度", "專業發展", "技能培養", "職涯思考"]
 ---
 
 難得發個比較感性的文章小小哀嘆一下。

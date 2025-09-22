@@ -5,6 +5,7 @@ slug: 'guitar-capo-and-key'
 excerpt: '最近上吉他課學到一個有趣的觀念，因為之前在看吉他自學的影片或文章時沒看到，所以來寫個文章把它記下來。'
 feature_image: 'ronan-kruithof-hCLbV9yABxU-unsplash.jpg'
 guid: 'guitar-capo-and-key'
+tags: ["音樂", "吉他", "移調夾", "樂理", "學習體驗"]
 ---
 
 最近上吉他課學到一個有趣的觀念，因為之前在看吉他自學的影片或文章時沒看到，所以來寫個文章把它記下來。

@@ -6,6 +6,7 @@ excerpt: "<p>原討論串在這邊： https://twitter.com/wildskyf/status/123441
 "
 feature_image: ESHBp9iUEAAvZyc.png
 guid: "https://blog.wildsky.cc/?p=1676"
+tags: [JavaScript, 陣列, 程式語法, 前端開發]
 ---
 
 原討論串在這邊： [https://twitter.com/wildskyf/status/1234412013796741120](https://twitter.com/wildskyf/status/1234412013796741120)

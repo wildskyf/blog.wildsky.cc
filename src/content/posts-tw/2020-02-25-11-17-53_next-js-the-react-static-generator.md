@@ -6,6 +6,7 @@ excerpt: "<p>最近因為工作上的需要，開始在研究 Next.js 這個框�
 "
 feature_image: 螢幕快照-2020-02-25-上午11.14.08.png
 guid: "https://blog.wildsky.cc/?p=1572"
+tags: [Next.js, React, 前端框架, 靜態網站]
 ---
 
 最近因為工作上的需要，開始在研究 Next.js 這個框架。

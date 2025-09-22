@@ -5,6 +5,7 @@ slug: 'python-pandas-read-csv'
 excerpt: '最近工作上都在寫 Python，要寫一個 Csv 的 parser，結果遇到編碼問題。'
 feature_image: 'hope-house-press-leather-diary-studio-h3sAF1cVURw-unsplash.jpg'
 guid: 'python-pandas-read-csv'
+tags: [Python, Pandas, CSV, 資料處理, 編碼問題]
 ---
 
 最近工作上都在寫 Python，要寫一個 csv parser，結果遇到編碼問題。Code 大約是長這樣：

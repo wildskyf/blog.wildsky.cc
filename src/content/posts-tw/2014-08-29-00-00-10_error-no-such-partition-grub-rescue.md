@@ -6,6 +6,7 @@ excerpt: "<p>前言 繼之前的 這篇文章 裝了 Ubuntu + windows 雙系統�
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=55"
+tags: [Ubuntu, Windows, GRUB, 系統修復, 雙系統, 故障排除]
 ---
 
 ## 前言

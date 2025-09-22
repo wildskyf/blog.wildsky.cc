@@ -7,6 +7,7 @@ excerpt: |
   最近在 TypeScript 專案中使用 Ramda.js 時遇到了 type error，便想寫個文章記錄一下，方便以後再次遇到時能快速回想起如何調整。
 feature_image: 'pipeline.jpg'
 guid: 'use-ramda-pipe-in-typescript'
+tags: [TypeScript, Ramda.js, Functional Programming, 程式設計, JavaScript]
 ---
 
 今年的其中一個目標是熟悉 functional programming，所以前陣子很常在專案中嘗試

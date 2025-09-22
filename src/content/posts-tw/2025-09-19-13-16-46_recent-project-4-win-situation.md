@@ -6,6 +6,7 @@ excerpt: "最近接了個能源議題相關的產品案子，我替系統開發�
 feature_image: "eos-v1.1-sreenshot.png"
 feature_image_caption: "ePowerOS 螢幕截圖"
 guid: "recent-project-4-win-situation"
+tags: ["專案管理", "職場經驗", "工程師", "商業價值", "團隊合作"]
 ---
 
 

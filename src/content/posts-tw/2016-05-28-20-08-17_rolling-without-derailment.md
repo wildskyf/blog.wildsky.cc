@@ -6,6 +6,7 @@ excerpt: "<p>更新：圖片壞光光了⋯⋯ 有空再修 Orz 因為報告的�
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=537"
+tags: ["科學思考", "學習態度", "物理現象", "探索精神", "邏輯思維"]
 ---
 
 > 更新：圖片壞光光了⋯⋯ 有空再修 Orz

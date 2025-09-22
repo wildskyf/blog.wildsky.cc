@@ -6,6 +6,7 @@ excerpt: "<p>想要 成為工程師 ，也有很多種類型的工程師。 工�
 "
 feature_image: joshua-earle-234307-unsplash-e1553233527832.jpg
 guid: "http://blog.wildsky.cc/?p=113"
+tags: ["工程師", "職涯發展", "專業發展", "技能培養", "工作態度"]
 ---
 
 想要 成為工程師 ，也有很多種類型的工程師。

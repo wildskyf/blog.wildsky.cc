@@ -5,6 +5,7 @@ slug: 'caddy-static-files-host'
 excerpt: '因為偶爾會需要找個地方來放不需要權限就能存取的檔案，剛好手上有台機器裡面有 Caddy，都說 Caddy 是新世紀的 nginx，還可以自動幫我處理 https，便想來試試看直接用它來作為靜態檔案 host。'
 feature_image: 'viktor-talashuk-05HLFQu8bFw-unsplash.jpg'
 guid: 'caddy-static-files-host'
+tags: [Caddy, 網頁伺服器, 靜態檔案, HTTP, 伺服器管理]
 ---
 
 因為偶爾會需要找個地方來放不需要權限就能存取的檔案，剛好手上有台機器裡面有 Caddy，

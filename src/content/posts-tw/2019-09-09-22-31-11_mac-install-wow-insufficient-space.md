@@ -6,6 +6,7 @@ excerpt: "<p>因為遇到這個在看起來很神秘的問題，所以寫篇文�
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=1434"
+tags: [macOS, 遊戲安裝, 儲存空間, World of Warcraft, 系統管理]
 ---
 
 因為遇到這個在看起來很神秘的問題，所以寫篇文章記錄一下。
