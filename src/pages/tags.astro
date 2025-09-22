@@ -70,22 +70,25 @@ const pageDescription = '按分類瀏覽所有標籤，快速找到感興趣的�
 ---
 
 <Layout pageName={pageTitle} pageDesc={pageDescription}>
-  <main class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-8">標籤列表</h1>
-    <p class="text-gray-600 mb-8">按分類瀏覽所有標籤，點擊標籤可查看相關文章</p>
+  <main class="container mx-auto px-4 py-8 text-base-content">
+    <h1 class="text-3xl font-bold mb-8">
+      標籤列表
+    </h1>
+    <p class='mb-8'>按分類瀏覽所有標籤，點擊標籤可查看相關文章</p>
 
     {Object.entries(tagCategories).map(([category, tags]) => (
       tags.length > 0 && (
         <section class="mb-8">
-          <h2 class="text-2xl font-semibold mb-4 text-gray-800">{category}</h2>
+          <h2 class="text-2xl font-semibold mb-4 text-primary before:content-['#'] before:text-gray-100">{category}</h2>
+
           <div class="flex flex-wrap gap-3">
             {tags.map(tag => (
               <a
                 href={`/tags/${tag.name}`}
-                class="inline-flex items-center px-3 py-2 rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-800 hover:text-blue-900 transition-colors duration-200 text-sm font-medium"
+                class="inline-flex items-center px-3 py-2 rounded-lg bg-base-300 text-base-content hover:text-blue-900 transition-colors duration-200 text-sm font-medium"
               >
                 {tag.name}
-                <span class="ml-2 px-2 py-1 bg-blue-200 rounded-full text-xs">
+                <span class="ml-2 px-2 py-1 bg-base-400 rounded-full text-xs">
                   {tag.count}
                 </span>
               </a>

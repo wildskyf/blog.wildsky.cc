@@ -55,23 +55,23 @@ const pageDescription = `View all articles tagged with "${tag}", ${posts.length}
 ---
 
 <Layout pageName={pageTitle} pageDesc={pageDescription}>
-  <main class="container mx-auto px-4 py-8">
+  <main class="container mx-auto px-4 py-8 text-base-content">
     <!-- Breadcrumb navigation -->
-    <nav class="flex items-center space-x-2 text-sm text-gray-600 mb-6">
-      <a href="/en" class="hover:text-blue-600">Home</a>
+    <nav class="flex items-center space-x-2 text-sm opacity-70 mb-6">
+      <a href="/en" class="hover:text-primary">Home</a>
       <span>/</span>
-      <a href="/en/tags" class="hover:text-blue-600">Tags</a>
+      <a href="/en/tags" class="hover:text-primary">Tags</a>
       <span>/</span>
-      <span class="text-gray-900">{tag}</span>
+      <span class="text-base-content">{tag}</span>
     </nav>
 
     <!-- Title area -->
     <div class="mb-8">
       <h1 class="text-3xl font-bold mb-2">
-        Tag: <span class="text-blue-600">{tag}</span>
+        Tag: <span class="text-primary">{tag}</span>
       </h1>
-      <p class="text-gray-600">
-        Found <span class="font-semibold text-gray-900">{posts.length}</span> related article{posts.length !== 1 ? 's' : ''}
+      <p class="opacity-70">
+        Found <span class="font-semibold text-base-content">{posts.length}</span> related article{posts.length !== 1 ? 's' : ''}
       </p>
     </div>
 
@@ -80,20 +80,20 @@ const pageDescription = `View all articles tagged with "${tag}", ${posts.length}
       {posts.map(post => {
         const slug = getPostSlug(post);
         return (
-          <article class="border-b border-gray-200 pb-6 last:border-b-0">
+          <article class="border-b border-base-300 pb-6 last:border-b-0">
             <div class="flex flex-col space-y-2">
               <!-- Post title -->
               <h2 class="text-xl font-semibold">
                 <a
                   href={`/en/posts/${slug}`}
-                  class="text-gray-900 hover:text-blue-600 transition-colors duration-200"
+                  class="text-base-content hover:text-primary transition-colors duration-200"
                 >
                   {post.data.title}
                 </a>
               </h2>
 
               <!-- Post metadata -->
-              <div class="flex items-center space-x-4 text-sm text-gray-500">
+              <div class="flex items-center space-x-4 text-sm opacity-70">
                 <time datetime={post.data.date.toISOString()}>
                   {formatDate(post.data.date)}
                 </time>
@@ -107,7 +107,7 @@ const pageDescription = `View all articles tagged with "${tag}", ${posts.length}
 
               <!-- Post excerpt -->
               {post.data.excerpt && (
-                <p class="text-gray-700 line-clamp-3">
+                <p class="text-base-content opacity-80 line-clamp-3">
                   {post.data.excerpt}
                 </p>
               )}
@@ -120,8 +120,8 @@ const pageDescription = `View all articles tagged with "${tag}", ${posts.length}
                       href={`/en/tags/${postTag}`}
                       class={`px-2 py-1 rounded text-xs font-medium transition-colors duration-200 ${
                         postTag === tag
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          ? 'bg-primary text-primary-content'
+                          : 'bg-base-300 text-base-content hover:bg-base-400'
                       }`}
                     >
                       {postTag}
@@ -138,17 +138,17 @@ const pageDescription = `View all articles tagged with "${tag}", ${posts.length}
     <!-- No posts found -->
     {posts.length === 0 && (
       <div class="text-center py-12">
-        <div class="text-gray-400 mb-4">
+        <div class="opacity-40 mb-4">
           <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
         </div>
-        <h3 class="text-lg font-medium text-gray-900 mb-2">No Posts Found</h3>
-        <p class="text-gray-500">
+        <h3 class="text-lg font-medium text-base-content mb-2">No Posts Found</h3>
+        <p class="opacity-70">
           No articles found for tag "{tag}".
-          <a href="/en/tags" class="text-blue-600 hover:text-blue-800">Browse other tags</a>
+          <a href="/en/tags" class="text-primary hover:text-primary-focus">Browse other tags</a>
           or
-          <a href="/en" class="text-blue-600 hover:text-blue-800">return to home</a>
+          <a href="/en" class="text-primary hover:text-primary-focus">return to home</a>
         </p>
       </div>
     )}
@@ -157,7 +157,7 @@ const pageDescription = `View all articles tagged with "${tag}", ${posts.length}
     <div class="mt-12 text-center">
       <a
         href="/en/tags"
-        class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200"
+        class="btn btn-outline"
       >
         <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
