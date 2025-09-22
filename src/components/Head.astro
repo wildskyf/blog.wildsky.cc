@@ -2,7 +2,7 @@
 import blog_info from '@/data/blog_info.json';
 
 const { pageName, pageDesc, pageImage } = Astro.props;
-const pageTitle = `${pageName} | ${blog_info.name}`;
+const pageTitle = `${pageName ?? 404} | ${blog_info.name}`;
 const desc = pageDesc;
 const imgUrl = pageImage || 'https://blog.wildsky.cc/icons/ms-icon-310x310.png';
 ---
