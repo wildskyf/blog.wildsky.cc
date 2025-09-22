@@ -79,7 +79,7 @@ const pageDescription = '按分類瀏覽所有標籤，快速找到感興趣的�
     {Object.entries(tagCategories).map(([category, tags]) => (
       tags.length > 0 && (
         <section class="mb-8">
-          <h2 class="text-2xl font-semibold mb-4 text-primary before:content-['#'] before:text-gray-100">{category}</h2>
+          <h2 class="text-2xl font-semibold mb-4 text-primary before:content-['#'] before:text-base-content/50">{category}</h2>
 
           <div class="flex flex-wrap gap-3">
             {tags.map(tag => (
