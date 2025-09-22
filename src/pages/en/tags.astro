@@ -1,0 +1,125 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/page.astro';
+
+// Get all English posts
+const posts = await getCollection('posts-en');
+
+// Count tag usage
+const tagCounts = new Map();
+
+posts.forEach(post => {
+  if (post.data.tags) {
+    post.data.tags.forEach(tag => {
+      tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+    });
+  }
+});
+
+// Organize tags by category
+const tagCategories = {
+  'Technology': [],
+  'Career & Work': [],
+  'Life Experience': [],
+  'Thoughts & Views': [],
+  'Finance & Investment': [],
+  'Academic Research': [],
+  'Others': []
+};
+
+// Define keywords for each category (English version)
+const categoryKeywords = {
+  'Technology': ['frontend', 'backend', 'programming', 'javascript', 'react', 'nextjs', 'vuejs', 'typescript', 'python', 'ruby', 'c', 'linux', 'ubuntu', 'macos', 'windows', 'android', 'git', 'vim', 'docker', 'mysql', 'api', 'database', 'web', 'development', 'devtools', 'system', 'security', 'upload', 'static', 'jekyll', 'hugo', 'pwa', 'serviceworker', 'editor', 'version control', 'installation', 'optimization', 'environment', 'troubleshooting'],
+  'Career & Work': ['engineer', 'career', 'internship', 'workplace', 'professional', 'work', 'learning', 'skills', 'communication', 'project', 'team', 'time management', 'business', 'growth'],
+  'Life Experience': ['travel', 'europe', 'music', 'guitar', 'theory', 'concert', 'movie', 'art', 'culture', 'life', 'daily', 'experience', 'germany', 'czech', 'nuremberg', 'bamberg', 'prague', 'interval', 'capo', 'festival', 'creation', 'emotion'],
+  'Thoughts & Views': ['philosophy', 'values', 'life', 'freedom', 'thinking', 'politics', 'society', 'democracy', 'logic', 'framework', 'science', 'exploration', 'critical', 'growth', 'psychology', 'behavior', 'habits', 'reading'],
+  'Finance & Investment': ['finance', 'investment', 'stock', 'money', 'management', 'learning', 'financial', 'market', 'analysis', 'education', 'knowledge', 'value', 'strategy', 'planning', 'mindset'],
+  'Academic Research': ['operating system', 'computer science', 'architecture', 'interrupt', 'storage', 'process', 'linear algebra', 'mathematics', 'vector', 'subspace', 'notes', 'academic']
+};
+
+// Categorize tags
+Array.from(tagCounts.keys()).forEach(tag => {
+  let categorized = false;
+
+  for (const [category, keywords] of Object.entries(categoryKeywords)) {
+    if (keywords.some(keyword => tag.toLowerCase().includes(keyword.toLowerCase()))) {
+      tagCategories[category].push({
+        name: tag,
+        count: tagCounts.get(tag)
+      });
+      categorized = true;
+      break;
+    }
+  }
+
+  if (!categorized) {
+    tagCategories['Others'].push({
+      name: tag,
+      count: tagCounts.get(tag)
+    });
+  }
+});
+
+// Sort tags in each category by count
+Object.keys(tagCategories).forEach(category => {
+  tagCategories[category].sort((a, b) => b.count - a.count);
+});
+
+const pageTitle = 'Tags';
+const pageDescription = 'Browse all tags by category to quickly find articles of interest';
+---
+
+<Layout pageName={pageTitle} pageDesc={pageDescription}>
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8">Tags</h1>
+    <p class="text-gray-600 mb-8">Browse all tags by category, click on a tag to view related articles</p>
+
+    {Object.entries(tagCategories).map(([category, tags]) => (
+      tags.length > 0 && (
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4 text-gray-800">{category}</h2>
+          <div class="flex flex-wrap gap-3">
+            {tags.map(tag => (
+              <a
+                href={`/en/tags/${tag.name}`}
+                class="inline-flex items-center px-3 py-2 rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-800 hover:text-blue-900 transition-colors duration-200 text-sm font-medium"
+              >
+                {tag.name}
+                <span class="ml-2 px-2 py-1 bg-blue-200 rounded-full text-xs">
+                  {tag.count}
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    ))}
+
+    <!-- Statistics -->
+    <section class="mt-12 p-6 bg-gray-50 rounded-lg">
+      <h3 class="text-lg font-semibold mb-4">Statistics</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div>
+          <div class="text-2xl font-bold text-blue-600">{Array.from(tagCounts.keys()).length}</div>
+          <div class="text-sm text-gray-600">Total Tags</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-green-600">{posts.length}</div>
+          <div class="text-sm text-gray-600">Total Posts</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-purple-600">
+            {posts.length > 0 ? Math.max(...Array.from(tagCounts.values())) : 0}
+          </div>
+          <div class="text-sm text-gray-600">Most Used</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-orange-600">
+            {tagCounts.size > 0 ? (Array.from(tagCounts.values()).reduce((a, b) => a + b, 0) / Array.from(tagCounts.keys()).length).toFixed(1) : '0'}
+          </div>
+          <div class="text-sm text-gray-600">Average Count</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

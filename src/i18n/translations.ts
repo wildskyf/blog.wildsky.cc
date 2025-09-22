@@ -11,6 +11,7 @@ export const translations = {
       about: 'about',
       now: 'now',
       blogroll: 'Blogroll',
+      tags: 'tags',
       languages: 'Languages',
     },
     common: {
@@ -33,6 +34,7 @@ export const translations = {
       home: 'home',
       about: 'about',
       blogroll: 'Blogroll',
+      tags: 'tags',
       languages: 'Languages',
     },
     common: {

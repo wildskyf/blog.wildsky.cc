@@ -1,0 +1,125 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/page.astro';
+
+// 獲取所有文章
+const posts = await getCollection('posts-tw');
+
+// 統計標籤使用情況
+const tagCounts = new Map();
+
+posts.forEach(post => {
+  if (post.data.tags) {
+    post.data.tags.forEach(tag => {
+      tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+    });
+  }
+});
+
+// 將標籤按照分類整理
+const tagCategories = {
+  '技術開發': [],
+  '職涯工作': [],
+  '生活體驗': [],
+  '思考觀點': [],
+  '理財投資': [],
+  '學術研究': [],
+  '其他': []
+};
+
+// 定義每個分類的關鍵字
+const categoryKeywords = {
+  '技術開發': ['前端開發', '後端開發', '程式設計', 'JavaScript', 'React', 'Next.js', 'Vue.js', 'TypeScript', 'Python', 'Ruby', 'C語言', 'Linux', 'Ubuntu', 'macOS', 'Windows', 'Android', 'Git', 'Vim', 'Docker', 'MySQL', 'API', '資料庫', '網頁技術', '開發工具', '系統管理', '網路安全', '檔案上傳', '靜態網站', 'Jekyll', 'Hugo', 'PWA', 'Service Worker', '編輯器', '版本控制', '系統安裝', '系統優化', '開發環境', '故障排除', 'Caddy', 'Kubernetes', 'fail2ban', 'Knex.js', 'XState', 'Ramda.js', 'Pandas', 'OpenWRT', 'Electron', 'Fedora'],
+  '職涯工作': ['工程師', '職涯發展', '實習心得', '職場經驗', '專業發展', '工作態度', '學習成長', '技能培養', '溝通技巧', '專案管理', '團隊合作', '時間管理', '商業價值', '職涯思考'],
+  '生活體驗': ['歐洲旅遊', '旅行日記', '音樂', '吉他', '樂理', '演唱會', '電影評論', '藝術鑑賞', '文化評論', '生活觀察', '日常記錄', '學習體驗', '德國', '捷克', '紐倫堡', '班堡', '布拉格', '音程', '移調夾', '音樂節', '創作', '情感分享', '魯拉帕路薩', '詞彙研究', '文化觀察'],
+  '思考觀點': ['人生哲學', '價值觀念', '生命思辨', '自由思考', '哲學思辯', '政治思考', '社會議題', '民主參與', '公投分析', '邏輯思維', '思維框架', '科學思考', '探索精神', '批判思考', '個人成長', '心理觀察', '行為分析', '習慣養成', '讀書心得', '生活哲學', '自由意志', '黑天鵝效應', '思維實驗', '資訊管理', '分類系統'],
+  '理財投資': ['理財規劃', '投資心得', '股票投資', '財務觀念', '金錢管理', '投資學習', '財務報表', '市場分析', '投資教育', '金融知識', '價值投資', '投資策略', '理財教育', '投資入門', '投資心態', '理財觀念', '金錢思維', '金融市場'],
+  '學術研究': ['作業系統', '電腦科學', '系統架構', '中斷處理', '儲存架構', '程序管理', '線性代數', '數學理論', '向量空間', 'Subspace', '學習筆記', '數學', '學術']
+};
+
+// 將標籤分類
+Array.from(tagCounts.keys()).forEach(tag => {
+  let categorized = false;
+
+  for (const [category, keywords] of Object.entries(categoryKeywords)) {
+    if (keywords.includes(tag)) {
+      tagCategories[category].push({
+        name: tag,
+        count: tagCounts.get(tag)
+      });
+      categorized = true;
+      break;
+    }
+  }
+
+  if (!categorized) {
+    tagCategories['其他'].push({
+      name: tag,
+      count: tagCounts.get(tag)
+    });
+  }
+});
+
+// 對每個分類的標籤按文章數量排序
+Object.keys(tagCategories).forEach(category => {
+  tagCategories[category].sort((a, b) => b.count - a.count);
+});
+
+const pageTitle = '標籤列表';
+const pageDescription = '按分類瀏覽所有標籤，快速找到感興趣的文章主題';
+---
+
+<Layout pageName={pageTitle} pageDesc={pageDescription}>
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8">標籤列表</h1>
+    <p class="text-gray-600 mb-8">按分類瀏覽所有標籤，點擊標籤可查看相關文章</p>
+
+    {Object.entries(tagCategories).map(([category, tags]) => (
+      tags.length > 0 && (
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4 text-gray-800">{category}</h2>
+          <div class="flex flex-wrap gap-3">
+            {tags.map(tag => (
+              <a
+                href={`/tags/${tag.name}`}
+                class="inline-flex items-center px-3 py-2 rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-800 hover:text-blue-900 transition-colors duration-200 text-sm font-medium"
+              >
+                {tag.name}
+                <span class="ml-2 px-2 py-1 bg-blue-200 rounded-full text-xs">
+                  {tag.count}
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    ))}
+
+    <!-- 統計資訊 -->
+    <section class="mt-12 p-6 bg-gray-50 rounded-lg">
+      <h3 class="text-lg font-semibold mb-4">統計資訊</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div>
+          <div class="text-2xl font-bold text-blue-600">{Array.from(tagCounts.keys()).length}</div>
+          <div class="text-sm text-gray-600">總標籤數</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-green-600">{posts.length}</div>
+          <div class="text-sm text-gray-600">總文章數</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-purple-600">
+            {Math.max(...Array.from(tagCounts.values()))}
+          </div>
+          <div class="text-sm text-gray-600">最多文章數</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-orange-600">
+            {(Array.from(tagCounts.values()).reduce((a, b) => a + b, 0) / Array.from(tagCounts.keys()).length).toFixed(1)}
+          </div>
+          <div class="text-sm text-gray-600">平均文章數</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

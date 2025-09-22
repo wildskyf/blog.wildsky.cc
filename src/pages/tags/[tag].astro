@@ -1,0 +1,178 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/page.astro';
+
+export const getStaticPaths = async () => {
+  const posts = await getCollection('posts-tw');
+  const tagPosts = new Map();
+
+  // 收集所有標籤和對應的文章
+  posts.forEach(post => {
+    if (post.data.tags) {
+      post.data.tags.forEach(tag => {
+        if (!tagPosts.has(tag)) {
+          tagPosts.set(tag, []);
+        }
+        tagPosts.get(tag).push(post);
+      });
+    }
+  });
+
+  // 為每個標籤生成路由
+  return Array.from(tagPosts.entries()).map(([tag, taggedPosts]) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: taggedPosts.sort((a, b) => new Date(b.data.date) - new Date(a.data.date))
+    }
+  }));
+};
+
+const { tag, posts } = Astro.props;
+
+// 格式化日期
+function formatDate(date) {
+  return new Date(date).toLocaleDateString('zh-TW', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+
+// 提取文章 slug
+function getPostSlug(post) {
+  let slug = post.data.slug;
+  if (!slug) {
+    const filename = post.id.replace('.md', '');
+    const match = filename.match(/^\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}_(.+)$/);
+    slug = match ? match[1] : filename;
+  }
+  return slug;
+}
+
+const pageTitle = `標籤：${tag}`;
+const pageDescription = `查看所有標記為「${tag}」的文章，共 ${posts.length} 篇`;
+---
+
+<Layout pageName={pageTitle} pageDesc={pageDescription}>
+  <main class="container mx-auto px-4 py-8">
+    <!-- 麵包屑導航 -->
+    <nav class="flex items-center space-x-2 text-sm text-gray-600 mb-6">
+      <a href="/" class="hover:text-blue-600">首頁</a>
+      <span>/</span>
+      <a href="/tags" class="hover:text-blue-600">標籤列表</a>
+      <span>/</span>
+      <span class="text-gray-900">{tag}</span>
+    </nav>
+
+    <!-- 標題區域 -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold mb-2">
+        標籤：<span class="text-blue-600">{tag}</span>
+      </h1>
+      <p class="text-gray-600">
+        共找到 <span class="font-semibold text-gray-900">{posts.length}</span> 篇相關文章
+      </p>
+    </div>
+
+    <!-- 文章列表 -->
+    <div class="space-y-6">
+      {posts.map(post => {
+        const slug = getPostSlug(post);
+        return (
+          <article class="border-b border-gray-200 pb-6 last:border-b-0">
+            <div class="flex flex-col space-y-2">
+              <!-- 文章標題 -->
+              <h2 class="text-xl font-semibold">
+                <a
+                  href={`/posts/${slug}`}
+                  class="text-gray-900 hover:text-blue-600 transition-colors duration-200"
+                >
+                  {post.data.title}
+                </a>
+              </h2>
+
+              <!-- 文章資訊 -->
+              <div class="flex items-center space-x-4 text-sm text-gray-500">
+                <time datetime={post.data.date.toISOString()}>
+                  {formatDate(post.data.date)}
+                </time>
+                {post.data.updated && (
+                  <>
+                    <span>•</span>
+                    <span>更新於 {formatDate(post.data.updated)}</span>
+                  </>
+                )}
+              </div>
+
+              <!-- 文章摘要 -->
+              {post.data.excerpt && (
+                <p class="text-gray-700 line-clamp-3">
+                  {post.data.excerpt}
+                </p>
+              )}
+
+              <!-- 文章標籤 -->
+              {post.data.tags && post.data.tags.length > 0 && (
+                <div class="flex flex-wrap gap-2 mt-3">
+                  {post.data.tags.map(postTag => (
+                    <a
+                      href={`/tags/${postTag}`}
+                      class={`px-2 py-1 rounded text-xs font-medium transition-colors duration-200 ${
+                        postTag === tag
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      {postTag}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- 如果沒有文章 -->
+    {posts.length === 0 && (
+      <div class="text-center py-12">
+        <div class="text-gray-400 mb-4">
+          <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">目前沒有文章</h3>
+        <p class="text-gray-500">
+          標籤「{tag}」下暫時沒有文章，
+          <a href="/tags" class="text-blue-600 hover:text-blue-800">瀏覽其他標籤</a>
+          或
+          <a href="/" class="text-blue-600 hover:text-blue-800">回到首頁</a>
+        </p>
+      </div>
+    )}
+
+    <!-- 返回標籤列表 -->
+    <div class="mt-12 text-center">
+      <a
+        href="/tags"
+        class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200"
+      >
+        <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        返回標籤列表
+      </a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
