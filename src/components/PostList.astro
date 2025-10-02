@@ -20,7 +20,7 @@ const root_path = lang == 'en' ? '/en' : '';
           >
             <header>
               <Link href={`${root_path}/posts/${post.slug}`} class="group">
-                <time class="text-sm text-base-content/60" datetime={post.date}>
+                <time class="text-sm" datetime={post.date}>
                   {dayjs(post.date).format('YYYY/MM/DD')}
                 </time>
                 <h2
