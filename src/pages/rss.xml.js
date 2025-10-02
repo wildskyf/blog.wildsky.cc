@@ -27,24 +27,27 @@ export const GET = async (context) => {
     return cleaned;
   };
 
+  const transformPostToRssItem = ({ post, isEn }) => {
+    const prefix = isEn ? '/en' : '';
+
+    return {
+      title: post.data.title,
+      pubDate: post.data.date,
+      description: cleanDescription(post.data.excerpt),
+      link: `${prefix}/posts/${post.slug}/`,
+    };
+  }
+
+  const items = [
+    ...postsTw.map((post) => transformPostToRssItem({ post, isEn: false })),
+    ...postsEn.map((post) => transformPostToRssItem({ post, isEn: true })),
+  ].sort((a,b) => b.pubDate - a.pubDate);
+
   return rss({
     stylesheet: '/assets/pretty-feed-v3.xsl',
     title: "Wildsky's Blog",
     description: 'Dev blog about server hosting, web dev, and some of my daily stuffs.',
     site: context.site,
-    items: [
-      ...postsTw.map((post) => ({
-        title: post.data.title,
-        pubDate: post.data.date,
-        description: cleanDescription(post.data.excerpt),
-        link: `/posts/${post.data.slug}/`,
-      })),
-      ...postsEn.map((post) => ({
-        title: post.data.title,
-        pubDate: post.data.date,
-        description: cleanDescription(post.data.excerpt),
-        link: `/en/posts/${post.data.slug}/`,
-      })),
-    ],
+    items,
   });
 };
