@@ -1,8 +1,8 @@
 ---
-title: "Signing for &#8220;name&#8221; requires a development team. Select a development team in the project editor. (in target &#8216;name&#8217;)"
+title: "Signing for “name” requires a development team. Select a development team in the project editor. (in target ‘name’)"
 date: 2019-03-18T14:03:42
 slug: "solve-xcode-development-team-problem"
-excerpt: "<p>When developing iOS app, sometimes we might face this d&#8230;</p>
+excerpt: "<p>When developing iOS app, sometimes we might face this d...</p>
 "
 feature_image: 2019-03-18-14.01.10-e1553233406372.png
 guid: "http://blog.wildsky.cc/?p=508"

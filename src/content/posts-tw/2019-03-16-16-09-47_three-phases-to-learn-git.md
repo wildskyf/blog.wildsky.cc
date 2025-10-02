@@ -2,7 +2,7 @@
 title: "學習使用 Git 的三個階段"
 date: 2019-03-16T16:09:47
 slug: "three-phases-to-learn-git"
-excerpt: "<p>使用 Git 好一段時間了，也協助了幾個朋友快速上手這個好工具。覺得也差不多可以寫一篇文章，記錄我自己從過去到&#8230;</p>
+excerpt: "<p>使用 Git 好一段時間了，也協助了幾個朋友快速上手這個好工具。覺得也差不多可以寫一篇文章，記錄我自己從過去到...</p>
 "
 feature_image: alvaro-reyes-735660-unsplash-e1553233568816.jpg
 guid: "http://blog.wildsky.cc/?p=402"

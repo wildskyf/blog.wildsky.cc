@@ -2,7 +2,7 @@
 title: "error: could not install smartsocket listener: Address already in use"
 date: 2017-11-04T00:00:19
 slug: "error-could-not-install-smartsocket-listener-address-already-in-use"
-excerpt: "<p>This article is about error message: &#8220;error: coul&#8230;</p>
+excerpt: "<p>This article is about error message: “error: coul...</p>
 "
 feature_image: kyle-simmons-74218-unsplash-e1553233521391.jpg
 guid: "http://blog.wildsky.cc/?p=30"

@@ -2,7 +2,7 @@
 title: "how to concat two mp4 files via command line"
 date: 2017-10-14T23:07:48
 slug: "concat-two-mp4-files"
-excerpt: "<p>I want to concat two mp4 files together, so I found a c&#8230;</p>
+excerpt: "<p>I want to concat two mp4 files together, so I found a c...</p>
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=296"

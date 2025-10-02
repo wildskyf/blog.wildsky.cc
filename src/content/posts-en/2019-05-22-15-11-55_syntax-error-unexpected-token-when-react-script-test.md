@@ -2,7 +2,7 @@
 title: "SyntaxError: Unexpected token when using react-script test"
 date: 2019-05-22T15:11:55
 slug: "syntax-error-unexpected-token-when-react-script-test"
-excerpt: "<p>Environment I created my project by create-react-app, a&#8230;</p>
+excerpt: "<p>Environment I created my project by create-react-app, a...</p>
 "
 feature_image: 螢幕快照-2019-05-22-15.06.12.png.webp
 guid: "http://blog.wildsky.cc/?p=929"

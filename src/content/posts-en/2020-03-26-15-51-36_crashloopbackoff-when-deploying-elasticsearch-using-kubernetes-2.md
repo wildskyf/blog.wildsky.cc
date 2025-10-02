@@ -2,7 +2,7 @@
 title: "CrashLoopBackOff when deploying elasticsearch using kubernetes"
 date: 2020-03-26T15:51:36
 slug: "crashloopbackoff-when-deploying-elasticsearch-using-kubernetes-2"
-excerpt: "<p>When we deploy elasticsearch via kubernetes, sometimes &#8230;</p>
+excerpt: "<p>When we deploy elasticsearch via kubernetes, sometimes ...</p>
 "
 feature_image: benjamin-dada-EDZTb2SQ6j0-unsplash.jpg
 guid: "https://blog.wildsky.cc/?p=1597"

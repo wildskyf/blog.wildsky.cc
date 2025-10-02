@@ -2,7 +2,7 @@
 title: "修復 com.google.process.gapps 意外停止的問題"
 date: 2015-11-26T22:32:21
 slug: "fix-com-google-process-gapps-stop-problem"
-excerpt: "<p>用 Zenfone 一段時間了（差不多久到要換了…吧），刷機、Root、降版、刪除內建應用（雞肋）程式… 基本&#8230;</p>
+excerpt: "<p>用 Zenfone 一段時間了（差不多久到要換了…吧），刷機、Root、降版、刪除內建應用（雞肋）程式… 基本...</p>
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=281"

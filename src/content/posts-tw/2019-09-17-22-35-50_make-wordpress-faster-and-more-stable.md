@@ -2,7 +2,7 @@
 title: "WordPress 加速、穩定計畫之一"
 date: 2019-09-17T22:35:50
 slug: "make-wordpress-faster-and-more-stable"
-excerpt: "<p>最近這幾週比較少寫文章，原因是我最近在嘗試把部落格的架構改掉。而會有這個打算的原因是，最近 host 這個部落&#8230;</p>
+excerpt: "<p>最近這幾週比較少寫文章，原因是我最近在嘗試把部落格的架構改掉。而會有這個打算的原因是，最近 host 這個部落...</p>
 "
 feature_image: fikret-tozak-Zk-Ydz2IAs-unsplash.jpg
 guid: "http://blog.wildsky.cc/?p=1416"

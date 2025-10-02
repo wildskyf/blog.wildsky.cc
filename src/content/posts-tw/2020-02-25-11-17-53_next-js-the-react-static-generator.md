@@ -1,8 +1,8 @@
 ---
-title: "Next.js &#8211; 使用 React.js 的靜態網站產生器"
+title: "Next.js – 使用 React.js 的靜態網站產生器"
 date: 2020-02-25T11:17:53
 slug: "next-js-the-react-static-generator"
-excerpt: "<p>最近因為工作上的需要，開始在研究 Next.js 這個框架。 Why 選擇一樣新技術/框架的時候總要從「為什麼&#8230;</p>
+excerpt: "<p>最近因為工作上的需要，開始在研究 Next.js 這個框架。 Why 選擇一樣新技術/框架的時候總要從「為什麼...</p>
 "
 feature_image: 螢幕快照-2020-02-25-上午11.14.08.png
 guid: "https://blog.wildsky.cc/?p=1572"

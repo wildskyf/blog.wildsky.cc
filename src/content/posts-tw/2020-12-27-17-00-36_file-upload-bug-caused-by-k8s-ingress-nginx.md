@@ -2,7 +2,7 @@
 title: "K8S ingress 上傳檔案的雷（其實和 Nginx 比較有關）"
 date: 2020-12-27T17:00:36
 slug: "file-upload-bug-caused-by-k8s-ingress-nginx"
-excerpt: "<p>前陣子工作上有同事遇到個 bug： 如果在 local 跑檔案上傳，在上傳的過程中，會在後端 server 的&#8230;</p>
+excerpt: "<p>前陣子工作上有同事遇到個 bug： 如果在 local 跑檔案上傳，在上傳的過程中，會在後端 server 的...</p>
 "
 feature_image: ibrahim-boran-XdIrwH98K_E-unsplash.jpg
 guid: "https://blog.wildsky.cc/?p=1664"

@@ -2,7 +2,7 @@
 title: "Save to Readmoo 瀏覽器套件上線"
 date: 2019-11-02T23:06:00
 slug: "save-to-readmoo-release"
-excerpt: "<p>前幾天買了 Readmoo MooInk Plus，開始用了以後才發現原來 Readmoo 也有做稍後閱讀功能&#8230;</p>
+excerpt: "<p>前幾天買了 Readmoo MooInk Plus，開始用了以後才發現原來 Readmoo 也有做稍後閱讀功能...</p>
 "
 feature_image: 825575323fd144c8a33384b9093c95c4_4_1280.jpg
 guid: "https://blog.wildsky.cc/?p=1545"

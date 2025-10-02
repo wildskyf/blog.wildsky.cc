@@ -2,7 +2,7 @@
 title: "Backbone and _ is not defined under notes-common-v2"
 date: 2019-07-28T01:29:05
 slug: "autoptimize-backbone-not-defined"
-excerpt: "<p>When enabling Autoptimize for wordpress site, there mig&#8230;</p>
+excerpt: "<p>When enabling Autoptimize for wordpress site, there mig...</p>
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=1184"
