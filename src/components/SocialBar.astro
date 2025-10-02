@@ -4,16 +4,16 @@ import { Icon } from 'astro-icon/components';
 
 const { class: className } = Astro.props;
 
-const linkClass = 'text-base-content/40 hover:text-base-content/60 transition-colors'
+const linkClass = 'text-base-content opacity-60 hover:opacity-80'
 ---
 
-<div class={`flex text-xl lg:text-4xl py-1 gap-6 justify-start text-gray-600 ${className}`}>
+<div class={`flex text-xl lg:text-4xl py-1 gap-6 justify-start ${className}`}>
   <HeaderLink href="https://g0v.social/@wildsky" target="_blank" class={linkClass}>
     <Icon name="mdi:mastodon" />
   </HeaderLink>
 
-  <HeaderLink href="https://github.com/wildskyf" target="_blank" class={`${linkClass} flex items-center`}>
-    <Icon name="fa6-brands:github-square" class={`${linkClass} text-lg lg:text-3xl`} />
+  <HeaderLink href="https://github.com/wildskyf" target="_blank" class={linkClass}>
+    <Icon name="mdi:github" />
   </HeaderLink>
 
   <HeaderLink href="https://www.linkedin.com/in/wildsky/" target="_blank" class={linkClass}>
@@ -21,7 +21,7 @@ const linkClass = 'text-base-content/40 hover:text-base-content/60 transition-co
   </HeaderLink>
 
   <HeaderLink href="/files/reseme.pdf" target="_blank" download="wildsky.20220901.pdf" class={linkClass}>
-    <Icon name="bx:paperclip" />
+    <Icon name="mdi:resume" />
   </HeaderLink>
 
   <HeaderLink href="/rss.xml" target="_blank" class={linkClass}>
