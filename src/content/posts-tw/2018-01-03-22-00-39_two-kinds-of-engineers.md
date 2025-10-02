@@ -1,15 +1,15 @@
 ---
-title: "成為工程師 &#8211; 職涯發展上，存在著兩種人"
+title: "成為工程師 – 職涯發展上，存在著兩種人"
 date: 2018-01-03T22:00:39
 slug: "two-kinds-of-engineers"
-excerpt: "<p>想要 成為工程師 ，也有很多種類型的工程師。 工程師有兩種，一種是做產品的人，另一種是搞技術的神。 今天和公司&#8230;</p>
-"
-feature_image: joshua-earle-234307-unsplash-e1553233527832.jpg
+excerpt: "想要 成為工程師 ，也有很多種類型的工程師。 工程師有兩種，一種是做產品的人，另一種是搞技術的神。 今天和公司..."
+feature_image: "joshua-earle-234307-unsplash.jpg"
+feature_image_caption: "Photo by <a href='https://unsplash.com/photos/qNX5sxNGbHI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Joshua Earle</a> on <a href='https://unsplash.com/search/photos/balance?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Unsplash</a>"
 guid: "http://blog.wildsky.cc/?p=113"
 tags: ["工程師", "職涯發展", "專業發展", "技能培養", "工作態度"]
 ---
 
-想要 成為工程師 ，也有很多種類型的工程師。
+想要成為工程師 ，也有很多種類型的工程師。
 
 > _工程師有兩種，一種是做產品的人，另一種是搞技術的神。_
 
@@ -45,9 +45,6 @@ tags: ["工程師", "職涯發展", "專業發展", "技能培養", "工作態�
 
 要想同時擁有上述的兩種才華，就一定要犧牲掉某些東西。可能是重要的人相處的時間，可能是睡眠用的健康時間。總之，要得到必先失去，至於何者為重就是看個人選擇了。
 
-![成為工程師 是一件簡單的事，成為哪種工程師，才是一件需要細細思索的事。](/images/joshua-earle-234307-unsplash.jpg)
-
-Photo by [Joshua Earle](https://unsplash.com/photos/qNX5sxNGbHI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/search/photos/balance?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
 ## 我呢？
 

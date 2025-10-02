@@ -1,9 +1,8 @@
 ---
-title: "Firefox 小技巧 &#8211; 釘選分頁 &#038; 分頁群組"
+title: "Firefox 小技巧 – 釘選分頁 & 分頁群組"
 date: 2015-12-24T20:03:23
 slug: "firefox-tips-pin-tab-tab-groups"
-excerpt: "<p>前兩天是師大資訊研究社的服務學習說明會，邀請到 MozTW 的 Irvin 和教育部 ossacc 的 Eri&#8230;</p>
-"
+excerpt: "前兩天是師大資訊研究社的服務學習說明會，邀請到 MozTW 的 Irvin 和教育部 ossacc 的 Eric..."
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=530"
 ---
@@ -35,5 +34,4 @@ guid: "http://blog.wildsky.cc/?p=530"
 可是釘選之後！！你就可以看到被釘選的分頁會出現在每一個群組裡！如影隨形地跟著你！超級方便的啊！
 
 ![](/images/2015-12-24-16-30-32-的螢幕擷圖-1024x576-e1553233377916.png)
-
-這篇文章沒什麼內容，就只是想講一下釘選分頁這玩意兒而已。文末就用當時宣傳這兩個新功能的影片作為收尾吧！感謝 MozTw 幫忙翻譯字幕！！
+這篇文章沒什麼內容，就只是想講一下釘選分頁這玩意兒而已。

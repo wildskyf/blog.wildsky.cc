@@ -1,29 +1,37 @@
 ---
-title: "移除 ubuntu &#038; Windows 開機修復 (error: no such partition. grub rescue)"
+title: "移除 ubuntu & Windows 開機修復 (error: no such partition. grub rescue)"
 date: 2014-08-29T00:00:10
 slug: "error-no-such-partition-grub-rescue"
-excerpt: "<p>前言 繼之前的 這篇文章 裝了 Ubuntu + windows 雙系統後，又會覺得好像空間變太少了，想要把 &#8230;</p>
-"
-feature_image: null
+excerpt: "之前的文章曾裝了 Ubuntu + windows 雙系統，某天又不意外地覺得好像空間變太少了，想要把..."
+feature_image: "grub-error.png"
 guid: "http://blog.wildsky.cc/?p=55"
 tags: [Ubuntu, Windows, GRUB, 系統修復, 雙系統, 故障排除]
 ---
 
 ## 前言
 
-繼之前的 [這篇文章](http://blog.wildsky.cc/posts/dual-system-win-ubuntu/) 裝了 Ubuntu + windows 雙系統後，又會覺得好像空間變太少了，想要把 Ubuntu 移掉。  
+繼之前的 [這篇文章](/posts/dual-system-win-ubuntu/) 裝了 Ubuntu + windows 雙系統後，又會覺得好像空間變太少了，想要把 Ubuntu 移掉。
 原本想說移掉感覺很簡單，就把切給 Ubuntu 的分區清掉，然後還給 Windows 不就好了？
 
-做下去之後重開機，你就發現不是如此，電腦直接卡住，只看到一個好像很可怕的訊息：
+做下去之後重開機，就會發現不是如此，電腦直接卡住，只看到一個好像很可怕的訊息：
 
+```
     error: no such partition.
     grub rescue>
+```
 
-這就是你為什麼來到這裡看文章的原因XD 沒有嘲笑你的意思，我也是因為遇過 不只一次，學到教訓後才有機會寫下這篇文章，這邊就帶你來看看要怎麼處理囉。
+這就是你為什麼來到這裡看文章的原因XD
 
-[![grub_fix](https://farm6.staticflickr.com/5591/14944169666_6f36aa2a07_o.png)](https://www.flickr.com/photos/71353772@N04/14944169666)
+沒有嘲笑你的意思，我也是因為遇過不只一次（歷史總是不段重演），學到教訓後才有機會寫下這篇文章，這邊就帶你來看看要怎麼處理囉。
 
-本文的適用環境是 Windows 8, 8.1 & Ubuntu 12.04 LTS，其他版本可能大同小異，但若有差異請自行斟酌處理。
+
+<div role="alert" className="alert alert-warning opacity-70">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="h-6 w-6 shrink-0 stroke-current">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+  </svg>
+  <span>本文的適用環境是 Windows 8, 8.1 & Ubuntu 12.04 LTS，其他版本可能大同小異，但若有差異請自行斟酌處理。</span>
+</div>
+
 
 ## 正文
 
@@ -47,10 +55,13 @@ tags: [Ubuntu, Windows, GRUB, 系統修復, 雙系統, 故障排除]
 
 輸入下面這些指令，如果你的系統是在 C 槽,就不用更改指令, 但如果是其他地方，第一行就要改成你的系統所在碟！
 
+
+```cmd
     X:\Sources> C:
     C:\> cd boot
     C:\boot> bootrec /fixmbr
     C:\boot> exit
+```
 
 重開機以後應該就會直接進入 Windows 了！
 
