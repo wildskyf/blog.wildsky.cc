@@ -170,7 +170,15 @@ Google Form 的功能其實不錯，只可惜我們希望使用者能多留在�
 
 ![Superhero Chickenpox Guard Image](/images/scg-og-image.png)
 
-連結：<https://superhero.chickenpoxguard.com.tw/>
+正式連結： <del>
+  <a href="https://superhero.chickenpoxguard.com.tw/" target='_blank'>
+    https://superhero.chickenpoxguard.com.tw/
+  </a>
+</del> （已關閉）
+
+Demo 連結： <a href="http://vrv2023.wildsky.cc/" target='_blank'>
+  http://vrv2023.wildsky.cc/
+</a>
 
 這個案子是要製作一個投票網站，讓家長可以投稿，用短影片或圖片秀出自己的小朋友給大家投票。
 

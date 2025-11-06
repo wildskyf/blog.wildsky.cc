@@ -166,7 +166,15 @@ The technology used is Next.js, and the component library is chakara-ui.
 
 ![Superhero Chickenpox Guard Image](/images/scg-og-image.png)
 
-Link: <https://superhero.chickenpoxguard.com.tw/>
+Production Link: <del>
+  <a href="https://superhero.chickenpoxguard.com.tw/">
+    https://superhero.chickenpoxguard.com.tw/
+  </a>
+</del> (closed)
+
+Demo Link: <a href="http://vrv2023.wildsky.cc/" target='_blank'>
+  http://vrv2023.wildsky.cc/
+</a>
 
 This project is to create a voting website that allows parents to submit articles and use short videos or pictures to show their children to vote for everyone.
 
