@@ -23,7 +23,7 @@
     "@fontsource/poppins": "4.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "4.0.10",
-    "astro": "^5.13.9",
+    "astro": "^5.15.6",
     "astro-icon": "^1.1.5",
     "dayjs": "^1.11.18",
     "tailwind-merge": "^3.3.1",
