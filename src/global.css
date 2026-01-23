@@ -41,3 +41,11 @@
   content: '';
 }
 
+
+figcaption a {
+  @apply text-gray-500 font-normal;
+}
+
+figcaption a:hover {
+  @apply text-gray-400;
+}
