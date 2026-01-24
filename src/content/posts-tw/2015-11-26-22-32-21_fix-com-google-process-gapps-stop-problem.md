@@ -6,7 +6,7 @@ excerpt: "<p>用 Zenfone 一段時間了（差不多久到要換了…吧），�
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=281"
-category: "資訊科學"
+category: "軟體工程"
 ---
 
 用 Zenfone 一段時間了（差不多久到要換了…吧），刷機、Root、降版、刪除內建應用（雞肋）程式… 基本上都知道怎麼做了，當然亂玩手機的後果就是偶爾會碰到一些小問題，像是運動的時候 GPS 完全偵測不到導致我跑了 40 分鐘還是 0 km， 或是看著手機上有人來電我卻怎麼滑手機就是無視我，還有這次提到的 **重複出現 com.google.process.gapps 的問題**。

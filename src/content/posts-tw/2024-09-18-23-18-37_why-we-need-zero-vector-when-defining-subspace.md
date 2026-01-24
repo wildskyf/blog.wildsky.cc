@@ -7,7 +7,7 @@ feature_image: 'youve-been-eigenvalued.jpg'
 feature_image_caption: '分享個 Meme - 你被特徵值了！ (source: <a href="https://www.facebook.com/photo.php?fbid=1026497836365110">Meme for mathematicians</a>)'
 guid: "why-we-need-zero-vector-when-defining-subspace"
 category: "資訊科學"
-tags: [數學, 線性代數, Subspace, 零向量, 學習筆記]
+tags: [數學, 線性代數, Subspace, 零向量]
 ---
 
 ## 前言

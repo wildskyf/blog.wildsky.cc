@@ -15,6 +15,19 @@ export const translations = {
       categories: 'categories',
       languages: 'Languages',
     },
+    home: {
+      categoryIntro: '目前涵蓋',
+      categoryOutro: '等主題',
+    },
+    categories: {
+      '軟體工程': 'Software Engineering',
+      '職涯工作': 'Career',
+      '生活體驗': 'Life',
+      '思考觀點': 'Thoughts',
+      '理財投資': 'Finance',
+      '資訊科學': 'Computer Science',
+      '其他': 'Others',
+    },
     common: {
       readMore: '繼續閱讀',
       previous: '上一頁',
@@ -38,6 +51,19 @@ export const translations = {
       tags: 'tags',
       categories: 'categories',
       languages: 'Languages',
+    },
+    home: {
+      categoryIntro: 'Topics include ',
+      categoryOutro: ' and more',
+    },
+    categories: {
+      '軟體工程': 'Software Engineering',
+      '職涯工作': 'Career',
+      '生活體驗': 'Life',
+      '思考觀點': 'Thoughts',
+      '理財投資': 'Finance',
+      '資訊科學': 'Computer Science',
+      '其他': 'Others',
     },
     common: {
       readMore: 'Read more',

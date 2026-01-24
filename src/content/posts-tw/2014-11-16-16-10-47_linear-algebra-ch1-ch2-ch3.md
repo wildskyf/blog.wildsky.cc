@@ -7,7 +7,7 @@ feature_image: "youve-been-eigenvalued.jpg"
 feature_image_caption: '分享個 Meme - 你被特徵值了！ (source: <a href="https://www.facebook.com/photo.php?fbid=1026497836365110">Meme for mathematicians</a>)'
 guid: "linear-algebra-ch1-ch2-ch3"
 category: "資訊科學"
-tags: [數學, 線性代數, Subspace, 零向量, 學習筆記]
+tags: [數學, 線性代數, Subspace, 零向量]
 ---
 
 > 多年前在師大的時候，曾經順手把自己 evernote 中的線性代數筆記丟到學校的 ftp 上（網址是 <https://web.ntnu.edu.tw/~40247038S/Linear%20Algebra/>），默默地也被一些網路上的人引用，十分感謝大家的喜歡。
