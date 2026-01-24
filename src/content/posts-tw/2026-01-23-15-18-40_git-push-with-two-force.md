@@ -6,6 +6,8 @@ excerpt: "前陣子看到有人說他在 force push 時會用 `--force-with-leas
 feature_image: "a-man-that-is-standing-in-the-dark-by-venti-views-on-unsplash.jpg"
 feature_image_caption: "Photo by <a href='https://unsplash.com/@ventiviews?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Venti Views</a> on <a href='https://unsplash.com/photos/a-man-that-is-standing-in-the-dark-35uZM_4wjYg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>"
 guid: "git-push-with-two-force"
+category: "軟體工程"
+tags: [Git, 版本控制, 開發工具]
 ---
 
 前陣子看到有人說他在 force push 時會用 `--force-with-lease` 而不是 `--force`，
