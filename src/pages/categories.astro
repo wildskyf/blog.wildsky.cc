@@ -1,0 +1,109 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/page.astro';
+
+// Get all posts
+const posts = await getCollection('posts-tw');
+
+// Define category list and descriptions
+const categoryInfo = {
+  '軟體工程': {
+    description: '程式設計、網頁開發、系統管理等技術相關文章',
+    icon: '💻'
+  },
+  '職涯工作': {
+    description: '工作經驗、職涯發展、專業成長相關分享',
+    icon: '👔'
+  },
+  '生活體驗': {
+    description: '旅遊、音樂、藝術等生活體驗與觀察',
+    icon: '🌍'
+  },
+  '思考觀點': {
+    description: '人生哲學、價值觀念、思辨與反思',
+    icon: '💭'
+  },
+  '理財投資': {
+    description: '理財規劃、投資心得、財務觀念分享',
+    icon: '💰'
+  },
+  '資訊科學': {
+    description: '電腦科學理論、數學、學術知識',
+    icon: '📚'
+  },
+  '其他': {
+    description: '其他未分類的文章內容',
+    icon: '📝'
+  }
+};
+
+// Count posts by category
+const categoryCounts = new Map();
+posts.forEach(post => {
+  if (post.data.category) {
+    categoryCounts.set(post.data.category, (categoryCounts.get(post.data.category) || 0) + 1);
+  }
+});
+
+// Prepare category data
+const categories = Object.entries(categoryInfo).map(([name, info]) => ({
+  name,
+  ...info,
+  count: categoryCounts.get(name) || 0
+}));
+
+const pageTitle = '文章分類';
+const pageDescription = '按主題分類瀏覽所有文章，快速找到感興趣的內容';
+---
+
+<Layout pageName={pageTitle} pageDesc={pageDescription}>
+  <main class="container mx-auto px-4 py-8 text-base-content">
+    <h1 class="text-3xl font-bold mb-4">
+      文章分類
+    </h1>
+    <p class='mb-8 opacity-70'>按主題分類瀏覽所有文章，點擊分類可查看該類別下的所有文章</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {categories.map(category => (
+        <a
+          href={`/categories/${category.name}`}
+          class="block p-6 rounded-lg bg-base-200 hover:bg-base-300 transition-colors duration-200 border border-base-300"
+        >
+          <div class="flex items-start justify-between mb-3">
+            <div class="text-4xl">{category.icon}</div>
+            <div class="px-3 py-1 bg-primary text-primary-content rounded-full text-sm font-semibold">
+              {category.count}
+            </div>
+          </div>
+
+          <h2 class="text-xl font-bold mb-2 text-base-content">
+            {category.name}
+          </h2>
+
+          <p class="text-sm opacity-70">
+            {category.description}
+          </p>
+        </a>
+      ))}
+    </div>
+
+    <!-- Statistics -->
+    <section class="mt-12 p-6 bg-base-200 rounded-lg">
+      <h3 class="text-lg font-semibold mb-4">統計資訊</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
+        <div>
+          <div class="text-2xl font-bold text-primary">{categories.length}</div>
+          <div class="text-sm opacity-70">總分類數</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-primary">{posts.filter(p => p.data.category).length}</div>
+          <div class="text-sm opacity-70">已分類文章</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-primary">{posts.length}</div>
+          <div class="text-sm opacity-70">總文章數</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

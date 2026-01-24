@@ -1,0 +1,173 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/page.astro';
+
+export const getStaticPaths = async () => {
+  const posts = await getCollection('posts-tw');
+  const categoryPosts = new Map();
+
+  // Collect all categories and their corresponding posts
+  posts.forEach(post => {
+    if (post.data.category) {
+      const category = post.data.category;
+      if (!categoryPosts.has(category)) {
+        categoryPosts.set(category, []);
+      }
+      categoryPosts.get(category).push(post);
+    }
+  });
+
+  // Generate route for each category
+  return Array.from(categoryPosts.entries()).map(([category, categoryPosts]) => ({
+    params: { category },
+    props: {
+      category,
+      posts: categoryPosts.sort((a, b) => new Date(b.data.date) - new Date(a.data.date))
+    }
+  }));
+};
+
+const { category, posts } = Astro.props;
+
+// Format date
+function formatDate(date) {
+  return new Date(date).toLocaleDateString('zh-TW', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+
+// Extract post slug
+function getPostSlug(post) {
+  let slug = post.data.slug;
+  if (!slug) {
+    const filename = post.id.replace('.md', '');
+    const match = filename.match(/^\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}_(.+)$/);
+    slug = match ? match[1] : filename;
+  }
+  return slug;
+}
+
+const pageTitle = `分類：${category}`;
+const pageDescription = `查看所有「${category}」分類的文章，共 ${posts.length} 篇`;
+---
+
+<Layout pageName={pageTitle} pageDesc={pageDescription}>
+  <main class="container mx-auto px-4 py-8 text-base-content">
+    <!-- Breadcrumb navigation -->
+    <nav class="flex items-center space-x-2 text-sm opacity-70 mb-6">
+      <a href="/" class="hover:text-primary">首頁</a>
+      <span>/</span>
+      <a href="/categories" class="hover:text-primary">文章分類</a>
+      <span>/</span>
+      <span class="text-base-content">{category}</span>
+    </nav>
+
+    <!-- Title section -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold mb-2">
+        分類：<span class="text-primary">{category}</span>
+      </h1>
+      <p class="opacity-70">
+        共找到 <span class="font-semibold text-base-content">{posts.length}</span> 篇相關文章
+      </p>
+    </div>
+
+    <!-- Post list -->
+    <div class="space-y-6">
+      {posts.map(post => {
+        const slug = getPostSlug(post);
+        return (
+        <article class="border-b border-base-content/50 pb-6 last:border-b-0">
+            <div class="flex flex-col space-y-2">
+              <!-- Post title -->
+              <h2 class="text-xl font-semibold">
+                <a
+                  href={`/posts/${slug}`}
+                  class="text-base-content hover:text-primary transition-colors duration-200"
+                >
+                  {post.data.title}
+                </a>
+              </h2>
+
+              <!-- Post metadata -->
+              <div class="flex items-center space-x-4 text-sm opacity-70">
+                <time datetime={post.data.date.toISOString()}>
+                  {formatDate(post.data.date)}
+                </time>
+                {post.data.updated && (
+                  <>
+                    <span>•</span>
+                    <span>更新於 {formatDate(post.data.updated)}</span>
+                  </>
+                )}
+              </div>
+
+              <!-- Post excerpt -->
+              {post.data.excerpt && (
+                <p class="text-base-content opacity-80 line-clamp-3">
+                  {post.data.excerpt}
+                </p>
+              )}
+
+              <!-- Post tags -->
+              {post.data.tags && post.data.tags.length > 0 && (
+                <div class="flex flex-wrap gap-2 mt-3">
+                  {post.data.tags.map(tag => (
+                    <a
+                      href={`/tags/${tag}`}
+                      class="px-2 py-1 rounded text-xs font-medium bg-base-300 text-base-content hover:bg-base-400 transition-colors duration-200"
+                    >
+                      {tag}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- If no posts -->
+    {posts.length === 0 && (
+      <div class="text-center py-12">
+        <div class="opacity-40 mb-4">
+          <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-medium text-base-content mb-2">目前沒有文章</h3>
+        <p class="opacity-70">
+          分類「{category}」下暫時沒有文章，
+          <a href="/categories" class="text-primary hover:text-primary-focus">瀏覽其他分類</a>
+          或
+          <a href="/" class="text-primary hover:text-primary-focus">回到首頁</a>
+        </p>
+      </div>
+    )}
+
+    <!-- Back to categories list -->
+    <div class="mt-12 text-center">
+      <a
+        href="/categories"
+        class="btn btn-outline"
+      >
+        <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        返回分類列表
+      </a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

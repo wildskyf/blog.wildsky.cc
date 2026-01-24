@@ -1,0 +1,109 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/page.astro';
+
+// Get all posts
+const posts = await getCollection('posts-en');
+
+// Define category list and descriptions (English)
+const categoryInfo = {
+  'Software Engineering': {
+    description: 'Programming, web development, system administration, and technical articles',
+    icon: '💻'
+  },
+  'Career & Work': {
+    description: 'Work experience, career development, and professional growth',
+    icon: '👔'
+  },
+  'Life Experience': {
+    description: 'Travel, music, art, and life observations',
+    icon: '🌍'
+  },
+  'Thoughts & Philosophy': {
+    description: 'Life philosophy, values, critical thinking, and reflections',
+    icon: '💭'
+  },
+  'Finance & Investment': {
+    description: 'Financial planning, investment insights, and money management',
+    icon: '💰'
+  },
+  'Computer Science': {
+    description: 'Computer science theory, mathematics, and academic knowledge',
+    icon: '📚'
+  },
+  'Others': {
+    description: 'Other uncategorized articles',
+    icon: '📝'
+  }
+};
+
+// Count posts by category
+const categoryCounts = new Map();
+posts.forEach(post => {
+  if (post.data.category) {
+    categoryCounts.set(post.data.category, (categoryCounts.get(post.data.category) || 0) + 1);
+  }
+});
+
+// Prepare category data
+const categories = Object.entries(categoryInfo).map(([name, info]) => ({
+  name,
+  ...info,
+  count: categoryCounts.get(name) || 0
+}));
+
+const pageTitle = 'Categories';
+const pageDescription = 'Browse all articles by category, find topics that interest you';
+---
+
+<Layout pageName={pageTitle} pageDesc={pageDescription} lang="en">
+  <main class="container mx-auto px-4 py-8 text-base-content">
+    <h1 class="text-3xl font-bold mb-4">
+      Categories
+    </h1>
+    <p class='mb-8 opacity-70'>Browse all articles by category, click to view articles in each category</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {categories.map(category => (
+        <a
+          href={`/en/categories/${category.name}`}
+          class="block p-6 rounded-lg bg-base-200 hover:bg-base-300 transition-colors duration-200 border border-base-300"
+        >
+          <div class="flex items-start justify-between mb-3">
+            <div class="text-4xl">{category.icon}</div>
+            <div class="px-3 py-1 bg-primary text-primary-content rounded-full text-sm font-semibold">
+              {category.count}
+            </div>
+          </div>
+
+          <h2 class="text-xl font-bold mb-2 text-base-content">
+            {category.name}
+          </h2>
+
+          <p class="text-sm opacity-70">
+            {category.description}
+          </p>
+        </a>
+      ))}
+    </div>
+
+    <!-- Statistics -->
+    <section class="mt-12 p-6 bg-base-200 rounded-lg">
+      <h3 class="text-lg font-semibold mb-4">Statistics</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
+        <div>
+          <div class="text-2xl font-bold text-primary">{categories.length}</div>
+          <div class="text-sm opacity-70">Total Categories</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-primary">{posts.filter(p => p.data.category).length}</div>
+          <div class="text-sm opacity-70">Categorized Posts</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-primary">{posts.length}</div>
+          <div class="text-sm opacity-70">Total Posts</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
