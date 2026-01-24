@@ -19,6 +19,7 @@ excerpt: \"\"\n\
 feature_image: \"\"\n\
 feature_image_caption: \"\"\n\
 guid: \"$SLUG\"\n\
+category: \"\"\n\
 tags: []
 ---\n\
 "

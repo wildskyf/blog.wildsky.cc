@@ -10,6 +10,8 @@ const postSchema = z.object({
   guid: z.string().optional(),
   updated: z.coerce.date().optional(),
   tags: z.array(z.string()).optional(),
+  // Category: Suggested values - 軟體工程, 職涯工作, 生活體驗, 思考觀點, 理財投資, 資訊科學, 其他
+  category: z.string().optional(),
   reference: z.string().optional(),
 });
 
