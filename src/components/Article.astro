@@ -94,7 +94,7 @@ const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日');
     </figure>
   )}
 
-  <div class={twMerge('article-content', currentLocale === 'tw' && 'tracking-tw-normal')}>
+  <div class={twMerge('article-content text-base-content', currentLocale === 'tw' && 'tracking-tw-normal')}>
     <slot />
   </div>
 </article>
