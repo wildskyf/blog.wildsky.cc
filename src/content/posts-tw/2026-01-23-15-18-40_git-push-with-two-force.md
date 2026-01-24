@@ -7,6 +7,7 @@ feature_image: "a-man-that-is-standing-in-the-dark-by-venti-views-on-unsplash.jp
 feature_image_caption: "Photo by <a href='https://unsplash.com/@ventiviews?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Venti Views</a> on <a href='https://unsplash.com/photos/a-man-that-is-standing-in-the-dark-35uZM_4wjYg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>"
 guid: "git-push-with-two-force"
 category: "軟體工程"
+category: "軟體工程"
 tags: [Git, 版本控制, 開發工具]
 ---
 

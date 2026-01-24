@@ -6,6 +6,7 @@ excerpt: "<p>前陣子看到海總在讀這本書，後來某天吃完午餐後�
 "
 feature_image: img_0009-e1559367898572.jpg
 guid: "http://blog.wildsky.cc/?p=975"
+category: "理財投資"
 tags: ["財務報表", "市場分析", "投資學習", "投資教育", "金融知識"]
 ---
 

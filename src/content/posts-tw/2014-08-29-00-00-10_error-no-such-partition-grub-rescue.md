@@ -5,6 +5,7 @@ slug: "error-no-such-partition-grub-rescue"
 excerpt: "之前的文章曾裝了 Ubuntu + windows 雙系統，某天又不意外地覺得好像空間變太少了，想要把..."
 feature_image: "grub-error.png"
 guid: "http://blog.wildsky.cc/?p=55"
+category: "軟體工程"
 tags: [Ubuntu, Windows, GRUB, 系統修復, 雙系統, 故障排除]
 ---
 

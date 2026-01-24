@@ -6,6 +6,7 @@ excerpt: "<p>先前跟朋友在討論這兩個詞的用法，發現過去學的�
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=1080"
+category: "資訊科學"
 tags: [中文輸入, 紀錄, 語言使用, 學習筆記, 中文]
 ---
 

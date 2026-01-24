@@ -6,6 +6,7 @@ excerpt: "<p>最近一直在玩 Firefox 的擴充套件， 不過剛開始用來
 "
 feature_image: content_farm_blocker.png
 guid: "http://blog.wildsky.cc/?p=308"
+category: "生活體驗"
 ---
 
 最近一直在玩 Firefox 的擴充套件， 不過剛開始用來上手的專案都跟新分頁替換有關， 所以基本上架構大同小異。

@@ -6,6 +6,7 @@ excerpt: ""
 feature_image: ""
 feature_image_caption: ""
 guid: "science-method-and-falsifiability-why-we-need-to-be-humble-to-knowledge"
+category: "思考觀點"
 tags: ["科學方法", "可證偽性", "黑天鵝效應", "知識謙遜"]
 ---
 

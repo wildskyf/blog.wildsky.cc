@@ -6,6 +6,7 @@ excerpt: "想要 成為工程師 ，也有很多種類型的工程師。 工程�
 feature_image: "joshua-earle-234307-unsplash.jpg"
 feature_image_caption: "Photo by <a href='https://unsplash.com/photos/qNX5sxNGbHI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Joshua Earle</a> on <a href='https://unsplash.com/search/photos/balance?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Unsplash</a>"
 guid: "http://blog.wildsky.cc/?p=113"
+category: "職涯工作"
 tags: ["工程師", "職涯發展", "專業發展", "技能培養", "工作態度"]
 ---
 

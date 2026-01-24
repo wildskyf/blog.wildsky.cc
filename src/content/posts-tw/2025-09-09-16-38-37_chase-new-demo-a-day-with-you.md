@@ -6,6 +6,7 @@ excerpt: "最近伴侶 Chase 在街聲發佈了她第一首完全自行處理的
 feature_image: "day-with-you-cover.jpeg"
 feature_image_caption: "這張圖片是我跟伴侶去眠豆腐逛床單的時候，用他們牆上的磁鐵拼的小愛心，她當時看到就立刻說「我要用這個來當這首歌的封面！」😆"
 guid: "chase-new-demo-a-day-with-you"
+category: "生活體驗"
 tags: ["音樂", "創作", "吉他", "生活記錄", "情感分享"]
 ---
 

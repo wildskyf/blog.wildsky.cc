@@ -6,6 +6,7 @@ excerpt: "<p>一點進 Trello 的頁面就看到這個消息： 嗨！在此先�
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=565"
+category: "其他"
 ---
 
 一點進 Trello 的頁面就看到這個消息：

@@ -6,6 +6,7 @@ excerpt: "<p>前陣子工作上有同事遇到個 bug： 如果在 local 跑檔�
 "
 feature_image: ibrahim-boran-XdIrwH98K_E-unsplash.jpg
 guid: "https://blog.wildsky.cc/?p=1664"
+category: "軟體工程"
 tags: [Kubernetes, Nginx, 檔案上傳, 雲端技術]
 ---
 

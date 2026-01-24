@@ -6,6 +6,7 @@ excerpt: "<p>最近這幾週比較少寫文章，原因是我最近在嘗試把�
 "
 feature_image: fikret-tozak-Zk-Ydz2IAs-unsplash.jpg
 guid: "http://blog.wildsky.cc/?p=1416"
+category: "軟體工程"
 tags: [WordPress, 網站優化, 效能調整, 網站管理, 穩定性]
 ---
 

@@ -6,6 +6,7 @@ excerpt: "<p>我一直很喜歡自己 Vimrc 裡的一個設定，就是讓 ctrl 
 "
 feature_image: ousa-chea-552189-unsplash-e1553233367397.jpg
 guid: "http://blog.wildsky.cc/?p=578"
+category: "生活體驗"
 tags: [Vim, 編輯器, 游標操作, 開發技巧]
 ---
 

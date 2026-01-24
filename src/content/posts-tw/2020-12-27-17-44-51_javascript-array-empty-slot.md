@@ -6,6 +6,7 @@ excerpt: "<p>原討論串在這邊： https://twitter.com/wildskyf/status/123441
 "
 feature_image: ESHBp9iUEAAvZyc.png
 guid: "https://blog.wildsky.cc/?p=1676"
+category: "軟體工程"
 tags: [JavaScript, 陣列, 程式語法, 前端開發]
 ---
 

@@ -6,6 +6,7 @@ excerpt: "<p>2019 的農曆年前從 womany 畢業了，覺得好像可以來寫
 "
 feature_image: me-in-womany.png
 guid: "http://blog.wildsky.cc/?p=100"
+category: "職涯工作"
 tags: ["實習心得", "職場經驗", "工程師", "職涯發展", "工作態度"]
 ---
 

@@ -6,6 +6,7 @@ excerpt: "<p>你願意成為一個痛苦的哲學家，或是一隻快樂的豬�
 "
 feature_image: quote-evil-being-the-root-of-mystery-pain-is-the-root-of-knowledge-simone-weil-30-97-98.jpg
 guid: "http://blog.wildsky.cc/?p=602"
+category: "思考觀點"
 tags: ["人生哲學", "價值觀念", "生命思辨", "自由思考", "知識追求"]
 ---
 

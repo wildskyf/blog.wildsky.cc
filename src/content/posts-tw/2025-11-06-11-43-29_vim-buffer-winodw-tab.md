@@ -6,7 +6,8 @@ excerpt: "最近讀到 stackoverflow 上 why-do-vim-experts-prefer-buffers-over-
 feature_image: "lazy-cat.jpg"
 feature_image_caption: "懶惰ㄉ貓"
 guid: "vim-buffer-winodw-tab"
-tags: ["軟體工程", "vim"]
+category: "軟體工程"
+tags: ["vim", "編輯器"]
 ---
 
 最近讀到這個討論 <https://stackoverflow.com/questions/26708822/why-do-vim-experts-prefer-buffers-over-tabs>

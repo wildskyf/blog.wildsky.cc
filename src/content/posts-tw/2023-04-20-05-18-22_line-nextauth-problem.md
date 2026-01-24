@@ -5,6 +5,7 @@ slug: 'line-nextauth-problem'
 excerpt: '最近有個機會要串接 Line Login API，而在實作的過程中遇到了一些問題，因此想要在這篇文章中記錄一下所遇到的問題和解決方式。'
 feature_image: 'nextauth-line.jpg'
 guid: 'line-nextauth-problem'
+category: "軟體工程"
 tags: [NextAuth.js, Line Login, OAuth, 第三方登入, Next.js]
 ---
 

@@ -5,6 +5,7 @@ slug: 'morelocale-2-on-android-4-2-2-is-not-work'
 excerpt: '會寫這篇文章是因為我妹的手機(HTC SV)不是台灣買的，沒有台灣中文，因而需要變更語系...'
 feature_image: null
 guid: 'http://blog.wildsky.cc/?p=61'
+category: "軟體工程"
 tags: [Android, 語言設定, 手機, adb, 故障排除]
 ---
 

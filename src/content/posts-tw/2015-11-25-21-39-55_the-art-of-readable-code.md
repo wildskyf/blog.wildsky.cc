@@ -5,6 +5,7 @@ slug: "the-art-of-readable-code"
 excerpt: "終於讀完《易讀程式之美學》這本書了，在看的過程中一直把自己最近要交的作業拿回來改，由此就可以感受到這本書的..."
 feature_image: "route.jpeg"
 guid: "http://blog.wildsky.cc/?p=362"
+category: "職涯工作"
 tags: ["學習成長", "工程師", "技能培養", "專業發展", "程式設計"]
 ---
 

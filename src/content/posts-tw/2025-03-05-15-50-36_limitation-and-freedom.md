@@ -8,6 +8,7 @@ excerpt: "
 這段話是從超級歪在講星際效應的那部影片看到的，看到這段時讓我覺得很受感動，便去看了看這個哲學家提出的想法，又湧出了更多思緒，便想來記錄下來。"
 feature_image: "freely-fly.jpeg"
 guid: "limitation-and-freedom"
+category: "思考觀點"
 tags: ["生活哲學", "生活感悟", "哲學思辯", "人生思考", "自由意志"]
 ---
 

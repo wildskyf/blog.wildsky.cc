@@ -5,6 +5,7 @@ slug: "firefox-tips-pin-tab-tab-groups"
 excerpt: "前兩天是師大資訊研究社的服務學習說明會，邀請到 MozTW 的 Irvin 和教育部 ossacc 的 Eric..."
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=530"
+category: "生活體驗"
 ---
 
 前兩天是師大資訊研究社的服務學習說明會，邀請到 MozTW 的 Irvin 和教育部 ossacc 的 Eric 來我們學校跟大家開個說明會聊個天。今天要講的不是這個服務學習說明會要幹嘛，而是在跟 Irvin 聊天時發現他的 Firefox 有個神奇的功能「釘選分頁」！！問了幾個有在用 Firefox 的同學，結果大家都不知道這個功能XD 所以就想寫一下文章記錄一下，說不定會對剛好逛到這裏的人有所幫助。

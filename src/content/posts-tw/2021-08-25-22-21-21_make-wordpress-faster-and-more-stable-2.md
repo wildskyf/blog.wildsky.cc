@@ -6,6 +6,7 @@ excerpt: "<p>前篇是 WordPress 加速、穩定計畫之一。 這次改版採�
 "
 feature_image: stephen-phillips-hostreviews-co-uk-sSPzmL7fpWc-unsplash-1.jpg
 guid: "https://blog.wildsky.cc/?p=1751"
+category: "其他"
 ---
 
 前篇是 [WordPress 加速、穩定計畫之一](https://blog.wildsky.cc/posts/make-wordpress-faster-and-more-stable)。

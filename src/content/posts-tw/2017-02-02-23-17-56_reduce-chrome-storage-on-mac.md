@@ -6,6 +6,7 @@ excerpt: "<p>剛剛在整理電腦時，發現 chrome 居然佔用了 2GB 的空
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=306"
+category: "生活體驗"
 ---
 
 ![about chrome](http://blog.wildsky.cc/wp-content/uploads/2017/02/02-chrome.png)

@@ -6,6 +6,7 @@ excerpt: "<p>這篇文章是關於 Time Management 的筆記。很久以前看�
 "
 feature_image: image-e1553233648798.jpg
 guid: "http://blog.wildsky.cc/?p=84"
+category: "職涯工作"
 tags: ["學習成長", "工程師", "時間管理", "專業發展", "工作態度"]
 ---
 

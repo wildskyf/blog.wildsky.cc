@@ -6,6 +6,7 @@ excerpt: "<p>使用 Git 好一段時間了，也協助了幾個朋友快速上�
 "
 feature_image: alvaro-reyes-735660-unsplash-e1553233568816.jpg
 guid: "http://blog.wildsky.cc/?p=402"
+category: "軟體工程"
 tags: [Git, 版本控制, 開發工具]
 ---
 

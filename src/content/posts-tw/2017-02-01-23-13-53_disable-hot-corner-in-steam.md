@@ -6,6 +6,7 @@ excerpt: "<p>最近過年很無聊，又把 Dota2 抓回來玩了。很幸運地
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=301"
+category: "其他"
 ---
 
 ![Steam Screenshot](http://blog.wildsky.cc/wp-content/uploads/2017/02/01-steam.png)

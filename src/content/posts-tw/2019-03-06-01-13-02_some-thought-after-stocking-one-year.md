@@ -6,6 +6,7 @@ excerpt: "<p>最近投資 股票 也接近一年了，開始有一點小小心�
 "
 feature_image: julie-marsh-708555-unsplash-e1553233560655.jpg
 guid: "http://blog.wildsky.cc/?p=314"
+category: "理財投資"
 tags: ["股票投資", "投資心得", "價值投資", "投資策略", "財務觀念"]
 ---
 

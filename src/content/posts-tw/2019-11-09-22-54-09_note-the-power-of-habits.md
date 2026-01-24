@@ -6,6 +6,7 @@ excerpt: "<p>終於看完這本書了。這本書我大概看了兩三個月，�
 "
 feature_image: IMG_4660.jpg
 guid: "https://blog.wildsky.cc/?p=1555"
+category: "職涯工作"
 tags: ["讀書心得", "行為分析", "習慣養成", "心理觀察", "個人成長"]
 ---
 

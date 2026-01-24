@@ -6,6 +6,7 @@ excerpt: "<p>tl;dr Synaptics 觸控板不能動了怎麼辦？下面這串指令
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=284"
+category: "軟體工程"
 tags: [Fedora, Linux, 觸控板, 系統設定]
 ---
 

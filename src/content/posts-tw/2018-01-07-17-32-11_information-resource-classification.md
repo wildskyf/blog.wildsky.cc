@@ -6,6 +6,7 @@ excerpt: "<p>對於不同的文章分類就該有不同的 CTA。 [註]: CTA，C
 "
 feature_image: 1_kcXPzJ_IyXDAlpGRINzaLA-e1553233495259.jpeg
 guid: "http://blog.wildsky.cc/?p=438"
+category: "思考觀點"
 tags: ["思維框架", "邏輯思維", "資訊管理", "分類系統", "學習方法"]
 ---
 

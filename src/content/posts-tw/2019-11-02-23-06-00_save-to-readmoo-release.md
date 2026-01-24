@@ -6,6 +6,7 @@ excerpt: "<p>前幾天買了 Readmoo MooInk Plus，開始用了以後才發現�
 "
 feature_image: 825575323fd144c8a33384b9093c95c4_4_1280.jpg
 guid: "https://blog.wildsky.cc/?p=1545"
+category: "其他"
 ---
 
 前幾天買了 Readmoo MooInk Plus，開始用了以後才發現原來 Readmoo 也有做稍後閱讀功能，比較可惜的是他們這個功能的所需步驟比起另外兩家大牌子的 Pocket 和 Instapaper 還是稍嫌繁瑣，需要把欲存的網址複製起來、開啟網站、找到貼上網址的區塊並將它貼上後，Readmoo 書櫃才開始進行轉換。

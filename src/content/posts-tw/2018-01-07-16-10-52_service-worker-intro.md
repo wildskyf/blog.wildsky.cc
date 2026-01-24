@@ -6,6 +6,7 @@ excerpt: "<p>Service Wroker（後面簡稱 SW）可以看作是介於瀏覽器�
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=167"
+category: "軟體工程"
 tags: [前端開發, Service Worker, PWA, 離線應用]
 ---
 

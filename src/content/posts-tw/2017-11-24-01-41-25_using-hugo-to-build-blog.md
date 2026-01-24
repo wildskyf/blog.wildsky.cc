@@ -6,6 +6,7 @@ excerpt: "<p>最近開始想要學點後端的東西，WM 便建議我可以去�
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=172"
+category: "軟體工程"
 tags: [Hugo, 靜態網站, 部落格, Golang]
 ---
 

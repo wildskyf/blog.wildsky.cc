@@ -5,6 +5,8 @@ slug: 'try-game-porting-toolkit-to-play-ragnarok-online-but-failed'
 excerpt: '這邊文章是想簡單地記錄一下這次的嘗試，雖然結果是以失敗告終，但也許某天會再需要，也希望有機會幫助到對這個議題有興趣的人。'
 feature_image: 'ro-on-mac-failed.jpeg'
 guid: 'try-game-porting-toolkit-to-play-ragnarok-online-but-failed'
+category: "生活體驗"
+tags: [遊戲, macOS, RO, 嘗試記錄]
 ---
 
 先說，這個嘗試的結果是失敗的。會寫這篇文章只是不想要讓努力嘗試的這一晚化為烏有，什麼都沒留下XD

@@ -5,6 +5,7 @@ slug: 'using-xstate-in-react'
 excerpt: '最近在工作上使用了 xstate。今天這篇文章想討論的是，xstate 這套工具在 react 中使用不同的引入方式分別有什麼好處。'
 feature_image: 'harli-marten-two-talking.jpg'
 guid: 'using-xstate-in-react'
+category: "軟體工程"
 tags: [XState, React, 狀態管理, 前端開發, 狀態機]
 ---
 

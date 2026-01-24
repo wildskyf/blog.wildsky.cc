@@ -6,6 +6,7 @@ excerpt: "<p>因為我很常把 vim 開開關關的，所以直接用 vim 來開
 "
 feature_image: null
 guid: "https://blog.wildsky.cc/?p=1641"
+category: "軟體工程"
 tags: [Vim, Git, 編輯器, 開發技巧]
 ---
 

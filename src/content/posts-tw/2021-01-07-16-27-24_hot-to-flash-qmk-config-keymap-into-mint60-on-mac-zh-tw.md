@@ -6,6 +6,7 @@ excerpt: "<p>前言 最近因為肩膀不太舒服，感覺就是上班太久（
 "
 feature_image: ergo-taiwan-mint60-2.jpg
 guid: "https://blog.wildsky.cc/?p=1692"
+category: "其他"
 ---
 
 ## 前言

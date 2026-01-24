@@ -6,6 +6,7 @@ excerpt: "<p>依照慣例，在每一篇文章之前都要哀號一下：這篇�
 "
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=367"
+category: "軟體工程"
 tags: [靜態網站, Jekyll, 部落格, 網站建置]
 ---
 

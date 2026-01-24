@@ -6,6 +6,7 @@ excerpt: "<p>研究投資理財好一陣子了，覺得可以來把一些觀念�
 "
 feature_image: 構造改革.png
 guid: "http://blog.wildsky.cc/?p=1014"
+category: "理財投資"
 tags: ["理財規劃", "投資心得", "財務觀念", "金錢管理", "投資學習"]
 ---
 

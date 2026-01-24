@@ -6,6 +6,7 @@ excerpt: "工作上遇到 Input 的 accept 如果包含雙重複檔名，反而�
 法被選擇。"
 feature_image: "convention.jpg"
 guid: "input-not-accept-file-extension-with-two-dot"
+category: "軟體工程"
 tags: [HTML, Input, 檔案上傳, 副檔名, 前端開發]
 ---
 
