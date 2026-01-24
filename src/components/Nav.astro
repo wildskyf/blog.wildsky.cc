@@ -11,18 +11,19 @@ const t = getTranslation(currentLocale);
 const pages =
   currentLocale === 'tw'
     ? [
-        { title: t.nav.home, url: '/' },
-        { title: t.nav.bookshelf, url: '/bookshelf/' },
-        { title: t.nav.tags, url: '/tags/' },
-        { title: t.nav.about, url: '/about/' },
-        { title: t.nav.now, url: '/now/' },
-        { title: t.nav.blogroll, url: '/more-links/' },
+        { title: t.nav.home, url: '/', group: 'main' },
+        { title: t.nav.about, url: '/about/', group: 'main' },
+        { title: t.nav.now, url: '/now/', group: 'main' },
+        { title: t.nav.blogroll, url: '/more-links/', group: 'main' },
+        { title: t.nav.bookshelf, url: '/bookshelf/', group: 'content' },
+        { title: t.nav.categories, url: '/categories/', group: 'content' },
+        { title: t.nav.tags, url: '/tags/', group: 'content' },
       ]
     : [
-        { title: t.nav.home, url: '/en/' },
-        { title: t.nav.tags, url: '/en/tags/' },
-        { title: t.nav.about, url: '/en/about-en/' },
-        { title: t.nav.blogroll, url : '/en/more-links-en/' },
+        { title: t.nav.home, url: '/en/', group: 'main' },
+        { title: t.nav.about, url: '/en/about-en/', group: 'main' },
+        { title: t.nav.blogroll, url : '/en/more-links-en/', group: 'main' },
+        { title: t.nav.tags, url: '/en/tags/', group: 'content' },
       ];
 
 const otherLocaleUrl = getRelativeLocaleUrl(otherLocale, '');
@@ -53,19 +54,27 @@ const otherLocaleLabel = otherLocale === 'tw' ? '中文' : 'english';
     `}
   >
     {
-      pages.map((item) => {
+      pages.map((item, index) => {
+        const showDivider = index > 0 && pages[index - 1].group !== item.group;
         return (
-          <li
-            class={`
-            text-base-content
-            w-2/3 lg:w-full
-          `}
-          >
-            <HeaderLink href={item.url}>{item.title}</HeaderLink>
-          </li>
+          <>
+            {showDivider && <li class="divider h-[1px] py-0 my-1" />}
+
+            <li
+              class={`
+              text-base-content
+              w-2/3 lg:w-full
+            `}
+            >
+              <HeaderLink href={item.url}>{item.title}</HeaderLink>
+            </li>
+          </>
         );
       })
     }
+
+    <li class="divider h-[1px] py-0 my-1" />
+
     <li
       class={`
         text-base-content
