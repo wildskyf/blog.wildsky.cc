@@ -18,10 +18,16 @@
 
 .article-content {
   @apply tracking-wide;
+  /* Fix long string overflow in RWD */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .article-content a {
   @apply link link-hover link-accent;
+  /* Allow long URLs to break */
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .article-content strong {
@@ -39,6 +45,23 @@
 .article-content blockquote p:before,
 .article-content blockquote p:after {
   content: '';
+}
+
+/* Handle inline code long strings */
+.article-content code {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Code blocks should have horizontal scroll */
+.article-content pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.article-content pre code {
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 
