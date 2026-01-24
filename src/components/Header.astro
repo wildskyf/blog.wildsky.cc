@@ -16,11 +16,19 @@ const home_url = getRelativeLocaleUrl(currentLocale, '');
     navbar bg-base-100 shadow-sm
   `}
 >
-  <h1 class="flex-1">
-    <HeaderLink href={home_url}>
-      {t.site.title}
-    </HeaderLink>
-  </h1>
+  <div class="flex-1 flex gap-x-2">
+    <h1>
+      <HeaderLink href={home_url}>
+        {t.site.title}
+      </HeaderLink>
+    </h1>
+
+    <div class="divider-horizontal max-sm:hidden">・</div>
+
+    <p class="max-sm:hidden text-base-content/70">
+      {t.site.homeDescription}
+    </p>
+  </div>
 
   <Nav />
 </header>
