@@ -1,6 +1,7 @@
 ---
 import dayjs from 'dayjs';
 import { twMerge } from 'tailwind-merge'
+import { Icon } from 'astro-icon/components';
 
 const {
   feature_image_url,
@@ -8,6 +9,8 @@ const {
   date,
   title,
   lang,
+  category,
+  tags,
   ...props
 } = Astro.props;
 const currentLocale = lang || Astro.currentLocale || 'tw';
@@ -31,13 +34,44 @@ const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日');
       `}
       set:html={title}
     />
-    {
-      date && (
-        <p class="text-sm text-base-content/70">
-          <time datetime={date}>{publish_time}</time>
-        </p>
-      )
-    }
+    <div class="flex items-center gap-3 flex-wrap">
+      {
+        date && (
+          <p class="text-sm text-base-content/70">
+            <time datetime={date}>{publish_time}</time>
+          </p>
+        )
+      }
+      {
+        category && (
+          <>
+            <span class="text-base-content/50">•</span>
+            <a
+              href={currentLocale === 'en' ? `/en/categories/${category}` : `/categories/${category}`}
+              class="text-sm px-2 py-1 rounded bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-200"
+            >
+              {category}
+            </a>
+          </>
+        )
+      }
+    </div>
+    {tags && tags.length > 0 && (
+      <div class="flex items-center gap-0.5 mt-3 flex-wrap">
+        <Icon class="text-secondary/70 mr-1" name="bx:label" title="tags" />
+        {tags.map((tag, index) => (
+          <>
+            <a
+              href={currentLocale === 'en' ? `/en/tags/${tag}` : `/tags/${tag}`}
+              class="py-0.5 rounded text-xs font-medium text-base-content transition-colors duration-200 link link-hover"
+            >
+              {tag}
+            </a>
+            {index < tags.length - 1 && <span>・</span>}
+          </>
+        ))}
+      </div>
+    )}
   </header>
 
   {feature_image_url && (

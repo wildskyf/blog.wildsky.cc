@@ -36,16 +36,9 @@ const nextPagePath = hasNextPage ? getRelativeLocaleUrl(currentLocale, 'page/2')
     ${currentLocale === 'tw' ? 'prose-zh tracking-tw-normal' : 'prose-en'}
   `}>
     <div class="not-prose">
-      <h1 class={`
-        text-2xl lg:text-3xl font-bold mb-4 text-base-content
-        ${currentLocale === 'tw' ? 'tracking-tw-normal' : ''}
-      `}>
-        Welcome to my blog!
-      </h1>
-
       <p class={`
         text-md lg:text-lg mb-4
-        ${currentLocale === 'tw' ? 'tracking-tw-normal' : ''}
+        ${currentLocale === 'tw' ? 'font-sans tracking-wider font-normal' : ''}
       `}>
         {t.site.homeDescription}
       </p>

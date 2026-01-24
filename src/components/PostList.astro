@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import dayjs from 'dayjs';
 import Link from '@/components/Link.astro';
 import ReadMoreButton from '../components/ReadMoreButton.astro';
@@ -19,10 +20,54 @@ const root_path = lang == 'en' ? '/en' : '';
             `}
           >
             <header>
-              <Link href={`${root_path}/posts/${post.slug}`} class="group">
-                <time class="text-sm" datetime={post.date}>
-                  {dayjs(post.date).format('YYYY/MM/DD')}
-                </time>
+              <div>
+                <div class="flex flex-wrap items-center gap-3.5 mt-3">
+                  <div class="flex items-center gap-x-1">
+                    <Icon class="text-secondary/70" name="bx:calendar" title="posted at" />
+
+                    <time class="text-sm" datetime={post.date}>
+                      {dayjs(post.date).format('YYYY/MM/DD')}
+                    </time>
+                  </div>
+
+                  {post.category && (
+                    <div class="flex items-center gap-x-1">
+                      <Icon class="text-secondary/70" name="bx:category-alt" title="category" />
+
+                      <a
+                        href={`${root_path}/categories/${post.category}`}
+                        class="link link-hover text-xs transition-colors duration-200"
+                      >
+                        {post.category}
+                      </a>
+                    </div>
+                  )}
+
+                  {(post.tags && post.tags.length > 0) && (
+                    <div class="flex items-center gap-0.5">
+                      <Icon class="text-secondary/70 mr-1" name="bx:label" title="tags" />
+
+                      {post.tags.map((tag, index) => (
+                        <>
+                          <a
+                            href={`${root_path}/tags/${tag}`}
+                            class="py-0.5 rounded text-xs font-medium text-base-content/80 transition-colors duration-200 link link-hover"
+                          >
+                            {tag}
+                          </a>
+                          {index < post.tags.length - 1 && <span>・</span>}
+                        </>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+
+              <Link
+                class="group"
+                href={`${root_path}/posts/${post.slug}`}
+              >
                 <h2
                   class={`
                     text-xl lg:text-2xl font-bold
@@ -33,18 +78,6 @@ const root_path = lang == 'en' ? '/en' : '';
                   style={{ hyphens: 'auto' }}
                 />
               </Link>
-              {post.tags && post.tags.length > 0 && (
-                <div class="flex flex-wrap gap-2 mt-3">
-                  {post.tags.map((tag) => (
-                    <a
-                      href={`${root_path}/tags/${tag}`}
-                      class="py-1 rounded text-xs font-medium text-base-content/80 hover:text-base-content transition-colors duration-200 before:content-['#']"
-                    >
-                      {tag}
-                    </a>
-                  ))}
-                </div>
-              )}
             </header>
           </article>
         </li>
