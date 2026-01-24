@@ -8,7 +8,7 @@ const { lang, postList } = Astro.props;
 const root_path = lang == 'en' ? '/en' : '';
 ---
 
-<ul class="flex flex-col px-4 lg:px-0" lang={lang === 'tw' ? 'zh-Hant-TW' : 'en'}>
+<ul class="flex flex-col px-4 lg:px-0 gap-y-2" lang={lang === 'tw' ? 'zh-Hant-TW' : 'en'}>
   {
     postList.map((post) => {
       return (
@@ -21,11 +21,11 @@ const root_path = lang == 'en' ? '/en' : '';
           >
             <header>
               <div>
-                <div class="flex flex-wrap items-center gap-3.5 mt-3">
+                <div class="flex flex-wrap items-center gap-3.5 mt-3 text-base">
                   <div class="flex items-center gap-x-1">
                     <Icon class="text-secondary/70" name="bx:calendar" title="posted at" />
 
-                    <time class="text-sm" datetime={post.date}>
+                    <time class="" datetime={post.date}>
                       {dayjs(post.date).format('YYYY/MM/DD')}
                     </time>
                   </div>
@@ -36,28 +36,10 @@ const root_path = lang == 'en' ? '/en' : '';
 
                       <a
                         href={`${root_path}/categories/${post.category}`}
-                        class="link link-hover text-xs transition-colors duration-200"
+                        class="link link-hover transition-colors duration-200"
                       >
                         {post.category}
                       </a>
-                    </div>
-                  )}
-
-                  {(post.tags && post.tags.length > 0) && (
-                    <div class="flex items-center gap-0.5">
-                      <Icon class="text-secondary/70 mr-1" name="bx:label" title="tags" />
-
-                      {post.tags.map((tag, index) => (
-                        <>
-                          <a
-                            href={`${root_path}/tags/${tag}`}
-                            class="py-0.5 rounded text-xs font-medium text-base-content/80 transition-colors duration-200 link link-hover"
-                          >
-                            {tag}
-                          </a>
-                          {index < post.tags.length - 1 && <span>・</span>}
-                        </>
-                      ))}
                     </div>
                   )}
                 </div>
@@ -70,6 +52,7 @@ const root_path = lang == 'en' ? '/en' : '';
               >
                 <h2
                   class={`
+                    text-base-content/80
                     text-xl lg:text-2xl font-bold
                     group-hover:underline mt-2
                     ${lang === 'tw' ? 'tracking-tw-normal' : ''}
@@ -78,6 +61,26 @@ const root_path = lang == 'en' ? '/en' : '';
                   style={{ hyphens: 'auto' }}
                 />
               </Link>
+
+              <div class="flex justify-end items-center gap-x-1">
+                {(post.tags && post.tags.length > 0) && (
+                  <div class="flex items-center gap-0.5">
+                    <Icon class="text-secondary/70 mr-1" name="bx:hash" title="tags" />
+
+                    {post.tags.map((tag, index) => (
+                      <>
+                        <a
+                          href={`${root_path}/tags/${tag}`}
+                          class="py-0.5 rounded text-xs font-medium text-base-content/80 transition-colors duration-200 link link-hover"
+                        >
+                          {tag}
+                        </a>
+                        {index < post.tags.length - 1 && <span>・</span>}
+                      </>
+                    ))}
+                  </div>
+                )}
+              </div>
             </header>
           </article>
         </li>

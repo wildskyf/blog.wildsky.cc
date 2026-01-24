@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import ListLayout from '@/layouts/list.astro';
@@ -18,6 +19,35 @@ const sortedPosts = astroPostList
 
 const postList = sortedPosts.slice(0, PAGINATION_PER_PAGE_COUNT);
 
+// Define category info with icons
+const categoryInfo = {
+  '軟體工程': { icon: 'mdi:wrench-outline' },
+  '職涯工作': { icon: 'mdi:work-outline' },
+  '生活體驗': { icon: 'mdi:person-outline' },
+  '思考觀點': { icon: 'mdi:thought-bubble-outline' },
+  '理財投資': { icon: 'mdi:money' },
+  '資訊科學': { icon: 'mdi:computer' },
+  '其他': { icon: 'mdi:note-multiple-outline' }
+};
+
+// Count posts by category
+const categoryOrder = ['軟體工程', '職涯工作', '生活體驗', '思考觀點', '理財投資', '資訊科學', '其他'];
+const categoryCounts = new Map();
+astroPostList.forEach(post => {
+  if (post.data.category) {
+    categoryCounts.set(post.data.category, (categoryCounts.get(post.data.category) || 0) + 1);
+  }
+});
+
+// Prepare category data in order
+const categoryData = categoryOrder
+  .map(name => ({
+    name,
+    icon: categoryInfo[name]?.icon || '📄',
+    count: categoryCounts.get(name) || 0
+  }))
+  .filter(cat => cat.count > 0);
+
 const pageName = currentLocale === 'en' ? 'HomePage' : '首頁';
 // Only show next page link if there are more posts than can fit on one page
 const hasNextPage = sortedPosts.length > PAGINATION_PER_PAGE_COUNT;
@@ -36,6 +66,8 @@ const nextPagePath = hasNextPage ? getRelativeLocaleUrl(currentLocale, 'page/2')
     ${currentLocale === 'tw' ? 'prose-zh tracking-tw-normal' : 'prose-en'}
   `}>
     <div class="not-prose">
+      <SocialBar class="mb-4" />
+
       <p class={`
         text-md lg:text-lg mb-4
         ${currentLocale === 'tw' ? 'font-sans tracking-wider font-normal' : ''}
@@ -43,7 +75,28 @@ const nextPagePath = hasNextPage ? getRelativeLocaleUrl(currentLocale, 'page/2')
         {t.site.homeDescription}
       </p>
 
-      <SocialBar class="mb-4" />
+      {categoryData.length > 0 && (
+        <div class="mb-6">
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {categoryData.map(cat => (
+              <a
+                href={`/categories/${cat.name}`}
+                class={`
+                  flex items-center gap-2 px-3 py-2 rounded-lg
+                  bg-base-200 hover:bg-base-300
+                  transition-colors duration-200
+                  text-base lg:text-lg
+                  ${currentLocale === 'tw' ? 'tracking-tw-normal' : ''}
+                `}
+              >
+                <Icon class="text-secondary" name={cat.icon} />
+                <span class="font-medium">{currentLocale === 'tw' ? cat.name : t.categories[cat.name]}</span>
+                <span class="opacity-60 text-sm">({cat.count})</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div class="w-full flex justify-center">
         <div class="divider w-xs"></div>
