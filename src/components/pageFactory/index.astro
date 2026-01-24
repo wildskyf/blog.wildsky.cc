@@ -3,7 +3,6 @@ import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import ListLayout from '@/layouts/list.astro';
-import SocialBar from '@/components/SocialBar.astro';
 import { articleMapper } from '@/utils';
 import { PAGINATION_PER_PAGE_COUNT } from '@/data/globalConfig';
 import { getTranslation } from '@/i18n/utils.ts';
@@ -66,15 +65,6 @@ const nextPagePath = hasNextPage ? getRelativeLocaleUrl(currentLocale, 'page/2')
     ${currentLocale === 'tw' ? 'prose-zh tracking-tw-normal' : 'prose-en'}
   `}>
     <div class="not-prose">
-      <SocialBar class="mb-4" />
-
-      <p class={`
-        text-md lg:text-lg mb-4
-        ${currentLocale === 'tw' ? 'font-sans tracking-wider font-normal' : ''}
-      `}>
-        {t.site.homeDescription}
-      </p>
-
       {categoryData.length > 0 && (
         <div class="mb-6">
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
