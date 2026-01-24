@@ -3,7 +3,7 @@ export const translations = {
     site: {
       title: "Wildsky's Blog",
       description: 'Easy things should be easy, and hard things should be possible.',
-      homeDescription: 'Dev blog about web dev, server hosting, and some of my daily stuffs.',
+      homeDescription: '分享軟體開發、職涯成長、生活體驗與思考的個人部落格',
     },
     nav: {
       home: 'home',
@@ -12,6 +12,7 @@ export const translations = {
       now: 'now',
       blogroll: 'Blogroll',
       tags: 'tags',
+      categories: 'categories',
       languages: 'Languages',
     },
     common: {
@@ -28,13 +29,14 @@ export const translations = {
     site: {
       title: "Wildsky's Blog",
       description: 'Easy things should be easy, and hard things should be possible.',
-      homeDescription: 'Dev blog about web dev, server hosting, and some of my daily stuffs.',
+      homeDescription: 'Personal blog about software engineering, career growth, life experiences, and thoughts.',
     },
     nav: {
       home: 'home',
       about: 'about',
       blogroll: 'Blogroll',
       tags: 'tags',
+      categories: 'categories',
       languages: 'Languages',
     },
     common: {
