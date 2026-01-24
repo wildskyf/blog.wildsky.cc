@@ -2,8 +2,7 @@
 title: "Jekyll – 超好用靜態網站產生器"
 date: 2015-07-11T22:41:34
 slug: "static-generator-jekyll"
-excerpt: "<p>依照慣例，在每一篇文章之前都要哀號一下：這篇其實想寫很久了，只是因為事情太多一直沒時間開始撰寫，還有許多文章想...</p>
-"
+excerpt: "依照慣例，在每一篇文章之前都要哀號一下：這篇其實想寫很久了，只是因為事情太多一直沒時間開始撰寫，還有許多文章想..."
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=367"
 category: "軟體工程"

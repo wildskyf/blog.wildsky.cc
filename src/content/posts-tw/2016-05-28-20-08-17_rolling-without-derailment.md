@@ -2,8 +2,7 @@
 title: "不出軌的輪子"
 date: 2016-05-28T20:08:17
 slug: "rolling-without-derailment"
-excerpt: "<p>更新：圖片壞光光了⋯⋯ 有空再修 Orz 因為報告的需要，所以就寫了這篇文章，之前上課上到的時候就想要記錄下來...</p>
-"
+excerpt: "更新：圖片壞光光了⋯⋯ 有空再修 Orz 因為報告的需要，所以就寫了這篇文章，之前上課上到的時候就想要記錄下來..."
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=537"
 category: "其他"

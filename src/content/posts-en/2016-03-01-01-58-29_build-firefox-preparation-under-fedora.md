@@ -2,8 +2,7 @@
 title: "Preparation for building Firefox under Fedora"
 date: 2016-03-01T01:58:29
 slug: "build-firefox-preparation-under-fedora"
-excerpt: "<p>Today, I want to build Firefox myself. So I found this ...</p>
-"
+excerpt: "Today, I want to build Firefox myself. So I found this ..."
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=180"
 tags: ["Firefox", "Fedora", "Linux", "Build", "Mercurial"]

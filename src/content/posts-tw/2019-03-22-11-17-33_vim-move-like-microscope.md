@@ -2,8 +2,7 @@
 title: "[Vim Protips] Let’s move faster – 顯微鏡式移動法"
 date: 2019-03-22T11:17:33
 slug: "vim-move-like-microscope"
-excerpt: "<p>我一直很喜歡自己 Vimrc 裡的一個設定，就是讓 ctrl 上下變成一次移動五行，使游標移動有像顯微鏡般的粗...</p>
-"
+excerpt: "我一直很喜歡自己 Vimrc 裡的一個設定，就是讓 ctrl 上下變成一次移動五行，使游標移動有像顯微鏡般的粗..."
 feature_image: ousa-chea-552189-unsplash-e1553233367397.jpg
 guid: "http://blog.wildsky.cc/?p=578"
 category: "生活體驗"

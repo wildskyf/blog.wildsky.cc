@@ -2,8 +2,7 @@
 title: "JavaScript Array 中，還有一種情況叫 Empty Slot"
 date: 2020-12-27T17:44:51
 slug: "javascript-array-empty-slot"
-excerpt: "<p>原討論串在這邊： https://twitter.com/wildskyf/status/1234412013...</p>
-"
+excerpt: "原討論串在這邊： https://twitter.com/wildskyf/status/1234412013..."
 feature_image: ESHBp9iUEAAvZyc.png
 guid: "https://blog.wildsky.cc/?p=1676"
 category: "軟體工程"

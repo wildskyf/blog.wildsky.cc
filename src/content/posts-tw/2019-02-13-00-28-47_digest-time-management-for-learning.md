@@ -2,8 +2,7 @@
 title: "筆記 — 找到時間成為更好的開發者 (Time Management)"
 date: 2019-02-13T00:28:47
 slug: "digest-time-management-for-learning"
-excerpt: "<p>這篇文章是關於 Time Management 的筆記。很久以前看過這篇 finding-time-to-be...</p>
-"
+excerpt: "這篇文章是關於 Time Management 的筆記。很久以前看過這篇 finding-time-to-be..."
 feature_image: image-e1553233648798.jpg
 guid: "http://blog.wildsky.cc/?p=84"
 category: "職涯工作"

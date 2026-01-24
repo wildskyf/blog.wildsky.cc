@@ -2,8 +2,7 @@
 title: "找房記錄 – 將決策清單化可以避免疏漏甚至加速"
 date: 2019-04-19T11:52:24
 slug: "rent-record-with-decision-list"
-excerpt: "<p>以前住在前公司附近，走路五分鐘就能上班的路程，換了公司之後，就要搭公車再走路十分鐘上班、搭捷運再走十五分鐘下班...</p>
-"
+excerpt: "以前住在前公司附近，走路五分鐘就能上班的路程，換了公司之後，就要搭公車再走路十分鐘上班、搭捷運再走十五分鐘下班..."
 feature_image: img_9107-e1555653685767.jpg
 guid: "http://blog.wildsky.cc/?p=840"
 category: "思考觀點"

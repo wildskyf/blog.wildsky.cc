@@ -2,7 +2,7 @@
 title: "科學方法與可證偽性：為什麼我們該對知識保持謙遜"
 date: 2025-09-30T13:49:38+08:00
 slug: "science-method-and-falsifiability-why-we-need-to-be-humble-to-knowledge"
-excerpt: ""
+excerpt: "前陣子讀 Taleb 的《黑天鵝效應》，讓我重新思考了「科學方法」這件事。想說這次思考的過程還蠻有意思的，便來將它記錄下來。"
 feature_image: ""
 feature_image_caption: ""
 guid: "science-method-and-falsifiability-why-we-need-to-be-humble-to-knowledge"

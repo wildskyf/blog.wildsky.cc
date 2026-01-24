@@ -2,8 +2,7 @@
 title: "vim typescriptreact ‘redrawtime’ exceeded, syntax highlighting disabled"
 date: 2021-03-02T16:28:48
 slug: "vim-typescriptreact-redrawtime-exceeded-syntax-highlighting-disabled"
-excerpt: "<p>I am a front-end developer, and I use vim as my editor ...</p>
-"
+excerpt: "I am a front-end developer, and I use vim as my editor ..."
 feature_image: null
 guid: "https://blog.wildsky.cc/?p=1670"
 tags: ["Vim", "TypeScript", "React", "Editor", "Syntax Highlighting"]

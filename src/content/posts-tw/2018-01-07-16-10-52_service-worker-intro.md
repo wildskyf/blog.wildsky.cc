@@ -2,8 +2,7 @@
 title: "初步理解 Service Worker"
 date: 2018-01-07T16:10:52
 slug: "service-worker-intro"
-excerpt: "<p>Service Wroker（後面簡稱 SW）可以看作是介於瀏覽器、網路、和 Web app 之間的 prox...</p>
-"
+excerpt: "Service Wroker（後面簡稱 SW）可以看作是介於瀏覽器、網路、和 Web app 之間的 prox..."
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=167"
 category: "軟體工程"

@@ -2,8 +2,7 @@
 title: "error: could not install smartsocket listener: Address already in use"
 date: 2017-11-04T00:00:19
 slug: "error-could-not-install-smartsocket-listener-address-already-in-use"
-excerpt: "<p>This article is about error message: “error: coul...</p>
-"
+excerpt: "This article is about error message: “error: coul..."
 feature_image: kyle-simmons-74218-unsplash-e1553233521391.jpg
 guid: "http://blog.wildsky.cc/?p=30"
 tags: ["ADB", "Android", "Error Fix", "Troubleshooting", "Linux"]

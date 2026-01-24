@@ -2,8 +2,7 @@
 title: "[Vim Protips] vgs：用 vim 開啟尚未 commit 出去的檔案們"
 date: 2020-06-22T13:46:40
 slug: "vgs-vim-git-status"
-excerpt: "<p>因為我很常把 vim 開開關關的，所以直接用 vim 來開啟 git status 裡的檔案也是家常便飯，這篇文章就在講要怎麼快速地做到這件事。</p>
-"
+excerpt: "因為我很常把 vim 開開關關的，所以直接用 vim 來開啟 git status 裡的檔案也是家常便飯，這篇文章就在講要怎麼快速地做到這件事。"
 feature_image: null
 guid: "https://blog.wildsky.cc/?p=1641"
 category: "軟體工程"

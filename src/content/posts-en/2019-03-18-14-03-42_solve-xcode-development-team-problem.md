@@ -2,8 +2,7 @@
 title: "Signing for “name” requires a development team. Select a development team in the project editor. (in target ‘name’)"
 date: 2019-03-18T14:03:42
 slug: "solve-xcode-development-team-problem"
-excerpt: "<p>When developing iOS app, sometimes we might face this d...</p>
-"
+excerpt: "When developing iOS app, sometimes we might face this d..."
 feature_image: 2019-03-18-14.01.10-e1553233406372.png
 guid: "http://blog.wildsky.cc/?p=508"
 tags: ["Xcode", "iOS", "Development Team", "Code Signing", "Error Fix"]

@@ -2,8 +2,7 @@
 title: "Synaptics 觸控板在 Fedora 沒反應"
 date: 2015-03-23T22:38:19
 slug: "fedora-synaptics"
-excerpt: "<p>tl;dr Synaptics 觸控板不能動了怎麼辦？下面這串指令敲下去其實就解決了一切問題： 老實說這篇文章...</p>
-"
+excerpt: "tl;dr Synaptics 觸控板不能動了怎麼辦？下面這串指令敲下去其實就解決了一切問題： 老實說這篇文章..."
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=284"
 category: "軟體工程"

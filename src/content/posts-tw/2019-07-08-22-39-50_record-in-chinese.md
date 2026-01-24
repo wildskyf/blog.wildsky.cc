@@ -2,8 +2,7 @@
 title: "記錄 ＆ 紀錄 兩者差異為何"
 date: 2019-07-08T22:39:50
 slug: "record-in-chinese"
-excerpt: "<p>先前跟朋友在討論這兩個詞的用法，發現過去學的和現在常見的有點不太一樣，這邊記一下差異： 現在學的「記錄」與「紀...</p>
-"
+excerpt: "先前跟朋友在討論這兩個詞的用法，發現過去學的和現在常見的有點不太一樣，這邊記一下差異： 現在學的「記錄」與「紀..."
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=1080"
 category: "其他"

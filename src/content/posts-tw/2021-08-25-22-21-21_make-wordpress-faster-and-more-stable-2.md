@@ -2,8 +2,7 @@
 title: "Blog 加速、穩定計畫之二"
 date: 2021-08-25T22:21:21
 slug: "make-wordpress-faster-and-more-stable-2"
-excerpt: "<p>前篇是 WordPress 加速、穩定計畫之一。 這次改版採用了上次提到的「換前端不換後端」的方案，雖然一樣有...</p>
-"
+excerpt: "前篇是 WordPress 加速、穩定計畫之一。 這次改版採用了上次提到的「換前端不換後端」的方案，雖然一樣有..."
 feature_image: stephen-phillips-hostreviews-co-uk-sSPzmL7fpWc-unsplash-1.jpg
 guid: "https://blog.wildsky.cc/?p=1751"
 category: "其他"

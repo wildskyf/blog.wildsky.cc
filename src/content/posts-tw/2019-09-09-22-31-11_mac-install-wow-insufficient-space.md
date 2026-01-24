@@ -2,8 +2,7 @@
 title: "安裝魔獸世界卻遇到磁碟空間不足的解法"
 date: 2019-09-09T22:31:11
 slug: "mac-install-wow-insufficient-space"
-excerpt: "<p>因為遇到這個在看起來很神秘的問題，所以寫篇文章記錄一下。</p>
-"
+excerpt: "因為遇到這個在看起來很神秘的問題，所以寫篇文章記錄一下。"
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=1434"
 category: "生活體驗"

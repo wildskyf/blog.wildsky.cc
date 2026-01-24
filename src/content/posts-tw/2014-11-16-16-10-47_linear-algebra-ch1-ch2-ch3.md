@@ -2,7 +2,7 @@
 title: "線性代數 Ch1 & Ch2 & Ch3"
 date: 2014-11-16T16:10:47+08:00
 slug: "linear-algebra-ch1-ch2-ch3"
-excerpt: "多年前在師大的時候，曾經順手把自己 evernote 中的線性代數筆記丟到學校的 ftp 上（網址是 <https://web.ntnu.edu.tw/~40247038S/Linear%20Algebra/>），默默地也被一些網路上的人引用，十分感謝大家的喜歡。近日 (2026年) 臨時起意，將其內容移至自己的部落格中，期望過兩天有機會再修訂一下，並將後續章節補上。日期為表紀念，仍押原先的 2014/11/16。"
+excerpt: "多年前在師大的時候，曾經順手把自己 evernote 中的線性代數筆記丟到學校的 ftp 上（網址是 ），默默地也被一些網路上的人引用，十分感謝大家的喜歡。近日 (2026年) 臨時起意，將其內容移至自己的部落格中，期望過兩天有機會再修訂一下，並將後續章節補上。日期為表紀念，仍押原先的 2014/11/16。"
 feature_image: "youve-been-eigenvalued.jpg"
 feature_image_caption: '分享個 Meme - 你被特徵值了！ (source: <a href="https://www.facebook.com/photo.php?fbid=1026497836365110">Meme for mathematicians</a>)'
 guid: "linear-algebra-ch1-ch2-ch3"

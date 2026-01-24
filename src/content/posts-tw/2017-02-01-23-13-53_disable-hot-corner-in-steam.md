@@ -2,8 +2,7 @@
 title: "Mac 避免誤撞邊緣而啟動熱角功能"
 date: 2017-02-01T23:13:53
 slug: "disable-hot-corner-in-steam"
-excerpt: "<p>最近過年很無聊，又把 Dota2 抓回來玩了。很幸運地在 Mac 上可以玩這款遊戲！ 但是一開進去後就發現一個...</p>
-"
+excerpt: "最近過年很無聊，又把 Dota2 抓回來玩了。很幸運地在 Mac 上可以玩這款遊戲！ 但是一開進去後就發現一個..."
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=301"
 category: "其他"
