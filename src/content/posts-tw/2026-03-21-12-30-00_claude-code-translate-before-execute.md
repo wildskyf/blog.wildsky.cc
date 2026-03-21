@@ -3,7 +3,7 @@ title: "叫 Claude Code 在執行指令前替我翻譯翻譯"
 date: 2026-03-21T12:30:00+08:00
 slug: "claude-code-translate-before-execute"
 excerpt: "在 Claude.md 中加一條規則，讓 Claude Code 在執行前先把中文 prompt 翻譯成英文，既能練英文，又能確認它是否正確理解你的意思。"
-feature_image: "/images/translation-for-me.jpg"
+feature_image: "translation-for-me.jpg"
 feature_image_caption: "我絕對不是想放這張圖才發這篇文章的。 😆"
 guid: "claude-code-translate-before-execute"
 category: "軟體工程"
