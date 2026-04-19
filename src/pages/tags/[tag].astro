@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/page.astro';
+import TagList from '@/components/TagList.astro';
 
 export const getStaticPaths = async () => {
   const posts = await getCollection('posts-tw');
@@ -113,22 +114,7 @@ const pageDescription = `查看所有標記為「${tag}」的文章，共 ${post
               )}
 
               <!-- 文章標籤 -->
-              {post.data.tags && post.data.tags.length > 0 && (
-                <div class="flex flex-wrap gap-2 mt-3">
-                  {post.data.tags.map(postTag => (
-                    <a
-                      href={`/tags/${postTag}`}
-                      class={`px-2 py-1 rounded text-xs font-medium transition-colors duration-200 ${
-                        postTag === tag
-                          ? 'bg-primary text-primary-content'
-                          : 'bg-base-300 text-base-content hover:bg-base-400'
-                      }`}
-                    >
-                      {postTag}
-                    </a>
-                  ))}
-                </div>
-              )}
+              <TagList tags={post.data.tags} lang="tw" currentTag={tag} />
             </div>
           </article>
         );

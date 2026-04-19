@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/page.astro';
+import TagList from '@/components/TagList.astro';
 
 export const getStaticPaths = async () => {
   const posts = await getCollection('posts-en');
@@ -112,18 +113,7 @@ const pageDescription = `Browse all articles in "${category}" category, ${posts.
               )}
 
               <!-- Post tags -->
-              {post.data.tags && post.data.tags.length > 0 && (
-                <div class="flex flex-wrap gap-2 mt-3">
-                  {post.data.tags.map(tag => (
-                    <a
-                      href={`/en/tags/${tag}`}
-                      class="px-2 py-1 rounded text-xs font-medium bg-base-300 text-base-content hover:bg-base-400 transition-colors duration-200"
-                    >
-                      {tag}
-                    </a>
-                  ))}
-                </div>
-              )}
+              <TagList tags={post.data.tags} lang="en" />
             </div>
           </article>
         );
