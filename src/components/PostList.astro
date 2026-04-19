@@ -3,6 +3,7 @@ import { Icon } from 'astro-icon/components';
 import dayjs from 'dayjs';
 import Link from '@/components/Link.astro';
 import ReadMoreButton from '../components/ReadMoreButton.astro';
+import TagList from '@/components/TagList.astro';
 
 const { lang, postList } = Astro.props;
 const root_path = lang == 'en' ? '/en' : '';
@@ -62,23 +63,7 @@ const root_path = lang == 'en' ? '/en' : '';
               </Link>
 
               <div class="flex justify-end items-center gap-x-1">
-                {(post.tags && post.tags.length > 0) && (
-                  <div class="flex items-center gap-0.5">
-                    <Icon class="text-secondary/70 mr-1" name="bx:hash" title="tags" />
-
-                    {post.tags.map((tag, index) => (
-                      <>
-                        <a
-                          href={`${root_path}/tags/${tag}`}
-                          class="py-0.5 rounded text-xs font-medium  transition-colors duration-200 link link-hover"
-                        >
-                          {tag}
-                        </a>
-                        {index < post.tags.length - 1 && <span>・</span>}
-                      </>
-                    ))}
-                  </div>
-                )}
+                <TagList tags={post.tags} lang={lang} />
               </div>
             </header>
           </article>
