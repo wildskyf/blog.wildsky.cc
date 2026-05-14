@@ -3,7 +3,7 @@ export const translations = {
     site: {
       title: "Wildsky's Blog",
       description: 'Easy things should be easy, and hard things should be possible.',
-      homeDescription: '分享軟體開發、職涯成長、生活體驗與思考的個人部落格',
+      homeDescription: 'Humans can make mistakes. Always review before running the code.',
     },
     nav: {
       home: 'home',
