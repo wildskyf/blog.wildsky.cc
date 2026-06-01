@@ -1,0 +1,65 @@
+---
+import PageLayout from '@/layouts/page.astro';
+
+const pageName = 'Notes';
+const pageDesc = 'Near-real-time public notes from @wildsky@social.wildsky.cc.';
+---
+
+<PageLayout lang="tw" pageName={pageName} pageDesc={pageDesc}>
+  <article class="prose prose-xl max-md:prose-lg max-w-none bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16 prose-zh tracking-tw-normal">
+    <header class="not-prose mb-8">
+      <p class="text-sm uppercase tracking-[0.18em] text-secondary/80 mb-2">GoToSocial</p>
+      <h1 class="text-3xl lg:text-4xl font-bold text-base-content mb-4 tracking-tw-normal">Notes</h1>
+      <p class="text-base lg:text-lg text-base-content/70 leading-8 max-w-2xl">
+        這裡顯示 <a class="link link-hover link-accent" href="https://social.wildsky.cc/@wildsky" rel="me">@wildsky@social.wildsky.cc</a>
+        的最新公開短文。資料由同源 Cloudflare Pages Function 代理 RSS feed，約每分鐘更新，不需要重新 build 部落格。
+      </p>
+    </header>
+
+    <section
+      id="notes-feed"
+      class="notes-feed not-prose"
+      data-notes-endpoint="/api/notes"
+      aria-live="polite"
+      aria-busy="true"
+    >
+      <p class="notes-muted" data-notes-loading>載入 notes 中…</p>
+      <noscript>
+        <p class="notes-muted">需要 JavaScript 才能載入即時 notes。你也可以直接查看 <a class="link link-hover link-accent" href="https://social.wildsky.cc/@wildsky/feed.rss">RSS feed</a>。</p>
+      </noscript>
+    </section>
+  </article>
+
+  <script is:inline>
+    (() => {
+      const root = document.getElementById('notes-feed');
+      if (!root) return;
+
+      const endpoint = root.dataset.notesEndpoint || '/api/notes';
+
+      const renderFallback = (message = '') => {
+        root.setAttribute('aria-busy', 'false');
+        root.innerHTML = message ? `<p class="notes-muted">${message}</p>` : '';
+      };
+
+      fetch(endpoint, {
+        headers: { accept: 'application/json' },
+        credentials: 'same-origin',
+      })
+        .then((response) => response.ok ? response.json() : Promise.reject(new Error(`notes api ${response.status}`)))
+        .then((payload) => {
+          root.setAttribute('aria-busy', 'false');
+
+          if (payload && typeof payload.html === 'string' && payload.html.trim()) {
+            root.innerHTML = `<div class="notes-list">${payload.html}</div>`;
+            return;
+          }
+
+          renderFallback('目前沒有公開 notes。');
+        })
+        .catch(() => {
+          renderFallback('Notes 暫時讀不到；部落格本體不受影響。');
+        });
+    })();
+  </script>
+</PageLayout>

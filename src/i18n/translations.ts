@@ -10,6 +10,7 @@ export const translations = {
       bookshelf: 'bookshelf',
       about: 'about',
       now: 'now',
+      notes: 'notes',
       blogroll: 'Blogroll',
       tags: 'tags',
       categories: 'categories',
@@ -47,6 +48,7 @@ export const translations = {
     nav: {
       home: 'home',
       about: 'about',
+      notes: 'notes',
       blogroll: 'Blogroll',
       tags: 'tags',
       categories: 'categories',

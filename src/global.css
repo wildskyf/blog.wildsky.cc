@@ -64,6 +64,42 @@
   overflow-wrap: normal;
 }
 
+.notes-feed {
+  @apply min-h-24;
+}
+
+.notes-list {
+  @apply flex flex-col gap-6;
+}
+
+.note-card {
+  @apply rounded-xl border border-base-300 bg-base-100 px-5 py-5 shadow-sm;
+}
+
+.note-content {
+  @apply prose prose-lg max-w-none text-base-content;
+  letter-spacing: 0.02em;
+}
+
+.note-content > :first-child {
+  margin-top: 0;
+}
+
+.note-content > :last-child {
+  margin-bottom: 0;
+}
+
+.note-meta {
+  @apply mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-base-300 pt-3 text-sm text-base-content/60;
+}
+
+.note-permalink {
+  @apply link link-hover link-accent;
+}
+
+.notes-muted {
+  @apply rounded-xl border border-base-300 bg-base-100 px-5 py-4 text-base-content/60;
+}
 
 figcaption a {
   @apply text-gray-500 font-normal;
