@@ -8,6 +8,19 @@ import { articleMapper } from '@/utils';
 const { lang, entry } = Astro.props;
 const { Content } = await render(entry);
 const data = articleMapper(entry);
+const rawBody = entry.body ?? '';
+const textForReadingTime = rawBody
+  .replace(/```[\s\S]*?```/g, ' ')
+  .replace(/~~~[\s\S]*?~~~/g, ' ')
+  .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+  .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+  .replace(/<[^>]+>/g, ' ')
+  .replace(/[#>*_`~\-]/g, ' ');
+const cjkCount = (textForReadingTime.match(/[\u3400-\u9fff\uf900-\ufaff]/g) ?? []).length;
+const latinText = textForReadingTime.replace(/[\u3400-\u9fff\uf900-\ufaff]/g, ' ');
+const wordCount = latinText.trim() ? latinText.trim().split(/\s+/).length : 0;
+const readingMinutes = Math.max(1, Math.ceil(cjkCount / 500 + wordCount / 220));
+const readingTime = lang === 'en' ? `${readingMinutes} min read` : `約 ${readingMinutes} 分鐘閱讀`;
 ---
 
 <PageLayout
@@ -15,8 +28,9 @@ const data = articleMapper(entry);
   pageName={data.title}
   pageDesc={data.excerpt}
   pageImage={data.abs_feature_image}
+  pageType="article"
 >
-  <Article {...data} lang={lang}>
+  <Article {...data} lang={lang} readingTime={readingTime}>
     <Content />
   </Article>
 </PageLayout>

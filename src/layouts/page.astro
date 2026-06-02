@@ -7,10 +7,10 @@ import RootLayout from './root.astro';
 const currentLocale = Astro.currentLocale || 'tw';
 const lang_code = currentLocale === 'tw' ? 'zh-Hant-TW' : 'en';
 
-const { pageName, pageDesc, pageImage } = Astro.props;
+const { pageName, pageDesc, pageImage, pageType } = Astro.props;
 ---
 
-<RootLayout pageName={pageName} pageDesc={pageDesc} pageImage={pageImage}>
+<RootLayout pageName={pageName} pageDesc={pageDesc} pageImage={pageImage} pageType={pageType}>
   <div
     id="page"
     class={`

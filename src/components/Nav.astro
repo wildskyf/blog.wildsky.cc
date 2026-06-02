@@ -31,8 +31,8 @@ const otherLocaleUrl = getRelativeLocaleUrl(otherLocale, '');
 const otherLocaleLabel = otherLocale === 'tw' ? '中文' : 'english';
 ---
 
-<div class="dropdown dropdown-end">
-  <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+<div class="dropdown dropdown-end relative z-50">
+  <div tabindex="0" role="button" aria-label="Open navigation menu" class="btn btn-ghost btn-circle">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -50,7 +50,7 @@ const otherLocaleLabel = otherLocale === 'tw' ? '中文' : 'english';
   <ul
     tabindex="0"
     class={`
-      menu menu-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow
+      menu menu-lg dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow
       capitalize
     `}
   >

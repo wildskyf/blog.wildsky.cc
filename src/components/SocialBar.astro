@@ -6,31 +6,31 @@ import HeaderLink from '@/components/HeaderLink.astro';
 const { class: className } = Astro.props;
 
 const linkClass = 'text-base-content opacity-60 hover:opacity-80'
+const links = [
+  { href: 'https://g0v.social/@wildsky', label: 'Mastodon profile', icon: 'mdi:mastodon' },
+  { href: 'https://github.com/wildskyf', label: 'GitHub profile', icon: 'mdi:github' },
+  { href: 'https://www.linkedin.com/in/wildsky/', label: 'LinkedIn profile', icon: 'ant-design:linkedin-filled' },
+  { href: '/files/reseme.pdf', label: 'Resume PDF', icon: 'mdi:resume', download: 'wildsky.20220901.pdf' },
+  { href: '/rss.xml', label: 'RSS feed', icon: 'mdi:rss-box' },
+];
 ---
 
 <div
   class={twMerge(
-    "lg:fixed lg:bottom-8 lg:right-8 lg:flex-col",
+    "lg:fixed lg:bottom-8 lg:right-8 lg:flex-col lg:z-10",
     `flex text-xl lg:text-4xl py-1 gap-6 justify-evenly ${className}`
   )}
 >
-  <HeaderLink href="https://g0v.social/@wildsky" target="_blank" class={linkClass}>
-    <Icon name="mdi:mastodon" />
-  </HeaderLink>
-
-  <HeaderLink href="https://github.com/wildskyf" target="_blank" class={linkClass}>
-    <Icon name="mdi:github" />
-  </HeaderLink>
-
-  <HeaderLink href="https://www.linkedin.com/in/wildsky/" target="_blank" class={linkClass}>
-    <Icon name="ant-design:linkedin-filled" />
-  </HeaderLink>
-
-  <HeaderLink href="/files/reseme.pdf" target="_blank" download="wildsky.20220901.pdf" class={linkClass}>
-    <Icon name="mdi:resume" />
-  </HeaderLink>
-
-  <HeaderLink href="/rss.xml" target="_blank" class={linkClass}>
-    <Icon name="mdi:rss-box" />
-  </HeaderLink>
+  {links.map((link) => (
+    <HeaderLink
+      href={link.href}
+      target="_blank"
+      aria-label={link.label}
+      title={link.label}
+      download={link.download}
+      class={linkClass}
+    >
+      <Icon name={link.icon} aria-hidden="true" />
+    </HeaderLink>
+  ))}
 </div>

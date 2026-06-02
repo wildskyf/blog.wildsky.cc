@@ -11,6 +11,7 @@ const {
   lang,
   category,
   tags,
+  readingTime,
   ...props
 } = Astro.props;
 const currentLocale = lang || Astro.currentLocale || 'tw';
@@ -52,6 +53,14 @@ const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日');
             >
               {category}
             </a>
+          </>
+        )
+      }
+      {
+        readingTime && (
+          <>
+            <span class="text-base-content/50">•</span>
+            <p class="text-sm text-base-content/70">{readingTime}</p>
           </>
         )
       }

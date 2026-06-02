@@ -1,14 +1,17 @@
 ---
 import blog_info from '@/data/blog_info.json';
 
-const { pageName, pageDesc, pageImage } = Astro.props;
+const { pageName, pageDesc, pageImage, pageType = 'website' } = Astro.props;
 const pageTitle = `${pageName ?? 404} | ${blog_info.name}`;
 const desc = pageDesc;
 const imgUrl = pageImage || 'https://blog.wildsky.cc/icons/ms-icon-310x310.png';
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const twitterCard = pageImage ? 'summary_large_image' : 'summary';
 ---
 
 <title>{pageTitle}</title>
 <meta name="description" content={desc} />
+<link rel="canonical" href={canonicalUrl} />
 <link
   rel="alternate"
   type="application/rss+xml"
@@ -33,14 +36,15 @@ const imgUrl = pageImage || 'https://blog.wildsky.cc/icons/ms-icon-310x310.png';
 <meta name="msapplication-TileColor" content="#001A33" />
 <meta name="theme-color" content="#1D384B" />
 
-<meta itemProp="name" content={pageTitle} />
-<meta itemProp="description" content={desc} />
-<meta itemProp="image" content={imgUrl} />
+<meta itemprop="name" content={pageTitle} />
+<meta itemprop="description" content={desc} />
+<meta itemprop="image" content={imgUrl} />
 
-<meta name="twitter:card" content={imgUrl} />
+<meta name="twitter:card" content={twitterCard} />
 <meta name="twitter:site" content="@wildskyf" />
 <meta name="twitter:title" content={pageTitle} />
 <meta name="twitter:description" content={desc} />
+<meta name="twitter:image" content={imgUrl} />
 <meta name="twitter:image:src" content={imgUrl} />
 
 <!--
@@ -53,7 +57,8 @@ const imgUrl = pageImage || 'https://blog.wildsky.cc/icons/ms-icon-310x310.png';
   // <meta property="article:modified_time" content="2013-09-16T19:08:47+01:00" />
 -->
 <meta property="og:title" content={pageTitle} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:type" content={pageType} />
 <meta property="og:image" content={imgUrl} />
 <meta property="og:description" content={desc} />
 <meta property="og:site_name" content={blog_info.name} />
-<meta property="article:section" content="Article Section" />
