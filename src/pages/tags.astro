@@ -4,9 +4,10 @@ import Layout from '@/layouts/page.astro';
 
 // 獲取所有文章
 const posts = await getCollection('posts-tw');
+type TagCount = { name: string; count: number };
 
 // 統計標籤使用情況
-const tagCounts = new Map();
+const tagCounts = new Map<string, number>();
 
 posts.forEach(post => {
   if (post.data.tags) {
@@ -17,7 +18,7 @@ posts.forEach(post => {
 });
 
 // 將標籤按照分類整理
-const tagCategories = {
+const tagCategories: Record<string, TagCount[]> = {
   '軟體工程': [],
   '職涯工作': [],
   '生活體驗': [],
@@ -28,7 +29,7 @@ const tagCategories = {
   };
 
 // 定義每個分類的關鍵字
-const categoryKeywords = {
+const categoryKeywords: Record<string, string[]> = {
   '軟體工程': ['前端開發', '後端開發', '程式設計', 'JavaScript', 'React', 'Next.js', 'Vue.js', 'TypeScript', 'Python', 'Ruby', 'C語言', 'Linux', 'Ubuntu', 'macOS', 'Windows', 'Android', 'Git', 'Vim', 'Docker', 'MySQL', 'API', '資料庫', '網頁技術', '開發工具', '系統管理', '網路安全', '檔案上傳', '靜態網站', 'Jekyll', 'Hugo', 'PWA', 'Service Worker', '編輯器', '版本控制', '系統安裝', '系統優化', '開發環境', '故障排除', 'Caddy', 'Kubernetes', 'fail2ban', 'Knex.js', 'XState', 'Ramda.js', 'Pandas', 'Electron', 'Fedora', '開發技巧'],
   '職涯工作': ['工程師', '職涯發展', '實習心得', '職場經驗', '專業發展', '工作態度', '學習成長', '技能培養', '溝通技巧', '專案管理', '團隊合作', '時間管理', '商業價值', '職涯思考'],
   '生活體驗': ['歐洲旅遊', '旅行日記', '音樂', '吉他', '樂理', '演唱會', '電影評論', '藝術鑑賞', '文化評論', '生活觀察', '日常記錄', '學習體驗', '德國', '捷克', '紐倫堡', '班堡', '布拉格', '音程', '移調夾', '音樂節', '創作', '情感分享', '魯拉帕路薩', '詞彙研究', '文化觀察'],
@@ -45,7 +46,7 @@ Array.from(tagCounts.keys()).forEach(tag => {
     if (keywords.includes(tag)) {
       tagCategories[category].push({
         name: tag,
-        count: tagCounts.get(tag)
+        count: tagCounts.get(tag) ?? 0
       });
       categorized = true;
       break;
@@ -55,7 +56,7 @@ Array.from(tagCounts.keys()).forEach(tag => {
   if (!categorized) {
     tagCategories['其他'].push({
       name: tag,
-      count: tagCounts.get(tag)
+      count: tagCounts.get(tag) ?? 0
     });
   }
 });

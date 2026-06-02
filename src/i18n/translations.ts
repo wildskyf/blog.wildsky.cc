@@ -47,7 +47,9 @@ export const translations = {
     },
     nav: {
       home: 'home',
+      bookshelf: 'bookshelf',
       about: 'about',
+      now: 'now',
       notes: 'notes',
       blogroll: 'Blogroll',
       tags: 'tags',

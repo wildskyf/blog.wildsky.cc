@@ -6,11 +6,13 @@ import ListLayout from '@/layouts/list.astro';
 import { articleMapper } from '@/utils';
 import { PAGINATION_PER_PAGE_COUNT } from '@/data/globalConfig';
 import { getTranslation } from '@/i18n/utils.ts';
+import type { Locale } from '@/i18n/translations.ts';
 
-const currentLocale = Astro.currentLocale || 'tw';
+const currentLocale = (Astro.currentLocale === 'en' ? 'en' : 'tw') as Locale;
 const t = getTranslation(currentLocale);
 
-const astroPostList = await getCollection(`posts-${currentLocale}`);
+const collectionName = currentLocale === 'en' ? 'posts-en' : 'posts-tw';
+const astroPostList = await getCollection(collectionName);
 
 const sortedPosts = astroPostList
   .map(articleMapper)
@@ -27,11 +29,11 @@ const categoryInfo = {
   '理財投資': { icon: 'mdi:money' },
   '資訊科學': { icon: 'mdi:computer' },
   '其他': { icon: 'mdi:note-multiple-outline' }
-};
+} as const;
 
 // Count posts by category
-const categoryOrder = ['軟體工程', '職涯工作', '生活體驗', '思考觀點', '理財投資', '資訊科學', '其他'];
-const categoryCounts = new Map();
+const categoryOrder = ['軟體工程', '職涯工作', '生活體驗', '思考觀點', '理財投資', '資訊科學', '其他'] as const;
+const categoryCounts = new Map<string, number>();
 astroPostList.forEach(post => {
   if (post.data.category) {
     categoryCounts.set(post.data.category, (categoryCounts.get(post.data.category) || 0) + 1);

@@ -2,10 +2,20 @@
 import { Icon } from 'astro-icon/components';
 import dayjs from 'dayjs';
 import Link from '@/components/Link.astro';
-import ReadMoreButton from '../components/ReadMoreButton.astro';
 import TagList from '@/components/TagList.astro';
 
-const { lang, postList } = Astro.props;
+type PostListItem = {
+  date: Date | string;
+  category?: string | null;
+  slug: string;
+  title: string;
+  tags?: string[];
+};
+
+const { lang, postList } = Astro.props as {
+  lang?: 'tw' | 'en';
+  postList: PostListItem[];
+};
 const root_path = lang == 'en' ? '/en' : '';
 ---
 
@@ -26,7 +36,7 @@ const root_path = lang == 'en' ? '/en' : '';
                   <div class="flex items-center gap-x-1">
                     <Icon class="text-secondary/70" name="bx:calendar" title="posted at" />
 
-                    <time class="" datetime={post.date}>
+                    <time class="" datetime={new Date(post.date).toISOString()}>
                       {dayjs(post.date).format('YYYY/MM/DD')}
                     </time>
                   </div>

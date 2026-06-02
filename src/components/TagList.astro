@@ -1,7 +1,11 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-const { tags, lang, currentTag } = Astro.props;
+const { tags = [], lang, currentTag } = Astro.props as {
+  tags?: string[];
+  lang?: 'tw' | 'en';
+  currentTag?: string;
+};
 const root_path = lang === 'en' ? '/en' : '';
 ---
 

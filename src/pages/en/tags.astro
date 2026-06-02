@@ -4,9 +4,10 @@ import Layout from '@/layouts/page.astro';
 
 // Get all English posts
 const posts = await getCollection('posts-en');
+type TagCount = { name: string; count: number };
 
 // Count tag usage
-const tagCounts = new Map();
+const tagCounts = new Map<string, number>();
 
 posts.forEach(post => {
   if (post.data.tags) {
@@ -17,7 +18,7 @@ posts.forEach(post => {
 });
 
 // Organize tags by category
-const tagCategories = {
+const tagCategories: Record<string, TagCount[]> = {
   'Technology': [],
   'Career & Work': [],
   'Life Experience': [],
@@ -28,7 +29,7 @@ const tagCategories = {
 };
 
 // Define keywords for each category (English version)
-const categoryKeywords = {
+const categoryKeywords: Record<string, string[]> = {
   'Technology': ['frontend', 'backend', 'programming', 'javascript', 'react', 'nextjs', 'vuejs', 'typescript', 'python', 'ruby', 'c', 'linux', 'ubuntu', 'macos', 'windows', 'android', 'git', 'vim', 'docker', 'mysql', 'api', 'database', 'web', 'development', 'devtools', 'system', 'security', 'upload', 'static', 'jekyll', 'hugo', 'pwa', 'serviceworker', 'editor', 'version control', 'installation', 'optimization', 'environment', 'troubleshooting'],
   'Career & Work': ['engineer', 'career', 'internship', 'workplace', 'professional', 'work', 'learning', 'skills', 'communication', 'project', 'team', 'time management', 'business', 'growth'],
   'Life Experience': ['travel', 'europe', 'music', 'guitar', 'theory', 'concert', 'movie', 'art', 'culture', 'life', 'daily', 'experience', 'germany', 'czech', 'nuremberg', 'bamberg', 'prague', 'interval', 'capo', 'festival', 'creation', 'emotion'],
@@ -45,7 +46,7 @@ Array.from(tagCounts.keys()).forEach(tag => {
     if (keywords.some(keyword => tag.toLowerCase().includes(keyword.toLowerCase()))) {
       tagCategories[category].push({
         name: tag,
-        count: tagCounts.get(tag)
+        count: tagCounts.get(tag) ?? 0
       });
       categorized = true;
       break;
@@ -55,7 +56,7 @@ Array.from(tagCounts.keys()).forEach(tag => {
   if (!categorized) {
     tagCategories['Others'].push({
       name: tag,
-      count: tagCounts.get(tag)
+      count: tagCounts.get(tag) ?? 0
     });
   }
 });

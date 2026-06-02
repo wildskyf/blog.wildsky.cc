@@ -1,10 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
 import { PAGINATION_PER_PAGE_COUNT } from '@/data/globalConfig';
 import PaginationPage from '@/components/pageFactory/pagination.astro';
 import { articleMapper } from '@/utils';
 
-export const getStaticPaths = async ({ paginate }) => {
+export const getStaticPaths = (async ({ paginate }) => {
   const allPost = await getCollection('posts-tw');
 
   return paginate(
@@ -13,7 +14,7 @@ export const getStaticPaths = async ({ paginate }) => {
       pageSize: PAGINATION_PER_PAGE_COUNT,
     }
   );
-};
+}) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
 ---

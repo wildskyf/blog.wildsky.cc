@@ -1,11 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '@/layouts/page.astro';
 import TagList from '@/components/TagList.astro';
 
+type PostEntry = CollectionEntry<'posts-en'>;
+
 export const getStaticPaths = async () => {
   const posts = await getCollection('posts-en');
-  const tagPosts = new Map();
+  const tagPosts = new Map<string, PostEntry[]>();
 
   // Collect all tags and corresponding posts
   posts.forEach(post => {
@@ -14,7 +16,7 @@ export const getStaticPaths = async () => {
         if (!tagPosts.has(tag)) {
           tagPosts.set(tag, []);
         }
-        tagPosts.get(tag).push(post);
+        tagPosts.get(tag)!.push(post);
       });
     }
   });
@@ -24,15 +26,15 @@ export const getStaticPaths = async () => {
     params: { tag },
     props: {
       tag,
-      posts: taggedPosts.sort((a, b) => new Date(b.data.date) - new Date(a.data.date))
+      posts: taggedPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
     }
   }));
 };
 
-const { tag, posts } = Astro.props;
+const { tag, posts } = Astro.props as { tag: string; posts: PostEntry[] };
 
 // Format date
-function formatDate(date) {
+function formatDate(date: Date | string) {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -41,7 +43,7 @@ function formatDate(date) {
 }
 
 // Extract post slug
-function getPostSlug(post) {
+function getPostSlug(post: PostEntry) {
   let slug = post.data.slug;
   if (!slug) {
     const filename = post.id.replace('.md', '');

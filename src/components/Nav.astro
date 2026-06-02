@@ -2,8 +2,9 @@
 import HeaderLink from '@/components/HeaderLink.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { getTranslation } from '@/i18n/utils.ts';
+import type { Locale } from '@/i18n/translations.ts';
 
-const currentLocale = Astro.currentLocale || 'tw';
+const currentLocale = (Astro.currentLocale === 'en' ? 'en' : 'tw') as Locale;
 const otherLocale = currentLocale === 'tw' ? 'en' : 'tw';
 const t = getTranslation(currentLocale);
 
