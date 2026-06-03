@@ -89,6 +89,18 @@
   margin-bottom: 0;
 }
 
+.note-media {
+  @apply mt-4 grid gap-3;
+}
+
+.note-media-link {
+  @apply block overflow-hidden rounded-lg border border-base-300 bg-base-200;
+}
+
+.note-media img {
+  @apply block h-auto max-h-[36rem] w-full object-contain;
+}
+
 .note-meta {
   @apply mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-base-300 pt-3 text-sm text-base-content/60;
 }

@@ -2,6 +2,15 @@ const DEFAULT_FEED_URL = 'https://social.wildsky.cc/@wildsky/feed.rss';
 const DEFAULT_CACHE_SECONDS = 60;
 const UPSTREAM_TIMEOUT_MS = 4000;
 const MAX_ITEMS = 20;
+const MAX_MEDIA_PER_NOTE = 4;
+const ALLOWED_MEDIA_HOST = 'social.wildsky.cc';
+const ALLOWED_MEDIA_PATH_PREFIX = '/fileserver/';
+const ALLOWED_IMAGE_TYPES = new Set([
+  'image/gif',
+  'image/jpeg',
+  'image/png',
+  'image/webp',
+]);
 
 export async function onRequestGet(context) {
   const { request, env, waitUntil } = context;
@@ -43,7 +52,9 @@ async function buildNotesResponse(env, cacheSeconds) {
   try {
     const rss = await fetchTextWithTimeout(feedUrl, UPSTREAM_TIMEOUT_MS, cacheSeconds);
     const items = parseRssItems(rss).slice(0, MAX_ITEMS);
-    const notes = items.map(toNote).filter((note) => note.html.trim() && note.url);
+    const notes = items
+      .map(toNote)
+      .filter((note) => note.url && (note.html.trim() || note.media.length > 0));
 
     return jsonResponse({
       ok: true,
@@ -100,10 +111,39 @@ function toNote(itemXml) {
 
   return {
     html: sanitizeHtml(rawHtml),
+    media: extractMediaEnclosures(itemXml),
     url: sanitizeUrl(link) || '',
     date: isoDate,
     displayDate: formatDate(isoDate),
   };
+}
+
+function extractMediaEnclosures(itemXml) {
+  return Array.from(String(itemXml || '').matchAll(/<enclosure\b([^>]*)>/gi), (match) => {
+    const attrs = parseXmlAttrs(match[1]);
+    const type = String(attrs.type || '').toLowerCase();
+    const url = sanitizeMediaUrl(attrs.url);
+
+    if (!url || !ALLOWED_IMAGE_TYPES.has(type)) {
+      return null;
+    }
+
+    return {
+      url,
+      type,
+    };
+  })
+    .filter(Boolean)
+    .slice(0, MAX_MEDIA_PER_NOTE);
+}
+
+function parseXmlAttrs(rawAttrs) {
+  const attrs = {};
+  for (const match of String(rawAttrs || '').matchAll(/([a-zA-Z:-]+)\s*=\s*("[^"]*"|'[^']*'|[^\s"'>]+)/g)) {
+    attrs[match[1].toLowerCase()] = decodeXml(stripQuotes(match[2]));
+  }
+
+  return attrs;
 }
 
 function extractTag(xml, tagName) {
@@ -185,11 +225,23 @@ function renderNotes(notes) {
   return notes.map((note) => `
 <article class="note-card">
   <div class="article-content note-content">${note.html}</div>
+  ${renderNoteMedia(note.media)}
   <footer class="note-meta">
     <time datetime="${escapeAttr(note.date)}">${escapeHtml(note.displayDate)}</time>
     <a class="note-permalink" href="${escapeAttr(note.url)}" target="_blank" rel="nofollow noopener noreferrer">View on social.wildsky.cc</a>
   </footer>
 </article>`).join('');
+}
+
+function renderNoteMedia(media) {
+  if (!Array.isArray(media) || media.length === 0) return '';
+
+  const images = media.map((item) => `
+    <a class="note-media-link" href="${escapeAttr(item.url)}" target="_blank" rel="nofollow noopener noreferrer">
+      <img src="${escapeAttr(item.url)}" loading="lazy" decoding="async" alt="" />
+    </a>`).join('');
+
+  return `<figure class="note-media">${images}</figure>`;
 }
 
 function jsonResponse(body, cacheSeconds) {
@@ -236,6 +288,23 @@ function sanitizeUrl(value) {
   } catch (_error) {
     return '';
   }
+  return '';
+}
+
+function sanitizeMediaUrl(value) {
+  try {
+    const url = new URL(decodeXml(value || ''), 'https://social.wildsky.cc');
+    if (
+      url.protocol === 'https:' &&
+      url.hostname === ALLOWED_MEDIA_HOST &&
+      url.pathname.startsWith(ALLOWED_MEDIA_PATH_PREFIX)
+    ) {
+      return url.toString();
+    }
+  } catch (_error) {
+    return '';
+  }
+
   return '';
 }
 
