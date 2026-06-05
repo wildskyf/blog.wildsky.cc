@@ -1,7 +1,8 @@
 const DEFAULT_FEED_URL = 'https://social.wildsky.cc/@wildsky/feed.rss';
 const DEFAULT_CACHE_SECONDS = 60;
 const UPSTREAM_TIMEOUT_MS = 4000;
-const MAX_ITEMS = 20;
+const DEFAULT_PAGE_SIZE = 10;
+const MAX_PAGE_SIZE = 20;
 const MAX_MEDIA_PER_NOTE = 4;
 const ALLOWED_MEDIA_HOST = 'social.wildsky.cc';
 const ALLOWED_MEDIA_PATH_PREFIX = '/fileserver/';
@@ -14,8 +15,10 @@ const ALLOWED_IMAGE_TYPES = new Set([
 
 export async function onRequestGet(context) {
   const { request, env, waitUntil } = context;
+  const requestUrl = new URL(request.url);
   const cacheSeconds = parsePositiveInt(env.NOTES_CACHE_SECONDS, DEFAULT_CACHE_SECONDS);
-  const cacheKey = new Request(new URL(request.url).toString(), request);
+  const page = getPageParams(requestUrl);
+  const cacheKey = new Request(requestUrl.toString(), request);
 
   if (cacheSeconds > 0 && typeof caches !== 'undefined') {
     const cached = await caches.default.match(cacheKey);
@@ -26,7 +29,7 @@ export async function onRequestGet(context) {
     }
   }
 
-  const response = await buildNotesResponse(env, cacheSeconds);
+  const response = await buildNotesResponse(env, cacheSeconds, page);
   response.headers.set('x-notes-cache', 'MISS');
 
   if (cacheSeconds > 0 && response.ok && typeof caches !== 'undefined') {
@@ -46,20 +49,30 @@ export async function onRequestOptions() {
   });
 }
 
-async function buildNotesResponse(env, cacheSeconds) {
-  const feedUrl = env.GTS_NOTES_FEED_URL || DEFAULT_FEED_URL;
+async function buildNotesResponse(env, cacheSeconds, page) {
+  const baseFeedUrl = env.GTS_NOTES_FEED_URL || DEFAULT_FEED_URL;
+  let feedUrl = baseFeedUrl;
 
   try {
+    feedUrl = buildFeedUrl(baseFeedUrl, page);
     const rss = await fetchTextWithTimeout(feedUrl, UPSTREAM_TIMEOUT_MS, cacheSeconds);
-    const items = parseRssItems(rss).slice(0, MAX_ITEMS);
-    const notes = items
+    const items = parseRssItems(rss);
+    const parsedNotes = items
       .map(toNote)
       .filter((note) => note.url && (note.html.trim() || note.media.length > 0));
+    const notes = parsedNotes.slice(0, page.limit);
+    const lastNote = notes[notes.length - 1];
+    const hasMore = parsedNotes.length > page.limit;
 
     return jsonResponse({
       ok: true,
       count: notes.length,
-      source: feedUrl,
+      source: baseFeedUrl,
+      feed: feedUrl,
+      limit: page.limit,
+      cursor: page.cursor || null,
+      hasMore,
+      nextCursor: hasMore && lastNote ? extractStatusId(lastNote.url) || null : null,
       fetchedAt: new Date().toISOString(),
       html: renderNotes(notes),
     }, cacheSeconds);
@@ -67,11 +80,46 @@ async function buildNotesResponse(env, cacheSeconds) {
     return jsonResponse({
       ok: true,
       count: 0,
-      source: feedUrl,
+      source: baseFeedUrl,
+      feed: feedUrl,
+      limit: page.limit,
+      cursor: page.cursor || null,
+      hasMore: false,
+      nextCursor: null,
       fetchedAt: new Date().toISOString(),
       html: '',
       upstreamError: error instanceof Error ? error.message : 'unknown upstream error',
     }, Math.min(cacheSeconds, 30));
+  }
+}
+
+function getPageParams(requestUrl) {
+  return {
+    limit: parseBoundedPositiveInt(requestUrl.searchParams.get('limit'), DEFAULT_PAGE_SIZE, MAX_PAGE_SIZE),
+    cursor: sanitizeCursor(requestUrl.searchParams.get('cursor') || requestUrl.searchParams.get('max_id')),
+  };
+}
+
+function buildFeedUrl(baseFeedUrl, page) {
+  const url = new URL(baseFeedUrl);
+  url.searchParams.set('limit', String(Math.min(page.limit + 1, MAX_PAGE_SIZE + 1)));
+
+  if (page.cursor) {
+    url.searchParams.set('max_id', page.cursor);
+  } else {
+    url.searchParams.delete('max_id');
+  }
+
+  return url.toString();
+}
+
+function extractStatusId(statusUrl) {
+  try {
+    const url = new URL(statusUrl);
+    const id = url.pathname.split('/').filter(Boolean).pop();
+    return sanitizeCursor(id);
+  } catch (_error) {
+    return '';
   }
 }
 
@@ -261,6 +309,17 @@ function jsonResponse(body, cacheSeconds) {
 function parsePositiveInt(value, fallback) {
   const parsed = Number.parseInt(value, 10);
   return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
+}
+
+function parseBoundedPositiveInt(value, fallback, max) {
+  const parsed = Number.parseInt(value, 10);
+  if (!Number.isFinite(parsed) || parsed <= 0) return fallback;
+  return Math.min(parsed, max);
+}
+
+function sanitizeCursor(value) {
+  const cursor = String(value || '').trim();
+  return /^[0-9a-zA-Z]{1,64}$/.test(cursor) ? cursor : '';
 }
 
 function toIsoDate(value) {

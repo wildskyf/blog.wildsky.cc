@@ -36,27 +36,103 @@ const pageDesc = '我的一些 murmur；想看更新可以 follow @wildsky@socia
       if (!root) return;
 
       const endpoint = root.dataset.notesEndpoint || '/api/notes';
+      const pageSize = 10;
+      let nextCursor = '';
+      let isLoading = false;
+      let list = null;
+      let loadMoreButton = null;
+      let status = null;
+
+      const buildUrl = (cursor = '') => {
+        const url = new URL(endpoint, window.location.origin);
+        url.searchParams.set('limit', String(pageSize));
+        if (cursor) url.searchParams.set('cursor', cursor);
+        return url.toString();
+      };
+
+      const setBusy = (busy) => {
+        isLoading = busy;
+        root.setAttribute('aria-busy', busy ? 'true' : 'false');
+        if (loadMoreButton) {
+          loadMoreButton.disabled = busy;
+          loadMoreButton.textContent = busy ? '載入中…' : '載入更多 notes';
+        }
+      };
+
+      const setStatus = (message = '') => {
+        if (status) status.textContent = message;
+      };
 
       const renderFallback = (message = '') => {
-        root.setAttribute('aria-busy', 'false');
+        setBusy(false);
         root.innerHTML = message ? `<p class="notes-muted">${message}</p>` : '';
       };
 
-      fetch(endpoint, {
+      const updatePager = (payload) => {
+        nextCursor = payload && payload.hasMore && payload.nextCursor ? payload.nextCursor : '';
+
+        if (!loadMoreButton || !status) return;
+
+        loadMoreButton.hidden = !nextCursor;
+        setStatus(nextCursor ? '' : '沒有更多公開 notes 了。');
+      };
+
+      const wirePager = () => {
+        list = root.querySelector('.notes-list');
+        loadMoreButton = root.querySelector('[data-notes-load-more]');
+        status = root.querySelector('[data-notes-status]');
+
+        if (loadMoreButton) {
+          loadMoreButton.addEventListener('click', () => {
+            if (!nextCursor || isLoading || !list) return;
+
+            setBusy(true);
+            setStatus('');
+            fetchNotes(nextCursor)
+              .then((payload) => {
+                if (payload && typeof payload.html === 'string' && payload.html.trim()) {
+                  list.insertAdjacentHTML('beforeend', payload.html);
+                  updatePager(payload);
+                } else {
+                  updatePager({ hasMore: false, nextCursor: '' });
+                }
+              })
+              .catch(() => {
+                setStatus('載入失敗，稍後再試。');
+              })
+              .finally(() => {
+                setBusy(false);
+              });
+          });
+        }
+      };
+
+      const renderInitial = (payload) => {
+        setBusy(false);
+
+        if (payload && typeof payload.html === 'string' && payload.html.trim()) {
+          root.innerHTML = `
+            <div class="notes-list">${payload.html}</div>
+            <div class="notes-actions">
+              <button type="button" class="notes-load-more" data-notes-load-more>載入更多 notes</button>
+              <p class="notes-status" data-notes-status aria-live="polite"></p>
+            </div>
+          `;
+          wirePager();
+          updatePager(payload);
+          return;
+        }
+
+        renderFallback('目前沒有公開 notes。');
+      };
+
+      const fetchNotes = (cursor = '') => fetch(buildUrl(cursor), {
         headers: { accept: 'application/json' },
         credentials: 'same-origin',
-      })
-        .then((response) => response.ok ? response.json() : Promise.reject(new Error(`notes api ${response.status}`)))
-        .then((payload) => {
-          root.setAttribute('aria-busy', 'false');
+      }).then((response) => response.ok ? response.json() : Promise.reject(new Error(`notes api ${response.status}`)));
 
-          if (payload && typeof payload.html === 'string' && payload.html.trim()) {
-            root.innerHTML = `<div class="notes-list">${payload.html}</div>`;
-            return;
-          }
-
-          renderFallback('目前沒有公開 notes。');
-        })
+      fetchNotes()
+        .then(renderInitial)
         .catch(() => {
           renderFallback('Notes 暫時讀不到；部落格本體不受影響。');
         });
