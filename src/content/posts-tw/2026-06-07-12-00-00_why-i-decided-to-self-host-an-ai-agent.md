@@ -64,7 +64,7 @@ AI 會從跟我們的互動中學習，主動調整行為。
 
 它知道我寫 commit message 的習慣、知道我不喜歡某些詞彙、知道我在某些地方的偏好或傾向、知道什麼時候該主動提醒明天的會議資料還沒準備。這一層的關鍵字是 judgment，不只是執行指令，它應該要開始有自己的判斷。
 
-不過實說，這一層目前整個產業都還在很早期的階段。
+不過說實話，這一層目前整個產業都還在很早期的階段。
 
 但這是 harness 的終極形態：AI 不只是工具，而是一個會隨著時間變得越來越了解我的工作夥伴。An agent，真正的代理人。
 
@@ -128,7 +128,7 @@ AI agent 也是一樣的：只要用得夠深，遲早會碰到「我需要改�
 
 Self-hosted agent 不是唯一的解法，但它是目前我認為最能往 harness 的深處走的方式。
 
-在第一層 Access，能拿回了完整的控制權——memory 怎麼存、存多少、存在哪，都能自己決定。想接什麼工具就接什麼工具，Obsidian vault、Discord bot、SearXNG、git、cron job，全部可以自己串。model 選哪個、system prompt 怎麼寫（雖然還是有上限，但此處按下不表）哪些 tool 開放不開放，都在自己手上。
+在第一層 Access，就拿回了完整的控制權——memory 怎麼存、存多少、存在哪，都能自己決定。想接什麼工具就接什麼工具，Obsidian vault、Discord bot、SearXNG、git、cron job，全部可以自己串。model 選哪個、system prompt 怎麼寫（雖然還是有上限，但此處按下不表）哪些 tool 開放不開放，都在自己手上。
 
 在第二層 Orchestration，則可以定義自己的 workflow——把多個工具組成一條 pipeline，讓 agent 理解「幫我發文章」背後的完整流程，而不只是執行單一指令。
 
