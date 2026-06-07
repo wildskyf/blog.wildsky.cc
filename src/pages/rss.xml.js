@@ -1,11 +1,13 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { load } from 'cheerio';
+import { authorProfile } from '@/data/author';
 
 const FEED_TITLE = "Wildsky's Blog";
 const FEED_DESCRIPTION =
   'Dev blog about server hosting, web dev, and some of my daily stuffs.';
 const ATOM_XMLNS = 'http://www.w3.org/2005/Atom';
+const DC_XMLNS = 'http://purl.org/dc/elements/1.1/';
 
 const cleanDescription = (text = '') =>
   text
@@ -90,6 +92,7 @@ const transformPostToRssItem = async ({ post, isEn, site }) => {
     content,
     categories: getCategories(post),
     link: `${prefix}/posts/${post.slug}/`,
+    customData: `<dc:creator>${authorProfile.name}</dc:creator>`,
   };
 };
 
@@ -118,6 +121,7 @@ export const GET = async (context) => {
     site: context.site,
     xmlns: {
       atom: ATOM_XMLNS,
+      dc: DC_XMLNS,
     },
     customData: [
       `<atom:link href="${feedUrl}" rel="self" type="application/rss+xml" />`,

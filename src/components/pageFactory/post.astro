@@ -3,6 +3,7 @@ import { render } from 'astro:content';
 
 import PageLayout from '@/layouts/page.astro';
 import Article from '@/components/Article.astro';
+import AuthorBio from '@/components/AuthorBio.astro';
 import { articleMapper } from '@/utils';
 
 const { lang, entry } = Astro.props;
@@ -29,8 +30,11 @@ const readingTime = lang === 'en' ? `${readingMinutes} min read` : `約 ${readin
   pageDesc={data.excerpt}
   pageImage={data.abs_feature_image}
   pageType="article"
+  pagePublished={entry.data.date}
+  pageUpdated={entry.data.updated ?? entry.data.date}
 >
   <Article {...data} lang={lang} readingTime={readingTime}>
     <Content />
+    <AuthorBio lang={lang} />
   </Article>
 </PageLayout>

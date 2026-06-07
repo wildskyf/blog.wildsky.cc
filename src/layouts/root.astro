@@ -11,7 +11,7 @@ dayjs.tz.setDefault('Asia/Taipei');
 const currentLocale = Astro.currentLocale || 'tw';
 const htmlLang = currentLocale === 'tw' ? 'zh-hant-tw' : 'en';
 
-const { pageName, pageDesc, pageImage, pageType } = Astro.props;
+const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated } = Astro.props;
 ---
 
 <html lang={htmlLang}>
@@ -32,7 +32,14 @@ const { pageName, pageDesc, pageImage, pageType } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <Head pageName={pageName} pageDesc={pageDesc} pageImage={pageImage} pageType={pageType} />
+    <Head
+      pageName={pageName}
+      pageDesc={pageDesc}
+      pageImage={pageImage}
+      pageType={pageType}
+      pagePublished={pagePublished}
+      pageUpdated={pageUpdated}
+    />
   </head>
 
   <body>
