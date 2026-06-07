@@ -2,7 +2,7 @@
 title: "為什麼我決定自架一個 AI Agent"
 date: 2026-06-07T12:00:00+08:00
 slug: "why-i-decided-to-self-host-an-ai-agent"
-excerpt: "AI 的能力早就不是瓶頸了，瓶頸是你跟它之間的 harness。多數人每天用 ChatGPT，但用法停在一問一答——這不是 harness，這是 consult。"
+excerpt: "AI 的能力早就不是瓶頸了，瓶頸是我跟它之間的 harness。多數人每天用 ChatGPT，但用法停在一問一答——這不是 harness，這是 consult。"
 guid: "why-i-decided-to-self-host-an-ai-agent"
 category: "軟體工程"
 tags: [AI, Agent, Self-hosted, 自架]
@@ -22,13 +22,13 @@ AI 的能力其實眾所皆知已經非常厲害了，現在的瓶頸其實是�
 
 Harness 這個字很有意思，它的意思是「馬具」。不是馬的力氣不夠，而是我們需要一套機制把那股強大的力氣導到我們想要的方向上。
 
-套用到 AI 的情境裡也一樣：model 的能力有了，真正的問題是我們能不能真正把它接進工作流程，讓它持續地、有脈絡地為你做事。這個部分我們可以看看 Anthropic 最近的動作也能看得出他們也有一樣的想法。
+套用到 AI 的情境裡也一樣：model 的能力有了，真正的問題是我們能不能真正把它接進工作流程，讓它持續地、有脈絡地為我做事。這個部分我們可以看看 Anthropic 最近的動作也能看得出他們也有一樣的想法。
 
-多數人現在用 ChatGPT 或 Claude 的方式，比較像是去找顧問——你帶著一個問題去問，它給你一個答案，然後問到了就結束。
+多數人現在用 ChatGPT 或 Claude 的方式，比較像是去找顧問——我們帶著一個問題去問，它給我們一個答案，然後問到了就結束。
 
 這不是 harness，這是 consult。（硬要一個 AI 腔😆）
 
-真正的 harness 長什麼樣？不只是要讓我的 AI 知道你在做什麼專案、昨天卡在哪裡、codebase 長怎樣，這些只是最基礎的一層。
+真正的 harness 長什麼樣？不只是要讓我的 AI 知道我在做什麼專案、昨天卡在哪裡、codebase 長怎樣，這些只是最基礎的一層。
 
 真正的 harness 是我們說「幫我把筆記中的某某篇發到部落格」，它自己知道要先轉 frontmatter、複製到 blog repo、commit & push；是我們糾正它一次，它下次不會再犯同樣的錯。
 
@@ -66,7 +66,7 @@ AI 會從跟我們的互動中學習，主動調整行為。
 
 不過實說，這一層目前整個產業都還在很早期的階段。
 
-但這是 harness 的終極形態：AI 不只是工具，而是一個會隨著時間變得越來越了解你的工作夥伴。An agent，真正的代理人。
+但這是 harness 的終極形態：AI 不只是工具，而是一個會隨著時間變得越來越了解我的工作夥伴。An agent，真正的代理人。
 
 我覺得可以開始投入點心力在這三層的研究，一步一步打造能真的幫助我的生活的 AI Agent。
 
@@ -90,7 +90,7 @@ AI 會從跟我們的互動中學習，主動調整行為。
 
 一旦關掉了這個 conversation，下次來就是一張白紙。
 
-雖然它們有 memory 功能，但我們控制不了它記了什麼、怎麼記、記在哪，而且那個 memory 的顆粒度通常很粗——它記得你是工程師、你喜歡用 TypeScript，但它不記得你上週花了三天在 debug 一個 streaming response 的 race condition。而且難道我們每次對話完都要去檢查他的 memory？這樣 micromanagement ？那是在自找麻煩吧。
+雖然它們有 memory 功能，但我們控制不了它記了什麼、怎麼記、記在哪，而且那個 memory 的顆粒度通常很粗——它記得我是工程師、我喜歡用 TypeScript，但它不記得我上週花了三天在 debug 一個 streaming response 的 race condition。而且難道我們每次對話完都要去檢查它的 memory？這樣 micromanagement？那是在自找麻煩吧。
 
 第二個是工具。
 
@@ -100,7 +100,7 @@ AI 會從跟我們的互動中學習，主動調整行為。
 
 第三個是資料流向。
 
-我們的 prompt、conversation history、檔案——這些東西上傳之後，你就不太確定它們去了哪裡、被怎麼處理、會不會被拿去訓練。
+我們的 prompt、conversation history、檔案——這些東西上傳之後，我們就不太確定它們去了哪裡、被怎麼處理、會不會被拿去訓練。
 
 對很多個人使用者來說也許這不是什麼大問題，但如果把 AI 深度整合進自己的知識管理流程，裡面有想法、決策紀錄、未發表的文章草稿⋯⋯那這個問題就變得比較實際了。（雖然我現在還是串雲端 API，但希望在可見的未來能夠自己買 GPU 跑起足夠強大的 Model 來 own my own data。）
 
