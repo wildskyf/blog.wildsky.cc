@@ -3,14 +3,17 @@ import { authorProfile } from '@/data/author';
 
 const currentLocale = Astro.props.lang === 'en' ? 'en' : 'tw';
 const copy = authorProfile.localeContent[currentLocale];
-const initials = currentLocale === 'en' ? 'RF' : '范';
 ---
 
 <aside class="not-prose mt-12 rounded-2xl border border-base-300 bg-base-200/60 p-6 lg:p-8">
   <div class="flex flex-col gap-4 sm:flex-row sm:items-start">
-    <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary/12 text-lg font-semibold text-primary">
-      {initials}
-    </div>
+    <img
+      src={authorProfile.avatar.src}
+      alt={authorProfile.avatar.alt[currentLocale]}
+      loading="lazy"
+      decoding="async"
+      class="h-14 w-14 shrink-0 rounded-full border border-base-300 object-cover"
+    />
 
     <div class="flex-1">
       <p class="text-xs font-semibold uppercase tracking-[0.18em] text-base-content/55">
@@ -34,7 +37,7 @@ const initials = currentLocale === 'en' ? 'RF' : '范';
       <div class="mt-5 flex flex-wrap gap-3">
         <a
           href={copy.primaryCta.href}
-          class="inline-flex items-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-content transition-colors duration-200 hover:bg-primary/90"
+          class="inline-flex items-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-primary/90 hover:text-white"
         >
           {copy.primaryCta.label}
         </a>

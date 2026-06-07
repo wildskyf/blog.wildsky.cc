@@ -1,6 +1,13 @@
 export const authorProfile = {
   name: '范耿誌 Rance',
   handle: 'Wildsky',
+  avatar: {
+    src: '/images/author-avatar.jpeg',
+    alt: {
+      tw: '范耿誌 Rance 的 avatar',
+      en: 'Avatar of 范耿誌 Rance',
+    },
+  },
   sameAs: [
     'https://g0v.social/@wildsky',
     'https://github.com/wildskyf',
