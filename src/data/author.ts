@@ -14,8 +14,8 @@ export const authorProfile = {
     tw: {
       sectionLabel: '作者介紹',
       handleLabel: '網路上多半用 Wildsky 這個名字',
-      subtitle: 'Frontend-leaning 軟體工程師，長期關注 AI 工具、PKM、self-hosted 與軟體工程。',
-      summary: '這裡主要寫技術、工作、生活與思考，試著把複雜的事說清楚。',
+      subtitle: '軟體工程師，長期關注 AI 工具、PKM、self-hosted 與軟體工程。',
+      summary: 'Vimer + Taiwanese + Web Dev，近日和 IoT 設備混得比較熟。正在往 systems architect / operator / productized builder 演化。',
       primaryCta: {
         label: '關於我',
         href: '/about/',
@@ -28,8 +28,8 @@ export const authorProfile = {
     en: {
       sectionLabel: 'About the author',
       handleLabel: 'Mostly writing on the internet as Wildsky',
-      subtitle: 'A frontend-leaning software engineer focused on AI tools, PKM, self-hosting, and software engineering.',
-      summary: 'This blog is where I write about tech, work, life, and the occasional thought worth making explicit.',
+      subtitle: 'A software engineer focused on AI tools, PKM, self-hosting, and software engineering.',
+      summary: 'Vim user + Taiwanese + web dev. Lately I have been getting along pretty well with IoT devices, and gradually evolving toward a systems architect / operator / productized builder.',
       primaryCta: {
         label: 'About',
         href: '/en/about-en/',
