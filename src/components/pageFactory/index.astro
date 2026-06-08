@@ -7,6 +7,7 @@ import { articleMapper } from '@/utils';
 import { PAGINATION_PER_PAGE_COUNT } from '@/data/globalConfig';
 import { getTranslation } from '@/i18n/utils.ts';
 import type { Locale } from '@/i18n/translations.ts';
+import { authorProfile } from '@/data/author';
 
 const currentLocale = (Astro.currentLocale === 'en' ? 'en' : 'tw') as Locale;
 const t = getTranslation(currentLocale);
@@ -50,6 +51,26 @@ const categoryData = categoryOrder
   .filter(cat => cat.count > 0);
 
 const pageName = currentLocale === 'en' ? 'Home' : '首頁';
+const homeSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: "Wildsky's blog",
+  url: new URL(getRelativeLocaleUrl(currentLocale, ''), Astro.site).toString(),
+  description:
+    currentLocale === 'en'
+      ? 'Technical and reflective notes by Wildsky, focused on AI agent deployment, self-hosting, web development, and systems thinking.'
+      : '軟體工程師 Wildsky 的技術與思考筆記，專注於 AI Agent 部署、self-hosting、Web 開發與系統思維。',
+  author: {
+    '@type': 'Person',
+    name: authorProfile.schemaName,
+    url: new URL(authorProfile.aboutPaths[currentLocale], Astro.site).toString(),
+  },
+  isPartOf: {
+    '@type': 'WebSite',
+    name: "Wildsky's blog",
+    url: Astro.site?.toString() ?? 'https://blog.wildsky.cc',
+  },
+};
 // Only show next page link if there are more posts than can fit on one page
 const hasNextPage = sortedPosts.length > PAGINATION_PER_PAGE_COUNT;
 const nextPagePath = hasNextPage ? getRelativeLocaleUrl(currentLocale, 'page/2') : null;
@@ -61,6 +82,7 @@ const nextPagePath = hasNextPage ? getRelativeLocaleUrl(currentLocale, 'page/2')
   pageDesc={t.site.homeDescription}
   postList={postList}
   next_page_path={nextPagePath}
+  schema={homeSchema}
 >
   <article class={`
     prose prose-lg max-w-none block p-8 lg:px-4

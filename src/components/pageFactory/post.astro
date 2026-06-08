@@ -22,6 +22,7 @@ const latinText = textForReadingTime.replace(/[\u3400-\u9fff\uf900-\ufaff]/g, ' 
 const wordCount = latinText.trim() ? latinText.trim().split(/\s+/).length : 0;
 const readingMinutes = Math.max(1, Math.ceil(cjkCount / 500 + wordCount / 220));
 const readingTime = lang === 'en' ? `${readingMinutes} min read` : `約 ${readingMinutes} 分鐘閱讀`;
+const series = entry.data.series ?? null;
 ---
 
 <PageLayout
@@ -33,7 +34,7 @@ const readingTime = lang === 'en' ? `${readingMinutes} min read` : `約 ${readin
   pagePublished={entry.data.date}
   pageUpdated={entry.data.updated ?? entry.data.date}
 >
-  <Article {...data} lang={lang} readingTime={readingTime}>
+  <Article {...data} lang={lang} readingTime={readingTime} series={series}>
     <Content />
     <AuthorBio lang={lang} />
   </Article>

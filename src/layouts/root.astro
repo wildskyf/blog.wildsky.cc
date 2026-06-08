@@ -11,7 +11,7 @@ dayjs.tz.setDefault('Asia/Taipei');
 const currentLocale = Astro.currentLocale || 'tw';
 const htmlLang = currentLocale === 'tw' ? 'zh-hant-tw' : 'en';
 
-const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated } = Astro.props;
+const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, schema } = Astro.props;
 ---
 
 <html lang={htmlLang}>
@@ -26,7 +26,9 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated } = 
       themeChange();
     </script>
 
-    <link rel="me" href="https://g0v.social/@wildsky" />
+    <link rel="me" href="https://social.wildsky.cc/@wildsky" />
+    <link rel="me" href="https://github.com/wildskyf" />
+    <link rel="me" href="https://www.linkedin.com/in/wildsky/" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta content="light" name="color-scheme" />
     <meta charset="utf-8" />
@@ -39,6 +41,7 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated } = 
       pageType={pageType}
       pagePublished={pagePublished}
       pageUpdated={pageUpdated}
+      schema={schema}
     />
   </head>
 

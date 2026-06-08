@@ -1,0 +1,10 @@
+---
+type SchemaValue = Record<string, unknown> | Array<Record<string, unknown>> | null | undefined;
+
+const { schema } = Astro.props as { schema?: SchemaValue };
+
+const schemaItems = Array.isArray(schema) ? schema.filter(Boolean) : schema ? [schema] : [];
+const jsonLd = schemaItems.length === 1 ? JSON.stringify(schemaItems[0]) : JSON.stringify(schemaItems);
+---
+
+{schemaItems.length > 0 && <script is:inline type="application/ld+json" set:html={jsonLd} />}

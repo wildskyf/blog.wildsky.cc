@@ -6,8 +6,9 @@ import RootLayout from './root.astro';
 
 const currentLocale = Astro.currentLocale || 'tw';
 const lang_code = currentLocale === 'tw' ? 'zh-Hant-TW' : 'en';
+const footerNavLabel = currentLocale === 'en' ? 'Footer links' : '頁尾連結';
 
-const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated } = Astro.props;
+const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, schema } = Astro.props;
 ---
 
 <RootLayout
@@ -17,6 +18,7 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated } = 
   pageType={pageType}
   pagePublished={pagePublished}
   pageUpdated={pageUpdated}
+  schema={schema}
 >
   <div
     id="page"
@@ -34,9 +36,9 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated } = 
     </main>
 
     <footer class="bg-base-300 text-white text-center pt-8 pb-10" lang="en">
-      <div class="grid place-content-center">
+      <nav aria-label={footerNavLabel} class="grid place-content-center">
         <SocialBar class="mb-4" />
-      </div>
+      </nav>
 
       <div class="text-gray-500 tracking-[0.03em]">
         2014-{dayjs().year()} &copy; All rights reserved

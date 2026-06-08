@@ -1,6 +1,7 @@
 ---
 layout: '@/layouts/article.astro'
 title: '過往歷程'
+description: Wildsky 的工作經歷與專案紀錄
 feature_image: 'experiences.png'
 ---
 

@@ -7,9 +7,9 @@ const { class: className } = Astro.props;
 
 const linkClass = 'text-base-content opacity-60 hover:opacity-80'
 const links = [
-  { href: 'https://g0v.social/@wildsky', label: 'Mastodon profile', icon: 'mdi:mastodon' },
-  { href: 'https://github.com/wildskyf', label: 'GitHub profile', icon: 'mdi:github' },
-  { href: 'https://www.linkedin.com/in/wildsky/', label: 'LinkedIn profile', icon: 'ant-design:linkedin-filled' },
+  { href: 'https://social.wildsky.cc/@wildsky', label: 'Mastodon profile', icon: 'mdi:mastodon', rel: 'me noopener noreferrer' },
+  { href: 'https://github.com/wildskyf', label: 'GitHub profile', icon: 'mdi:github', rel: 'me noopener noreferrer' },
+  { href: 'https://www.linkedin.com/in/wildsky/', label: 'LinkedIn profile', icon: 'ant-design:linkedin-filled', rel: 'me noopener noreferrer' },
   { href: '/files/reseme.pdf', label: 'Resume PDF', icon: 'mdi:resume', download: 'wildsky.20220901.pdf' },
   { href: '/rss.xml', label: 'RSS feed', icon: 'mdi:rss-box' },
 ];
@@ -28,6 +28,7 @@ const links = [
       aria-label={link.label}
       title={link.label}
       download={link.download}
+      rel={link.rel}
       class={linkClass}
     >
       <Icon name={link.icon} aria-hidden="true" />

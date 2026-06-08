@@ -1,6 +1,7 @@
 ---
 import blog_info from '@/data/blog_info.json';
 import { authorProfile } from '@/data/author';
+import SchemaOrg from '@/components/SchemaOrg.astro';
 
 const {
   pageName,
@@ -9,6 +10,7 @@ const {
   pageType = 'website',
   pagePublished,
   pageUpdated,
+  schema,
 } = Astro.props;
 const pageTitle = `${pageName ?? 404} | ${blog_info.name}`;
 const desc = pageDesc;
@@ -21,7 +23,7 @@ const publishedTime = pagePublished ? new Date(pagePublished).toISOString() : nu
 const updatedTime = pageUpdated ? new Date(pageUpdated).toISOString() : publishedTime;
 const articleJsonLd =
   pageType === 'article'
-    ? JSON.stringify({
+    ? {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: pageName,
@@ -37,20 +39,23 @@ const articleJsonLd =
         ...(updatedTime ? { dateModified: updatedTime } : {}),
         author: {
           '@type': 'Person',
-          name: authorProfile.name,
-          alternateName: authorProfile.handle,
+          name: authorProfile.schemaName,
+          alternateName: authorProfile.schemaAlternateName,
           url: authorUrl,
           sameAs: authorProfile.sameAs,
         },
         publisher: {
           '@type': 'Person',
-          name: authorProfile.name,
-          alternateName: authorProfile.handle,
+          name: authorProfile.schemaName,
+          alternateName: authorProfile.schemaAlternateName,
           url: authorUrl,
           sameAs: authorProfile.sameAs,
         },
-      })
+      }
     : null;
+
+const additionalSchemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
+const schemas = [articleJsonLd, ...additionalSchemas].filter(Boolean);
 ---
 
 <title>{pageTitle}</title>
@@ -102,4 +107,4 @@ const articleJsonLd =
 {pageType === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime} />}
 {pageType === 'article' && updatedTime && <meta property="article:modified_time" content={updatedTime} />}
 {pageType === 'article' && <meta property="article:author" content={authorUrl} />}
-{articleJsonLd && <script is:inline type="application/ld+json" set:html={articleJsonLd} />}
+<SchemaOrg schema={schemas} />

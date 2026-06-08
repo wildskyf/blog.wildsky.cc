@@ -1,0 +1,158 @@
+---
+import PageLayout from '@/layouts/page.astro';
+import { authorProfile } from '@/data/author';
+
+const pageName = 'Self-hosted AI Agent 實戰系列';
+const pageDesc = '從零開始部署、優化、營運自架 AI Agent 的完整紀錄。涵蓋框架選型、context window 優化、tool 精簡、搜尋後端替換等實戰經驗。';
+const pageUrl = new URL('/series/ai-agent/', Astro.site).toString();
+
+const seriesPosts = [
+  {
+    title: '為什麼我決定自架一個 AI Agent',
+    url: 'https://blog.wildsky.cc/posts/why-i-decided-to-self-host-an-ai-agent/',
+    status: '已發布',
+    summary: '從 consult 到 harness，為什麼我要自己掌握 agent 的 orchestration 與 adaptation。',
+  },
+  {
+    title: '框架選型：Hermes vs 其他方案',
+    status: '撰寫中',
+    summary: '我實際在意的不是 feature list，而是 context、tooling、automation 與 operator fit。',
+  },
+  {
+    title: 'Context Window 瘦身：從 199K 壓到 68K tokens',
+    status: '規劃中',
+    summary: '如何拆掉高噪音系統 prompt、降低重複 context、把 retrieval 變得便宜。',
+  },
+  {
+    title: 'Tool 精簡：從 64 個 tools 收斂到 35 個',
+    status: '規劃中',
+    summary: '工具不是越多越好，重點是模型什麼時候會誤用，以及怎麼縮小 decision surface。',
+  },
+  {
+    title: '搜尋後端替換：用 SearXNG 取代商業搜尋 API',
+    status: '規劃中',
+    summary: '降低成本、增加可控性，並讓搜尋和私有資料流更容易接在一起。',
+  },
+  {
+    title: '把 Obsidian vault 接進 agent workflow',
+    status: '規劃中',
+    summary: '不是單純 RAG，而是讓 agent 真正讀寫我每天在用的知識系統。',
+  },
+  {
+    title: 'Discord / chat surface 串接與 operator UX',
+    status: '規劃中',
+    summary: '怎麼把 agent 放進日常通訊介面，而不是把人逼回 terminal。',
+  },
+  {
+    title: 'Self-hosted reliability：cron、watchdog、fallback 設計',
+    status: '規劃中',
+    summary: 'agent 不是 demo，得能在凌晨壞掉時還有辦法被發現、被修復。',
+  },
+  {
+    title: '從 single-agent 到 multi-agent orchestration',
+    status: '規劃中',
+    summary: '什麼時候真的需要 subagents，什麼時候只是把問題複雜化。',
+  },
+  {
+    title: '把 agent 變成長期可維護系統',
+    status: '規劃中',
+    summary: '最後一篇談 observability、技術債、版本演進與「不要讓自己的 automation 反咬自己」。',
+  },
+];
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: pageName,
+  url: pageUrl,
+  description: '從零開始部署、優化、營運自架 AI Agent 的完整紀錄。',
+  author: {
+    '@type': 'Person',
+    name: authorProfile.schemaName,
+  },
+  hasPart: seriesPosts
+    .filter((post) => post.url)
+    .map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.title,
+      url: post.url,
+    })),
+};
+---
+
+<PageLayout pageName={pageName} pageDesc={pageDesc} schema={collectionSchema}>
+  <article class="prose prose-xl prose-zh tracking-tw-normal max-w-none bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16">
+    <header class="not-prose border-b border-base-300 pb-8">
+      <p class="text-sm uppercase tracking-[0.2em] text-base-content/55">Series / Pillar Page</p>
+      <h1 class="mt-3 text-4xl font-bold text-base-content lg:text-5xl">{pageName}</h1>
+      <p class="mt-4 max-w-4xl text-lg leading-8 text-base-content/80">
+        {pageDesc}
+      </p>
+    </header>
+
+    <section class="mt-10">
+      <h2>這個系列在講什麼</h2>
+      <p>
+        這個系列不是要教你「五分鐘架好 AI Agent」，而是把我真的在做的事情攤開來：為什麼要 self-host、
+        框架怎麼選、context 怎麼瘦身、tool 怎麼收斂、搜尋後端怎麼替換、還有整個系統怎麼維持在可運作的狀態。
+      </p>
+      <p>
+        如果你在意的是 <strong>可控性</strong>、<strong>長期成本</strong>、<strong>工作流整合</strong>，
+        而不是單次 demo，這個系列比較接近你想看的東西。
+      </p>
+    </section>
+
+    <section class="mt-10">
+      <h2>目標讀者</h2>
+      <ul>
+        <li>想從 ChatGPT / Claude 的 chat UI，走向真正可操作的 agent workflow 的工程師</li>
+        <li>在意 self-hosting、資料可控性、成本結構與 automation quality 的 builder</li>
+        <li>已經在用 Obsidian / notes / scripts / bots，想把它們接成一個系統的人</li>
+      </ul>
+    </section>
+
+    <section class="mt-10">
+      <h2>文章列表</h2>
+      <ol>
+        {seriesPosts.map((post) => (
+          <li class="mb-4">
+            {post.url ? <a href={post.url}>{post.title}</a> : <span>{post.title}</span>} — {post.status}
+            <br />
+            <span class="text-base-content/75">{post.summary}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="mt-10">
+      <h2>關鍵成果</h2>
+      <ul>
+        <li>Context window 使用量從 199K 降至 68K tokens（-65%）</li>
+        <li>Active tools 從 64 精簡至 35</li>
+        <li>以 SearXNG 替換商業搜尋 API，實現更接近完全 self-hosted 的搜尋層</li>
+      </ul>
+    </section>
+
+    <section class="mt-10 rounded-2xl border border-base-300 bg-base-200/50 p-6 not-prose">
+      <h2 class="text-2xl font-semibold text-base-content">關於作者</h2>
+      <p class="mt-3 text-base leading-8 text-base-content/80">
+        {authorProfile.name}，網路上多半用 {authorProfile.handle} 這個名字。平常在做軟體工程，也長期折騰 AI tools、
+        PKM、self-hosting 與各種把 workflow productize 的方法。
+      </p>
+      <div class="mt-5 flex flex-wrap gap-3">
+        <a
+          href="/about/"
+          class="inline-flex items-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-primary/90 hover:text-white"
+        >
+          關於我
+        </a>
+        <a
+          href="/experiences/"
+          class="inline-flex items-center rounded-full border border-base-content/15 px-4 py-2 text-sm font-medium text-base-content transition-colors duration-200 hover:bg-base-100"
+        >
+          工作經歷
+        </a>
+      </div>
+    </section>
+  </article>
+</PageLayout>

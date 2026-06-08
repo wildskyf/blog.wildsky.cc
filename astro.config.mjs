@@ -17,6 +17,9 @@ export default defineConfig({
   redirects: {
     '/page/1': '/',
     '/en/page/1': '/en',
+    '/feed.xml': '/rss.xml',
+    '/index.xml': '/rss.xml',
+    '/ai-agent-series': '/series/ai-agent/',
   },
   vite: {
     plugins: [tailwindcss()],

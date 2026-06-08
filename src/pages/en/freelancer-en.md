@@ -1,7 +1,8 @@
 ---
 layout: '@/layouts/article.astro'
-title: Web Development Service
-feature_image: ''
+title: Freelancer
+description: Wildsky's freelance web development services and collaboration model
+feature_image: '' # me-in-womany.png
 ---
 
 Hi, I am glad to help you build up your website.

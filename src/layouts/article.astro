@@ -2,15 +2,31 @@
 import PageLayout from './page.astro';
 import ArticleSection from '@/components/Article.astro';
 import { articleMapper } from '@/utils';
+import { authorProfile } from '@/data/author';
 
 const { frontmatter } = Astro.props;
 const data = articleMapper({ data: frontmatter });
+const series = frontmatter.series ?? null;
 
 const currentLocale = Astro.currentLocale || 'tw';
+const pageDesc = frontmatter.description ?? data.excerpt;
+const isAboutPage = Astro.url.pathname === '/about/' || Astro.url.pathname === '/en/about-en/';
+const personSchema = isAboutPage
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: authorProfile.schemaName,
+      alternateName: authorProfile.schemaAlternateName,
+      url: new URL(currentLocale === 'en' ? authorProfile.aboutPaths.en : authorProfile.aboutPaths.tw, Astro.site).toString(),
+      jobTitle: authorProfile.jobTitle,
+      knowsAbout: authorProfile.knowsAbout,
+      sameAs: authorProfile.sameAs,
+    }
+  : null;
 ---
 
-<PageLayout lang={currentLocale} pageName={data.title} pageDesc={data.excerpt}>
-  <ArticleSection {...data}>
+<PageLayout lang={currentLocale} pageName={data.title} pageDesc={pageDesc} schema={personSchema}>
+  <ArticleSection {...data} series={series}>
     <slot />
   </ArticleSection>
 </PageLayout>

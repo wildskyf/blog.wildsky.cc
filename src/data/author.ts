@@ -1,6 +1,10 @@
 export const authorProfile = {
   name: '范耿誌 Rance',
   handle: 'Wildsky',
+  schemaName: 'Wildsky',
+  schemaAlternateName: 'wildsky',
+  jobTitle: 'Senior Software Engineer',
+  knowsAbout: ['AI Agent', 'Self-hosted Systems', 'Web Development', 'Node.js', 'React', 'TypeScript'],
   avatar: {
     src: '/images/author-avatar.jpeg',
     alt: {
@@ -9,7 +13,7 @@ export const authorProfile = {
     },
   },
   sameAs: [
-    'https://g0v.social/@wildsky',
+    'https://social.wildsky.cc/@wildsky',
     'https://github.com/wildskyf',
     'https://www.linkedin.com/in/wildsky/',
   ],

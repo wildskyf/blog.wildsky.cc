@@ -4,13 +4,13 @@ import PostList from '@/components/PostList.astro';
 import Link from '@/components/Link.astro';
 import { getTranslation } from '@/i18n/utils.ts';
 
-const { lang, postList, previous_page_path, next_page_path, pageName, pageDesc } = Astro.props;
+const { lang, postList, previous_page_path, next_page_path, pageName, pageDesc, schema } = Astro.props;
 
 const currentLocale = Astro.currentLocale || lang || 'tw';
 const t = getTranslation(currentLocale);
 ---
 
-<PageLayout lang={lang} pageName={pageName} pageDesc={pageDesc}>
+<PageLayout lang={lang} pageName={pageName} pageDesc={pageDesc} schema={schema}>
   <slot />
 
   <section class="article-list">

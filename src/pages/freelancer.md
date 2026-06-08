@@ -1,6 +1,7 @@
 ---
 layout: '@/layouts/article.astro'
 title: 網站接案
+description: Wildsky 的接案服務與合作方式
 feature_image: '' # me-in-womany.png
 ---
 

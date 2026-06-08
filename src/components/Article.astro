@@ -2,6 +2,7 @@
 import dayjs from 'dayjs';
 import { twMerge } from 'tailwind-merge'
 import TagList from '@/components/TagList.astro';
+import SeriesBanner from '@/components/SeriesBanner.astro';
 
 const {
   feature_image_url,
@@ -12,6 +13,7 @@ const {
   category,
   tags,
   readingTime,
+  series,
   ...props
 } = Astro.props;
 const currentLocale = lang || Astro.currentLocale || 'tw';
@@ -67,6 +69,8 @@ const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日');
     </div>
     <TagList tags={tags} lang={currentLocale} />
   </header>
+
+  {series && <SeriesBanner seriesTitle={series.name} seriesUrl={series.url} />}
 
   {feature_image_url && (
     <figure class="flex flex-col mb-8 bg-base-300 p-4 rounded">
