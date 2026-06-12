@@ -125,3 +125,15 @@ Hacker 沒有用抵制打敗微軟，而是讓 Linux 變成整個網路的地基
 > 駭客精神能打破任何魔咒。
  
 魔咒不是用憤怒打破的，是用「理解」和「替代品」打破的。
+
+## 參考資料
+
+- poga, [〈Breaking The Spell〉中文翻譯](https://devpoga.org/breaking-the-spell/)
+- [Breaking The Spell — Phrack Magazine, Issue 71, Introduction](https://phrack.org/issues/71/1)（2024）
+- The Mentor, [The Conscience of a Hacker（駭客宣言）— Phrack Magazine, Issue 7](https://phrack.org/issues/7/3)（1986）
+- Steven Levy, *Hackers: Heroes of the Computer Revolution*（1984）— hacker ethic 的原始整理
+- Cory Doctorow, [Tiktok's enshittification — Pluralistic](https://pluralistic.net/2023/01/21/potemkin-ai/)（2023）— enshittification 一詞的出處
+- Albert O. Hirschman, *Exit, Voice, and Loyalty*（1970）— 退出/抗議框架的出處
+- Gabe Newell 訪談, *The Cambridge Student*（2011）— 「盜版是服務問題」出處；原始連結已失效，可參考 [The Escapist 的報導](https://www.escapistmagazine.com/valves-gabe-newell-says-piracy-is-a-service-problem/)
+- [EU Digital Markets Act（DMA）](https://digital-markets-act.ec.europa.eu/)
+- [Let's Encrypt](https://letsencrypt.org/)
