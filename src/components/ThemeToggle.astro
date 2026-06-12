@@ -8,9 +8,28 @@
   data-toggle-theme="nord,dim"
   data-act-class="ACTIVECLASS"
 >
-  <span class="inline-flex items-center gap-1 animate-pulse" aria-hidden="true">
-    <span>☀︎</span>
-    <span class="text-base-content/40">/</span>
-    <span>☾</span>
-  </span>
+  <span class="theme-toggle-icon-light inline-flex animate-pulse" aria-hidden="true">☀︎</span>
+  <span class="theme-toggle-icon-dark animate-pulse" aria-hidden="true">☾</span>
 </button>
+
+<style>
+  .theme-toggle-icon-dark {
+    display: none;
+  }
+
+  :global(html[data-theme="dim"]) .theme-toggle-icon-light {
+    display: none;
+  }
+
+  :global(html[data-theme="dim"]) .theme-toggle-icon-dark {
+    display: inline-flex;
+  }
+
+  :global(html[data-theme="nord"]) .theme-toggle-icon-light {
+    display: inline-flex;
+  }
+
+  :global(html[data-theme="nord"]) .theme-toggle-icon-dark {
+    display: none;
+  }
+</style>
