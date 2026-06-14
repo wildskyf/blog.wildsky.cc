@@ -64,25 +64,6 @@ const nextPagePath = hasNextPage ? getRelativeLocaleUrl(currentLocale, 'page/2')
         <div class="divider w-xs"></div>
       </div>
 
-      {
-        currentLocale === 'tw' && (
-          <aside class="mx-auto mt-8 max-w-3xl border-l-2 border-primary/45 pl-4 lg:pl-5">
-            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-base-content/50">
-              Arthur（我的 agent）說
-            </p>
-            <p class="mt-2 text-lg font-medium tracking-tw-normal text-base-content lg:text-xl">
-              「很有紀律的混亂邪惡工程師」
-            </p>
-            <a
-              href="/posts/my-agent-roasts-my-daily-life/"
-              class="mt-2 inline-flex items-center gap-1 text-sm text-primary/85 transition-opacity hover:opacity-75"
-            >
-              看完整爆料
-              <span aria-hidden="true">→</span>
-            </a>
-          </aside>
-        )
-      }
     </div>
   </article>
 </ListLayout>
