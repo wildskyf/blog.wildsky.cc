@@ -24,7 +24,7 @@
 }
 
 .article-content a {
-  @apply link link-hover link-accent;
+  @apply link link-primary link-hover;
   /* Allow long URLs to break */
   word-break: break-word;
   overflow-wrap: anywhere;
@@ -106,7 +106,7 @@
 }
 
 .note-permalink {
-  @apply link link-hover link-accent;
+  @apply link link-primary link-hover;
 }
 
 .notes-muted {
