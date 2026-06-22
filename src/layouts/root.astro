@@ -17,9 +17,12 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, sch
 <html lang={htmlLang}>
   <head>
     <script is:inline>
-      if (localStorage.getItem('theme') === null) {
-        document.documentElement.setAttribute('data-theme', 'nord');
-      } else document.documentElement.setAttribute('data-theme', localStorage.getItem('theme'));
+      let saved = localStorage.getItem('theme');
+      if (saved === 'dim') {
+        saved = 'forest';
+        localStorage.setItem('theme', 'forest');
+      }
+      document.documentElement.setAttribute('data-theme', saved ?? 'nord');
     </script>
     <script>
       import { themeChange } from 'theme-change';

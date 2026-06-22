@@ -5,7 +5,7 @@
 @plugin "daisyui" {
   themes:
     nord --default,
-    dim --prefersdark;
+    forest --prefersdark;
 }
 
 .page-container {
