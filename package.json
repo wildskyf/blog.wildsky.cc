@@ -13,17 +13,16 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/rss": "4.0.9",
-    "@astrojs/sitemap": "3.2.1",
-    "@astrojs/tailwind": "5.1.2",
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.3",
     "@fontsource/merriweather": "4.5.14",
     "@fontsource/noto-sans-tc": "4.5.12",
     "@fontsource/noto-serif-tc": "4.5.12",
     "@fontsource/poppins": "4.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "4.0.10",
-    "astro": "^5.13.9",
+    "astro": "^6.4.8",
     "astro-icon": "^1.1.5",
     "dayjs": "^1.11.18",
     "tailwind-merge": "^3.3.1",
@@ -52,6 +51,8 @@
   "resolutions": {
     "axios": "^1.12.0",
     "cross-spawn": "^7.0.5",
-    "brace-expansion": "^2.0.2"
+    "brace-expansion": "^2.0.2",
+    "yaml": "^2.9.0",
+    "esbuild": "^0.28.1"
   }
 }

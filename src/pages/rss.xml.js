@@ -20,6 +20,13 @@ const cleanDescription = (text = '') =>
     .replace(/&#8212;/g, '—')
     .trim();
 
+const getSlug = (post) => {
+  if (post.data.slug) return post.data.slug;
+  const filename = post.id.replace(/^(tw|en)\//, '').replace(/\.md$/, '');
+  const match = filename.match(/^\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}_(.+)$/);
+  return match ? match[1] : filename;
+};
+
 const toAbsoluteUrl = (url, site) => {
   if (!url || !url.startsWith('/')) return url;
   return new URL(url, site).toString();
@@ -65,7 +72,7 @@ const getPostContentHtml = async (post, site) => {
   const html = post.rendered?.html;
 
   if (!html) {
-    throw new Error(`Unable to render full RSS content for post "${post.slug}".`);
+    throw new Error(`Unable to render full RSS content for post "${getSlug(post)}".`);
   }
 
   return absolutizeHtmlUrls(html, site);
@@ -91,7 +98,7 @@ const transformPostToRssItem = async ({ post, isEn, site }) => {
     description: cleanDescription(post.data.excerpt),
     content,
     categories: getCategories(post),
-    link: `${prefix}/posts/${post.slug}/`,
+    link: `${prefix}/posts/${getSlug(post)}/`,
     customData: `<dc:creator>${authorProfile.name}</dc:creator>`,
   };
 };
