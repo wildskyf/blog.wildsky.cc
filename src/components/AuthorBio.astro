@@ -1,11 +1,19 @@
 ---
+import { twMerge } from 'tailwind-merge';
 import { authorProfile } from '@/data/author';
 
 const currentLocale = Astro.props.lang === 'en' ? 'en' : 'tw';
 const copy = authorProfile.localeContent[currentLocale];
 ---
 
-<aside class="not-prose mt-12 rounded-2xl border border-base-300 bg-base-200/60 p-6 lg:p-8">
+<aside
+  class={twMerge(
+    "not-prose mt-12 bg-base-200/60 p-6 lg:p-8",
+    "bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16",
+    "prose prose-xl max-md:prose-lg max-w-none",
+    currentLocale === 'tw' ? 'prose-zh tracking-tw-normal' : 'prose-en'
+  )}
+>
   <div class="flex flex-col gap-4 sm:flex-row sm:items-start">
     <img
       src={authorProfile.avatar.src}
@@ -37,13 +45,13 @@ const copy = authorProfile.localeContent[currentLocale];
       <div class="mt-5 flex flex-wrap gap-3">
         <a
           href={copy.primaryCta.href}
-          class="inline-flex items-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-primary/90 hover:text-white"
+          class="btn btn-primary"
         >
           {copy.primaryCta.label}
         </a>
         <a
           href={copy.secondaryCta.href}
-          class="inline-flex items-center rounded-full border border-base-content/15 px-4 py-2 text-sm font-medium text-base-content transition-colors duration-200 hover:bg-base-100"
+          class="btn btn-primary"
         >
           {copy.secondaryCta.label}
         </a>
