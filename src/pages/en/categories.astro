@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/page.astro';
+import PageHead from '@/components/PageHead.astro';
 
 // Get all posts
 const posts = await getCollection('posts-en');
@@ -9,101 +10,91 @@ const posts = await getCollection('posts-en');
 const categoryInfo = {
   'Software Engineering': {
     description: 'Programming, web development, system administration, and technical articles',
-    icon: '💻'
+    icon: '💻',
   },
   'Career & Work': {
     description: 'Work experience, career development, and professional growth',
-    icon: '👔'
+    icon: '👔',
   },
   'Life Experience': {
     description: 'Travel, music, art, and life observations',
-    icon: '🌍'
+    icon: '🌍',
   },
   'Thoughts & Philosophy': {
     description: 'Life philosophy, values, critical thinking, and reflections',
-    icon: '💭'
+    icon: '💭',
   },
   'Finance & Investment': {
     description: 'Financial planning, investment insights, and money management',
-    icon: '💰'
+    icon: '💰',
   },
   'Computer Science': {
     description: 'Computer science theory, mathematics, and academic knowledge',
-    icon: '📚'
+    icon: '📚',
   },
-  'Others': {
+  Others: {
     description: 'Other uncategorized articles',
-    icon: '📝'
-  }
+    icon: '📝',
+  },
 };
 
 // Count posts by category
 const categoryCounts = new Map();
-posts.forEach(post => {
+posts.forEach((post) => {
   if (post.data.category) {
     categoryCounts.set(post.data.category, (categoryCounts.get(post.data.category) || 0) + 1);
   }
 });
 
 // Prepare category data
-const categories = Object.entries(categoryInfo).map(([name, info]) => ({
-  name,
-  ...info,
-  count: categoryCounts.get(name) || 0
-}));
+const categories = Object.entries(categoryInfo)
+  .map(([name, info]) => ({
+    name,
+    ...info,
+    count: categoryCounts.get(name) || 0,
+  }))
+  // 只列出真的有文章的分類：空分類不會被 getStaticPaths 產生路由，
+  // 列出來就是死連結（實測 /en/categories/* 全部 404）
+  .filter((c) => c.count > 0);
 
 const pageTitle = 'Categories';
 const pageDescription = 'Browse all articles by category, find topics that interest you';
 ---
 
-<Layout pageName={pageTitle} pageDesc={pageDescription} lang="en">
-  <main class="container mx-auto px-4 py-8 text-base-content">
-    <h1 class="text-3xl font-bold mb-4">
-      Categories
-    </h1>
-    <p class='mb-8 opacity-70'>Browse all articles by category, click to view articles in each category</p>
+<Layout pageName={pageTitle} pageDesc={pageDescription}>
+  <div class="chrome-inner">
+    <PageHead
+      kicker={`Category
+Index`}
+      title={pageTitle}
+      desc={pageDescription}
+      count={`${categories.length} Categories`}
+    />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {categories.map(category => (
-        <a
-          href={`/en/categories/${category.name}`}
-          class="block p-6 rounded-lg bg-base-200 hover:bg-base-300 transition-colors duration-200 border border-base-300"
-        >
-          <div class="flex items-start justify-between mb-3">
-            <div class="text-4xl">{category.icon}</div>
-            <div class="px-3 py-1 bg-primary text-primary-content rounded-full text-sm font-semibold">
-              {category.count}
-            </div>
-          </div>
-
-          <h2 class="text-xl font-bold mb-2 text-base-content">
-            {category.name}
-          </h2>
-
-          <p class="text-sm opacity-70">
-            {category.description}
+    <div class="ds-body">
+      {
+        categories.length === 0 && (
+          <p class="ds-empty">
+            No category has any posts yet. <a href="/en/">Go home</a> to see the latest writing.
           </p>
-        </a>
-      ))}
+        )
+      }
+      <ul class="ds-catlist">
+        {
+          categories.map((category) => (
+            <li class="ds-cat">
+              <span class="ds-cat-mark" aria-hidden="true" />
+              <a class="ds-cat-link" href={`/en/categories/${category.name}`}>
+                <span>
+                  <span class="ds-cat-name">{category.name}</span>
+                  <span class="ds-cat-desc">{category.description}</span>
+                </span>
+                <span class="ds-cat-count">{category.count} posts</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
-
-    <!-- Statistics -->
-    <section class="mt-12 p-6 bg-base-200 rounded-lg">
-      <h3 class="text-lg font-semibold mb-4">Statistics</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
-        <div>
-          <div class="text-2xl font-bold text-primary">{categories.length}</div>
-          <div class="text-sm opacity-70">Total Categories</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold text-primary">{posts.filter(p => p.data.category).length}</div>
-          <div class="text-sm opacity-70">Categorized Posts</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold text-primary">{posts.length}</div>
-          <div class="text-sm opacity-70">Total Posts</div>
-        </div>
-      </div>
-    </section>
-  </main>
+  </div>
 </Layout>

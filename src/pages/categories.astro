@@ -1,110 +1,100 @@
 ---
-import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/page.astro';
+import PageHead from '@/components/PageHead.astro';
 
 // Get all posts
 const posts = await getCollection('posts-tw');
 
 // Define category list and descriptions
 const categoryInfo = {
-  '軟體工程': {
+  軟體工程: {
     description: '程式設計、網頁開發、系統管理等技術相關文章',
-    icon: 'mdi:wrench-outline'
+    icon: 'mdi:wrench-outline',
   },
-  '職涯工作': {
+  職涯工作: {
     description: '工作經驗、職涯發展、專業成長相關分享',
-    icon: 'mdi:work-outline'
+    icon: 'mdi:work-outline',
   },
-  '生活體驗': {
+  生活體驗: {
     description: '旅遊、音樂、藝術等生活體驗與觀察',
-    icon: 'mdi:person-outline'
+    icon: 'mdi:person-outline',
   },
-  '思考觀點': {
+  思考觀點: {
     description: '人生哲學、價值觀念、思辨與反思',
-    icon: 'mdi:thought-bubble-outline'
+    icon: 'mdi:thought-bubble-outline',
   },
-  '理財投資': {
+  理財投資: {
     description: '理財規劃、投資心得、財務觀念分享',
-    icon: 'mdi:money'
+    icon: 'mdi:money',
   },
-  '資訊科學': {
+  資訊科學: {
     description: '電腦科學理論、數學、學術知識',
-    icon: 'mdi:computer'
+    icon: 'mdi:computer',
   },
-  '其他': {
+  其他: {
     description: '其他未分類的文章內容',
-    icon: 'mdi:note-multiple-outline'
-  }
+    icon: 'mdi:note-multiple-outline',
+  },
 };
 
 // Count posts by category
 const categoryCounts = new Map();
-posts.forEach(post => {
+posts.forEach((post) => {
   if (post.data.category) {
     categoryCounts.set(post.data.category, (categoryCounts.get(post.data.category) || 0) + 1);
   }
 });
 
 // Prepare category data
-const categories = Object.entries(categoryInfo).map(([name, info]) => ({
-  name,
-  ...info,
-  count: categoryCounts.get(name) || 0
-}));
+const categories = Object.entries(categoryInfo)
+  .map(([name, info]) => ({
+    name,
+    ...info,
+    count: categoryCounts.get(name) || 0,
+  }))
+  // 只列出真的有文章的分類：空分類不會被 getStaticPaths 產生路由，
+  // 列出來就是死連結（實測 /en/categories/* 全部 404）
+  .filter((c) => c.count > 0);
 
 const pageTitle = '文章分類';
 const pageDescription = '按主題分類瀏覽所有文章，快速找到感興趣的內容';
 ---
 
 <Layout pageName={pageTitle} pageDesc={pageDescription}>
-  <main class="container mx-auto px-4 py-8 text-base-content">
-    <h1 class="text-3xl font-bold mb-4">
-      文章分類
-    </h1>
-    <p class='mb-8 opacity-70'>按主題分類瀏覽所有文章，點擊分類可查看該類別下的所有文章</p>
+  <div class="chrome-inner">
+    <PageHead
+      kicker={`Category
+Index`}
+      title={pageTitle}
+      desc={pageDescription}
+      count={`${categories.length} Categories`}
+    />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {categories.map(category => (
-        <a
-          href={`/categories/${category.name}`}
-          class="block p-6 rounded-lg bg-base-200 hover:bg-base-300 transition-colors duration-200 border border-base-300"
-        >
-          <div class="flex items-start justify-between mb-3">
-            <Icon class="text-4xl text-secondary" name={category.icon} />
-            <div class="px-3 py-1 bg-primary text-primary-content rounded-full text-sm font-semibold">
-              {category.count}
-            </div>
-          </div>
-
-          <h2 class="text-xl font-bold mb-2 text-base-content">
-            {category.name}
-          </h2>
-
-          <p class="text-sm opacity-70">
-            {category.description}
+    <div class="ds-body">
+      {
+        categories.length === 0 && (
+          <p class="ds-empty">
+            目前沒有任何分類底下有文章。<a href="/">回到首頁</a>看看最新的文章。
           </p>
-        </a>
-      ))}
+        )
+      }
+      <ul class="ds-catlist">
+        {
+          categories.map((category) => (
+            <li class="ds-cat">
+              <span class="ds-cat-mark" aria-hidden="true" />
+              <a class="ds-cat-link" href={`/categories/${category.name}`}>
+                <span>
+                  <span class="ds-cat-name">{category.name}</span>
+                  <span class="ds-cat-desc">{category.description}</span>
+                </span>
+                <span class="ds-cat-count">{category.count} 篇</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
-
-    <!-- Statistics -->
-    <section class="mt-12 p-6 bg-base-200 rounded-lg">
-      <h3 class="text-lg font-semibold mb-4">統計資訊</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
-        <div>
-          <div class="text-2xl font-bold text-primary">{categories.length}</div>
-          <div class="text-sm opacity-70">總分類數</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold text-primary">{posts.filter(p => p.data.category).length}</div>
-          <div class="text-sm opacity-70">已分類文章</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold text-primary">{posts.length}</div>
-          <div class="text-sm opacity-70">總文章數</div>
-        </div>
-      </div>
-    </section>
-  </main>
+  </div>
 </Layout>

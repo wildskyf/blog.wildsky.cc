@@ -184,6 +184,204 @@ body {
   border-bottom-color: var(--accent);
 }
 
+/* ------------------------------------------------------------
+   索引頁共用（標籤列表、分類列表、標籤/分類內頁、404）
+   ------------------------------------------------------------ */
+
+/* 內容欄：與文章索引同一條柱線，靠 gutter 對齊而不是靠內距 */
+.ds-body {
+  display: grid;
+  grid-template-columns: var(--gutter-col) minmax(0, 1fr);
+}
+
+.ds-body > * {
+  grid-column: 2;
+}
+
+.ds-section {
+  padding: 34px 0 6px;
+  border-top: 1px solid var(--rule);
+}
+
+.ds-section:first-of-type {
+  border-top: 0;
+}
+
+.ds-section-title {
+  margin: 0 0 18px;
+  font-family: var(--font-chrome);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--fg-muted);
+}
+
+/* 標籤雲：無膠囊、無底色、無圓角。靠留白與小型大寫分隔。 */
+.ds-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  margin-bottom: 30px;
+}
+
+.ds-cloud-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  font-family: var(--font-label);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  font-variant: small-caps;
+  color: var(--fg-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition:
+    color var(--t) var(--ease),
+    border-color var(--t) var(--ease);
+}
+
+.ds-cloud-item:hover,
+.ds-cloud-item:focus-visible {
+  color: var(--fg);
+  border-bottom-color: var(--accent);
+}
+
+/* 計數是次要資訊，不做成徽章 —— 徽章是軟體 UI 語彙。
+   字體用 EB Garamond 而非 Cinzel：Cinzel 的「1」是一根沒有襯線的豎筆，
+   單獨出現時會被讀成分隔線 `|`。這是實際踩到的問題，不是預防性選擇。 */
+.ds-count {
+  font-family: var(--font-label);
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: 0;
+  color: var(--fg-faint);
+}
+
+.ds-cloud-item:hover .ds-count {
+  color: var(--fg-muted);
+}
+
+/* 分類列表：表列而非卡片格 —— 與文章索引同一種掃讀邏輯 */
+.ds-catlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ds-cat {
+  position: relative;
+  border-top: 1px solid var(--rule);
+}
+
+.ds-cat:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.ds-cat-mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 180ms var(--ease);
+}
+
+.ds-cat:hover .ds-cat-mark,
+.ds-cat:focus-within .ds-cat-mark {
+  transform: scaleY(1);
+}
+
+.ds-cat-link {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 20px;
+  padding: 24px 0 26px;
+  text-decoration: none;
+}
+
+.ds-cat-name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--fg);
+}
+
+.ds-cat-desc {
+  display: block;
+  margin: 6px 0 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--fg-muted);
+}
+
+.ds-cat-count {
+  font-family: var(--font-chrome);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+/* 空狀態：一條紅線 ＋ 說明，不放插圖。
+   寬度收在 720px 量尺內 —— 說明文字也是要讀的，不該跑滿版。 */
+.ds-empty {
+  max-width: var(--measure);
+  padding: 30px 0 30px 20px;
+  border-left: 2px solid var(--accent);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--fg-muted);
+}
+
+.ds-empty a {
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  transition: border-color var(--t) var(--ease);
+}
+
+.ds-empty a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.ds-back {
+  margin-top: 56px;
+}
+
+@media (max-width: 1119px) {
+  .ds-body {
+    grid-template-columns: 96px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .ds-body {
+    grid-template-columns: 1fr;
+  }
+  .ds-body > * {
+    grid-column: 1;
+  }
+  .ds-cat-link {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .ds-cat-name {
+    font-size: 19px;
+  }
+}
+
 /* focus ring —— 全站唯一合法的 box-shadow（The Zero Shadow Rule 的例外） */
 :where(a, button, [tabindex]):focus-visible {
   outline: none;

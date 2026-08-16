@@ -1,7 +1,9 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '@/layouts/page.astro';
-import TagList from '@/components/TagList.astro';
+import PageHead from '@/components/PageHead.astro';
+import PostList from '@/components/PostList.astro';
+import { articleMapper, formatReadingTime } from '@/utils';
 
 type PostEntry = CollectionEntry<'posts-tw'>;
 
@@ -10,9 +12,9 @@ export const getStaticPaths = async () => {
   const tagPosts = new Map<string, PostEntry[]>();
 
   // 收集所有標籤和對應的文章
-  posts.forEach(post => {
+  posts.forEach((post) => {
     if (post.data.tags) {
-      post.data.tags.forEach(tag => {
+      post.data.tags.forEach((tag) => {
         if (!tagPosts.has(tag)) {
           tagPosts.set(tag, []);
         }
@@ -26,141 +28,50 @@ export const getStaticPaths = async () => {
     params: { tag },
     props: {
       tag,
-      posts: taggedPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-    }
+      posts: taggedPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
+    },
   }));
 };
 
 const { tag, posts } = Astro.props as { tag: string; posts: PostEntry[] };
 
-// 格式化日期
-function formatDate(date: Date | string) {
-  return new Date(date).toLocaleDateString('zh-TW', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-}
-
-// 提取文章 slug
-function getPostSlug(post: PostEntry) {
-  let slug = post.data.slug;
-  if (!slug) {
-    const filename = post.id.replace('.md', '');
-    const match = filename.match(/^\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}_(.+)$/);
-    slug = match ? match[1] : filename;
-  }
-  return slug;
-}
-
 const pageTitle = `標籤：${tag}`;
 const pageDescription = `查看所有標記為「${tag}」的文章，共 ${posts.length} 篇`;
+
+const rows = posts.map((post) => {
+  const mapped = articleMapper(post);
+  return {
+    ...mapped,
+    readingTime: mapped.readingMinutes ? formatReadingTime(mapped.readingMinutes, 'tw') : null,
+  };
+});
 ---
 
 <Layout pageName={pageTitle} pageDesc={pageDescription}>
-  <main class="container mx-auto px-4 py-8 text-base-content">
-    <!-- 麵包屑導航 -->
-    <nav class="flex items-center space-x-2 text-sm opacity-70 mb-6">
-      <a href="/" class="hover:text-primary">首頁</a>
-      <span>/</span>
-      <a href="/tags" class="hover:text-primary">標籤列表</a>
-      <span>/</span>
-      <span class="text-base-content">{tag}</span>
-    </nav>
+  <div class="chrome-inner">
+    <PageHead
+      kicker={`Tag
+Archive`}
+      title={`標籤：${tag}`}
+      crumbs={[{ label: '首頁', href: '/' }, { label: '標籤列表', href: '/tags' }, { label: tag }]}
+      count={`${posts.length} Entries`}
+    />
 
-    <!-- 標題區域 -->
-    <div class="mb-8">
-      <h1 class="text-3xl font-bold mb-2">
-        標籤：<span class="text-primary">{tag}</span>
-      </h1>
-      <p class="opacity-70">
-        共找到 <span class="font-semibold text-base-content">{posts.length}</span> 篇相關文章
-      </p>
-    </div>
-
-    <!-- 文章列表 -->
-    <div class="space-y-6">
-      {posts.map(post => {
-        const slug = getPostSlug(post);
-        return (
-        <article class="border-b border-base-content/50 pb-6 last:border-b-0">
-            <div class="flex flex-col space-y-2">
-              <!-- 文章標題 -->
-              <h2 class="text-xl font-semibold">
-                <a
-                  href={`/posts/${slug}`}
-                  class="text-base-content hover:text-primary transition-colors duration-200"
-                >
-                  {post.data.title}
-                </a>
-              </h2>
-
-              <!-- 文章資訊 -->
-              <div class="flex items-center space-x-4 text-sm opacity-70">
-                <time datetime={post.data.date.toISOString()}>
-                  {formatDate(post.data.date)}
-                </time>
-                {post.data.updated && (
-                  <>
-                    <span>•</span>
-                    <span>更新於 {formatDate(post.data.updated)}</span>
-                  </>
-                )}
-              </div>
-
-              <!-- 文章摘要 -->
-              {post.data.excerpt && (
-                <p class="text-base-content opacity-80 line-clamp-3">
-                  {post.data.excerpt}
-                </p>
-              )}
-
-              <!-- 文章標籤 -->
-              <TagList tags={post.data.tags} lang="tw" currentTag={tag} />
-            </div>
-          </article>
-        );
-      })}
-    </div>
-
-    <!-- 如果沒有文章 -->
-    {posts.length === 0 && (
-      <div class="text-center py-12">
-        <div class="opacity-40 mb-4">
-          <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
+    {
+      rows.length > 0 ? (
+        <PostList lang="tw" postList={rows} />
+      ) : (
+        <div class="ds-body">
+          <p class="ds-empty">
+            標籤「{tag}」目前沒有文章。你可以<a href="/tags">瀏覽其他標籤</a>，或
+            <a href="/">回到首頁</a>。
+          </p>
         </div>
-        <h3 class="text-lg font-medium text-base-content mb-2">目前沒有文章</h3>
-        <p class="opacity-70">
-          標籤「{tag}」下暫時沒有文章，
-          <a href="/tags" class="text-primary hover:text-primary-focus">瀏覽其他標籤</a>
-          或
-          <a href="/" class="text-primary hover:text-primary-focus">回到首頁</a>
-        </p>
-      </div>
-    )}
+      )
+    }
 
-    <!-- 返回標籤列表 -->
-    <div class="mt-12 text-center">
-      <a
-        href="/tags"
-        class="ds-btn ds-plate"
-      >
-        <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
-        返回標籤列表
-      </a>
+    <div class="ds-body ds-back">
+      <a class="ds-btn ds-plate" href="/tags">返回標籤列表</a>
     </div>
-  </main>
+  </div>
 </Layout>
-
-<style>
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style>

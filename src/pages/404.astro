@@ -1,26 +1,32 @@
 ---
 import PageLayout from '@/layouts/page.astro';
-import Button from '@/components/Button.astro';
+import PageHead from '@/components/PageHead.astro';
 
 const LANG = 'en';
-const pageName = '404 NotFound';
-const pageDesc = 'The page can not be found.';
+const pageName = 'Not Found';
+const pageDesc = 'This page has drifted out of reach.';
 ---
 
-<PageLayout {...{ lang: LANG }}>
-  <div class="flex justify-center items-center">
-    <div class="py-24">
-      <h1 class="text-5xl font-bold text-base-content/80 pb-4">
-        {pageName}
-      </h1>
+<PageLayout lang={LANG} pageName="404 Not Found" pageDesc={pageDesc}>
+  <div class="chrome-inner">
+    <PageHead
+      kicker={`Lost
+Signal`}
+      title={pageName}
+      desc={pageDesc}
+      count="404"
+    />
 
-      <p
-        class="w-full mb-8 inline-block text-5xl text-base-content/50 whitespace-nowrap origin-bottom-left"
-      >
-        {pageDesc}
+    <div class="ds-body">
+      <p class="ds-empty">
+        The address you followed does not exist, or the post has moved. Every old URL on this site
+        is meant to keep working — if you got here from a link on this site, that is a bug worth
+        telling me about.
       </p>
 
-      <Button to="/" text="back to home" />
+      <div class="ds-back">
+        <a class="ds-btn ds-plate" href="/">Back to home</a>
+      </div>
     </div>
   </div>
 </PageLayout>

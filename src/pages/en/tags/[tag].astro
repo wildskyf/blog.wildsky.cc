@@ -1,7 +1,9 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '@/layouts/page.astro';
-import TagList from '@/components/TagList.astro';
+import PageHead from '@/components/PageHead.astro';
+import PostList from '@/components/PostList.astro';
+import { articleMapper, formatReadingTime } from '@/utils';
 
 type PostEntry = CollectionEntry<'posts-en'>;
 
@@ -10,9 +12,9 @@ export const getStaticPaths = async () => {
   const tagPosts = new Map<string, PostEntry[]>();
 
   // Collect all tags and corresponding posts
-  posts.forEach(post => {
+  posts.forEach((post) => {
     if (post.data.tags) {
-      post.data.tags.forEach(tag => {
+      post.data.tags.forEach((tag) => {
         if (!tagPosts.has(tag)) {
           tagPosts.set(tag, []);
         }
@@ -26,141 +28,54 @@ export const getStaticPaths = async () => {
     params: { tag },
     props: {
       tag,
-      posts: taggedPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-    }
+      posts: taggedPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
+    },
   }));
 };
 
 const { tag, posts } = Astro.props as { tag: string; posts: PostEntry[] };
 
-// Format date
-function formatDate(date: Date | string) {
-  return new Date(date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-}
-
-// Extract post slug
-function getPostSlug(post: PostEntry) {
-  let slug = post.data.slug;
-  if (!slug) {
-    const filename = post.id.replace('.md', '');
-    const match = filename.match(/^\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}_(.+)$/);
-    slug = match ? match[1] : filename;
-  }
-  return slug;
-}
-
 const pageTitle = `Tag: ${tag}`;
 const pageDescription = `View all articles tagged with "${tag}", ${posts.length} posts found`;
+
+const rows = posts.map((post) => {
+  const mapped = articleMapper(post);
+  return {
+    ...mapped,
+    readingTime: mapped.readingMinutes ? formatReadingTime(mapped.readingMinutes, 'en') : null,
+  };
+});
 ---
 
 <Layout pageName={pageTitle} pageDesc={pageDescription}>
-  <main class="container mx-auto px-4 py-8 text-base-content">
-    <!-- Breadcrumb navigation -->
-    <nav class="flex items-center space-x-2 text-sm opacity-70 mb-6">
-      <a href="/en" class="hover:text-primary">Home</a>
-      <span>/</span>
-      <a href="/en/tags" class="hover:text-primary">Tags</a>
-      <span>/</span>
-      <span class="text-base-content">{tag}</span>
-    </nav>
+  <div class="chrome-inner">
+    <PageHead
+      kicker={`Tag
+Archive`}
+      title={`Tag: ${tag}`}
+      crumbs={[
+        { label: 'Home', href: '/en/' },
+        { label: 'Tags', href: '/en/tags' },
+        { label: tag },
+      ]}
+      count={`${posts.length} Entries`}
+    />
 
-    <!-- Title area -->
-    <div class="mb-8">
-      <h1 class="text-3xl font-bold mb-2">
-        Tag: <span class="text-primary">{tag}</span>
-      </h1>
-      <p class="opacity-70">
-        Found <span class="font-semibold text-base-content">{posts.length}</span> related article{posts.length !== 1 ? 's' : ''}
-      </p>
-    </div>
-
-    <!-- Post list -->
-    <div class="space-y-6">
-      {posts.map(post => {
-        const slug = getPostSlug(post);
-        return (
-          <article class="border-b border-base-300 pb-6 last:border-b-0">
-            <div class="flex flex-col space-y-2">
-              <!-- Post title -->
-              <h2 class="text-xl font-semibold">
-                <a
-                  href={`/en/posts/${slug}`}
-                  class="text-base-content hover:text-primary transition-colors duration-200"
-                >
-                  {post.data.title}
-                </a>
-              </h2>
-
-              <!-- Post metadata -->
-              <div class="flex items-center space-x-4 text-sm opacity-70">
-                <time datetime={post.data.date.toISOString()}>
-                  {formatDate(post.data.date)}
-                </time>
-                {post.data.updated && (
-                  <>
-                    <span>•</span>
-                    <span>Updated {formatDate(post.data.updated)}</span>
-                  </>
-                )}
-              </div>
-
-              <!-- Post excerpt -->
-              {post.data.excerpt && (
-                <p class="text-base-content opacity-80 line-clamp-3">
-                  {post.data.excerpt}
-                </p>
-              )}
-
-              <!-- Post tags -->
-              <TagList tags={post.data.tags} lang="en" currentTag={tag} />
-            </div>
-          </article>
-        );
-      })}
-    </div>
-
-    <!-- No posts found -->
-    {posts.length === 0 && (
-      <div class="text-center py-12">
-        <div class="opacity-40 mb-4">
-          <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
+    {
+      rows.length > 0 ? (
+        <PostList lang="en" postList={rows} />
+      ) : (
+        <div class="ds-body">
+          <p class="ds-empty">
+            No posts under “{tag}” yet. <a href="/en/tags">Browse other tags</a> or{' '}
+            <a href="/en/">go home</a>.
+          </p>
         </div>
-        <h3 class="text-lg font-medium text-base-content mb-2">No Posts Found</h3>
-        <p class="opacity-70">
-          No articles found for tag "{tag}".
-          <a href="/en/tags" class="text-primary hover:text-primary-focus">Browse other tags</a>
-          or
-          <a href="/en" class="text-primary hover:text-primary-focus">return to home</a>
-        </p>
-      </div>
-    )}
+      )
+    }
 
-    <!-- Back to tags -->
-    <div class="mt-12 text-center">
-      <a
-        href="/en/tags"
-        class="ds-btn ds-plate"
-      >
-        <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
-        Back to Tags
-      </a>
+    <div class="ds-body ds-back">
+      <a class="ds-btn ds-plate" href="/en/tags">Back to all tags</a>
     </div>
-  </main>
+  </div>
 </Layout>
-
-<style>
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style>
