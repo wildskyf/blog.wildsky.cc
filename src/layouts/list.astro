@@ -156,11 +156,17 @@ const countLabel = totalPosts
     color: var(--fg);
   }
 
+  /* 每個 .ln 是一整行（桌機），.cl 是子句 */
+  .ds-hero-manifesto :global(.ln) {
+    display: block;
+  }
+
   /* 宣言的語意樞紐 —— 27px 大字，大字門檻 3.0，實測 3.83 ✓ */
   .ds-hero-manifesto :global(.pivot) {
     color: var(--accent-text);
     font-weight: 700;
-    padding: 0 0.06em;
+    /* 樞紐永遠落在子句末尾，左側靠標點自身的側邊留白就夠 */
+    padding: 0 0.04em 0 0.02em;
   }
 
   .ds-hero-count {
@@ -231,8 +237,17 @@ const countLabel = totalPosts
     .ds-hero-count {
       grid-column: 1;
     }
+    /* 手機：每個子句自己一行。
+       固定斷行會讓「；」落單（390px 實測整段裂成 7 行、孤兒行只有 24px 寬）。 */
     .ds-hero-manifesto {
       font-size: 24px;
+      line-height: 1.5;
+    }
+    .ds-hero-manifesto :global(.cl) {
+      display: block;
+    }
+    .ds-hero-manifesto :global(.ln) + :global(.ln) {
+      margin-top: 0.5em;
     }
     .ds-pager {
       grid-template-columns: 1fr 1fr;

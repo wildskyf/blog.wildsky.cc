@@ -102,7 +102,9 @@
   --font-chrome: 'Cinzel Variable', 'Noto Serif TC', Georgia, serif;
   --font-display: 'Bodoni Moda Variable', 'Noto Serif TC', Georgia, serif;
   --font-label: 'EB Garamond Variable', 'Noto Serif TC', Georgia, serif;
-  --font-body: 'Source Sans 3 Variable', 'Noto Sans TC', system-ui, sans-serif;
+  /* 正文是襯線 —— 站上原本就是 font-serif，且與碑刻／Didone 的 chrome 同材質。
+     Source Serif 4 是 Source Sans 的襯線姊妹，專為螢幕長文設計。 */
+  --font-body: 'Source Serif 4 Variable', 'Noto Serif TC', Georgia, serif;
   --font-code: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* 版面骨架 */

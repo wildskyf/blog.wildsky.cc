@@ -75,7 +75,7 @@ typography:
     lineHeight: '1.4'
     letterSpacing: '0'
   body:
-    fontFamily: "'Source Sans 3', 'Noto Sans TC', system-ui, sans-serif"
+    fontFamily: "'Source Serif 4', 'Noto Serif TC', Georgia, serif"
     fontSize: '1.1875rem'
     fontWeight: 400
     lineHeight: 1.9
@@ -412,7 +412,7 @@ Open Item 4 採**方案 (a) 過渡**：在自訂 daisyUI theme 中，把既有�
 **Chrome Font:** Cinzel（Latin，羅馬碑刻大寫）→ Noto Serif TC（CJK）
 **Display / Title Font:** Bodoni Moda（Latin，Didone）→ Noto Serif TC（CJK）
 **Label Font:** EB Garamond 小型大寫（Latin）→ Noto Serif TC（CJK）
-**Body Font:** Source Sans 3（Latin）＋ Noto Sans TC（CJK）
+**Body Font:** Source Serif 4（Latin）＋ Noto Serif TC（CJK）
 **Code Font:** JetBrains Mono
 
 字體與字級**兩主題完全相同**，不因明暗調整。唯一的例外見下方 The Optical Weight Rule。
@@ -427,7 +427,9 @@ Open Item 4 採**方案 (a) 過渡**：在自訂 daisyUI theme 中，把既有�
 
 中文一律 **Noto Serif TC**（明體）：明體的橫細直粗與 Bodoni／Cinzel 的反差邏輯同源，中英混排時的筆畫節奏才不會斷。
 
-正文另走一套：**Source Sans 3 ＋ Noto Sans TC**。長文在深色底上用無襯線更穩，而且它與 chrome 的襯線形成明確的材質分界——chrome 是刻印的銅牌，正文是印出來的紙。
+正文用 **Source Serif 4 ＋ Noto Serif TC**。Source Serif 是 Source Sans 的襯線姊妹，專為螢幕長文設計。
+
+**為什麼正文是襯線而不是無襯線**（2026-08-17 修正）：v7 初版把正文設成 Source Sans 3，理由是「無襯線在深色底上更穩，且與 chrome 形成材質分界」。實際上線後這個理由站不住——站上原本就是 `font-serif`，而且整套語言（碑刻大寫、Didone 標題、舊體小型大寫標籤）都是襯線，正文突然變無襯線讀起來像是另一個網站貼進來的區塊。材質分界應該靠**字級與字距**做，不是靠有沒有襯線。
 
 ### Hierarchy
 
@@ -435,14 +437,16 @@ Open Item 4 採**方案 (a) 過渡**：在自訂 daisyUI theme 中，把既有�
 - **Headline**（Bodoni Moda 600、27px、行高 1.45）：文章索引標題、hero 宣言、正文 `h2`。**索引標題不得放大到 Display 級**——索引一屏要能掃到多篇，紀念碑化會把掃讀變成捲動。
 - **Chrome**（Cinzel 500–600、13px / 24px、字距 0.12–0.18em）：站名、日期數字、分類、按鈕、footer。字距必須寬——碑刻大寫的字腔本來就是靠字距呼吸的。
 - **Title**（Bodoni Moda 700、24px、行高 1.4）：區塊小標。**Didone 在小尺寸的暗底上會掉髮絲筆畫，所以 Title 級一律 700，不用 600。**
-- **Body**（Source Sans 3 / Noto Sans TC 400、19px、行高 **1.9（unitless）**、字距 0.01em）：正文。量尺 720px。行高必須無單位——放大基準字級時要等比縮放，這是可及性要求。
+- **Body**（Source Serif 4 / Noto Serif TC 400、19px、行高 **1.9（unitless）**、字距 0.01em）：正文。量尺 720px。行高必須無單位——放大基準字級時要等比縮放，這是可及性要求。
 - **Label**（EB Garamond 500、13px、字距 0.06em、**小型大寫**）：日期、分類、tag、閱讀時間、所有 meta。
 - **Watermark**（Cinzel 400、132px、字距 0.08em）：裝飾性直排字，僅環境層使用，`aria-hidden`。
 - **Code**（JetBrains Mono 400、15px、行高 1.7）。
 
 ### Named Rules
 
-**The Chrome Frontier Rule.** Cinzel、Bodoni Moda 與 EB Garamond 只活在 chrome、標題與標籤裡。正文的 `p`、`li`、`blockquote`、表格內容一律 Source Sans 3 / Noto Sans TC。在正文段落裡出現這三支之一即違規。
+**The Chrome Frontier Rule.** Cinzel、Bodoni Moda 與 EB Garamond 只活在 chrome、標題與標籤裡。正文的 `p`、`li`、`blockquote`、表格內容一律 Source Serif 4 / Noto Serif TC。在正文段落裡出現這三支之一即違規。
+
+**The Navigation Legibility Exception（2026-08-17 新增）.** 導覽項目不受 Label 字級（13px 小型大寫）管轄，一律 **19px 正常字**。小型大寫在 13px 是給「掃過去的標註」用的；導覽是**要被點的目標**，可讀性優先於一致性。這是唯一一處刻意違反 Small-Caps Label Rule 的地方，理由記錄在此。
 
 **The Right Font For The Size Rule（2026-08-16 新增）.** Bodoni Moda 不得用於 24px 以下；Cinzel 不得用於 27px 以上的標題。前者在小尺寸掉筆畫，後者在大尺寸會變成紀念碑而不是文章標題。字體的選用先看尺寸，再看語意。
 
@@ -718,6 +722,7 @@ overhang 存在 ⟺ chrome 層計算後寬度 > 閱讀層計算後寬度
 - **Don't** 使用紫色、**跨色相漸層**、glassmorphism、blur 背景。（同色相明度漸層合法，見 The Same-Hue Gradient Rule）
 - **Don't** 對圖片施加 `filter: invert()` 或 `hue-rotate()`。
 - **Don't** 在正文段落裡使用 Cinzel、Bodoni Moda 或 EB Garamond（The Chrome Frontier Rule）。
+- **Don't** 把導覽字級壓到 13px 小型大寫（The Navigation Legibility Exception）。
 - **Don't** 用「全大寫 ＋ 寬字距」做 meta 標籤——那是遙測讀數的排版（The Small-Caps Label Rule）。
 - **Don't** 把視覺重量給沒有意義的資訊（The Weight-Follows-Meaning Rule）。
 - **Don't** 對中文施加大寫處理或超過 0.02em 的字距。
@@ -737,7 +742,7 @@ overhang 存在 ⟺ chrome 層計算後寬度 > 閱讀層計算後寬度
 5. **圓角全站違規。** `rounded-xl`（`PostList.astro:26`、`global.css:76` `.note-card`、`global.css:113`）、`rounded-lg`（`global.css:97`、`global.css:121`）、`rounded`（`Article.astro:54,76`、`global.css:38`）。`AuthorBio.astro` 頭像的 `rounded-full` 合法。
 6. **陰影全站違規。** `shadow-sm` 出現在 `Header.astro:17`、`Nav.astro`（dropdown）、`global.css:76`、`global.css:121`。
 7. **寫死色值違規（The No Hardcode Rule）。** `list.astro:20` 的 `text-gray-900`、`page.astro:38` footer 的 `text-white`、`global.css:129-133` figcaption 的 `text-gray-500` / `text-gray-400`、`global.css:16` `::selection` 的 `text-white`。
-8. **字型三個家族都沒有安裝也沒有載入。** 需要 Bodoni Moda、EB Garamond、Source Sans 3、JetBrains Mono。`@fontsource/noto-sans-tc` 與 `@fontsource/noto-serif-tc` **都已在 `package.json` 但從未被 import**，新系統兩支都用得上（正文黑體、chrome 明體）。`@fontsource/merriweather`、`poppins` 不再需要，可移除。
+8. ~~字型家族沒有安裝也沒有載入。~~ **已完成（2026-08-16/17）**：Cinzel、Bodoni Moda、EB Garamond、Source Serif 4、JetBrains Mono 全數以 `@fontsource-variable` 自架（不走 Google Fonts CDN，PRODUCT.md 硬性約束）；`@fontsource/noto-serif-tc` 與 `noto-sans-tc` 已實際 import。`@fontsource/merriweather`、`poppins` 已移除。
 9. **`.page-container` 的 `font-serif` 與新系統衝突。** `global.css:12` 讓全站落在襯線字上；新系統是三個無襯線／mono 家族。
 10. **Prism 主題衝突，且需要雙主題版本。** `global.css:1` import 的是 `prism-okaidia`（單一暖色系）。新規格是兩套語法配色（見 Code Block 的角色對應表），需要自訂 Prism 主題並以 `[data-theme]` 分別定義。
 11. **閱讀量尺從 896px 收到 720px，且需要第二層 1120px chrome 寬。** `page.astro:33` 目前是單一 `max-w-4xl`（896px）。這是 layout 的結構改動。

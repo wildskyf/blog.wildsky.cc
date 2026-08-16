@@ -1371,24 +1371,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource-variable/source-sans-3@npm:^5.3.0":
+"@fontsource-variable/source-serif-4@npm:^5.3.0":
   version: 5.3.0
-  resolution: "@fontsource-variable/source-sans-3@npm:5.3.0"
-  checksum: c7fad4ff8922545994c06fc2ee7a8294c5f547a0c9ea06af3869c450949501eaa76e8216aff9e3c8701820b180049a6e2d0b7e4b89b718d6bf9f3e57f0bebd16
-  languageName: node
-  linkType: hard
-
-"@fontsource/merriweather@npm:4.5.14":
-  version: 4.5.14
-  resolution: "@fontsource/merriweather@npm:4.5.14"
-  checksum: c91aca76c8a5e1fb1e7c0d31b064d7b1f8f0eb9c80d0d17a6f7dcd466074dddf62956009377e2429843ca282b404f98df68c5afe2d941d08d1d9a33cb4a3b3c5
-  languageName: node
-  linkType: hard
-
-"@fontsource/noto-sans-tc@npm:4.5.12":
-  version: 4.5.12
-  resolution: "@fontsource/noto-sans-tc@npm:4.5.12"
-  checksum: f43ced4d0c10c362a2790346a0442dd05f42dfa142cd9d94c654181dbd96c137ba68e0d3c404533ee40900d8600485400992a582c60880bbdc759f04692f3e17
+  resolution: "@fontsource-variable/source-serif-4@npm:5.3.0"
+  checksum: 30de2035d785f4b72341e393f58599308787f02292c19d872ffc802e9d4bc2e3697fbe415bdf898962f9ea7894bb5f56e025b4b39f71352aac225bb453544b50
   languageName: node
   linkType: hard
 
@@ -1396,13 +1382,6 @@ __metadata:
   version: 4.5.12
   resolution: "@fontsource/noto-serif-tc@npm:4.5.12"
   checksum: ee3e8445e22a70640f55e71438fda58b915e2ac81b80f6547016190c3293507bcc697cbbbae63446856af30c396f586c758898eedf438eb5465bdc3c9ab1e1d9
-  languageName: node
-  linkType: hard
-
-"@fontsource/poppins@npm:4.5.10":
-  version: 4.5.10
-  resolution: "@fontsource/poppins@npm:4.5.10"
-  checksum: 873ea31740a9819cbc39bf5895159101e87674e3c9da03629b6331e7752b657f3704cd1c6ae81ac9af2f5aa4a9d85847eae8015c926bb48e1f7a5bbacfeca8ee
   languageName: node
   linkType: hard
 
@@ -7922,11 +7901,8 @@ __metadata:
     "@fontsource-variable/cinzel": ^5.3.0
     "@fontsource-variable/eb-garamond": ^5.3.0
     "@fontsource-variable/jetbrains-mono": ^5.3.0
-    "@fontsource-variable/source-sans-3": ^5.3.0
-    "@fontsource/merriweather": 4.5.14
-    "@fontsource/noto-sans-tc": 4.5.12
+    "@fontsource-variable/source-serif-4": ^5.3.0
     "@fontsource/noto-serif-tc": 4.5.12
-    "@fontsource/poppins": 4.5.10
     "@iconify-json/ant-design": 1.2.5
     "@iconify-json/bx": 1.2.2
     "@iconify-json/fa": 1.1.8
