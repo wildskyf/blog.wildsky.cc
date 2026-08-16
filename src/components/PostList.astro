@@ -22,12 +22,17 @@ const {
 };
 const root_path = lang == 'en' ? '/en' : '';
 const latestLabel = lang === 'en' ? 'Latest' : '最新';
+const titleSegmenter = new Intl.Segmenter(lang === 'en' ? 'en' : 'zh-Hant', {
+  granularity: 'word',
+});
+const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
 ---
 
 <ul class="ds-index" lang={lang === 'tw' ? 'zh-Hant-TW' : 'en'}>
   {
     postList.map((post, index) => {
       const d = dayjs(post.date);
+      const titleSegments = [...titleSegmenter.segment(post.title)];
       return (
         <li class:list={['ds-row', showLatest && index === 0 && 'is-latest']}>
           <span class="ds-row-rule" aria-hidden="true" />
@@ -55,7 +60,15 @@ const latestLabel = lang === 'en' ? 'Latest' : '最新';
               </div>
 
               <h2 class="ds-row-title">
-                <a href={`${root_path}/posts/${post.slug}`} set:html={post.title} />
+                <a href={`${root_path}/posts/${post.slug}`}>
+                  {titleSegments.map(({ segment, isWordLike }) =>
+                    isWordLike && containsHan(segment) ? (
+                      <span class="ds-title-phrase">{segment}</span>
+                    ) : (
+                      segment
+                    )
+                  )}
+                </a>
               </h2>
 
               <TagList tags={post.tags} lang={lang} />
@@ -88,6 +101,11 @@ const latestLabel = lang === 'en' ? 'Latest' : '最新';
     z-index: 1;
   }
 
+  /* The hero already closes with a double rule; avoid a third adjacent separator. */
+  .ds-row:first-child .ds-row-rule {
+    display: none;
+  }
+
   /* hover 只做兩件事：紅線長出、日期升亮。整列底色不變 ——
      填色面板是軟體 UI 的語彙，在紙與金屬的世界裡不成立。 */
   .ds-row-mark {
@@ -103,15 +121,32 @@ const latestLabel = lang === 'en' ? 'Latest' : '最新';
     transition: transform 180ms var(--ease);
   }
 
-  .ds-row.is-latest .ds-row-mark,
-  .ds-row:hover .ds-row-mark,
   .ds-row:focus-within .ds-row-mark {
     transform: scaleY(1);
   }
 
-  .ds-row:hover .ds-log-day,
   .ds-row:focus-within .ds-log-day {
     color: var(--fg);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .ds-row:hover .ds-row-mark {
+      transform: scaleY(1);
+    }
+
+    .ds-row:hover .ds-log-day {
+      color: var(--fg);
+    }
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .ds-row:active .ds-row-mark {
+      transform: scaleY(1);
+    }
+
+    .ds-row:active .ds-log-day {
+      color: var(--fg);
+    }
   }
 
   .ds-row-grid {
@@ -173,6 +208,7 @@ const latestLabel = lang === 'en' ? 'Latest' : '最新';
     font-family: var(--font-label);
     font-size: 13px;
     font-weight: 500;
+    line-height: 1.3;
     letter-spacing: 0.06em;
     font-variant: small-caps;
     color: var(--fg-muted);
@@ -184,17 +220,21 @@ const latestLabel = lang === 'en' ? 'Latest' : '最新';
 
   /* 分類：沒有框。是「刻線標題」不是按鈕。 */
   .ds-chip {
+    display: inline-flex;
+    align-items: center;
     font-family: var(--font-chrome);
     font-size: 13px;
     font-weight: 500;
+    line-height: 1.3;
     letter-spacing: 0.12em;
     color: var(--fg-muted);
-    text-decoration: none;
-    padding-bottom: 2px;
-    border-bottom: 1px solid var(--rule);
+    text-decoration-line: underline;
+    text-decoration-color: var(--rule);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
     transition:
       color var(--t) var(--ease),
-      border-color var(--t) var(--ease);
+      text-decoration-color var(--t) var(--ease);
   }
 
   /* 不轉紅字：13px 的 --accent-text 在環境層上實測 3.83–4.17，過不了 AA。
@@ -202,7 +242,7 @@ const latestLabel = lang === 'en' ? 'Latest' : '最新';
   .ds-chip:hover,
   .ds-chip:focus-visible {
     color: var(--fg);
-    border-bottom-color: var(--accent);
+    text-decoration-color: var(--accent);
   }
 
   .ds-row-title {
@@ -216,8 +256,20 @@ const latestLabel = lang === 'en' ? 'Latest' : '最新';
   }
 
   .ds-row-title a {
+    display: block;
     color: inherit;
     text-decoration: none;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    text-wrap: pretty;
+  }
+
+  .ds-index:lang(zh-Hant-TW) .ds-row-title a {
+    line-break: strict;
+  }
+
+  .ds-title-phrase {
+    white-space: nowrap;
   }
 
   /* 標題不加底線 —— 底線是網頁語彙，紅線才是這套系統的語彙 */
@@ -233,20 +285,61 @@ const latestLabel = lang === 'en' ? 'Latest' : '最新';
 
   @media (max-width: 767px) {
     .ds-row-grid {
-      grid-template-columns: 1fr;
-      gap: 14px;
-      padding: 24px 0 26px;
+      grid-template-columns: auto minmax(0, 1fr);
+      column-gap: 12px;
+      row-gap: 4px;
+      padding: 18px 0;
     }
+
     .ds-row-gutter {
+      grid-column: 1;
+      grid-row: 1;
       display: flex;
       align-items: baseline;
-      gap: 10px;
+      min-height: 44px;
     }
+
+    .ds-row-gutter time {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .ds-row-main {
+      display: contents;
+    }
+
+    .ds-row-meta {
+      grid-column: 2;
+      grid-row: 1;
+      align-self: start;
+      min-height: 44px;
+      margin: 0;
+      gap: 8px;
+    }
+
+    .ds-chip {
+      min-height: 44px;
+    }
+
     .ds-log-day {
       font-size: 19px;
     }
+
     .ds-row-title {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      margin: 0;
       font-size: 24px;
+    }
+
+    .ds-row-title a {
+      min-height: 44px;
+    }
+
+    .ds-row-main :global(.ds-taglist) {
+      grid-column: 1 / -1;
+      grid-row: 3;
     }
   }
 </style>

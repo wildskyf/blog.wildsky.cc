@@ -118,3 +118,9 @@
   --ease: cubic-bezier(0.2, 0, 0, 1);
   --t: 120ms;
 }
+
+@media (max-width: 639px) {
+  :root {
+    --page-gutter: 20px;
+  }
+}

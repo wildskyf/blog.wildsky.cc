@@ -1,28 +1,53 @@
 ---
-// 主題切換（固定左下）。DESIGN.md：24×24 線框方塊，實心／空心圓區分狀態，
-// **不用顏色區分** —— 顏色預算要留給紅色。
+// Theme toggle: a fixed 44px control rail with a 24px state mark.
+// State is expressed by shape rather than color to preserve the red budget.
+const currentLocale = Astro.currentLocale === 'en' ? 'en' : 'tw';
+const label = currentLocale === 'en' ? 'Toggle color theme' : '切換顏色主題';
 ---
 
-<button
-  class="ds-theme-toggle"
-  aria-label="Toggle color theme"
-  data-toggle-theme="tide-dark,tide-light"
->
-  <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-    <rect x="1.5" y="1.5" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1"
-    ></rect>
-    <circle class="ds-theme-mark" cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1"
-    ></circle>
-  </svg>
-</button>
+<div class="ds-theme-rail ds-plate">
+  <button
+    class="ds-theme-toggle"
+    aria-label={label}
+    title={label}
+    data-toggle-theme="tide-dark,tide-light"
+  >
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+      <rect
+        x="1.5"
+        y="1.5"
+        width="21"
+        height="21"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"></rect>
+      <circle class="ds-theme-mark" cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1"
+      ></circle>
+    </svg>
+  </button>
+</div>
 
 <style>
-  .ds-theme-toggle {
+  .ds-theme-rail {
     position: fixed;
     bottom: 32px;
     left: 32px;
     z-index: 50;
-    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    background: var(--bg-sunken);
+    --stroke: var(--fg-faint);
+    --stroke-inner: var(--rule);
+  }
+
+  .ds-theme-toggle {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
     padding: 0;
     border: 0;
     background: transparent;
@@ -35,6 +60,10 @@
     color: var(--glow);
   }
 
+  .ds-theme-toggle:active {
+    color: var(--fg);
+  }
+
   /* 深色 = 實心（沉在水裡）；淺色 = 空心（浮在水面） */
   .ds-theme-mark {
     fill: currentColor;
@@ -45,9 +74,9 @@
   }
 
   @media (max-width: 767px) {
-    .ds-theme-toggle {
-      bottom: 20px;
-      left: 20px;
+    .ds-theme-rail {
+      bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+      left: calc(12px + env(safe-area-inset-left, 0px));
     }
   }
 </style>
