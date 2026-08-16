@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-16T12:45:47Z",
+  "title": "Design System: Wildsky's Blog",
+  "extensions": {
+    "colorMeta": {
+      "polar-night": {
+        "role": "neutral",
+        "displayName": "Polar Night",
+        "canonical": "oklch(32.437% 0.022 264.182)",
+        "tonalRamp": [
+          "oklch(15% 0.022 264.182)",
+          "oklch(24% 0.022 264.182)",
+          "oklch(32.437% 0.022 264.182)",
+          "oklch(43% 0.02 264.182)",
+          "oklch(55% 0.018 264.182)",
+          "oklch(68% 0.014 264.182)",
+          "oklch(82% 0.01 264.182)",
+          "oklch(95% 0.006 264.182)"
+        ]
+      },
+      "snow-storm-surface": {
+        "role": "neutral",
+        "displayName": "Snow Storm Surface",
+        "canonical": "oklch(95.127% 0.007 260.731)",
+        "tonalRamp": [
+          "oklch(15% 0.007 260.731)",
+          "oklch(26% 0.007 260.731)",
+          "oklch(38% 0.007 260.731)",
+          "oklch(50% 0.007 260.731)",
+          "oklch(62% 0.007 260.731)",
+          "oklch(74% 0.007 260.731)",
+          "oklch(86% 0.007 260.731)",
+          "oklch(95.127% 0.007 260.731)"
+        ]
+      },
+      "snow-storm-ground": {
+        "role": "neutral",
+        "displayName": "Snow Storm Ground",
+        "canonical": "oklch(93.299% 0.01 261.788)",
+        "tonalRamp": [
+          "oklch(15% 0.01 261.788)",
+          "oklch(26% 0.01 261.788)",
+          "oklch(38% 0.01 261.788)",
+          "oklch(50% 0.01 261.788)",
+          "oklch(62% 0.01 261.788)",
+          "oklch(74% 0.01 261.788)",
+          "oklch(86% 0.01 261.788)",
+          "oklch(93.299% 0.01 261.788)"
+        ]
+      },
+      "snow-storm-sunken": {
+        "role": "neutral",
+        "displayName": "Snow Storm Sunken",
+        "canonical": "oklch(89.925% 0.016 262.749)",
+        "tonalRamp": [
+          "oklch(15% 0.016 262.749)",
+          "oklch(26% 0.016 262.749)",
+          "oklch(38% 0.016 262.749)",
+          "oklch(50% 0.016 262.749)",
+          "oklch(62% 0.016 262.749)",
+          "oklch(74% 0.016 262.749)",
+          "oklch(86% 0.016 262.749)",
+          "oklch(95% 0.012 262.749)"
+        ]
+      },
+      "frost-deep": {
+        "role": "primary",
+        "displayName": "Frost Deep",
+        "canonical": "oklch(59.435% 0.077 254.027)",
+        "tonalRamp": [
+          "oklch(15% 0.077 254.027)",
+          "oklch(26% 0.077 254.027)",
+          "oklch(37% 0.077 254.027)",
+          "oklch(48% 0.077 254.027)",
+          "oklch(59.435% 0.077 254.027)",
+          "oklch(71% 0.065 254.027)",
+          "oklch(83% 0.045 254.027)",
+          "oklch(95% 0.02 254.027)"
+        ]
+      },
+      "frost-mid": {
+        "role": "secondary",
+        "displayName": "Frost Mid",
+        "canonical": "oklch(69.651% 0.059 248.687)",
+        "tonalRamp": [
+          "oklch(15% 0.059 248.687)",
+          "oklch(26% 0.059 248.687)",
+          "oklch(37% 0.059 248.687)",
+          "oklch(48% 0.059 248.687)",
+          "oklch(59% 0.059 248.687)",
+          "oklch(69.651% 0.059 248.687)",
+          "oklch(83% 0.04 248.687)",
+          "oklch(95% 0.018 248.687)"
+        ]
+      },
+      "frost-ice": {
+        "role": "tertiary",
+        "displayName": "Frost Ice",
+        "canonical": "oklch(77.464% 0.062 217.469)",
+        "tonalRamp": [
+          "oklch(15% 0.062 217.469)",
+          "oklch(26% 0.062 217.469)",
+          "oklch(37% 0.062 217.469)",
+          "oklch(48% 0.062 217.469)",
+          "oklch(59% 0.062 217.469)",
+          "oklch(70% 0.062 217.469)",
+          "oklch(77.464% 0.062 217.469)",
+          "oklch(95% 0.02 217.469)"
+        ]
+      },
+      "slate-neutral": {
+        "role": "neutral",
+        "displayName": "Slate Neutral",
+        "canonical": "oklch(45.229% 0.035 264.131)",
+        "tonalRamp": [
+          "oklch(15% 0.035 264.131)",
+          "oklch(24% 0.035 264.131)",
+          "oklch(34% 0.035 264.131)",
+          "oklch(45.229% 0.035 264.131)",
+          "oklch(57% 0.03 264.131)",
+          "oklch(69% 0.024 264.131)",
+          "oklch(82% 0.016 264.131)",
+          "oklch(95% 0.008 264.131)"
+        ]
+      },
+      "aurora-red": {
+        "role": "tertiary",
+        "displayName": "Aurora Red (Error)",
+        "canonical": "oklch(60.61% 0.12 15.341)",
+        "tonalRamp": [
+          "oklch(15% 0.12 15.341)",
+          "oklch(26% 0.12 15.341)",
+          "oklch(37% 0.12 15.341)",
+          "oklch(48% 0.12 15.341)",
+          "oklch(60.61% 0.12 15.341)",
+          "oklch(72% 0.1 15.341)",
+          "oklch(84% 0.07 15.341)",
+          "oklch(95% 0.03 15.341)"
+        ]
+      },
+      "aurora-yellow": {
+        "role": "tertiary",
+        "displayName": "Aurora Yellow (Warning)",
+        "canonical": "oklch(85.486% 0.089 84.093)",
+        "tonalRamp": [
+          "oklch(15% 0.089 84.093)",
+          "oklch(28% 0.089 84.093)",
+          "oklch(41% 0.089 84.093)",
+          "oklch(54% 0.089 84.093)",
+          "oklch(65% 0.089 84.093)",
+          "oklch(76% 0.089 84.093)",
+          "oklch(85.486% 0.089 84.093)",
+          "oklch(95% 0.04 84.093)"
+        ]
+      },
+      "aurora-green": {
+        "role": "tertiary",
+        "displayName": "Aurora Green (Success)",
+        "canonical": "oklch(76.827% 0.074 131.063)",
+        "tonalRamp": [
+          "oklch(15% 0.074 131.063)",
+          "oklch(26% 0.074 131.063)",
+          "oklch(38% 0.074 131.063)",
+          "oklch(50% 0.074 131.063)",
+          "oklch(62% 0.074 131.063)",
+          "oklch(76.827% 0.074 131.063)",
+          "oklch(87% 0.05 131.063)",
+          "oklch(95% 0.025 131.063)"
+        ]
+      },
+      "aurora-purple": {
+        "role": "tertiary",
+        "displayName": "Aurora Purple (Info)",
+        "canonical": "oklch(69.207% 0.062 332.664)",
+        "tonalRamp": [
+          "oklch(15% 0.062 332.664)",
+          "oklch(26% 0.062 332.664)",
+          "oklch(37% 0.062 332.664)",
+          "oklch(48% 0.062 332.664)",
+          "oklch(59% 0.062 332.664)",
+          "oklch(69.207% 0.062 332.664)",
+          "oklch(83% 0.04 332.664)",
+          "oklch(95% 0.018 332.664)"
+        ]
+      },
+      "abyss-surface": {
+        "role": "neutral",
+        "displayName": "Abyss Surface (dark theme)",
+        "canonical": "oklch(20.84% 0.008 17.911)",
+        "tonalRamp": [
+          "oklch(15% 0.008 17.911)",
+          "oklch(20.84% 0.008 17.911)",
+          "oklch(30% 0.008 17.911)",
+          "oklch(42% 0.008 17.911)",
+          "oklch(55% 0.008 17.911)",
+          "oklch(68% 0.006 17.911)",
+          "oklch(82% 0.004 17.911)",
+          "oklch(95% 0.002 17.911)"
+        ]
+      },
+      "abyss-content": {
+        "role": "neutral",
+        "displayName": "Abyss Content (dark theme)",
+        "canonical": "oklch(83.768% 0.001 17.911)",
+        "tonalRamp": [
+          "oklch(15% 0.001 17.911)",
+          "oklch(26% 0.001 17.911)",
+          "oklch(38% 0.001 17.911)",
+          "oklch(50% 0.001 17.911)",
+          "oklch(62% 0.001 17.911)",
+          "oklch(74% 0.001 17.911)",
+          "oklch(83.768% 0.001 17.911)",
+          "oklch(95% 0.001 17.911)"
+        ]
+      },
+      "signal-green": {
+        "role": "primary",
+        "displayName": "Signal Green (dark theme — unresolved drift)",
+        "canonical": "oklch(68.628% 0.185 148.958)",
+        "tonalRamp": [
+          "oklch(15% 0.185 148.958)",
+          "oklch(26% 0.185 148.958)",
+          "oklch(37% 0.185 148.958)",
+          "oklch(48% 0.185 148.958)",
+          "oklch(58% 0.185 148.958)",
+          "oklch(68.628% 0.185 148.958)",
+          "oklch(82% 0.12 148.958)",
+          "oklch(95% 0.05 148.958)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "文章標題 h1。text-3xl → lg:text-4xl，襯線 700。"
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "文章列表中的文章標題。hover 時整組加底線。"
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "header 站名。全站唯一的品牌字級。"
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "文章內文（prose prose-xl，行動裝置降 prose-lg / 18px）。行高 36px 是中文閱讀的關鍵。"
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "全大寫 kicker，字距 0.18em。全站唯一的大寫處理，只用於 AuthorBio 區塊標籤與 Notes 頁 kicker。"
+      }
+    },
+    "shadows": [
+      {
+        "name": "hairline-lift",
+        "value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+        "purpose": "全站唯一的陰影（Tailwind shadow-sm）。僅用於 header、Notes 卡片、Notes 載入更多按鈕。角色是結構性的，不是氛圍性的。"
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-200",
+        "value": "200ms",
+        "purpose": "顏色狀態轉換的標準時長（分類 chip、標籤、系列橫幅連結）。搭配預設 ease。"
+      },
+      {
+        "name": "state-300",
+        "value": "300ms",
+        "purpose": "分頁連結的較慢轉換。"
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "2xl", "value": "1536px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "唯一的實心行動按鈕。用於 AuthorBio 的兩顆 CTA。",
+      "html": "<a href=\"#\" class=\"ds-btn-primary\">看看我的經歷</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 16px; background: var(--color-primary, #5E81AC); color: var(--color-primary-content, #03060B); border: 1px solid var(--color-primary, #5E81AC); border-radius: var(--radius-field, 4px); font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s, opacity 0.2s; } .ds-btn-primary:hover { opacity: 0.88; } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-base-content, #2E3440); outline-offset: 2px; }"
+    },
+    {
+      "name": "Category Chip",
+      "kind": "chip",
+      "refersTo": "chip-category",
+      "description": "文章標頭的分類標籤。Frost Deep 10% 底，hover 轉 20%。",
+      "html": "<a href=\"#\" class=\"ds-chip-category\">開發筆記</a>",
+      "css": ".ds-chip-category { display: inline-block; padding: 4px 8px; border-radius: var(--radius-field, 4px); background: color-mix(in oklab, var(--color-primary, #5E81AC) 10%, transparent); color: var(--color-primary, #5E81AC); font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 14px; text-decoration: none; transition: background 0.2s; } .ds-chip-category:hover { background: color-mix(in oklab, var(--color-primary, #5E81AC) 20%, transparent); } .ds-chip-category:focus-visible { outline: 2px solid var(--color-primary, #5E81AC); outline-offset: 2px; }"
+    },
+    {
+      "name": "Tag List",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "標籤不是 chip，是以「・」分隔的純文字連結串，前置一個標籤圖示。",
+      "html": "<div class=\"ds-taglist\"><svg class=\"ds-taglist-icon\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M21.29 11.29l-8.58-8.58A1 1 0 0012 2.42H4a2 2 0 00-2 2v8a1 1 0 00.29.71l8.58 8.58a2 2 0 002.83 0l7.59-7.59a2 2 0 000-2.83zM7 8a1.5 1.5 0 111.5-1.5A1.5 1.5 0 017 8z\"/></svg><a href=\"#\" class=\"ds-tag\">astro</a><span class=\"ds-tag-sep\">・</span><a href=\"#\" class=\"ds-tag ds-tag-current\">self-hosting</a></div>",
+      "css": ".ds-taglist { display: flex; align-items: center; flex-wrap: wrap; gap: 2px; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; } .ds-taglist-icon { color: color-mix(in oklab, var(--color-secondary, #81A1C1) 70%, transparent); margin-right: 4px; flex-shrink: 0; } .ds-tag { padding: 2px 0; font-size: 12px; font-weight: 500; color: var(--color-base-content, #2E3440); text-decoration: none; transition: color 0.2s; } .ds-tag:hover { text-decoration: underline; } .ds-tag-current { color: var(--color-primary, #5E81AC); font-weight: 700; } .ds-tag-sep { font-size: 12px; color: var(--color-base-content, #2E3440); }"
+    },
+    {
+      "name": "Post List Item",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "首頁與列表頁的唯一單元。無卡片、無縮圖、無分隔線；靠 48px 留白分組。",
+      "html": "<article class=\"ds-post-item\"><div class=\"ds-post-meta\"><span class=\"ds-post-meta-cell\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm0 16H5V10h14z\"/></svg><time>2026/08/16</time></span><span class=\"ds-post-meta-cell\"><a href=\"#\" class=\"ds-post-cat\">開發筆記</a></span></div><a href=\"#\" class=\"ds-post-link\"><h2 class=\"ds-post-title\">從 Claude Code 的 agent 視角重新看 vim</h2></a></article>",
+      "css": ".ds-post-item { font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; color: color-mix(in oklab, var(--color-base-content, #2E3440) 80%, transparent); padding: 0 12px; margin-bottom: 48px; letter-spacing: 0.02em; } .ds-post-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 12px; font-size: 16px; } .ds-post-meta-cell { display: inline-flex; align-items: center; gap: 4px; } .ds-post-meta-cell svg { color: color-mix(in oklab, var(--color-secondary, #81A1C1) 70%, transparent); } .ds-post-cat { color: inherit; text-decoration: none; transition: color 0.2s; } .ds-post-cat:hover { text-decoration: underline; } .ds-post-link { text-decoration: none; color: inherit; } .ds-post-title { margin: 8px 0 0; font-size: 24px; font-weight: 600; line-height: 32px; } .ds-post-link:hover .ds-post-title { text-decoration: underline; }"
+    },
+    {
+      "name": "Series Banner",
+      "kind": "card",
+      "refersTo": "banner-series",
+      "description": "文章屬於某個系列時，出現在標頭下方的細長提示條。",
+      "html": "<aside class=\"ds-banner-series\">本文屬於 <a href=\"#\" class=\"ds-banner-link\">Self-hosted AI Agent 實戰系列</a>，可回系列頁查看完整脈絡。</aside>",
+      "css": ".ds-banner-series { margin-bottom: 32px; padding: 12px 16px; border: 1px solid var(--color-base-300, #D8DEE9); border-radius: 12px; background: color-mix(in oklab, var(--color-base-200, #E5E9F0) 60%, transparent); color: color-mix(in oklab, var(--color-base-content, #2E3440) 75%, transparent); font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 14px; letter-spacing: 0.02em; } .ds-banner-link { color: var(--color-primary, #5E81AC); font-weight: 500; text-decoration: none; transition: color 0.2s; } .ds-banner-link:hover { text-decoration: underline; }"
+    },
+    {
+      "name": "Note Card",
+      "kind": "card",
+      "refersTo": "card-note",
+      "description": "Notes 頁的 GoToSocial 貼文卡片。全站少數帶陰影的元件之一。",
+      "html": "<article class=\"ds-note-card\"><div class=\"ds-note-content\"><p>最近在把 blog 的視覺系統整理成文件。</p></div><div class=\"ds-note-meta\"><time>2026/08/16 20:16</time><a href=\"#\" class=\"ds-note-permalink\">permalink</a></div></article>",
+      "css": ".ds-note-card { padding: 20px; border: 1px solid var(--color-base-300, #D8DEE9); border-radius: 12px; background: var(--color-base-100, #ECEFF4); box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; } .ds-note-content { color: var(--color-base-content, #2E3440); font-size: 18px; line-height: 1.8; letter-spacing: 0.02em; } .ds-note-content > :first-child { margin-top: 0; } .ds-note-content > :last-child { margin-bottom: 0; } .ds-note-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--color-base-300, #D8DEE9); font-size: 14px; color: color-mix(in oklab, var(--color-base-content, #2E3440) 60%, transparent); } .ds-note-permalink { color: var(--color-primary, #5E81AC); text-decoration: none; } .ds-note-permalink:hover { text-decoration: underline; }"
+    },
+    {
+      "name": "Header Bar",
+      "kind": "nav",
+      "refersTo": "header-bar",
+      "description": "64px 高的頁首。底部 1px 滿對比實線是全站唯一一條「重」的線。",
+      "html": "<header class=\"ds-header\"><div class=\"ds-header-left\"><a href=\"/\" class=\"ds-header-title\">Wildsky's Blog</a><span class=\"ds-header-dot\">・</span><p class=\"ds-header-desc\">軟體工程師的技術與思考筆記</p></div><button class=\"ds-header-menu\" aria-label=\"Open navigation menu\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M4 6h16M4 12h16M4 18h16\"/></svg></button></header>",
+      "css": ".ds-header { display: flex; align-items: center; gap: 8px; min-height: 64px; padding: 0 16px; background: var(--color-base-100, #ECEFF4); color: var(--color-base-content, #2E3440); border-bottom: 1px solid var(--color-base-content, #2E3440); box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; } .ds-header-left { display: flex; align-items: center; gap: 8px; flex: 1; } .ds-header-title { font-size: 20px; font-weight: 700; line-height: 1.5; color: inherit; text-decoration: none; } .ds-header-dot { opacity: 0.5; } .ds-header-desc { margin: 0; color: color-mix(in oklab, var(--color-base-content, #2E3440) 70%, transparent); } .ds-header-menu { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: none; border-radius: 9999px; background: transparent; color: inherit; cursor: pointer; transition: background 0.2s; } .ds-header-menu:hover { background: color-mix(in oklab, var(--color-base-content, #2E3440) 8%, transparent); } .ds-header-menu:focus-visible { outline: 2px solid var(--color-base-content, #2E3440); outline-offset: 2px; }"
+    },
+    {
+      "name": "Nav Dropdown",
+      "kind": "nav",
+      "refersTo": "nav-dropdown",
+      "description": "208px 寬的導覽下拉選單，項目分 main / content 兩組。",
+      "html": "<ul class=\"ds-nav-dropdown\"><li><a href=\"/\" class=\"ds-nav-item\">home</a></li><li><a href=\"/about/\" class=\"ds-nav-item\">about</a></li><li><a href=\"/now/\" class=\"ds-nav-item\">now</a></li><li class=\"ds-nav-sep\"></li><li><a href=\"/tags/\" class=\"ds-nav-item\">tags</a></li></ul>",
+      "css": ".ds-nav-dropdown { width: 208px; margin: 0; padding: 8px; list-style: none; background: var(--color-base-100, #ECEFF4); border-radius: var(--radius-box, 8px); box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; text-transform: capitalize; } .ds-nav-item { display: block; padding: 8px 12px; border-radius: var(--radius-field, 4px); color: var(--color-base-content, #2E3440); font-size: 16px; text-decoration: none; transition: background 0.2s; } .ds-nav-item:hover { background: color-mix(in oklab, var(--color-base-content, #2E3440) 8%, transparent); } .ds-nav-item:focus-visible { outline: 2px solid var(--color-base-content, #2E3440); outline-offset: -2px; } .ds-nav-sep { height: 1px; margin: 8px 4px; background: var(--color-base-300, #D8DEE9); }"
+    },
+    {
+      "name": "Theme Toggle (Signature)",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "釘在畫面左下角的單字符主題開關。全站最具識別度的動作之一。",
+      "html": "<button class=\"ds-theme-toggle\" aria-label=\"Toggle color theme\"><span aria-hidden=\"true\">☀︎</span></button>",
+      "css": ".ds-theme-toggle { border: 0; padding: 0; background: transparent; cursor: pointer; font-size: 20px; line-height: 1; color: color-mix(in oklab, var(--color-base-content, #2E3440) 80%, transparent); transition: opacity 0.2s; animation: ds-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; } .ds-theme-toggle:hover { opacity: 0.6; } .ds-theme-toggle:focus-visible { outline: 2px solid color-mix(in oklab, var(--color-base-content, #2E3440) 40%, transparent); outline-offset: 4px; } @keyframes ds-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }"
+    },
+    {
+      "name": "Social Rail (Signature)",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "桌機釘在右下角的垂直社群圖示列；行動裝置退回 footer 內的水平排列。",
+      "html": "<div class=\"ds-social-rail\"><a href=\"#\" class=\"ds-social-link\" aria-label=\"Mastodon profile\"><svg viewBox=\"0 0 24 24\" width=\"36\" height=\"36\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M20.94 14c-.28 1.41-2.44 2.96-4.97 3.26-1.31.15-2.6.3-3.97.24-2.25-.11-4.02-.54-4.02-.54v.62c.32 2.22 2.22 2.35 4.03 2.42 1.82.06 3.44-.45 3.44-.45l.08 1.65s-1.28.68-3.55.81c-1.25.07-2.81-.03-4.62-.51-3.92-1.04-4.6-5.22-4.7-9.46-.03-1.26-.01-2.45-.01-3.44 0-4.33 2.84-5.6 2.84-5.6C6.93 2.33 9.4 2.01 11.97 2h.06c2.57.01 5.05.33 6.5.99 0 0 2.83 1.27 2.83 5.6 0 0 .04 3.2-.42 5.41M18 8.91c0-1.07-.28-1.92-.83-2.55-.56-.63-1.3-.95-2.21-.95-1.06 0-1.86.4-2.39 1.22l-.52.87-.52-.87c-.53-.82-1.33-1.22-2.39-1.22-.91 0-1.65.32-2.21.95-.55.63-.83 1.48-.83 2.55v5.24h2.08V9.06c0-1.07.45-1.61 1.35-1.61.99 0 1.49.64 1.49 1.92v2.79h2.06V9.37c0-1.28.5-1.92 1.5-1.92.9 0 1.35.54 1.35 1.61v5.09H18V8.91z\"/></svg></a><a href=\"#\" class=\"ds-social-link\" aria-label=\"RSS feed\"><svg viewBox=\"0 0 24 24\" width=\"36\" height=\"36\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M6.18 15.64a2.18 2.18 0 012.18 2.18C8.36 19 7.38 20 6.18 20 5 20 4 19 4 17.82a2.18 2.18 0 012.18-2.18M4 4.44A15.56 15.56 0 0119.56 20h-2.83A12.73 12.73 0 004 7.27V4.44m0 5.66a9.9 9.9 0 019.9 9.9h-2.83A7.07 7.07 0 004 12.93V10.1z\"/></svg></a></div>",
+      "css": ".ds-social-rail { display: flex; gap: 24px; align-items: center; } @media (min-width: 1024px) { .ds-social-rail { flex-direction: column; } } .ds-social-link { display: inline-flex; color: var(--color-base-content, #2E3440); opacity: 0.6; transition: opacity 0.2s; } .ds-social-link:hover { opacity: 0.8; } .ds-social-link:focus-visible { outline: 2px solid var(--color-base-content, #2E3440); outline-offset: 4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "濁心斯卡蒂・覆潮之下",
+    "overview": "這是一座沉在冷水下的個人堡壘。它不發光、不招手、不試圖說服你留下——它只是十年來一直在那裡，而且還會繼續在那裡。畫面的第一印象應該是低溫：冷藍灰的雪原色（#ECEFF4 / #E5E9F0 / #D8DEE9）疊出層次，深墨藍的文字（#2E3440）落在上面，飽和度全域壓低，沒有一塊顏色在爭奪視線。這是「覆潮之下」的部分。\n\n「濁心」是它不是純淨的：這裡同時放技術除錯、履歷、接案報價之外的作品、書櫃、歌單、明日方舟的近況。它不把「人」的部分洗掉來換取專業感——專業感靠的是把每一件事都講清楚，不是靠把生活切掉。「獵人」則是它的動作方式：出手前安靜，出手時精準；元件細、邊框薄、留白大，訊息密度高但不喧鬧。\n\n整站以襯線字（ui-serif / Georgia 系）承載全部內容，包含導覽與按鈕。單欄 896px 的閱讀柱是唯一的主結構，沒有側欄、沒有卡片牆。桌機版把兩組工具釘在畫面左右下角（主題切換、社群連結），像艙壁上的兩個開關，內容區完全不被打斷。",
+    "keyCharacteristics": [
+      "冷色、低飽和、全域壓低對比張力（Nord 色系）",
+      "全站襯線字，含 UI 元素；不做 sans/serif 混排",
+      "單欄 896px 閱讀柱，無側欄",
+      "幾乎全平：層次靠背景深淺（base-100/200/300），不靠陰影",
+      "中文字距全域 +0.02em（tracking-tw-normal）",
+      "桌機的兩個固定角落開關（左下主題、右下社群）是這個站的識別動作"
+    ],
+    "rules": [
+      {
+        "name": "The One Frost Rule",
+        "body": "全站只有一個行動色：Frost Deep（#5E81AC）。任何新元件想要「有顏色」，答案是 Frost Deep 或它的透明度變體（10% / 20% / 70%），不是新開一個色。",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Step Surface Rule",
+        "body": "平面之間只差一階：#E5E9F0（地面）→ #ECEFF4（內容面）→ #D8DEE9（下沉面）。不要為了「突出」把某個區塊跳兩階或塗上強調色。",
+        "section": "colors"
+      },
+      {
+        "name": "The Aurora-Is-Semantic Rule",
+        "body": "極光四色只在傳達狀態（錯誤、警告、成功、提示）時出現。拿它們當裝飾色或圖表配色即違規。",
+        "section": "colors"
+      },
+      {
+        "name": "The All-Serif Rule",
+        "body": "導覽、按鈕、標籤、內文全部襯線。要引入無襯線字必須是全站決定，不是單一元件的例外。",
+        "section": "typography"
+      },
+      {
+        "name": "The Chinese Tracking Rule",
+        "body": "中文區塊一律掛 tracking-tw-normal（+0.02em）；英文區塊不加字距。判斷依 lang，不是依視覺喜好。",
+        "section": "typography"
+      },
+      {
+        "name": "The Single Column Rule",
+        "body": "這個站沒有側欄，也不打算有。要增加的資訊往柱內排，或另開頁面。",
+        "section": "layout"
+      },
+      {
+        "name": "The Depth-Zero Rule",
+        "body": "新元件預設無陰影。需要區分層次時，先換一階背景色；只有當元件真的浮在內容之上（sticky、dropdown、可點卡片）才可以用 hairline-lift，且不得自創第二種陰影值。",
+        "section": "elevation"
+      },
+      {
+        "name": "The Small Radius Rule",
+        "body": "半徑上限 12px（頭像等真正的圓形除外）。超過 12px 的圓角屬於使用者拒絕的「圓滾滾可愛風」。",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do 用 Frost Deep（#5E81AC）或它的 10% / 20% / 70% 變體當唯一行動色（The One Frost Rule）。",
+      "Do 用背景三階（#E5E9F0 → #ECEFF4 → #D8DEE9）做層次，新元件預設 box-shadow: none（The Depth-Zero Rule）。",
+      "Do 讓新元件也用襯線字，包含按鈕與標籤（The All-Serif Rule）。",
+      "Do 中文區塊掛 tracking-tw-normal（+0.02em），英文區塊不加。",
+      "Do 半徑控制在 12px 以內（真正的圓形除外）。",
+      "Do 讓內容留在 896px 單欄裡；要多放東西就往下排或另開頁。",
+      "Do 用留白分組（列表項間 48px），不要用卡片框或分隔線。",
+      "Do 引用 daisyUI 語意 token（base-100 / base-content / primary），不要寫死 hex 或 Tailwind 調色盤色（如 text-gray-900）。"
+    ],
+    "donts": [
+      "Don't 使用紫藍漸層、發光邊框、玻璃擬態這類「AI 感」處理（使用者明確拒絕）。",
+      "Don't 套企業 SaaS 落地頁的版型：滿版 hero、三欄功能卡、推薦語牆、圖庫人物照（使用者明確拒絕）。",
+      "Don't 走圓滾滾可愛風：大於 12px 的圓角、粗體圓體字、糖果色（使用者明確拒絕）。",
+      "Don't 新增第二個強調色或第二種陰影值。",
+      "Don't 把極光四色（#BF616A / #EBCB8B / #A3BE8D / #B48EAD）當裝飾色使用。",
+      "Don't 引用深色主題的螢光綠（#1FB854）當品牌色——它是待處理的漂移，不是決定。",
+      "Don't 加側欄。",
+      "Don't 在文章內文之外使用 prose-zh / prose-en 這兩個 class：它們目前沒有任何定義。"
+    ]
+  }
+}
