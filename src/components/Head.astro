@@ -66,7 +66,7 @@ const schemas = [articleJsonLd, ...additionalSchemas].filter(Boolean);
   rel="alternate"
   type="application/rss+xml"
   title="RSS Feed for Wildsky's Blog"
-  href={new URL("rss.xml", Astro.site)}
+  href={new URL('rss.xml', Astro.site)}
 />
 <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png" />
 <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png" />
@@ -104,7 +104,15 @@ const schemas = [articleJsonLd, ...additionalSchemas].filter(Boolean);
 <meta property="og:image" content={imgUrl} />
 <meta property="og:description" content={desc} />
 <meta property="og:site_name" content={blog_info.name} />
-{pageType === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime} />}
-{pageType === 'article' && updatedTime && <meta property="article:modified_time" content={updatedTime} />}
+{
+  pageType === 'article' && publishedTime && (
+    <meta property="article:published_time" content={publishedTime} />
+  )
+}
+{
+  pageType === 'article' && updatedTime && (
+    <meta property="article:modified_time" content={updatedTime} />
+  )
+}
 {pageType === 'article' && <meta property="article:author" content={authorUrl} />}
 <SchemaOrg schema={schemas} />

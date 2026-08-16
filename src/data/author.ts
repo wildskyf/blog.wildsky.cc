@@ -4,7 +4,14 @@ export const authorProfile = {
   schemaName: 'Wildsky',
   schemaAlternateName: 'wildsky',
   jobTitle: 'Senior Software Engineer',
-  knowsAbout: ['AI Agent', 'Self-hosted Systems', 'Web Development', 'Node.js', 'React', 'TypeScript'],
+  knowsAbout: [
+    'AI Agent',
+    'Self-hosted Systems',
+    'Web Development',
+    'Node.js',
+    'React',
+    'TypeScript',
+  ],
   avatar: {
     src: '/images/author-avatar.jpeg',
     alt: {
@@ -26,7 +33,8 @@ export const authorProfile = {
       sectionLabel: '作者介紹',
       handleLabel: '網路上多半用 Wildsky 這個名字',
       subtitle: '軟體工程師，長期關注 AI 工具、PKM、self-hosted 與軟體工程。',
-      summary: 'Vimer + Taiwanese + Web Dev，近日和 IoT 設備混得比較熟。正在往 systems architect / operator / productized builder 演化。',
+      summary:
+        'Vimer + Taiwanese + Web Dev，近日和 IoT 設備混得比較熟。正在往 systems architect / operator / productized builder 演化。',
       primaryCta: {
         label: '關於我',
         href: '/about/',
@@ -39,8 +47,10 @@ export const authorProfile = {
     en: {
       sectionLabel: 'About the author',
       handleLabel: 'Mostly writing on the internet as Wildsky',
-      subtitle: 'A software engineer focused on AI tools, PKM, self-hosting, and software engineering.',
-      summary: 'Vim user + Taiwanese + web dev. Lately I have been getting along pretty well with IoT devices, and gradually evolving toward a systems architect / operator / productized builder.',
+      subtitle:
+        'A software engineer focused on AI tools, PKM, self-hosting, and software engineering.',
+      summary:
+        'Vim user + Taiwanese + web dev. Lately I have been getting along pretty well with IoT devices, and gradually evolving toward a systems architect / operator / productized builder.',
       primaryCta: {
         label: 'About',
         href: '/en/about-en/',

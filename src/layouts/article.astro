@@ -17,7 +17,10 @@ const personSchema = isAboutPage
       '@type': 'Person',
       name: authorProfile.schemaName,
       alternateName: authorProfile.schemaAlternateName,
-      url: new URL(currentLocale === 'en' ? authorProfile.aboutPaths.en : authorProfile.aboutPaths.tw, Astro.site).toString(),
+      url: new URL(
+        currentLocale === 'en' ? authorProfile.aboutPaths.en : authorProfile.aboutPaths.tw,
+        Astro.site
+      ).toString(),
       jobTitle: authorProfile.jobTitle,
       knowsAbout: authorProfile.knowsAbout,
       sameAs: authorProfile.sameAs,

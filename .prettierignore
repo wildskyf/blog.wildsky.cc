@@ -1,0 +1,17 @@
+# ── 內容：格式即內容，重排會動到 markdown 的語意邊界 ──
+src/content/
+src/pages/**/*.md
+
+# ── 別人擁有的檔案 ──
+.yarn/
+.yarnrc.yml
+.impeccable/
+functions/
+
+# ── 設計稿與參考圖 ──
+comp/
+references/
+
+# ── 產出物 ──
+out/
+.astro/

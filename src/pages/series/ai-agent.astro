@@ -3,7 +3,8 @@ import PageLayout from '@/layouts/page.astro';
 import { authorProfile } from '@/data/author';
 
 const pageName = 'Self-hosted AI Agent 實戰系列';
-const pageDesc = '從零開始部署、優化、營運自架 AI Agent 的完整紀錄。涵蓋框架選型、context window 優化、tool 精簡、搜尋後端替換等實戰經驗。';
+const pageDesc =
+  '從零開始部署、優化、營運自架 AI Agent 的完整紀錄。涵蓋框架選型、context window 優化、tool 精簡、搜尋後端替換等實戰經驗。';
 const pageUrl = new URL('/series/ai-agent/', Astro.site).toString();
 
 const seriesPosts = [
@@ -81,7 +82,9 @@ const collectionSchema = {
 ---
 
 <PageLayout pageName={pageName} pageDesc={pageDesc} schema={collectionSchema}>
-  <article class="prose prose-xl prose-zh tracking-tw-normal max-w-none bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16">
+  <article
+    class="prose prose-xl prose-zh tracking-tw-normal max-w-none bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16"
+  >
     <header class="not-prose border-b border-base-300 pb-8">
       <p class="text-sm uppercase tracking-[0.2em] text-base-content/55">Series / Pillar Page</p>
       <h1 class="mt-3 text-4xl font-bold text-base-content lg:text-5xl">{pageName}</h1>
@@ -94,11 +97,12 @@ const collectionSchema = {
       <h2>這個系列在講什麼</h2>
       <p>
         這個系列不是在教「五分鐘架好 AI Agent」，而是把我真的在做的事情攤開來：為什麼要 self-host、
-        框架怎麼選、context 怎麼瘦身、tool 怎麼收斂、搜尋後端怎麼替換、還有整個系統怎麼維持在可運作的狀態。
+        框架怎麼選、context 怎麼瘦身、tool
+        怎麼收斂、搜尋後端怎麼替換、還有整個系統怎麼維持在可運作的狀態。
       </p>
       <p>
-        如果在意的是 <strong>可控性</strong>、<strong>長期成本</strong>、<strong>工作流整合</strong>，
-        而不是單次 demo，這個系列應該會比較有參考價值。
+        如果在意的是 <strong>可控性</strong>、<strong>長期成本</strong>、<strong>工作流整合</strong
+        >， 而不是單次 demo，這個系列應該會比較有參考價值。
       </p>
     </section>
 
@@ -114,13 +118,16 @@ const collectionSchema = {
     <section class="mt-10">
       <h2>文章列表</h2>
       <ol>
-        {seriesPosts.map((post) => (
-          <li class="mb-4">
-            {post.url ? <a href={post.url}>{post.title}</a> : <span>{post.title}</span>} — {post.status}
-            <br />
-            <span class="text-base-content/75">{post.summary}</span>
-          </li>
-        ))}
+        {
+          seriesPosts.map((post) => (
+            <li class="mb-4">
+              {post.url ? <a href={post.url}>{post.title}</a> : <span>{post.title}</span>} —{' '}
+              {post.status}
+              <br />
+              <span class="text-base-content/75">{post.summary}</span>
+            </li>
+          ))
+        }
       </ol>
     </section>
 
@@ -136,8 +143,8 @@ const collectionSchema = {
     <section class="mt-10 rounded-2xl border border-base-300 bg-base-200/50 p-6 not-prose">
       <h2 class="text-2xl font-semibold text-base-content">關於作者</h2>
       <p class="mt-3 text-base leading-8 text-base-content/80">
-        {authorProfile.name}，網路上多半用 {authorProfile.handle} 這個名字。平常在做軟體工程，也長期折騰 AI tools、
-        PKM、self-hosting 與各種把 workflow productize 的方法。
+        {authorProfile.name}，網路上多半用 {authorProfile.handle} 這個名字。平常在做軟體工程，也長期折騰
+        AI tools、 PKM、self-hosting 與各種把 workflow productize 的方法。
       </p>
       <div class="mt-5 flex flex-wrap gap-3">
         <a
