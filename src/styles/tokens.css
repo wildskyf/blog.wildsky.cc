@@ -1,0 +1,118 @@
+/* ============================================================
+   TOKEN LAYER — 唯一允許出現色值的地方
+   來源：DESIGN.md「Colors / Token 契約」與「環境層 token」
+   任何 component 寫死色值（hex 或 Tailwind 調色盤 class）即違規。
+   ============================================================ */
+
+[data-theme='tide-dark'] {
+  color-scheme: dark;
+
+  --bg: #0a1420;
+  --bg-surface: #0d1b2a;
+  --bg-raised: #12253a;
+  --bg-sunken: #060e17;
+
+  --fg: #e8ecf0;
+  --fg-muted: #8faebc;
+  --fg-faint: #4a7a8c;
+  --fg-on-accent: #e8ecf0;
+
+  --rule: #2d4a5e;
+
+  --accent: #c8323e;
+  --accent-text: #e4525c;
+  --accent-fill: #a8202c;
+
+  --glow: #7fd4d4;
+  --glow-dim: #5fb8bc;
+  --glow-line: #7fd4d4;
+
+  --body-smoothing: antialiased;
+
+  /* 環境層（HSL 192–198，綠得發黑的水） */
+  --env-surface: #16323a;
+  --env-mid: #0e2129;
+  --env-deep: #081519;
+  --env-abyss: #050d0f;
+  --env-raised: #1b3a42;
+  --env-silhouette: #030a0c;
+
+  /* 光的顏色。暗色的光是青綠（生物光／深水散射） */
+  --env-beam: #4a7a8c;
+  --env-caustic: #7fd4d4;
+  --env-spark: #7fd4d4;
+
+  /* 環境層強度 —— 見 DESIGN.md「環境層強度」表，這些是實測解出的上限 */
+  --env-grain-blend: screen;
+  --env-strata-op: 0.5;
+  --env-organic-op: 1;
+  --env-mote-op: 0.14;
+}
+
+[data-theme='tide-light'] {
+  color-scheme: light;
+
+  --bg: #edf2f4;
+  --bg-surface: #f7f9fa;
+  --bg-raised: #e4edf0;
+  --bg-sunken: #dfe9ec;
+
+  --fg: #16283a;
+  --fg-muted: #3f6273;
+  --fg-faint: #3d8a9e;
+  --fg-on-accent: #f7f9fa;
+
+  --rule: #c5d5dc;
+
+  --accent: #c8323e;
+  --accent-text: #b82a36;
+  --accent-fill: #c8323e;
+
+  --glow: #166363;
+  --glow-dim: #1b7272;
+  --glow-line: #2ba3a3;
+
+  --body-smoothing: auto;
+
+  /* 淺灘：同一條明度軸、同一個色相帶，但落在紙的亮度區間 */
+  --env-surface: #f2f7f8;
+  --env-mid: #e4eef0;
+  --env-deep: #d5e4e7;
+  --env-abyss: #cadce0;
+  --env-raised: #ddeaec;
+  --env-silhouette: #afc7cd;
+
+  --env-beam: #eaf7f9;
+  --env-caustic: #eaf7f9;
+  --env-spark: #eaf7f9;
+
+  /* 亮色的剪影與微粒是「深色物」，會扣掉正文背景亮度 —— 必須壓弱。
+     0.42 / 0.08 是讓 --fg-muted 保住 AA 的實測上限，不是品味。 */
+  --env-grain-blend: multiply;
+  --env-strata-op: 0.55;
+  --env-organic-op: 0.42;
+  --env-mote-op: 0.08;
+}
+
+/* ============================================================
+   非色彩 token
+   ============================================================ */
+:root {
+  /* 三支拉丁字體分工，見 DESIGN.md「Typography / Character」 */
+  --font-chrome: 'Cinzel Variable', 'Noto Serif TC', Georgia, serif;
+  --font-display: 'Bodoni Moda Variable', 'Noto Serif TC', Georgia, serif;
+  --font-label: 'EB Garamond Variable', 'Noto Serif TC', Georgia, serif;
+  --font-body: 'Source Sans 3 Variable', 'Noto Sans TC', system-ui, sans-serif;
+  --font-code: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* 版面骨架 */
+  --chrome: 1120px;
+  --gutter-col: 140px;
+  --measure: 720px;
+  --page-gutter: 24px;
+
+  --fs-watermark: 132px;
+
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --t: 120ms;
+}

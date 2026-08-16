@@ -1,3 +1,10 @@
 {
-  "buildPath": "comp"
+  "buildPath": "comp",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [
+      "comp/**"
+    ],
+    "ignoreValues": []
+  }
 }

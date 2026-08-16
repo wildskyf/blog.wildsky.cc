@@ -17,12 +17,32 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, sch
 <html lang={htmlLang}>
   <head>
     <script is:inline>
+      // 舊主題名遷移：dim / forest → tide-dark，nord → tide-light
+      const LEGACY = { dim: 'tide-dark', forest: 'tide-dark', nord: 'tide-light' };
       let saved = localStorage.getItem('theme');
-      if (saved === 'dim') {
-        saved = 'forest';
-        localStorage.setItem('theme', 'forest');
+      if (saved && LEGACY[saved]) {
+        saved = LEGACY[saved];
+        localStorage.setItem('theme', saved);
       }
-      document.documentElement.setAttribute('data-theme', saved ?? 'nord');
+      if (saved !== 'tide-dark' && saved !== 'tide-light') saved = null;
+
+      const theme =
+        saved ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'tide-dark' : 'tide-light');
+      document.documentElement.setAttribute('data-theme', theme);
+
+      // theme-color 必須跟著主題走，否則行動裝置的網址列會是另一套色
+      document.addEventListener('DOMContentLoaded', () => {
+        const meta = document.querySelector('meta[name="theme-color"]');
+        const sync = () => {
+          const t = document.documentElement.getAttribute('data-theme');
+          if (meta) meta.setAttribute('content', t === 'tide-dark' ? '#050D0F' : '#C6D9DE');
+        };
+        sync();
+        new MutationObserver(sync).observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['data-theme'],
+        });
+      });
     </script>
     <script>
       import { themeChange } from 'theme-change';
@@ -33,7 +53,8 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, sch
     <link rel="me" href="https://github.com/wildskyf" />
     <link rel="me" href="https://www.linkedin.com/in/wildsky/" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta content="light" name="color-scheme" />
+    <meta content="dark light" name="color-scheme" />
+    <meta name="theme-color" content="#050D0F" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 

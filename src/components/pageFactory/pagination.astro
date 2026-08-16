@@ -5,9 +5,17 @@ import type { Locale } from '@/i18n/translations.ts';
 
 const currentLocale = (Astro.currentLocale === 'en' ? 'en' : 'tw') as Locale;
 const { page } = Astro.props;
-const { data, currentPage, lastPage } = page;
+const { data, currentPage, lastPage, total } = page;
 
-const previous_page_path = getRelativeLocaleUrl(currentLocale, `page/${Number(currentPage) - 1}`);
+// 既有 bug：第 1 頁也會產生 /page/0 的「較新文章」連結。改為 null。
+// 第 2 頁的「較新」應回首頁，不是 /page/1。
+const previous_page_path =
+  currentPage <= 1
+    ? null
+    : currentPage === 2
+      ? getRelativeLocaleUrl(currentLocale, '')
+      : getRelativeLocaleUrl(currentLocale, `page/${Number(currentPage) - 1}`);
+
 const next_page_path =
   lastPage === currentPage
     ? null
@@ -20,5 +28,8 @@ const next_page_path =
     postList: data,
     previous_page_path,
     next_page_path,
+    currentPage,
+    lastPage,
+    totalPosts: total,
   }}
 />

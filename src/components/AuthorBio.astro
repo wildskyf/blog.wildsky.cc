@@ -1,61 +1,128 @@
 ---
-import { twMerge } from 'tailwind-merge';
 import { authorProfile } from '@/data/author';
 
 const currentLocale = Astro.props.lang === 'en' ? 'en' : 'tw';
 const copy = authorProfile.localeContent[currentLocale];
 ---
 
-<aside
-  class={twMerge(
-    "not-prose mt-12 bg-base-200/60 p-6 lg:p-8",
-    "bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16",
-    "prose prose-xl max-md:prose-lg max-w-none",
-    currentLocale === 'tw' ? 'prose-zh tracking-tw-normal' : 'prose-en'
-  )}
->
-  <div class="flex flex-col gap-4 sm:flex-row sm:items-start">
+<aside class="ds-bio" lang={currentLocale === 'tw' ? 'zh-Hant-TW' : 'en'}>
+  <div class="ds-bio-inner">
     <img
+      class="ds-bio-avatar"
       src={authorProfile.avatar.src}
       alt={authorProfile.avatar.alt[currentLocale]}
       loading="lazy"
       decoding="async"
-      class="h-14 w-14 shrink-0 rounded-full border border-base-300 object-cover"
     />
 
-    <div class="flex-1">
-      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-base-content/55">
-        {copy.sectionLabel}
-      </p>
+    <div class="ds-bio-body">
+      <p class="ds-bio-label">{copy.sectionLabel}</p>
 
-      <div class="mt-2 flex flex-col gap-1">
-        <h2 class={`text-xl font-semibold text-base-content ${currentLocale === 'tw' ? 'tracking-tw-normal' : ''}`}>
-          {authorProfile.name}
-        </h2>
-        <p class="text-sm text-base-content/70">{copy.handleLabel}</p>
-      </div>
+      <h2 class="ds-bio-name">{authorProfile.name}</h2>
+      <p class="ds-bio-handle">{copy.handleLabel}</p>
 
-      <p class={`mt-4 text-base text-base-content/85 ${currentLocale === 'tw' ? 'tracking-tw-normal leading-8' : 'leading-7'}`}>
-        {copy.subtitle}
-      </p>
-      <p class={`mt-3 text-base text-base-content/75 ${currentLocale === 'tw' ? 'tracking-tw-normal leading-8' : 'leading-7'}`}>
-        {copy.summary}
-      </p>
+      <p class="ds-bio-text">{copy.subtitle}</p>
+      <p class="ds-bio-text">{copy.summary}</p>
 
-      <div class="mt-5 flex flex-wrap gap-3">
-        <a
-          href={copy.primaryCta.href}
-          class="btn btn-primary"
-        >
-          {copy.primaryCta.label}
-        </a>
-        <a
-          href={copy.secondaryCta.href}
-          class="btn btn-primary"
-        >
-          {copy.secondaryCta.label}
-        </a>
+      <div class="ds-bio-cta">
+        <a class="ds-btn ds-plate" href={copy.primaryCta.href}>{copy.primaryCta.label}</a>
+        <a class="ds-btn ds-plate" href={copy.secondaryCta.href}>{copy.secondaryCta.label}</a>
       </div>
     </div>
   </div>
 </aside>
+
+<style>
+  /* 作者卡：不透明 --bg-surface。
+     必須不透明 —— 實測半透明底（舊版 bg-base-200/60）會讓底部礁石剪影透上來，
+     亮色主題的 --fg-muted 掉到 4.21（未過 AA）。 */
+  .ds-bio {
+    position: relative;
+    width: min(var(--measure), 100% - var(--page-gutter) * 2);
+    margin: 0 auto 64px;
+    padding: 28px 30px 32px;
+    background: var(--bg-surface);
+    border: 1px solid var(--fg-faint);
+  }
+
+  /* The Plate 的內框 */
+  .ds-bio::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    pointer-events: none;
+    border: 1px solid var(--rule);
+  }
+
+  .ds-bio-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .ds-bio-avatar {
+    width: 56px;
+    height: 56px;
+    flex: none;
+    object-fit: cover;
+    /* 真正的圓形是 The No Radius Rule 的合法例外 */
+    border-radius: 50%;
+    border: 1px solid var(--rule);
+  }
+
+  .ds-bio-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ds-bio-label {
+    margin: 0 0 10px;
+    font-family: var(--font-chrome);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--fg-muted);
+  }
+
+  .ds-bio-name {
+    margin: 0 0 4px;
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--fg);
+  }
+
+  .ds-bio-handle {
+    margin: 0 0 16px;
+    font-family: var(--font-label);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    font-variant: small-caps;
+    color: var(--fg-muted);
+  }
+
+  .ds-bio-text {
+    margin: 0 0 12px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--fg-muted);
+  }
+
+  .ds-bio-cta {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  @media (min-width: 640px) {
+    .ds-bio-inner {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 22px;
+    }
+  }
+</style>

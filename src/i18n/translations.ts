@@ -4,6 +4,9 @@ export const translations = {
       title: "Wildsky's Blog",
       description: 'Easy things should be easy, and hard things should be possible.',
       homeDescription: 'Humans can make mistakes. Always review before running the code.',
+      // 首頁宣言。.pivot 是語意樞紐，唯一允許的紅字（27px 大字，AA Large 3.83 ✓）
+      manifesto:
+        '信仰不確定性，卻以確定性為業<span class="pivot">；</span><br>熱愛不確定性哲學，同時用確定性工程過生活',
     },
     nav: {
       home: 'home',
@@ -21,13 +24,13 @@ export const translations = {
       categoryOutro: '等主題',
     },
     categories: {
-      '軟體工程': 'Software Engineering',
-      '職涯工作': 'Career',
-      '生活體驗': 'Life',
-      '思考觀點': 'Thoughts',
-      '理財投資': 'Finance',
-      '資訊科學': 'Computer Science',
-      '其他': 'Others',
+      軟體工程: 'Software Engineering',
+      職涯工作: 'Career',
+      生活體驗: 'Life',
+      思考觀點: 'Thoughts',
+      理財投資: 'Finance',
+      資訊科學: 'Computer Science',
+      其他: 'Others',
     },
     common: {
       readMore: '繼續閱讀',
@@ -43,7 +46,10 @@ export const translations = {
     site: {
       title: "Wildsky's Blog",
       description: 'Easy things should be easy, and hard things should be possible.',
-      homeDescription: 'Personal blog about software engineering, career growth, life experiences, and thoughts.',
+      homeDescription:
+        'Personal blog about software engineering, career growth, life experiences, and thoughts.',
+      manifesto:
+        'Faith in uncertainty, a trade in certainty<span class="pivot">;</span><br>a philosophy of the unknown, a life engineered to be known',
     },
     nav: {
       home: 'home',
@@ -61,13 +67,13 @@ export const translations = {
       categoryOutro: ' and more',
     },
     categories: {
-      '軟體工程': 'Software Engineering',
-      '職涯工作': 'Career',
-      '生活體驗': 'Life',
-      '思考觀點': 'Thoughts',
-      '理財投資': 'Finance',
-      '資訊科學': 'Computer Science',
-      '其他': 'Others',
+      軟體工程: 'Software Engineering',
+      職涯工作: 'Career',
+      生活體驗: 'Life',
+      思考觀點: 'Thoughts',
+      理財投資: 'Finance',
+      資訊科學: 'Computer Science',
+      其他: 'Others',
     },
     common: {
       readMore: 'Read more',

@@ -1,6 +1,5 @@
 ---
 import dayjs from 'dayjs';
-import { twMerge } from 'tailwind-merge'
 import TagList from '@/components/TagList.astro';
 import SeriesBanner from '@/components/SeriesBanner.astro';
 
@@ -14,85 +13,230 @@ const {
   tags,
   readingTime,
   series,
-  ...props
 } = Astro.props;
 const currentLocale = lang || Astro.currentLocale || 'tw';
+const root_path = currentLocale === 'en' ? '/en' : '';
 
-const publish_time = dayjs(date).format('YYYY 年 MM 月 DD 日');
+const publish_time =
+  currentLocale === 'en'
+    ? dayjs(date).format('MMMM D, YYYY')
+    : dayjs(date).format('YYYY 年 MM 月 DD 日');
 ---
 
-<article
-  class={`
-    prose prose-xl max-md:prose-lg max-w-none
-    bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16
-    ${currentLocale === 'tw' ? 'prose-zh tracking-tw-normal' : 'prose-en'}
-  `}
-  {...props}
->
-  <header class="not-prose mb-8">
-    <h1
-      class={`
-        text-3xl lg:text-4xl font-bold text-base-content mb-4
-        ${currentLocale === 'tw' ? 'tracking-tw-normal' : ''}
-      `}
-      set:html={title}
-    />
-    <div class="flex items-center gap-3 flex-wrap">
-      {
-        date && (
-          <p class="text-sm text-base-content/70">
-            <time datetime={date}>{publish_time}</time>
-          </p>
-        )
-      }
+<article class="ds-article">
+  <header class="ds-article-head">
+    <div class="ds-article-kicker">
       {
         category && (
-          <>
-            <span class="text-base-content/50">•</span>
-            <a
-              href={currentLocale === 'en' ? `/en/categories/${category}` : `/categories/${category}`}
-              class="text-sm px-2 py-1 rounded bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-200"
-            >
-              {category}
-            </a>
-          </>
+          <a class="ds-chip" href={`${root_path}/categories/${category}`}>
+            {category}
+          </a>
         )
       }
+      {category && readingTime && <span class="ds-meta-sep">/</span>}
+      {readingTime && <span>{readingTime}</span>}
       {
-        readingTime && (
+        date && (
           <>
-            <span class="text-base-content/50">•</span>
-            <p class="text-sm text-base-content/70">{readingTime}</p>
+            <span class="ds-meta-sep">/</span>
+            <time datetime={new Date(date).toISOString()}>{publish_time}</time>
           </>
         )
       }
     </div>
+
+    <h1 class="ds-article-title" set:html={title} />
+
     <TagList tags={tags} lang={currentLocale} />
   </header>
 
   {series && <SeriesBanner seriesTitle={series.name} seriesUrl={series.url} />}
 
-  {feature_image_url && (
-    <figure class="flex flex-col mb-8 bg-base-300 p-4 rounded">
-      <img
-        src={feature_image_url}
-        alt={feature_image_caption}
-        class="w-full max-w-full h-auto"
-        width="750"
-        height="410"
-        class="rounded-lg"
-      />
+  {
+    feature_image_url && (
+      <figure class="ds-figure">
+        <img src={feature_image_url} alt={feature_image_caption ?? ''} width="750" height="410" />
+        {feature_image_caption && <figcaption set:html={feature_image_caption} />}
+      </figure>
+    )
+  }
 
-      {feature_image_url && (
-        <figcaption
-          class="prose font-sans text-center mt-1"
-          set:html={feature_image_caption}
-        />
-      )}
-    </figure>
-  )}
-
-  <div class={twMerge('article-content text-base-content', currentLocale === 'tw' && 'tracking-tw-normal')}>
+  <div class="article-content ds-prose" lang={currentLocale === 'tw' ? 'zh-Hant-TW' : 'en'}>
     <slot />
   </div>
 </article>
+
+<style>
+  /* Read mode —— The Boring Body Rule。
+     正文沒有容器：直接坐在環境層上，720px 置中，無底色差、無邊框。 */
+  .ds-article {
+    width: min(var(--measure), 100% - var(--page-gutter) * 2);
+    margin-inline: auto;
+    padding: 56px 0 96px;
+  }
+
+  .ds-article-head {
+    margin-bottom: 40px;
+  }
+
+  .ds-article-kicker {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 18px;
+    font-family: var(--font-label);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    font-variant: small-caps;
+    color: var(--fg-muted);
+  }
+
+  .ds-article-kicker :global(.ds-meta-sep) {
+    color: var(--rule);
+  }
+
+  /* Display 級 —— 全站唯一使用 clamp 的字級 */
+  .ds-article-title {
+    margin: 0 0 20px;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    color: var(--fg);
+  }
+
+  /* 首圖：無圓角、無底色塊，只有一條細線 */
+  .ds-figure {
+    margin: 0 0 40px;
+  }
+
+  .ds-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule);
+  }
+
+  .ds-figure figcaption {
+    margin-top: 10px;
+    font-family: var(--font-label);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    font-variant: small-caps;
+    color: var(--fg-muted);
+    text-align: center;
+  }
+
+  /* 正文：Source Sans 3 / Noto Sans TC、19px、行高 1.9。
+     標題群用 Bodoni（≥24px 才用，The Right Font For The Size Rule）。 */
+  .ds-prose {
+    font-family: var(--font-body);
+    font-size: 19px;
+    line-height: 1.9;
+    color: var(--fg);
+  }
+
+  .ds-prose :global(h2) {
+    margin: 56px 0 16px;
+    font-family: var(--font-display);
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 1.45;
+    color: var(--fg);
+  }
+
+  .ds-prose :global(h3) {
+    margin: 40px 0 12px;
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--fg);
+  }
+
+  .ds-prose :global(h4) {
+    margin: 32px 0 10px;
+    font-family: var(--font-chrome);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--fg-muted);
+  }
+
+  .ds-prose :global(p) {
+    margin: 0 0 24px;
+  }
+
+  .ds-prose :global(ul),
+  .ds-prose :global(ol) {
+    margin: 0 0 24px;
+    padding-left: 1.4em;
+  }
+
+  .ds-prose :global(li) {
+    margin-bottom: 8px;
+  }
+
+  .ds-prose :global(img) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--rule);
+  }
+
+  .ds-prose :global(hr) {
+    margin: 48px 0;
+    border: 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .ds-prose :global(table) {
+    width: 100%;
+    margin: 0 0 24px;
+    border-collapse: collapse;
+    /* 表格用 15px（Code 級距），不自創級數 */
+    font-size: 15px;
+  }
+
+  .ds-prose :global(th),
+  .ds-prose :global(td) {
+    padding: 10px 12px;
+    border: 1px solid var(--rule);
+    text-align: left;
+  }
+
+  .ds-prose :global(th) {
+    font-family: var(--font-chrome);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--fg-muted);
+  }
+
+  /* code block 可溢出到 840px（兩側各 60px），呼應 Overhang Rule */
+  .ds-prose :global(pre) {
+    width: calc(100% + 120px);
+    margin-left: -60px;
+    margin-right: -60px;
+  }
+
+  @media (max-width: 1023px) {
+    .ds-prose :global(pre) {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .ds-article {
+      padding: 32px 0 64px;
+    }
+    .ds-prose :global(h2) {
+      margin-top: 40px;
+    }
+  }
+</style>

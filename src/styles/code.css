@@ -1,0 +1,93 @@
+/* ============================================================
+   CODE BLOCK —— 取代 prism-okaidia
+   okaidia 帶進黃/橘/紫三個色相，直接違反 Two-Axis Rule
+   （色相只有藍/青 180–213 與紅 355–356）。
+   語法色改用本系統 token，見 DESIGN.md「Code Block（風格展示區）」。
+   ============================================================ */
+
+.article-content pre[class*='language-'],
+.article-content pre {
+  background: var(--bg-sunken);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  padding: 20px 24px;
+  overflow-x: auto;
+  max-width: 100%;
+  font-family: var(--font-code);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--fg);
+  text-shadow: none;
+}
+
+.article-content :not(pre) > code {
+  background: var(--bg-sunken);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  padding: 0.1em 0.35em;
+  font-family: var(--font-code);
+  font-size: 0.92em;
+  color: var(--fg);
+  text-shadow: none;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.article-content pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  word-break: normal;
+  overflow-wrap: normal;
+  color: inherit;
+}
+
+/* Prism token 對應 —— 只用兩軸色相 */
+.article-content .token.keyword,
+.article-content .token.function,
+.article-content .token.class-name,
+.article-content .token.selector,
+.article-content .token.important,
+.article-content .token.atrule {
+  color: var(--glow);
+}
+
+.article-content .token.comment,
+.article-content .token.prolog,
+.article-content .token.doctype,
+.article-content .token.cdata,
+.article-content .token.punctuation,
+.article-content .token.operator {
+  color: var(--glow-dim);
+}
+
+.article-content .token.string,
+.article-content .token.char,
+.article-content .token.attr-value,
+.article-content .token.regex {
+  color: var(--fg-muted);
+}
+
+.article-content .token.number,
+.article-content .token.boolean,
+.article-content .token.constant,
+.article-content .token.symbol,
+.article-content .token.tag,
+.article-content .token.deleted {
+  color: var(--accent-text);
+}
+
+.article-content .token.property,
+.article-content .token.attr-name,
+.article-content .token.variable,
+.article-content .token.builtin,
+.article-content .token.inserted {
+  color: var(--fg);
+}
+
+.article-content .token.bold {
+  font-weight: 600;
+}
+.article-content .token.italic {
+  font-style: italic;
+}

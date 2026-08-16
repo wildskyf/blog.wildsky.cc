@@ -4,24 +4,12 @@ import { render } from 'astro:content';
 import PageLayout from '@/layouts/page.astro';
 import Article from '@/components/Article.astro';
 import AuthorBio from '@/components/AuthorBio.astro';
-import { articleMapper } from '@/utils';
+import { articleMapper, formatReadingTime } from '@/utils';
 
 const { lang, entry } = Astro.props;
 const { Content } = await render(entry);
 const data = articleMapper(entry);
-const rawBody = entry.body ?? '';
-const textForReadingTime = rawBody
-  .replace(/```[\s\S]*?```/g, ' ')
-  .replace(/~~~[\s\S]*?~~~/g, ' ')
-  .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
-  .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
-  .replace(/<[^>]+>/g, ' ')
-  .replace(/[#>*_`~\-]/g, ' ');
-const cjkCount = (textForReadingTime.match(/[\u3400-\u9fff\uf900-\ufaff]/g) ?? []).length;
-const latinText = textForReadingTime.replace(/[\u3400-\u9fff\uf900-\ufaff]/g, ' ');
-const wordCount = latinText.trim() ? latinText.trim().split(/\s+/).length : 0;
-const readingMinutes = Math.max(1, Math.ceil(cjkCount / 500 + wordCount / 220));
-const readingTime = lang === 'en' ? `${readingMinutes} min read` : `約 ${readingMinutes} 分鐘閱讀`;
+const readingTime = data.readingMinutes ? formatReadingTime(data.readingMinutes, lang) : null;
 const series = entry.data.series ?? null;
 ---
 

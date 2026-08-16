@@ -1,438 +1,977 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-16T12:45:47Z",
+  "generatedAt": "2026-08-16T13:35:00Z",
   "title": "Design System: Wildsky's Blog",
   "extensions": {
+    "themes": [
+      {
+        "name": "tide-dark",
+        "displayName": "Dark — 深海",
+        "colorScheme": "dark",
+        "themeColorMeta": "#0A1420",
+        "tokens": {
+          "--bg": "#0A1420",
+          "--bg-surface": "#0D1B2A",
+          "--bg-raised": "#12253A",
+          "--bg-sunken": "#060E17",
+          "--fg": "#E8ECF0",
+          "--fg-muted": "#8FAEBC",
+          "--fg-faint": "#4A7A8C",
+          "--fg-on-accent": "#E8ECF0",
+          "--rule": "#2D4A5E",
+          "--accent": "#C8323E",
+          "--accent-text": "#E4525C",
+          "--accent-fill": "#A8202C",
+          "--glow": "#7FD4D4",
+          "--glow-dim": "#5FB8BC",
+          "--glow-line": "#7FD4D4"
+        }
+      },
+      {
+        "name": "tide-light",
+        "displayName": "Light — 海面",
+        "colorScheme": "light",
+        "themeColorMeta": "#F7F9FA",
+        "tokens": {
+          "--bg": "#EDF2F4",
+          "--bg-surface": "#F7F9FA",
+          "--bg-raised": "#E4EDF0",
+          "--bg-sunken": "#DFE9EC",
+          "--fg": "#16283A",
+          "--fg-muted": "#3F6273",
+          "--fg-faint": "#3D8A9E",
+          "--fg-on-accent": "#F7F9FA",
+          "--rule": "#C5D5DC",
+          "--accent": "#C8323E",
+          "--accent-text": "#B82A36",
+          "--accent-fill": "#C8323E",
+          "--glow": "#166363",
+          "--glow-dim": "#1B7272",
+          "--glow-line": "#2BA3A3"
+        }
+      }
+    ],
+    "contrastAudit": {
+      "method": "WCAG 2.1 relative luminance, computed 2026-08-16",
+      "textFloor": "AA 4.5:1 for <24px, AA Large 3:1 for >=24px or bold",
+      "dark": {
+        "against": "--bg-surface #0D1B2A",
+        "fg": 14.65,
+        "fg-muted": 7.41,
+        "accent-text": 4.69,
+        "glow": 10.16,
+        "fg-faint": 3.69,
+        "accent": 3.3,
+        "rule": 1.87,
+        "fg-on-accent-over-accent-fill": 6.08
+      },
+      "light": {
+        "against": "--bg-surface #F7F9FA",
+        "fg": 14.22,
+        "fg-muted": 6.2,
+        "accent": 4.99,
+        "accent-text": 5.81,
+        "glow": 6.63,
+        "glow-dim": 5.38,
+        "fg-faint": 3.73,
+        "rule": 1.43,
+        "glow-line": 2.89,
+        "fg-on-accent-over-accent-fill": 4.99
+      },
+      "worstGround": {
+        "against": "--bg-sunken (code block)",
+        "dark": {
+          "accent-text": 4.88,
+          "glow": 11.33,
+          "glow-dim": 8.37
+        },
+        "light": {
+          "accent-text": 4.97,
+          "glow": 5.67,
+          "glow-dim": 4.6
+        }
+      },
+      "nonTextOnly": [
+        "--rule (both themes)",
+        "--glow-line (light 2.89 — decorative hairlines only, never focus ring)",
+        "--fg-faint (icons and >=24px only)",
+        "--accent in dark (3.30 — AA Large only)"
+      ]
+    },
+    "hueAxis": {
+      "rule": "Only two hue axes exist system-wide.",
+      "coolHSL": "180–213",
+      "warmHSL": "355–356",
+      "note": "No third hue, including semantic success/warning. Semantic distinction uses shape, icon, or presence of --accent."
+    },
     "colorMeta": {
-      "polar-night": {
-        "role": "neutral",
-        "displayName": "Polar Night",
-        "canonical": "oklch(32.437% 0.022 264.182)",
-        "tonalRamp": [
-          "oklch(15% 0.022 264.182)",
-          "oklch(24% 0.022 264.182)",
-          "oklch(32.437% 0.022 264.182)",
-          "oklch(43% 0.02 264.182)",
-          "oklch(55% 0.018 264.182)",
-          "oklch(68% 0.014 264.182)",
-          "oklch(82% 0.01 264.182)",
-          "oklch(95% 0.006 264.182)"
-        ]
-      },
-      "snow-storm-surface": {
-        "role": "neutral",
-        "displayName": "Snow Storm Surface",
-        "canonical": "oklch(95.127% 0.007 260.731)",
-        "tonalRamp": [
-          "oklch(15% 0.007 260.731)",
-          "oklch(26% 0.007 260.731)",
-          "oklch(38% 0.007 260.731)",
-          "oklch(50% 0.007 260.731)",
-          "oklch(62% 0.007 260.731)",
-          "oklch(74% 0.007 260.731)",
-          "oklch(86% 0.007 260.731)",
-          "oklch(95.127% 0.007 260.731)"
-        ]
-      },
-      "snow-storm-ground": {
-        "role": "neutral",
-        "displayName": "Snow Storm Ground",
-        "canonical": "oklch(93.299% 0.01 261.788)",
-        "tonalRamp": [
-          "oklch(15% 0.01 261.788)",
-          "oklch(26% 0.01 261.788)",
-          "oklch(38% 0.01 261.788)",
-          "oklch(50% 0.01 261.788)",
-          "oklch(62% 0.01 261.788)",
-          "oklch(74% 0.01 261.788)",
-          "oklch(86% 0.01 261.788)",
-          "oklch(93.299% 0.01 261.788)"
-        ]
-      },
-      "snow-storm-sunken": {
-        "role": "neutral",
-        "displayName": "Snow Storm Sunken",
-        "canonical": "oklch(89.925% 0.016 262.749)",
-        "tonalRamp": [
-          "oklch(15% 0.016 262.749)",
-          "oklch(26% 0.016 262.749)",
-          "oklch(38% 0.016 262.749)",
-          "oklch(50% 0.016 262.749)",
-          "oklch(62% 0.016 262.749)",
-          "oklch(74% 0.016 262.749)",
-          "oklch(86% 0.016 262.749)",
-          "oklch(95% 0.012 262.749)"
-        ]
-      },
-      "frost-deep": {
+      "accent": {
         "role": "primary",
-        "displayName": "Frost Deep",
-        "canonical": "oklch(59.435% 0.077 254.027)",
+        "displayName": "Signal Red (cross-theme anchor)",
+        "canonical": "oklch(55.31% 0.1858 21.8)",
         "tonalRamp": [
-          "oklch(15% 0.077 254.027)",
-          "oklch(26% 0.077 254.027)",
-          "oklch(37% 0.077 254.027)",
-          "oklch(48% 0.077 254.027)",
-          "oklch(59.435% 0.077 254.027)",
-          "oklch(71% 0.065 254.027)",
-          "oklch(83% 0.045 254.027)",
-          "oklch(95% 0.02 254.027)"
-        ]
+          "oklch(15% 0.1579 21.8)",
+          "oklch(26% 0.1858 21.8)",
+          "oklch(38% 0.1858 21.8)",
+          "oklch(50% 0.1858 21.8)",
+          "oklch(62% 0.1858 21.8)",
+          "oklch(74% 0.1858 21.8)",
+          "oklch(86% 0.1858 21.8)",
+          "oklch(95% 0.0836 21.8)"
+        ],
+        "hex": "#C8323E"
       },
-      "frost-mid": {
+      "dark-bg": {
+        "role": "neutral",
+        "displayName": "Dark · Page Ground",
+        "canonical": "oklch(18.83% 0.0288 253.7)",
+        "tonalRamp": [
+          "oklch(15% 0.0245 253.7)",
+          "oklch(26% 0.0288 253.7)",
+          "oklch(38% 0.0288 253.7)",
+          "oklch(50% 0.0288 253.7)",
+          "oklch(62% 0.0288 253.7)",
+          "oklch(74% 0.0288 253.7)",
+          "oklch(86% 0.0288 253.7)",
+          "oklch(95% 0.0129 253.7)"
+        ],
+        "hex": "#0A1420"
+      },
+      "dark-bg-surface": {
+        "role": "neutral",
+        "displayName": "Dark · Content Plane",
+        "canonical": "oklch(21.77% 0.0356 251.3)",
+        "tonalRamp": [
+          "oklch(15% 0.0302 251.3)",
+          "oklch(26% 0.0356 251.3)",
+          "oklch(38% 0.0356 251.3)",
+          "oklch(50% 0.0356 251.3)",
+          "oklch(62% 0.0356 251.3)",
+          "oklch(74% 0.0356 251.3)",
+          "oklch(86% 0.0356 251.3)",
+          "oklch(95% 0.0160 251.3)"
+        ],
+        "hex": "#0D1B2A"
+      },
+      "dark-bg-raised": {
+        "role": "neutral",
+        "displayName": "Dark · Active Plane (hover lightens)",
+        "canonical": "oklch(25.97% 0.0470 252.2)",
+        "tonalRamp": [
+          "oklch(15% 0.0400 252.2)",
+          "oklch(26% 0.0470 252.2)",
+          "oklch(38% 0.0470 252.2)",
+          "oklch(50% 0.0470 252.2)",
+          "oklch(62% 0.0470 252.2)",
+          "oklch(74% 0.0470 252.2)",
+          "oklch(86% 0.0470 252.2)",
+          "oklch(95% 0.0212 252.2)"
+        ],
+        "hex": "#12253A"
+      },
+      "dark-bg-sunken": {
+        "role": "neutral",
+        "displayName": "Dark · Sunken (code)",
+        "canonical": "oklch(16.03% 0.0233 250.5)",
+        "tonalRamp": [
+          "oklch(15% 0.0198 250.5)",
+          "oklch(26% 0.0233 250.5)",
+          "oklch(38% 0.0233 250.5)",
+          "oklch(50% 0.0233 250.5)",
+          "oklch(62% 0.0233 250.5)",
+          "oklch(74% 0.0233 250.5)",
+          "oklch(86% 0.0233 250.5)",
+          "oklch(95% 0.0105 250.5)"
+        ],
+        "hex": "#060E17"
+      },
+      "dark-fg": {
+        "role": "neutral",
+        "displayName": "Dark · Silver",
+        "canonical": "oklch(94.12% 0.0069 247.9)",
+        "tonalRamp": [
+          "oklch(15% 0.0059 247.9)",
+          "oklch(26% 0.0069 247.9)",
+          "oklch(38% 0.0069 247.9)",
+          "oklch(50% 0.0069 247.9)",
+          "oklch(62% 0.0069 247.9)",
+          "oklch(74% 0.0069 247.9)",
+          "oklch(86% 0.0069 247.9)",
+          "oklch(95% 0.0031 247.9)"
+        ],
+        "hex": "#E8ECF0"
+      },
+      "dark-fg-muted": {
+        "role": "neutral",
+        "displayName": "Dark · Steel Light",
+        "canonical": "oklch(73.23% 0.0396 227.0)",
+        "tonalRamp": [
+          "oklch(15% 0.0336 227.0)",
+          "oklch(26% 0.0396 227.0)",
+          "oklch(38% 0.0396 227.0)",
+          "oklch(50% 0.0396 227.0)",
+          "oklch(62% 0.0396 227.0)",
+          "oklch(74% 0.0396 227.0)",
+          "oklch(86% 0.0396 227.0)",
+          "oklch(95% 0.0178 227.0)"
+        ],
+        "hex": "#8FAEBC"
+      },
+      "dark-fg-faint": {
         "role": "secondary",
-        "displayName": "Frost Mid",
-        "canonical": "oklch(69.651% 0.059 248.687)",
+        "displayName": "Dark · Steel Mid",
+        "canonical": "oklch(55.24% 0.0591 224.0)",
         "tonalRamp": [
-          "oklch(15% 0.059 248.687)",
-          "oklch(26% 0.059 248.687)",
-          "oklch(37% 0.059 248.687)",
-          "oklch(48% 0.059 248.687)",
-          "oklch(59% 0.059 248.687)",
-          "oklch(69.651% 0.059 248.687)",
-          "oklch(83% 0.04 248.687)",
-          "oklch(95% 0.018 248.687)"
-        ]
+          "oklch(15% 0.0502 224.0)",
+          "oklch(26% 0.0591 224.0)",
+          "oklch(38% 0.0591 224.0)",
+          "oklch(50% 0.0591 224.0)",
+          "oklch(62% 0.0591 224.0)",
+          "oklch(74% 0.0591 224.0)",
+          "oklch(86% 0.0591 224.0)",
+          "oklch(95% 0.0266 224.0)"
+        ],
+        "hex": "#4A7A8C"
       },
-      "frost-ice": {
-        "role": "tertiary",
-        "displayName": "Frost Ice",
-        "canonical": "oklch(77.464% 0.062 217.469)",
-        "tonalRamp": [
-          "oklch(15% 0.062 217.469)",
-          "oklch(26% 0.062 217.469)",
-          "oklch(37% 0.062 217.469)",
-          "oklch(48% 0.062 217.469)",
-          "oklch(59% 0.062 217.469)",
-          "oklch(70% 0.062 217.469)",
-          "oklch(77.464% 0.062 217.469)",
-          "oklch(95% 0.02 217.469)"
-        ]
-      },
-      "slate-neutral": {
+      "dark-rule": {
         "role": "neutral",
-        "displayName": "Slate Neutral",
-        "canonical": "oklch(45.229% 0.035 264.131)",
+        "displayName": "Dark · Steel Deep (hairline)",
+        "canonical": "oklch(39.51% 0.0487 239.8)",
         "tonalRamp": [
-          "oklch(15% 0.035 264.131)",
-          "oklch(24% 0.035 264.131)",
-          "oklch(34% 0.035 264.131)",
-          "oklch(45.229% 0.035 264.131)",
-          "oklch(57% 0.03 264.131)",
-          "oklch(69% 0.024 264.131)",
-          "oklch(82% 0.016 264.131)",
-          "oklch(95% 0.008 264.131)"
-        ]
+          "oklch(15% 0.0414 239.8)",
+          "oklch(26% 0.0487 239.8)",
+          "oklch(38% 0.0487 239.8)",
+          "oklch(50% 0.0487 239.8)",
+          "oklch(62% 0.0487 239.8)",
+          "oklch(74% 0.0487 239.8)",
+          "oklch(86% 0.0487 239.8)",
+          "oklch(95% 0.0219 239.8)"
+        ],
+        "hex": "#2D4A5E"
       },
-      "aurora-red": {
-        "role": "tertiary",
-        "displayName": "Aurora Red (Error)",
-        "canonical": "oklch(60.61% 0.12 15.341)",
-        "tonalRamp": [
-          "oklch(15% 0.12 15.341)",
-          "oklch(26% 0.12 15.341)",
-          "oklch(37% 0.12 15.341)",
-          "oklch(48% 0.12 15.341)",
-          "oklch(60.61% 0.12 15.341)",
-          "oklch(72% 0.1 15.341)",
-          "oklch(84% 0.07 15.341)",
-          "oklch(95% 0.03 15.341)"
-        ]
-      },
-      "aurora-yellow": {
-        "role": "tertiary",
-        "displayName": "Aurora Yellow (Warning)",
-        "canonical": "oklch(85.486% 0.089 84.093)",
-        "tonalRamp": [
-          "oklch(15% 0.089 84.093)",
-          "oklch(28% 0.089 84.093)",
-          "oklch(41% 0.089 84.093)",
-          "oklch(54% 0.089 84.093)",
-          "oklch(65% 0.089 84.093)",
-          "oklch(76% 0.089 84.093)",
-          "oklch(85.486% 0.089 84.093)",
-          "oklch(95% 0.04 84.093)"
-        ]
-      },
-      "aurora-green": {
-        "role": "tertiary",
-        "displayName": "Aurora Green (Success)",
-        "canonical": "oklch(76.827% 0.074 131.063)",
-        "tonalRamp": [
-          "oklch(15% 0.074 131.063)",
-          "oklch(26% 0.074 131.063)",
-          "oklch(38% 0.074 131.063)",
-          "oklch(50% 0.074 131.063)",
-          "oklch(62% 0.074 131.063)",
-          "oklch(76.827% 0.074 131.063)",
-          "oklch(87% 0.05 131.063)",
-          "oklch(95% 0.025 131.063)"
-        ]
-      },
-      "aurora-purple": {
-        "role": "tertiary",
-        "displayName": "Aurora Purple (Info)",
-        "canonical": "oklch(69.207% 0.062 332.664)",
-        "tonalRamp": [
-          "oklch(15% 0.062 332.664)",
-          "oklch(26% 0.062 332.664)",
-          "oklch(37% 0.062 332.664)",
-          "oklch(48% 0.062 332.664)",
-          "oklch(59% 0.062 332.664)",
-          "oklch(69.207% 0.062 332.664)",
-          "oklch(83% 0.04 332.664)",
-          "oklch(95% 0.018 332.664)"
-        ]
-      },
-      "abyss-surface": {
-        "role": "neutral",
-        "displayName": "Abyss Surface (dark theme)",
-        "canonical": "oklch(20.84% 0.008 17.911)",
-        "tonalRamp": [
-          "oklch(15% 0.008 17.911)",
-          "oklch(20.84% 0.008 17.911)",
-          "oklch(30% 0.008 17.911)",
-          "oklch(42% 0.008 17.911)",
-          "oklch(55% 0.008 17.911)",
-          "oklch(68% 0.006 17.911)",
-          "oklch(82% 0.004 17.911)",
-          "oklch(95% 0.002 17.911)"
-        ]
-      },
-      "abyss-content": {
-        "role": "neutral",
-        "displayName": "Abyss Content (dark theme)",
-        "canonical": "oklch(83.768% 0.001 17.911)",
-        "tonalRamp": [
-          "oklch(15% 0.001 17.911)",
-          "oklch(26% 0.001 17.911)",
-          "oklch(38% 0.001 17.911)",
-          "oklch(50% 0.001 17.911)",
-          "oklch(62% 0.001 17.911)",
-          "oklch(74% 0.001 17.911)",
-          "oklch(83.768% 0.001 17.911)",
-          "oklch(95% 0.001 17.911)"
-        ]
-      },
-      "signal-green": {
+      "dark-accent-text": {
         "role": "primary",
-        "displayName": "Signal Green (dark theme — unresolved drift)",
-        "canonical": "oklch(68.628% 0.185 148.958)",
+        "displayName": "Dark · Signal Red Lit",
+        "canonical": "oklch(63.75% 0.1810 20.0)",
         "tonalRamp": [
-          "oklch(15% 0.185 148.958)",
-          "oklch(26% 0.185 148.958)",
-          "oklch(37% 0.185 148.958)",
-          "oklch(48% 0.185 148.958)",
-          "oklch(58% 0.185 148.958)",
-          "oklch(68.628% 0.185 148.958)",
-          "oklch(82% 0.12 148.958)",
-          "oklch(95% 0.05 148.958)"
-        ]
+          "oklch(15% 0.1538 20.0)",
+          "oklch(26% 0.1810 20.0)",
+          "oklch(38% 0.1810 20.0)",
+          "oklch(50% 0.1810 20.0)",
+          "oklch(62% 0.1810 20.0)",
+          "oklch(74% 0.1810 20.0)",
+          "oklch(86% 0.1810 20.0)",
+          "oklch(95% 0.0814 20.0)"
+        ],
+        "hex": "#E4525C"
+      },
+      "dark-accent-fill": {
+        "role": "primary",
+        "displayName": "Dark · Signal Red Deep",
+        "canonical": "oklch(47.79% 0.1705 22.6)",
+        "tonalRamp": [
+          "oklch(15% 0.1450 22.6)",
+          "oklch(26% 0.1705 22.6)",
+          "oklch(38% 0.1705 22.6)",
+          "oklch(50% 0.1705 22.6)",
+          "oklch(62% 0.1705 22.6)",
+          "oklch(74% 0.1705 22.6)",
+          "oklch(86% 0.1705 22.6)",
+          "oklch(95% 0.0767 22.6)"
+        ],
+        "hex": "#A8202C"
+      },
+      "dark-glow": {
+        "role": "tertiary",
+        "displayName": "Dark · Abyssal Cyan",
+        "canonical": "oklch(81.63% 0.0827 195.7)",
+        "tonalRamp": [
+          "oklch(15% 0.0703 195.7)",
+          "oklch(26% 0.0827 195.7)",
+          "oklch(38% 0.0827 195.7)",
+          "oklch(50% 0.0827 195.7)",
+          "oklch(62% 0.0827 195.7)",
+          "oklch(74% 0.0827 195.7)",
+          "oklch(86% 0.0827 195.7)",
+          "oklch(95% 0.0372 195.7)"
+        ],
+        "hex": "#7FD4D4"
+      },
+      "dark-glow-dim": {
+        "role": "tertiary",
+        "displayName": "Dark · Abyssal Cyan Dim",
+        "canonical": "oklch(72.92% 0.0856 199.3)",
+        "tonalRamp": [
+          "oklch(15% 0.0727 199.3)",
+          "oklch(26% 0.0856 199.3)",
+          "oklch(38% 0.0856 199.3)",
+          "oklch(50% 0.0856 199.3)",
+          "oklch(62% 0.0856 199.3)",
+          "oklch(74% 0.0856 199.3)",
+          "oklch(86% 0.0856 199.3)",
+          "oklch(95% 0.0385 199.3)"
+        ],
+        "hex": "#5FB8BC"
+      },
+      "light-bg": {
+        "role": "neutral",
+        "displayName": "Light · Page Ground",
+        "canonical": "oklch(95.79% 0.0060 223.5)",
+        "tonalRamp": [
+          "oklch(15% 0.0051 223.5)",
+          "oklch(26% 0.0060 223.5)",
+          "oklch(38% 0.0060 223.5)",
+          "oklch(50% 0.0060 223.5)",
+          "oklch(62% 0.0060 223.5)",
+          "oklch(74% 0.0060 223.5)",
+          "oklch(86% 0.0060 223.5)",
+          "oklch(95% 0.0027 223.5)"
+        ],
+        "hex": "#EDF2F4"
+      },
+      "light-bg-surface": {
+        "role": "neutral",
+        "displayName": "Light · Content Plane",
+        "canonical": "oklch(98.09% 0.0025 228.8)",
+        "tonalRamp": [
+          "oklch(15% 0.0021 228.8)",
+          "oklch(26% 0.0025 228.8)",
+          "oklch(38% 0.0025 228.8)",
+          "oklch(50% 0.0025 228.8)",
+          "oklch(62% 0.0025 228.8)",
+          "oklch(74% 0.0025 228.8)",
+          "oklch(86% 0.0025 228.8)",
+          "oklch(95% 0.0011 228.8)"
+        ],
+        "hex": "#F7F9FA"
+      },
+      "light-bg-raised": {
+        "role": "neutral",
+        "displayName": "Light · Active Plane (hover darkens)",
+        "canonical": "oklch(94.02% 0.0105 219.6)",
+        "tonalRamp": [
+          "oklch(15% 0.0089 219.6)",
+          "oklch(26% 0.0105 219.6)",
+          "oklch(38% 0.0105 219.6)",
+          "oklch(50% 0.0105 219.6)",
+          "oklch(62% 0.0105 219.6)",
+          "oklch(74% 0.0105 219.6)",
+          "oklch(86% 0.0105 219.6)",
+          "oklch(95% 0.0047 219.6)"
+        ],
+        "hex": "#E4EDF0"
+      },
+      "light-bg-sunken": {
+        "role": "neutral",
+        "displayName": "Light · Sunken (code)",
+        "canonical": "oklch(92.73% 0.0115 217.5)",
+        "tonalRamp": [
+          "oklch(15% 0.0097 217.5)",
+          "oklch(26% 0.0115 217.5)",
+          "oklch(38% 0.0115 217.5)",
+          "oklch(50% 0.0115 217.5)",
+          "oklch(62% 0.0115 217.5)",
+          "oklch(74% 0.0115 217.5)",
+          "oklch(86% 0.0115 217.5)",
+          "oklch(95% 0.0052 217.5)"
+        ],
+        "hex": "#DFE9EC"
+      },
+      "light-fg": {
+        "role": "neutral",
+        "displayName": "Light · Deep Steel Blue",
+        "canonical": "oklch(27.05% 0.0413 249.6)",
+        "tonalRamp": [
+          "oklch(15% 0.0351 249.6)",
+          "oklch(26% 0.0413 249.6)",
+          "oklch(38% 0.0413 249.6)",
+          "oklch(50% 0.0413 249.6)",
+          "oklch(62% 0.0413 249.6)",
+          "oklch(74% 0.0413 249.6)",
+          "oklch(86% 0.0413 249.6)",
+          "oklch(95% 0.0186 249.6)"
+        ],
+        "hex": "#16283A"
+      },
+      "light-fg-muted": {
+        "role": "neutral",
+        "displayName": "Light · Sea Steel",
+        "canonical": "oklch(47.65% 0.0487 230.1)",
+        "tonalRamp": [
+          "oklch(15% 0.0414 230.1)",
+          "oklch(26% 0.0487 230.1)",
+          "oklch(38% 0.0487 230.1)",
+          "oklch(50% 0.0487 230.1)",
+          "oklch(62% 0.0487 230.1)",
+          "oklch(74% 0.0487 230.1)",
+          "oklch(86% 0.0487 230.1)",
+          "oklch(95% 0.0219 230.1)"
+        ],
+        "hex": "#3F6273"
+      },
+      "light-fg-faint": {
+        "role": "secondary",
+        "displayName": "Light · Sea Teal",
+        "canonical": "oklch(59.34% 0.0809 217.5)",
+        "tonalRamp": [
+          "oklch(15% 0.0687 217.5)",
+          "oklch(26% 0.0809 217.5)",
+          "oklch(38% 0.0809 217.5)",
+          "oklch(50% 0.0809 217.5)",
+          "oklch(62% 0.0809 217.5)",
+          "oklch(74% 0.0809 217.5)",
+          "oklch(86% 0.0809 217.5)",
+          "oklch(95% 0.0364 217.5)"
+        ],
+        "hex": "#3D8A9E"
+      },
+      "light-rule": {
+        "role": "neutral",
+        "displayName": "Light · Pale Teal Grey (hairline)",
+        "canonical": "oklch(86.30% 0.0199 225.8)",
+        "tonalRamp": [
+          "oklch(15% 0.0169 225.8)",
+          "oklch(26% 0.0199 225.8)",
+          "oklch(38% 0.0199 225.8)",
+          "oklch(50% 0.0199 225.8)",
+          "oklch(62% 0.0199 225.8)",
+          "oklch(74% 0.0199 225.8)",
+          "oklch(86% 0.0199 225.8)",
+          "oklch(95% 0.0089 225.8)"
+        ],
+        "hex": "#C5D5DC"
+      },
+      "light-accent-text": {
+        "role": "primary",
+        "displayName": "Light · Signal Red Deepened",
+        "canonical": "oklch(51.66% 0.1775 22.0)",
+        "tonalRamp": [
+          "oklch(15% 0.1509 22.0)",
+          "oklch(26% 0.1775 22.0)",
+          "oklch(38% 0.1775 22.0)",
+          "oklch(50% 0.1775 22.0)",
+          "oklch(62% 0.1775 22.0)",
+          "oklch(74% 0.1775 22.0)",
+          "oklch(86% 0.1775 22.0)",
+          "oklch(95% 0.0799 22.0)"
+        ],
+        "hex": "#B82A36"
+      },
+      "light-glow": {
+        "role": "tertiary",
+        "displayName": "Light · Deep Coral Teal",
+        "canonical": "oklch(45.58% 0.0708 195.0)",
+        "tonalRamp": [
+          "oklch(15% 0.0602 195.0)",
+          "oklch(26% 0.0708 195.0)",
+          "oklch(38% 0.0708 195.0)",
+          "oklch(50% 0.0708 195.0)",
+          "oklch(62% 0.0708 195.0)",
+          "oklch(74% 0.0708 195.0)",
+          "oklch(86% 0.0708 195.0)",
+          "oklch(95% 0.0319 195.0)"
+        ],
+        "hex": "#166363"
+      },
+      "light-glow-dim": {
+        "role": "tertiary",
+        "displayName": "Light · Coral Teal Mid",
+        "canonical": "oklch(50.37% 0.0781 195.0)",
+        "tonalRamp": [
+          "oklch(15% 0.0664 195.0)",
+          "oklch(26% 0.0781 195.0)",
+          "oklch(38% 0.0781 195.0)",
+          "oklch(50% 0.0781 195.0)",
+          "oklch(62% 0.0781 195.0)",
+          "oklch(74% 0.0781 195.0)",
+          "oklch(86% 0.0781 195.0)",
+          "oklch(95% 0.0352 195.0)"
+        ],
+        "hex": "#1B7272"
+      },
+      "light-glow-line": {
+        "role": "tertiary",
+        "displayName": "Light · Coral Teal (decorative only)",
+        "canonical": "oklch(65.28% 0.1011 195.0)",
+        "tonalRamp": [
+          "oklch(15% 0.0859 195.0)",
+          "oklch(26% 0.1011 195.0)",
+          "oklch(38% 0.1011 195.0)",
+          "oklch(50% 0.1011 195.0)",
+          "oklch(62% 0.1011 195.0)",
+          "oklch(74% 0.1011 195.0)",
+          "oklch(86% 0.1011 195.0)",
+          "oklch(95% 0.0455 195.0)"
+        ],
+        "hex": "#2BA3A3"
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "文章標題 h1。text-3xl → lg:text-4xl，襯線 700。"
+        "purpose": "文章標題。Chakra Petch 600，左側帶 3×24px --accent 切角刻度。中文落回 Noto Sans TC 700。兩主題相同。"
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "文章列表中的文章標題。hover 時整組加底線。"
+        "purpose": "文章索引標題與正文 h2。正文 h2 前置 --fg-faint 的 // 標記，不用紅色。"
       },
       "title": {
         "displayName": "Title",
-        "purpose": "header 站名。全站唯一的品牌字級。"
+        "purpose": "正文 h3、header 站名、區塊小標。"
       },
       "body": {
         "displayName": "Body",
-        "purpose": "文章內文（prose prose-xl，行動裝置降 prose-lg / 18px）。行高 36px 是中文閱讀的關鍵。"
+        "purpose": "正文。Source Sans 3 + Noto Sans TC（同一設計血緣）。720px 量尺，約 36 中文字 / 72 英文字元一行。行高 1.9 為**無單位值**——使用者放大基準字級時需等比縮放，這是可及性要求而非風格偏好。字級字重兩主題相同；dark 額外加 -webkit-font-smoothing: antialiased（The Optical Weight Rule）。"
       },
       "label": {
         "displayName": "Label",
-        "purpose": "全大寫 kicker，字距 0.18em。全站唯一的大寫處理，只用於 AuthorBio 區塊標籤與 Notes 頁 kicker。"
+        "purpose": "全大寫 + 0.16em 字距，僅施加於英文 meta。中文永不做大寫或寬字距。"
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "code block 與 inline code。JetBrains Mono。正文裡唯一允許展現風格的地方，兩主題各有語法配色但角色對應相同。"
       }
     },
+    "syntaxRoles": [
+      {
+        "role": "keyword / function",
+        "token": "--glow",
+        "dark": "#7FD4D4",
+        "light": "#166363"
+      },
+      {
+        "role": "comment / punctuation",
+        "token": "--glow-dim",
+        "dark": "#5FB8BC",
+        "light": "#1B7272"
+      },
+      {
+        "role": "string",
+        "token": "--fg-muted",
+        "dark": "#8FAEBC",
+        "light": "#3F6273"
+      },
+      {
+        "role": "number / constant",
+        "token": "--accent-text",
+        "dark": "#E4525C",
+        "light": "#B82A36"
+      },
+      {
+        "role": "identifier",
+        "token": "--fg",
+        "dark": "#E8ECF0",
+        "light": "#16283A"
+      },
+      {
+        "role": "line number / gutter",
+        "token": "--rule",
+        "dark": "#2D4A5E",
+        "light": "#C5D5DC"
+      }
+    ],
     "shadows": [
       {
-        "name": "hairline-lift",
-        "value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-        "purpose": "全站唯一的陰影（Tailwind shadow-sm）。僅用於 header、Notes 卡片、Notes 載入更多按鈕。角色是結構性的，不是氛圍性的。"
+        "name": "focus-ring",
+        "value": "0 0 0 2px var(--glow)",
+        "purpose": "全站唯一允許的 box-shadow，兩主題皆過非文字 3:1（dark 10.16 / light 6.63）。不得改用 --glow-line（light 僅 2.89）。"
       }
     ],
     "motion": [
       {
-        "name": "state-200",
-        "value": "200ms",
-        "purpose": "顏色狀態轉換的標準時長（分類 chip、標籤、系列橫幅連結）。搭配預設 ease。"
+        "name": "state-120",
+        "value": "120ms cubic-bezier(0.2, 0, 0, 1)",
+        "purpose": "所有狀態轉換的標準時長。快而硬，符合遊戲 UI 的回饋節奏；不用彈跳或緩入。兩主題相同。"
       },
       {
-        "name": "state-300",
-        "value": "300ms",
-        "purpose": "分頁連結的較慢轉換。"
+        "name": "rule-reveal",
+        "value": "180ms cubic-bezier(0.2, 0, 0, 1)",
+        "purpose": "hover 時左緣紅線的長出動畫（scaleY 0→1，transform-origin: top）。"
+      },
+      {
+        "name": "theme-swap",
+        "value": "0ms",
+        "purpose": "主題切換不做過場動畫。兩片海之間是硬切，不是溶接。"
+      }
+    ],
+    "chamfers": [
+      {
+        "name": "chamfer-sm",
+        "value": "6px",
+        "purpose": "chip、小標籤"
+      },
+      {
+        "name": "chamfer-md",
+        "value": "10px",
+        "purpose": "按鈕、note 卡片、下拉選單、code block"
+      },
+      {
+        "name": "chamfer-lg",
+        "value": "16px",
+        "purpose": "大型區塊（目前未使用，保留）"
+      }
+    ],
+    "widths": [
+      {
+        "name": "measure",
+        "value": "720px",
+        "purpose": "閱讀層：正文與文章索引"
+      },
+      {
+        "name": "chrome",
+        "value": "1120px",
+        "purpose": "chrome 層：header 內容、footer、水平規則、meta 行"
+      },
+      {
+        "name": "code-overhang",
+        "value": "840px",
+        "purpose": "code block 溢出寬，兩側各伸出 60px"
       }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "640px" },
-      { "name": "md", "value": "768px" },
-      { "name": "lg", "value": "1024px" },
-      { "name": "xl", "value": "1280px" },
-      { "name": "2xl", "value": "1536px" }
-    ]
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "2xl",
+        "value": "1536px"
+      }
+    ],
+    "imagePolicy": {
+      "noInvert": "禁止 filter: invert() / hue-rotate()，會毀掉截圖與照片。",
+      "darkDimming": "dark 主題下正文照片與截圖套 filter: brightness(0.92) saturate(0.96)；:hover 取消。light 不套 filter。",
+      "transparentLineArt": "透明背景線稿圖必須包在 --bg-surface 底板上（內距 16px），底板隨 token 換色，圖不動。",
+      "ogImage": "feature_image / OG 圖不受主題影響。"
+    },
+    "chamferImplementation": {
+      "name": "The Ring",
+      "problem": "clip-path 會連 border 一起裁掉，切角斜邊會失去描邊。",
+      "chosenOver": {
+        "(a) two-layer": "內層需寫死底色；透明填色元件（button/chip）整塊被描邊色填滿，且 hover 換 ground 時浮出色塊",
+        "(b) background linear-gradient": "角落 gradient 與 clip-path 的百分比基準對不齊，實測 c=10/bw=1 與 c=16/bw=2 右上角皆描邊斷裂",
+        "(c) inline SVG stroke": "preserveAspectRatio=none 撐滿時切角隨寬高比變形；vector-effect 只救線寬不救幾何"
+      },
+      "appliesTo": [
+        "button-primary",
+        "chip-category",
+        "card-note",
+        "code-block",
+        "nav-dropdown",
+        "header-menu-button"
+      ],
+      "notAppliedTo": ["tag-parallelogram（不切角；transform 不裁 border，直接用 border）"],
+      "insetConstant": "0.4142 (√2 − 1) — 斜邊端點沿座標軸的位移量；省略會讓斜邊線寬比直邊粗",
+      "css": ".ring { --c: 10px; --bw: 1px; --stroke: var(--rule); position: relative; background: transparent; } .ring::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: var(--stroke); clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%, 0 0, var(--bw) var(--bw), var(--bw) calc(100% - var(--bw)), calc(100% - var(--bw)) calc(100% - var(--bw)), calc(100% - var(--bw)) calc(var(--c) + var(--bw) * 0.4142), calc(100% - var(--c) - var(--bw) * 0.4142) var(--bw), var(--bw) var(--bw)); transition: background 120ms cubic-bezier(0.2,0,0,1); } .ring.is-filled { background: var(--bg-surface); clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%); }",
+      "usage": [
+        "狀態變化只換 --stroke（hover → --accent，disabled → --rule）；不重寫 clip-path",
+        "--c 只取 6 / 10 / 16px 三值",
+        "環是 ::before 且 pointer-events: none，不影響命中區",
+        "切角元件不得再出現 border 屬性，否則直邊會有雙線",
+        "focus ring 走 box-shadow，畫在 border box 外，不受 clip-path 影響"
+      ],
+      "verifiedIn": "comp/index.html — 1440×900，tide-dark / tide-light 兩主題皆實測；另有 c=6/10/16 與 bw=1/2 的尺寸驗證"
+    },
+    "daisyuiAliases": {
+      "status": "deprecated — 僅為 Open Item 4 的方案 (a) 過渡而存在",
+      "map": {
+        "--color-base-100": "--bg-surface",
+        "--color-base-200": "--bg",
+        "--color-base-300": "--bg-raised",
+        "--color-base-content": "--fg",
+        "--color-primary": "--accent",
+        "--color-secondary": "--fg-faint",
+        "--color-accent": "--glow",
+        "--color-neutral": "--rule"
+      },
+      "rules": [
+        "新 code 一律直接寫 var(--token)，不得新增任何 daisyUI 語意 class 的使用",
+        "動到既有檔案時順手替換該檔的別名——路過就修，不另開遷移任務",
+        "映射表是唯一真相來源；不得為了讓某個既有 class 好看而調整映射"
+      ],
+      "knownSemanticDrift": "daisyUI 的 primary 是「主色」，本系統的 --accent 是「稀缺強調色」。沿用 text-primary 會讓紅色出現在不該出現的位置，直接違反 The Red Dress Rule——這是別名必須消失的理由。",
+      "backlog": "方案 (b)：全面替換、移除 daisyUI 語意層"
+    },
+    "overhang": {
+      "invariant": "overhang 存在 ⟺ chrome 層計算後寬度 > 閱讀層計算後寬度",
+      "tiers": [
+        {
+          "range": ">=1120px",
+          "behavior": "完整 overhang：chrome 1120 / 閱讀 720，兩側各伸出 200px"
+        },
+        {
+          "range": "720–1120px",
+          "behavior": "chrome 改為 min(1120px, 100% - 2*gutter)；overhang 隨視窗連續縮小，不跳階"
+        },
+        {
+          "range": "<768px",
+          "behavior": "兩層收斂為同一值，overhang 歸零；分隔線與正文切齊是合法狀態，非違規"
+        }
+      ],
+      "gutter": {
+        ">=640px": "24px",
+        "<640px": "20px"
+      },
+      "codeBlock": "width: min(840px, 100%)；可用寬度 <840px 時溢出自然歸零。不得用負 margin 或 calc() 撐寬；橫向捲動只發生在 code block 內部（overflow-x: auto）",
+      "forbidden": "<768px 不得用負 margin、溢出線或假邊距模擬已退場的 overhang"
+    }
   },
   "components": [
     {
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "唯一的實心行動按鈕。用於 AuthorBio 的兩顆 CTA。",
-      "html": "<a href=\"#\" class=\"ds-btn-primary\">看看我的經歷</a>",
-      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 16px; background: var(--color-primary, #5E81AC); color: var(--color-primary-content, #03060B); border: 1px solid var(--color-primary, #5E81AC); border-radius: var(--radius-field, 4px); font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s, opacity 0.2s; } .ds-btn-primary:hover { opacity: 0.88; } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-base-content, #2E3440); outline-offset: 2px; }"
+      "description": "線框態按鈕。預設是描邊不是填色；hover 才轉血紅底。兩主題共用同一份 CSS。 描邊用 The Ring（見 extensions.chamferImplementation）。",
+      "html": "<a href=\"#\" class=\"ds-btn-primary\">VIEW EXPERIENCES</a>",
+      "css": ".ds-btn-primary { --c: 10px; --bw: 1px; --stroke: var(--rule); position: relative; background: transparent; } .ds-btn-primary::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: var(--stroke); clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%, 0 0, var(--bw) var(--bw), var(--bw) calc(100% - var(--bw)), calc(100% - var(--bw)) calc(100% - var(--bw)), calc(100% - var(--bw)) calc(var(--c) + var(--bw) * 0.4142), calc(100% - var(--c) - var(--bw) * 0.4142) var(--bw), var(--bw) var(--bw)); transition: background 120ms cubic-bezier(0.2,0,0,1); } .ds-btn-primary.is-filled { background: var(--bg-surface); clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%); } .ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 24px; color: var(--fg); font-family: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; transition: background 120ms cubic-bezier(0.2,0,0,1), color 120ms cubic-bezier(0.2,0,0,1); } .ds-btn-primary:hover { background: var(--accent-fill); color: var(--fg-on-accent); --stroke: var(--accent); } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--glow); }"
+    },
+    {
+      "name": "Parallelogram Tag",
+      "kind": "chip",
+      "refersTo": "tag-parallelogram",
+      "description": "官方 banner 名牌造型的直譯。skewX(-12deg) 容器 + 反 skew 內文。當前態是 tag 列裡唯一有底色的。",
+      "html": "<div class=\"ds-taglist\"><a href=\"#\" class=\"ds-tag\"><span>astro</span></a><a href=\"#\" class=\"ds-tag ds-tag-current\"><span>self-hosting</span></a></div>",
+      "css": ".ds-taglist { display: flex; flex-wrap: wrap; gap: 6px; } .ds-tag { display: inline-block; padding: 3px 10px; background: transparent; border: 1px solid var(--rule, #2D4A5E); border-radius: 0; transform: skewX(-12deg); color: var(--fg-muted, #8FAEBC); font-family: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; transition: color 120ms cubic-bezier(0.2,0,0,1), border-color 120ms cubic-bezier(0.2,0,0,1); } .ds-tag > span { display: inline-block; transform: skewX(12deg); } .ds-tag:hover { color: var(--accent-text, #E4525C); border-color: var(--accent, #C8323E); } .ds-tag-current { background: var(--accent-fill, #A8202C); border-color: var(--accent-fill, #A8202C); color: var(--fg-on-accent, #E8ECF0); } .ds-tag:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--glow, #7FD4D4); }"
     },
     {
       "name": "Category Chip",
       "kind": "chip",
       "refersTo": "chip-category",
-      "description": "文章標頭的分類標籤。Frost Deep 10% 底，hover 轉 20%。",
+      "description": "分類標籤。切右上角 6px，透明底描邊，hover 轉血紅字。 描邊用 The Ring（見 extensions.chamferImplementation）。",
       "html": "<a href=\"#\" class=\"ds-chip-category\">開發筆記</a>",
-      "css": ".ds-chip-category { display: inline-block; padding: 4px 8px; border-radius: var(--radius-field, 4px); background: color-mix(in oklab, var(--color-primary, #5E81AC) 10%, transparent); color: var(--color-primary, #5E81AC); font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 14px; text-decoration: none; transition: background 0.2s; } .ds-chip-category:hover { background: color-mix(in oklab, var(--color-primary, #5E81AC) 20%, transparent); } .ds-chip-category:focus-visible { outline: 2px solid var(--color-primary, #5E81AC); outline-offset: 2px; }"
+      "css": ".ds-chip-category { --c: 6px; --bw: 1px; --stroke: var(--rule); position: relative; background: transparent; } .ds-chip-category::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: var(--stroke); clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%, 0 0, var(--bw) var(--bw), var(--bw) calc(100% - var(--bw)), calc(100% - var(--bw)) calc(100% - var(--bw)), calc(100% - var(--bw)) calc(var(--c) + var(--bw) * 0.4142), calc(100% - var(--c) - var(--bw) * 0.4142) var(--bw), var(--bw) var(--bw)); transition: background 120ms cubic-bezier(0.2,0,0,1); } .ds-chip-category.is-filled { background: var(--bg-surface); clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%); } .ds-chip-category { display: inline-block; padding: 4px 10px; color: var(--fg-muted); font-family: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-decoration: none; transition: color 120ms cubic-bezier(0.2,0,0,1); } .ds-chip-category:hover { color: var(--accent-text); --stroke: var(--accent); } .ds-chip-category:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--glow); }"
     },
     {
-      "name": "Tag List",
+      "name": "Post Index Row",
+      "kind": "custom",
+      "refersTo": "post-index-row",
+      "description": "文章索引的唯一單元。表列而非卡片：上緣 hairline、代號式日期、hover 時左緣長出紅線。",
+      "html": "<article class=\"ds-post-row\"><div class=\"ds-post-rule\"></div><a href=\"#\" class=\"ds-post-link\"><span class=\"ds-post-log\">LOG 2026.08.16</span><h2 class=\"ds-post-title\">從 Claude Code 的 agent 視角重新看 vim</h2></a><div class=\"ds-taglist\"><a href=\"#\" class=\"ds-tag\"><span>vim</span></a><a href=\"#\" class=\"ds-tag\"><span>ai-agent</span></a></div></article>",
+      "css": ".ds-post-row { position: relative; padding: 20px 0; background: transparent; transition: background 120ms cubic-bezier(0.2,0,0,1); } .ds-post-row::before { content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: var(--accent, #C8323E); transform: scaleY(0); transform-origin: top; transition: transform 180ms cubic-bezier(0.2,0,0,1); } .ds-post-row:hover { background: var(--bg-raised, #12253A); } .ds-post-row:hover::before { transform: scaleY(1); } .ds-post-rule { position: absolute; left: -60px; right: -60px; top: 0; height: 1px; background: var(--rule, #2D4A5E); } .ds-post-link { display: block; text-decoration: none; } .ds-post-log { display: block; margin-bottom: 8px; color: var(--fg-faint, #4A7A8C); font-family: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; } .ds-post-title { margin: 0 0 12px; color: var(--fg, #E8ECF0); font-family: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif; font-size: 27px; font-weight: 600; line-height: 1.35; } .ds-taglist { display: flex; flex-wrap: wrap; gap: 6px; } .ds-tag { display: inline-block; padding: 3px 10px; border: 1px solid var(--rule, #2D4A5E); transform: skewX(-12deg); color: var(--fg-muted, #8FAEBC); font-family: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; } .ds-tag > span { display: inline-block; transform: skewX(12deg); }"
+    },
+    {
+      "name": "Article Title",
       "kind": "custom",
       "refersTo": null,
-      "description": "標籤不是 chip，是以「・」分隔的純文字連結串，前置一個標籤圖示。",
-      "html": "<div class=\"ds-taglist\"><svg class=\"ds-taglist-icon\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M21.29 11.29l-8.58-8.58A1 1 0 0012 2.42H4a2 2 0 00-2 2v8a1 1 0 00.29.71l8.58 8.58a2 2 0 002.83 0l7.59-7.59a2 2 0 000-2.83zM7 8a1.5 1.5 0 111.5-1.5A1.5 1.5 0 017 8z\"/></svg><a href=\"#\" class=\"ds-tag\">astro</a><span class=\"ds-tag-sep\">・</span><a href=\"#\" class=\"ds-tag ds-tag-current\">self-hosting</a></div>",
-      "css": ".ds-taglist { display: flex; align-items: center; flex-wrap: wrap; gap: 2px; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; } .ds-taglist-icon { color: color-mix(in oklab, var(--color-secondary, #81A1C1) 70%, transparent); margin-right: 4px; flex-shrink: 0; } .ds-tag { padding: 2px 0; font-size: 12px; font-weight: 500; color: var(--color-base-content, #2E3440); text-decoration: none; transition: color 0.2s; } .ds-tag:hover { text-decoration: underline; } .ds-tag-current { color: var(--color-primary, #5E81AC); font-weight: 700; } .ds-tag-sep { font-size: 12px; color: var(--color-base-content, #2E3440); }"
+      "description": "文章標題 + 紅色切角刻度。全站紅色出現頻率最高的位置，也是唯一在正文頂端出現的紅。",
+      "html": "<header class=\"ds-article-head\"><div class=\"ds-article-meta\"><span>LOG 2026.08.16</span><span class=\"ds-sep\">/</span><span>READ 8 MIN</span><span class=\"ds-sep\">/</span><span>開發筆記</span></div><h1 class=\"ds-article-title\">從 Claude Code 的 agent 視角重新看 vim</h1></header>",
+      "css": ".ds-article-head { margin-bottom: 48px; } .ds-article-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 16px; color: var(--fg-faint, #4A7A8C); font-family: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; } .ds-sep { color: var(--rule, #2D4A5E); } .ds-article-title { position: relative; margin: 0; padding-left: 20px; color: var(--fg, #E8ECF0); font-family: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif; font-size: clamp(2rem, 4.5vw, 2.75rem); font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; } .ds-article-title::before { content: ''; position: absolute; left: 0; top: 0.25em; width: 3px; height: 24px; background: var(--accent, #C8323E); clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%); }"
     },
     {
-      "name": "Post List Item",
+      "name": "Code Block",
       "kind": "custom",
-      "refersTo": null,
-      "description": "首頁與列表頁的唯一單元。無卡片、無縮圖、無分隔線；靠 48px 留白分組。",
-      "html": "<article class=\"ds-post-item\"><div class=\"ds-post-meta\"><span class=\"ds-post-meta-cell\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm0 16H5V10h14z\"/></svg><time>2026/08/16</time></span><span class=\"ds-post-meta-cell\"><a href=\"#\" class=\"ds-post-cat\">開發筆記</a></span></div><a href=\"#\" class=\"ds-post-link\"><h2 class=\"ds-post-title\">從 Claude Code 的 agent 視角重新看 vim</h2></a></article>",
-      "css": ".ds-post-item { font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; color: color-mix(in oklab, var(--color-base-content, #2E3440) 80%, transparent); padding: 0 12px; margin-bottom: 48px; letter-spacing: 0.02em; } .ds-post-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 12px; font-size: 16px; } .ds-post-meta-cell { display: inline-flex; align-items: center; gap: 4px; } .ds-post-meta-cell svg { color: color-mix(in oklab, var(--color-secondary, #81A1C1) 70%, transparent); } .ds-post-cat { color: inherit; text-decoration: none; transition: color 0.2s; } .ds-post-cat:hover { text-decoration: underline; } .ds-post-link { text-decoration: none; color: inherit; } .ds-post-title { margin: 8px 0 0; font-size: 24px; font-weight: 600; line-height: 32px; } .ds-post-link:hover .ds-post-title { text-decoration: underline; }"
-    },
-    {
-      "name": "Series Banner",
-      "kind": "card",
-      "refersTo": "banner-series",
-      "description": "文章屬於某個系列時，出現在標頭下方的細長提示條。",
-      "html": "<aside class=\"ds-banner-series\">本文屬於 <a href=\"#\" class=\"ds-banner-link\">Self-hosted AI Agent 實戰系列</a>，可回系列頁查看完整脈絡。</aside>",
-      "css": ".ds-banner-series { margin-bottom: 32px; padding: 12px 16px; border: 1px solid var(--color-base-300, #D8DEE9); border-radius: 12px; background: color-mix(in oklab, var(--color-base-200, #E5E9F0) 60%, transparent); color: color-mix(in oklab, var(--color-base-content, #2E3440) 75%, transparent); font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 14px; letter-spacing: 0.02em; } .ds-banner-link { color: var(--color-primary, #5E81AC); font-weight: 500; text-decoration: none; transition: color 0.2s; } .ds-banner-link:hover { text-decoration: underline; }"
-    },
-    {
-      "name": "Note Card",
-      "kind": "card",
-      "refersTo": "card-note",
-      "description": "Notes 頁的 GoToSocial 貼文卡片。全站少數帶陰影的元件之一。",
-      "html": "<article class=\"ds-note-card\"><div class=\"ds-note-content\"><p>最近在把 blog 的視覺系統整理成文件。</p></div><div class=\"ds-note-meta\"><time>2026/08/16 20:16</time><a href=\"#\" class=\"ds-note-permalink\">permalink</a></div></article>",
-      "css": ".ds-note-card { padding: 20px; border: 1px solid var(--color-base-300, #D8DEE9); border-radius: 12px; background: var(--color-base-100, #ECEFF4); box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; } .ds-note-content { color: var(--color-base-content, #2E3440); font-size: 18px; line-height: 1.8; letter-spacing: 0.02em; } .ds-note-content > :first-child { margin-top: 0; } .ds-note-content > :last-child { margin-bottom: 0; } .ds-note-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--color-base-300, #D8DEE9); font-size: 14px; color: color-mix(in oklab, var(--color-base-content, #2E3440) 60%, transparent); } .ds-note-permalink { color: var(--color-primary, #5E81AC); text-decoration: none; } .ds-note-permalink:hover { text-decoration: underline; }"
+      "refersTo": "code-block",
+      "description": "正文裡唯一允許展現風格的地方。語法角色綁 token，兩主題各有配色但對應相同。 描邊用 The Ring（見 extensions.chamferImplementation）。",
+      "html": "<figure class=\"ds-code\"><div class=\"ds-code-head\"><span>TYPESCRIPT</span><span class=\"ds-code-copy\">COPY</span></div><pre class=\"ds-code-body\"><code><span class=\"c-com\">// resolve the active locale</span>\n<span class=\"c-key\">const</span> locale = Astro.currentLocale <span class=\"c-key\">??</span> <span class=\"c-str\">'tw'</span>;\n<span class=\"c-key\">const</span> perPage = <span class=\"c-num\">16</span>;</code></pre></figure>",
+      "css": ".ds-code { --c: 10px; --bw: 1px; --stroke: var(--rule); position: relative; background: transparent; } .ds-code::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: var(--stroke); clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%, 0 0, var(--bw) var(--bw), var(--bw) calc(100% - var(--bw)), calc(100% - var(--bw)) calc(100% - var(--bw)), calc(100% - var(--bw)) calc(var(--c) + var(--bw) * 0.4142), calc(100% - var(--c) - var(--bw) * 0.4142) var(--bw), var(--bw) var(--bw)); transition: background 120ms cubic-bezier(0.2,0,0,1); } .ds-code.is-filled { background: var(--bg-surface); clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%); } .ds-code { margin: 32px 0; width: min(840px, 100%); background: var(--bg-sunken); clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%); overflow: hidden; } .ds-code-head { display: flex; align-items: center; justify-content: space-between; height: 28px; padding: 0 16px; background: var(--bg-surface); border-bottom: 1px solid var(--rule); color: var(--fg-faint); font-family: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; } .ds-code-copy { cursor: pointer; transition: color 120ms cubic-bezier(0.2,0,0,1); } .ds-code-copy:hover { color: var(--glow); } .ds-code-copy:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--glow); } .ds-code-body { margin: 0; padding: 20px 24px; overflow-x: auto; color: var(--fg); font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 15px; line-height: 1.7; } .ds-code-body .c-key { color: var(--glow); } .ds-code-body .c-com { color: var(--glow-dim); } .ds-code-body .c-str { color: var(--fg-muted); } .ds-code-body .c-num { color: var(--accent-text); }"
     },
     {
       "name": "Header Bar",
       "kind": "nav",
       "refersTo": "header-bar",
-      "description": "64px 高的頁首。底部 1px 滿對比實線是全站唯一一條「重」的線。",
-      "html": "<header class=\"ds-header\"><div class=\"ds-header-left\"><a href=\"/\" class=\"ds-header-title\">Wildsky's Blog</a><span class=\"ds-header-dot\">・</span><p class=\"ds-header-desc\">軟體工程師的技術與思考筆記</p></div><button class=\"ds-header-menu\" aria-label=\"Open navigation menu\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M4 6h16M4 12h16M4 18h16\"/></svg></button></header>",
-      "css": ".ds-header { display: flex; align-items: center; gap: 8px; min-height: 64px; padding: 0 16px; background: var(--color-base-100, #ECEFF4); color: var(--color-base-content, #2E3440); border-bottom: 1px solid var(--color-base-content, #2E3440); box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; } .ds-header-left { display: flex; align-items: center; gap: 8px; flex: 1; } .ds-header-title { font-size: 20px; font-weight: 700; line-height: 1.5; color: inherit; text-decoration: none; } .ds-header-dot { opacity: 0.5; } .ds-header-desc { margin: 0; color: color-mix(in oklab, var(--color-base-content, #2E3440) 70%, transparent); } .ds-header-menu { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: none; border-radius: 9999px; background: transparent; color: inherit; cursor: pointer; transition: background 0.2s; } .ds-header-menu:hover { background: color-mix(in oklab, var(--color-base-content, #2E3440) 8%, transparent); } .ds-header-menu:focus-visible { outline: 2px solid var(--color-base-content, #2E3440); outline-offset: 2px; }"
+      "description": "64px 頁首。方括號站名鎖定，底線右端 40px 換成血紅斷點——header 上唯一的紅。",
+      "html": "<header class=\"ds-header\"><div class=\"ds-header-left\"><a href=\"/\" class=\"ds-header-title\">[ WILDSKY ]</a><span class=\"ds-header-sub\">/ LOG</span><p class=\"ds-header-desc\">軟體工程師的技術與思考筆記</p></div><button class=\"ds-header-menu\" aria-label=\"Open navigation menu\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M3 6h18M3 12h18M3 18h18\"/></svg></button></header>",
+      "css": ".ds-header { position: relative; display: flex; align-items: center; gap: 12px; height: 64px; padding: 0 24px; background: var(--bg-surface, #0D1B2A); color: var(--fg, #E8ECF0); font-family: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif; } .ds-header::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: linear-gradient(to right, var(--rule, #2D4A5E) 0, var(--rule, #2D4A5E) calc(100% - 40px), var(--accent, #C8323E) calc(100% - 40px), var(--accent, #C8323E) 100%); } .ds-header-left { display: flex; align-items: baseline; gap: 10px; flex: 1; min-width: 0; } .ds-header-title { color: var(--fg, #E8ECF0); font-size: 21px; font-weight: 600; text-decoration: none; white-space: nowrap; } .ds-header-sub { color: var(--fg-faint, #4A7A8C); font-size: 11px; font-weight: 500; letter-spacing: 0.16em; } .ds-header-desc { margin: 0; color: var(--fg-muted, #8FAEBC); font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .ds-header-menu { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; background: transparent; border: 1px solid var(--rule, #2D4A5E); border-radius: 0; clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%); color: var(--fg-muted, #8FAEBC); cursor: pointer; transition: color 120ms cubic-bezier(0.2,0,0,1), border-color 120ms cubic-bezier(0.2,0,0,1); } .ds-header-menu:hover { color: var(--fg, #E8ECF0); border-color: var(--fg-faint, #4A7A8C); } .ds-header-menu:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--glow, #7FD4D4); }"
     },
     {
       "name": "Nav Dropdown",
       "kind": "nav",
       "refersTo": "nav-dropdown",
-      "description": "208px 寬的導覽下拉選單，項目分 main / content 兩組。",
-      "html": "<ul class=\"ds-nav-dropdown\"><li><a href=\"/\" class=\"ds-nav-item\">home</a></li><li><a href=\"/about/\" class=\"ds-nav-item\">about</a></li><li><a href=\"/now/\" class=\"ds-nav-item\">now</a></li><li class=\"ds-nav-sep\"></li><li><a href=\"/tags/\" class=\"ds-nav-item\">tags</a></li></ul>",
-      "css": ".ds-nav-dropdown { width: 208px; margin: 0; padding: 8px; list-style: none; background: var(--color-base-100, #ECEFF4); border-radius: var(--radius-box, 8px); box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; text-transform: capitalize; } .ds-nav-item { display: block; padding: 8px 12px; border-radius: var(--radius-field, 4px); color: var(--color-base-content, #2E3440); font-size: 16px; text-decoration: none; transition: background 0.2s; } .ds-nav-item:hover { background: color-mix(in oklab, var(--color-base-content, #2E3440) 8%, transparent); } .ds-nav-item:focus-visible { outline: 2px solid var(--color-base-content, #2E3440); outline-offset: -2px; } .ds-nav-sep { height: 1px; margin: 8px 4px; background: var(--color-base-300, #D8DEE9); }"
+      "description": "224px 導覽選單。零圓角、零陰影、切右上角；hover 時左緣長出紅色短線。 描邊用 The Ring（見 extensions.chamferImplementation）。",
+      "html": "<ul class=\"ds-nav\"><li><a href=\"/\" class=\"ds-nav-item\">Home</a></li><li><a href=\"/about/\" class=\"ds-nav-item\">About</a></li><li><a href=\"/now/\" class=\"ds-nav-item\">Now</a></li><li class=\"ds-nav-sep\"></li><li><a href=\"/tags/\" class=\"ds-nav-item\">Tags</a></li></ul>",
+      "css": ".ds-nav { --c: 10px; --bw: 1px; --stroke: var(--rule); position: relative; background: transparent; } .ds-nav::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: var(--stroke); clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%, 0 0, var(--bw) var(--bw), var(--bw) calc(100% - var(--bw)), calc(100% - var(--bw)) calc(100% - var(--bw)), calc(100% - var(--bw)) calc(var(--c) + var(--bw) * 0.4142), calc(100% - var(--c) - var(--bw) * 0.4142) var(--bw), var(--bw) var(--bw)); transition: background 120ms cubic-bezier(0.2,0,0,1); } .ds-nav.is-filled { background: var(--bg-surface); clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%); } .ds-nav { width: 224px; margin: 0; padding: 8px; list-style: none; background: var(--bg-surface); clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%); } .ds-nav-item { position: relative; display: block; padding: 10px 14px; color: var(--fg); font-family: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; transition: background 120ms cubic-bezier(0.2,0,0,1); } .ds-nav-item::before { content: ''; position: absolute; left: 0; top: 50%; width: 2px; height: 60%; background: var(--accent); transform: translateY(-50%) scaleY(0); transform-origin: center; transition: transform 120ms cubic-bezier(0.2,0,0,1); } .ds-nav-item:hover { background: var(--bg-raised); } .ds-nav-item:hover::before { transform: translateY(-50%) scaleY(1); } .ds-nav-item:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--glow); } .ds-nav-sep { height: 1px; margin: 8px 4px; background: var(--rule); }"
+    },
+    {
+      "name": "Series Banner",
+      "kind": "card",
+      "refersTo": "banner-series",
+      "description": "系列提示。紅色作為「線」的標準用法：僅左側 2px 紅線，無框無底。",
+      "html": "<aside class=\"ds-banner-series\"><span class=\"ds-banner-label\">Series</span><p class=\"ds-banner-body\">本文屬於 <a href=\"#\" class=\"ds-banner-link\">Self-hosted AI Agent 實戰系列</a>，可回系列頁查看完整脈絡。</p></aside>",
+      "css": ".ds-banner-series { margin: 32px 0; padding: 14px 18px; background: transparent; border-left: 2px solid var(--accent, #C8323E); border-radius: 0; } .ds-banner-label { display: block; margin-bottom: 6px; color: var(--fg-faint, #4A7A8C); font-family: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; } .ds-banner-body { margin: 0; color: var(--fg-muted, #8FAEBC); font-family: 'Source Sans 3', 'Noto Sans TC', system-ui, sans-serif; font-size: 16px; line-height: 1.7; } .ds-banner-link { color: var(--fg, #E8ECF0); text-decoration: none; border-bottom: 1px solid var(--rule, #2D4A5E); transition: color 120ms cubic-bezier(0.2,0,0,1), border-color 120ms cubic-bezier(0.2,0,0,1); } .ds-banner-link:hover { color: var(--accent-text, #E4525C); border-color: var(--accent, #C8323E); }"
+    },
+    {
+      "name": "Note Card",
+      "kind": "card",
+      "refersTo": "card-note",
+      "description": "Notes 頁的 GoToSocial 貼文。切右上角，1px 描邊，無陰影。 描邊用 The Ring（見 extensions.chamferImplementation）。",
+      "html": "<article class=\"ds-note-card\"><div class=\"ds-note-content\"><p>最近在把 blog 的視覺系統整個換掉。</p></div><div class=\"ds-note-meta\"><time>2026.08.16 20:16</time><a href=\"#\" class=\"ds-note-permalink\">Permalink</a></div></article>",
+      "css": ".ds-note-card { --c: 10px; --bw: 1px; --stroke: var(--rule); position: relative; background: transparent; } .ds-note-card::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: var(--stroke); clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%, 0 0, var(--bw) var(--bw), var(--bw) calc(100% - var(--bw)), calc(100% - var(--bw)) calc(100% - var(--bw)), calc(100% - var(--bw)) calc(var(--c) + var(--bw) * 0.4142), calc(100% - var(--c) - var(--bw) * 0.4142) var(--bw), var(--bw) var(--bw)); transition: background 120ms cubic-bezier(0.2,0,0,1); } .ds-note-card.is-filled { background: var(--bg-surface); clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%); } .ds-note-card { padding: 20px 22px; background: var(--bg-surface); clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%); } .ds-note-content { color: var(--fg); font-family: 'Source Sans 3', 'Noto Sans TC', system-ui, sans-serif; font-size: 17px; line-height: 1.8; } .ds-note-content > :first-child { margin-top: 0; } .ds-note-content > :last-child { margin-bottom: 0; } .ds-note-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--rule); color: var(--fg-faint); font-family: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; } .ds-note-permalink { color: var(--fg-muted); text-decoration: none; transition: color 120ms cubic-bezier(0.2,0,0,1); } .ds-note-permalink:hover { color: var(--accent-text); } .ds-note-permalink:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--glow); }"
     },
     {
       "name": "Theme Toggle (Signature)",
       "kind": "custom",
       "refersTo": null,
-      "description": "釘在畫面左下角的單字符主題開關。全站最具識別度的動作之一。",
-      "html": "<button class=\"ds-theme-toggle\" aria-label=\"Toggle color theme\"><span aria-hidden=\"true\">☀︎</span></button>",
-      "css": ".ds-theme-toggle { border: 0; padding: 0; background: transparent; cursor: pointer; font-size: 20px; line-height: 1; color: color-mix(in oklab, var(--color-base-content, #2E3440) 80%, transparent); transition: opacity 0.2s; animation: ds-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; } .ds-theme-toggle:hover { opacity: 0.6; } .ds-theme-toggle:focus-visible { outline: 2px solid color-mix(in oklab, var(--color-base-content, #2E3440) 40%, transparent); outline-offset: 4px; } @keyframes ds-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }"
+      "description": "左下角三態主題開關：system → dark → light。當前態以圖示形狀區分，不用顏色區分。",
+      "html": "<button class=\"ds-theme-toggle\" aria-label=\"Switch color theme\" data-state=\"system\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M3 3h14l4 4v14H3z\"/><path d=\"M8 12h8\"/></svg></button>",
+      "css": ".ds-theme-toggle { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; padding: 0; background: transparent; border: none; border-radius: 0; color: var(--fg-faint, #4A7A8C); cursor: pointer; transition: color 120ms cubic-bezier(0.2,0,0,1); } .ds-theme-toggle:hover { color: var(--glow, #7FD4D4); } .ds-theme-toggle:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--glow, #7FD4D4); }"
     },
     {
-      "name": "Social Rail (Signature)",
+      "name": "Figure with Plate",
       "kind": "custom",
       "refersTo": null,
-      "description": "桌機釘在右下角的垂直社群圖示列；行動裝置退回 footer 內的水平排列。",
-      "html": "<div class=\"ds-social-rail\"><a href=\"#\" class=\"ds-social-link\" aria-label=\"Mastodon profile\"><svg viewBox=\"0 0 24 24\" width=\"36\" height=\"36\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M20.94 14c-.28 1.41-2.44 2.96-4.97 3.26-1.31.15-2.6.3-3.97.24-2.25-.11-4.02-.54-4.02-.54v.62c.32 2.22 2.22 2.35 4.03 2.42 1.82.06 3.44-.45 3.44-.45l.08 1.65s-1.28.68-3.55.81c-1.25.07-2.81-.03-4.62-.51-3.92-1.04-4.6-5.22-4.7-9.46-.03-1.26-.01-2.45-.01-3.44 0-4.33 2.84-5.6 2.84-5.6C6.93 2.33 9.4 2.01 11.97 2h.06c2.57.01 5.05.33 6.5.99 0 0 2.83 1.27 2.83 5.6 0 0 .04 3.2-.42 5.41M18 8.91c0-1.07-.28-1.92-.83-2.55-.56-.63-1.3-.95-2.21-.95-1.06 0-1.86.4-2.39 1.22l-.52.87-.52-.87c-.53-.82-1.33-1.22-2.39-1.22-.91 0-1.65.32-2.21.95-.55.63-.83 1.48-.83 2.55v5.24h2.08V9.06c0-1.07.45-1.61 1.35-1.61.99 0 1.49.64 1.49 1.92v2.79h2.06V9.37c0-1.28.5-1.92 1.5-1.92.9 0 1.35.54 1.35 1.61v5.09H18V8.91z\"/></svg></a><a href=\"#\" class=\"ds-social-link\" aria-label=\"RSS feed\"><svg viewBox=\"0 0 24 24\" width=\"36\" height=\"36\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M6.18 15.64a2.18 2.18 0 012.18 2.18C8.36 19 7.38 20 6.18 20 5 20 4 19 4 17.82a2.18 2.18 0 012.18-2.18M4 4.44A15.56 15.56 0 0119.56 20h-2.83A12.73 12.73 0 004 7.27V4.44m0 5.66a9.9 9.9 0 019.9 9.9h-2.83A7.07 7.07 0 004 12.93V10.1z\"/></svg></a></div>",
-      "css": ".ds-social-rail { display: flex; gap: 24px; align-items: center; } @media (min-width: 1024px) { .ds-social-rail { flex-direction: column; } } .ds-social-link { display: inline-flex; color: var(--color-base-content, #2E3440); opacity: 0.6; transition: opacity 0.2s; } .ds-social-link:hover { opacity: 0.8; } .ds-social-link:focus-visible { outline: 2px solid var(--color-base-content, #2E3440); outline-offset: 4px; }"
+      "description": "圖片容器。透明背景線稿圖必須用底板；照片在 dark 減光、hover 還原。禁止 invert。",
+      "html": "<figure class=\"ds-figure\"><div class=\"ds-figure-plate\"><img src=\"data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='120'%3E%3Crect width='320' height='120' fill='none' stroke='%23888' stroke-width='1'/%3E%3Cline x1='20' y1='60' x2='300' y2='60' stroke='%23888'/%3E%3C/svg%3E\" alt=\"示意線稿\"></div><figcaption>Diagram — 透明底線稿放在 --bg-surface 底板上</figcaption></figure>",
+      "css": ".ds-figure { margin: 32px 0; background: var(--bg-sunken, #060E17); border: 1px solid var(--rule, #2D4A5E); border-radius: 0; } .ds-figure img { display: block; width: 100%; height: auto; } .ds-figure-plate { padding: 16px; background: var(--bg-surface, #0D1B2A); } .ds-figure figcaption { padding: 10px 16px; color: var(--fg-muted, #8FAEBC); font-family: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; text-align: center; }"
+    },
+    {
+      "name": "Vertical Side Rail (Signature)",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "≥1280px 才出現的裝飾性直排文字，官方 banner 側欄的直譯。aria-hidden，不承載資訊。",
+      "html": "<div class=\"ds-side-rail\" aria-hidden=\"true\">WILDSKY.CC / LOG ARCHIVE / SINCE 2014</div>",
+      "css": ".ds-side-rail { writing-mode: vertical-rl; color: var(--rule, #2D4A5E); font-family: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; user-select: none; pointer-events: none; } @media (max-width: 1279px) { .ds-side-rail { display: none; } }"
     }
   ],
   "narrative": {
-    "northStar": "濁心斯卡蒂・覆潮之下",
-    "overview": "這是一座沉在冷水下的個人堡壘。它不發光、不招手、不試圖說服你留下——它只是十年來一直在那裡，而且還會繼續在那裡。畫面的第一印象應該是低溫：冷藍灰的雪原色（#ECEFF4 / #E5E9F0 / #D8DEE9）疊出層次，深墨藍的文字（#2E3440）落在上面，飽和度全域壓低，沒有一塊顏色在爭奪視線。這是「覆潮之下」的部分。\n\n「濁心」是它不是純淨的：這裡同時放技術除錯、履歷、接案報價之外的作品、書櫃、歌單、明日方舟的近況。它不把「人」的部分洗掉來換取專業感——專業感靠的是把每一件事都講清楚，不是靠把生活切掉。「獵人」則是它的動作方式：出手前安靜，出手時精準；元件細、邊框薄、留白大，訊息密度高但不喧鬧。\n\n整站以襯線字（ui-serif / Georgia 系）承載全部內容，包含導覽與按鈕。單欄 896px 的閱讀柱是唯一的主結構，沒有側欄、沒有卡片牆。桌機版把兩組工具釘在畫面左右下角（主題切換、社群連結），像艙壁上的兩個開關，內容區完全不被打斷。",
+    "northStar": "覆潮之下 — Under Tides",
+    "overview": "一套語言，兩片海。\n\nDark 是深海。背景不是黑、也不是中性灰，是帶藍的墨色——像從水面下十公尺往上看的那種藍。文字是冷白銀，結構線是鋼藍，溫度壓到最低。\n\nLight 是海面。背景是近白帶一絲冷調的水光——白日下的甲板，不是印表機的白紙。文字是深鋼藍而非純黑，藍色血統一路貫穿到最亮的地方。\n\n兩者不是互相反轉，各自有情緒；但語言完全一致：同樣的切角、同樣的排版節奏、同樣的紅色紀律、同樣的兩軸色相（藍/青 ↔ 紅）。\n\n然後，兩片海都只有一件紅衣。血紅 #C8323E 是兩個主題唯一共用的原色——它是錨，主題切換時它不變。它在任何一個畫面的佔比不得超過 5%。紅色一旦變成區塊底色，這套系統就死了。\n\n第三個顏色是光，不是面。深海裡它是氣泡與生物光，海面上它是珊瑚與淺灘。它活在 code block 的語法高亮、focus ring、細分隔線——永遠是發光的線或字，永遠不是填色。\n\n形狀語言來自遊戲 UI 而不是網頁 UI：斜切角、平行四邊形、斜向裝飾線、線框優先於色塊。沒有一個圓角卡片，沒有一道柔和陰影。\n\n但這是一個長文技術部落格。所以有一條硬邊界：明日方舟味全部集中在 chrome。正文區塊保守到近乎乏味：720px 的閱讀量尺、19px、行高 1.9、無裝飾、無斜切、無紅色。讀者一進入正文，介面就退場。",
     "keyCharacteristics": [
-      "冷色、低飽和、全域壓低對比張力（Nord 色系）",
-      "全站襯線字，含 UI 元素；不做 sans/serif 混排",
-      "單欄 896px 閱讀柱，無側欄",
-      "幾乎全平：層次靠背景深淺（base-100/200/300），不靠陰影",
-      "中文字距全域 +0.02em（tracking-tw-normal）",
-      "桌機的兩個固定角落開關（左下主題、右下社群）是這個站的識別動作"
+      "雙主題共用一套語意 token；component 永不寫死色值",
+      "色相只有兩軸：藍/青（HSL 180–213）與紅（HSL 355–356），不引入第三個色相",
+      "血紅 #C8323E 是跨主題的錨，兩邊都不換；全站佔比 <5%",
+      "「光」只作為線或字，永不作為填色面",
+      "斜切角與平行四邊形取代圓角；零陰影",
+      "線框與描邊優先於填色塊",
+      "技術感 meta 排版：小號大寫窄體標籤、代號式編號、mono 字",
+      "Chrome 銳利、正文保守——兩者之間有明確的邊界線",
+      "兩主題所有文字對比皆過 WCAG AA（實測值見 contrastAudit）"
     ],
     "rules": [
       {
-        "name": "The One Frost Rule",
-        "body": "全站只有一個行動色：Frost Deep（#5E81AC）。任何新元件想要「有顏色」，答案是 Frost Deep 或它的透明度變體（10% / 20% / 70%），不是新開一個色。",
+        "name": "The Red Dress Rule",
+        "body": "血紅在任何一個 viewport 的佔比不得超過 5%，兩主題皆然。判準可機械檢查：截一張圖，紅色像素超過畫面 5% 即違規。它的力量百分之百來自稀缺——第二件紅衣出現的瞬間，第一件就不再有意義。",
         "section": "colors"
       },
       {
-        "name": "The Two-Step Surface Rule",
-        "body": "平面之間只差一階：#E5E9F0（地面）→ #ECEFF4（內容面）→ #D8DEE9（下沉面）。不要為了「突出」把某個區塊跳兩階或塗上強調色。",
+        "name": "The Anchor Rule",
+        "body": "--accent（#C8323E）在兩個主題是同一個值。主題切換時，紅色是唯一不動的東西——那是這套系統的錨。可讀性變體（--accent-text）可以換，錨不行。",
         "section": "colors"
       },
       {
-        "name": "The Aurora-Is-Semantic Rule",
-        "body": "極光四色只在傳達狀態（錯誤、警告、成功、提示）時出現。拿它們當裝飾色或圖表配色即違規。",
+        "name": "The Two-Axis Rule",
+        "body": "全系統只有兩個色相軸：藍/青（HSL 180–213）與紅（HSL 355–356）。任何第三個色相（綠、黃、紫、橙）即違規，包含語意色（success / warning）——需要語意區分時用形狀、圖示或 --accent 的有無，不用新色相。",
         "section": "colors"
       },
       {
-        "name": "The All-Serif Rule",
-        "body": "導覽、按鈕、標籤、內文全部襯線。要引入無襯線字必須是全站決定，不是單一元件的例外。",
+        "name": "The Glow-Is-Light Rule",
+        "body": "--glow 系列只能是發光的線或字，永遠不能是填色面。code block 的底是 --bg-sunken 配 glow 的字，不是 glow 的底。任何 background: var(--glow) 即違規。",
+        "section": "colors"
+      },
+      {
+        "name": "The No Hardcode Rule",
+        "body": "component 層不得出現任何 hex、rgb()、或 Tailwind 調色盤 class。只准 var(--token)。這條是雙主題能成立的唯一保證。",
+        "section": "colors"
+      },
+      {
+        "name": "The Never-Neutral Rule",
+        "body": "兩主題所有中性階都必須帶藍（HSL 194–213）。純灰、暖灰、純白、純黑一律違規。",
+        "section": "colors"
+      },
+      {
+        "name": "The Faint Floor Rule",
+        "body": "--rule 與 --glow-line 是線，不是字；--fg-faint 是圖示與 >=24px 大字，不是小字。小於 24px 的次要文字一律用 --fg-muted。",
+        "section": "colors"
+      },
+      {
+        "name": "The Chrome Frontier Rule",
+        "body": "Chakra Petch 只活在 chrome 裡。正文的 p、li、blockquote、表格內容一律 Source Sans 3 / Noto Sans TC。在正文段落裡出現 Chakra Petch 即違規。",
         "section": "typography"
       },
       {
-        "name": "The Chinese Tracking Rule",
-        "body": "中文區塊一律掛 tracking-tw-normal（+0.02em）；英文區塊不加字距。判斷依 lang，不是依視覺喜好。",
+        "name": "The Uppercase Latin Rule",
+        "body": "全大寫 ＋ 0.16em 字距只施加於英文 meta 標籤（READ 8 MIN、LOG 2026.08.16、SERIES）。中文永遠不做大寫處理，也不加寬字距超過 0.02em。",
         "section": "typography"
       },
       {
-        "name": "The Single Column Rule",
-        "body": "這個站沒有側欄，也不打算有。要增加的資訊往柱內排，或另開頁面。",
+        "name": "The Boring Body Rule",
+        "body": "正文區塊照長文閱讀最佳實務走，不創新：720px 量尺、19px、行高 1.9 左右、段落 24px 間距、無斜切、無紅色、無裝飾元素。chrome 之所以能銳利，是因為正文完全不吵。",
+        "section": "typography"
+      },
+      {
+        "name": "The Optical Weight Rule",
+        "body": "字重與字級兩主題相同，但 dark 允許在正文加 -webkit-font-smoothing: antialiased，light 不加。淺字落在深底上會視覺增肥，這一行是把它抵銷回來，不是換字重。",
+        "section": "typography"
+      },
+      {
+        "name": "The Overhang Rule",
+        "body": "水平分隔線、meta 行、footer 內容延伸到 1120px；正文永遠停在 720px。分隔線與文字切齊即違規——那個伸出去的差值就是設計本身。",
         "section": "layout"
       },
       {
-        "name": "The Depth-Zero Rule",
-        "body": "新元件預設無陰影。需要區分層次時，先換一階背景色；只有當元件真的浮在內容之上（sticky、dropdown、可點卡片）才可以用 hairline-lift，且不得自創第二種陰影值。",
+        "name": "The Single Column Rule",
+        "body": "沒有側欄，也不打算有。側邊導軌是裝飾層，不承載任何資訊或連結。",
+        "section": "layout"
+      },
+      {
+        "name": "The Zero Shadow Rule",
+        "body": "除 focus ring 外，全站 box-shadow: none。需要層次就換一階明度或加一條 1px 線。這條沒有例外，也不因主題放寬。",
         "section": "elevation"
       },
       {
-        "name": "The Small Radius Rule",
-        "body": "半徑上限 12px（頭像等真正的圓形除外）。超過 12px 的圓角屬於使用者拒絕的「圓滾滾可愛風」。",
+        "name": "The No Radius Rule",
+        "body": "border-radius 全站唯一的合法值是 0（真正的圓形除外：頭像、圓點指示）。任何非零的 border-radius 即違規——圓角卡片是明確的反參考。",
+        "section": "shapes"
+      },
+      {
+        "name": "The One-Corner Rule",
+        "body": "切角一次切一到兩個角。四角全切等於圓角，違規。",
+        "section": "shapes"
+      },
+      {
+        "name": "The Ring Rule",
+        "body": "切角元件的描邊只能用 The Ring（::before ＋ nonzero keyhole polygon）。切角元件上不得出現 border；斜邊沒有描邊的切角即為未完成的實作，不得以「看起來還好」放行。",
         "section": "shapes"
       }
     ],
     "dos": [
-      "Do 用 Frost Deep（#5E81AC）或它的 10% / 20% / 70% 變體當唯一行動色（The One Frost Rule）。",
-      "Do 用背景三階（#E5E9F0 → #ECEFF4 → #D8DEE9）做層次，新元件預設 box-shadow: none（The Depth-Zero Rule）。",
-      "Do 讓新元件也用襯線字，包含按鈕與標籤（The All-Serif Rule）。",
-      "Do 中文區塊掛 tracking-tw-normal（+0.02em），英文區塊不加。",
-      "Do 半徑控制在 12px 以內（真正的圓形除外）。",
-      "Do 讓內容留在 896px 單欄裡；要多放東西就往下排或另開頁。",
-      "Do 用留白分組（列表項間 48px），不要用卡片框或分隔線。",
-      "Do 引用 daisyUI 語意 token（base-100 / base-content / primary），不要寫死 hex 或 Tailwind 調色盤色（如 text-gray-900）。"
+      "Do 一切顏色只走語意 token；component 層只准 var(--token)（The No Hardcode Rule）。",
+      "Do 讓所有中性色帶藍（HSL 194–213），兩主題皆然（The Never-Neutral Rule）。",
+      "Do 把血紅控制在 5% 以內，且兩主題共用同一支 #C8323E（The Red Dress Rule、The Anchor Rule）。",
+      "Do 小於 24px 的紅字用 --accent-text，不用 --accent。",
+      "Do 讓 glow 只當光：語法高亮、focus ring、細線（The Glow-Is-Light Rule）。",
+      "Do focus ring 用 --glow，不用 --glow-line（後者在 light 只有 2.89）。",
+      "Do 用 clip-path 切角，一次切一到兩個角（The One-Corner Rule）。",
+      "Do 用 1px --rule 描邊做分隔，需要層次就換一階明度。",
+      "Do 讓水平規則與 meta 行伸出到 1120px，正文停在 720px（The Overhang Rule）。",
+      "Do 把技術感排版（大寫、字距 0.16em、代號式編號）只施加在英文 meta 上（The Uppercase Latin Rule）。",
+      "Do 讓正文乏味：720px、19px、行高 1.9、零裝飾（The Boring Body Rule）。",
+      "Do 讓 theme-color meta、color-scheme、::selection 跟著主題切換。",
+      "Do 給透明背景的線稿圖加 --bg-surface 底板。",
+      "Do 切角元件的描邊一律用 The Ring；--c 只取 6 / 10 / 16px 三值（The Ring Rule）。",
+      "Do 正文行高用無單位值（1.9），不用 rem——放大字級時要等比縮放。",
+      "Do 新 code 直接用 var(--token)；daisyUI 語意變數是 deprecated alias，路過就換掉。"
     ],
     "donts": [
-      "Don't 使用紫藍漸層、發光邊框、玻璃擬態這類「AI 感」處理（使用者明確拒絕）。",
-      "Don't 套企業 SaaS 落地頁的版型：滿版 hero、三欄功能卡、推薦語牆、圖庫人物照（使用者明確拒絕）。",
-      "Don't 走圓滾滾可愛風：大於 12px 的圓角、粗體圓體字、糖果色（使用者明確拒絕）。",
-      "Don't 新增第二個強調色或第二種陰影值。",
-      "Don't 把極光四色（#BF616A / #EBCB8B / #A3BE8D / #B48EAD）當裝飾色使用。",
-      "Don't 引用深色主題的螢光綠（#1FB854）當品牌色——它是待處理的漂移，不是決定。",
-      "Don't 加側欄。",
-      "Don't 在文章內文之外使用 prose-zh / prose-en 這兩個 class：它們目前沒有任何定義。"
+      "Don't 在 component 寫死 hex、rgb() 或 Tailwind 調色盤 class。",
+      "Don't 把亮色主題做成暗色的機械反轉——它有自己的情緒（海面/白日），只有語言一致。",
+      "Don't 引入第三個色相，包含 success / warning 的綠與黃（The Two-Axis Rule）。",
+      "Don't 使用任何非零的 border-radius（真圓形除外）（The No Radius Rule）。",
+      "Don't 使用任何 box-shadow，focus ring 除外（The Zero Shadow Rule）。",
+      "Don't 讓紅色成為區塊底色或大面積填色；--accent-fill 的面積上限是單一元件 200×40px。",
+      "Don't 把 glow 當背景色。",
+      "Don't 讓中性色掉進中性灰或純白純黑。",
+      "Don't 使用紫色、任何漸層、glassmorphism、blur 背景。",
+      "Don't 對圖片施加 filter: invert() 或 hue-rotate()。",
+      "Don't 在正文段落裡使用 Chakra Petch（The Chrome Frontier Rule）。",
+      "Don't 對中文施加大寫處理或超過 0.02em 的字距。",
+      "Don't 在正文區塊放斜切角、斜向裝飾線或紅色（code block 的語法色除外）。",
+      "Don't 使用任何明日方舟角色圖像、logo 或官方素材——提取的是美術語言，不是資產。",
+      "Don't 讓側邊直排導軌承載資訊或連結；它是裝飾層。",
+      "Don't 在新 code 使用 daisyUI 語意 class（bg-base-100、text-primary…）——它們是待淘汰的別名。",
+      "Don't 在切角元件上使用 border，也不要用 gradient 或 SVG 的方式補斜邊描邊。",
+      "Don't 在 <768px 用負 margin 或溢出線模擬已經退場的 overhang。"
     ]
   }
 }

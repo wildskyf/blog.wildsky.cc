@@ -1,83 +1,151 @@
-@import url('prismjs/themes/prism-okaidia.css');
+/* 自架字體（PRODUCT.md 硬性約束：手刻自架、不依賴平台 —— 不走 Google Fonts CDN） */
+@import '@fontsource-variable/cinzel';
+@import '@fontsource-variable/bodoni-moda';
+@import '@fontsource-variable/eb-garamond';
+@import '@fontsource-variable/source-sans-3';
+@import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource/noto-serif-tc';
+@import '@fontsource/noto-sans-tc';
+
 @import 'tailwindcss';
 
+@import './styles/tokens.css';
+@import './styles/base.css';
+@import './styles/code.css';
+
 @plugin "@tailwindcss/typography";
-@plugin "daisyui" {
-  themes:
-    nord --default,
-    forest --prefersdark;
+
+/* daisyUI 已移除（2026-08-16）。
+   原因不是偏好，是結構性阻擋：daisyUI 5 的 reset 寫成
+     *:not(#\#), :not(#\#)::after, … { margin: 0; padding: 0 }
+   `:not(#\#)` 讓一條萬用選擇器取得 ID 級特異度 (1,0,0)，
+   壓過所有 .ds-* component 規則 —— 實測 .ds-hero 的 display 生效但 margin 被歸零。
+   在這個前提下本設計系統無法運作。DESIGN.md 早已將其語意別名標為 deprecated。
+
+   舊 markup 仍在用 bg-base-* / text-base-content / text-primary 等色彩 utility，
+   以 @theme inline 接回本系統的語意 token，讓它們隨主題切換而不需一次改完所有檔案。
+   **新 code 一律直接用 var(--token)，不得新增 base-* 用法。** */
+@theme inline {
+  --color-base-100: var(--bg-surface);
+  --color-base-200: var(--bg);
+  --color-base-300: var(--bg-raised);
+  --color-base-content: var(--fg);
+  --color-primary: var(--accent);
+  --color-primary-content: var(--fg-on-accent);
+  --color-secondary: var(--fg-muted);
+  --color-secondary-content: var(--fg);
+  --color-accent: var(--glow);
+  --color-neutral: var(--rule);
+  --color-neutral-content: var(--fg);
 }
 
 .page-container {
-  @apply bg-base-200 font-normal font-serif;
+  background: transparent;
+  font-weight: 400;
 }
 
 ::selection {
-  @apply bg-primary text-white;
+  background: var(--accent-fill);
+  color: var(--fg-on-accent);
 }
 
+/* ============================================================
+   正文（Read mode）—— The Boring Body Rule
+   720px 量尺、19px、行高 1.9、無裝飾、無紅色。
+   ============================================================ */
 .article-content {
-  @apply tracking-wide;
-  /* Fix long string overflow in RWD */
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
 
 .article-content a {
-  @apply link link-primary link-hover;
-  /* Allow long URLs to break */
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  transition:
+    color var(--t) var(--ease),
+    border-color var(--t) var(--ease);
   word-break: break-word;
   overflow-wrap: anywhere;
+}
+
+.article-content a:hover {
+  border-bottom-color: var(--accent);
 }
 
 .article-content strong {
-  @apply font-bold;
+  font-weight: 600;
 }
 
 .article-content mark {
-  @apply bg-secondary text-base-100 p-0.5 rounded font-bold;
+  background: transparent;
+  color: var(--fg);
+  border-bottom: 2px solid var(--accent);
+  padding: 0 0.1em;
+  font-weight: 600;
 }
 
+/* 引言：僅左側一道線 ＋ 透明底。無底色塊、無圓角。 */
 .article-content blockquote {
-  @apply py-1.5 not-italic bg-base-300 border-l-primary;
+  margin: 28px 0;
+  padding: 4px 0 4px 22px;
+  background: transparent;
+  border-left: 2px solid var(--accent);
+  font-style: normal;
+  color: var(--fg-muted);
 }
 
-.article-content blockquote p:before,
-.article-content blockquote p:after {
+.article-content blockquote p::before,
+.article-content blockquote p::after {
   content: '';
 }
 
-/* Handle inline code long strings */
-.article-content code {
-  word-break: break-word;
-  overflow-wrap: anywhere;
+.article-content figure figcaption {
+  font-family: var(--font-label);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  font-variant: small-caps;
+  color: var(--fg-muted);
+  text-align: center;
 }
 
-/* Code blocks should have horizontal scroll */
-.article-content pre {
-  overflow-x: auto;
-  max-width: 100%;
+.article-content figcaption a {
+  color: var(--fg-muted);
+  border-bottom-color: var(--rule);
 }
 
-.article-content pre code {
-  word-break: normal;
-  overflow-wrap: normal;
-}
-
+/* ============================================================
+   Notes（Mastodon 時間軸）—— 卡片改 The Plate，無圓角無陰影
+   ============================================================ */
 .notes-feed {
-  @apply min-h-24;
+  min-height: 6rem;
 }
 
 .notes-list {
-  @apply flex flex-col gap-6;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
 .note-card {
-  @apply rounded-xl border border-base-300 bg-base-100 px-5 py-5 shadow-sm;
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--fg-faint);
+  border-radius: 0;
+  padding: 22px 24px;
+}
+
+.note-card::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  pointer-events: none;
+  border: 1px solid var(--rule);
 }
 
 .note-content {
-  @apply prose prose-lg max-w-none text-base-content;
+  max-width: none;
+  color: var(--fg);
   letter-spacing: 0.02em;
 }
 
@@ -90,45 +158,105 @@
 }
 
 .note-media {
-  @apply mt-4 grid gap-3;
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
 }
 
 .note-media-link {
-  @apply block overflow-hidden rounded-lg border border-base-300 bg-base-200;
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  background: var(--bg);
 }
 
 .note-media img {
-  @apply block h-auto max-h-[36rem] w-full object-contain;
+  display: block;
+  height: auto;
+  max-height: 36rem;
+  width: 100%;
+  object-fit: contain;
 }
 
 .note-meta {
-  @apply mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-base-300 pt-3 text-sm text-base-content/60;
+  margin-top: 16px;
+  padding-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-label);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  font-variant: small-caps;
+  color: var(--fg-muted);
 }
 
 .note-permalink {
-  @apply link link-primary link-hover;
+  color: var(--fg-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  transition:
+    color var(--t) var(--ease),
+    border-color var(--t) var(--ease);
+}
+
+.note-permalink:hover {
+  color: var(--fg);
+  border-bottom-color: var(--accent);
 }
 
 .notes-muted {
-  @apply rounded-xl border border-base-300 bg-base-100 px-5 py-4 text-base-content/60;
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  background: transparent;
+  padding: 16px 20px;
+  color: var(--fg-muted);
 }
 
 .notes-actions {
-  @apply mt-6 flex flex-col items-center gap-3;
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .notes-load-more {
-  @apply rounded-lg border border-base-300 bg-base-100 px-5 py-3 text-base font-semibold text-base-content shadow-sm transition hover:bg-base-200 disabled:cursor-not-allowed disabled:opacity-60;
+  border: 1px solid var(--fg-faint);
+  border-radius: 0;
+  background: transparent;
+  padding: 14px 28px;
+  font-family: var(--font-chrome);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--fg);
+  cursor: pointer;
+  transition:
+    background var(--t) var(--ease),
+    color var(--t) var(--ease),
+    border-color var(--t) var(--ease);
+}
+
+.notes-load-more:hover:not(:disabled) {
+  background: var(--accent-fill);
+  border-color: var(--accent);
+  color: var(--fg-on-accent);
+}
+
+.notes-load-more:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .notes-status {
-  @apply text-sm text-base-content/60;
-}
-
-figcaption a {
-  @apply text-gray-500 font-normal;
-}
-
-figcaption a:hover {
-  @apply text-gray-400;
+  font-family: var(--font-label);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  font-variant: small-caps;
+  color: var(--fg-muted);
 }

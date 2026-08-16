@@ -2,6 +2,7 @@
 import dayjs from 'dayjs';
 import Header from '@/components/Header.astro';
 import SocialBar from '@/components/SocialBar.astro';
+import BackgroundField from '@/components/BackgroundField.astro';
 import RootLayout from './root.astro';
 
 const currentLocale = Astro.currentLocale || 'tw';
@@ -20,29 +21,106 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, sch
   pageUpdated={pageUpdated}
   schema={schema}
 >
-  <div
-    id="page"
-    class={`
-      min-h-screen
-      flex flex-col
-    `}
-  >
+  <BackgroundField />
+
+  <span class="ds-watermark left" aria-hidden="true">WILDSKY.CC</span>
+  <span class="ds-watermark right" aria-hidden="true">SINCE 2014</span>
+
+  <div id="page" class="ds-page">
     <Header />
 
-    <main class="flex-grow flex justify-center items-start lg:py-4" lang={lang_code}>
-      <div class="flex flex-col w-full max-w-full lg:max-w-4xl">
-        <slot />
-      </div>
+    <main class="ds-main" lang={lang_code}>
+      <slot />
     </main>
 
-    <footer class="bg-base-300 text-white text-center pt-8 pb-10" lang="en">
-      <nav aria-label={footerNavLabel} class="grid place-content-center">
-        <SocialBar class="mb-4" />
-      </nav>
+    <footer class="ds-footer" lang="en">
+      <div class="chrome-inner ds-footer-inner">
+        <nav aria-label={footerNavLabel}>
+          <SocialBar />
+        </nav>
 
-      <div class="text-gray-500 tracking-[0.03em]">
-        2014-{dayjs().year()} &copy; All rights reserved
+        <span class="ds-copyright">2014—{dayjs().year()} &copy; All Rights Reserved</span>
       </div>
     </footer>
   </div>
 </RootLayout>
+
+<style>
+  .ds-page {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ds-main {
+    flex: 1 0 auto;
+    padding: 0 0 96px;
+  }
+
+  .ds-footer {
+    position: relative;
+    z-index: 3;
+    flex: none;
+    background: var(--bg-sunken);
+    border-top: 1px solid var(--rule);
+    padding: 30px 0 34px;
+  }
+
+  .ds-footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  /* --fg-faint 於 --bg-sunken 上實測 4.49，13px 小字未過 AA → 一律 --fg-muted（8.30） */
+  .ds-copyright {
+    font-family: var(--font-chrome);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--fg-muted);
+  }
+
+  .ds-watermark {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+    display: none;
+    align-items: center;
+    writing-mode: vertical-rl;
+    font-family: var(--font-chrome);
+    font-size: var(--fs-watermark);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    color: color-mix(in oklab, var(--glow-dim) 26%, var(--env-deep));
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .ds-watermark.left {
+    left: -28px;
+  }
+  .ds-watermark.right {
+    right: -28px;
+    transform: rotate(180deg);
+  }
+
+  @media (min-width: 1280px) {
+    .ds-watermark {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .ds-footer-inner {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+  }
+</style>

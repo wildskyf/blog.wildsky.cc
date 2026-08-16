@@ -1,37 +1,71 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { twMerge } from 'tailwind-merge'
-import HeaderLink from '@/components/HeaderLink.astro';
 
-const { class: className } = Astro.props;
-
-const linkClass = 'text-base-content opacity-60 hover:opacity-80'
+// v7：移除 lg:fixed —— 舊版把整條社群列釘在桌機右下角，
+// 與新的直排 watermark 和 footer 都打架。它現在只是 footer 裡的一列。
 const links = [
-  { href: 'https://social.wildsky.cc/@wildsky', label: 'Mastodon profile', icon: 'mdi:mastodon', rel: 'me noopener noreferrer' },
-  { href: 'https://github.com/wildskyf', label: 'GitHub profile', icon: 'mdi:github', rel: 'me noopener noreferrer' },
-  { href: 'https://www.linkedin.com/in/wildsky/', label: 'LinkedIn profile', icon: 'ant-design:linkedin-filled', rel: 'me noopener noreferrer' },
-  { href: '/files/reseme.pdf', label: 'Resume PDF', icon: 'mdi:resume', download: 'wildsky.20220901.pdf' },
+  {
+    href: 'https://social.wildsky.cc/@wildsky',
+    label: 'Mastodon profile',
+    icon: 'mdi:mastodon',
+    rel: 'me noopener noreferrer',
+  },
+  {
+    href: 'https://github.com/wildskyf',
+    label: 'GitHub profile',
+    icon: 'mdi:github',
+    rel: 'me noopener noreferrer',
+  },
+  {
+    href: 'https://www.linkedin.com/in/wildsky/',
+    label: 'LinkedIn profile',
+    icon: 'ant-design:linkedin-filled',
+    rel: 'me noopener noreferrer',
+  },
+  {
+    href: '/files/reseme.pdf',
+    label: 'Resume PDF',
+    icon: 'mdi:resume',
+    download: 'wildsky.20220901.pdf',
+  },
   { href: '/rss.xml', label: 'RSS feed', icon: 'mdi:rss-box' },
 ];
 ---
 
-<div
-  class={twMerge(
-    "lg:fixed lg:bottom-8 lg:right-8 lg:flex-col lg:z-10",
-    `flex text-xl lg:text-4xl py-1 gap-6 justify-evenly ${className}`
-  )}
->
-  {links.map((link) => (
-    <HeaderLink
-      href={link.href}
-      target="_blank"
-      aria-label={link.label}
-      title={link.label}
-      download={link.download}
-      rel={link.rel}
-      class={linkClass}
-    >
-      <Icon name={link.icon} aria-hidden="true" />
-    </HeaderLink>
-  ))}
+<div class="ds-social">
+  {
+    links.map((link) => (
+      <a
+        href={link.href}
+        target={link.href.startsWith('http') ? '_blank' : undefined}
+        aria-label={link.label}
+        title={link.label}
+        download={link.download}
+        rel={link.rel}
+      >
+        <Icon name={link.icon} aria-hidden="true" />
+      </a>
+    ))
+  }
 </div>
+
+<style>
+  .ds-social {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* 圖示尺寸走 Body 級距（19px），不自創級數 */
+    font-size: 19px;
+  }
+
+  .ds-social a {
+    display: inline-flex;
+    color: var(--fg-muted);
+    transition: color var(--t) var(--ease);
+  }
+
+  .ds-social a:hover,
+  .ds-social a:focus-visible {
+    color: var(--glow);
+  }
+</style>

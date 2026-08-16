@@ -1,39 +1,53 @@
 ---
-
+// 主題切換（固定左下）。DESIGN.md：24×24 線框方塊，實心／空心圓區分狀態，
+// **不用顏色區分** —— 顏色預算要留給紅色。
 ---
 
 <button
-  class="fixed bottom-8 left-8 z-50 cursor-pointer border-0 bg-transparent p-0 text-xl leading-none text-base-content/80 transition-opacity hover:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-base-content/40"
+  class="ds-theme-toggle"
   aria-label="Toggle color theme"
-  data-toggle-theme="nord,forest"
-  data-act-class="ACTIVECLASS"
+  data-toggle-theme="tide-dark,tide-light"
 >
-  <span class="theme-toggle-icon-light animate-pulse" aria-hidden="true">☀︎</span>
-  <span class="theme-toggle-icon-dark animate-pulse" aria-hidden="true">☾</span>
+  <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+    <rect x="1.5" y="1.5" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1"
+    ></rect>
+    <circle class="ds-theme-mark" cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1"
+    ></circle>
+  </svg>
 </button>
 
 <style>
-  .theme-toggle-icon-light {
+  .ds-theme-toggle {
+    position: fixed;
+    bottom: 32px;
+    left: 32px;
+    z-index: 50;
     display: inline-flex;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--fg-muted);
+    cursor: pointer;
+    transition: color var(--t) var(--ease);
   }
 
-  .theme-toggle-icon-dark {
-    display: none;
+  .ds-theme-toggle:hover {
+    color: var(--glow);
   }
 
-  :global(html[data-theme="forest"]) .theme-toggle-icon-light {
-    display: none;
+  /* 深色 = 實心（沉在水裡）；淺色 = 空心（浮在水面） */
+  .ds-theme-mark {
+    fill: currentColor;
   }
 
-  :global(html[data-theme="forest"]) .theme-toggle-icon-dark {
-    display: inline-flex;
+  :global(html[data-theme='tide-light']) .ds-theme-mark {
+    fill: none;
   }
 
-  :global(html[data-theme="nord"]) .theme-toggle-icon-light {
-    display: inline-flex;
-  }
-
-  :global(html[data-theme="nord"]) .theme-toggle-icon-dark {
-    display: none;
+  @media (max-width: 767px) {
+    .ds-theme-toggle {
+      bottom: 20px;
+      left: 20px;
+    }
   }
 </style>

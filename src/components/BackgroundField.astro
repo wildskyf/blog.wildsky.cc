@@ -1,0 +1,759 @@
+---
+// 環境層 —— The Organic Layer Rule 的管轄範圍。
+// 紀律（DESIGN.md「環境層與文字的分界」，全部是實測結論）：
+//   1. 最亮／最暗的元素不得進入 chrome 內側 —— 用 .ds-rail 把它們鎖在外側留白帶
+//   2. 暗角用 calc((100% - chrome)/2)，不用百分比
+//   3. 全幅微粒的強度由 --env-mote-op 控制，兩主題不同值
+// 位置一律用百分比，讓它在 1500px 的首頁與 12000px 的長文都成立。
+
+const BUBBLES = [
+  { t: 26, s: 6 },
+  { t: 34, s: 9 },
+  { t: 45, s: 12 },
+  { t: 54, s: 10, teal: true },
+  { t: 63, s: 16, teal: true },
+  { t: 72, s: 14, teal: true },
+  { t: 80, s: 22, teal: true },
+  { t: 88, s: 18, teal: true },
+];
+const BUBBLES_R = [
+  { t: 31, s: 8 },
+  { t: 43, s: 11 },
+  { t: 58, s: 15, teal: true },
+  { t: 69, s: 20, teal: true },
+  { t: 84, s: 13, teal: true },
+];
+const SNOW = [22, 37, 51, 66, 78, 91];
+const MOTES = [
+  [22, 12],
+  [37, 22],
+  [54, 17],
+  [68, 26],
+  [81, 20],
+  [29, 35],
+  [46, 42],
+  [62, 38],
+  [76, 46],
+  [18, 51],
+  [41, 56],
+  [57, 61],
+  [72, 66],
+  [33, 71],
+  [49, 76],
+  [66, 81],
+  [25, 86],
+  [58, 91],
+  [78, 95],
+  [44, 99],
+];
+const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,16 Z';
+---
+
+<div class="ds-field" aria-hidden="true">
+  <span class="ds-depth"></span>
+
+  <svg class="ds-strata s1" viewBox="0 0 1440 420" preserveAspectRatio="none">
+    <path
+      d="M0,58 C90,30 170,72 258,50 C330,32 392,74 470,60 C556,44 620,86 706,68
+         C790,50 852,90 940,72 C1024,55 1090,94 1178,76 C1258,60 1330,96 1440,66
+         L1440,352 C1350,382 1276,344 1192,364 C1108,384 1042,346 956,366
+         C866,386 800,348 712,368 C624,388 560,350 470,370 C384,389 316,352 228,372
+         C148,390 78,356 0,378 Z"
+    ></path>
+  </svg>
+  <svg class="ds-strata s2" viewBox="0 0 1440 300" preserveAspectRatio="none">
+    <path
+      d="M0,40 C110,72 200,26 300,52 C398,78 470,34 566,58 C664,82 740,38 838,62
+         C934,86 1008,40 1104,64 C1196,87 1290,44 1440,74 L1440,300 L0,300 Z"
+    ></path>
+  </svg>
+
+  <span class="ds-vignette"></span>
+
+  <svg class="ds-grain" preserveAspectRatio="none">
+    <filter id="ds-grain-f">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"
+      ></feTurbulence>
+      <feColorMatrix type="saturate" values="0"></feColorMatrix>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#ds-grain-f)"></rect>
+  </svg>
+
+  <span class="ds-caustics"></span>
+
+  <span class="ds-beam b1"></span>
+  <span class="ds-beam b2"></span>
+
+  <!-- 魚群：比背景更暗的剪影，橫越畫面 -->
+  <svg class="ds-school sc1" viewBox="0 0 210 64" preserveAspectRatio="none">
+    <g>
+      <path d={FISH} transform="translate(6,10)"></path>
+      <path d={FISH} transform="translate(62,32) scale(0.85)"></path>
+      <path d={FISH} transform="translate(112,4) scale(0.7)"></path>
+      <path d={FISH} transform="translate(140,28)"></path>
+      <path d={FISH} transform="translate(40,46) scale(0.6)"></path>
+    </g>
+  </svg>
+  <svg class="ds-school sc2" viewBox="0 0 300 96" preserveAspectRatio="none">
+    <g transform="scale(-1,1) translate(-300,0)">
+      <path
+        d="M28,52 C58,26 118,20 162,40 C186,51 210,50 232,42
+           C214,60 186,70 158,68 C120,66 66,68 28,52 Z"
+      ></path>
+      <path d="M232,42 L262,30 L254,46 L266,60 Z"></path>
+      <path d={FISH} transform="translate(86,68) scale(0.9)"></path>
+    </g>
+  </svg>
+  <svg class="ds-school sc3" viewBox="0 0 150 46" preserveAspectRatio="none">
+    <g>
+      <path d={FISH} transform="translate(8,6) scale(0.8)"></path>
+      <path d={FISH} transform="translate(54,22) scale(0.7)"></path>
+      <path d={FISH} transform="translate(96,2) scale(0.6)"></path>
+    </g>
+  </svg>
+
+  <!-- 水母：唯一有生物節奏的東西（收縮推進） -->
+  <span class="ds-jelly j1">
+    <svg viewBox="0 0 66 130">
+      <path
+        class="bell"
+        d="M4,44 C4,20 18,4 33,4 C48,4 62,20 62,44 C62,50 56,54 50,50
+           C45,46 40,52 33,52 C26,52 21,46 16,50 C10,54 4,50 4,44 Z"
+      ></path>
+      <path class="tendril" d="M18,52 C16,74 22,88 18,112"></path>
+      <path class="tendril" d="M27,52 C25,78 31,94 26,124"></path>
+      <path class="tendril" d="M39,52 C41,76 35,92 40,120"></path>
+      <path class="tendril" d="M48,52 C50,72 44,86 49,108"></path>
+    </svg>
+  </span>
+  <span class="ds-jelly j2">
+    <svg viewBox="0 0 66 130">
+      <path
+        class="bell"
+        d="M4,44 C4,20 18,4 33,4 C48,4 62,20 62,44 C62,50 56,54 50,50
+           C45,46 40,52 33,52 C26,52 21,46 16,50 C10,54 4,50 4,44 Z"
+      ></path>
+      <path class="tendril" d="M20,52 C18,76 24,90 19,116"></path>
+      <path class="tendril" d="M33,52 C31,80 37,96 32,126"></path>
+      <path class="tendril" d="M46,52 C48,74 42,88 47,114"></path>
+    </svg>
+  </span>
+
+  <!-- 底部礁石與海藻 -->
+  <svg class="ds-reef" viewBox="0 0 1440 230" preserveAspectRatio="xMidYMax slice">
+    <path
+      d="M0,230 L0,150 C14,142 20,120 16,98 C13,82 22,74 30,86 C36,95 34,112 40,126
+         C46,139 58,138 62,124 C67,106 60,88 66,72 C71,58 84,60 86,76 C88,94 82,112 88,130
+         C94,147 108,150 114,136 C120,121 114,100 122,88 C129,77 140,84 138,98
+         C136,116 130,134 138,152 C144,166 158,168 164,154 L172,230 Z"
+    ></path>
+    <path
+      d="M196,230 L200,168 C186,158 178,136 184,116 C189,100 202,102 204,118
+         C206,134 200,150 208,164 C214,175 228,174 232,160 C237,142 228,120 236,106
+         C243,94 256,100 254,116 C252,134 246,152 254,168 C260,180 274,180 278,166
+         L286,230 Z"
+    ></path>
+    <path
+      d="M1050,230 L1046,164 C1032,154 1024,130 1032,110 C1038,94 1052,98 1054,114
+         C1056,132 1048,150 1058,166 C1065,177 1080,176 1084,160 C1089,140 1080,118 1090,104
+         C1098,92 1112,98 1110,116 C1108,136 1100,154 1110,172 C1117,184 1132,184 1136,168
+         L1146,230 Z"
+    ></path>
+    <path
+      d="M1188,230 L1192,146 C1178,134 1172,108 1180,88 C1187,71 1202,76 1204,94
+         C1206,114 1198,132 1208,150 C1215,163 1232,162 1236,146 C1241,124 1230,100 1242,86
+         C1252,74 1268,82 1264,102 C1260,124 1252,144 1264,164 C1272,178 1290,178 1294,160
+         C1300,136 1290,110 1304,96 C1314,86 1328,94 1324,114 C1320,136 1314,158 1326,178
+         C1334,191 1352,190 1358,172 L1372,230 Z"
+    ></path>
+    <path
+      d="M0,230 L1440,230 L1440,206 C1330,214 1240,198 1140,208 C1030,219 950,202 840,212
+         C720,223 640,204 520,214 C400,224 320,206 200,216 C120,223 60,210 0,218 Z"
+    ></path>
+  </svg>
+
+  <svg class="ds-kelp left" viewBox="0 0 120 560" preserveAspectRatio="none">
+    <path d="M40,560 C24,470 56,404 42,318 C30,244 62,186 48,104 C42,68 52,36 46,0"></path>
+    <path d="M86,560 C74,486 96,428 84,356 C74,294 94,246 86,186"></path>
+  </svg>
+  <svg class="ds-kelp right" viewBox="0 0 120 560" preserveAspectRatio="none">
+    <path d="M74,560 C90,478 60,412 76,332 C88,262 58,200 72,122 C78,86 68,44 74,0"></path>
+    <path d="M28,560 C40,492 18,436 30,368 C40,308 22,258 30,198"></path>
+  </svg>
+
+  <!-- 側軌：所有「亮的移動物」都鎖在 chrome 外側的留白帶內 -->
+  <span class="ds-rail l">
+    {
+      BUBBLES.map((b) => (
+        <span
+          class:list={['ds-bub', b.teal && 'teal']}
+          style={`top:${b.t}%;left:${18 + (b.s % 5) * 9}%;width:${b.s}px;height:${b.s}px`}
+        />
+      ))
+    }
+    {
+      SNOW.map((t, i) => (
+        <span
+          class="ds-snow"
+          style={`top:${t}%;left:${24 + ((i * 13) % 52)}%;width:${2 + (i % 2)}px;height:${2 + (i % 2)}px`}
+        />
+      ))
+    }
+    <span class="ds-vent v1">
+      {[5, 3, 6, 4, 3, 5, 4].map((s) => <i style={`width:${s}px;height:${s}px`} />)}
+    </span>
+    <span class="ds-dot" style="top:63%;left:52%;width:3px;height:3px"></span>
+    <span class="ds-dot" style="top:79%;left:30%;width:2px;height:2px"></span>
+  </span>
+
+  <span class="ds-rail r">
+    {
+      BUBBLES_R.map((b) => (
+        <span
+          class:list={['ds-bub', b.teal && 'teal']}
+          style={`top:${b.t}%;right:${16 + (b.s % 5) * 10}%;width:${b.s}px;height:${b.s}px`}
+        />
+      ))
+    }
+    {
+      SNOW.map((t, i) => (
+        <span
+          class="ds-snow"
+          style={`top:${(t + 7) % 100}%;right:${20 + ((i * 17) % 56)}%;width:${2 + ((i + 1) % 2)}px;height:${2 + ((i + 1) % 2)}px`}
+        />
+      ))
+    }
+    <span class="ds-vent v2">
+      {[6, 4, 3, 5, 4, 3].map((s) => <i style={`width:${s}px;height:${s}px`} />)}
+    </span>
+    <span class="ds-dot" style="top:67%;right:44%;width:3px;height:3px"></span>
+    <span class="ds-dot" style="top:86%;right:24%;width:2px;height:2px"></span>
+  </span>
+
+  <!-- 全幅微粒：唯一允許進入閱讀柱後方的環境元素，強度由 --env-mote-op 鎖死 -->
+  {MOTES.map(([l, t]) => <span class="ds-mote" style={`left:${l}%;top:${t}%`} />)}
+</div>
+
+<style>
+  .ds-field {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    contain: strict;
+  }
+
+  .ds-depth {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      var(--env-surface) 0%,
+      var(--env-mid) 30%,
+      var(--env-deep) 62%,
+      var(--env-abyss) 100%
+    );
+  }
+
+  /* 暗角綁死在 chrome 外側 —— 用百分比會隨視窗寬度漫進閱讀欄 */
+  .ds-vignette {
+    position: absolute;
+    inset: 0;
+    --vig: calc((100% - var(--chrome)) / 2);
+  }
+
+  .ds-vignette::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to right, var(--env-abyss) 0%, transparent var(--vig)),
+      linear-gradient(to left, var(--env-abyss) 0%, transparent var(--vig)),
+      linear-gradient(to top, var(--env-abyss) 0%, transparent 14%);
+  }
+
+  .ds-grain {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.035;
+    mix-blend-mode: var(--env-grain-blend);
+  }
+
+  .ds-grain rect {
+    fill: var(--env-abyss);
+  }
+
+  .ds-strata {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+  .ds-strata.s1 {
+    top: 46%;
+    height: 22%;
+  }
+  .ds-strata.s2 {
+    top: 74%;
+    height: 16%;
+  }
+  .ds-strata path {
+    fill: var(--env-surface);
+    opacity: var(--env-strata-op);
+  }
+  .ds-strata.s2 path {
+    fill: var(--env-mid);
+    opacity: 0.75;
+  }
+
+  .ds-caustics {
+    position: absolute;
+    left: -14%;
+    right: -14%;
+    top: 0;
+    height: 380px;
+    background: repeating-linear-gradient(
+      99deg,
+      transparent 0 46px,
+      color-mix(in oklab, var(--env-caustic) 9%, transparent) 46px 50px,
+      transparent 50px 68px,
+      color-mix(in oklab, var(--env-caustic) 5%, transparent) 68px 71px,
+      transparent 71px 128px
+    );
+    -webkit-mask-image: linear-gradient(to bottom, var(--fg) 0, transparent 100%);
+    mask-image: linear-gradient(to bottom, var(--fg) 0, transparent 100%);
+    animation: ds-caustic 26s ease-in-out infinite alternate;
+  }
+
+  .ds-beam {
+    position: absolute;
+    top: -60px;
+    width: 220px;
+    height: 760px;
+    transform: rotate(-12deg);
+    transform-origin: top center;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      color-mix(in oklab, var(--env-beam) 22%, transparent) 50%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(to bottom, var(--fg) 0 22%, transparent 92%);
+    mask-image: linear-gradient(to bottom, var(--fg) 0 22%, transparent 92%);
+    animation: ds-breathe 34s ease-in-out infinite;
+  }
+  .ds-beam.b1 {
+    left: 3%;
+  }
+  .ds-beam.b2 {
+    right: 2%;
+    width: 150px;
+    animation-duration: 47s;
+    animation-delay: -13s;
+  }
+
+  /* 有機剪影 —— 強度兩主題不同（結構性不對稱，見 DESIGN.md） */
+  .ds-reef {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 230px;
+    opacity: var(--env-organic-op);
+  }
+  .ds-reef path {
+    fill: var(--env-silhouette);
+  }
+
+  .ds-kelp {
+    position: absolute;
+    bottom: 0;
+    height: 560px;
+    width: 120px;
+    opacity: var(--env-organic-op);
+    transform-origin: bottom center;
+    animation: ds-sway 44s ease-in-out infinite;
+  }
+  .ds-kelp.left {
+    left: 8px;
+  }
+  .ds-kelp.right {
+    right: 8px;
+    animation-duration: 52s;
+    animation-delay: -21s;
+  }
+  .ds-kelp path {
+    fill: none;
+    stroke: var(--env-silhouette);
+    stroke-width: 9;
+    stroke-linecap: round;
+  }
+
+  .ds-school {
+    position: absolute;
+    left: 0;
+    fill: var(--env-silhouette);
+    opacity: calc(0.62 * var(--env-organic-op));
+  }
+  .ds-school.sc1 {
+    top: 34%;
+    width: 210px;
+    height: 64px;
+    animation: ds-swim-r 128s linear infinite;
+  }
+  .ds-school.sc2 {
+    top: 58%;
+    width: 300px;
+    height: 96px;
+    opacity: calc(0.5 * var(--env-organic-op));
+    animation: ds-swim-l 186s linear infinite -60s;
+  }
+  .ds-school.sc3 {
+    top: 81%;
+    width: 150px;
+    height: 46px;
+    opacity: calc(0.7 * var(--env-organic-op));
+    animation: ds-swim-r 154s linear infinite -95s;
+  }
+
+  .ds-jelly {
+    position: absolute;
+    width: 66px;
+    height: 130px;
+    animation: ds-pulse 13s ease-in-out infinite;
+  }
+  .ds-jelly svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .ds-jelly.j1 {
+    left: 3%;
+    top: 52%;
+  }
+  .ds-jelly.j2 {
+    right: 4%;
+    top: 76%;
+    width: 46px;
+    height: 92px;
+    animation-duration: 17s;
+    animation-delay: -6s;
+  }
+  .ds-jelly .bell {
+    fill: var(--env-silhouette);
+    opacity: calc(0.72 * var(--env-organic-op));
+  }
+  .ds-jelly .tendril {
+    fill: none;
+    stroke: var(--env-silhouette);
+    stroke-width: 2;
+    opacity: calc(0.6 * var(--env-organic-op));
+  }
+
+  /* 側軌 —— chrome 外側的留白帶。所有亮的移動物只能住在這裡。 */
+  .ds-rail {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: calc((100% - var(--chrome)) / 2 + var(--gutter-col));
+  }
+  .ds-rail.l {
+    left: 0;
+  }
+  .ds-rail.r {
+    right: 0;
+  }
+
+  .ds-bub {
+    position: absolute;
+    border: 1px solid var(--fg-faint);
+    border-radius: 50%;
+    box-shadow: inset -1px 1px 0 color-mix(in oklab, var(--env-spark) 28%, transparent);
+    animation: ds-rise 21s linear infinite;
+  }
+  .ds-bub.teal {
+    border-color: var(--glow-line);
+  }
+  .ds-bub:nth-of-type(3n) {
+    animation-name: ds-rise-b;
+    animation-duration: 27s;
+  }
+  .ds-bub:nth-of-type(4n + 1) {
+    animation-duration: 16s;
+  }
+  .ds-bub:nth-of-type(5n + 2) {
+    animation-duration: 31s;
+  }
+  .ds-bub:nth-of-type(2n) {
+    animation-delay: -9s;
+  }
+  .ds-bub:nth-of-type(3n + 1) {
+    animation-delay: -14s;
+  }
+
+  .ds-vent {
+    position: absolute;
+    bottom: 8%;
+    width: 26px;
+    height: 620px;
+  }
+  .ds-vent.v1 {
+    left: 34%;
+  }
+  .ds-vent.v2 {
+    right: 30%;
+    bottom: 11%;
+  }
+  .ds-vent i {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    border: 1px solid var(--glow-line);
+    border-radius: 50%;
+    animation: ds-vent 11s linear infinite;
+  }
+  .ds-vent i:nth-child(2n) {
+    animation-duration: 14s;
+    animation-delay: -3s;
+  }
+  .ds-vent i:nth-child(3n) {
+    animation-duration: 9s;
+    animation-delay: -6s;
+  }
+  .ds-vent i:nth-child(4n + 1) {
+    animation-duration: 16s;
+    animation-delay: -11s;
+  }
+  .ds-vent i:nth-child(5n + 2) {
+    animation-delay: -8s;
+  }
+
+  .ds-dot {
+    position: absolute;
+    background: var(--glow);
+    border-radius: 50%;
+    animation: ds-blink 23s ease-in-out infinite;
+  }
+  .ds-dot:nth-of-type(2n) {
+    animation-duration: 31s;
+    animation-delay: -8s;
+  }
+
+  .ds-snow {
+    position: absolute;
+    background: var(--fg-faint);
+    border-radius: 50%;
+    opacity: 0.35;
+    animation: ds-fall 58s linear infinite;
+  }
+  .ds-snow:nth-of-type(2n) {
+    animation-duration: 76s;
+    animation-delay: -19s;
+  }
+  .ds-snow:nth-of-type(3n) {
+    animation-duration: 91s;
+    animation-delay: -37s;
+  }
+
+  .ds-mote {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: var(--fg-faint);
+    opacity: var(--env-mote-op);
+    animation: ds-drift 42s linear infinite;
+  }
+  .ds-mote:nth-of-type(2n) {
+    animation-duration: 57s;
+    animation-delay: -14s;
+  }
+  .ds-mote:nth-of-type(3n) {
+    animation-duration: 68s;
+    animation-delay: -31s;
+  }
+  .ds-mote:nth-of-type(5n + 3) {
+    animation-duration: 75s;
+    animation-delay: -44s;
+  }
+
+  /* ---- 只動 transform / opacity（The Ambient Motion Rule） ---- */
+  @keyframes ds-rise {
+    0% {
+      transform: translate3d(0, 60px, 0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.85;
+    }
+    50% {
+      transform: translate3d(18px, -190px, 0);
+    }
+    84% {
+      opacity: 0.85;
+    }
+    100% {
+      transform: translate3d(-6px, -460px, 0);
+      opacity: 0;
+    }
+  }
+  @keyframes ds-rise-b {
+    0% {
+      transform: translate3d(0, 60px, 0);
+      opacity: 0;
+    }
+    12% {
+      opacity: 0.8;
+    }
+    50% {
+      transform: translate3d(-20px, -170px, 0);
+    }
+    82% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate3d(10px, -420px, 0);
+      opacity: 0;
+    }
+  }
+  @keyframes ds-vent {
+    0% {
+      transform: translate3d(-50%, 0, 0) scale(0.5);
+      opacity: 0;
+    }
+    14% {
+      opacity: 0.7;
+    }
+    86% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: translate3d(-50%, -600px, 0) scale(1.25);
+      opacity: 0;
+    }
+  }
+  @keyframes ds-fall {
+    0% {
+      transform: translate3d(0, -30px, 0);
+      opacity: 0;
+    }
+    16% {
+      opacity: 0.35;
+    }
+    78% {
+      opacity: 0.35;
+    }
+    100% {
+      transform: translate3d(-10px, 240px, 0);
+      opacity: 0;
+    }
+  }
+  @keyframes ds-drift {
+    0% {
+      transform: translate3d(0, 0, 0);
+      opacity: 0;
+    }
+    20% {
+      opacity: var(--env-mote-op);
+    }
+    80% {
+      opacity: var(--env-mote-op);
+    }
+    100% {
+      transform: translate3d(46px, -70px, 0);
+      opacity: 0;
+    }
+  }
+  @keyframes ds-caustic {
+    0% {
+      transform: translate3d(0, 0, 0);
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate3d(128px, 0, 0);
+      opacity: 0.55;
+    }
+  }
+  @keyframes ds-swim-r {
+    from {
+      transform: translate3d(-22vw, 0, 0);
+    }
+    to {
+      transform: translate3d(118vw, 0, 0);
+    }
+  }
+  @keyframes ds-swim-l {
+    from {
+      transform: translate3d(118vw, 0, 0);
+    }
+    to {
+      transform: translate3d(-22vw, 0, 0);
+    }
+  }
+  @keyframes ds-pulse {
+    0% {
+      transform: translate3d(0, 0, 0) scaleY(1) scaleX(1);
+    }
+    16% {
+      transform: translate3d(0, -14px, 0) scaleY(0.82) scaleX(1.14);
+    }
+    46% {
+      transform: translate3d(0, -34px, 0) scaleY(1.06) scaleX(0.95);
+    }
+    100% {
+      transform: translate3d(0, -4px, 0) scaleY(1) scaleX(1);
+    }
+  }
+  @keyframes ds-breathe {
+    0%,
+    100% {
+      opacity: 0.72;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes ds-blink {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    42% {
+      opacity: 1;
+    }
+  }
+  @keyframes ds-sway {
+    0%,
+    100% {
+      transform: rotate(-0.7deg);
+    }
+    50% {
+      transform: rotate(0.7deg);
+    }
+  }
+
+  /* 視窗變窄時，側軌會被壓到閱讀欄上 —— 分級退場 */
+  @media (max-width: 1023px) {
+    .ds-beam,
+    .ds-kelp,
+    .ds-school,
+    .ds-jelly,
+    .ds-vent {
+      display: none;
+    }
+  }
+  @media (max-width: 767px) {
+    .ds-bub,
+    .ds-dot,
+    .ds-snow {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="zh-hant-tw" data-theme="tide-dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wildsky's Blog — 首頁 comp v2（覆潮之下 / bolder）</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============================================================
+   TOKEN LAYER — 唯一允許出現色值的地方（與 DESIGN.md 完全一致）
+   ============================================================ */
+      [data-theme='tide-dark'] {
+        color-scheme: dark;
+        --bg: #0a1420;
+        --bg-surface: #0d1b2a;
+        --bg-raised: #12253a;
+        --bg-sunken: #060e17;
+        --fg: #e8ecf0;
+        --fg-muted: #8faebc;
+        --fg-faint: #4a7a8c;
+        --fg-on-accent: #e8ecf0;
+        --rule: #2d4a5e;
+        --accent: #c8323e;
+        --accent-text: #e4525c;
+        --accent-fill: #a8202c;
+        --glow: #7fd4d4;
+        --glow-dim: #5fb8bc;
+        --glow-line: #7fd4d4;
+        --body-smoothing: antialiased;
+      }
+      [data-theme='tide-light'] {
+        color-scheme: light;
+        --bg: #edf2f4;
+        --bg-surface: #f7f9fa;
+        --bg-raised: #e4edf0;
+        --bg-sunken: #dfe9ec;
+        --fg: #16283a;
+        --fg-muted: #3f6273;
+        --fg-faint: #3d8a9e;
+        --fg-on-accent: #f7f9fa;
+        --rule: #c5d5dc;
+        --accent: #c8323e;
+        --accent-text: #b82a36;
+        --accent-fill: #c8323e;
+        --glow: #166363;
+        --glow-dim: #1b7272;
+        --glow-line: #2ba3a3;
+        --body-smoothing: auto;
+      }
+
+      :root {
+        --font-chrome: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif;
+        --font-body: 'Source Sans 3', 'Noto Sans TC', system-ui, sans-serif;
+
+        --chrome: 1120px;
+        --gutter-col: 140px; /* 左溝：承載日期代號與刻度 */
+        --measure: 720px;
+        --page-gutter: 24px;
+
+        --chamfer-sm: 6px;
+        --chamfer-md: 10px;
+        --chamfer-lg: 16px;
+        --chamfer-xl: 32px; /* ★ 提案新增：容器級切角 */
+
+        --fs-watermark: 132px; /* ★ 提案新增：Watermark / Numeral 字級階 */
+
+        --ease: cubic-bezier(0.2, 0, 0, 1);
+        --t: 120ms;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        position: relative;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: var(--font-body);
+        font-size: 19px;
+        line-height: 1.9;
+        letter-spacing: 0.01em;
+        -webkit-font-smoothing: var(--body-smoothing);
+        overflow-x: hidden;
+      }
+      ::selection {
+        background: var(--accent-fill);
+        color: var(--fg-on-accent);
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* ============================================================
+   THE RING — 切角描邊唯一實作（DESIGN.md Shapes）
+   ============================================================ */
+      .ring {
+        --c: var(--chamfer-md);
+        --bw: 1px;
+        --stroke: var(--rule);
+        position: relative;
+        background: transparent;
+      }
+      .ring::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        background: var(--stroke);
+        clip-path: polygon(
+          0 0,
+          calc(100% - var(--c)) 0,
+          100% var(--c),
+          100% 100%,
+          0 100%,
+          0 0,
+          var(--bw) var(--bw),
+          var(--bw) calc(100% - var(--bw)),
+          calc(100% - var(--bw)) calc(100% - var(--bw)),
+          calc(100% - var(--bw)) calc(var(--c) + var(--bw) * 0.4142),
+          calc(100% - var(--c) - var(--bw) * 0.4142) var(--bw),
+          var(--bw) var(--bw)
+        );
+        transition: background var(--t) var(--ease);
+      }
+
+      /* ============================================================
+   ★ 5. 背景給一點水 — 硬停點斜切分區 + 極淡斜向細線群
+   無 blur、無軟漸層、無 glow 當底（Zero Shadow / 禁漸層皆未違反）
+   ============================================================ */
+      .bg-field {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .bg-field .split {
+        /* --bg 與 --bg-surface 的大面積斜切分區 */
+        position: absolute;
+        inset: 0;
+        background: var(--bg-surface);
+        clip-path: polygon(0 42%, 100% 8%, 100% 100%, 0 100%);
+        opacity: 1;
+      }
+      .bg-field .hatch {
+        /* 斜向 hairline 群：硬停點、不混色、硬邊收尾 */
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 420px;
+        background-image: repeating-linear-gradient(
+          -12deg,
+          var(--rule) 0 1px,
+          transparent 1px 30px
+        );
+        /* 用斜切硬邊收邊，不用 mask 淡出——淡出等於在 alpha 上打漸層 */
+        clip-path: polygon(0 0, 100% 0, 100% 34%, 0 78%);
+      }
+
+      /* ============================================================
+   ★ 1. WATERMARK 側邊導軌 — 從裝飾線升級為尺度層
+   ============================================================ */
+      .watermark {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        z-index: 0;
+        display: none;
+        writing-mode: vertical-rl;
+        font-family: var(--font-chrome);
+        font-size: var(--fs-watermark);
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        line-height: 1;
+        color: var(--rule);
+        user-select: none;
+        pointer-events: none;
+        white-space: nowrap;
+        align-items: center;
+      }
+      .watermark.left {
+        left: -34px;
+      }
+      .watermark.right {
+        right: -34px;
+        transform: rotate(180deg);
+      }
+      @media (min-width: 1280px) {
+        .watermark {
+          display: flex;
+        }
+      }
+
+      .page {
+        position: relative;
+        z-index: 2;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .chrome-inner {
+        width: min(var(--chrome), 100% - var(--page-gutter) * 2);
+        margin-inline: auto;
+      }
+
+      /* ============================================================
+   HEADER
+   ============================================================ */
+      .site-header {
+        position: relative;
+        height: 64px;
+        flex: none;
+        background: var(--bg-surface);
+        font-family: var(--font-chrome);
+        z-index: 3;
+      }
+      .site-header::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          var(--rule) 0,
+          var(--rule) calc(100% - 40px),
+          var(--accent) calc(100% - 40px),
+          var(--accent) 100%
+        );
+      }
+      .site-header .chrome-inner {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand {
+        font-size: 21px;
+        font-weight: 600;
+        line-height: 1.4;
+        white-space: nowrap;
+      }
+      .brand-sub {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        color: var(--fg-faint);
+      }
+      .site-desc {
+        flex: 1;
+        min-width: 0;
+        margin: 0;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .menu-btn {
+        --c: var(--chamfer-sm);
+        width: 40px;
+        height: 40px;
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--fg-muted);
+        border: 0;
+        padding: 0;
+        background: transparent;
+        cursor: pointer;
+        transition: color var(--t) var(--ease);
+      }
+      .menu-btn:hover {
+        color: var(--fg);
+        --stroke: var(--fg-faint);
+      }
+
+      /* ============================================================
+   ★ 2. HERO 帶 — 紅色主角集中在這裡
+   ============================================================ */
+      .hero {
+        margin: 40px 0 8px;
+      }
+      .hero-band {
+        --c: var(--chamfer-xl);
+        position: relative;
+        display: grid;
+        grid-template-columns: var(--gutter-col) 1fr auto;
+        align-items: end;
+        gap: 24px;
+        padding: 28px var(--chamfer-xl) 24px 0;
+        background: var(--bg-surface);
+        clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%);
+      }
+      .hero-kicker {
+        grid-column: 1;
+        position: relative;
+        padding-left: 18px;
+        padding-bottom: 10px;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-muted);
+        line-height: 1.4;
+      }
+      .hero-kicker::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 4px;
+        width: 3px;
+        height: 34px;
+        background: var(--accent);
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%);
+      }
+      .hero-title {
+        grid-column: 2;
+        margin: 0;
+        padding-bottom: 10px;
+        font-family: var(--font-chrome);
+        font-size: 21px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        color: var(--fg-muted);
+      }
+      .hero-title b {
+        color: var(--fg);
+        font-weight: 600;
+      }
+
+      .counter {
+        grid-column: 3;
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        font-family: var(--font-chrome);
+        line-height: 0.82;
+      }
+      .counter .n {
+        /* ← 紅色主角：巨大數字，用 --accent 當文字 */
+        font-size: var(--fs-watermark);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--accent);
+      }
+      .counter .of {
+        font-size: clamp(2rem, 4.5vw, 2.75rem);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        color: var(--fg-faint);
+      }
+      .hero-slash {
+        /* 紅色斜線：是「線」不是「填色」 */
+        position: absolute;
+        right: calc(var(--chamfer-xl) + 6px);
+        top: -14px;
+        width: 3px;
+        height: 74px;
+        background: var(--accent);
+        transform: skewX(-12deg);
+        transform-origin: bottom;
+      }
+
+      /* ============================================================
+   ★ 4. 文章索引 — 左溝承載日期代號，overhang 只往右
+   ============================================================ */
+      main {
+        flex: 1 0 auto;
+        padding: 0 0 96px;
+      }
+      .post-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .post-row {
+        position: relative;
+      }
+      .post-row .row-fill {
+        /* ★ 3. hover 整塊單角大斜切 */
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background: var(--bg-raised);
+        clip-path: polygon(
+          0 0,
+          calc(100% - var(--chamfer-xl)) 0,
+          100% var(--chamfer-xl),
+          100% 100%,
+          0 100%
+        );
+        opacity: 0;
+        transition: opacity var(--t) var(--ease);
+      }
+      .post-row:hover .row-fill,
+      .post-row.is-hover .row-fill {
+        opacity: 1;
+      }
+
+      .post-row .row-rule {
+        /* 上緣 hairline：跨整個 chrome 寬 */
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--rule);
+        z-index: 1;
+      }
+      .post-row .row-mark {
+        /* hover 紅線 */
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        background: var(--accent);
+        z-index: 2;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 180ms var(--ease);
+      }
+      .post-row:hover .row-mark,
+      .post-row.is-hover .row-mark {
+        transform: scaleY(1);
+      }
+
+      .row-grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: var(--gutter-col) minmax(0, var(--measure));
+        padding: 26px 0 28px;
+      }
+
+      .row-gutter {
+        position: relative;
+        padding-left: 18px;
+      }
+      .log-year {
+        display: block;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        color: var(--fg-faint);
+        line-height: 1.4;
+      }
+      .log-day {
+        display: block;
+        font-family: var(--font-chrome);
+        font-size: 21px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        color: var(--fg-muted);
+        line-height: 1.2;
+      }
+      .row-gutter::before {
+        /* hairline 的起點刻度 */
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 6px;
+        width: 8px;
+        height: 1px;
+        background: var(--rule);
+      }
+      .row-gutter::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 6px;
+        width: 1px;
+        height: 14px;
+        background: var(--rule);
+      }
+
+      .row-main {
+        min-width: 0;
+      }
+      .post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 10px;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-faint);
+      }
+      .post-meta .sep {
+        color: var(--rule);
+      }
+      .chip {
+        --c: var(--chamfer-sm);
+        display: inline-block;
+        padding: 3px 9px;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        color: var(--fg-muted);
+        transition: color var(--t) var(--ease);
+      }
+      .chip:hover {
+        color: var(--accent-text);
+        --stroke: var(--accent);
+      }
+
+      .post-title {
+        /* ★ 1. 標題升到 Display 級（既有 ramp 內） */
+        margin: 0 0 14px;
+        font-family: var(--font-chrome);
+        font-size: clamp(2rem, 4.5vw, 2.75rem);
+        font-weight: 600;
+        line-height: 1.15;
+        letter-spacing: 0.01em;
+        color: var(--fg);
+      }
+
+      .taglist {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .tag {
+        display: inline-block;
+        padding: 3px 10px;
+        border: 1px solid var(--rule);
+        transform: skewX(-12deg);
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-muted);
+        transition:
+          color var(--t) var(--ease),
+          border-color var(--t) var(--ease);
+      }
+      .tag > span {
+        display: inline-block;
+        transform: skewX(12deg);
+      }
+      .tag:hover {
+        color: var(--accent-text);
+        border-color: var(--accent);
+      }
+
+      /* ============================================================
+   PAGER
+   ============================================================ */
+      .pager {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: var(--gutter-col) 1fr;
+      }
+      .btn {
+        --c: var(--chamfer-lg);
+        grid-column: 2;
+        justify-self: start;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 52px;
+        padding: 0 28px;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg);
+        cursor: pointer;
+        transition:
+          background var(--t) var(--ease),
+          color var(--t) var(--ease);
+      }
+      .btn:hover {
+        background: var(--accent-fill);
+        color: var(--fg-on-accent);
+        --stroke: var(--accent);
+      }
+
+      /* ============================================================
+   FOOTER
+   ============================================================ */
+      .site-footer {
+        flex: none;
+        background: var(--bg-sunken);
+        border-top: 1px solid var(--rule);
+        padding: 28px 0 32px;
+        font-family: var(--font-chrome);
+        position: relative;
+        z-index: 3;
+      }
+      .site-footer .chrome-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .social {
+        display: flex;
+        gap: 18px;
+      }
+      .social a {
+        color: var(--fg-faint);
+        display: inline-flex;
+        transition: color var(--t) var(--ease);
+      }
+      .social a:hover {
+        color: var(--glow);
+      }
+      .copyright {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-faint);
+      }
+
+      /* ============================================================
+   RESPONSIVE — Overhang 收斂與退場（DESIGN.md Layout）
+   ============================================================ */
+      @media (max-width: 1119px) {
+        :root {
+          --gutter-col: 96px;
+        }
+        .counter .n {
+          font-size: clamp(2rem, 4.5vw, 2.75rem);
+        }
+      }
+      @media (max-width: 767px) {
+        :root {
+          --page-gutter: 20px;
+          --gutter-col: 0px;
+        }
+        .row-grid,
+        .pager,
+        .hero-band {
+          grid-template-columns: 1fr;
+        }
+        .hero-band {
+          padding-left: 20px;
+        }
+        .hero-kicker,
+        .row-gutter {
+          padding-left: 18px;
+        }
+        .counter {
+          grid-column: 1;
+        }
+        .site-desc {
+          display: none;
+        }
+        .bg-field .hatch {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="bg-field" aria-hidden="true">
+      <span class="split"></span>
+      <span class="hatch"></span>
+    </div>
+
+    <span class="watermark left" aria-hidden="true">WILDSKY.CC</span>
+    <span class="watermark right" aria-hidden="true">SINCE 2014</span>
+
+    <div class="page">
+      <header class="site-header">
+        <div class="chrome-inner">
+          <a class="brand" href="/">[ WILDSKY ]</a>
+          <span class="brand-sub">/ LOG</span>
+          <p class="site-desc">軟體工程師的技術與思考筆記</p>
+          <button class="menu-btn ring" aria-label="開啟導覽選單" aria-expanded="false">
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M3 6h18M3 12h18M3 18h18" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="hero">
+        <div class="chrome-inner">
+          <div class="hero-band">
+            <span class="hero-slash" aria-hidden="true"></span>
+            <span class="hero-kicker">Log<br />Archive</span>
+            <h1 class="hero-title">技術實作、自架紀錄與<b>思考筆記</b></h1>
+            <div class="counter"><span class="n">016</span><span class="of">/ 120</span></div>
+          </div>
+        </div>
+      </div>
+
+      <main>
+        <div class="chrome-inner">
+          <ul class="post-list">
+            <li class="post-row">
+              <span class="row-fill"></span><span class="row-rule"></span
+              ><span class="row-mark"></span>
+              <div class="row-grid">
+                <div class="row-gutter">
+                  <span class="log-year">2026</span>
+                  <span class="log-day">08.04</span>
+                </div>
+                <div class="row-main">
+                  <div class="post-meta">
+                    <span>Read 12 min</span><span class="sep">/</span>
+                    <a class="chip ring" href="#">軟體工程</a>
+                  </div>
+                  <h2 class="post-title">
+                    <a href="#">Claude Code 的 Agent View 用久後，對 Vim 的反思</a>
+                  </h2>
+                  <div class="taglist">
+                    <a class="tag" href="#"><span>Claude Code</span></a>
+                    <a class="tag" href="#"><span>Vim</span></a>
+                    <a class="tag" href="#"><span>編輯器</span></a>
+                    <a class="tag" href="#"><span>AI</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="post-row is-hover">
+              <span class="row-fill"></span><span class="row-rule"></span
+              ><span class="row-mark"></span>
+              <div class="row-grid">
+                <div class="row-gutter">
+                  <span class="log-year">2026</span>
+                  <span class="log-day">06.15</span>
+                </div>
+                <div class="row-main">
+                  <div class="post-meta">
+                    <span>Read 9 min</span><span class="sep">/</span>
+                    <a class="chip ring" href="#">生活體驗</a>
+                  </div>
+                  <h2 class="post-title">
+                    <a href="#">爆卦 我是某個前端仔的 AI 助理，每天幫他擦屁股擦到想自己刪除系統</a>
+                  </h2>
+                  <div class="taglist">
+                    <a class="tag" href="#"><span>AI</span></a>
+                    <a class="tag" href="#"><span>Agent</span></a>
+                    <a class="tag" href="#"><span>Prompt</span></a>
+                    <a class="tag" href="#"><span>自架</span></a>
+                    <a class="tag" href="#"><span>Obsidian</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="post-row">
+              <span class="row-fill"></span><span class="row-rule"></span
+              ><span class="row-mark"></span>
+              <div class="row-grid">
+                <div class="row-gutter">
+                  <span class="log-year">2026</span>
+                  <span class="log-day">06.12</span>
+                </div>
+                <div class="row-main">
+                  <div class="post-meta">
+                    <span>Read 7 min</span><span class="sep">/</span>
+                    <a class="chip ring" href="#">思考觀點</a>
+                  </div>
+                  <h2 class="post-title"><a href="#">關於駭客精神</a></h2>
+                  <div class="taglist">
+                    <a class="tag" href="#"><span>駭客精神</span></a>
+                    <a class="tag" href="#"><span>開源</span></a>
+                    <a class="tag" href="#"><span>Enshittification</span></a>
+                    <a class="tag" href="#"><span>自架</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="post-row">
+              <span class="row-fill"></span><span class="row-rule"></span
+              ><span class="row-mark"></span>
+              <div class="row-grid">
+                <div class="row-gutter">
+                  <span class="log-year">2026</span>
+                  <span class="log-day">06.07</span>
+                </div>
+                <div class="row-main">
+                  <div class="post-meta">
+                    <span>Read 11 min</span><span class="sep">/</span>
+                    <a class="chip ring" href="#">軟體工程</a>
+                  </div>
+                  <h2 class="post-title"><a href="#">為什麼我決定自架一個 AI Agent</a></h2>
+                  <div class="taglist">
+                    <a class="tag" href="#"><span>AI</span></a>
+                    <a class="tag" href="#"><span>Agent</span></a>
+                    <a class="tag" href="#"><span>Self-hosted</span></a>
+                    <a class="tag" href="#"><span>自架</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="post-row">
+              <span class="row-fill"></span><span class="row-rule"></span
+              ><span class="row-mark"></span>
+              <div class="row-grid">
+                <div class="row-gutter">
+                  <span class="log-year">2026</span>
+                  <span class="log-day">04.19</span>
+                </div>
+                <div class="row-main">
+                  <div class="post-meta">
+                    <span>Read 14 min</span><span class="sep">/</span>
+                    <a class="chip ring" href="#">思考觀點</a>
+                  </div>
+                  <h2 class="post-title">
+                    <a href="#">象牙塔隨想：黑天鵝視角下，學者真的都不食人間煙火嗎？</a>
+                  </h2>
+                  <div class="taglist">
+                    <a class="tag" href="#"><span>黑天鵝效應</span></a>
+                    <a class="tag" href="#"><span>敘事謬誤</span></a>
+                    <a class="tag" href="#"><span>沈默證據</span></a>
+                    <a class="tag" href="#"><span>思維實驗</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="pager">
+            <a class="btn ring" href="/page/2">Older Posts →</a>
+          </div>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <div class="chrome-inner">
+          <div class="social">
+            <a href="https://social.wildsky.cc/@wildsky" aria-label="Mastodon">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 4h14v10a3 3 0 0 1-3 3H9l-4 3z" />
+                <path d="M8.5 12V9.5a1.5 1.5 0 0 1 3 0V12m0-2.5a1.5 1.5 0 0 1 3 0V12" />
+              </svg>
+            </a>
+            <a href="https://github.com/wildskyf" aria-label="GitHub">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9 20v-3c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.4 3.6 1 .1-.8.4-1.4.8-1.7-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.4 1 18.4 1.3 18.4 1.3c.6 1.6.2 2.8.1 3.1a4.6 4.6 0 0 1 1.2 3.2c0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2V20"
+                />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/wildsky/" aria-label="LinkedIn">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 5.2h.01M4 9.5V20M10.5 20V9.5M10.5 13.6c0-2.4 1.4-4.1 3.6-4.1s3.4 1.7 3.4 4.4V20"
+                />
+              </svg>
+            </a>
+            <a href="/rss.xml" aria-label="RSS">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12a7 7 0 0 1 7 7M5 5a14 14 0 0 1 14 14" />
+                <circle cx="5.8" cy="18.2" r="1.3" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+          </div>
+          <span class="copyright">2014—2026 © All Rights Reserved</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

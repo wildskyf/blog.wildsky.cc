@@ -1,5 +1,4 @@
 ---
-import HeaderLink from '@/components/HeaderLink.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { getTranslation } from '@/i18n/utils.ts';
 import type { Locale } from '@/i18n/translations.ts';
@@ -8,7 +7,6 @@ const currentLocale = (Astro.currentLocale === 'en' ? 'en' : 'tw') as Locale;
 const otherLocale = currentLocale === 'tw' ? 'en' : 'tw';
 const t = getTranslation(currentLocale);
 
-// Navigation items based on current locale
 const pages =
   currentLocale === 'tw'
     ? [
@@ -29,78 +27,148 @@ const pages =
       ];
 
 const otherLocaleUrl = getRelativeLocaleUrl(otherLocale, '');
-const otherLocaleLabel = otherLocale === 'tw' ? '中文' : 'english';
+const otherLocaleLabel = otherLocale === 'tw' ? '中文' : 'English';
 const navLabel = currentLocale === 'en' ? 'Primary navigation' : '主要導覽';
 ---
 
-<nav aria-label={navLabel}>
-  <div class="dropdown dropdown-end relative z-50">
-    <div tabindex="0" role="button" aria-label="Open navigation menu" class="btn btn-ghost btn-circle">
+<nav class="ds-nav" aria-label={navLabel}>
+  <details class="ds-nav-details">
+    <summary class="ds-nav-toggle" aria-label="Open navigation menu">
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
         viewBox="0 0 24 24"
-        class="inline-block h-5 w-5 stroke-current"
+        width="18"
+        height="18"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        aria-hidden="true"
       >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16"></path>
+        <path d="M3 6h18M3 12h18M3 18h18"></path>
       </svg>
-    </div>
+    </summary>
 
-    <ul
-      tabindex="0"
-      class={`
-        menu menu-lg dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow
-        capitalize
-      `}
-    >
+    <ul class="ds-nav-menu ds-plate">
       {
-        pages.map((item, index) => {
-          const showDivider = index > 0 && pages[index - 1].group !== item.group;
-          return (
-            <>
-              {showDivider && <li class="divider h-[1px] py-0 my-1" />}
-
-              <li
-                class={`
-                  text-base-content
-                  w-2/3 lg:w-full
-                `}
-              >
-                <HeaderLink href={item.url}>{item.title}</HeaderLink>
-              </li>
-            </>
-          );
-        })
+        pages.map((item, index) => (
+          <>
+            {index > 0 && pages[index - 1].group !== item.group && <li class="ds-nav-sep" />}
+            <li>
+              <a class="ds-nav-item" href={item.url}>
+                {item.title}
+              </a>
+            </li>
+          </>
+        ))
       }
-
-      <li class="divider h-[1px] py-0 my-1" />
-
-      <li
-        class={`
-          text-base-content
-          w-2/3 lg:w-full
-        `}
-      >
-        <HeaderLink href={otherLocaleUrl}>
-          {otherLocaleLabel}
-        </HeaderLink>
+      <li class="ds-nav-sep"></li>
+      <li>
+        <a class="ds-nav-item" href={otherLocaleUrl}>{otherLocaleLabel}</a>
       </li>
     </ul>
-  </div>
+  </details>
 </nav>
 
 <style>
-  @media screen and (max-width: 1023px) {
-    #menu {
-      display: none;
-    }
+  .ds-nav {
+    flex: none;
+  }
 
-    #menu-toggler:checked + #menu {
-      display: flex;
-    }
+  .ds-nav-details {
+    position: relative;
+  }
+
+  .ds-nav-toggle {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fg-muted);
+    cursor: pointer;
+    list-style: none;
+    transition: color var(--t) var(--ease);
+  }
+
+  .ds-nav-toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .ds-nav-toggle:hover,
+  .ds-nav-details[open] .ds-nav-toggle {
+    color: var(--fg);
+  }
+
+  /* 下拉：The Plate 雙細線，直角，無陰影（The Zero Shadow Rule） */
+  .ds-nav-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    z-index: 60;
+    width: 224px;
+    margin: 0;
+    padding: 12px;
+    list-style: none;
+    background: var(--bg-surface);
+  }
+
+  .ds-nav-item {
+    display: block;
+    position: relative;
+    padding: 7px 10px 7px 14px;
+    font-family: var(--font-label);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    font-variant: small-caps;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color var(--t) var(--ease);
+  }
+
+  /* hover 是一條紅線，不是一塊底色 */
+  .ds-nav-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 180ms var(--ease);
+  }
+
+  .ds-nav-item:hover,
+  .ds-nav-item:focus-visible {
+    color: var(--fg);
+  }
+
+  .ds-nav-item:hover::before,
+  .ds-nav-item:focus-visible::before {
+    transform: scaleY(1);
+  }
+
+  .ds-nav-sep {
+    height: 1px;
+    margin: 8px 0;
+    background: var(--rule);
   }
 </style>
+
+<script>
+  // 點擊外部與 Esc 關閉；details 原生不做這件事
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll<HTMLDetailsElement>('.ds-nav-details[open]').forEach((d) => {
+      if (!d.contains(e.target as Node)) d.open = false;
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll<HTMLDetailsElement>('.ds-nav-details[open]').forEach((d) => {
+      d.open = false;
+    });
+  });
+</script>

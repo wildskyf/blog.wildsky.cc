@@ -1,7 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
 import dayjs from 'dayjs';
-import Link from '@/components/Link.astro';
 import TagList from '@/components/TagList.astro';
 
 type PostListItem = {
@@ -10,75 +8,245 @@ type PostListItem = {
   slug: string;
   title: string;
   tags?: string[];
+  readingTime?: string | null;
 };
 
-const { lang, postList } = Astro.props as {
+const {
+  lang,
+  postList,
+  showLatest = false,
+} = Astro.props as {
   lang?: 'tw' | 'en';
   postList: PostListItem[];
+  showLatest?: boolean;
 };
 const root_path = lang == 'en' ? '/en' : '';
+const latestLabel = lang === 'en' ? 'Latest' : '最新';
 ---
 
-<ul class="flex flex-col px-4 lg:px-0 gap-y-2 text-base-content/80" lang={lang === 'tw' ? 'zh-Hant-TW' : 'en'}>
+<ul class="ds-index" lang={lang === 'tw' ? 'zh-Hant-TW' : 'en'}>
   {
-    postList.map((post) => {
+    postList.map((post, index) => {
+      const d = dayjs(post.date);
       return (
-        <li class="rounded-xl mb-12">
-          <article
-            class={`bg-transparent
-              px-3
-              ${lang === 'tw' ? 'tracking-tw-normal' : ''}
-            `}
-          >
-            <header>
-              <div>
-                <div class="flex flex-wrap items-center gap-3.5 mt-3 text-base">
-                  <div class="flex items-center gap-x-1">
-                    <Icon class="text-secondary/70" name="bx:calendar" title="posted at" />
+        <li class:list={['ds-row', showLatest && index === 0 && 'is-latest']}>
+          <span class="ds-row-rule" aria-hidden="true" />
+          <span class="ds-row-mark" aria-hidden="true" />
 
-                    <time class="" datetime={new Date(post.date).toISOString()}>
-                      {dayjs(post.date).format('YYYY/MM/DD')}
-                    </time>
-                  </div>
+          <div class="ds-row-grid">
+            <div class="ds-row-gutter">
+              <time datetime={new Date(post.date).toISOString()}>
+                <span class="ds-log-year">{d.format('YYYY')}</span>
+                <span class="ds-log-day">{d.format('MM.DD')}</span>
+              </time>
+            </div>
 
-                  {post.category && (
-                    <div class="flex items-center gap-x-1">
-                      <Icon class="text-secondary/70" name="bx:category-alt" title="category" />
-
-                      <a
-                        href={`${root_path}/categories/${post.category}`}
-                        class="link link-hover transition-colors duration-200"
-                      >
-                        {post.category}
-                      </a>
-                    </div>
-                  )}
-                </div>
+            <div class="ds-row-main">
+              <div class="ds-row-meta">
+                {/* 分類在前，閱讀時間在後 —— 先知道「這是什麼」才有掃讀價值 */}
+                {post.category && (
+                  <a class="ds-chip" href={`${root_path}/categories/${post.category}`}>
+                    {post.category}
+                  </a>
+                )}
+                {post.category && post.readingTime && <span class="ds-meta-sep">/</span>}
+                {post.readingTime && <span>{post.readingTime}</span>}
+                {showLatest && index === 0 && <span class="ds-seal-tag">{latestLabel}</span>}
               </div>
 
+              <h2 class="ds-row-title">
+                <a href={`${root_path}/posts/${post.slug}`} set:html={post.title} />
+              </h2>
 
-              <Link
-                class="group"
-                href={`${root_path}/posts/${post.slug}`}
-              >
-                <h2
-                  class={`
-                    text-xl lg:text-2xl font-semibold
-                    group-hover:underline mt-2
-                    ${lang === 'tw' ? 'tracking-tw-normal' : ''}
-                  `}
-                  set:html={post.title}
-                  style={{ hyphens: 'auto' }}
-                />
-              </Link>
-
-              <div class="flex justify-start items-center gap-x-1">
-                <TagList tags={post.tags} lang={lang} />
-              </div>
-            </header>
-          </article>
+              <TagList tags={post.tags} lang={lang} />
+            </div>
+          </div>
         </li>
       );
     })
   }
 </ul>
+
+<style>
+  .ds-index {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ds-row {
+    position: relative;
+  }
+
+  .ds-row-rule {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--rule);
+    z-index: 1;
+  }
+
+  /* hover 只做兩件事：紅線長出、日期升亮。整列底色不變 ——
+     填色面板是軟體 UI 的語彙，在紙與金屬的世界裡不成立。 */
+  .ds-row-mark {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--accent);
+    z-index: 2;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 180ms var(--ease);
+  }
+
+  .ds-row.is-latest .ds-row-mark,
+  .ds-row:hover .ds-row-mark,
+  .ds-row:focus-within .ds-row-mark {
+    transform: scaleY(1);
+  }
+
+  .ds-row:hover .ds-log-day,
+  .ds-row:focus-within .ds-log-day {
+    color: var(--fg);
+  }
+
+  .ds-row-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: var(--gutter-col) minmax(0, var(--measure));
+    padding: 30px 0 32px;
+  }
+
+  .ds-row-gutter {
+    position: relative;
+    padding-left: 18px;
+  }
+
+  /* 柱首刻線 —— 唯一的青色裝飾線 */
+  .ds-row-gutter::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 9px;
+    height: 1px;
+    background: var(--glow-line);
+  }
+
+  .ds-log-year {
+    display: block;
+    font-family: var(--font-label);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--fg-muted);
+    line-height: 1.4;
+    transition: color var(--t) var(--ease);
+  }
+
+  .ds-log-day {
+    display: block;
+    font-family: var(--font-chrome);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--fg-muted);
+    line-height: 1.3;
+    transition: color var(--t) var(--ease);
+  }
+
+  .ds-row-main {
+    min-width: 0;
+  }
+
+  .ds-row-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-family: var(--font-label);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    font-variant: small-caps;
+    color: var(--fg-muted);
+  }
+
+  .ds-meta-sep {
+    color: var(--rule);
+  }
+
+  /* 分類：沒有框。是「刻線標題」不是按鈕。 */
+  .ds-chip {
+    font-family: var(--font-chrome);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--fg-muted);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--rule);
+    transition:
+      color var(--t) var(--ease),
+      border-color var(--t) var(--ease);
+  }
+
+  /* 不轉紅字：13px 的 --accent-text 在環境層上實測 3.83–4.17，過不了 AA。
+     紅色留在線上，文字升到 --fg。 */
+  .ds-chip:hover,
+  .ds-chip:focus-visible {
+    color: var(--fg);
+    border-bottom-color: var(--accent);
+  }
+
+  .ds-row-title {
+    margin: 0 0 14px;
+    font-family: var(--font-display);
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: 0.01em;
+    color: var(--fg);
+  }
+
+  .ds-row-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* 標題不加底線 —— 底線是網頁語彙，紅線才是這套系統的語彙 */
+  .ds-row-title a:hover {
+    color: var(--fg);
+  }
+
+  @media (max-width: 1119px) {
+    .ds-row-grid {
+      grid-template-columns: 96px minmax(0, var(--measure));
+    }
+  }
+
+  @media (max-width: 767px) {
+    .ds-row-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 24px 0 26px;
+    }
+    .ds-row-gutter {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .ds-log-day {
+      font-size: 19px;
+    }
+    .ds-row-title {
+      font-size: 24px;
+    }
+  }
+</style>

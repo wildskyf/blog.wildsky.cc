@@ -3,12 +3,6 @@ import Link from './Link.astro';
 const { className, to, text } = Astro.props;
 ---
 
-<Link
-  href={to}
-  className={`
-  btn
-  ${className || ''}
-`}
->
+<Link href={to} className={`ds-btn ds-plate ${className || ''}`}>
   {text}
 </Link>

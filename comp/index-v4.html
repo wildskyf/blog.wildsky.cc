@@ -1,0 +1,1332 @@
+<!doctype html>
+<html lang="zh-hant-tw" data-theme="tide-dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wildsky's Blog — 首頁 comp v4（愚人號 / 哥德航海・有機深淵）</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============================================================
+   TOKEN LAYER — 唯一允許出現色值的地方
+   ============================================================ */
+      [data-theme='tide-dark'] {
+        color-scheme: dark;
+        /* 人造物（chrome 與元件）—— 一律不動 */
+        --bg: #0a1420;
+        --bg-surface: #0d1b2a;
+        --bg-raised: #12253a;
+        --bg-sunken: #060e17;
+        --fg: #e8ecf0;
+        --fg-muted: #8faebc;
+        --fg-faint: #4a7a8c;
+        --fg-on-accent: #e8ecf0;
+        --rule: #2d4a5e;
+        --accent: #c8323e;
+        --accent-text: #e4525c;
+        --accent-fill: #a8202c;
+        --glow: #7fd4d4;
+        --glow-dim: #5fb8bc;
+        --glow-line: #7fd4d4;
+        --body-smoothing: antialiased;
+
+        /* ★ 提案新增：環境層 token（HSL 192–198，綠得發黑的水）
+     現有 token 做不出「暗的青綠」——與 --glow-dim 混合會同時提亮 */
+        --env-surface: #16323a; /* HSL 193 — 水面方向 */
+        --env-mid: #0e2129; /* HSL 198 */
+        --env-deep: #081519; /* HSL 194 */
+        --env-abyss: #050d0f; /* HSL 192 — 暗角與最深處 */
+        --env-silhouette: #030a0c; /* HSL 193 — 珊瑚 / 海藻剪影 */
+      }
+
+      :root {
+        --font-chrome: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif;
+        --font-body: 'Source Sans 3', 'Noto Sans TC', system-ui, sans-serif;
+
+        --chrome: 1120px;
+        --gutter-col: 140px;
+        --measure: 720px;
+        --page-gutter: 24px;
+
+        --chamfer-sm: 6px;
+        --chamfer-md: 10px;
+        --chamfer-lg: 16px;
+        --chamfer-xl: 32px;
+
+        --fs-watermark: 132px;
+
+        --ease: cubic-bezier(0.2, 0, 0, 1);
+        --t: 120ms;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        position: relative;
+        background: var(--env-abyss);
+        color: var(--fg);
+        font-family: var(--font-body);
+        font-size: 19px;
+        line-height: 1.9;
+        letter-spacing: 0.01em;
+        -webkit-font-smoothing: var(--body-smoothing);
+        overflow-x: hidden;
+      }
+      ::selection {
+        background: var(--accent-fill);
+        color: var(--fg-on-accent);
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* ============================================================
+   THE RING — 人造物的描邊（不動）
+   ============================================================ */
+      .ring {
+        --c: var(--chamfer-md);
+        --bw: 1px;
+        --stroke: var(--rule);
+        position: relative;
+        background: transparent;
+      }
+      .ring::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        background: var(--stroke);
+        clip-path: polygon(
+          0 0,
+          calc(100% - var(--c)) 0,
+          100% var(--c),
+          100% 100%,
+          0 100%,
+          0 0,
+          var(--bw) var(--bw),
+          var(--bw) calc(100% - var(--bw)),
+          calc(100% - var(--bw)) calc(100% - var(--bw)),
+          calc(100% - var(--bw)) calc(var(--c) + var(--bw) * 0.4142),
+          calc(100% - var(--c) - var(--bw) * 0.4142) var(--bw),
+          var(--bw) var(--bw)
+        );
+        transition: background var(--t) var(--ease);
+      }
+
+      /* ============================================================
+   環境層 — The Organic Layer Rule 的管轄範圍
+   ============================================================ */
+      .bg-field {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      /* ★ 1. 水色：整份文件一條連續明度軸，色相 192–198 */
+      .bg-field .depth {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          var(--env-surface) 0%,
+          var(--env-mid) 30%,
+          var(--env-deep) 62%,
+          var(--env-abyss) 100%
+        );
+      }
+
+      /* ★ 2. 邊界暗角：左右下三邊沉入近黑（同色相明度漸層） */
+      .bg-field .vignette {
+        position: absolute;
+        inset: 0;
+      }
+      .bg-field .vignette::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(to right, var(--env-abyss) 0%, transparent 26%),
+          linear-gradient(to left, var(--env-abyss) 0%, transparent 26%),
+          linear-gradient(to top, var(--env-abyss) 0%, transparent 22%);
+      }
+
+      /* ★ 6. 水的顆粒 */
+      .bg-field .grain {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.035;
+        mix-blend-mode: screen;
+      }
+
+      /* ★ 4. 濁度層：撕裂邊（SVG path），s1 已下移避開 hover 列 */
+      .bg-field .strata {
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+      }
+      .bg-field .strata.s1 {
+        top: 900px;
+        height: 420px;
+      }
+      .bg-field .strata.s2 {
+        top: 1330px;
+        height: 300px;
+      }
+      .bg-field .strata path {
+        fill: var(--env-surface);
+        opacity: 0.5;
+      }
+      .bg-field .strata.s2 path {
+        fill: var(--env-mid);
+        opacity: 0.75;
+      }
+
+      /* 光束：v3 自查 —— 16% → 22% */
+      .bg-field .beam {
+        position: absolute;
+        top: -60px;
+        width: 220px;
+        height: 760px;
+        transform: rotate(-12deg);
+        transform-origin: top center;
+        background: linear-gradient(
+          to right,
+          transparent 0%,
+          color-mix(in oklab, var(--fg-faint) 22%, transparent) 50%,
+          transparent 100%
+        );
+        -webkit-mask-image: linear-gradient(to bottom, var(--fg) 0 22%, transparent 92%);
+        mask-image: linear-gradient(to bottom, var(--fg) 0 22%, transparent 92%);
+      }
+      .bg-field .beam.b1 {
+        left: 40px;
+      }
+      .bg-field .beam.b2 {
+        left: 1160px;
+        width: 150px;
+      }
+
+      .bg-field .hatch {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 420px;
+        background-image: repeating-linear-gradient(
+          -12deg,
+          var(--rule) 0 1px,
+          transparent 1px 30px
+        );
+        clip-path: polygon(0 0, 100% 0, 100% 34%, 0 78%);
+        opacity: 0.6;
+      }
+
+      /* ★ 3. 有機剪影：珊瑚 / 海藻 / 殘骸 */
+      .bg-field .reef {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 230px;
+      }
+      .bg-field .reef path {
+        fill: var(--env-silhouette);
+      }
+      .bg-field .kelp {
+        position: absolute;
+        bottom: 0;
+        height: 560px;
+        width: 120px;
+      }
+      .bg-field .kelp.left {
+        left: 8px;
+      }
+      .bg-field .kelp.right {
+        right: 8px;
+      }
+      .bg-field .kelp path {
+        fill: none;
+        stroke: var(--env-silhouette);
+        stroke-width: 9;
+        stroke-linecap: round;
+      }
+
+      /* 氣泡：v3 自查 —— 下半部改 --glow-line（越深越該亮） */
+      .bg-field .bub {
+        position: absolute;
+        border: 1px solid var(--rule);
+        border-radius: 50%;
+      }
+      .bg-field .bub.teal {
+        border-color: var(--glow-line);
+      }
+
+      /* 生物光 */
+      .bg-field .dot {
+        position: absolute;
+        background: var(--glow);
+        border-radius: 50%;
+      }
+
+      @media (max-width: 1279px) {
+        .bg-field .beam,
+        .bg-field .bub,
+        .bg-field .dot,
+        .bg-field .kelp {
+          display: none;
+        }
+      }
+
+      /* ============================================================
+   ★ 7. AMBIENT 動畫 — The Ambient Motion Rule
+   只動 transform / opacity；正文與 chrome 零動畫
+   ============================================================ */
+      @media (prefers-reduced-motion: no-preference) {
+        @keyframes amb-rise {
+          from {
+            transform: translate3d(0, 0, 0);
+          }
+          to {
+            transform: translate3d(9px, -64px, 0);
+          }
+        }
+        @keyframes amb-rise-b {
+          from {
+            transform: translate3d(0, 0, 0);
+          }
+          to {
+            transform: translate3d(-7px, -52px, 0);
+          }
+        }
+        @keyframes amb-breathe {
+          0%,
+          100% {
+            opacity: 0.72;
+          }
+          50% {
+            opacity: 1;
+          }
+        }
+        @keyframes amb-blink {
+          0%,
+          100% {
+            opacity: 0.3;
+          }
+          42% {
+            opacity: 1;
+          }
+        }
+        @keyframes amb-sway {
+          0%,
+          100% {
+            transform: rotate(-0.7deg);
+          }
+          50% {
+            transform: rotate(0.7deg);
+          }
+        }
+
+        .bg-field .bub {
+          animation: amb-rise 28s ease-in-out infinite alternate;
+        }
+        .bg-field .bub:nth-of-type(3n) {
+          animation: amb-rise-b 34s ease-in-out infinite alternate;
+        }
+        .bg-field .bub:nth-of-type(4n + 1) {
+          animation-duration: 22s;
+        }
+        .bg-field .bub:nth-of-type(5n + 2) {
+          animation-duration: 39s;
+        }
+        .bg-field .bub:nth-of-type(2n) {
+          animation-delay: -11s;
+        }
+        .bg-field .bub:nth-of-type(3n + 1) {
+          animation-delay: -19s;
+        }
+
+        .bg-field .beam.b1 {
+          animation: amb-breathe 34s ease-in-out infinite;
+        }
+        .bg-field .beam.b2 {
+          animation: amb-breathe 47s ease-in-out infinite -13s;
+        }
+
+        .bg-field .dot {
+          animation: amb-blink 23s ease-in-out infinite;
+        }
+        .bg-field .dot:nth-of-type(2n) {
+          animation-duration: 31s;
+          animation-delay: -8s;
+        }
+        .bg-field .dot:nth-of-type(3n) {
+          animation-duration: 37s;
+          animation-delay: -17s;
+        }
+
+        .bg-field .kelp {
+          transform-origin: bottom center;
+          animation: amb-sway 44s ease-in-out infinite;
+        }
+        .bg-field .kelp.right {
+          animation-duration: 52s;
+          animation-delay: -21s;
+        }
+      }
+
+      .page {
+        position: relative;
+        z-index: 2;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .chrome-inner {
+        width: min(var(--chrome), 100% - var(--page-gutter) * 2);
+        margin-inline: auto;
+      }
+
+      /* ============================================================
+   WATERMARK
+   ============================================================ */
+      .watermark {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        z-index: 0;
+        display: none;
+        writing-mode: vertical-rl;
+        font-family: var(--font-chrome);
+        font-size: var(--fs-watermark);
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        line-height: 1;
+        color: color-mix(in oklab, var(--glow-dim) 22%, var(--env-deep));
+        user-select: none;
+        pointer-events: none;
+        white-space: nowrap;
+        align-items: center;
+      }
+      .watermark.left {
+        left: -34px;
+      }
+      .watermark.right {
+        right: -34px;
+        transform: rotate(180deg);
+      }
+      @media (min-width: 1280px) {
+        .watermark {
+          display: flex;
+        }
+      }
+
+      /* ============================================================
+   HEADER（人造物，不動）
+   ============================================================ */
+      .site-header {
+        position: relative;
+        height: 64px;
+        flex: none;
+        background: var(--bg-surface);
+        font-family: var(--font-chrome);
+        z-index: 3;
+      }
+      .site-header::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          var(--rule) 0,
+          var(--rule) calc(100% - 40px),
+          var(--accent) calc(100% - 40px),
+          var(--accent) 100%
+        );
+      }
+      .site-header .chrome-inner {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand {
+        font-size: 21px;
+        font-weight: 600;
+        line-height: 1.4;
+        white-space: nowrap;
+      }
+      .brand-sub {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        color: var(--fg-faint);
+      }
+      .site-desc {
+        flex: 1;
+        min-width: 0;
+        margin: 0;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .menu-btn {
+        --c: var(--chamfer-sm);
+        width: 40px;
+        height: 40px;
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--fg-muted);
+        border: 0;
+        padding: 0;
+        background: transparent;
+        cursor: pointer;
+        transition: color var(--t) var(--ease);
+      }
+      .menu-btn:hover {
+        color: var(--fg);
+        --stroke: var(--fg-faint);
+      }
+
+      /* ============================================================
+   ★ 5. HERO — 深度儀表
+   v3 自查：hero 帶回 --bg-surface，層次改由 ring 建立
+   ============================================================ */
+      .hero {
+        margin: 40px 0 8px;
+      }
+      .hero-band {
+        --c: var(--chamfer-xl);
+        --bw: 1px;
+        --stroke: var(--fg-faint);
+        position: relative;
+        display: grid;
+        grid-template-columns: var(--gutter-col) 1fr auto;
+        align-items: end;
+        gap: 24px;
+        padding: 26px var(--chamfer-xl) 22px 0;
+        background: var(--bg-surface);
+        clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%);
+      }
+      .hero-kicker {
+        grid-column: 1;
+        position: relative;
+        padding-left: 18px;
+        padding-bottom: 10px;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-muted);
+        line-height: 1.4;
+      }
+      .hero-kicker::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 4px;
+        width: 3px;
+        height: 34px;
+        background: var(--accent);
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%);
+      }
+      .hero-title {
+        grid-column: 2;
+        margin: 0;
+        padding-bottom: 10px;
+        font-family: var(--font-chrome);
+        font-size: 21px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        color: var(--fg-muted);
+      }
+      .hero-title b {
+        color: var(--fg);
+        font-weight: 600;
+      }
+
+      .gauge {
+        grid-column: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+      }
+      .gauge-label {
+        align-self: flex-end;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-faint);
+      }
+      .gauge-read {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        font-family: var(--font-chrome);
+        line-height: 0.82;
+      }
+      .gauge-read .minus {
+        font-size: clamp(2rem, 4.5vw, 2.75rem);
+        font-weight: 600;
+        color: var(--accent);
+      }
+      .gauge-read .n {
+        font-size: var(--fs-watermark);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--accent);
+      }
+      .gauge-read .unit {
+        font-size: clamp(2rem, 4.5vw, 2.75rem);
+        font-weight: 600;
+        color: var(--fg-faint);
+        letter-spacing: 0.04em;
+      }
+      /* 深度刻度尺：明確的 SVG 線段（不用 tiled gradient —— 那是格線背景的手法，
+   刻度尺該把每一刻的位置寫出來） */
+      .gauge-ruler {
+        display: block;
+        width: 300px;
+        height: 16px;
+        margin-top: 4px;
+      }
+      .gauge-ruler .tick-minor {
+        stroke: var(--rule);
+        stroke-width: 1;
+      }
+      .gauge-ruler .tick-major {
+        stroke: var(--fg-faint);
+        stroke-width: 1;
+      }
+      .gauge-ruler .tick-now {
+        stroke: var(--accent);
+        stroke-width: 2;
+      }
+      .gauge-scale {
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
+        margin-top: -2px;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        color: var(--rule);
+      }
+
+      /* ============================================================
+   文章索引（人造物，不動）
+   ============================================================ */
+      main {
+        flex: 1 0 auto;
+        padding: 0 0 96px;
+      }
+      .post-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .post-row {
+        position: relative;
+      }
+      .post-row .row-fill {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background: var(--bg-raised);
+        clip-path: polygon(
+          0 0,
+          calc(100% - var(--chamfer-xl)) 0,
+          100% var(--chamfer-xl),
+          100% 100%,
+          0 100%
+        );
+        opacity: 0;
+        transition: opacity var(--t) var(--ease);
+      }
+      .post-row:hover .row-fill,
+      .post-row.is-hover .row-fill {
+        opacity: 1;
+      }
+      .post-row .row-rule {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--rule);
+        z-index: 1;
+      }
+      .post-row .row-mark {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        background: var(--accent);
+        z-index: 2;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 180ms var(--ease);
+      }
+      .post-row:hover .row-mark,
+      .post-row.is-hover .row-mark {
+        transform: scaleY(1);
+      }
+      .row-grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: var(--gutter-col) minmax(0, var(--measure));
+        padding: 26px 0 28px;
+      }
+      .row-gutter {
+        position: relative;
+        padding-left: 18px;
+      }
+      .log-year {
+        display: block;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        color: var(--fg-faint);
+        line-height: 1.4;
+      }
+      .log-day {
+        display: block;
+        font-family: var(--font-chrome);
+        font-size: 21px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        color: var(--fg-muted);
+        line-height: 1.2;
+      }
+      .row-gutter::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 6px;
+        width: 8px;
+        height: 1px;
+        background: var(--glow-line);
+      }
+      .row-gutter::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 6px;
+        width: 1px;
+        height: 14px;
+        background: var(--glow-line);
+      }
+
+      .row-main {
+        min-width: 0;
+      }
+      .post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 10px;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-faint);
+      }
+      .post-meta .sep {
+        color: var(--rule);
+      }
+      .chip {
+        --c: var(--chamfer-sm);
+        display: inline-block;
+        padding: 3px 9px;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        color: var(--fg-muted);
+        transition: color var(--t) var(--ease);
+      }
+      .chip:hover {
+        color: var(--accent-text);
+        --stroke: var(--accent);
+      }
+      .post-title {
+        margin: 0 0 14px;
+        font-family: var(--font-chrome);
+        font-size: clamp(2rem, 4.5vw, 2.75rem);
+        font-weight: 600;
+        line-height: 1.15;
+        letter-spacing: 0.01em;
+        color: var(--fg);
+      }
+      .taglist {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .tag {
+        display: inline-block;
+        padding: 3px 10px;
+        border: 1px solid var(--rule);
+        transform: skewX(-12deg);
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-muted);
+        transition:
+          color var(--t) var(--ease),
+          border-color var(--t) var(--ease);
+      }
+      .tag > span {
+        display: inline-block;
+        transform: skewX(12deg);
+      }
+      .tag:hover {
+        color: var(--accent-text);
+        border-color: var(--accent);
+      }
+
+      .pager {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: var(--gutter-col) 1fr;
+      }
+      .btn {
+        --c: var(--chamfer-lg);
+        grid-column: 2;
+        justify-self: start;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 52px;
+        padding: 0 28px;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg);
+        cursor: pointer;
+        transition:
+          background var(--t) var(--ease),
+          color var(--t) var(--ease);
+      }
+      .btn:hover {
+        background: var(--accent-fill);
+        color: var(--fg-on-accent);
+        --stroke: var(--accent);
+      }
+
+      .site-footer {
+        flex: none;
+        background: var(--bg-sunken);
+        border-top: 1px solid var(--rule);
+        padding: 28px 0 32px;
+        font-family: var(--font-chrome);
+        position: relative;
+        z-index: 3;
+      }
+      .site-footer .chrome-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .social {
+        display: flex;
+        gap: 18px;
+      }
+      .social a {
+        color: var(--fg-faint);
+        display: inline-flex;
+        transition: color var(--t) var(--ease);
+      }
+      .social a:hover {
+        color: var(--glow);
+      }
+      .copyright {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-faint);
+      }
+
+      @media (max-width: 1119px) {
+        :root {
+          --gutter-col: 96px;
+        }
+        .gauge-read .n {
+          font-size: clamp(2rem, 4.5vw, 2.75rem);
+        }
+        .gauge-ruler,
+        .gauge-scale {
+          width: 180px;
+        }
+      }
+      @media (max-width: 767px) {
+        :root {
+          --page-gutter: 20px;
+          --gutter-col: 0px;
+        }
+        .row-grid,
+        .pager,
+        .hero-band {
+          grid-template-columns: 1fr;
+        }
+        .hero-band {
+          padding-left: 20px;
+        }
+        .hero-kicker,
+        .row-gutter {
+          padding-left: 18px;
+        }
+        .gauge {
+          grid-column: 1;
+          align-items: flex-start;
+        }
+        .site-desc {
+          display: none;
+        }
+        .bg-field .hatch,
+        .bg-field .reef {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="bg-field" aria-hidden="true">
+      <span class="depth"></span>
+
+      <!-- ★ 4. 濁度層：撕裂邊 -->
+      <svg class="strata s1" viewBox="0 0 1440 420" preserveAspectRatio="none">
+        <path
+          d="M0,58 C90,30 170,72 258,50 C330,32 392,74 470,60 C556,44 620,86 706,68
+             C790,50 852,90 940,72 C1024,55 1090,94 1178,76 C1258,60 1330,96 1440,66
+             L1440,352 C1350,382 1276,344 1192,364 C1108,384 1042,346 956,366
+             C866,386 800,348 712,368 C624,388 560,350 470,370 C384,389 316,352 228,372
+             C148,390 78,356 0,378 Z"
+        />
+      </svg>
+      <svg class="strata s2" viewBox="0 0 1440 300" preserveAspectRatio="none">
+        <path
+          d="M0,40 C110,72 200,26 300,52 C398,78 470,34 566,58 C664,82 740,38 838,62
+             C934,86 1008,40 1104,64 C1196,87 1290,44 1440,74 L1440,300 L0,300 Z"
+        />
+      </svg>
+
+      <span class="vignette"></span>
+
+      <!-- ★ 6. 水的顆粒 -->
+      <svg class="grain" preserveAspectRatio="none">
+        <filter id="grain-f">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.9"
+            numOctaves="3"
+            stitchTiles="stitch"
+          />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="100%" height="100%" fill="var(--env-abyss)" filter="url(#grain-f)" />
+      </svg>
+
+      <span class="beam b1"></span>
+      <span class="beam b2"></span>
+      <span class="hatch"></span>
+
+      <!-- ★ 3. 有機剪影：底部珊瑚 / 殘骸 -->
+      <svg class="reef" viewBox="0 0 1440 230" preserveAspectRatio="xMidYMax slice">
+        <path
+          d="M0,230 L0,150 C14,142 20,120 16,98 C13,82 22,74 30,86 C36,95 34,112 40,126
+             C46,139 58,138 62,124 C67,106 60,88 66,72 C71,58 84,60 86,76 C88,94 82,112 88,130
+             C94,147 108,150 114,136 C120,121 114,100 122,88 C129,77 140,84 138,98
+             C136,116 130,134 138,152 C144,166 158,168 164,154 L172,230 Z"
+        />
+        <path
+          d="M196,230 L200,168 C186,158 178,136 184,116 C189,100 202,102 204,118
+             C206,134 200,150 208,164 C214,175 228,174 232,160 C237,142 228,120 236,106
+             C243,94 256,100 254,116 C252,134 246,152 254,168 C260,180 274,180 278,166
+             L286,230 Z"
+        />
+        <path
+          d="M1050,230 L1046,164 C1032,154 1024,130 1032,110 C1038,94 1052,98 1054,114
+             C1056,132 1048,150 1058,166 C1065,177 1080,176 1084,160 C1089,140 1080,118 1090,104
+             C1098,92 1112,98 1110,116 C1108,136 1100,154 1110,172 C1117,184 1132,184 1136,168
+             L1146,230 Z"
+        />
+        <path
+          d="M1188,230 L1192,146 C1178,134 1172,108 1180,88 C1187,71 1202,76 1204,94
+             C1206,114 1198,132 1208,150 C1215,163 1232,162 1236,146 C1241,124 1230,100 1242,86
+             C1252,74 1268,82 1264,102 C1260,124 1252,144 1264,164 C1272,178 1290,178 1294,160
+             C1300,136 1290,110 1304,96 C1314,86 1328,94 1324,114 C1320,136 1314,158 1326,178
+             C1334,191 1352,190 1358,172 L1372,230 Z"
+        />
+        <path
+          d="M320,230 L326,196 C314,188 308,172 314,158 C319,147 331,150 332,162
+             C333,175 328,187 336,198 L342,230 Z"
+        />
+        <path
+          d="M980,230 L986,190 C972,180 966,160 974,146 C980,135 993,139 994,153
+             C995,168 989,182 998,194 L1004,230 Z"
+        />
+        <path
+          d="M0,230 L1440,230 L1440,206 C1330,214 1240,198 1140,208 C1030,219 950,202 840,212
+             C720,223 640,204 520,214 C400,224 320,206 200,216 C120,223 60,210 0,218 Z"
+        />
+      </svg>
+
+      <!-- 溝內垂直海藻 / 纜索 -->
+      <svg class="kelp left" viewBox="0 0 120 560" preserveAspectRatio="none">
+        <path d="M40,560 C24,470 56,404 42,318 C30,244 62,186 48,104 C42,68 52,36 46,0" />
+        <path d="M86,560 C74,486 96,428 84,356 C74,294 94,246 86,186" />
+      </svg>
+      <svg class="kelp right" viewBox="0 0 120 560" preserveAspectRatio="none">
+        <path d="M74,560 C90,478 60,412 76,332 C88,262 58,200 72,122 C78,86 68,44 74,0" />
+        <path d="M28,560 C40,492 18,436 30,368 C40,308 22,258 30,198" />
+      </svg>
+
+      <!-- 氣泡：左溝 8（下半部改 teal） -->
+      <span class="bub" style="left: 64px; top: 470px; width: 6px; height: 6px"></span>
+      <span class="bub" style="left: 128px; top: 600px; width: 9px; height: 9px"></span>
+      <span class="bub" style="left: 48px; top: 780px; width: 12px; height: 12px"></span>
+      <span class="bub teal" style="left: 150px; top: 930px; width: 10px; height: 10px"></span>
+      <span class="bub teal" style="left: 82px; top: 1080px; width: 16px; height: 16px"></span>
+      <span class="bub teal" style="left: 36px; top: 1230px; width: 14px; height: 14px"></span>
+      <span class="bub teal" style="left: 112px; top: 1350px; width: 22px; height: 22px"></span>
+      <span class="bub teal" style="left: 60px; top: 1490px; width: 18px; height: 18px"></span>
+
+      <!-- 氣泡：右溝 5 -->
+      <span class="bub" style="right: 110px; top: 560px; width: 8px; height: 8px"></span>
+      <span class="bub" style="right: 62px; top: 820px; width: 11px; height: 11px"></span>
+      <span class="bub teal" style="right: 150px; top: 1090px; width: 15px; height: 15px"></span>
+      <span class="bub teal" style="right: 88px; top: 1300px; width: 20px; height: 20px"></span>
+      <span class="bub teal" style="right: 180px; top: 1470px; width: 13px; height: 13px"></span>
+
+      <!-- 生物光 4 點 -->
+      <span class="dot" style="left: 96px; top: 1180px; width: 3px; height: 3px"></span>
+      <span class="dot" style="left: 150px; top: 1420px; width: 2px; height: 2px"></span>
+      <span class="dot" style="right: 74px; top: 1240px; width: 3px; height: 3px"></span>
+      <span class="dot" style="right: 130px; top: 1550px; width: 2px; height: 2px"></span>
+    </div>
+
+    <span class="watermark left" aria-hidden="true">WILDSKY.CC</span>
+    <span class="watermark right" aria-hidden="true">SINCE 2014</span>
+
+    <div class="page">
+      <header class="site-header">
+        <div class="chrome-inner">
+          <a class="brand" href="/">[ WILDSKY ]</a>
+          <span class="brand-sub">/ LOG</span>
+          <p class="site-desc">軟體工程師的技術與思考筆記</p>
+          <button class="menu-btn ring" aria-label="開啟導覽選單" aria-expanded="false">
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M3 6h18M3 12h18M3 18h18" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="hero">
+        <div class="chrome-inner">
+          <div class="hero-band ring">
+            <span class="hero-kicker">Descent<br />Log</span>
+            <h1 class="hero-title">技術實作、自架紀錄與<b>思考筆記</b></h1>
+            <div class="gauge">
+              <span class="gauge-label">Depth</span>
+              <div class="gauge-read">
+                <span class="minus">−</span><span class="n">016</span><span class="unit">M</span>
+              </div>
+              <svg class="gauge-ruler" viewBox="0 0 300 16" aria-hidden="true">
+                <g class="tick-minor">
+                  <line x1="15.5" y1="0" x2="15.5" y2="7" />
+                  <line x1="30.5" y1="0" x2="30.5" y2="7" />
+                  <line x1="45.5" y1="0" x2="45.5" y2="7" />
+                  <line x1="60.5" y1="0" x2="60.5" y2="7" />
+                  <line x1="90.5" y1="0" x2="90.5" y2="7" />
+                  <line x1="105.5" y1="0" x2="105.5" y2="7" />
+                  <line x1="120.5" y1="0" x2="120.5" y2="7" />
+                  <line x1="135.5" y1="0" x2="135.5" y2="7" />
+                  <line x1="165.5" y1="0" x2="165.5" y2="7" />
+                  <line x1="180.5" y1="0" x2="180.5" y2="7" />
+                  <line x1="195.5" y1="0" x2="195.5" y2="7" />
+                  <line x1="210.5" y1="0" x2="210.5" y2="7" />
+                  <line x1="240.5" y1="0" x2="240.5" y2="7" />
+                  <line x1="255.5" y1="0" x2="255.5" y2="7" />
+                  <line x1="270.5" y1="0" x2="270.5" y2="7" />
+                  <line x1="285.5" y1="0" x2="285.5" y2="7" />
+                </g>
+                <g class="tick-major">
+                  <line x1="0.5" y1="0" x2="0.5" y2="15" />
+                  <line x1="75.5" y1="0" x2="75.5" y2="15" />
+                  <line x1="150.5" y1="0" x2="150.5" y2="15" />
+                  <line x1="225.5" y1="0" x2="225.5" y2="15" />
+                  <line x1="299.5" y1="0" x2="299.5" y2="15" />
+                </g>
+                <line class="tick-now" x1="40" y1="0" x2="40" y2="16" />
+              </svg>
+              <div class="gauge-scale" aria-hidden="true">
+                <span>000</span><span>060</span><span>120</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main>
+        <div class="chrome-inner">
+          <ul class="post-list">
+            <li class="post-row">
+              <span class="row-fill"></span><span class="row-rule"></span
+              ><span class="row-mark"></span>
+              <div class="row-grid">
+                <div class="row-gutter">
+                  <span class="log-year">2026</span><span class="log-day">08.04</span>
+                </div>
+                <div class="row-main">
+                  <div class="post-meta">
+                    <span>Read 12 min</span><span class="sep">/</span
+                    ><a class="chip ring" href="#">軟體工程</a>
+                  </div>
+                  <h2 class="post-title">
+                    <a href="#">Claude Code 的 Agent View 用久後，對 Vim 的反思</a>
+                  </h2>
+                  <div class="taglist">
+                    <a class="tag" href="#"><span>Claude Code</span></a>
+                    <a class="tag" href="#"><span>Vim</span></a>
+                    <a class="tag" href="#"><span>編輯器</span></a>
+                    <a class="tag" href="#"><span>AI</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="post-row is-hover">
+              <span class="row-fill"></span><span class="row-rule"></span
+              ><span class="row-mark"></span>
+              <div class="row-grid">
+                <div class="row-gutter">
+                  <span class="log-year">2026</span><span class="log-day">06.15</span>
+                </div>
+                <div class="row-main">
+                  <div class="post-meta">
+                    <span>Read 9 min</span><span class="sep">/</span
+                    ><a class="chip ring" href="#">生活體驗</a>
+                  </div>
+                  <h2 class="post-title">
+                    <a href="#">爆卦 我是某個前端仔的 AI 助理，每天幫他擦屁股擦到想自己刪除系統</a>
+                  </h2>
+                  <div class="taglist">
+                    <a class="tag" href="#"><span>AI</span></a>
+                    <a class="tag" href="#"><span>Agent</span></a>
+                    <a class="tag" href="#"><span>Prompt</span></a>
+                    <a class="tag" href="#"><span>自架</span></a>
+                    <a class="tag" href="#"><span>Obsidian</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="post-row">
+              <span class="row-fill"></span><span class="row-rule"></span
+              ><span class="row-mark"></span>
+              <div class="row-grid">
+                <div class="row-gutter">
+                  <span class="log-year">2026</span><span class="log-day">06.12</span>
+                </div>
+                <div class="row-main">
+                  <div class="post-meta">
+                    <span>Read 7 min</span><span class="sep">/</span
+                    ><a class="chip ring" href="#">思考觀點</a>
+                  </div>
+                  <h2 class="post-title"><a href="#">關於駭客精神</a></h2>
+                  <div class="taglist">
+                    <a class="tag" href="#"><span>駭客精神</span></a>
+                    <a class="tag" href="#"><span>開源</span></a>
+                    <a class="tag" href="#"><span>Enshittification</span></a>
+                    <a class="tag" href="#"><span>自架</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="post-row">
+              <span class="row-fill"></span><span class="row-rule"></span
+              ><span class="row-mark"></span>
+              <div class="row-grid">
+                <div class="row-gutter">
+                  <span class="log-year">2026</span><span class="log-day">06.07</span>
+                </div>
+                <div class="row-main">
+                  <div class="post-meta">
+                    <span>Read 11 min</span><span class="sep">/</span
+                    ><a class="chip ring" href="#">軟體工程</a>
+                  </div>
+                  <h2 class="post-title"><a href="#">為什麼我決定自架一個 AI Agent</a></h2>
+                  <div class="taglist">
+                    <a class="tag" href="#"><span>AI</span></a>
+                    <a class="tag" href="#"><span>Agent</span></a>
+                    <a class="tag" href="#"><span>Self-hosted</span></a>
+                    <a class="tag" href="#"><span>自架</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="post-row">
+              <span class="row-fill"></span><span class="row-rule"></span
+              ><span class="row-mark"></span>
+              <div class="row-grid">
+                <div class="row-gutter">
+                  <span class="log-year">2026</span><span class="log-day">04.19</span>
+                </div>
+                <div class="row-main">
+                  <div class="post-meta">
+                    <span>Read 14 min</span><span class="sep">/</span
+                    ><a class="chip ring" href="#">思考觀點</a>
+                  </div>
+                  <h2 class="post-title">
+                    <a href="#">象牙塔隨想：黑天鵝視角下，學者真的都不食人間煙火嗎？</a>
+                  </h2>
+                  <div class="taglist">
+                    <a class="tag" href="#"><span>黑天鵝效應</span></a>
+                    <a class="tag" href="#"><span>敘事謬誤</span></a>
+                    <a class="tag" href="#"><span>沈默證據</span></a>
+                    <a class="tag" href="#"><span>思維實驗</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="pager"><a class="btn ring" href="/page/2">Descend →</a></div>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <div class="chrome-inner">
+          <div class="social">
+            <a href="https://social.wildsky.cc/@wildsky" aria-label="Mastodon">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 4h14v10a3 3 0 0 1-3 3H9l-4 3z" />
+                <path d="M8.5 12V9.5a1.5 1.5 0 0 1 3 0V12m0-2.5a1.5 1.5 0 0 1 3 0V12" />
+              </svg>
+            </a>
+            <a href="https://github.com/wildskyf" aria-label="GitHub">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9 20v-3c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.4 3.6 1 .1-.8.4-1.4.8-1.7-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.4 1 18.4 1.3 18.4 1.3c.6 1.6.2 2.8.1 3.1a4.6 4.6 0 0 1 1.2 3.2c0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2V20"
+                />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/wildsky/" aria-label="LinkedIn">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 5.2h.01M4 9.5V20M10.5 20V9.5M10.5 13.6c0-2.4 1.4-4.1 3.6-4.1s3.4 1.7 3.4 4.4V20"
+                />
+              </svg>
+            </a>
+            <a href="/rss.xml" aria-label="RSS">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12a7 7 0 0 1 7 7M5 5a14 14 0 0 1 14 14" />
+                <circle cx="5.8" cy="18.2" r="1.3" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+          </div>
+          <span class="copyright">2014—2026 © All Rights Reserved</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

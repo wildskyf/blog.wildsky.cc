@@ -6,13 +6,19 @@ const pageDesc = '我的一些 murmur；想看更新可以 follow @wildsky@socia
 ---
 
 <PageLayout lang="tw" pageName={pageName} pageDesc={pageDesc}>
-  <article class="prose prose-xl max-md:prose-lg max-w-none bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16 prose-zh tracking-tw-normal">
+  <article
+    class="prose prose-xl max-md:prose-lg max-w-none bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16 prose-zh tracking-tw-normal"
+  >
     <header class="not-prose mb-8">
       <p class="text-sm uppercase tracking-[0.18em] text-secondary/80 mb-2">GoToSocial</p>
-      <h1 class="text-3xl lg:text-4xl font-bold text-base-content mb-4 tracking-tw-normal">Notes</h1>
+      <h1 class="text-3xl lg:text-4xl font-bold text-base-content mb-4 tracking-tw-normal">
+        Notes
+      </h1>
       <p class="text-base lg:text-lg text-base-content/70 leading-8 max-w-2xl">
         這裡是我的一些 murmur。想看更新，可以直接 follow
-        <a class="link link-hover link-accent" href="https://social.wildsky.cc/@wildsky" rel="me">@wildsky@social.wildsky.cc</a>。
+        <a class="ds-link" href="https://social.wildsky.cc/@wildsky" rel="me"
+          >@wildsky@social.wildsky.cc</a
+        >。
       </p>
     </header>
 
@@ -25,7 +31,12 @@ const pageDesc = '我的一些 murmur；想看更新可以 follow @wildsky@socia
     >
       <p class="notes-muted" data-notes-loading>載入 notes 中…</p>
       <noscript>
-        <p class="notes-muted">需要 JavaScript 才能載入即時 notes。你也可以直接查看 <a class="link link-hover link-accent" href="https://social.wildsky.cc/@wildsky/feed.rss">RSS feed</a>。</p>
+        <p class="notes-muted">
+          需要 JavaScript 才能載入即時 notes。你也可以直接查看 <a
+            class="ds-link"
+            href="https://social.wildsky.cc/@wildsky/feed.rss">RSS feed</a
+          >。
+        </p>
       </noscript>
     </section>
   </article>
@@ -126,10 +137,13 @@ const pageDesc = '我的一些 murmur；想看更新可以 follow @wildsky@socia
         renderFallback('目前沒有公開 notes。');
       };
 
-      const fetchNotes = (cursor = '') => fetch(buildUrl(cursor), {
-        headers: { accept: 'application/json' },
-        credentials: 'same-origin',
-      }).then((response) => response.ok ? response.json() : Promise.reject(new Error(`notes api ${response.status}`)));
+      const fetchNotes = (cursor = '') =>
+        fetch(buildUrl(cursor), {
+          headers: { accept: 'application/json' },
+          credentials: 'same-origin',
+        }).then((response) =>
+          response.ok ? response.json() : Promise.reject(new Error(`notes api ${response.status}`))
+        );
 
       fetchNotes()
         .then(renderInitial)

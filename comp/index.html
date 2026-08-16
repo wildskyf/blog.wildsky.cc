@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="zh-hant-tw" data-theme="tide-dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wildsky's Blog — 首頁 comp（覆潮之下）</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============================================================
+   TOKEN LAYER — 唯一允許出現色值的地方
+   ============================================================ */
+      [data-theme='tide-dark'] {
+        color-scheme: dark;
+        --bg: #0a1420;
+        --bg-surface: #0d1b2a;
+        --bg-raised: #12253a;
+        --bg-sunken: #060e17;
+        --fg: #e8ecf0;
+        --fg-muted: #8faebc;
+        --fg-faint: #4a7a8c;
+        --fg-on-accent: #e8ecf0;
+        --rule: #2d4a5e;
+        --accent: #c8323e;
+        --accent-text: #e4525c;
+        --accent-fill: #a8202c;
+        --glow: #7fd4d4;
+        --glow-dim: #5fb8bc;
+        --glow-line: #7fd4d4;
+        --body-smoothing: antialiased; /* The Optical Weight Rule */
+      }
+      [data-theme='tide-light'] {
+        color-scheme: light;
+        --bg: #edf2f4;
+        --bg-surface: #f7f9fa;
+        --bg-raised: #e4edf0;
+        --bg-sunken: #dfe9ec;
+        --fg: #16283a;
+        --fg-muted: #3f6273;
+        --fg-faint: #3d8a9e;
+        --fg-on-accent: #f7f9fa;
+        --rule: #c5d5dc;
+        --accent: #c8323e;
+        --accent-text: #b82a36;
+        --accent-fill: #c8323e;
+        --glow: #166363;
+        --glow-dim: #1b7272;
+        --glow-line: #2ba3a3;
+        --body-smoothing: auto;
+      }
+
+      /* ============================================================
+   SYSTEM CONSTANTS — 兩主題共用，不隨 theme 改變
+   ============================================================ */
+      :root {
+        --font-chrome: 'Chakra Petch', 'Noto Sans TC', system-ui, sans-serif;
+        --font-body: 'Source Sans 3', 'Noto Sans TC', system-ui, sans-serif;
+        --font-code: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+        --measure: 720px;
+        --chrome: 1120px;
+        --gutter: 24px;
+
+        --chamfer-sm: 6px;
+        --chamfer-md: 10px;
+        --chamfer-lg: 16px;
+
+        --ease: cubic-bezier(0.2, 0, 0, 1);
+        --t: 120ms;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: var(--font-body);
+        font-size: 19px;
+        line-height: 1.9; /* unitless — 放大字級時等比縮放 */
+        letter-spacing: 0.01em;
+        -webkit-font-smoothing: var(--body-smoothing);
+      }
+
+      ::selection {
+        background: var(--accent-fill);
+        color: var(--fg-on-accent);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* ============================================================
+   THE RING — 切角描邊的唯一實作方式
+   ============================================================ */
+      .ring {
+        --c: var(--chamfer-md);
+        --bw: 1px;
+        --stroke: var(--rule);
+        position: relative;
+        background: transparent;
+      }
+      .ring::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: var(--stroke);
+        clip-path: polygon(
+          0 0,
+          calc(100% - var(--c)) 0,
+          100% var(--c),
+          100% 100%,
+          0 100%,
+          0 0,
+          var(--bw) var(--bw),
+          var(--bw) calc(100% - var(--bw)),
+          calc(100% - var(--bw)) calc(100% - var(--bw)),
+          calc(100% - var(--bw)) calc(var(--c) + var(--bw) * 0.4142),
+          calc(100% - var(--c) - var(--bw) * 0.4142) var(--bw),
+          var(--bw) var(--bw)
+        );
+        transition: background var(--t) var(--ease);
+      }
+      .ring.is-filled {
+        background: var(--bg-surface);
+        clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%);
+      }
+
+      /* ============================================================
+   LAYOUT
+   ============================================================ */
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .chrome-inner {
+        width: min(var(--chrome), 100% - var(--gutter) * 2);
+        margin-inline: auto;
+      }
+      .measure {
+        width: min(var(--measure), 100% - var(--gutter) * 2);
+        margin-inline: auto;
+      }
+
+      /* ============================================================
+   HEADER
+   ============================================================ */
+      .site-header {
+        position: relative;
+        height: 64px;
+        background: var(--bg-surface);
+        font-family: var(--font-chrome);
+        flex: none;
+      }
+      .site-header::after {
+        /* 底線：右端 40px 換成血紅斷點 */
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          var(--rule) 0,
+          var(--rule) calc(100% - 40px),
+          var(--accent) calc(100% - 40px),
+          var(--accent) 100%
+        );
+      }
+      .site-header .chrome-inner {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand {
+        font-size: 21px;
+        font-weight: 600;
+        line-height: 1.4;
+        white-space: nowrap;
+      }
+      .brand-sub {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        color: var(--fg-faint);
+        white-space: nowrap;
+      }
+      .site-desc {
+        flex: 1;
+        min-width: 0;
+        margin: 0;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .menu-btn {
+        --c: var(--chamfer-sm);
+        width: 40px;
+        height: 40px;
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--fg-muted);
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+        transition: color var(--t) var(--ease);
+      }
+      .menu-btn:hover {
+        color: var(--fg);
+        --stroke: var(--fg-faint);
+      }
+
+      /* ============================================================
+   NAV DROPDOWN (開啟態，展示 ring)
+   ============================================================ */
+      .nav-wrap {
+        position: relative;
+      }
+      .nav-drop {
+        --c: var(--chamfer-md);
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        z-index: 20;
+        width: 224px;
+        margin: 0;
+        padding: 8px;
+        list-style: none;
+        background: var(--bg-surface);
+        clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, 0 100%);
+        display: none;
+      }
+      .nav-wrap.is-open .nav-drop {
+        display: block;
+      }
+      .nav-item {
+        position: relative;
+        display: block;
+        padding: 10px 14px;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        transition: background var(--t) var(--ease);
+      }
+      .nav-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 2px;
+        height: 60%;
+        background: var(--accent);
+        /* 用 scaleY 而非 height 做動畫：height 會觸發 layout thrash */
+        transform: translateY(-50%) scaleY(0);
+        transform-origin: center;
+        transition: transform var(--t) var(--ease);
+      }
+      .nav-item:hover,
+      .nav-item.is-hover {
+        background: var(--bg-raised);
+      }
+      .nav-item:hover::before,
+      .nav-item.is-hover::before {
+        transform: translateY(-50%) scaleY(1);
+      }
+      .nav-sep {
+        height: 1px;
+        margin: 8px 4px;
+        background: var(--rule);
+      }
+
+      /* ============================================================
+   MAIN / SECTION HEAD
+   ============================================================ */
+      main {
+        flex: 1 0 auto;
+        padding: 48px 0 96px;
+      }
+
+      .section-head {
+        margin-bottom: 8px;
+      }
+      .section-head .chrome-inner {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .kicker {
+        position: relative;
+        padding-left: 16px;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-muted);
+      }
+      .kicker::before {
+        /* 紅色切角刻度 */
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        margin-top: -8px;
+        width: 3px;
+        height: 16px;
+        background: var(--accent);
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%);
+      }
+      .section-head .fill {
+        flex: 1;
+        height: 1px;
+        background: var(--rule);
+      }
+      .section-count {
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        color: var(--fg-faint);
+      }
+
+      /* ============================================================
+   POST INDEX — 表列，不是卡片
+   ============================================================ */
+      .post-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .post-row {
+        position: relative;
+        padding: 20px 0;
+        transition: background var(--t) var(--ease);
+      }
+      .post-row::before {
+        /* hover 時長出的紅色左緣線 */
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        background: var(--accent);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 180ms var(--ease);
+      }
+      .post-row::after {
+        /* 上緣 hairline，伸出到 chrome 寬 */
+        content: '';
+        position: absolute;
+        top: 0;
+        left: calc((var(--measure) - var(--chrome)) / 2);
+        right: calc((var(--measure) - var(--chrome)) / 2);
+        height: 1px;
+        background: var(--rule);
+      }
+      .post-row:hover,
+      .post-row.is-hover {
+        background: var(--bg-raised);
+      }
+      .post-row:hover::before,
+      .post-row.is-hover::before {
+        transform: scaleY(1);
+      }
+
+      .post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 6px;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-faint);
+      }
+      .post-meta .sep {
+        color: var(--rule);
+      }
+
+      .chip {
+        --c: var(--chamfer-sm);
+        display: inline-block;
+        padding: 3px 9px;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        color: var(--fg-muted);
+        transition: color var(--t) var(--ease);
+      }
+      .chip:hover,
+      .chip.is-hover {
+        color: var(--accent-text);
+        --stroke: var(--accent);
+      }
+
+      .post-title {
+        margin: 0 0 12px;
+        font-family: var(--font-chrome);
+        font-size: 27px;
+        font-weight: 600;
+        line-height: 1.35;
+        letter-spacing: 0;
+        color: var(--fg);
+      }
+      :lang(zh-Hant-TW) .post-title {
+        letter-spacing: 0.02em;
+      }
+
+      .taglist {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .tag {
+        display: inline-block;
+        padding: 3px 10px;
+        border: 1px solid var(--rule); /* tag 不切角，可用 border */
+        transform: skewX(-12deg);
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-muted);
+        transition:
+          color var(--t) var(--ease),
+          border-color var(--t) var(--ease);
+      }
+      .tag > span {
+        display: inline-block;
+        transform: skewX(12deg);
+      }
+      .tag:hover {
+        color: var(--accent-text);
+        border-color: var(--accent);
+      }
+      .tag.is-current {
+        background: var(--accent-fill);
+        border-color: var(--accent-fill);
+        color: var(--fg-on-accent);
+      }
+
+      /* ============================================================
+   PAGINATION
+   ============================================================ */
+      .pager {
+        margin-top: 40px;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .btn {
+        --c: var(--chamfer-md);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        padding: 0 24px;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg);
+        cursor: pointer;
+        transition:
+          background var(--t) var(--ease),
+          color var(--t) var(--ease);
+      }
+      .btn:hover {
+        background: var(--accent-fill);
+        color: var(--fg-on-accent);
+        --stroke: var(--accent);
+      }
+
+      /* ============================================================
+   SIDE RAILS — ≥1280px only, 純裝飾
+   ============================================================ */
+      .side-rail {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        writing-mode: vertical-rl;
+        font-family: var(--font-chrome);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--rule);
+        user-select: none;
+        pointer-events: none;
+        display: none;
+      }
+      .side-rail.left {
+        left: 28px;
+      }
+      .side-rail.right {
+        right: 28px;
+        transform: translateY(-50%) rotate(180deg);
+      }
+      @media (min-width: 1280px) {
+        .side-rail {
+          display: block;
+        }
+      }
+
+      /* ============================================================
+   FOOTER
+   ============================================================ */
+      .site-footer {
+        flex: none;
+        background: var(--bg-sunken);
+        border-top: 1px solid var(--rule);
+        padding: 28px 0 32px;
+        font-family: var(--font-chrome);
+      }
+      .site-footer .chrome-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .social {
+        display: flex;
+        gap: 18px;
+      }
+      .social a {
+        color: var(--fg-faint);
+        display: inline-flex;
+        transition: color var(--t) var(--ease);
+      }
+      .social a:hover {
+        color: var(--glow);
+      }
+      .copyright {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--fg-faint);
+      }
+
+      /* ============================================================
+   RESPONSIVE — Overhang 收斂與退場
+   ============================================================ */
+      @media (max-width: 1119px) {
+        .post-row::after {
+          left: calc(var(--gutter) * -1);
+          right: calc(var(--gutter) * -1);
+        }
+      }
+      @media (max-width: 767px) {
+        :root {
+          --gutter: 20px;
+        }
+        .post-row::after {
+          left: 0;
+          right: 0;
+        } /* overhang 退場，切齊是正確行為 */
+        .site-desc {
+          display: none;
+        }
+        /* 註：DESIGN.md 未定義 Headline 的行動裝置字級階，故此處不做字級覆寫。
+     見報告「規格缺漏」第 1 條。 */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <span class="side-rail left" aria-hidden="true">WILDSKY.CC / LOG ARCHIVE / SINCE 2014</span>
+      <span class="side-rail right" aria-hidden="true">INDEX 001 — 016 / ZH-HANT</span>
+
+      <header class="site-header">
+        <div class="chrome-inner">
+          <a class="brand" href="/">[ WILDSKY ]</a>
+          <span class="brand-sub">/ LOG</span>
+          <p class="site-desc">軟體工程師的技術與思考筆記</p>
+
+          <div class="nav-wrap">
+            <button class="menu-btn ring" aria-label="開啟導覽選單" aria-expanded="false">
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <path d="M3 6h18M3 12h18M3 18h18" />
+              </svg>
+            </button>
+
+            <ul class="nav-drop ring">
+              <li><a class="nav-item is-hover" href="/">Home</a></li>
+              <li><a class="nav-item" href="/about/">About</a></li>
+              <li><a class="nav-item" href="/now/">Now</a></li>
+              <li><a class="nav-item" href="/notes/">Notes</a></li>
+              <li class="nav-sep"></li>
+              <li><a class="nav-item" href="/categories/">Categories</a></li>
+              <li><a class="nav-item" href="/tags/">Tags</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <div class="section-head">
+          <div class="chrome-inner">
+            <span class="kicker">Log Archive</span>
+            <span class="fill"></span>
+            <span class="section-count">016 / 120</span>
+          </div>
+        </div>
+
+        <div class="measure">
+          <ul class="post-list">
+            <li class="post-row">
+              <div class="post-meta">
+                <span>LOG 2026.08.04</span><span class="sep">/</span> <span>READ 12 MIN</span
+                ><span class="sep">/</span>
+                <a class="chip ring" href="/categories/軟體工程">軟體工程</a>
+              </div>
+              <h2 class="post-title">
+                <a href="#">Claude Code 的 Agent View 用久後，對 Vim 的反思</a>
+              </h2>
+              <div class="taglist">
+                <a class="tag" href="#"><span>Claude Code</span></a>
+                <a class="tag" href="#"><span>Vim</span></a>
+                <a class="tag" href="#"><span>編輯器</span></a>
+                <a class="tag" href="#"><span>AI</span></a>
+              </div>
+            </li>
+
+            <li class="post-row is-hover">
+              <div class="post-meta">
+                <span>LOG 2026.06.15</span><span class="sep">/</span> <span>READ 9 MIN</span
+                ><span class="sep">/</span>
+                <a class="chip ring is-hover" href="/categories/生活體驗">生活體驗</a>
+              </div>
+              <h2 class="post-title">
+                <a href="#">爆卦 我是某個前端仔的 AI 助理，每天幫他擦屁股擦到想自己刪除系統</a>
+              </h2>
+              <div class="taglist">
+                <a class="tag is-current" href="#"><span>AI</span></a>
+                <a class="tag" href="#"><span>Agent</span></a>
+                <a class="tag" href="#"><span>Prompt</span></a>
+                <a class="tag" href="#"><span>自架</span></a>
+                <a class="tag" href="#"><span>Obsidian</span></a>
+              </div>
+            </li>
+
+            <li class="post-row">
+              <div class="post-meta">
+                <span>LOG 2026.06.12</span><span class="sep">/</span> <span>READ 7 MIN</span
+                ><span class="sep">/</span>
+                <a class="chip ring" href="/categories/思考觀點">思考觀點</a>
+              </div>
+              <h2 class="post-title"><a href="#">關於駭客精神</a></h2>
+              <div class="taglist">
+                <a class="tag" href="#"><span>駭客精神</span></a>
+                <a class="tag" href="#"><span>開源</span></a>
+                <a class="tag" href="#"><span>Enshittification</span></a>
+                <a class="tag" href="#"><span>自架</span></a>
+              </div>
+            </li>
+
+            <li class="post-row">
+              <div class="post-meta">
+                <span>LOG 2026.06.07</span><span class="sep">/</span> <span>READ 11 MIN</span
+                ><span class="sep">/</span>
+                <a class="chip ring" href="/categories/軟體工程">軟體工程</a>
+              </div>
+              <h2 class="post-title"><a href="#">為什麼我決定自架一個 AI Agent</a></h2>
+              <div class="taglist">
+                <a class="tag" href="#"><span>AI</span></a>
+                <a class="tag" href="#"><span>Agent</span></a>
+                <a class="tag" href="#"><span>Self-hosted</span></a>
+                <a class="tag" href="#"><span>自架</span></a>
+              </div>
+            </li>
+
+            <li class="post-row">
+              <div class="post-meta">
+                <span>LOG 2026.04.19</span><span class="sep">/</span> <span>READ 14 MIN</span
+                ><span class="sep">/</span>
+                <a class="chip ring" href="/categories/思考觀點">思考觀點</a>
+              </div>
+              <h2 class="post-title">
+                <a href="#">象牙塔隨想：黑天鵝視角下，學者真的都不食人間煙火嗎？</a>
+              </h2>
+              <div class="taglist">
+                <a class="tag" href="#"><span>黑天鵝效應</span></a>
+                <a class="tag" href="#"><span>敘事謬誤</span></a>
+                <a class="tag" href="#"><span>沈默證據</span></a>
+                <a class="tag" href="#"><span>思維實驗</span></a>
+              </div>
+            </li>
+
+            <li class="post-row">
+              <div class="post-meta">
+                <span>LOG 2026.04.01</span><span class="sep">/</span> <span>READ 10 MIN</span
+                ><span class="sep">/</span>
+                <a class="chip ring" href="/categories/軟體工程">軟體工程</a>
+              </div>
+              <h2 class="post-title">
+                <a href="#">用軟體開發概念來理解 Steph Ango 的 PKM 架構</a>
+              </h2>
+              <div class="taglist">
+                <a class="tag" href="#"><span>Obsidian</span></a>
+                <a class="tag" href="#"><span>PKM</span></a>
+                <a class="tag" href="#"><span>筆記方法</span></a>
+                <a class="tag" href="#"><span>軟體架構</span></a>
+              </div>
+            </li>
+          </ul>
+
+          <div class="pager">
+            <a class="btn ring" href="/page/2">Older Posts →</a>
+          </div>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <div class="chrome-inner">
+          <div class="social">
+            <a href="https://social.wildsky.cc/@wildsky" aria-label="Mastodon">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 4h14v10a3 3 0 0 1-3 3H9l-4 3z" />
+                <path d="M8.5 12V9.5a1.5 1.5 0 0 1 3 0V12m0-2.5a1.5 1.5 0 0 1 3 0V12" />
+              </svg>
+            </a>
+            <a href="https://github.com/wildskyf" aria-label="GitHub">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9 20v-3c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.4 3.6 1 .1-.8.4-1.4.8-1.7-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.4 1 18.4 1.3 18.4 1.3c.6 1.6.2 2.8.1 3.1a4.6 4.6 0 0 1 1.2 3.2c0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2V20"
+                />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/wildsky/" aria-label="LinkedIn">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 5.2h.01M4 9.5V20M10.5 20V9.5M10.5 13.6c0-2.4 1.4-4.1 3.6-4.1s3.4 1.7 3.4 4.4V20"
+                />
+              </svg>
+            </a>
+            <a href="/rss.xml" aria-label="RSS">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12a7 7 0 0 1 7 7M5 5a14 14 0 0 1 14 14" />
+                <circle cx="5.8" cy="18.2" r="1.3" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+          </div>
+          <span class="copyright">2014—2026 © All Rights Reserved</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
