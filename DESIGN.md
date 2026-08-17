@@ -1,108 +1,107 @@
 ---
 name: Wildsky's Blog
-description: 覆潮之下 — 一套語言、兩片海：深淵與淺灘共用碑刻排版、雙細線板與紅色紀律
+description: 覆潮之下 — 哥德航海 × 有機深淵；技術文件為主體，深海航行日誌為外殼
 colors:
-  dark-bg: '#0A1420'
-  dark-bg-surface: '#0D1B2A'
-  dark-bg-raised: '#12253A'
-  dark-bg-sunken: '#060E17'
-  dark-fg: '#E8ECF0'
-  dark-fg-muted: '#8FAEBC'
-  dark-fg-faint: '#4A7A8C'
-  dark-fg-on-accent: '#E8ECF0'
-  dark-rule: '#2D4A5E'
-  dark-accent-text: '#E4525C'
-  dark-accent-fill: '#A8202C'
-  dark-glow: '#7FD4D4'
-  dark-glow-dim: '#5FB8BC'
-  dark-glow-line: '#7FD4D4'
-  light-bg: '#EDF2F4'
-  light-bg-surface: '#F7F9FA'
-  light-bg-raised: '#E4EDF0'
-  light-bg-sunken: '#DFE9EC'
-  light-fg: '#16283A'
-  light-fg-muted: '#3F6273'
-  light-fg-faint: '#3D8A9E'
-  light-fg-on-accent: '#F7F9FA'
-  light-rule: '#C5D5DC'
-  light-accent-text: '#B82A36'
+  dark-bg: '#07181A'
+  dark-bg-surface: '#0A2325'
+  dark-bg-raised: '#123234'
+  dark-bg-sunken: '#041113'
+  dark-fg: '#DDEBEC'
+  dark-fg-muted: '#A3C0C3'
+  dark-fg-faint: '#76A0A5'
+  dark-fg-on-accent: '#F5F8F8'
+  dark-rule: '#2D575B'
+  dark-accent: '#C8323E'
+  dark-accent-text: '#F06E78'
+  dark-accent-fill: '#9F1F2B'
+  dark-glow: '#7FD3D4'
+  dark-glow-dim: '#62B7B9'
+  dark-glow-line: '#3F9B9E'
+  dark-ember: '#E8895A'
+  light-bg: '#E7F0F1'
+  light-bg-surface: '#F4F8F8'
+  light-bg-raised: '#DBE9EA'
+  light-bg-sunken: '#D2E1E2'
+  light-fg: '#102C2F'
+  light-fg-muted: '#365F63'
+  light-fg-faint: '#3C666A'
+  light-fg-on-accent: '#F9FBFB'
+  light-rule: '#A7C2C4'
+  light-accent: '#C8323E'
+  light-accent-text: '#98212C'
   light-accent-fill: '#C8323E'
-  light-glow: '#166363'
-  light-glow-dim: '#1B7272'
-  light-glow-line: '#2BA3A3'
-  accent: '#C8323E'
-  dark-env-surface: '#16323A'
-  dark-env-mid: '#0E2129'
-  dark-env-deep: '#081519'
-  dark-env-abyss: '#050D0F'
-  dark-env-raised: '#1B3A42'
-  dark-env-silhouette: '#030A0C'
-  dark-env-beam: '#4A7A8C'
-  dark-env-caustic: '#7FD4D4'
-  dark-env-spark: '#7FD4D4'
-  light-env-surface: '#F2F7F8'
-  light-env-mid: '#E4EEF0'
-  light-env-deep: '#D5E4E7'
-  light-env-abyss: '#CADCE0'
-  light-env-raised: '#DDEAEC'
-  light-env-silhouette: '#AFC7CD'
-  light-env-beam: '#EAF7F9'
-  light-env-caustic: '#EAF7F9'
-  light-env-spark: '#EAF7F9'
+  light-glow: '#075D60'
+  light-glow-dim: '#23696C'
+  light-glow-line: '#26898D'
+  light-ember: '#9E431F'
+  dark-env-surface: '#15383A'
+  dark-env-mid: '#0E292B'
+  dark-env-deep: '#081D1F'
+  dark-env-abyss: '#041315'
+  dark-env-raised: '#1A4143'
+  dark-env-silhouette: '#020A0B'
+  dark-env-beam: '#76A0A5'
+  dark-env-caustic: '#7FD3D4'
+  dark-env-spark: '#3F9B9E'
+  light-env-surface: '#EDF5F5'
+  light-env-mid: '#DCE9EA'
+  light-env-deep: '#CCDDE0'
+  light-env-abyss: '#C0D4D6'
+  light-env-raised: '#E3EEEE'
+  light-env-silhouette: '#A8C4C6'
+  light-env-beam: '#F4F8F8'
+  light-env-caustic: '#F4F8F8'
+  light-env-spark: '#26898D'
 typography:
-  chrome:
-    fontFamily: "'Cinzel', 'Noto Serif TC', Georgia, serif"
-    fontSize: '1.5rem'
-    fontWeight: 600
-    lineHeight: '1.4'
-    letterSpacing: '0.14em'
   display:
-    fontFamily: "'Bodoni Moda', 'Noto Serif TC', Georgia, serif"
-    fontSize: 'clamp(2rem, 4.5vw, 2.75rem)'
+    fontFamily: "'Cormorant SC', 'EB Garamond Variable', 'Noto Serif TC Variable', serif"
+    fontSize: 'clamp(2.25rem, 5vw, 3.5rem)'
     fontWeight: 600
-    lineHeight: '1.2'
-    letterSpacing: '0.01em'
+    lineHeight: 1.05
+    letterSpacing: '0.035em'
+  cjk-display:
+    fontFamily: "'Noto Serif TC Variable', serif"
+    fontSize: 'clamp(2.25rem, 4.2vw, 3.5rem)'
+    fontWeight: 600
+    lineHeight: 1.28
+    letterSpacing: '0.008em'
   headline:
-    fontFamily: "'Bodoni Moda', 'Noto Serif TC', Georgia, serif"
-    fontSize: '1.6875rem'
+    fontFamily: "'EB Garamond Variable', 'Noto Serif TC Variable', serif"
+    fontSize: 'clamp(1.5rem, 2.7vw, 1.875rem)'
     fontWeight: 600
-    lineHeight: '1.45'
-    letterSpacing: '0.01em'
+    lineHeight: 1.4
+    letterSpacing: '0.008em'
   title:
-    fontFamily: "'Bodoni Moda', 'Noto Serif TC', Georgia, serif"
+    fontFamily: "'EB Garamond Variable', 'Noto Serif TC Variable', serif"
     fontSize: '1.5rem'
-    fontWeight: 700
-    lineHeight: '1.4'
+    fontWeight: 600
+    lineHeight: 1.45
     letterSpacing: '0'
   body:
-    fontFamily: "'Source Serif 4', 'Noto Serif TC', Georgia, serif"
+    fontFamily: "'EB Garamond Variable', 'Noto Serif TC Variable', serif"
     fontSize: '1.1875rem'
     fontWeight: 400
     lineHeight: 1.9
-    letterSpacing: '0.01em'
-  label:
-    fontFamily: "'EB Garamond', 'Noto Serif TC', Georgia, serif"
-    fontSize: '0.8125rem'
+    letterSpacing: '0.008em'
+  small-caps:
+    fontFamily: "'EB Garamond', serif"
+    fontSize: '0.9375rem'
     fontWeight: 500
-    lineHeight: '1.3'
-    letterSpacing: '0.06em'
-  watermark:
-    fontFamily: "'Cinzel', 'Noto Serif TC', Georgia, serif"
-    fontSize: '8.25rem'
+    lineHeight: 1.45
+    letterSpacing: '0.055em'
+    fontVariantCaps: 'all-small-caps'
+  atmospheric-meta:
+    fontFamily: "'Space Mono', monospace"
+    fontSize: '0.75rem'
     fontWeight: 400
-    lineHeight: '1'
-    letterSpacing: '0.08em'
+    lineHeight: 1.5
+    letterSpacing: '0.045em'
   code:
-    fontFamily: "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace"
+    fontFamily: "'JetBrains Mono', ui-monospace, monospace"
     fontSize: '0.9375rem'
     fontWeight: 400
-    lineHeight: '1.7'
+    lineHeight: 1.7
     letterSpacing: '0'
-rounded:
-  none: '0'
-plate:
-  borderWidth: '1px'
-  innerInset: '4px'
 spacing:
   xs: '4px'
   sm: '8px'
@@ -113,641 +112,454 @@ spacing:
   '3xl': '48px'
   '4xl': '64px'
   '5xl': '96px'
+layout:
+  readingMeasure: '720px'
+  chromeMeasure: '1120px'
+  codeMeasure: '840px'
+  pageGutterDesktop: '24px'
+  pageGutterMobile: '20px'
+plate:
+  borderWidth: '1px'
+  innerInset: '4px'
 components:
   header-bar:
     backgroundColor: '{colors.dark-bg-surface}'
     textColor: '{colors.dark-fg}'
-    padding: '0 24px'
-    height: '76px'
+    height: '72px'
   brand-seal:
     backgroundColor: '{colors.dark-accent-fill}'
     textColor: '{colors.dark-fg-on-accent}'
-    typography: '{typography.chrome}'
-    rounded: '{rounded.none}'
     width: '30px'
     height: '30px'
-  latest-seal:
-    backgroundColor: '{colors.dark-accent-fill}'
-    textColor: '{colors.dark-fg-on-accent}'
-    typography: '{typography.label}'
-    rounded: '{rounded.none}'
-    padding: '2px 10px 3px'
-  nav-dropdown:
-    backgroundColor: '{colors.dark-bg-surface}'
-    textColor: '{colors.dark-fg}'
-    rounded: '{rounded.none}'
-    padding: '8px'
-    width: '224px'
   article-surface:
-    backgroundColor: '{colors.dark-bg}'
+    backgroundColor: 'transparent'
     textColor: '{colors.dark-fg}'
-    padding: '48px 0 96px'
     width: '720px'
   post-index-row:
     backgroundColor: 'transparent'
     textColor: '{colors.dark-fg}'
-    rounded: '{rounded.none}'
-    padding: '20px 0'
-  post-index-row-hover:
-    backgroundColor: 'transparent'
-    textColor: '{colors.dark-fg}'
+    padding: '30px 0 32px'
   tag-inline:
     backgroundColor: 'transparent'
     textColor: '{colors.dark-fg-muted}'
-    typography: '{typography.label}'
-    rounded: '{rounded.none}'
-    padding: '0 0 1px'
-  tag-inline-hover:
-    textColor: '{colors.dark-fg}'
-  chip-category:
-    backgroundColor: 'transparent'
-    textColor: '{colors.dark-fg-muted}'
-    typography: '{typography.chrome}'
-    rounded: '{rounded.none}'
-    padding: '0 0 2px'
-  chip-category-hover:
-    textColor: '{colors.dark-fg}'
+    padding: '10px 0 9px'
   button-primary:
     backgroundColor: 'transparent'
     textColor: '{colors.dark-fg}'
-    typography: '{typography.chrome}'
-    rounded: '{rounded.none}'
-    padding: '0 40px'
     height: '58px'
-  button-primary-hover:
-    backgroundColor: '{colors.dark-accent-fill}'
-    textColor: '{colors.dark-fg-on-accent}'
   code-block:
     backgroundColor: '{colors.dark-bg-sunken}'
     textColor: '{colors.dark-fg}'
-    rounded: '{rounded.none}'
     padding: '20px 24px'
-  banner-series:
-    backgroundColor: 'transparent'
-    textColor: '{colors.dark-fg-muted}'
-    rounded: '{rounded.none}'
-    padding: '14px 18px'
-  card-note:
-    backgroundColor: '{colors.dark-bg-surface}'
-    textColor: '{colors.dark-fg}'
-    rounded: '{rounded.none}'
-    padding: '20px 22px'
 ---
 
 # Design System: Wildsky's Blog
 
-## Overview
+## Canon
 
-**Creative North Star: "覆潮之下 — Under Tides"**
+**Creative North Star：覆潮之下 — 哥德航海 × 有機深淵。**
 
-一套語言，兩片海。
+`comp/index-v7.html` 確立的方向是 canon；`references/style-research.md` 的 Recommendations 是本次重寫的研究依據。
+若研究報告的示意色值、v7 實作與可讀性互相衝突，優先序是：實測可讀性 → v7 的構圖語言 → 研究報告的方向。
 
-**Dark 是深海。** 背景不是黑、也不是中性灰，是帶藍的墨色——像從水面下十公尺往上看的那種藍。文字是冷白銀，結構線是鋼藍，溫度壓到最低。
+這是一套為長文技術部落格設計的語言，不是遊戲 UI 仿作。讀者看到的是一冊沉入水中的私人航行誌：
+正文仍然安靜、直接、容易讀；深海存在於頁面邊界、section 轉場、光線比例與少量航海線稿中，不靠介面術語。
 
-**Light 是海面。** 背景是近白帶一絲冷調的水光——白日下的甲板，不是印表機的白紙。文字是深鋼藍而非純黑，藍色血統一路貫穿到最亮的地方。
-
-兩者**不是互相反轉**，各自有情緒；但語言完全一致：同樣的碑刻排版、同樣的雙細線板、同樣的紅色紀律、同樣的兩軸色相（藍/青 ↔ 紅）。
-
-環境層是唯一**刻意不對稱**的地方：深淵的剪影比水暗，淺灘的剪影比水亮一點但仍是影。原因是物理的——暗色的剪影會**提高**淺色字的對比，亮色照抄同一個強度就會**壓垮**深色字。詳見 Colors 的環境層強度表。
-
-然後，兩片海都只有**一件紅衣**。血紅 `#C8323E` 是兩個主題唯一共用的原色——它是錨，主題切換時它不變。它在任何一個畫面的佔比不得超過 5%：只出現在 link hover、文章索引的互動紅線、以及**銅印**（見 Shapes）。參照圖裡的紅之所以會讓人心跳漏一拍，不是因為它多，是因為整片冷色裡只有那一件。**紅色一旦變成區塊底色，這套系統就死了。**
-
-第三個顏色是光，不是面。深海裡它是氣泡與生物光（淺青），海面上它是珊瑚與淺灘（海青）。它活在 code block 的語法高亮、focus ring、細分隔線——**永遠是發光的線或字，永遠不是填色**。
-
-形狀語言來自**紙與金屬**而不是螢幕：**直角、雙細線板、銅印、線框優先於色塊**。沒有一個圓角卡片，沒有一個切角，沒有一道柔和陰影。深度靠明度階與 1px 描邊建立，不靠模糊。
-
-（v7 之前這裡寫的是「斜切角、平行四邊形」——那是明日方舟 UI 的直譯，實作後被判定為遊戲 HUD 語彙而非貴氣語彙，已全面推翻。理由見 Shapes。）
-
-但這是一個**長文技術部落格**。所以有一條硬邊界：明日方舟味**全部集中在 chrome**——header、文章索引、tag、分隔線、footer、code block 外框、桌機兩側的直排導軌。**正文區塊保守到近乎乏味**：720px 的閱讀量尺、19px、行高 1.9、無裝飾、無斜切、無紅色。讀者一進入正文，介面就退場。
-
-**Key Characteristics:**
-
-- 雙主題共用一套語意 token；component 永不寫死色值
-- 色相只有兩軸：藍/青（HSL 180–213）與紅（HSL 355–356），不引入第三個色相
-- 血紅 `#C8323E` 是跨主題的錨，兩邊都不換；全站佔比 <5%
-- 「光」只作為線或字，永不作為填色面
-- 直角 ＋ 雙細線板（The Plate）取代圓角與切角；零陰影
-- 線框與描邊優先於填色塊
-- 刻印感排版：Cinzel 羅馬碑刻大寫（chrome）、EB Garamond 小型大寫（標籤）、Bodoni Moda Didone（標題）
-- Chrome 銳利、正文保守——兩者之間有明確的邊界線
-- 兩主題所有文字對比皆過 WCAG AA（實測值見 Colors）
-
-**確認的視覺反參考（絕對禁止）：** 圓角卡片堆疊；soft / elevation shadow；紫色漸層；glassmorphism；Inter-on-dark 的通用暗色模板；GitHub dark 式的中性灰暗色主題；紅色大面積使用；任何明日方舟角色圖像、logo 或官方素材；**把亮色主題做成暗色的機械反轉**；**遊戲 HUD 語彙**（切角、平行四邊形、方括號 lockup、全大寫寬字距的遙測讀數、刻度尺）。
+- **Dark 是深淵中的日誌。** 綠得發黑的 petrol 水體、帶青冷白文字、稀疏生物光。
+- **Light 是陰天海面上的紙頁。** 帶青的濕紙色、深 petrol 墨色、有機輪廓像水痕而不是污漬。
+- **血紅是錨。** `#C8323E` 跨主題不變，viewport 面積 `<5%`。
+- **珊瑚是遠處的燈。** `--ember` 是唯一限量豁免的第二暖色，viewport 面積 `<1%`。
+- **形狀先分人造與自然。** 導覽與控制保留直線紀律；水層、珊瑚、海扇、水螅與 deckle edge 才能有機。
+- **正文不演。** 720px、19px、襯線、1.9 行高；沒有深海角色扮演文案、裝飾框或暖色。
 
 ## Colors
 
-### Token 契約
+### Token contract
 
-顏色只以語意 token 存在。**任何 component 寫死色值即違規**——包含 Tailwind 調色盤 class（`text-gray-900`、`bg-slate-800`）與 hex。主題切換只發生在 token 層。
+component 只能使用語意 token；hex 只准出現在主題 token 宣告與本文件的對照表。核心結構仍是 15 個 token：
+四階 `--bg`、四個 `--fg` 角色（含 on-accent）、`--rule`、三個 `--accent` 角色、三個 `--glow` 角色；
+另新增唯一豁免 `--ember`，因此每個主題實際宣告 16 個色彩 token。
 
-| Token            | 用途                                     | Dark      | Light     |
-| ---------------- | ---------------------------------------- | --------- | --------- |
-| `--bg`           | 頁面地面                                 | `#0A1420` | `#EDF2F4` |
-| `--bg-surface`   | 內容平面（閱讀發生的地方）               | `#0D1B2A` | `#F7F9FA` |
-| `--bg-raised`    | hover / 啟用態                           | `#12253A` | `#E4EDF0` |
-| `--bg-sunken`    | 凹陷面（code block）                     | `#060E17` | `#DFE9EC` |
-| `--fg`           | 主要文字                                 | `#E8ECF0` | `#16283A` |
-| `--fg-muted`     | 次要文字（meta、摘要、圖說）             | `#8FAEBC` | `#3F6273` |
-| `--fg-faint`     | 圖示、≥24px 弱化標題（**不得用於小字**） | `#4A7A8C` | `#3D8A9E` |
-| `--fg-on-accent` | 落在紅色填色上的文字                     | `#E8ECF0` | `#F7F9FA` |
-| `--rule`         | 所有 hairline 與描邊（**永不作為文字**） | `#2D4A5E` | `#C5D5DC` |
-| `--accent`       | 血紅錨點：標記、線、≥24px 紅字           | `#C8323E` | `#C8323E` |
-| `--accent-text`  | <24px 的紅字（link hover、inline 標記）  | `#E4525C` | `#B82A36` |
-| `--accent-fill`  | 唯一可被填滿的紅（小面積）               | `#A8202C` | `#C8323E` |
-| `--glow`         | 語法高亮主色、focus ring                 | `#7FD4D4` | `#166363` |
-| `--glow-dim`     | 語法高亮次色（註解、標點）               | `#5FB8BC` | `#1B7272` |
-| `--glow-line`    | 純裝飾細線（**永不作為文字**）           | `#7FD4D4` | `#2BA3A3` |
+| Token            | 用途                                | Dark      | Light     |
+| ---------------- | ----------------------------------- | --------- | --------- |
+| `--bg`           | 頁面地面                            | `#07181A` | `#E7F0F1` |
+| `--bg-surface`   | 閱讀／chrome 表面                   | `#0A2325` | `#F4F8F8` |
+| `--bg-raised`    | hover／啟用態                       | `#123234` | `#DBE9EA` |
+| `--bg-sunken`    | code、footer、凹陷面                | `#041113` | `#D2E1E2` |
+| `--fg`           | 主要文字                            | `#DDEBEC` | `#102C2F` |
+| `--fg-muted`     | 摘要、small caps meta、圖說         | `#A3C0C3` | `#365F63` |
+| `--fg-faint`     | 弱化 meta／圖示；仍可承載 15px 文字 | `#76A0A5` | `#3C666A` |
+| `--fg-on-accent` | 紅色填色上的文字                    | `#F5F8F8` | `#F9FBFB` |
+| `--rule`         | hairline、非文字描邊                | `#2D575B` | `#A7C2C4` |
+| `--accent`       | 固定血紅錨；線、標記、≥24px 字      | `#C8323E` | `#C8323E` |
+| `--accent-text`  | 小字血紅可讀變體                    | `#F06E78` | `#98212C` |
+| `--accent-fill`  | Seal 等極小填色                     | `#9F1F2B` | `#C8323E` |
+| `--glow`         | focus ring、主要生物光、語法高亮    | `#7FD3D4` | `#075D60` |
+| `--glow-dim`     | 次要語法色、低階冷光文字            | `#62B7B9` | `#23696C` |
+| `--glow-line`    | 純裝飾細線；不可作文字              | `#3F9B9E` | `#26898D` |
+| `--ember`        | 燈塔暖光／特殊標記；極稀有          | `#E8895A` | `#9E431F` |
 
-### daisyUI 語意變數：deprecated alias
+所有冷色 token 的 HSL hue 落在 **180–188°**，保留規格上限 180–196° 的空間供圖片與環境層使用。
+Light 不採研究報告示意的 `#3A7CA5`：它偏回科技藍，與本次確立的 180–196° 主軸矛盾。
 
-Open Item 4 採**方案 (a) 過渡**：在自訂 daisyUI theme 中，把既有的 daisyUI 語意變數映射到新 token，讓 9 個檔案的既有 class 不必一次改完。
+### Theme character
 
-| daisyUI 別名           | 映射到         |
-| ---------------------- | -------------- |
-| `--color-base-100`     | `--bg-surface` |
-| `--color-base-200`     | `--bg`         |
-| `--color-base-300`     | `--bg-raised`  |
-| `--color-base-content` | `--fg`         |
-| `--color-primary`      | `--accent`     |
-| `--color-secondary`    | `--fg-faint`   |
-| `--color-accent`       | `--glow`       |
-| `--color-neutral`      | `--rule`       |
+- Dark 的四階從 `#041113` 到 `#123234`，暗但不落純黑；hover 往亮處抬升。
+- Light 的四階從 `#D2E1E2` 到 `#F4F8F8`，亮但不落純白；hover 像按濕紙一樣往暗處下沉。
+- 主題不是互相反轉。兩者共享 hue、語意、排版與形狀，但各自重算對比。
 
-**這些名字是 deprecated alias，只為過渡存在。** 三條硬規定：
+### Gradient choreography
 
-1. 新 code 一律直接寫 `var(--bg-surface)` 這類新 token，**不得新增任何 daisyUI 語意 class 的使用**（`bg-base-100`、`text-primary`、`border-base-300`…）。
-2. 動到任何既有檔案時，順手把該檔的 daisyUI 別名換成新 token——不另開遷移任務，用「路過就修」的方式收斂。
-3. 別名的映射表是唯一的真相來源；**不得為了讓某個既有 class 好看而調整映射**。映射不合用時的正解是把那個 class 換掉，不是改映射。
+垂直深度不是四等分色帶。環境水面層只佔頂部約 8%，在 26% 前完成第一段下潛，55% 進入 deep，
+88% 後才穩定落入 abyss；頁面下半部應有較長、安靜的深色停留。主 gradient 疊三個同色相、非對稱
+radial field：較大的亮場由左上進入，較小的回光停在右側約四分之一高度，另一片低明度水團由左側
+約三分之二高度進場；三者都不可形成等寬色帶或壓低文字對比。
 
-映射本身有語意失真，這是接受過渡成本的一部分：daisyUI 的 `primary` 是「主色」，而我們的 `--accent` 是「稀缺的強調色」——沿用 `text-primary` 會讓紅色出現在不該出現的地方，直接違反 The Red Dress Rule。這正是別名必須消失的理由。
+閱讀柱不可再用單一實色切斷深度。Desktop 以水平 mask 保護中間 820px 後，在保護面內沿垂直方向使用
+`--bg-surface 0% → --bg 20% → --bg 58% → --bg-sunken 100%`；mobile 改為全寬保護面，比例微調為
+`0% → 22% → 60% → 100%`。這些 stop 只能使用已完成對比驗算的四階背景 token，不得以透明環境色直接
+壓在正文下方。
 
-**方案 (b)（全面替換，移除 daisyUI 語意層）列入 backlog**，不在本次範圍。
+Caustics 不畫成等距窄條；使用 2–3 個寬度、長短與中心不同的橢圓 radial light，頂部最亮、在首屏下緣前消失。
+燈塔光束上窄下寬，以不對稱 clip-path 收束，從垂直軸傾斜約 12–16°；alpha peak ≤0.18，任何 stop 都維持
+180–196° 同色相。光束只能極慢呼吸，不可掃描頁面或形成探照燈式追蹤動作。
 
-### 兩個主題的性格
+### WCAG contrast matrix
 
-**Dark — 深海（`#0A1420` / `#0D1B2A`）。** 濁心斯卡蒂那張圖的世界：近黑的藍、幾點生物光、一件紅衣。中性階必須偏藍（HSL 210–213）；灰掉的那一刻就變成 GitHub dark，那是明確的反參考。
+計算採 WCAG 2.x relative luminance `(L1 + 0.05) / (L2 + 0.05)`，以未混色的 token 對四個合法底色逐項驗算。
+15–16px 襯線小字與 true small caps 以 **4.5:1** 為底線，不用縮字或宣稱「只是裝飾」規避。
 
-**Light — 海面（`#F7F9FA`）。** 官方 banner 那張圖的世界：白日、水光、乾淨的資訊面板。它**不是**把 dark 的明度倒過來——它有自己的邏輯：紙面在日光下是亮的，而互動（hover）讓它**沉下去**變暗，就像手指壓在濕紙上。深鋼藍 `#16283A` 取代純黑，讓藍色血統一路走到最亮處。
+#### Dark
 
-### 一個刻意的不對稱
+| Token           | `--bg` | `--bg-surface` | `--bg-raised` | `--bg-sunken` |
+| --------------- | -----: | -------------: | ------------: | ------------: |
+| `--fg`          |  14.87 |          13.41 |         11.21 |         15.68 |
+| `--fg-muted`    |   9.43 |           8.50 |          7.11 |          9.94 |
+| `--fg-faint`    |   6.36 |           5.74 |          4.79 |          6.71 |
+| `--accent`      |   3.45 |           3.11 |          2.60 |          3.64 |
+| `--accent-text` |   6.24 |           5.63 |          4.71 |          6.58 |
+| `--glow`        |  10.54 |           9.51 |          7.95 |         11.12 |
+| `--glow-dim`    |   7.79 |           7.03 |          5.87 |          8.21 |
+| `--ember`       |   7.06 |           6.37 |          5.33 |          7.45 |
 
-明度階在兩個主題裡有三個方向一致、一個相反：
+`--fg-on-accent` on `--accent-fill` = **7.27**。
 
-- `--bg-surface` 永遠比 `--bg` 更靠近白（兩主題一致）
-- `--bg-sunken` 永遠比 `--bg` 更暗（兩主題一致）
-- `--bg-raised`（hover）在 **dark 變亮**、在 **light 變暗**（相反）
+#### Light
 
-這是唯一的方向翻轉，且是被迫的正確答案：light 的 `--bg-surface` 已經接近白，再亮就是純白（明確禁止）。hover 在亮色介面本來就該壓深，這是紙與墨的物理直覺。
+| Token           | `--bg` | `--bg-surface` | `--bg-raised` | `--bg-sunken` |
+| --------------- | -----: | -------------: | ------------: | ------------: |
+| `--fg`          |  12.74 |          13.79 |         11.84 |         10.97 |
+| `--fg-muted`    |   6.10 |           6.60 |          5.67 |          5.25 |
+| `--fg-faint`    |   5.49 |           5.95 |          5.11 |          4.73 |
+| `--accent`      |   4.55 |           4.93 |          4.23 |          3.92 |
+| `--accent-text` |   7.00 |           7.58 |          6.51 |          6.03 |
+| `--glow`        |   6.61 |           7.15 |          6.14 |          5.69 |
+| `--glow-dim`    |   5.48 |           5.93 |          5.09 |          4.72 |
+| `--ember`       |   5.53 |           5.99 |          5.14 |          4.76 |
 
-### 對比實測（WCAG，本次逐項計算）
+`--fg-on-accent` on `--accent-fill` = **5.08**。
 
-**Dark**（文字色 vs `--bg-surface` `#0D1B2A`）：`--fg` 14.65、`--fg-muted` 7.41、`--accent-text` 4.69、`--glow` 10.16、`--glow-dim`（on `--bg-sunken`）8.37。`--fg-faint` 3.69（僅 AA Large / 非文字）、`--accent` 3.30（僅 AA Large）、`--rule` 1.87（非文字）。`--fg-on-accent` on `--accent-fill` = 6.08。
+`--accent` 固定值在部分底色不足 4.5，因此它**不是小字 token**；小字一定改用 `--accent-text`。
+`--rule` 與 `--glow-line` 是非文字 token，不以文字 AA 宣告合格，也不得被拿來排 12–16px meta。
 
-**Light**（文字色 vs `--bg-surface` `#F7F9FA`）：`--fg` 14.22、`--fg-muted` 6.20、`--accent` 4.99、`--accent-text` 5.81、`--glow` 6.63、`--glow-dim` 5.38。`--fg-faint` 3.73（僅 AA Large / 非文字）、`--rule` 1.43（非文字）、`--glow-line` `#2BA3A3` 2.89（純裝飾，非文字、非 focus ring）。`--fg-on-accent` on `--accent-fill` = 4.99。
+### Area budgets
 
-**最嚴苛的底（`--bg-sunken`）上**，兩主題所有承載文字的 token 仍過 AA：dark `--accent-text` 4.88 / `--glow` 11.33；light `--accent-text` 4.97 / `--glow` 5.67 / `--glow-dim` 4.60。
+面積預算以最終 viewport 截圖的像素分類驗收，不以 DOM 元件數猜測。
 
-### 環境層 token（The Organic Layer 專用）
+| 色彩                                   | 正常預算 | 硬上限 | 合法用途                                                      |
+| -------------------------------------- | -------: | -----: | ------------------------------------------------------------- |
+| 血紅族（hue 345–360°／0–2°、中高飽和） |    `≤3%` |  `<5%` | Seal、current/active 線、link hover、drop cap；正文段落禁用。 |
+| 珊瑚族（hue 10–25°、中高飽和）         |  `≤0.5%` |  `<1%` | 一束燈塔光、一個特殊標記或極少量孢子；每 viewport 只選一類。  |
 
-環境層是水本身，不是介面。它有自己的一組 token，因為既有語意 token 做不出「暗的青綠」——
-與 `--glow-dim` 混色會同時提亮並偏移色相。
+紅色硬上限之外，再加結構限制：單一填色元件不得大於 `200 × 40px`，一個 viewport 最多兩枚 Seal。
+珊瑚不得用於 success 狀態、一般 hover、段落連結、整片 gradient 或與紅色並列的雙主 CTA。
 
-| Token              | 用途                           | Dark      | Light     |
-| ------------------ | ------------------------------ | --------- | --------- |
-| `--env-surface`    | 明度軸最上端（水面方向）       | `#16323A` | `#F2F7F8` |
-| `--env-mid`        | 明度軸 30%                     | `#0E2129` | `#E4EEF0` |
-| `--env-deep`       | 明度軸 62%                     | `#081519` | `#D5E4E7` |
-| `--env-abyss`      | 明度軸底端；暗角；`body` 底色  | `#050D0F` | `#CADCE0` |
-| `--env-raised`     | 環境層上的抬升面               | `#1B3A42` | `#DDEAEC` |
-| `--env-silhouette` | 有機剪影（礁、藻、魚群、水母） | `#030A0C` | `#AFC7CD` |
-| `--env-beam`       | 光束                           | `#4A7A8C` | `#EAF7F9` |
-| `--env-caustic`    | 水面波光                       | `#7FD4D4` | `#EAF7F9` |
-| `--env-spark`      | 氣泡高光                       | `#7FD4D4` | `#EAF7F9` |
+### Environment tokens
 
-全部落在 HSL 188–198，與 Never-Neutral Rule 相容。
+環境層不是介面，不承載資訊；它使用獨立 token，避免把 text token 混成不可預測背景。
 
-### 環境層強度（兩主題唯一的結構性不對稱）
+| Token              | 用途                 | Dark      | Light     |
+| ------------------ | -------------------- | --------- | --------- |
+| `--env-surface`    | 水面方向             | `#15383A` | `#EDF5F5` |
+| `--env-mid`        | 中層水色             | `#0E292B` | `#DCE9EA` |
+| `--env-deep`       | 深層水色             | `#081D1F` | `#CCDDE0` |
+| `--env-abyss`      | 最深水色             | `#041315` | `#C0D4D6` |
+| `--env-raised`     | 局部亮水層           | `#1A4143` | `#E3EEEE` |
+| `--env-silhouette` | 珊瑚、海扇、水螅剪影 | `#020A0B` | `#A8C4C6` |
+| `--env-beam`       | 冷燈塔光束           | `#76A0A5` | `#F4F8F8` |
+| `--env-caustic`    | 水面波光             | `#7FD3D4` | `#F4F8F8` |
+| `--env-spark`      | 氣泡／冷孢子         | `#3F9B9E` | `#26898D` |
 
-| 純量                | Dark   | Light    | 為什麼不同                                                               |
-| ------------------- | ------ | -------- | ------------------------------------------------------------------------ |
-| `--env-organic-op`  | `1`    | `0.42`   | 暗色剪影比水暗 → **提高**淺色字對比；亮色剪影比水暗 → **降低**深色字對比 |
-| `--env-mote-op`     | `0.14` | `0.08`   | 同上，微粒在亮色主題是扣分項                                             |
-| `--env-strata-op`   | `0.5`  | `0.55`   | 亮色的層界需要多一點才看得出來                                           |
-| `--env-grain-blend` | screen | multiply | 顆粒在亮底上必須是乘法，否則會被洗掉                                     |
+環境最亮／最暗元素不得穿過 720px 閱讀柱；若穿過 1120px chrome 內側，必須先加一層實色或高不透明度
+的 `--bg`／`--bg-surface` 保護文字，再以實際 screenshot 取最壞點驗算。
 
-**這些值不是品味，是實測解出來的上限。** 亮色 `--env-organic-op` 從 1 降到 0.42 的過程：
-1.0 → `--fg-muted` 4.01（✗）→ 0.42 → 4.38（✗，此時瓶頸換成暗角）→ 暗角改綁 chrome 外側 → 4.46（✗，瓶頸換成微粒）→ `--env-mote-op` 0.08 → **4.75（✓）**。
+### Named color rules
 
-### 環境層與文字的分界（實測結論，非偏好）
+**The Red Dress Rule.** 血紅 viewport 像素 `<5%`，正常目標 `≤3%`。紅的力量只來自稀缺。
 
-1. **環境層最亮／最暗的元素不得進入 chrome 內側**（`(100% − 1120px) / 2` 以內）。噴氣孔的 `--glow-line` 氣泡曾被放進正文欄，實測讓該處對比掉到 **2.22**。
-2. **暗角（vignette）用 `calc((100% − var(--chrome)) / 2)` 而非百分比。** 百分比會隨視窗寬度漫進閱讀欄。
-3. **`--accent-text` 在暗色主題不得用於環境層上的小字。** 它是對著 `--bg` `#0A1420` 校準的（4.69），落到水色漸層上只剩 **3.83–4.17**。13px 的紅字一律改用 Seal（反白 6.08）或改成紅「線」＋ `--fg` 文字。27px 以上的宣言不受限（大字門檻 3.0，實測 3.83 ✓）。
-4. **`--fg-faint` 不得用於小字**（The Faint Floor Rule 的量化佐證）：`#4A7A8C` on `--bg-sunken` `#060E17` 實測 **4.49**，13px 未過 AA。改 `--fg-muted` 得 **8.30**。
+**The Anchor Rule.** `--accent` 在 dark／light 永遠是同一支 `#C8323E`；可讀變體與 fill 可依主題調整，錨不可動。
 
-### 兩主題環境層最終實測（v7，逐幀取最壞值）
+**The Two-Axis-Plus-Ember Rule.** 主軸只有 180–196° petrol/teal；血紅軸只有 355–356°；
+珊瑚 18° 是唯一豁免，且 `<1%`。success／warning 不得藉語意之名新增綠、黃或橙色。
 
-- **Dark**（有文字的區帶內，背景最亮處）：`--fg` **9.06** ✓、`--fg-muted` **4.58** ✓
-- **Light**（有文字的區帶內，背景最暗處）：`--fg` **10.89** ✓、`--fg-muted` **4.75** ✓、`--accent-text` 4.45（僅用於 27px 宣言，大字門檻 3.0 ✓）
+**The No Hardcode Rule.** component 層不得出現 hex、`rgb()`、`hsl()` 或 Tailwind palette class；只准 `var(--token)`。
+SVG 也必須用 `currentColor` 或 CSS custom property。
 
-### 色票調整說明（原始色票 → 實作值）
+**The Never-Neutral Rule.** 所有背景、前景、rule 與冷光都帶 180–196° 色相；純白、純黑、中性灰、暖灰皆違規。
+接近白的顏色即使 hue 數值不穩定，RGB 仍必須保留可見的 cyan 成分差。
 
-你給的色票有三支撐不住小字，已在**同色相軸上**補可讀變體，原色票全部保留在非文字用途：
+**The Same-Hue Gradient Rule.** 冷場 gradient 的每個 stop 都必須落在 180–196°，只能沿明度／少量飽和度變化；
+不得跨到藍紫、綠黃。血紅與珊瑚不得參與 gradient。radial glow 是光源分布，不是跨色漸層豁免。
 
-- Light 海青 `#3D8A9E`（3.73）→ 保留為 `--fg-faint`（圖示、大字）；小字次要層另立 `--fg-muted` `#3F6273`（6.20，HSL 200，同軸）。
-- Light 珊瑚青 `#2BA3A3`（2.89）→ 保留為 `--glow-line`（純裝飾細線）；語法高亮與 focus ring 用 `--glow` `#166363`（6.63）與 `--glow-dim` `#1B7272`（5.38），三者 HSL 色相皆為 180，同一支顏色的深淺。
-- 血紅 `#C8323E` 在 dark 上只有 3.30 → dark 的小字紅另立 `--accent-text` `#E4525C`（4.69）。在 light 上 `#C8323E` 本身就是 4.99，可直接當小字紅；但落在 code 底時降到 4.27，故 light 的 `--accent-text` 用 `#B82A36`（4.97）。
+**The Glow-Is-Light Rule.** `--glow*` 只能作字、1–2px 線、focus ring、≤6px 光點或低 alpha radial light；
+不能作容器填色、大片霓虹邊框或 shadow 替代品。
 
-色相關係未動：所有藍/青落在 HSL 180–213，所有紅落在 HSL 355–356。
+**The Faint Floor Rule.** `--fg-faint` 在四階合法底色上的最低值是 dark 4.79、light 4.73，
+因此可承載最小 15px meta；任何透明化、混色或環境疊加後若低於 4.5，立即升回 `--fg-muted`。
+`--rule` 與 `--glow-line` 永遠不是文字。
 
-### 系統整合
-
-- **`theme-color` meta：** 必須跟著主題切換。Dark `#0A1420`、Light `#F7F9FA`。以兩條帶 `media` 的 meta 標籤宣告（`prefers-color-scheme: dark` / `light`），並在使用者手動切換主題時同步更新。`msapplication-TileColor` 統一為 `#0A1420`。
-- **`color-scheme`：** `<html>` 上宣告 `color-scheme: dark` / `light`，讓捲軸、表單控制項、`::selection` 預設值跟著走。
-- **`::selection`：** 底 `--accent-fill`、字 `--fg-on-accent`。這是紅色被允許填滿的位置之一，且面積由使用者控制，不計入 5% 預算。
-
-### Named Rules
-
-**The Red Dress Rule.** 血紅在任何一個 viewport 的佔比不得超過 5%，兩主題皆然。判準可機械檢查：截一張圖，紅色像素超過畫面 5% 即違規。它的力量百分之百來自稀缺——第二件紅衣出現的瞬間，第一件就不再有意義。
-
-**The Anchor Rule.** `--accent`（`#C8323E`）在兩個主題是同一個值。主題切換時，紅色是唯一不動的東西——那是這套系統的錨。可讀性變體（`--accent-text`）可以換，錨不行。
-
-**The Two-Axis Rule.** 全系統只有兩個色相軸：藍/青（HSL 180–213）與紅（HSL 355–356）。任何第三個色相（綠、黃、紫、橙）即違規，包含語意色（success / warning）——需要語意區分時用形狀、圖示或 `--accent` 的有無，不用新色相。
-
-**The Glow-Is-Light Rule.** `--glow` 系列只能是發光的線或字，永遠不能是填色面。code block 的底是 `--bg-sunken` 配 glow 的字，不是 glow 的底。glow 作為容器底色即違規。
-
-> **補注（2026-08-16）：** 2–3px 的 glow 光點視為「光」，合法——生物光、指示點、極小的發光標記都在此範圍內。判準是尺度：光點不構成「面」。glow 作為容器底色仍然違規，這條沒有放寬。
-
-**The No Hardcode Rule.** component 層不得出現任何 hex、`rgb()`、或 Tailwind 調色盤 class。只准 `var(--token)`。這條是雙主題能成立的唯一保證。
-
-**The Same-Hue Gradient Rule（2026-08-16 新增）.** 禁止**跨色相**漸層；允許**同色相（HSL 188–213）明度漸層**。這是為了讓深海有光——水的深度感本來就是一條連續的明度軸，硬停點做不出來。三個邊界：漸層只能改變明度，不得改變色相或飽和度方向；紅色（HSL 355–356）永遠不參與漸層；漸層不得用來製造 glow 或陰影的替代品（Zero Shadow Rule 不因此放寬）。
-
-**The Never-Neutral Rule.** 兩主題所有中性階都必須帶藍（**HSL 188–213**，2026-08-16 放寬）。放寬的用意是讓環境層可以往青綠沉——覆潮之下的水是綠得發黑的，不是乾淨的藍。純灰、暖灰、純白、純黑一律違規。
-
-**The Organic Layer Rule（2026-08-16 新增）.** 這套系統有兩種形狀語言，**不得混用**：
-
-- **人造物（chrome 與元件）**：header、文章列、tag、按鈕、卡片、code block——一律幾何、直角、直邊。這是紀律，代表「人造」。
-- **環境層（背景、水層、剪影、暗角）**：允許不規則、有機、撕裂的邊緣（SVG path、筆刷感輪廓）。這是「人造物沉在其中的那片海」。
-
-判準：**問這個東西是不是人做的。** 是 → 幾何直角；不是 → 可以有機。環境層的層界用撕裂邊，元件的直角照舊——一個 tag 長出有機邊即違規，一片水層用直線斜切則是浪費了這條規則。
-
-環境層永不進入 720px 閱讀柱，也永不承載資訊。
-
-**The Ambient Motion Rule（2026-08-16 新增）.** 動畫只存在於環境層，**正文區與 chrome 零動畫**（狀態轉換的 120ms 不算動畫，那是回饋）。
-
-環境動畫的三條規格：
-
-- **慢**：週期下限 20 秒。氣泡上漂 20–40s、光束呼吸 30s+、生物光明滅各自不同步。任何低於 20s 的環境動畫都會變成「在動的東西」而不是「活著的環境」。
-- **不同步**：同類元素之間必須有不同的 duration 與 delay。整齊劃一的閃爍是機器，不是海。
-- **一律播放（2026-08-16 使用者裁示）**：不再用 `@media (prefers-reduced-motion: no-preference)` 包起來。
-  這是**刻意放棄的無障礙讓步**，記錄在案：前庭敏感的訪客無法透過系統設定關掉水中動態。
-  代價換到的是「這頁真的在水裡」這件事對所有人成立——先前包在閘門內時，實測沒有人看得出頁面在動。
-
-只准動 `transform` 與 `opacity`。動任何佈局屬性即違規。
-
-**The Faint Floor Rule.** `--rule` 與 `--glow-line` 是線，不是字；`--fg-faint` 是圖示與 ≥24px 大字，不是小字。小於 24px 的次要文字一律用 `--fg-muted`。
+**The Color-Mix Clause.** `color-mix()` 只准用於裝飾線、focus 外暈、hover 背景或有機環境層；文字色禁止混透明。
+語法固定為 `color-mix(in oklab, var(--token) N%, transparent)`，不得混兩個不同色相 token。
+任何 `color-mix()` 產生的文字／互動邊界仍需針對最終背景驗算；token 本身通過不代表混色後通過。
 
 ## Typography
 
-**Chrome Font:** Cinzel（Latin，羅馬碑刻大寫）→ Noto Serif TC（CJK）
-**Display / Title Font:** Bodoni Moda（Latin，Didone）→ Noto Serif TC（CJK）
-**Label Font:** EB Garamond 小型大寫（Latin）→ Noto Serif TC（CJK）
-**Body Font:** Source Serif 4（Latin）＋ Noto Serif TC（CJK）
-**Code Font:** JetBrains Mono
+### Canonical stack and licensing
 
-字體與字級**兩主題完全相同**，不因明暗調整。唯一的例外見下方 The Optical Weight Rule。
+| 角色                        | 字體                   | 授權        | 官方來源                                                                  | 決策                                |
+| --------------------------- | ---------------------- | ----------- | ------------------------------------------------------------------------- | ----------------------------------- |
+| 繁中 body／heading fallback | Noto Serif TC Variable | SIL OFL 1.1 | [notofonts/noto-cjk](https://github.com/notofonts/noto-cjk)               | 覆蓋與 webfont 穩定優先，正式定案。 |
+| Latin body／true small caps | EB Garamond Variable   | SIL OFL 1.1 | [octaviopardo/EBGaramond12](https://github.com/octaviopardo/EBGaramond12) | 人文襯線；`smcp`／`c2sc`。          |
+| Display                     | Cormorant SC           | SIL OFL 1.1 | [CatharsisFonts/Cormorant](https://github.com/CatharsisFonts/Cormorant)   | 只用 ≥36px 的短標題。               |
+| 氛圍 meta                   | Space Mono             | SIL OFL 1.1 | [googlefonts/spacemono](https://github.com/googlefonts/spacemono)         | 只限英文縮寫、日期與技術數值。      |
+| Code                        | JetBrains Mono         | SIL OFL 1.1 | [JetBrains/JetBrainsMono](https://github.com/JetBrains/JetBrainsMono)     | 沿用；只負責程式碼。                |
 
-**Character:** 這套系統的氣質靠字體承擔一半，而且由**三支拉丁字體分工**，不是一支通吃。
+**Cormorant SC 而非 Playfair Display SC。** Cormorant 有獨立 Small Caps 家族，字身較窄長、細銳，
+更接近航海銅版刻字；Playfair 的報刊／維多利亞編輯感較強，容易把首頁拉成時尚雜誌。
+代價是小尺寸細筆脆弱，所以 Cormorant SC 僅限 `≥36px`、600 weight、短行，不用於導覽、meta 或正文。
 
-- **Cinzel** 是羅馬碑刻大寫的數位化——字形直接來自石刻與銅牌的銘文。它負責 chrome：站名、日期數字、分類、按鈕、watermark、footer。**銅印感就住在這支字裡。**
-- **Bodoni Moda** 是高反差的 Didone，粗筆與髮絲筆落差極大。它只負責**標題**：文章頁標題、索引標題、hero 宣言。Didone 的貴氣要在 24px 以上才成立。
-- **EB Garamond 的小型大寫**負責標籤：閱讀時間、tag、hero kicker。小型大寫是古典書籍與航海圖的標註慣例，它取代「全大寫 ＋ 寬字距」——後者是遙測讀數的排版，會把介面拉回科幻 HUD。
+**Noto Serif TC 而非源流明體。** 改版前使用的 Fontsource static package，其 full Traditional Chinese 400 WOFF2 約 1.81 MiB；
+Fontsource variable 5.3.0 全包約 5.85 MiB，依 unicode-range 切為多個 WOFF2。以 v7 可見字元估算，實際命中的 15 個
+variable shards 約 1.24 MiB，並同時涵蓋所需字重。源流明體 2.100 的七個 TW OTF 各約 16.0–16.4 MiB，
+官方沒有 WOFF2／unicode-range 發行；雖可自建逐頁 subset，但 120 篇文章會帶來字元盤點、缺字回歸與快取碎片成本。static Noto package 已從 production 移除。
 
-**為什麼 chrome 從 Bodoni 換成 Cinzel**（2026-08-16，v7）：Bodoni 的髮絲筆畫在 13–24px 就開始被抗鋸齒吃掉，使用者的原話是「看不太清楚」。Didone 是為大尺寸設計的；碑刻體是為**小尺寸的耐久辨識**設計的。這不是品味調整，是把字體用回它被設計的尺寸區間。
+正式載入策略：
 
-中文一律 **Noto Serif TC**（明體）：明體的橫細直粗與 Bodoni／Cinzel 的反差邏輯同源，中英混排時的筆畫節奏才不會斷。
+1. CJK 由 `@fontsource-variable/noto-serif-tc` 載入 `wght 400–600` 的 unicode-range shards。
+2. Latin 優先由 EB Garamond、Cormorant SC、Space Mono 各自承擔，避免 Noto CJK shard 為 ASCII 重複下載。
+3. production 預載只限首屏真正命中的 Latin WOFF2；不預載全部 CJK shards。
+4. `font-display: swap`；fallback 指標以 `size-adjust`／`font-size-adjust` 校正時，需重新做 CLS smoke test。
+5. Chakra Petch、Source Sans 3、Source Serif 4、Cinzel、Bodoni Moda 全面退場，不留隱性 fallback。
 
-正文用 **Source Serif 4 ＋ Noto Serif TC**。Source Serif 是 Source Sans 的襯線姊妹，專為螢幕長文設計。
+### Hierarchy and minimum sizes
 
-**為什麼正文是襯線而不是無襯線**（2026-08-17 修正）：v7 初版把正文設成 Source Sans 3，理由是「無襯線在深色底上更穩，且與 chrome 形成材質分界」。實際上線後這個理由站不住——站上原本就是 `font-serif`，而且整套語言（碑刻大寫、Didone 標題、舊體小型大寫標籤）都是襯線，正文突然變無襯線讀起來像是另一個網站貼進來的區塊。材質分界應該靠**字級與字距**做，不是靠有沒有襯線。
+- **Display:** Cormorant SC 600，`clamp(36px, 5vw, 56px)`，行高 1.05，字距 0.035em；只排短 Latin 標題。
+- **CJK display:** Noto Serif TC 600，`clamp(36px, 4.2vw, 56px)`；mobile 可降到 30px，行高 1.28，字距 ≤0.015em。
+- **Headline:** EB Garamond／Noto Serif TC 600，24–30px，行高 1.4。
+- **Body:** EB Garamond 400 + Noto Serif TC 400，19px，行高 1.9，字距 0.008em，量尺 720px。
+- **Compact body:** 16px 是連續襯線文字硬下限，行高至少 1.75；只用於摘要、圖說與短段落。
+- **Small caps meta:** EB Garamond 500，15px，行高 1.45，字距 0.055em，`font-variant-caps: all-small-caps`，
+  並顯式開啟 `font-feature-settings: 'smcp' 1, 'c2sc' 1`。
+- **Atmospheric meta:** Space Mono 400，12px，行高 1.5，字距 0.045em；一組最多 24 個 Latin 字元，不排 CJK。
+- **Navigation:** EB Garamond／Noto Serif TC 500，18px，正常大小寫；觸控高度 ≥44px。
+- **Code:** JetBrains Mono 400，15px，行高 1.7。
 
-### Hierarchy
+### 15–16px serif readability assessment
 
-- **Display**（Bodoni Moda 600、`clamp(2rem, 4.5vw, 2.75rem)`、行高 1.2）：文章頁標題。
-- **Headline**（Bodoni Moda 600、27px、行高 1.45）：文章索引標題、hero 宣言、正文 `h2`。**索引標題不得放大到 Display 級**——索引一屏要能掃到多篇，紀念碑化會把掃讀變成捲動。
-- **Chrome**（Cinzel 500–600、13px / 24px、字距 0.12–0.18em）：站名、日期數字、分類、按鈕、footer。字距必須寬——碑刻大寫的字腔本來就是靠字距呼吸的。
-- **Title**（Bodoni Moda 700、24px、行高 1.4）：區塊小標。**Didone 在小尺寸的暗底上會掉髮絲筆畫，所以 Title 級一律 700，不用 600。**
-- **Body**（Source Serif 4 / Noto Serif TC 400、19px、行高 **1.9（unitless）**、字距 0.01em）：正文。量尺 720px。行高必須無單位——放大基準字級時要等比縮放，這是可及性要求。
-- **Label**（EB Garamond 500、13px、字距 0.06em、**小型大寫**）：日期、分類、tag、閱讀時間、所有 meta。
-- **Watermark**（Cinzel 400、132px、字距 0.08em）：裝飾性直排字，僅環境層使用，`aria-hidden`。
-- **Code**（JetBrains Mono 400、15px、行高 1.7）。
+Noto Serif TC 在 16px／400 weight、正常像素密度下可讀，但細橫筆與標點在 dark 背景會比無襯線更易糊；
+因此 16px 只准短摘要與圖說，採 `--fg`／`--fg-muted`、行高 ≥1.75。15px 的 Noto Serif TC 不用於連續 CJK 句子。
 
-### Named Rules
+EB Garamond 的 x-height 偏小；15px 合法範圍只限 true small caps meta，需 500 weight、`--fg-muted` 以上對比、
+短行且不可全段斜體。正文與導覽分別維持 19px、18px，不以提高對比換取縮小字級。
 
-**The Chrome Frontier Rule.** Cinzel、Bodoni Moda 與 EB Garamond 只活在 chrome、標題與標籤裡。正文的 `p`、`li`、`blockquote`、表格內容一律 Source Serif 4 / Noto Serif TC。在正文段落裡出現這三支之一即違規。
+### Named typography rules
 
-**The Navigation Legibility Exception（2026-08-17 新增）.** 導覽項目不受 Label 字級（13px 小型大寫）管轄，一律 **19px 正常字**。小型大寫在 13px 是給「掃過去的標註」用的；導覽是**要被點的目標**，可讀性優先於一致性。這是唯一一處刻意違反 Small-Caps Label Rule 的地方，理由記錄在此。
+**The Chrome Frontier Rule.** Cormorant SC 與 Space Mono 只活在 display、導覽外殼、meta 與裝飾；
+EB Garamond／Noto Serif TC 承擔內容。正文段落不得出現 display face 或 atmospheric mono。
 
-**The Right Font For The Size Rule（2026-08-16 新增）.** Bodoni Moda 不得用於 24px 以下；Cinzel 不得用於 27px 以上的標題。前者在小尺寸掉筆畫，後者在大尺寸會變成紀念碑而不是文章標題。字體的選用先看尺寸，再看語意。
+**The Uppercase Latin Rule.** 一般 meta 不再用 CSS `text-transform: uppercase` 配寬字距；必要的英文縮寫改用 EB Garamond true small caps。
+Space Mono 只承載真實日期、頁碼或技術數值，字距上限 0.06em，不用來替普通介面文字製造儀表感。
+中文不做 small caps、不 uppercase，字距上限 0.02em。
 
-**The Small-Caps Label Rule.** meta 標籤一律**小型大寫 ＋ 0.06em**，不得使用「全大寫 ＋ ≥0.12em 寬字距」。後者是螢幕遙測讀數的排版慣例，會讓整個介面變成科幻 HUD——這套系統要的是刻印銘牌。中文不受此規範影響：中文永遠不做大寫處理，字距不超過 0.02em。
+**The Bilingual Title Rule.** 雙語標題並置時，中文用 Noto Serif TC 正常明體，Latin 用 EB Garamond true small caps
+或大尺寸 Cormorant SC；以 baseline／明度對齊，不把中文縮小來模仿小型大寫。
 
-**The Didone Weight Floor Rule.** Bodoni 在 24px 以下的暗底上一律 700 字重；24px 以上才可用 600。Didone 的髮絲筆畫在深色底上會被抗鋸齒吃掉，標稱對比再高也救不了視覺上變細的筆畫——這是字體結構問題，不是顏色問題。
+**The Minimum Serif Rule.** 連續襯線正文 ≥16px，長文預設 19px；EB Garamond small caps ≥15px；Cormorant SC ≥36px。
 
-**The Boring Body Rule.** 正文區塊照長文閱讀最佳實務走，不創新：720px 量尺、19px、行高 1.9、段落 24px 間距、無斜切、無紅色、無裝飾元素。chrome 之所以能有個性，是因為正文完全不吵。
+**The Boring Body Rule.** 正文固定 720px、19px、1.9 行高、段落間距 24px；零裝飾框、零環境動畫、零暖色。
 
-**The Weight-Follows-Meaning Rule（2026-08-16 新增）.** 視覺重量只能給有意義的東西。任何元素在放大之前先問：**它承載的資訊，值得這個尺寸嗎？** 「120 篇裡的第 16 篇」不值得全頁最大的字；最新一篇是哪一篇值得一個紅標。裝飾可以存在，但不得偽裝成資訊去搶走層級的頂端。
+**The Weight-Follows-Meaning Rule.** 尺寸與重量給資訊價值，不給裝飾代號。篇數、頁碼與年份不得搶過文章標題。
 
 ## Layout
 
-版型兩主題完全相同。
+版型兩主題完全相同。閱讀層 720px、chrome 層 1120px、code overhang 840px。
 
-雙層寬度。**閱讀層 720px**（正文、文章索引），**chrome 層 1120px**（header 內容、footer、區塊分隔線、meta 行）。chrome 比正文寬，於是每一道水平規則都會從文字兩側**伸出去**——這是深海儀器面板的感覺，也是這套版型最容易辨認的動作。
+- `≥1120px`：完整 overhang，水平 rule／meta 可比正文兩側各伸出最多 200px。
+- `768–1119px`：chrome 為 `min(1120px, 100% - 48px)`，閱讀層逐步收斂。
+- `<768px`：兩層同寬 `100% - 40px`，overhang 合法退場，不用負 margin 偽造。
+- 側邊直排導軌只在 `≥1280px` 出現，`aria-hidden="true"`，不承載連結與資訊。
+- 文章索引永遠是單欄表列，不是卡片網格；每列上緣 1px rule，日期／meta／標題／tag 依序掃讀。
 
-頁面骨架維持三段：`header`（64px 高，`--bg-surface` 底，底部 1px `--rule`，右端 40px 一段 `--accent` 斷點）→ `main` → `footer`。整頁 `min-h-screen` flex column，footer 貼底。
+**The Overhang Rule.** `chrome computed width > reading computed width` 時，rule 與 meta 延伸到 chrome；
+兩層等寬時規則停用。code block 只在可用寬度 ≥840px 時 overhang。
 
-文章索引是**表列而不是卡片**：每列上緣一道 1px `--rule` hairline，列內三段——左側 `LOG 2026.08.16` 代號式日期（Label 字級）、中間標題（Headline）、下方 tag 列（無框小型大寫）。列與列之間 32px，沒有卡片框、沒有陰影、沒有縮圖。hover 時**只做兩件事**：左緣長出一道 2px `--accent` 直線、日期升亮一階。**整列底色不變**——底色面板是軟體 UI 的語彙，在紙與金屬的世界裡不成立。每頁 16 篇（沿用 `PAGINATION_PER_PAGE_COUNT`）。
+**The Single Column Rule.** 沒有內容側欄；環境剪影與直排字不是第二資訊欄。
 
-**桌機側邊導軌（≥1280px）：** 閱讀柱兩側的空白裝上兩道垂直的 Label 字級文字，`writing-mode: vertical-rl`，`--rule` 色，`aria-hidden`。左側是站點代號（`WILDSKY.CC / LOG ARCHIVE / SINCE 2014`），右側是當前頁的分類或系列代號。這是官方 banner 那種直排側欄的直譯，且完全不進入閱讀動線。<1280px 一律不顯示。
+## Elevation and depth
 
-斷點沿用 Tailwind 預設（`sm` 640 / `md` 768 / `lg` 1024 / `xl` 1280 / `2xl` 1536）。真正的轉折點有三個：`lg` 出現右下固定導航列與寬鬆內距；`xl` 出現側邊直排導軌；`sm` 以下 header 收掉站點描述、正文左右內距降到 20px。
+深度只由四階底色、1px rule、有機層疊與極低 alpha 局部光建立；不用 elevation shadow。
 
-### Overhang 的收斂與退場
-
-兩層寬度只有在**視窗放得下兩層**時才成立。三段行為：
-
-**≥1120px（完整 overhang）。** chrome 層 1120px、閱讀層 720px，兩側各伸出 200px。這是設計的完整形態。
-
-**720–1120px（overhang 壓縮）。** chrome 層改為 `min(1120px, 100% - 2 * var(--gutter))`，`--gutter` 為 24px（`sm` 以上）／ 20px（`sm` 以下）。閱讀層維持 720px 直到視窗容不下為止，之後同樣退為 `100% - 2 * var(--gutter)`。overhang 的量隨視窗連續縮小，不跳階——伸出去的差值可以變小，但只要 chrome 寬 > 閱讀寬就必須看得出來。
-
-**< 768px（overhang 退場）。** 兩層寬度收斂為同一個值（`100% - 2 * var(--gutter)`），overhang 歸零。此時水平規則與正文切齊，**這是合法狀態，不是違規**——The Overhang Rule 只在兩層寬度不同時生效。退場後不得用任何替代裝飾（負 margin、溢出線、假邊距）去模擬 overhang。
-
-**code block 的 840px 溢出同理。** 實作為 `width: min(840px, 100%)` 搭配置中；當可用寬度 < 840px 時溢出自然歸零，code block 與正文同寬。**< 840px 時不得保留任何負 margin 或 `calc()` 撐寬**——橫向捲動只發生在 code block 內部（`overflow-x: auto`），永遠不發生在頁面上。
-
-判斷式（實作與審查都用這一條）：
-
-```
-overhang 存在 ⟺ chrome 層計算後寬度 > 閱讀層計算後寬度
-```
-
-**The Overhang Rule.** 當 chrome 層寬 > 閱讀層寬時，水平分隔線、meta 行、footer 內容必須延伸到 chrome 寬，正文停在閱讀寬；此時分隔線與文字切齊即違規——那個伸出去的差值就是設計本身。當兩層寬度相等（< 768px）時本規則不適用，切齊是正確行為。
-
-**The Single Column Rule.** 沒有側欄，也不打算有。側邊導軌是裝飾層，不承載任何資訊或連結。
-
-## Elevation & Depth
-
-**零陰影系統，兩主題皆然。** 這是絕對禁令，不是預設值：`box-shadow` 只允許出現在一個地方——focus ring 的 `0 0 0 2px var(--glow)`，而那本質上是描邊不是陰影。任何 `box-shadow: 0 Npx Npx rgba(0,0,0,...)` 即違規。
-
-深度由三個機制建立：
-
-1. **明度階**：`--bg-sunken` → `--bg` → `--bg-surface` → `--bg-raised`。四階之間的差都很小，dark 疊起來像水下的濁度層，light 疊起來像日光下的薄紙。方向的差異見 Colors 的「一個刻意的不對稱」。
-2. **1px `--rule` 描邊**：所有邊界都是線，不是陰影。線是這套系統唯一的分隔機制。
-3. **雙細線板（The Plate）**：一個容器被雙細線框住，就等於宣告它是一個獨立物件——框本身在承擔陰影的工作。
-
-### Shadow Vocabulary
-
-- **focus-ring**（`box-shadow: 0 0 0 2px var(--glow)`）：唯一允許的 `box-shadow`。兩主題皆過非文字 3:1（dark 10.16、light 6.63）。**不得改用 `--glow-line`**——light 的 `--glow-line` 只有 2.89，做 focus ring 不合格。
-
-### Named Rules
-
-**The Zero Shadow Rule.** 除 focus ring 外，全站 `box-shadow: none`。需要層次就換一階明度或加一條 1px 線。這條沒有例外，也不因主題放寬。
+**The Zero Shadow Rule.** 除 focus ring 的 `0 0 0 2px var(--glow)` 外，`box-shadow: none`。
+燈塔／生物光以 radial gradient 或 SVG alpha 呈現，不用 drop shadow、text shadow 或 neon shadow。
 
 ## Shapes
 
-形狀語言兩主題**完全相同**，一個像素都不變。這是「同一套語言」最具體的體現。
+### Organic or plumb
 
-**直角，不是切角，更不是圓角。** 全站 `border-radius: 0`，且**不再使用 `clip-path` 切角**。
+舊 The No Radius Rule 與 One-Corner Rule 退場，改由單一判準取代：
 
-> **為什麼推翻切角**（2026-08-16，v7）
-> 切角矩形與 -12° 平行四邊形是明日方舟 UI 的直譯，但它們攜帶的是**遊戲 HUD 的語彙**——
-> 使用者的原話是「不貴氣、不典雅、也沒有銅印感」。切角本質上是「削掉一角來表示這是介面元件」，
-> 那是螢幕的邏輯；貴氣的來源是**紙與金屬的邏輯**：直角、細線、留白、刻印。
-> 這條推翻連帶讓 The Ring（切角描邊的 keyhole polygon 實作）與 The One-Corner Rule 一併退役——
-> 它們是「如何把切角做對」的答案，題目本身已經不存在。
+**The Organic-or-Plumb Rule.** 人造介面用垂直／水平直線與 `border-radius: 0`；自然層用真正不規則的 SVG／mask 邊。
+不得折衷成「四個柔和圓角」、單一裝飾圓角、切一角、skew 平行四邊形或規律鋸齒。
+真圓形只限氣泡、光點、頭像與羅盤環。
 
-### 唯一的容器裝置：The Plate
+這條重寫「圓角卡片」禁令：**卡片 deck 與 pill 仍禁止**；section 或圖片可以有 deckle edge，
+因為那是材質邊界，不是把 UI 卡片變可愛。
 
-需要「這是一個可按的物件」的訊號時，用**雙細線**：外框 1px，內框 1px 內縮 4px。
-這是凸版印刷名片與銅版銘牌的框——對稱、直角、不耍花樣。
+### The Plate and Seal
 
-```css
-.ds-plate {
-  --stroke: var(--fg-faint); /* 外框 */
-  --stroke-inner: var(--rule); /* 內框 */
-  position: relative;
-  background: transparent;
-  border: 1px solid var(--stroke);
-}
+- **The Plate:** 外框 1px、內縮 4px 再一條 1px 內框；只給明確控制（下一頁、theme control），不是通用容器。
+- **The Seal:** 唯一實心血紅小面；品牌單字印或明確狀態印。一 viewport 最多兩枚。
+- tag、分類與文章列不用 Plate；它們靠留白、下線與文字層級。
 
-.ds-plate::before {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  pointer-events: none;
-  border: 1px solid var(--stroke-inner);
-}
-```
+### The Organic Layer Rule
 
-用法規定：
+環境層可用三類材料；同一 viewport 最多一類作主材，另外兩類只能是低對比、局部且不穿過閱讀柱的輔材，避免素材拼貼：
 
-- **外框用 `--fg-faint`，不是 `--rule`。** `--rule` 是校準在 `--bg` 上的；落到更亮的環境層（尤其亮色主題）會弱到看不見。這是實測結論，不是偏好。
-- **狀態變化只換 `--stroke` / `--stroke-inner`**，不改結構、不改 inset。
-- **內框是 `::before` 且 `pointer-events: none`**，不影響命中區與內容流。
-- **Plate 是稀有裝置。** 全站只有真正的「按鈕」用它。列表列、tag、分類一律不用框——它們靠字級、字距與一條細線分層。
+1. **Deckle／墨滲邊：** section 邊界可用 SVG `feTurbulence` + `feDisplacementMap`；
+   `baseFrequency` 約 `0.012 0.05`、`numOctaves=2`、固定 seed，displacement desktop 8–18px、mobile 4–10px。
+   最多三道 section 邊。帶狀 strata 的上下可見邊都必須有不同的曲線節奏，路徑離 SVG viewport 邊界至少 20px，
+   不得以貼齊畫布的水平線收尾。靜態文章列表優先預渲染 monochrome mask，避免每幀 filter 重算。
+2. **有機剪影：** 珊瑚、海扇、水螅、海藻只用 `--env-silhouette` 單色；同一物種不重複等距排列。
+   40–65% 輪廓必須裁出 viewport 或 section 邊界，尺度與旋轉需有明顯差異；不得完整居中展示成 clipart。
+3. **生物光暈：** 冷光用 `--glow*`，暖燈塔用 `--ember`；radial gradient peak alpha ≤0.18，
+   單一光暈直徑 ≤24vw。光只停在環境／chrome 外側，不穿過正文句子。
 
-### 第二個裝置：The Seal（銅印）
+Light 底部海藻不得做成連續深色污漬：剪影總寬度覆蓋 ≤35%、單株間保留大面積紙色、opacity 0.18–0.28；連續 seabed／reef silhouette 在 light 隱藏，
+邊緣以乾淨 mask 收束，不用 multiply 疊成髒灰。
 
-唯一允許「實心紅塊 ＋ 反白刻字」的地方。內縮 3px 再畫一條 `--fg-on-accent` 42% 的細框，模擬印面的邊。
+### Nautical instrument vocabulary
 
-- **品牌印**：header 的 30×30 方印，Chrome 字級的單字母。
-- **狀態印**：文章索引列的 `Latest`，Label 字級、內距 2px/10px/3px。
+合法詞彙：羅盤方位、測深刻度、單束燈塔光、繩結。全部 stroke-only、單色、1px／1.5px，
+使用 `--rule` 或 `--glow-line`，opacity 0.22–0.45；一 viewport 最多兩件、不得同時圍住內容。
 
-**印是唯一能讓紅色「有面積」的裝置**，也是紅字在環境層上過不了 AA 時的正解（見 Colors 的對比註記）。**一個畫面最多兩枚印。**
-
-### 分隔與紋理
-
-- **斜向裝飾線：** 區塊之間可以用 -12° 的細線群（3–5 條，`--rule`，間距 4px）。使用上限：一個頁面最多兩處。
-- **描邊優先：** 需要區分一塊區域時，第一選擇是 1px `--rule` 描邊 ＋ 透明底；第二選擇才是換一階底色。填色塊是最後手段。
-
-### Named Rules
-
-**The No Radius Rule.** `border-radius` 全站唯一的合法值是 `0`（真正的圓形除外：頭像、圓點指示、氣泡）。圓角卡片是明確的反參考。
-
-**The No Chamfer Rule.**（取代舊的 One-Corner Rule 與 Ring Rule）不得用 `clip-path` 切角，不得用 `transform: skewX()` 做平行四邊形容器。容器要嘛是直角矩形，要嘛沒有容器。
-
-**The Plate Rule.** 線框容器只能是 The Plate（外框 ＋ 內縮 4px 的內框）。單線框、三線框、只有上下線的「框」都不算——那是分隔線，不是容器。
-
-**The Seal Rule.** 實心紅塊只出現在 Seal 上，且一個畫面最多兩枚。任何其他地方的紅色都必須是線或字。
+禁止把它們做成儀表板：不可精確等距鋪滿、不可顯示捏造的米數／座標／儀表數值、不可形成準星、
+不可讓刻度與斜線組成科技 HUD 網格。
 
 ## Components
 
-所有 component **只寫一次**，用語意 token 表達，兩主題自動成立。下方 frontmatter 的 component 條目列的是 dark 的解析值（dark 為預設主題），實作時一律 `var(--token)`。
+### Header and navigation
+
+- 72px 高，`--bg-surface` 實底、底部 1px `--rule`；品牌印維持 30×30。
+- 站名與 30px 品牌印使用 EB Garamond true small caps（站名 32px、印內字 19px）；Cormorant SC 只留給 ≥36px display。
+- 首頁不加文章列表別名；exact tagline「信仰不確定性，同時用確定性工程過生活」是唯一 h1，header 不重複副標。
+- 導覽、搜尋、關於與分頁一律使用功能本名，不使用航海／下潛替代詞。
+
+### Post index row
+
+- 表列而非卡片；上緣 1px `--rule`，padding 30px 0 32px。
+- 日期直接放在 gutter；內容 meta 依序為分類 → 閱讀時間 → 必要時「最新」，最多三項，不加前綴標籤。
+- hover：左緣 2px `--accent`、日期升到 `--fg`；背景不填色。
+- 單欄斷點下 `.row-main` 左側 padding 18px，避免 2px 紅線貼住標題與 tags。
+- tag 是真連結，touch target ≥44px；hover/focus 同時把文字升到 `--fg`、下線轉 `--accent`，
+  並以 `text-underline-offset: 0.28em` 明確表達可點，不只靠顏色。
 
 ### Buttons
 
-- **Shape:** The Plate（外框 1px `--fg-faint`，內框 1px `--rule` 內縮 4px），58px 高，直角，`border-radius: 0`。
-- **Primary（線框態）:** 透明底 ＋ `--fg` 文字，Chrome 字級（Cinzel 500 / 13px / 字距 0.18em），左右內距 40px。**預設是線框，不是填色。**
-- **Hover:** 底色轉 `--accent-fill`，外框轉 `--accent`，內框轉 `--fg-on-accent` 42%，文字轉 `--fg-on-accent`。120ms。這是紅色被允許填滿的少數位置之一。
-- **Focus:** focus-ring（2px `--glow`），offset 2px，走 `box-shadow`。
-- **Disabled:** 外框與文字降到 `--rule`，無 hover 反應。
+- 主要按鈕可用 The Plate，58px 高，左右 padding 36–40px；預設透明底。
+- hover 不再整面灌血紅；外框轉 `--accent`、文字維持 `--fg`、內框可用 `--ember` 一次，但不得同時出現第二珊瑚用途。
+- focus ring 2px `--glow`、offset 3px；disabled 用 `--rule` 且移除 hover。
 
-### Chips（分類）
+### Article body
 
-**沒有框。** 分類是「刻線標題」不是按鈕。
+- 直接坐在 `--bg`／受保護閱讀面上，不套卡片。
+- body 19px／1.9；blockquote、表格、list 保守排版。
+- 紅色與珊瑚不進正文；code syntax 的 `--accent-text` 是唯一例外。
 
-- **Style:** Chrome 字級（Cinzel 500 / 13px / 字距 0.12em）、`--fg-muted` 文字、下緣 1px `--rule` 細線、下內距 2px。無底色、無外框。
-- **Hover:** 文字轉 `--fg`，下線轉 `--accent`。**不轉紅字**——13px 的 `--accent-text` 在環境層上過不了 AA（實測 3.83–4.17）。紅色留在線上。
+### Code block
 
-### Tags（無框小型大寫）
+- `--bg-sunken`、1px `--rule`、直角、無陰影、內距 20px 24px，最大 840px。
+- JetBrains Mono 15px／1.7；keyword `--glow`、comment `--glow-dim`、string `--fg-muted`、
+  number `--accent-text`、identifier `--fg`。行號用 `--fg-faint`，不用 `--rule` 排字。
 
-- **Style:** Label 字級（EB Garamond 500 / 13px / 小型大寫 / 字距 0.07em）、`--fg-muted` 文字、透明下框線。**無外框、無底色、無 skew。** tag 之間 20px 間隔（靠留白分隔，不靠符號也不靠框）。
-- **Hover:** 文字轉 `--fg`，下緣長出 1px `--accent` 線。
-- **Current:** 改用 Seal（見 Shapes）——不是把 tag 填成紅色。
+### Theme and signature controls
 
-### 文章索引列（Post Index Row）
+- dark ↔ light 二態；44×44 最小控制面，safe-area aware。production 可用 system preference 決定首次落點，但 system 不是第三個 UI 狀態。
+- 控制只顯示同一 stroke 系統的太陽／月亮 SVG；dark 顯示太陽代表可切到 light，light 顯示月亮代表可切到 dark，並保留完整 `aria-label`。
+- social rail 桌機可直排，mobile 收回 footer；圖示 stroke-only，hover 用 `--glow`。
 
-**表列而非卡片。**
+## Motion
 
-- **結構:** 上緣 1px `--rule` hairline（延伸至 1120px chrome 寬）→ 左柱日期（`2026` Label + `08.04` Chrome 24px，皆 `--fg-muted`，柱首一道 9px `--glow-line` 刻線）→ meta 行（分類 → 閱讀時間 → Latest 印）→ 標題（Headline、`--fg`）→ tag 列。
-- **meta 順序:** 分類在前，閱讀時間在後。分類是「這是什麼」，閱讀時間是「要花多久」——先分類才有掃讀價值。
-- **Padding:** 上下 30/32px，左右 0（靠柱寬對齊，不靠內距）。
-- **Hover:** **只做兩件事**——左緣長出 2px × 100% 的 `--accent` 直線、日期由 `--fg-muted` 升到 `--fg`。**底色完全不變。** 標題不加底線。120ms。
-  > 整列 hover 底色是 v6 的作法，已推翻：填色面板是軟體 UI 的語彙。在紙與金屬的世界裡，指示是一條線，不是一塊光。
-- **Latest:** meta 行末一枚 Seal（實心 `--accent-fill` ＋ 反白 `--fg-on-accent`，實測 6.08）。
-- **行動版:** 保留 24px 標題與碑刻日期的尺度；日期與 meta 共用第一資訊帶，靠結構收斂與 20px gutter 提高密度，不縮小主要字級。分類、tag 與主題切換皆提供 44px 觸控高度。
-- **禁止:** 卡片外框、圓角、切角、陰影、縮圖、hover 底色。
+環境動畫週期 ≥20s、同類元素 duration／delay 不同步，只動 `transform`／`opacity`；正文與 chrome 除 120ms 狀態回饋外不動。
+氣泡至少使用兩組不等速上浮路徑，位移 keyframe 不可等距；單顆週期 24–43s，峰值 opacity 在 0.34–0.72 間錯開，
+不同尺寸不可同時進入最亮狀態，避免形成同步的裝飾點陣。
+魚群 SVG 的頭部必須朝位移終點：向右游時在 animation transform 內 `scaleX(-1)`，向左游時維持原方向；不得只移動畫布而讓尾鰭領先。
+Scroll parallax 只作用於環境層，正文、header、footer 與所有互動元件維持原生捲動速度。由遠至近分為 caustics／beam、
+strata／魚群、jelly、海扇／水螅、reef／kelp 五級；主要可見層的垂直係數約 0.08–0.42，desktop 單層位移上限 90–400px，
+mobile 乘以 0.9。相鄰深度層可加入方向相反的微量水平錯位，係數絕對值 ≤0.03、上限 30px，讓差速在開始捲動後
+即可辨認，但只限 ≥768px；mobile parallax 僅作垂直位移。不可讓環境素材橫越閱讀柱。只能用一個 passive scroll listener + 一個共用 `requestAnimationFrame`
+更新 CSS individual `translate`，不得覆寫魚群、海藻既有的 `transform` 動畫；`will-change` 只在捲動期間短暫啟用。
+mobile 不可把閱讀底板做成完全不透明：dark 使用 0.78、light 使用 0.88 的主題化 veil，並保留 beam、jelly、strata 與氣泡作差速錨點；
+strata 在 mobile 可提高到 0.92／0.78 opacity。此豁免仍須以環境色極值合成後驗算所有小字，最低對比不得低於 4.5:1。
+首個 deckle strata 與裁切 jelly 必須進入 390×844 與 1440×900 的首屏下半部；自頂端捲動 100px 時，beam／strata／jelly
+三層中至少兩組相對位移差須達 10px，使「開始下潛」從第一次捲動就可辨識，而非等到第二篇文章後才出現。
+現行產品決策明確要求氣泡位移與 scroll parallax **不讀取** `prefers-reduced-motion`，在 reduce 模式下仍完整播放；
+這是專案接受的已知可及性例外。其餘非必要環境動畫在 reduce 模式下移除 drift，只保留極慢 opacity 呼吸，
+且不得影響閱讀與互動。
 
-### Cards / Containers
+## Anti-references
 
-- **文章閱讀面:** 沒有容器。正文直接坐在 `--bg` 上，720px 置中，上 48px 下 96px。無底色差、無邊框——正文區塊不是一個「物件」。
-- **Note 卡片:** `--bg-surface` 底 ＋ The Plate 雙細線，直角，內距 20px/22px。底部 meta 行以 1px `--rule` 分隔。**無陰影。**
-- **系列橫幅:** 透明底 ＋ **僅左側** 2px `--accent` 直線 ＋ 上下無框，內距 14px/18px，文字 `--fg-muted`，系列名 `--fg`。前置 `SERIES` 大寫標籤。這是紅色作為「線」的標準用法。
+### 法律與品牌紅線
 
-### Inputs / Fields
+- 禁用任何官方圖像資產：立繪、活動 KV、logo、UI 截圖、PV／EP 畫面、手辦照。
+- 禁用遊戲專有名詞作站內元素或品牌，包括海嗣／Seaborn、阿戈爾／Ægir、深海教會、
+  深海獵人、濱海壞印、伊比利亞之眼、Rhodes Island、Operator、Monster Siren 與角色名。
+- 禁止仿製活動 logo、標題 lockup、專有字型或角色配色主題。
 
-（目前站上無表單；此規格供未來使用）
+### 視覺紅線
 
-- **Style:** `--bg-sunken` 底 ＋ 1px `--rule` 底部單邊描邊（不是四邊框），`border-radius: 0`，`--fg` 文字。
-- **Focus:** 底部描邊轉 `--glow` 2px ＋ focus-ring。
-- **Error:** 底部描邊轉 `--accent`，錯誤訊息用 `--accent-text`。
+- 紫色／跨色相 gradient、glassmorphism、背景 blur、soft elevation shadow。
+- GitHub dark 式中性灰、純黑純白、Inter-on-dark 的通用 SaaS 模板。
+- 圓角卡片 deck、pill filter、每個區塊都包卡片；有機 deckle edge 不是圓角卡片豁免。
+- 大面積紅色、紅＋珊瑚雙 CTA、霓虹 glow 面板。
+- **科技 HUD（v3 的教訓）：** 精確斜線網格、方括號 lockup、準星、dashboard 式讀數、
+  捏造座標／深度、規律刻度牆、Chakra Petch 式方正字身、全大寫寬字距遙測列。
+- 為氣氛把文章、日期、分類、閱讀時間、搜尋或分頁改寫成需要解碼的航海詞彙。
+- 切角、單角 chamfer、平行四邊形按鈕、規律鋸齒；這些是科技面板，不是有機深淵。
+- 完整置中的珊瑚／海藻 icon、底部等距排一排的 clipart、有機形狀在 light 疊成髒灰污漬。
 
-### Navigation
+## Implementation notes
 
-- **Header:** 64px 高，`--bg-surface` 底，底部 1px `--rule`，右端最後 40px 換成 `--accent`（一道紅色斷點，是 header 上唯一的紅）。左側站名以方括號鎖定：`[ WILDSKY ] / LOG`，站名 Title 字級、`/ LOG` 為 Label 字級 `--fg-faint`。站點描述 Label 字級 `--fg-muted`，`sm` 以下隱藏。
-- **下拉選單:** 224px 寬、`--bg-surface` 底、The Plate 雙細線、`border-radius: 0`、直角、內距 8px、**無陰影**。項目為 Label 字級大寫，hover 時左緣長出 2px `--accent` 短線 ＋ 底色轉 `--bg-raised`。main / content 兩組之間以 1px `--rule` 分隔。
-- **分頁:** Label 字級大寫，前後綴用細線三角 SVG。hover 轉 `--accent-text`。
+`comp/index-v8.html` 是 canon reference；production Astro 已完成同一套 token、字體、主題、列表與環境層遷移。
 
-### Code Block（風格展示區）
+1. `src/styles/tokens.css` 是 16 個核心色彩 token 與環境色的 production 正本。
+2. production 使用 Noto Serif TC Variable、EB Garamond Variable、Cormorant SC 600、Space Mono 400／700 與 JetBrains Mono Variable；
+   Chakra Petch、Source Sans 3、Source Serif 4、Cinzel、Bodoni Moda、Poppins、Merriweather 均不再載入。
+3. production 不使用 daisyUI／`theme-change`；新 code 直接使用本文件 token。
+4. 主題 meta（`theme-color`、`color-scheme`、selection）與 dark/light 狀態同步；system preference 只決定首次落點。
+5. 既有文章圖片不做 invert／hue-rotate；透明線稿需有 `--bg-surface` 底板。
+6. SVG turbulence 只負責低頻 deckle edge；全頁 grain 使用預渲染單色 mask tile，避免長文大面積 filter paint。
 
-這是正文裡唯一允許展現風格的地方，**兩主題各有自己的語法配色，但角色對應完全相同**。
+## Acceptance checklist
 
-- **容器:** `--bg-sunken` 底 ＋ 1px `--rule` 描邊，直角。橫向可捲動。內距 20px/24px。**寬度可溢出到 840px**（比 720px 量尺寬 60px，兩側各伸出 60px），呼應 Overhang Rule。
-- **標頭:** 頂部一道 28px 高的條，`--bg-surface` 底，左側是語言代號（Label 字級大寫，`--fg-faint`），右側可放複製按鈕。與程式碼之間 1px `--rule` 分隔。
-- **語法角色對應：**
-
-| 角色           | Token           | Dark      | Light     |
-| -------------- | --------------- | --------- | --------- |
-| 關鍵字、函式名 | `--glow`        | `#7FD4D4` | `#166363` |
-| 註解、標點     | `--glow-dim`    | `#5FB8BC` | `#1B7272` |
-| 字串           | `--fg-muted`    | `#8FAEBC` | `#3F6273` |
-| 數字、常數     | `--accent-text` | `#E4525C` | `#B82A36` |
-| 一般識別字     | `--fg`          | `#E8ECF0` | `#16283A` |
-| 行號、gutter   | `--rule`        | `#2D4A5E` | `#C5D5DC` |
-
-- **Inline code:** `--bg-raised` 底、`--glow` 文字、內距 2px/6px、`border-radius: 0`、無描邊。
-- **注意：** 數字/常數用 `--accent-text` 而**不是** `--accent`——`--accent` 在 dark code 底上只有 3.68，不足以承載小字。
-
-### Blockquote
-
-左側 2px `--fg-faint` 直線 ＋ 透明底 ＋ 左內距 20px，文字 `--fg-muted`。**不用紅線**——紅色不進正文。無底色、無圓角、無引號裝飾。
-
-### Images / Figures
-
-圖片是兩主題最容易翻車的地方，規則明確：
-
-- **容器:** `figure` 為 1px `--rule` 描邊、`--bg-sunken` 底、`border-radius: 0`、內距 0。圖說（`figcaption`）置中，Label 字級，`--fg-muted`。
-- **不做自動反轉。** 禁止對圖片施加 `filter: invert()` 或 `hue-rotate()`——那會毀掉截圖與照片。
-- **Dark 的減光:** 正文內的照片與截圖在 dark 主題套 `filter: brightness(0.92) saturate(0.96)`，避免一張白底截圖在深海場景裡變成探照燈；`:hover` 時取消 filter，讓讀者能看到原始影像。Light 不套任何 filter。
-- **透明背景的線稿圖必須有底板。** 黑線透明底的圖在 dark 會整張消失。這類圖一律包在 `--bg-surface` 的底板上（內距 16px），兩主題都用同一塊底板——底板本身跟著 token 換色，圖不動。
-- **`feature_image`（OG 圖）不受主題影響**，社群平台不讀我們的 token。
-
-### 固定角落開關（Signature）
-
-- **主題切換（左下）:** 固定 44×44 的 The Plate 控制軌，內部保留 24×24 線框方塊與實心／空心圓，`--fg-muted`，hover 轉 `--glow`。控制軌使用 `--bg-sunken` 實底，行動版納入 safe-area inset，不再讓透明圖示直接與內容文字混疊。**三態循環**：`system` → `dark` → `light`，預設 `system`（跟隨 `prefers-color-scheme`）。當前態以圖示形狀區分，不用顏色區分——顏色預算要留給紅色。
-- **社群導軌（右下）:** 垂直排列，圖示為 20px 線框（stroke-only，1.5px），`--fg-faint`，圖示之間以 1px × 12px 的 `--rule` 短線分隔。hover 轉 `--glow`（不是紅色——紅色的預算要留給內容）。行動裝置退回 footer 內水平排列。
-
-### 側邊直排導軌（Signature）
-
-`≥1280px` 才出現的兩道垂直文字，`writing-mode: vertical-rl`、Label 字級、`--rule` 色、`aria-hidden="true"`。左軌固定為站點代號，右軌為當前分類 / 系列代號。純裝飾，不可點擊、不承載資訊。這是官方 banner 直排側欄的直譯，也是這個世界最容易被認出來的動作。
-
-### Footer
-
-`--bg-sunken` 底（比地面更深一階），上緣 1px `--rule`，內容 1120px 寬。社群圖示列 ＋ `2014—2026 © ALL RIGHTS RESERVED` 的 Label 字級大寫 `--fg-faint`。**不得寫死任何字色。**
-
-## Do's and Don'ts
-
-### Do:
-
-- **Do** 一切顏色只走語意 token；component 層只准 `var(--token)`（The No Hardcode Rule）。
-- **Do** 讓所有中性色帶藍（HSL 188–213），兩主題皆然（The Never-Neutral Rule）。
-- **Do** 把血紅控制在 5% 以內，且兩主題共用同一支 `#C8323E`（The Red Dress Rule、The Anchor Rule）。
-- **Do** 小於 24px 的紅字用 `--accent-text`，不用 `--accent`。
-- **Do** 讓 glow 只當光：語法高亮、focus ring、細線（The Glow-Is-Light Rule）。
-- **Do** focus ring 用 `--glow`，不用 `--glow-line`（後者在 light 只有 2.89）。
-- **Do** 容器保持直角；需要框時用 The Plate（外框 ＋ 內縮 4px 內框）。
-- **Do** 紅色的「面」只出現在 Seal 上，一個畫面最多兩枚（The Seal Rule）。
-- **Do** meta 標籤用小型大寫 ＋ 0.06em（The Small-Caps Label Rule）。
-- **Do** Bodoni 只用於 ≥24px 的標題；13–24px 的 chrome 一律 Cinzel（The Right Font For The Size Rule）。
-- **Do** 正文行高用無單位值（1.9），不用 `rem`——放大字級時要等比縮放。
-- **Do** 新 code 直接用 `var(--token)`；daisyUI 語意變數是 deprecated alias，路過就換掉。
-- **Do** 用 1px `--rule` 描邊做分隔，需要層次就換一階明度。
-- **Do** 讓水平規則與 meta 行伸出到 1120px，正文停在 720px（The Overhang Rule）。
-- **Do** 把技術感排版（大寫、字距 0.16em、代號式編號）只施加在英文 meta 上（The Uppercase Latin Rule）。
-- **Do** 讓正文乏味：720px、19px、行高 1.9、零裝飾（The Boring Body Rule）。
-- **Do** 讓 `theme-color` meta、`color-scheme`、`::selection` 跟著主題切換。
-- **Do** 給透明背景的線稿圖加 `--bg-surface` 底板。
-
-### Don't:
-
-- **Don't** 在 component 寫死 hex、`rgb()` 或 Tailwind 調色盤 class。
-- **Don't** 在新 code 使用 daisyUI 語意 class（`bg-base-100`、`text-primary`…）——它們是待淘汰的別名。
-- **Don't** 使用 `clip-path` 切角或 `transform: skewX()` 平行四邊形容器（The No Chamfer Rule）。
-- **Don't** 在 <768px 用負 margin 或溢出線模擬已經退場的 overhang。
-- **Don't** 把亮色主題做成暗色的機械反轉——它有自己的情緒（海面/白日），只有語言一致。
-- **Don't** 引入第三個色相，包含 success / warning 的綠與黃（The Two-Axis Rule）。
-- **Don't** 使用任何非零的 `border-radius`（真圓形除外）（The No Radius Rule）。
-- **Don't** 使用任何 `box-shadow`，focus ring 除外（The Zero Shadow Rule）。
-- **Don't** 讓紅色成為區塊底色或大面積填色；`--accent-fill` 的面積上限是單一元件 200×40px。
-- **Don't** 把 glow 當背景色。
-- **Don't** 讓中性色掉進中性灰或純白純黑。
-- **Don't** 使用紫色、**跨色相漸層**、glassmorphism、blur 背景。（同色相明度漸層合法，見 The Same-Hue Gradient Rule）
-- **Don't** 對圖片施加 `filter: invert()` 或 `hue-rotate()`。
-- **Don't** 在正文段落裡使用 Cinzel、Bodoni Moda 或 EB Garamond（The Chrome Frontier Rule）。
-- **Don't** 把導覽字級壓到 13px 小型大寫（The Navigation Legibility Exception）。
-- **Don't** 用「全大寫 ＋ 寬字距」做 meta 標籤——那是遙測讀數的排版（The Small-Caps Label Rule）。
-- **Don't** 把視覺重量給沒有意義的資訊（The Weight-Follows-Meaning Rule）。
-- **Don't** 對中文施加大寫處理或超過 0.02em 的字距。
-- **Don't** 在正文區塊放框、斜向裝飾線或紅色（code block 的語法色除外）。
-- **Don't** 讓環境層的任何元素進入 chrome 內側（`(100% − 1120px) / 2` 以內）——實測亮色主題會直接掉出 AA。
-- **Don't** 使用任何明日方舟角色圖像、logo 或官方素材——提取的是美術語言，不是資產。
-- **Don't** 讓側邊直排導軌承載資訊或連結；它是裝飾層。
-
-## Open Items
-
-新 DESIGN.md 與現有 code 的衝突清單。**本次未修改任何 code**；以下每一條都是實作時必須處理的落差。
-
-1. **主題系統要換底，但雙主題結構保留。** `src/global.css:5-9` 目前是 daisyUI `nord --default` ＋ `forest --prefersdark`，`root.astro:19-30` 的 inline script 預設 `nord`，`ThemeToggle.astro:8` 綁 `data-toggle-theme="nord,forest"`。做法是**保留 `data-theme` 機制與 `theme-change`，把 nord/forest 換成兩個自訂 theme**（建議命名 `tide-dark` / `tide-light`），並在其中定義本文件的 15 個語意 token。原本「移除亮色主題」的疑慮已解除——不需要你再決定。
-2. **主題切換要從兩態改三態。** 目前是 `nord ↔ forest` 兩態硬切；新規格是 `system → dark → light`，且 `system` 為預設。`root.astro:19-30` 的 inline script 與 `ThemeToggle.astro` 都要改。另外 `root.astro:36` 寫死 `<meta content="light" name="color-scheme">`，與三態衝突。
-3. **`theme-color` meta 寫死。** `Head.astro:87` 是 `#1D384B`、`Head.astro:86` 的 `msapplication-TileColor` 是 `#001A33`。要改成兩條帶 `media` 的 meta（dark `#0A1420` / light `#F7F9FA`），並在手動切換時同步更新。
-4. **daisyUI 語意 token 全站失效 —— 已定案為方案 (a) 過渡。** `base-100` / `base-200` / `base-300` / `base-content` / `primary` / `secondary` 密集使用於 `Header.astro`、`Article.astro`、`PostList.astro`、`TagList.astro`、`SeriesBanner.astro`、`AuthorBio.astro`、`page.astro`、`notes.astro`、`global.css`。作法與映射表見 Colors 的「daisyUI 語意變數：deprecated alias」。方案 (b)（全面替換、移除 daisyUI 語意層）列入 backlog。
-5. **圓角全站違規。** `rounded-xl`（`PostList.astro:26`、`global.css:76` `.note-card`、`global.css:113`）、`rounded-lg`（`global.css:97`、`global.css:121`）、`rounded`（`Article.astro:54,76`、`global.css:38`）。`AuthorBio.astro` 頭像的 `rounded-full` 合法。
-6. **陰影全站違規。** `shadow-sm` 出現在 `Header.astro:17`、`Nav.astro`（dropdown）、`global.css:76`、`global.css:121`。
-7. **寫死色值違規（The No Hardcode Rule）。** `list.astro:20` 的 `text-gray-900`、`page.astro:38` footer 的 `text-white`、`global.css:129-133` figcaption 的 `text-gray-500` / `text-gray-400`、`global.css:16` `::selection` 的 `text-white`。
-8. ~~字型家族沒有安裝也沒有載入。~~ **已完成（2026-08-16/17）**：Cinzel、Bodoni Moda、EB Garamond、Source Serif 4、JetBrains Mono 全數以 `@fontsource-variable` 自架（不走 Google Fonts CDN，PRODUCT.md 硬性約束）；`@fontsource/noto-serif-tc` 與 `noto-sans-tc` 已實際 import。`@fontsource/merriweather`、`poppins` 已移除。
-9. **`.page-container` 的 `font-serif` 與新系統衝突。** `global.css:12` 讓全站落在襯線字上；新系統是三個無襯線／mono 家族。
-10. **Prism 主題衝突，且需要雙主題版本。** `global.css:1` import 的是 `prism-okaidia`（單一暖色系）。新規格是兩套語法配色（見 Code Block 的角色對應表），需要自訂 Prism 主題並以 `[data-theme]` 分別定義。
-11. **閱讀量尺從 896px 收到 720px，且需要第二層 1120px chrome 寬。** `page.astro:33` 目前是單一 `max-w-4xl`（896px）。這是 layout 的結構改動。
-12. **文章列表要從「卡片式列」改成「表列」。** `PostList.astro:26` 的 `rounded-xl mb-12` 與 `TagList.astro` 的「・」分隔語彙都要換掉。
-13. **`prose` / `prose-xl` 的預設值需要大量覆寫，且要雙主題。** `@tailwindcss/typography` 的預設字級（20px）、行高、連結樣式、`blockquote`、`code` 全都與新規格不符，`prose-invert` 的預設灰階也違反 The Never-Neutral Rule。
-14. **既有 120 篇文章的圖片可能假設白底。** 透明背景的線稿圖在 dark 主題會消失（見 Images / Figures）。需要盤點既有文章的圖片，替需要的加底板——這是內容側的遷移工作，不是 code 改動。
-15. **舊債照舊：** `prose-zh` / `prose-en` 是空 class（用於 `Article.astro:28`、`AuthorBio.astro:14`、`pageFactory/index.astro:59`、`notes.astro:9`、`series/ai-agent.astro:84`，全專案無定義）；`.article-content` 的 `tracking-wide` 覆蓋掉 `tracking-tw-normal`。
+- 兩主題 16 個 token 與本文件完全一致，component 無 hardcoded color。
+- 15–16px 文字只用表中四階底色皆 ≥4.5 的 token；固定 `--accent` 不排小字。
+- screenshot 紅色 `<5%`、珊瑚 `<1%`，並回報實測比率。
+- 720px 閱讀柱最亮／最暗實際像素上的 `--fg-muted` 仍 ≥4.5。
+- CJK 連續文字 ≥16px，正文 19px；EB small caps ≥15px；Cormorant SC ≥36px。
+- dark／light 共用單一 DOM 結構，只由 `data-theme` 換 token。
+- tag 的 hover 與 keyboard focus 有非顏色提示；44px touch target。
+- 首頁 metadata 使用直白名稱；主題按鈕為太陽／月亮 SVG 且 screen-reader label 隨狀態更新。
+- 單欄文章標題與左側紅線至少保留 18px 間距；魚群頭部朝移動方向。
+- 320px、390px、430px 的 `documentElement.scrollWidth` 必須等於 `clientWidth`；環境層與 parallax 不得製造水平捲軸。
+- organic silhouette 有裁切、尺度與位置變化；light 底部不形成連續污漬。
+- 無官方資產、遊戲專有名詞、活動 logo 仿製與科技 HUD 語彙。

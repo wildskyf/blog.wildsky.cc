@@ -64,25 +64,44 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
   <svg class="ds-strata s2" viewBox="0 0 1440 300" preserveAspectRatio="none">
     <path
       d="M0,40 C110,72 200,26 300,52 C398,78 470,34 566,58 C664,82 740,38 838,62
-         C934,86 1008,40 1104,64 C1196,87 1290,44 1440,74 L1440,300 L0,300 Z"
+         C934,86 1008,40 1104,64 C1196,87 1290,44 1440,74 L1440,246
+         C1348,270 1262,238 1168,258 C1074,278 990,240 894,264 C798,286 714,246 620,268
+         C526,288 442,248 348,270 C254,290 170,250 82,274 C48,282 24,270 0,266 Z"
     ></path>
+  </svg>
+
+  <svg width="0" height="0" focusable="false">
+    <defs>
+      <filter id="ds-deckle-f" x="-3%" y="-8%" width="106%" height="116%">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.012 0.05"
+          numOctaves="2"
+          seed="17"
+          result="noise"></feTurbulence>
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="noise"
+          scale="12"
+          xChannelSelector="R"
+          yChannelSelector="G"></feDisplacementMap>
+      </filter>
+    </defs>
   </svg>
 
   <span class="ds-vignette"></span>
 
-  <svg class="ds-grain" preserveAspectRatio="none">
-    <filter id="ds-grain-f">
-      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"
-      ></feTurbulence>
-      <feColorMatrix type="saturate" values="0"></feColorMatrix>
-    </filter>
-    <rect width="100%" height="100%" filter="url(#ds-grain-f)"></rect>
-  </svg>
+  <span class="ds-grain"></span>
 
   <span class="ds-caustics"></span>
 
   <span class="ds-beam b1"></span>
   <span class="ds-beam b2"></span>
+  <span class="ds-ember-beacon"></span>
+  <svg class="ds-compass-mark" viewBox="0 0 58 58">
+    <circle cx="29" cy="29" r="22"></circle>
+    <path d="M29 2V14M29 44V56M2 29H14M44 29H56M29 15L34 29L29 43L24 29Z"></path>
+  </svg>
 
   <!-- 魚群：比背景更暗的剪影，橫越畫面 -->
   <svg class="ds-school sc1" viewBox="0 0 210 64" preserveAspectRatio="none">
@@ -95,7 +114,7 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
     </g>
   </svg>
   <svg class="ds-school sc2" viewBox="0 0 300 96" preserveAspectRatio="none">
-    <g transform="scale(-1,1) translate(-300,0)">
+    <g>
       <path
         d="M28,52 C58,26 118,20 162,40 C186,51 210,50 232,42
            C214,60 186,70 158,68 C120,66 66,68 28,52 Z"
@@ -103,6 +122,21 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
       <path d="M232,42 L262,30 L254,46 L266,60 Z"></path>
       <path d={FISH} transform="translate(86,68) scale(0.9)"></path>
     </g>
+  </svg>
+
+  <svg class="ds-sea-fan" viewBox="0 0 260 330" preserveAspectRatio="none">
+    <path d="M132 330 C128 258 126 198 132 126 C136 82 140 42 150 4"></path>
+    <path d="M132 242 C96 214 70 180 48 134 C30 98 20 62 12 20"></path>
+    <path d="M130 214 C168 182 194 148 214 104 C230 70 240 38 246 8"></path>
+    <path d="M104 218 C92 174 82 132 80 82 M82 162 C58 142 42 120 28 92"></path>
+    <path d="M160 190 C170 150 180 112 184 68 M180 130 C204 110 220 88 232 58"></path>
+  </svg>
+  <svg class="ds-hydroid" viewBox="0 0 180 250" preserveAspectRatio="none">
+    <path d="M96 250 C90 202 94 164 86 126 C78 90 86 52 78 8"></path>
+    <path d="M88 174 C62 150 50 126 44 98 M86 138 C112 116 124 90 130 62"></path>
+    <path d="M44 98 C34 82 24 72 12 66 M130 62 C146 50 158 38 168 22"></path>
+    <path d="M78 8 C72 22 68 34 70 48 M12 66 C22 64 30 66 36 74 M168 22 C158 24 150 30 146 40"
+    ></path>
   </svg>
   <svg class="ds-school sc3" viewBox="0 0 150 46" preserveAspectRatio="none">
     <g>
@@ -167,8 +201,12 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
          C1334,191 1352,190 1358,172 L1372,230 Z"
     ></path>
     <path
-      d="M0,230 L1440,230 L1440,206 C1330,214 1240,198 1140,208 C1030,219 950,202 840,212
-         C720,223 640,204 520,214 C400,224 320,206 200,216 C120,223 60,210 0,218 Z"
+      d="M320,230 L326,196 C314,188 308,172 314,158 C319,147 331,150 332,162
+         C333,175 328,187 336,198 L342,230 Z"
+    ></path>
+    <path
+      d="M980,230 L986,190 C972,180 966,160 974,146 C980,135 993,139 994,153
+         C995,168 989,182 998,194 L1004,230 Z"
     ></path>
   </svg>
 
@@ -241,19 +279,37 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
     z-index: 0;
     pointer-events: none;
     overflow: hidden;
-    contain: strict;
   }
 
   .ds-depth {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to bottom,
-      var(--env-surface) 0%,
-      var(--env-mid) 30%,
-      var(--env-deep) 62%,
-      var(--env-abyss) 100%
-    );
+    background:
+      radial-gradient(
+        ellipse 88% 28% at 24% -4%,
+        color-mix(in oklab, var(--env-raised) 58%, transparent) 0%,
+        color-mix(in oklab, var(--env-surface) 18%, transparent) 48%,
+        transparent 78%
+      ),
+      radial-gradient(
+        ellipse 54% 38% at 96% 27%,
+        color-mix(in oklab, var(--env-surface) 30%, transparent) 0%,
+        transparent 74%
+      ),
+      radial-gradient(
+        ellipse 66% 36% at 5% 65%,
+        color-mix(in oklab, var(--env-deep) 28%, transparent) 0%,
+        transparent 76%
+      ),
+      linear-gradient(
+        to bottom,
+        var(--env-surface) 0%,
+        var(--env-surface) 8%,
+        var(--env-mid) 26%,
+        var(--env-deep) 55%,
+        var(--env-abyss) 88%,
+        var(--env-abyss) 100%
+      );
   }
 
   /* 暗角綁死在 chrome 外側 —— 用百分比會隨視窗寬度漫進閱讀欄 */
@@ -270,7 +326,7 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
     background:
       linear-gradient(to right, var(--env-abyss) 0%, transparent var(--vig)),
       linear-gradient(to left, var(--env-abyss) 0%, transparent var(--vig)),
-      linear-gradient(to top, var(--env-abyss) 0%, transparent 14%);
+      linear-gradient(to top, var(--env-abyss) 0%, transparent 22%);
   }
 
   .ds-grain {
@@ -278,12 +334,15 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
     inset: 0;
     width: 100%;
     height: 100%;
+    background: var(--env-abyss);
     opacity: 0.035;
     mix-blend-mode: var(--env-grain-blend);
-  }
-
-  .ds-grain rect {
-    fill: var(--env-abyss);
+    -webkit-mask-image: url('/images/grain-mask.svg');
+    mask-image: url('/images/grain-mask.svg');
+    -webkit-mask-size: 128px 128px;
+    mask-size: 128px 128px;
+    -webkit-mask-repeat: repeat;
+    mask-repeat: repeat;
   }
 
   .ds-strata {
@@ -293,76 +352,120 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
     width: 100%;
   }
   .ds-strata.s1 {
-    top: 46%;
-    height: 22%;
+    top: 540px;
+    height: 420px;
   }
   .ds-strata.s2 {
-    top: 74%;
-    height: 16%;
+    top: 1330px;
+    height: 300px;
   }
   .ds-strata path {
     fill: var(--env-surface);
     opacity: var(--env-strata-op);
+    filter: url(#ds-deckle-f);
   }
   .ds-strata.s2 path {
     fill: var(--env-mid);
-    opacity: 0.75;
+    opacity: calc(var(--env-strata-op) * 0.68);
   }
 
   .ds-caustics {
     position: absolute;
-    left: -14%;
-    right: -14%;
+    left: 0;
+    right: 0;
     top: 0;
-    height: 380px;
-    background: repeating-linear-gradient(
-      99deg,
-      transparent 0 46px,
-      color-mix(in oklab, var(--env-caustic) 9%, transparent) 46px 50px,
-      transparent 50px 68px,
-      color-mix(in oklab, var(--env-caustic) 5%, transparent) 68px 71px,
-      transparent 71px 128px
-    );
+    height: 460px;
+    background:
+      radial-gradient(
+        ellipse 34% 92% at 10% -18%,
+        color-mix(in oklab, var(--env-caustic) 10%, transparent),
+        transparent 72%
+      ),
+      radial-gradient(
+        ellipse 24% 74% at 64% -10%,
+        color-mix(in oklab, var(--env-caustic) 7%, transparent),
+        transparent 76%
+      ),
+      radial-gradient(
+        ellipse 18% 66% at 92% -14%,
+        color-mix(in oklab, var(--env-caustic) 5%, transparent),
+        transparent 78%
+      );
     -webkit-mask-image: linear-gradient(to bottom, var(--fg) 0, transparent 100%);
     mask-image: linear-gradient(to bottom, var(--fg) 0, transparent 100%);
-    animation: ds-caustic 26s ease-in-out infinite alternate;
+    animation: ds-caustic 46s ease-in-out infinite alternate;
   }
 
   .ds-beam {
     position: absolute;
-    top: -60px;
-    width: 220px;
-    height: 760px;
-    transform: rotate(-12deg);
+    top: -90px;
+    width: clamp(280px, 28vw, 440px);
+    height: 900px;
+    transform: rotate(-14deg);
     transform-origin: top center;
-    background: linear-gradient(
-      to right,
-      transparent 0%,
-      color-mix(in oklab, var(--env-beam) 22%, transparent) 50%,
-      transparent 100%
+    background: radial-gradient(
+      ellipse 46% 100% at 38% 0%,
+      color-mix(in oklab, var(--env-beam) 18%, transparent) 0%,
+      color-mix(in oklab, var(--env-beam) 7%, transparent) 42%,
+      transparent 76%
     );
-    -webkit-mask-image: linear-gradient(to bottom, var(--fg) 0 22%, transparent 92%);
-    mask-image: linear-gradient(to bottom, var(--fg) 0 22%, transparent 92%);
+    clip-path: polygon(18% 0, 56% 0, 100% 100%, 0 100%);
+    -webkit-mask-image: linear-gradient(to bottom, var(--fg) 0 18%, transparent 88%);
+    mask-image: linear-gradient(to bottom, var(--fg) 0 18%, transparent 88%);
     animation: ds-breathe 34s ease-in-out infinite;
   }
   .ds-beam.b1 {
-    left: 3%;
+    left: 40px;
   }
   .ds-beam.b2 {
-    right: 2%;
-    width: 150px;
-    animation-duration: 47s;
-    animation-delay: -13s;
+    display: none;
+  }
+
+  .ds-ember-beacon {
+    position: absolute;
+    z-index: 1;
+    top: 180px;
+    right: max(32px, calc((100% - var(--chrome)) / 2 + 22px));
+    width: 2px;
+    height: 180px;
+    background: color-mix(in oklab, var(--ember) 18%, transparent);
+  }
+
+  .ds-ember-beacon::before {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: -3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ember);
+  }
+
+  .ds-compass-mark {
+    position: absolute;
+    top: 164px;
+    left: max(24px, calc((100% - var(--chrome)) / 2 - 84px));
+    width: 58px;
+    height: 58px;
+    color: var(--rule);
+    opacity: 0.38;
+  }
+
+  .ds-compass-mark circle,
+  .ds-compass-mark path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1;
   }
 
   /* 有機剪影 —— 強度兩主題不同（結構性不對稱，見 DESIGN.md） */
   .ds-reef {
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 230px;
+    left: -5%;
+    bottom: -88px;
+    width: 110%;
+    height: 260px;
     opacity: var(--env-organic-op);
   }
   .ds-reef path {
@@ -371,7 +474,7 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
 
   .ds-kelp {
     position: absolute;
-    bottom: 0;
+    bottom: -118px;
     height: 560px;
     width: 120px;
     opacity: var(--env-organic-op);
@@ -379,10 +482,12 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
     animation: ds-sway 44s ease-in-out infinite;
   }
   .ds-kelp.left {
-    left: 8px;
+    left: -38px;
+    rotate: -5deg;
   }
   .ds-kelp.right {
-    right: 8px;
+    right: -46px;
+    rotate: 7deg;
     animation-duration: 52s;
     animation-delay: -21s;
   }
@@ -400,20 +505,20 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
     opacity: calc(0.62 * var(--env-organic-op));
   }
   .ds-school.sc1 {
-    top: 34%;
+    top: 690px;
     width: 210px;
     height: 64px;
     animation: ds-swim-r 128s linear infinite;
   }
   .ds-school.sc2 {
-    top: 58%;
+    top: 1180px;
     width: 300px;
     height: 96px;
     opacity: calc(0.5 * var(--env-organic-op));
     animation: ds-swim-l 186s linear infinite -60s;
   }
   .ds-school.sc3 {
-    top: 81%;
+    top: 1620px;
     width: 150px;
     height: 46px;
     opacity: calc(0.7 * var(--env-organic-op));
@@ -424,7 +529,7 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
     position: absolute;
     width: 66px;
     height: 130px;
-    animation: ds-pulse 13s ease-in-out infinite;
+    animation: ds-pulse 31s ease-in-out infinite;
   }
   .ds-jelly svg {
     width: 100%;
@@ -432,15 +537,17 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
     display: block;
   }
   .ds-jelly.j1 {
-    left: 3%;
-    top: 52%;
+    left: -48px;
+    top: 610px;
+    width: 104px;
+    height: 198px;
   }
   .ds-jelly.j2 {
-    right: 4%;
-    top: 76%;
+    right: 210px;
+    top: 1460px;
     width: 46px;
     height: 92px;
-    animation-duration: 17s;
+    animation-duration: 43s;
     animation-delay: -6s;
   }
   .ds-jelly .bell {
@@ -452,6 +559,48 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
     stroke: var(--env-silhouette);
     stroke-width: 2;
     opacity: calc(0.6 * var(--env-organic-op));
+  }
+
+  .ds-sea-fan,
+  .ds-hydroid {
+    position: absolute;
+    color: var(--env-silhouette);
+    opacity: var(--env-organic-op);
+  }
+
+  .ds-sea-fan {
+    right: -82px;
+    bottom: 22px;
+    width: 260px;
+    height: 330px;
+    transform: rotate(-7deg);
+  }
+
+  .ds-hydroid {
+    left: -54px;
+    top: 58%;
+    width: 180px;
+    height: 250px;
+    transform: rotate(9deg);
+  }
+
+  .ds-sea-fan path,
+  .ds-hydroid path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 5;
+    stroke-linecap: round;
+  }
+
+  :global([data-theme='tide-light']) .ds-reef,
+  :global([data-theme='tide-light']) .ds-kelp,
+  :global([data-theme='tide-light']) .ds-sea-fan,
+  :global([data-theme='tide-light']) .ds-hydroid {
+    opacity: 0.22;
+  }
+
+  :global([data-theme='tide-light']) .ds-reef {
+    display: none;
   }
 
   /* 側軌 —— chrome 外側的留白帶。所有亮的移動物只能住在這裡。 */
@@ -469,24 +618,31 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
   }
 
   .ds-bub {
+    --bubble-peak: 0.56;
     position: absolute;
     border: 1px solid var(--fg-faint);
     border-radius: 50%;
-    box-shadow: inset -1px 1px 0 color-mix(in oklab, var(--env-spark) 28%, transparent);
-    animation: ds-rise 21s linear infinite;
+    animation: ds-rise 29s cubic-bezier(0.45, 0.08, 0.55, 0.92) infinite;
   }
   .ds-bub.teal {
     border-color: var(--glow-line);
   }
   .ds-bub:nth-of-type(3n) {
+    --bubble-peak: 0.72;
     animation-name: ds-rise-b;
-    animation-duration: 27s;
+    animation-duration: 37s;
   }
   .ds-bub:nth-of-type(4n + 1) {
-    animation-duration: 16s;
+    --bubble-peak: 0.34;
+    animation-duration: 24s;
   }
   .ds-bub:nth-of-type(5n + 2) {
-    animation-duration: 31s;
+    --bubble-peak: 0.46;
+    animation-duration: 43s;
+  }
+  .ds-bub:nth-of-type(7n) {
+    --bubble-peak: 0.62;
+    animation-duration: 33s;
   }
   .ds-bub:nth-of-type(2n) {
     animation-delay: -9s;
@@ -514,18 +670,18 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
     bottom: 0;
     border: 1px solid var(--glow-line);
     border-radius: 50%;
-    animation: ds-vent 11s linear infinite;
+    animation: ds-vent 24s linear infinite;
   }
   .ds-vent i:nth-child(2n) {
-    animation-duration: 14s;
+    animation-duration: 29s;
     animation-delay: -3s;
   }
   .ds-vent i:nth-child(3n) {
-    animation-duration: 9s;
+    animation-duration: 21s;
     animation-delay: -6s;
   }
   .ds-vent i:nth-child(4n + 1) {
-    animation-duration: 16s;
+    animation-duration: 33s;
     animation-delay: -11s;
   }
   .ds-vent i:nth-child(5n + 2) {
@@ -587,36 +743,48 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
       transform: translate3d(0, 60px, 0);
       opacity: 0;
     }
-    10% {
-      opacity: 0.85;
+    17% {
+      transform: translate3d(5px, -10px, 0);
+      opacity: var(--bubble-peak);
     }
-    50% {
-      transform: translate3d(18px, -190px, 0);
+    39% {
+      transform: translate3d(18px, -156px, 0);
+    }
+    64% {
+      transform: translate3d(9px, -246px, 0);
+      opacity: var(--bubble-peak);
     }
     84% {
-      opacity: 0.85;
+      transform: translate3d(-8px, -390px, 0);
+      opacity: calc(var(--bubble-peak) * 0.58);
     }
     100% {
-      transform: translate3d(-6px, -460px, 0);
+      transform: translate3d(-4px, -470px, 0);
       opacity: 0;
     }
   }
   @keyframes ds-rise-b {
     0% {
-      transform: translate3d(0, 60px, 0);
+      transform: translate3d(0, 72px, 0);
       opacity: 0;
     }
-    12% {
-      opacity: 0.8;
+    13% {
+      transform: translate3d(-7px, 10px, 0);
+      opacity: calc(var(--bubble-peak) * 0.72);
     }
-    50% {
-      transform: translate3d(-20px, -170px, 0);
+    31% {
+      transform: translate3d(-22px, -96px, 0);
+      opacity: var(--bubble-peak);
     }
-    82% {
-      opacity: 0.8;
+    59% {
+      transform: translate3d(-10px, -206px, 0);
+    }
+    77% {
+      transform: translate3d(12px, -335px, 0);
+      opacity: calc(var(--bubble-peak) * 0.64);
     }
     100% {
-      transform: translate3d(10px, -420px, 0);
+      transform: translate3d(4px, -445px, 0);
       opacity: 0;
     }
   }
@@ -683,10 +851,10 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
   }
   @keyframes ds-swim-r {
     from {
-      transform: translate3d(-22vw, 0, 0);
+      transform: translate3d(-22vw, 0, 0) scaleX(-1);
     }
     to {
-      transform: translate3d(118vw, 0, 0);
+      transform: translate3d(118vw, 0, 0) scaleX(-1);
     }
   }
   @keyframes ds-swim-l {
@@ -739,21 +907,123 @@ const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,1
     }
   }
 
-  /* 視窗變窄時，側軌會被壓到閱讀欄上 —— 分級退場 */
-  @media (max-width: 1023px) {
-    .ds-beam,
-    .ds-kelp,
-    .ds-school,
-    .ds-jelly,
-    .ds-vent {
-      display: none;
+  @keyframes ds-reduced {
+    0%,
+    100% {
+      opacity: 0.58;
+    }
+    50% {
+      opacity: 0.82;
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ds-vent i,
+    .ds-mote,
+    .ds-jelly,
+    .ds-snow,
+    .ds-school,
+    .ds-beam,
+    .ds-dot,
+    .ds-kelp,
+    .ds-caustics {
+      transform: none;
+      animation: ds-reduced 46s ease-in-out infinite;
+    }
+  }
+
+  /* Narrow layouts keep visible depth anchors instead of flattening the scene. */
+  @media (max-width: 1023px) {
+    .ds-kelp,
+    .ds-school,
+    .ds-vent,
+    .ds-sea-fan,
+    .ds-hydroid {
+      display: none;
+    }
+
+    .ds-compass-mark {
+      display: none;
+    }
+
+    .ds-rail {
+      width: 48%;
+    }
+  }
+
   @media (max-width: 767px) {
-    .ds-bub,
     .ds-dot,
     .ds-snow {
       display: none;
     }
+
+    .ds-strata path {
+      opacity: 0.92;
+    }
+
+    .ds-strata.s2 path {
+      opacity: 0.78;
+    }
   }
 </style>
+
+<script>
+  const supportsIndividualTranslate = CSS.supports('translate', '0 1px');
+  const parallaxLayers = [
+    ['.ds-caustics', -0.012, 0.08, 12, 90],
+    ['.ds-beam', 0.025, 0.15, 24, 170],
+    ['.ds-strata.s1', -0.02, 0.24, 18, 250],
+    ['.ds-strata.s2', 0.025, 0.34, 26, 350],
+    ['.ds-school', 0, 0.22, 0, 230],
+    ['.ds-jelly', -0.018, 0.38, 18, 380],
+    ['.ds-sea-fan, .ds-hydroid', 0.026, 0.4, 28, 400],
+    ['.ds-reef, .ds-kelp', -0.03, 0.42, 30, 190],
+  ].flatMap(([selector, speedX, speedY, maxX, maxY]) =>
+    [...document.querySelectorAll<HTMLElement>(selector as string)].map((element) => ({
+      element,
+      speedX: speedX as number,
+      speedY: speedY as number,
+      maxX: maxX as number,
+      maxY: maxY as number,
+    }))
+  );
+  let parallaxFrame = 0;
+  let parallaxSettleTimer = 0;
+
+  const renderParallax = () => {
+    parallaxFrame = 0;
+    const isMobile = window.innerWidth < 768;
+    const motionScale = isMobile ? 0.9 : 1;
+    const scrollDepth = window.scrollY;
+
+    parallaxLayers.forEach(({ element, speedX, speedY, maxX, maxY }) => {
+      const offsetX =
+        supportsIndividualTranslate && !isMobile
+          ? Math.max(-maxX, Math.min(maxX, scrollDepth * speedX * motionScale))
+          : 0;
+      const offsetY = supportsIndividualTranslate
+        ? Math.min(maxY, scrollDepth * speedY * motionScale)
+        : 0;
+      element.style.translate = `${offsetX.toFixed(2)}px ${offsetY.toFixed(2)}px`;
+    });
+  };
+
+  const queueParallax = () => {
+    if (!parallaxFrame) parallaxFrame = window.requestAnimationFrame(renderParallax);
+    if (!supportsIndividualTranslate) return;
+
+    parallaxLayers.forEach(({ element }) => {
+      element.style.willChange = 'translate';
+    });
+    window.clearTimeout(parallaxSettleTimer);
+    parallaxSettleTimer = window.setTimeout(() => {
+      parallaxLayers.forEach(({ element }) => {
+        element.style.willChange = '';
+      });
+    }, 180);
+  };
+
+  window.addEventListener('scroll', queueParallax, { passive: true });
+  window.addEventListener('resize', queueParallax);
+  queueParallax();
+</script>

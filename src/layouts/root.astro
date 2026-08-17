@@ -2,7 +2,6 @@
 import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import Head from '@/components/Head.astro';
-import ThemeToggle from '@/components/ThemeToggle.astro';
 import '../global.css';
 
 dayjs.extend(timezone);
@@ -35,7 +34,7 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, sch
         const meta = document.querySelector('meta[name="theme-color"]');
         const sync = () => {
           const t = document.documentElement.getAttribute('data-theme');
-          if (meta) meta.setAttribute('content', t === 'tide-dark' ? '#050D0F' : '#C6D9DE');
+          if (meta) meta.setAttribute('content', t === 'tide-dark' ? '#07181A' : '#E7F0F1');
         };
         sync();
         new MutationObserver(sync).observe(document.documentElement, {
@@ -44,17 +43,12 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, sch
         });
       });
     </script>
-    <script>
-      import { themeChange } from 'theme-change';
-      themeChange();
-    </script>
-
     <link rel="me" href="https://social.wildsky.cc/@wildsky" />
     <link rel="me" href="https://github.com/wildskyf" />
     <link rel="me" href="https://www.linkedin.com/in/wildsky/" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta content="dark light" name="color-scheme" />
-    <meta name="theme-color" content="#050D0F" />
+    <meta name="theme-color" content="#07181A" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -70,11 +64,17 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, sch
   </head>
 
   <body>
+    <!--
+      THESIS: A decade of technical writing becomes a private folio descending through petrol water; it refuses the dashboard/HUD arrangement.
+      OWN-WORLD: Teal-black water and wet paper, serif typography, hairlines, deckle strata, cropped monochrome marine silhouettes, scarce blood red and one coral beacon.
+      STORY: The visitor recognizes Wildsky, reads the exact manifesto, scans real posts by date and topic, then continues into the archive.
+      FIRST VIEWPORT: A 72px seal header, oversized two-line manifesto, article count, and the newest post cross the first moving depth boundary.
+      FORM: Approved comp v8 canon; seed key approved-v8-canon.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+    -->
     <div class="page-container">
       <slot />
     </div>
-
-    <ThemeToggle />
 
     <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-QJC649ZTNK"></script>
     <script id="google-analytics" is:inline>

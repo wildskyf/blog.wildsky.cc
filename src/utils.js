@@ -24,7 +24,7 @@ export const computeReadingMinutes = (rawBody = '') => {
 };
 
 export const formatReadingTime = (minutes, lang) =>
-  lang === 'en' ? `${minutes} min read` : `約 ${minutes} 分鐘閱讀`;
+  lang === 'en' ? `${minutes} min` : `${minutes} 分鐘`;
 
 export const articleMapper = (post_info) => {
   // Extract slug from ID since data.slug seems unreliable

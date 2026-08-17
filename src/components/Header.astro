@@ -1,11 +1,10 @@
 ---
 import Nav from '@/components/Nav.astro';
+import ThemeToggle from '@/components/ThemeToggle.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import { getTranslation } from '@/i18n/utils.ts';
 import type { Locale } from '@/i18n/translations.ts';
 
 const currentLocale = (Astro.currentLocale === 'en' ? 'en' : 'tw') as Locale;
-const t = getTranslation(currentLocale);
 const home_url = getRelativeLocaleUrl(currentLocale, '');
 
 // 品牌印的字母：站名首字。方括號 lockup 是 HUD 語彙，已退場。
@@ -16,12 +15,13 @@ const seal = 'W';
   <div class="chrome-inner ds-header-inner">
     <a class="ds-brand" href={home_url}>
       <span class="ds-seal" aria-hidden="true">{seal}</span>
-      <span class="ds-brand-name">{t.site.title}</span>
+      <span class="ds-brand-name">Wildsky</span>
     </a>
 
-    <p class="ds-site-desc">{t.site.homeDescription}</p>
-
-    <Nav />
+    <div class="ds-header-actions">
+      <ThemeToggle />
+      <Nav />
+    </div>
   </div>
 </header>
 
@@ -30,7 +30,7 @@ const seal = 'W';
     position: relative;
     z-index: 3;
     flex: none;
-    height: 76px;
+    height: 72px;
     background: var(--bg-surface);
   }
 
@@ -68,36 +68,29 @@ const seal = 'W';
   }
 
   .ds-brand-name {
-    font-family: var(--font-chrome);
-    font-size: 24px;
+    font-family: var(--font-label);
+    font-size: 32px;
     font-weight: 600;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.055em;
+    font-variant-caps: all-small-caps;
+    font-feature-settings:
+      'smcp' 1,
+      'c2sc' 1;
     line-height: 1.4;
     white-space: nowrap;
   }
 
-  .ds-site-desc {
-    flex: 1;
-    min-width: 0;
-    margin: 0;
-    font-family: var(--font-label);
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    font-variant: small-caps;
-    color: var(--fg-muted);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .ds-header-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
 
   @media (max-width: 767px) {
     .ds-brand-name {
       font-size: 19px;
       letter-spacing: 0.08em;
-    }
-    .ds-site-desc {
-      display: none;
     }
   }
 </style>

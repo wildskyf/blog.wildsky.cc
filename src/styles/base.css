@@ -16,7 +16,7 @@ body {
   font-family: var(--font-body);
   font-size: 19px;
   line-height: 1.9;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.008em;
   -webkit-font-smoothing: var(--body-smoothing);
   overflow-x: hidden;
 }
@@ -74,9 +74,13 @@ body {
   height: 30px;
   background: var(--accent-fill);
   color: var(--fg-on-accent);
-  font-family: var(--font-chrome);
+  font-family: var(--font-label);
   font-size: 19px;
   font-weight: 600;
+  font-variant-caps: all-small-caps;
+  font-feature-settings:
+    'smcp' 1,
+    'c2sc' 1;
   line-height: 1;
   letter-spacing: 0;
 }
@@ -94,11 +98,15 @@ body {
   padding: 2px 10px 3px;
   background: var(--accent-fill);
   color: var(--fg-on-accent);
-  font-family: var(--font-chrome);
-  font-size: 13px;
+  font-family: var(--font-label);
+  font-size: 15px;
   font-weight: 500;
   line-height: 1.3;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.055em;
+  font-variant-caps: all-small-caps;
+  font-feature-settings:
+    'smcp' 1,
+    'c2sc' 1;
 }
 
 /* 中文永遠不做大寫處理，字距不超過 0.02em（The Small-Caps Label Rule） */
@@ -112,22 +120,29 @@ body {
    排版級距（DESIGN.md「Typography / Hierarchy」）
    ------------------------------------------------------------ */
 .ds-chrome {
-  font-family: var(--font-chrome);
-  font-size: 13px;
+  font-family: var(--font-label);
+  font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.055em;
+  font-variant-caps: all-small-caps;
+  font-feature-settings:
+    'smcp' 1,
+    'c2sc' 1;
 }
 
 .ds-label {
   font-family: var(--font-label);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.06em;
-  font-variant: small-caps;
+  letter-spacing: 0.055em;
+  font-variant-caps: all-small-caps;
+  font-feature-settings:
+    'smcp' 1,
+    'c2sc' 1;
 }
 
 .ds-headline {
-  font-family: var(--font-display);
+  font-family: var(--font-headline);
   font-size: 27px;
   font-weight: 600;
   line-height: 1.45;
@@ -135,7 +150,7 @@ body {
 }
 
 .ds-display {
-  font-family: var(--font-display);
+  font-family: var(--font-cjk-display);
   font-size: clamp(2rem, 4.5vw, 2.75rem);
   font-weight: 600;
   line-height: 1.2;
@@ -152,21 +167,24 @@ body {
   gap: 10px;
   height: 58px;
   padding: 0 40px;
-  font-family: var(--font-chrome);
-  font-size: 13px;
+  font-family: var(--font-label);
+  font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.055em;
+  font-variant-caps: all-small-caps;
+  font-feature-settings:
+    'smcp' 1,
+    'c2sc' 1;
   color: var(--fg);
   text-decoration: none;
   cursor: pointer;
 }
 
-/* hover 是紅色被允許填滿的少數位置之一 */
 .ds-btn:hover {
-  background: var(--accent-fill);
-  color: var(--fg-on-accent);
+  background: transparent;
+  color: var(--fg);
   --stroke: var(--accent);
-  --stroke-inner: color-mix(in oklab, var(--fg-on-accent) 42%, transparent);
+  --stroke-inner: var(--ember);
 }
 
 .ds-link {
@@ -209,10 +227,14 @@ body {
 
 .ds-section-title {
   margin: 0 0 18px;
-  font-family: var(--font-chrome);
-  font-size: 13px;
+  font-family: var(--font-label);
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.055em;
+  font-variant-caps: all-small-caps;
+  font-feature-settings:
+    'smcp' 1,
+    'c2sc' 1;
   color: var(--fg-muted);
 }
 
@@ -229,10 +251,13 @@ body {
   align-items: baseline;
   gap: 7px;
   font-family: var(--font-label);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.07em;
-  font-variant: small-caps;
+  letter-spacing: 0.055em;
+  font-variant-caps: all-small-caps;
+  font-feature-settings:
+    'smcp' 1,
+    'c2sc' 1;
   color: var(--fg-muted);
   text-decoration: none;
   border-bottom: 1px solid transparent;
@@ -248,12 +273,10 @@ body {
   border-bottom-color: var(--accent);
 }
 
-/* 計數是次要資訊，不做成徽章 —— 徽章是軟體 UI 語彙。
-   字體用 EB Garamond 而非 Cinzel：Cinzel 的「1」是一根沒有襯線的豎筆，
-   單獨出現時會被讀成分隔線 `|`。這是實際踩到的問題，不是預防性選擇。 */
+/* 計數是次要資訊，不做成徽章；數字使用 atmospheric meta。 */
 .ds-count {
-  font-family: var(--font-label);
-  font-size: 13px;
+  font-family: var(--font-meta);
+  font-size: 12px;
   font-weight: 500;
   font-variant-numeric: lining-nums tabular-nums;
   letter-spacing: 0;
@@ -308,7 +331,7 @@ body {
 
 .ds-cat-name {
   display: block;
-  font-family: var(--font-display);
+  font-family: var(--font-headline);
   font-size: 24px;
   font-weight: 700;
   line-height: 1.4;
@@ -325,10 +348,10 @@ body {
 }
 
 .ds-cat-count {
-  font-family: var(--font-chrome);
-  font-size: 13px;
+  font-family: var(--font-meta);
+  font-size: 12px;
   font-weight: 400;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.045em;
   color: var(--fg-muted);
   white-space: nowrap;
 }

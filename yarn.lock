@@ -1343,20 +1343,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource-variable/bodoni-moda@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@fontsource-variable/bodoni-moda@npm:5.3.0"
-  checksum: e0891731b7bb00a239c9753d6d097180826dde2a413cf845f674a239e7b552a5fca9f1330c6e06347f4bfe362c572cc599c1e7bbe395b8e794603d7d7db64319
-  languageName: node
-  linkType: hard
-
-"@fontsource-variable/cinzel@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@fontsource-variable/cinzel@npm:5.3.0"
-  checksum: c029398f916e6701d69c97d361360871112e7a00b69fe2afce77cbfa0ea97b45fe80fe12662d14e4a8fc062dd2d63258b149a91aa99cab7edeae35ee9a8389a8
-  languageName: node
-  linkType: hard
-
 "@fontsource-variable/eb-garamond@npm:^5.3.0":
   version: 5.3.0
   resolution: "@fontsource-variable/eb-garamond@npm:5.3.0"
@@ -1371,17 +1357,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource-variable/source-serif-4@npm:^5.3.0":
+"@fontsource-variable/noto-serif-tc@npm:^5.2.8":
   version: 5.3.0
-  resolution: "@fontsource-variable/source-serif-4@npm:5.3.0"
-  checksum: 30de2035d785f4b72341e393f58599308787f02292c19d872ffc802e9d4bc2e3697fbe415bdf898962f9ea7894bb5f56e025b4b39f71352aac225bb453544b50
+  resolution: "@fontsource-variable/noto-serif-tc@npm:5.3.0"
+  checksum: ec0e7f3313e7e55666749ba5203590122ea626e209c19c9151965f8149332e2f461bf4075fdacc0df48e4595b8677fdb9089f91a2e16427bcf3b27223b1f239d
   languageName: node
   linkType: hard
 
-"@fontsource/noto-serif-tc@npm:4.5.12":
-  version: 4.5.12
-  resolution: "@fontsource/noto-serif-tc@npm:4.5.12"
-  checksum: ee3e8445e22a70640f55e71438fda58b915e2ac81b80f6547016190c3293507bcc697cbbbae63446856af30c396f586c758898eedf438eb5465bdc3c9ab1e1d9
+"@fontsource/cormorant-sc@npm:^5.2.8":
+  version: 5.3.0
+  resolution: "@fontsource/cormorant-sc@npm:5.3.0"
+  checksum: 7202000b6b65042b7951ae7ffdadd2d0836e960480b2903a258cc95fb6ea086a5be7674ea06e3a03ae74f11ab8810a2910a65b80073b11b75dcb3f233628caa1
+  languageName: node
+  linkType: hard
+
+"@fontsource/space-mono@npm:^5.2.8":
+  version: 5.3.0
+  resolution: "@fontsource/space-mono@npm:5.3.0"
+  checksum: e8af35dac5afcdf3fed1b53eca275005017d964c9addbf131fcd570a5955228e824503e3dd4da92efb1fa062a4a8c117cb22e7b83d552e6e20b0da83da06d4e2
   languageName: node
   linkType: hard
 
@@ -3315,13 +3308,6 @@ __metadata:
   dependencies:
     css-tree: ~2.2.0
   checksum: 0ad858d36bf5012ed243e9ec69962a867509061986d2ee07cc040a4b26e4d062c00d4c07e5ba8d430706ceb02dd87edd30a52b5937fd45b1b6f2119c4993d59a
-  languageName: node
-  linkType: hard
-
-"daisyui@npm:^5.1.13":
-  version: 5.1.13
-  resolution: "daisyui@npm:5.1.13"
-  checksum: aa0af869a1f293f8a09542081d89e56711dd46c3f87b38e6867845043cefc5bb168fb785f09790ef0836dbc9e38e8f68a2f07a9dceb0c69a2a9351644336a607
   languageName: node
   linkType: hard
 
@@ -7160,13 +7146,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"theme-change@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "theme-change@npm:2.5.0"
-  checksum: a57e50a8f7cb0390c752c9f3b44aa38bdb37ad72cfed1770a9cad3f718b620eec7e2a18abf6706730eb76a55f67ec813c17192dbe4943b03371c1e13e589ec15
-  languageName: node
-  linkType: hard
-
 "tiny-inflate@npm:^1.0.3":
   version: 1.0.3
   resolution: "tiny-inflate@npm:1.0.3"
@@ -7897,12 +7876,11 @@ __metadata:
     "@astrojs/check": 0.9.10
     "@astrojs/rss": 4.0.19
     "@astrojs/sitemap": ^3.7.3
-    "@fontsource-variable/bodoni-moda": ^5.3.0
-    "@fontsource-variable/cinzel": ^5.3.0
     "@fontsource-variable/eb-garamond": ^5.3.0
     "@fontsource-variable/jetbrains-mono": ^5.3.0
-    "@fontsource-variable/source-serif-4": ^5.3.0
-    "@fontsource/noto-serif-tc": 4.5.12
+    "@fontsource-variable/noto-serif-tc": ^5.2.8
+    "@fontsource/cormorant-sc": ^5.2.8
+    "@fontsource/space-mono": ^5.2.8
     "@iconify-json/ant-design": 1.2.5
     "@iconify-json/bx": 1.2.2
     "@iconify-json/fa": 1.1.8
@@ -7915,7 +7893,6 @@ __metadata:
     "@tailwindcss/vite": 4.0.10
     astro: 7.2.2
     astro-icon: ^1.1.5
-    daisyui: ^5.1.13
     dayjs: ^1.11.18
     eslint: ^9.36.0
     eslint-plugin-astro: ^1.3.1
@@ -7925,7 +7902,6 @@ __metadata:
     prettier-plugin-astro: ^0.14.1
     tailwind-merge: ^3.3.1
     tailwindcss: ^4.1.13
-    theme-change: ^2.5.0
     typescript: ^5.9.2
   languageName: unknown
   linkType: soft

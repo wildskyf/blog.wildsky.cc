@@ -1,10 +1,10 @@
 /* 自架字體（PRODUCT.md 硬性約束：手刻自架、不依賴平台 —— 不走 Google Fonts CDN） */
-@import '@fontsource-variable/cinzel';
-@import '@fontsource-variable/bodoni-moda';
 @import '@fontsource-variable/eb-garamond';
-@import '@fontsource-variable/source-serif-4';
 @import '@fontsource-variable/jetbrains-mono';
-@import '@fontsource/noto-serif-tc';
+@import '@fontsource/cormorant-sc/600.css';
+@import '@fontsource/space-mono/400.css';
+@import '@fontsource/space-mono/700.css';
+@import '@fontsource-variable/noto-serif-tc';
 
 @import 'tailwindcss';
 
@@ -101,9 +101,8 @@
 
 .article-content figure figcaption {
   font-family: var(--font-label);
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  font-variant: small-caps;
+  font-size: 16px;
+  letter-spacing: 0.015em;
   color: var(--fg-muted);
   text-align: center;
 }
@@ -188,9 +187,8 @@
   gap: 8px;
   border-top: 1px solid var(--rule);
   font-family: var(--font-label);
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  font-variant: small-caps;
+  font-size: 15px;
+  letter-spacing: 0.015em;
   color: var(--fg-muted);
 }
 
@@ -229,10 +227,14 @@
   border-radius: 0;
   background: transparent;
   padding: 14px 28px;
-  font-family: var(--font-chrome);
-  font-size: 13px;
+  font-family: var(--font-label);
+  font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.055em;
+  font-variant-caps: all-small-caps;
+  font-feature-settings:
+    'smcp' 1,
+    'c2sc' 1;
   color: var(--fg);
   cursor: pointer;
   transition:
@@ -242,9 +244,11 @@
 }
 
 .notes-load-more:hover:not(:disabled) {
-  background: var(--accent-fill);
+  background: transparent;
   border-color: var(--accent);
-  color: var(--fg-on-accent);
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 0.28em;
 }
 
 .notes-load-more:disabled {
@@ -254,8 +258,7 @@
 
 .notes-status {
   font-family: var(--font-label);
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  font-variant: small-caps;
+  font-size: 15px;
+  letter-spacing: 0.015em;
   color: var(--fg-muted);
 }

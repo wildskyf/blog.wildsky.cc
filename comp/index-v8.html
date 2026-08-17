@@ -1,0 +1,2103 @@
+<!doctype html>
+<html lang="zh-hant-tw" data-theme="tide-dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wildsky's Blog — 首頁 comp v8（哥德航海 × 有機深淵）</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============================================================
+   TOKEN LAYER — 唯一允許出現色值的地方
+   ============================================================ */
+      [data-theme='tide-dark'] {
+        color-scheme: dark;
+        --bg: #07181a;
+        --bg-surface: #0a2325;
+        --bg-raised: #123234;
+        --bg-sunken: #041113;
+        --fg: #ddebec;
+        --fg-muted: #a3c0c3;
+        --fg-faint: #76a0a5;
+        --fg-on-accent: #f5f8f8;
+        --rule: #2d575b;
+        --accent: #c8323e;
+        --accent-text: #f06e78;
+        --accent-fill: #9f1f2b;
+        --glow: #7fd3d4;
+        --glow-dim: #62b7b9;
+        --glow-line: #3f9b9e;
+        --ember: #e8895a;
+        --body-smoothing: antialiased;
+
+        /* Environment tokens stay in the 180–189 degree petrol/teal range. */
+        --env-surface: #15383a;
+        --env-mid: #0e292b;
+        --env-deep: #081d1f;
+        --env-abyss: #041315;
+        --env-silhouette: #020a0b;
+        --env-raised: #1a4143;
+
+        /* Dark bioluminescence and deep-water scatter need theme-specific values. */
+        --env-beam: #76a0a5;
+        --env-caustic: #7fd3d4;
+        --env-spark: #3f9b9e;
+        --env-grain-blend: screen;
+        --env-strata-op: 0.5;
+        --env-organic-op: 0.82;
+        --env-mote-op: 0.11;
+        --mobile-page-veil: 0.78;
+      }
+
+      /* ============================================================
+   The light theme is not an inversion. It uses the same 180–189 degree hue
+   axis in a wet-paper luminance range. Its silhouettes are pale impressions;
+   copying dark silhouettes would reduce dark-text contrast.
+   ============================================================ */
+      [data-theme='tide-light'] {
+        color-scheme: light;
+        --bg: #e7f0f1;
+        --bg-surface: #f4f8f8;
+        --bg-raised: #dbe9ea;
+        --bg-sunken: #d2e1e2;
+        --fg: #102c2f;
+        --fg-muted: #365f63;
+        --fg-faint: #3c666a;
+        --fg-on-accent: #f9fbfb;
+        --rule: #a7c2c4;
+        --accent: #c8323e;
+        --accent-text: #98212c;
+        --accent-fill: #c8323e;
+        --glow: #075d60;
+        --glow-dim: #23696c;
+        --glow-line: #26898d;
+        --ember: #9e431f;
+        --body-smoothing: auto;
+
+        --env-surface: #edf5f5;
+        --env-mid: #dce9ea;
+        --env-deep: #ccdde0;
+        --env-abyss: #c0d4d6;
+        --env-silhouette: #a8c4c6;
+        --env-raised: #e3eeee;
+
+        --env-beam: #f4f8f8;
+        --env-caustic: #f4f8f8;
+        --env-spark: #26898d;
+        --env-grain-blend: multiply;
+        --env-strata-op: 0.55;
+        /* ★ 亮色的有機層必須壓弱：實測剪影壓在日期欄上會讓 --fg-muted 掉到 4.01。
+     0.42 是讓最暗合成值 L≥0.672（--fg-muted 剛好 4.5）的上限。 */
+        --env-organic-op: 0.24;
+        /* 亮色的微粒是「深色點」，會直接扣掉正文背景亮度。
+     0.08 是讓 --fg-muted 保住 4.60 的值（0.14 時只有 4.46）。 */
+        --env-mote-op: 0.055;
+        --mobile-page-veil: 0.88;
+      }
+
+      :root {
+        --font-display: 'Cormorant SC', 'EB Garamond', 'Noto Serif TC', Georgia, serif;
+        --font-cjk-display: 'Noto Serif TC', Georgia, serif;
+        --font-headline: 'EB Garamond', 'Noto Serif TC', Georgia, serif;
+        --font-label: 'EB Garamond', 'Noto Serif TC', Georgia, serif;
+        --font-meta: 'Space Mono', 'JetBrains Mono', monospace;
+        --font-body: 'EB Garamond', 'Noto Serif TC', Georgia, serif;
+        --font-code: 'JetBrains Mono', ui-monospace, monospace;
+
+        --chrome: 1120px;
+        --gutter-col: 140px;
+        --measure: 720px;
+        --page-gutter: 24px;
+
+        --fs-watermark: 132px;
+
+        --ease: cubic-bezier(0.2, 0, 0, 1);
+        --t: 120ms;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        position: relative;
+        background: var(--env-abyss);
+        color: var(--fg);
+        font-family: var(--font-body);
+        font-size: 19px;
+        line-height: 1.9;
+        letter-spacing: 0.008em;
+        -webkit-font-smoothing: var(--body-smoothing);
+        overflow-x: hidden;
+      }
+      ::selection {
+        background: var(--accent-fill);
+        color: var(--fg-on-accent);
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* ============================================================
+   ★ THE PLATE — 取代 The Ring
+   貴氣不是切角，是「雙細線」：外框 1px，內框 1px 內縮 4px。
+   這是凸版印刷／銅版名片的框，直角、對稱、不耍花樣。
+   ============================================================ */
+      .plate {
+        position: relative;
+        background: transparent;
+        /* 外框用 --fg-faint 而非 --rule：--rule 是校準在 --bg 上的，
+     落到更亮的環境層（尤其亮色主題）會弱到看不見 */
+        border: 1px solid var(--stroke, var(--fg-faint));
+        transition:
+          border-color var(--t) var(--ease),
+          background var(--t) var(--ease),
+          color var(--t) var(--ease);
+      }
+      .plate::before {
+        content: '';
+        position: absolute;
+        inset: 4px;
+        pointer-events: none;
+        border: 1px solid var(--stroke-inner, var(--rule));
+        transition: border-color var(--t) var(--ease);
+      }
+
+      /* ★ 銅印：唯一的實心紅塊，反白刻字 */
+      .seal {
+        position: relative;
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background: var(--accent-fill);
+        color: var(--fg-on-accent);
+        font-family: var(--font-label);
+        font-size: 19px;
+        font-weight: 600;
+        font-variant-caps: all-small-caps;
+        font-feature-settings: 'smcp' 1, 'c2sc' 1;
+        line-height: 1;
+        letter-spacing: 0;
+      }
+      .seal::after {
+        content: '';
+        position: absolute;
+        inset: 3px;
+        border: 1px solid color-mix(in oklab, var(--fg-on-accent) 42%, transparent);
+      }
+
+      /* ============================================================
+   環境層 — The Organic Layer Rule 的管轄範圍
+   ============================================================ */
+      .bg-field {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .bg-field .depth {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 88% 28% at 24% -4%,
+            color-mix(in oklab, var(--env-raised) 58%, transparent) 0%,
+            color-mix(in oklab, var(--env-surface) 18%, transparent) 48%,
+            transparent 78%
+          ),
+          radial-gradient(
+            ellipse 54% 38% at 96% 27%,
+            color-mix(in oklab, var(--env-surface) 30%, transparent) 0%,
+            transparent 74%
+          ),
+          radial-gradient(
+            ellipse 66% 36% at 5% 65%,
+            color-mix(in oklab, var(--env-deep) 28%, transparent) 0%,
+            transparent 76%
+          ),
+          linear-gradient(
+            to bottom,
+            var(--env-surface) 0%,
+            var(--env-surface) 8%,
+            var(--env-mid) 26%,
+            var(--env-deep) 55%,
+            var(--env-abyss) 88%,
+            var(--env-abyss) 100%
+          );
+      }
+
+      /* 左右暗角綁死在 chrome 外側的留白帶 —— 用百分比會漫進閱讀欄，
+   實測讓亮色主題的 --fg-muted 掉到 4.38（未過 AA）。 */
+      .bg-field .vignette {
+        position: absolute;
+        inset: 0;
+        --vig: calc((100% - var(--chrome)) / 2);
+      }
+      .bg-field .vignette::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(to right, var(--env-abyss) 0%, transparent var(--vig)),
+          linear-gradient(to left, var(--env-abyss) 0%, transparent var(--vig)),
+          linear-gradient(to top, var(--env-abyss) 0%, transparent 22%);
+      }
+
+      .bg-field .grain {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.035;
+        mix-blend-mode: var(--env-grain-blend);
+      }
+
+      .bg-field .strata {
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+      }
+      .bg-field .strata.s1 {
+        top: 540px;
+        height: 420px;
+      }
+      .bg-field .strata.s2 {
+        top: 1330px;
+        height: 300px;
+      }
+      .bg-field .strata path {
+        fill: var(--env-surface);
+        opacity: var(--env-strata-op);
+        filter: url(#deckle-f);
+      }
+      .bg-field .strata.s2 path {
+        fill: var(--env-mid);
+        opacity: calc(var(--env-strata-op) * 0.68);
+      }
+
+      .bg-field .beam {
+        position: absolute;
+        top: -90px;
+        width: clamp(280px, 28vw, 440px);
+        height: 900px;
+        transform: rotate(-14deg);
+        transform-origin: top center;
+        background: radial-gradient(
+          ellipse 46% 100% at 38% 0%,
+          color-mix(in oklab, var(--env-beam) 18%, transparent) 0%,
+          color-mix(in oklab, var(--env-beam) 7%, transparent) 42%,
+          transparent 76%
+        );
+        clip-path: polygon(18% 0, 56% 0, 100% 100%, 0 100%);
+        -webkit-mask-image: linear-gradient(to bottom, var(--fg) 0 18%, transparent 88%);
+        mask-image: linear-gradient(to bottom, var(--fg) 0 18%, transparent 88%);
+      }
+      .bg-field .beam.b1 {
+        left: 40px;
+      }
+      .bg-field .beam.b2 {
+        display: none;
+      }
+
+      .bg-field .reef {
+        position: absolute;
+        left: 0;
+        right: 0;
+        left: -5%;
+        right: auto;
+        bottom: -88px;
+        width: 110%;
+        height: 260px;
+        opacity: var(--env-organic-op);
+      }
+      .bg-field .reef path {
+        fill: var(--env-silhouette);
+      }
+      .bg-field .kelp {
+        position: absolute;
+        bottom: -118px;
+        height: 560px;
+        width: 120px;
+        opacity: var(--env-organic-op);
+      }
+      .bg-field .kelp.left {
+        left: -38px;
+        transform: rotate(-5deg);
+      }
+      .bg-field .kelp.right {
+        right: -46px;
+        transform: rotate(7deg);
+      }
+      .bg-field .kelp path {
+        fill: none;
+        stroke: var(--env-silhouette);
+        stroke-width: 9;
+        stroke-linecap: round;
+      }
+
+      /* Broad water light, deliberately irregular rather than a technical stripe grid. */
+      .bg-field .caustics {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 460px;
+        background:
+          radial-gradient(
+            ellipse 34% 92% at 10% -18%,
+            color-mix(in oklab, var(--env-caustic) 10%, transparent),
+            transparent 72%
+          ),
+          radial-gradient(
+            ellipse 24% 74% at 64% -10%,
+            color-mix(in oklab, var(--env-caustic) 7%, transparent),
+            transparent 76%
+          ),
+          radial-gradient(
+            ellipse 18% 66% at 92% -14%,
+            color-mix(in oklab, var(--env-caustic) 5%, transparent),
+            transparent 78%
+          );
+        -webkit-mask-image: linear-gradient(to bottom, var(--fg) 0, transparent 100%);
+        mask-image: linear-gradient(to bottom, var(--fg) 0, transparent 100%);
+      }
+
+      /* ★ 氣泡 —— v7.1 修正：舊版用 --rule 畫在水上，對比只有 1.74（等於隱形）。
+   改用 --fg-faint / --glow-line，並靠 opacity 動畫進出。 */
+      .bg-field .bub {
+        position: absolute;
+        border: 1px solid var(--fg-faint);
+        border-radius: 50%;
+      }
+      .bg-field .bub.teal {
+        border-color: var(--glow-line);
+      }
+
+      /* ★ v7.1 噴氣孔 —— 從礁石縫隙冒出的細密氣泡柱。
+   氣泡環用 --glow-line，是全頁最亮的移動物；一律排在 chrome 外側，
+   絕不進入 160–1020px 的日期柱與正文柱（實測：進去會讓對比掉到 2.22）。 */
+      .bg-field .vent {
+        position: absolute;
+        bottom: 120px;
+        width: 26px;
+        height: 620px;
+      }
+      .bg-field .vent i {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        border: 1px solid var(--glow-line);
+        border-radius: 50%;
+      }
+
+      /* 生物光 */
+      .bg-field .dot {
+        position: absolute;
+        background: var(--glow);
+        border-radius: 50%;
+      }
+
+      /* 海雪（marine snow）—— 溝內較大的懸浮微粒 */
+      .bg-field .snow {
+        position: absolute;
+        background: var(--fg-faint);
+        border-radius: 50%;
+        opacity: 0.35;
+      }
+
+      /* ★ v7.1 浮游微粒 —— 全幅細粒，讓整頁都像在水裡（含閱讀柱後方，故壓到極低） */
+      .bg-field .mote {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        background: var(--fg-faint);
+        opacity: var(--env-mote-op);
+      }
+
+      /* ★ v7.1 水母 —— 收縮式脈動剪影，唯一有「生物」節奏的東西 */
+      .bg-field .jelly {
+        position: absolute;
+        width: 66px;
+        height: 130px;
+      }
+      .bg-field .jelly svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .bg-field .jelly .bell {
+        fill: var(--env-silhouette);
+        opacity: calc(0.72 * var(--env-organic-op));
+      }
+      .bg-field .jelly .tendril {
+        fill: none;
+        stroke: var(--env-silhouette);
+        stroke-width: 2;
+        opacity: calc(0.6 * var(--env-organic-op));
+      }
+      .bg-field .jelly.j1 {
+        left: -48px;
+        width: 104px;
+        height: 198px;
+      }
+      .bg-field .jelly.j1 svg {
+        transform: rotate(8deg) scale(1.05);
+        transform-origin: center;
+      }
+
+      .bg-field .sea-fan,
+      .bg-field .hydroid {
+        position: absolute;
+        color: var(--env-silhouette);
+        opacity: var(--env-organic-op);
+      }
+      .bg-field .sea-fan {
+        right: -82px;
+        bottom: 22px;
+        width: 260px;
+        height: 330px;
+        transform: rotate(-7deg);
+      }
+      .bg-field .hydroid {
+        left: -54px;
+        top: 58%;
+        width: 180px;
+        height: 250px;
+        transform: rotate(9deg);
+      }
+      .bg-field .sea-fan path,
+      .bg-field .hydroid path {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 5;
+        stroke-linecap: round;
+      }
+
+      .bg-field .ember-beacon {
+        position: absolute;
+        z-index: 1;
+        top: 180px;
+        right: max(32px, calc((100% - var(--chrome)) / 2 + 22px));
+        width: 2px;
+        height: 180px;
+        background: color-mix(in oklab, var(--ember) 18%, transparent);
+      }
+      .bg-field .ember-beacon::before {
+        content: '';
+        position: absolute;
+        left: -3px;
+        top: -3px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--ember);
+      }
+      .bg-field .compass-mark {
+        position: absolute;
+        top: 164px;
+        left: max(24px, calc((100% - var(--chrome)) / 2 - 84px));
+        width: 58px;
+        height: 58px;
+        color: var(--rule);
+        opacity: 0.38;
+      }
+      .bg-field .compass-mark circle,
+      .bg-field .compass-mark path {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1;
+      }
+
+      [data-theme='tide-light'] .bg-field .reef,
+      [data-theme='tide-light'] .bg-field .kelp,
+      [data-theme='tide-light'] .bg-field .sea-fan,
+      [data-theme='tide-light'] .bg-field .hydroid {
+        opacity: 0.22;
+      }
+      [data-theme='tide-light'] .bg-field .reef {
+        display: none;
+      }
+
+      /* ★ v7 新增：魚群剪影 —— 比背景更暗，因此不會降低淺色文字的對比 */
+      .bg-field .school {
+        position: absolute;
+        left: 0;
+        fill: var(--env-silhouette);
+        opacity: calc(0.62 * var(--env-organic-op));
+      }
+      .bg-field .school.sc1 {
+        top: 690px;
+        width: 210px;
+        height: 64px;
+      }
+      .bg-field .school.sc2 {
+        top: 1180px;
+        width: 300px;
+        height: 96px;
+        opacity: calc(0.5 * var(--env-organic-op));
+      }
+      .bg-field .school.sc3 {
+        top: 1620px;
+        width: 150px;
+        height: 46px;
+        opacity: calc(0.7 * var(--env-organic-op));
+      }
+
+      /* Narrow layouts keep a few depth anchors visible. Removing every moving
+         silhouette makes functioning parallax visually indistinguishable from no motion. */
+      @media (max-width: 1023px) {
+        .bg-field .kelp,
+        .bg-field .school,
+        .bg-field .vent,
+        .bg-field .sea-fan,
+        .bg-field .hydroid {
+          display: none;
+        }
+        .bg-field .compass-mark {
+          display: none;
+        }
+      }
+      @media (max-width: 767px) {
+        .bg-field .dot,
+        .bg-field .snow {
+          display: none;
+        }
+      }
+
+      /* ============================================================
+   AMBIENT 動畫 — The Ambient Motion Rule
+   只動 transform / opacity；正文與 chrome 零動畫；全部 ≥ 23s
+
+   v8 keeps ambient motion but reduces it to slow opacity breathing when the
+   user requests reduced motion; no positional movement remains in that mode.
+   ============================================================ */
+
+      /* 氣泡：單向上浮，但分段速度、側漂與峰值透明度都不一致。 */
+      @keyframes amb-rise {
+        0% {
+          transform: translate3d(0, 60px, 0);
+          opacity: 0;
+        }
+        17% {
+          transform: translate3d(5px, -10px, 0);
+          opacity: var(--bubble-peak);
+        }
+        39% {
+          transform: translate3d(18px, -156px, 0);
+        }
+        64% {
+          transform: translate3d(9px, -246px, 0);
+          opacity: var(--bubble-peak);
+        }
+        84% {
+          transform: translate3d(-8px, -390px, 0);
+          opacity: calc(var(--bubble-peak) * 0.58);
+        }
+        100% {
+          transform: translate3d(-4px, -470px, 0);
+          opacity: 0;
+        }
+      }
+      @keyframes amb-rise-b {
+        0% {
+          transform: translate3d(0, 72px, 0);
+          opacity: 0;
+        }
+        13% {
+          transform: translate3d(-7px, 10px, 0);
+          opacity: calc(var(--bubble-peak) * 0.72);
+        }
+        31% {
+          transform: translate3d(-22px, -96px, 0);
+          opacity: var(--bubble-peak);
+        }
+        59% {
+          transform: translate3d(-10px, -206px, 0);
+        }
+        77% {
+          transform: translate3d(12px, -335px, 0);
+          opacity: calc(var(--bubble-peak) * 0.64);
+        }
+        100% {
+          transform: translate3d(4px, -445px, 0);
+          opacity: 0;
+        }
+      }
+      /* 噴氣孔的細泡：短行程、快節奏，靠密度而非單顆吸引視線 */
+      @keyframes amb-vent {
+        0% {
+          transform: translate3d(-50%, 0, 0) scale(0.5);
+          opacity: 0;
+        }
+        14% {
+          opacity: 0.7;
+        }
+        86% {
+          opacity: 0.5;
+        }
+        100% {
+          transform: translate3d(-50%, -600px, 0) scale(1.25);
+          opacity: 0;
+        }
+      }
+      /* 全幅浮游微粒：極慢的側向漂移 */
+      @keyframes amb-drift {
+        0% {
+          transform: translate3d(0, 0, 0);
+          opacity: 0;
+        }
+        20% {
+          opacity: var(--env-mote-op);
+        }
+        80% {
+          opacity: var(--env-mote-op);
+        }
+        100% {
+          transform: translate3d(46px, -70px, 0);
+          opacity: 0;
+        }
+      }
+      /* 水面波光：橫向漂移 */
+      @keyframes amb-caustic {
+        0% {
+          transform: translate3d(0, 0, 0);
+          opacity: 0.55;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translate3d(128px, 0, 0);
+          opacity: 0.55;
+        }
+      }
+      /* 水母：傘部收縮推進 —— 縮一下、上升一段 */
+      @keyframes amb-pulse {
+        0% {
+          transform: translate3d(0, 0, 0) scaleY(1) scaleX(1);
+        }
+        16% {
+          transform: translate3d(0, -14px, 0) scaleY(0.82) scaleX(1.14);
+        }
+        46% {
+          transform: translate3d(0, -34px, 0) scaleY(1.06) scaleX(0.95);
+        }
+        100% {
+          transform: translate3d(0, -4px, 0) scaleY(1) scaleX(1);
+        }
+      }
+      /* 海雪：反向，緩慢下沉 */
+      @keyframes amb-fall {
+        0% {
+          transform: translate3d(0, -30px, 0);
+          opacity: 0;
+        }
+        16% {
+          opacity: 0.35;
+        }
+        78% {
+          opacity: 0.35;
+        }
+        100% {
+          transform: translate3d(-10px, 240px, 0);
+          opacity: 0;
+        }
+      }
+      /* 魚群：橫越畫面 */
+      @keyframes amb-swim-r {
+        from {
+          transform: translate3d(-22vw, 0, 0) scaleX(-1);
+        }
+        to {
+          transform: translate3d(118vw, 0, 0) scaleX(-1);
+        }
+      }
+      @keyframes amb-swim-l {
+        from {
+          transform: translate3d(118vw, 0, 0);
+        }
+        to {
+          transform: translate3d(-22vw, 0, 0);
+        }
+      }
+      @keyframes amb-breathe {
+        0%,
+        100% {
+          opacity: 0.72;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+      @keyframes amb-blink {
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        42% {
+          opacity: 1;
+        }
+      }
+      @keyframes amb-sway {
+        0%,
+        100% {
+          transform: rotate(-0.7deg);
+        }
+        50% {
+          transform: rotate(0.7deg);
+        }
+      }
+
+      .bg-field .bub {
+        --bubble-peak: 0.56;
+        animation: amb-rise 29s cubic-bezier(0.45, 0.08, 0.55, 0.92) infinite;
+      }
+      .bg-field .bub:nth-of-type(3n) {
+        --bubble-peak: 0.72;
+        animation-name: amb-rise-b;
+        animation-duration: 37s;
+      }
+      .bg-field .bub:nth-of-type(4n + 1) {
+        --bubble-peak: 0.34;
+        animation-duration: 24s;
+      }
+      .bg-field .bub:nth-of-type(5n + 2) {
+        --bubble-peak: 0.46;
+        animation-duration: 43s;
+      }
+      .bg-field .bub:nth-of-type(7n) {
+        --bubble-peak: 0.62;
+        animation-duration: 33s;
+      }
+      .bg-field .bub:nth-of-type(2n) {
+        animation-delay: -9s;
+      }
+      .bg-field .bub:nth-of-type(3n + 1) {
+        animation-delay: -14s;
+      }
+
+      .bg-field .caustics {
+        animation: amb-caustic 26s ease-in-out infinite alternate;
+      }
+
+      .bg-field .vent i {
+        animation: amb-vent 24s linear infinite;
+      }
+      .bg-field .vent i:nth-child(2n) {
+        animation-duration: 29s;
+        animation-delay: -3s;
+      }
+      .bg-field .vent i:nth-child(3n) {
+        animation-duration: 21s;
+        animation-delay: -6s;
+      }
+      .bg-field .vent i:nth-child(4n + 1) {
+        animation-duration: 33s;
+        animation-delay: -11s;
+      }
+      .bg-field .vent i:nth-child(5n + 2) {
+        animation-delay: -8s;
+      }
+
+      .bg-field .mote {
+        animation: amb-drift 42s linear infinite;
+      }
+      .bg-field .mote:nth-of-type(2n) {
+        animation-duration: 57s;
+        animation-delay: -14s;
+      }
+      .bg-field .mote:nth-of-type(3n) {
+        animation-duration: 68s;
+        animation-delay: -31s;
+      }
+      .bg-field .mote:nth-of-type(4n + 1) {
+        animation-duration: 49s;
+        animation-delay: -22s;
+      }
+      .bg-field .mote:nth-of-type(5n + 3) {
+        animation-duration: 75s;
+        animation-delay: -44s;
+      }
+
+      .bg-field .jelly {
+        animation: amb-pulse 27s ease-in-out infinite;
+      }
+      .bg-field .jelly.j2 {
+        animation-duration: 37s;
+        animation-delay: -6s;
+      }
+
+      .bg-field .snow {
+        animation: amb-fall 58s linear infinite;
+      }
+      .bg-field .snow:nth-of-type(2n) {
+        animation-duration: 76s;
+        animation-delay: -19s;
+      }
+      .bg-field .snow:nth-of-type(3n) {
+        animation-duration: 91s;
+        animation-delay: -37s;
+      }
+      .bg-field .snow:nth-of-type(4n + 1) {
+        animation-duration: 67s;
+        animation-delay: -48s;
+      }
+
+      .bg-field .school.sc1 {
+        animation: amb-swim-r 128s linear infinite;
+      }
+      .bg-field .school.sc2 {
+        animation: amb-swim-l 186s linear infinite -60s;
+      }
+      .bg-field .school.sc3 {
+        animation: amb-swim-r 154s linear infinite -95s;
+      }
+
+      .bg-field .beam.b1 {
+        animation: amb-breathe 34s ease-in-out infinite;
+      }
+      .bg-field .beam.b2 {
+        animation: amb-breathe 47s ease-in-out infinite -13s;
+      }
+
+      .bg-field .dot {
+        animation: amb-blink 23s ease-in-out infinite;
+      }
+      .bg-field .dot:nth-of-type(2n) {
+        animation-duration: 31s;
+        animation-delay: -8s;
+      }
+      .bg-field .dot:nth-of-type(3n) {
+        animation-duration: 37s;
+        animation-delay: -17s;
+      }
+
+      .bg-field .kelp {
+        transform-origin: bottom center;
+        animation: amb-sway 44s ease-in-out infinite;
+      }
+      .bg-field .kelp.right {
+        animation-duration: 52s;
+        animation-delay: -21s;
+      }
+
+      @keyframes amb-reduced {
+        0%,
+        100% {
+          opacity: 0.58;
+        }
+        50% {
+          opacity: 0.82;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bg-field .vent i,
+        .bg-field .mote,
+        .bg-field .jelly,
+        .bg-field .snow,
+        .bg-field .school,
+        .bg-field .beam,
+        .bg-field .dot,
+        .bg-field .kelp,
+        .bg-field .caustics {
+          transform: none;
+          animation: amb-reduced 46s ease-in-out infinite;
+        }
+      }
+
+      .page {
+        position: relative;
+        z-index: 2;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .page::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        inset: 76px 0 0;
+        background: linear-gradient(
+          to bottom,
+          var(--bg-surface) 0%,
+          var(--bg) 20%,
+          var(--bg) 58%,
+          var(--bg-sunken) 100%
+        );
+        -webkit-mask-image: linear-gradient(
+          to right,
+          transparent calc(50% - 560px),
+          var(--fg) calc(50% - 500px),
+          var(--fg) calc(50% - 410px),
+          var(--fg) calc(50% + 410px),
+          var(--fg) calc(50% + 500px),
+          transparent calc(50% + 560px)
+        );
+        mask-image: linear-gradient(
+          to right,
+          transparent calc(50% - 560px),
+          var(--fg) calc(50% - 500px),
+          var(--fg) calc(50% - 410px),
+          var(--fg) calc(50% + 410px),
+          var(--fg) calc(50% + 500px),
+          transparent calc(50% + 560px)
+        );
+        pointer-events: none;
+      }
+      .chrome-inner {
+        width: min(var(--chrome), 100% - var(--page-gutter) * 2);
+        margin-inline: auto;
+      }
+
+      /* Overscale engraving: intentionally cropped outside the content rail. */
+      .watermark {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        z-index: 0;
+        display: none;
+        writing-mode: vertical-rl;
+        font-family: var(--font-display);
+        font-size: var(--fs-watermark);
+        font-weight: 500;
+        letter-spacing: 0.045em;
+        line-height: 1;
+        color: var(--env-mid);
+        user-select: none;
+        pointer-events: none;
+        white-space: nowrap;
+        align-items: center;
+      }
+      .watermark.left {
+        left: -28px;
+      }
+      .watermark.right {
+        right: -28px;
+        transform: rotate(180deg);
+      }
+      @media (min-width: 1280px) {
+        .watermark {
+          display: flex;
+        }
+      }
+
+      /* ============================================================
+   HEADER
+   ============================================================ */
+      .site-header {
+        position: relative;
+        height: 72px;
+        flex: none;
+        background: var(--bg-surface);
+        font-family: var(--font-label);
+        z-index: 3;
+      }
+      .site-header::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: var(--rule);
+      }
+      .site-header::before {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 40px;
+        height: 1px;
+        z-index: 1;
+        background: var(--accent);
+      }
+      .site-header .chrome-inner {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .header-actions {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      /* ★ 品牌：括號（HUD 語彙）退場，改銅印 ＋ 碑刻大寫 */
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 13px;
+        font-family: var(--font-label);
+        font-size: 32px;
+        font-weight: 600;
+        letter-spacing: 0.055em;
+        font-variant-caps: all-small-caps;
+        font-feature-settings: 'smcp' 1, 'c2sc' 1;
+        line-height: 1.4;
+        white-space: nowrap;
+        color: var(--fg);
+      }
+      .menu-btn {
+        width: 44px;
+        height: 44px;
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--fg-muted);
+        border: 0;
+        padding: 0;
+        background: transparent;
+        cursor: pointer;
+        transition: color var(--t) var(--ease);
+      }
+      .menu-btn:hover {
+        color: var(--fg);
+      }
+      .menu-btn:focus-visible,
+      .theme-switch:focus-visible,
+      .tag:focus-visible,
+      .chip:focus-visible,
+      .btn:focus-visible,
+      .social a:focus-visible {
+        outline: 2px solid var(--glow);
+        outline-offset: 3px;
+      }
+
+      /* ============================================================
+   HERO — 面板退場，改雙細線刻印帶
+   ============================================================ */
+      .hero {
+        position: relative;
+        margin: 56px 0 4px;
+      }
+      .hero-band {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 24px;
+        padding: 34px 0 30px 18px;
+        background: transparent;
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+      }
+      .hero-band::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 4px;
+        height: 1px;
+        background: color-mix(in oklab, var(--rule) 55%, transparent);
+      }
+      .hero-band::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 4px;
+        height: 1px;
+        background: color-mix(in oklab, var(--rule) 55%, transparent);
+      }
+      .hero-band > * {
+        position: relative;
+        z-index: 1;
+      }
+      .hero-band .hero-anchor {
+        position: absolute;
+        left: 0;
+        top: 28px;
+        bottom: 26px;
+        width: 1px;
+        background: var(--accent);
+      }
+      .hero-manifesto {
+        grid-column: 1;
+        margin: 0;
+        font-family: var(--font-cjk-display);
+        font-size: clamp(36px, 4.2vw, 56px);
+        font-weight: 600;
+        line-height: 1.28;
+        letter-spacing: 0.008em;
+        color: var(--fg);
+      }
+      .hero-manifesto span {
+        display: block;
+      }
+      .hero-count {
+        grid-column: 2;
+        align-self: end;
+        white-space: nowrap;
+        font-family: var(--font-body);
+        font-size: 15px;
+        letter-spacing: 0.015em;
+        color: var(--fg-muted);
+      }
+
+      /* ============================================================
+   文章索引
+   ============================================================ */
+      main {
+        flex: 1 0 auto;
+        padding: 0 0 96px;
+      }
+      .post-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .post-row {
+        position: relative;
+      }
+      .post-row .row-rule {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--rule);
+        z-index: 1;
+      }
+      .post-row .row-mark {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        background: var(--accent);
+        z-index: 2;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 180ms var(--ease);
+      }
+      .post-row.is-latest .row-mark {
+        transform: scaleY(1);
+      }
+      .post-row:hover .row-mark,
+      .post-row.is-hover .row-mark {
+        transform: scaleY(1);
+      }
+
+      /* ★ v7：整塊 hover 底色退場。hover 只做兩件事 —— 紅線長出、日期升亮 */
+      .post-row:hover .log-day,
+      .post-row.is-hover .log-day {
+        color: var(--fg);
+      }
+      /* A solid accent seal keeps small text legible: 7.27:1 dark, 5.08:1 light. */
+      .latest-tag {
+        display: inline-block;
+        padding: 2px 10px 3px;
+        background: var(--accent-fill);
+        color: var(--fg-on-accent);
+        font-family: var(--font-body);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        line-height: 1.3;
+      }
+      .row-grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: var(--gutter-col) minmax(0, var(--measure));
+        padding: 30px 0 32px;
+      }
+      .row-gutter {
+        position: relative;
+        padding-left: 18px;
+      }
+      .log-day {
+        display: block;
+        font-family: var(--font-headline);
+        font-size: 23px;
+        font-weight: 600;
+        letter-spacing: 0.015em;
+        color: var(--fg-muted);
+        line-height: 1.3;
+        transition: color var(--t) var(--ease);
+      }
+      .row-gutter::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 7px;
+        width: 9px;
+        height: 1px;
+        background: var(--glow-line);
+      }
+
+      .row-main {
+        min-width: 0;
+      }
+      .post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 10px;
+        margin-bottom: 10px;
+        font-family: var(--font-label);
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.015em;
+        color: var(--fg-muted);
+      }
+      .post-meta .sep {
+        color: var(--fg-faint);
+      }
+      /* ★ 分類：切角框退場，改「刻線標題」—— 小型大寫 ＋ 一條細下線 */
+      .chip {
+        font-family: var(--font-label);
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.015em;
+        color: var(--fg-muted);
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        padding-bottom: 1px;
+        border-bottom: 1px solid var(--rule);
+        transition:
+          color var(--t) var(--ease),
+          border-color var(--t) var(--ease);
+      }
+      /* hover 不用紅「字」（13px 紅字過不了 AA），用紅「線」＋ 文字升到 --fg（10.61） */
+      .chip:hover {
+        color: var(--fg);
+        border-bottom-color: var(--accent);
+      }
+
+      .post-title {
+        margin: 0 0 14px;
+        font-family: var(--font-headline);
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 1.45;
+        letter-spacing: 0.008em;
+        color: var(--fg);
+      }
+
+      /* ★ 標籤：平行四邊形退場，改無框小型大寫 ＋ hover 才出現的細下線 */
+      .taglist {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 18px;
+        row-gap: 2px;
+      }
+      .tag {
+        font-family: var(--font-label);
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.015em;
+        color: var(--fg-muted);
+        border-bottom: 1px solid transparent;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        padding: 0 0 1px;
+        text-underline-offset: 0.28em;
+        transition:
+          color var(--t) var(--ease),
+          border-color var(--t) var(--ease);
+      }
+      .tag:hover,
+      .tag:focus-visible {
+        color: var(--fg);
+        border-bottom-color: var(--accent);
+      }
+      .tag:lang(en) {
+        letter-spacing: 0.045em;
+        font-variant-caps: all-small-caps;
+        font-feature-settings: 'smcp' 1, 'c2sc' 1;
+      }
+
+      /* ★ 按鈕：切角退場，改雙細線銅版 */
+      .pager {
+        margin-top: 56px;
+        display: grid;
+        grid-template-columns: var(--gutter-col) 1fr;
+      }
+      .btn {
+        grid-column: 2;
+        justify-self: start;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 58px;
+        padding: 0 40px;
+        font-family: var(--font-label);
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        color: var(--fg);
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: transparent;
+        color: var(--fg);
+        --stroke: var(--accent);
+        --stroke-inner: var(--ember);
+      }
+
+      .site-footer {
+        flex: none;
+        background: var(--bg-sunken);
+        border-top: 1px solid var(--rule);
+        padding: 30px 0 34px;
+        font-family: var(--font-label);
+        position: relative;
+        z-index: 3;
+      }
+      .theme-switch {
+        position: relative;
+        z-index: 1;
+        width: 44px;
+        min-width: 44px;
+        height: 44px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--fg);
+        background: var(--bg-sunken);
+        cursor: pointer;
+      }
+      .theme-switch svg {
+        display: block;
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .theme-switch .icon-moon {
+        display: none;
+      }
+      [data-theme='tide-light'] .theme-switch .icon-sun {
+        display: none;
+      }
+      [data-theme='tide-light'] .theme-switch .icon-moon {
+        display: block;
+      }
+      .theme-switch:hover {
+        --stroke: var(--glow);
+        --stroke-inner: var(--rule);
+      }
+      .site-footer .chrome-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .social {
+        display: flex;
+        gap: 20px;
+      }
+      .social a {
+        color: var(--fg-muted);
+        display: inline-flex;
+        transition: color var(--t) var(--ease);
+      }
+      .social a:hover {
+        color: var(--glow);
+      }
+      /* The 12px footer uses --fg-muted: 9.94:1 dark and 5.25:1 light. */
+      .copyright {
+        font-family: var(--font-meta);
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.045em;
+        color: var(--fg-muted);
+      }
+
+      @media (max-width: 1119px) {
+        :root {
+          --gutter-col: 96px;
+        }
+      }
+      @media (max-width: 899px) {
+        .row-grid,
+        .pager,
+        .hero-band {
+          grid-template-columns: 1fr;
+        }
+        .row-gutter {
+          padding-left: 18px;
+        }
+        .hero-manifesto,
+        .hero-count {
+          grid-column: 1;
+        }
+        .row-main {
+          padding-left: 18px;
+        }
+        .btn {
+          grid-column: 1;
+        }
+      }
+      @media (max-width: 767px) {
+        :root {
+          --page-gutter: 20px;
+          --gutter-col: 0px;
+        }
+        .hero-manifesto {
+          font-size: clamp(30px, 8vw, 38px);
+        }
+        .page::before {
+          background: linear-gradient(
+            to bottom,
+            var(--bg-surface) 0%,
+            var(--bg) 22%,
+            var(--bg) 60%,
+            var(--bg-sunken) 100%
+          );
+          -webkit-mask-image: none;
+          mask-image: none;
+          opacity: var(--mobile-page-veil);
+        }
+        .bg-field .strata path {
+          opacity: 0.92;
+        }
+        .bg-field .strata.s2 path {
+          opacity: 0.78;
+        }
+        .hero::after {
+          content: '';
+          position: absolute;
+          right: 0;
+          bottom: -8px;
+          width: 46%;
+          height: 9px;
+          background: var(--env-silhouette);
+          opacity: 0.18;
+          filter: url(#deckle);
+          transform: rotate(-1.5deg);
+          pointer-events: none;
+        }
+        .brand {
+          letter-spacing: 0.08em;
+        }
+        .bg-field .reef {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--
+      THESIS: A long-running technical log rendered as a gothic nautical folio inside an organic abyss; it refuses the dashboard/HUD arrangement.
+      OWN-WORLD: Petrol-teal water and paper, Cormorant/EB Garamond/Noto serif type, hairlines, deckle strata, cropped monochrome marine silhouettes, scarce blood red and one coral beacon.
+      STORY: The visitor recognizes a personal archive, scans real posts by date, category, and reading time, then advances to the next page without losing clarity.
+      FIRST VIEWPORT: A quiet seal header, the exact tagline at display scale, then the first table-like post row; organic water stays outside the protected reading rail.
+      FORM: v7 canon refined into v8; user-pinned direction, seed key V8-GOTHIC-ORGANIC.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+    -->
+    <div class="bg-field" aria-hidden="true">
+      <span class="depth"></span>
+
+      <!-- 濁度層：撕裂邊 -->
+      <svg class="strata s1" viewBox="0 0 1440 420" preserveAspectRatio="none">
+        <path
+          d="M0,58 C90,30 170,72 258,50 C330,32 392,74 470,60 C556,44 620,86 706,68
+             C790,50 852,90 940,72 C1024,55 1090,94 1178,76 C1258,60 1330,96 1440,66
+             L1440,352 C1350,382 1276,344 1192,364 C1108,384 1042,346 956,366
+             C866,386 800,348 712,368 C624,388 560,350 470,370 C384,389 316,352 228,372
+             C148,390 78,356 0,378 Z"
+        />
+      </svg>
+      <svg class="strata s2" viewBox="0 0 1440 300" preserveAspectRatio="none">
+        <path
+          d="M0,40 C110,72 200,26 300,52 C398,78 470,34 566,58 C664,82 740,38 838,62
+             C934,86 1008,40 1104,64 C1196,87 1290,44 1440,74 L1440,246
+             C1348,270 1262,238 1168,258 C1074,278 990,240 894,264 C798,286 714,246 620,268
+             C526,288 442,248 348,270 C254,290 170,250 82,274 C48,282 24,270 0,266 Z"
+        />
+      </svg>
+
+      <span class="vignette"></span>
+
+      <svg width="0" height="0" focusable="false" aria-hidden="true">
+        <defs>
+          <filter id="deckle-f" x="-3%" y="-8%" width="106%" height="116%">
+          <feTurbulence
+            type="fractalNoise"
+              baseFrequency="0.012 0.05"
+              numOctaves="2"
+              seed="17"
+              result="noise"
+          />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
+
+      <!-- ★ v7.1 水面波光 -->
+      <span class="caustics"></span>
+
+      <span class="beam b1"></span>
+      <span class="beam b2"></span>
+      <span class="ember-beacon"></span>
+      <svg class="compass-mark" viewBox="0 0 58 58">
+        <circle cx="29" cy="29" r="22" />
+        <path d="M29 2V14M29 44V56M2 29H14M44 29H56M29 15L34 29L29 43L24 29Z" />
+      </svg>
+
+      <!-- ★ v7.1 水母 ×2：唯一有生物節奏的東西 -->
+      <span class="jelly j1" style="top: 610px">
+        <svg viewBox="0 0 66 130" aria-hidden="true">
+          <path
+            class="bell"
+            d="M4,44 C4,20 18,4 33,4 C48,4 62,20 62,44 C62,50 56,54 50,50
+                            C45,46 40,52 33,52 C26,52 21,46 16,50 C10,54 4,50 4,44 Z"
+          />
+          <path class="tendril" d="M18,52 C16,74 22,88 18,112" />
+          <path class="tendril" d="M27,52 C25,78 31,94 26,124" />
+          <path class="tendril" d="M39,52 C41,76 35,92 40,120" />
+          <path class="tendril" d="M48,52 C50,72 44,86 49,108" />
+        </svg>
+      </span>
+      <span class="jelly j2" style="right: 210px; top: 1460px; width: 46px; height: 92px">
+        <svg viewBox="0 0 66 130" aria-hidden="true">
+          <path
+            class="bell"
+            d="M4,44 C4,20 18,4 33,4 C48,4 62,20 62,44 C62,50 56,54 50,50
+                            C45,46 40,52 33,52 C26,52 21,46 16,50 C10,54 4,50 4,44 Z"
+          />
+          <path class="tendril" d="M20,52 C18,76 24,90 19,116" />
+          <path class="tendril" d="M33,52 C31,80 37,96 32,126" />
+          <path class="tendril" d="M46,52 C48,74 42,88 47,114" />
+        </svg>
+      </span>
+
+      <!-- ★ v7：魚群剪影（比背景更暗 → 只會提高淺色文字對比，不會降低） -->
+      <svg class="school sc1" viewBox="0 0 210 64" preserveAspectRatio="none">
+        <g>
+          <path d="M6,20 C14,12 32,12 44,20 C32,28 14,28 6,20 Z M44,20 L56,13 L54,20 L56,27 Z" />
+          <path
+            d="M62,42 C69,35 84,35 94,42 C84,49 69,49 62,42 Z M94,42 L104,36 L102,42 L104,48 Z"
+          />
+          <path
+            d="M104,14 C110,8 123,8 132,14 C123,20 110,20 104,14 Z M132,14 L141,9 L139,14 L141,19 Z"
+          />
+          <path
+            d="M138,38 C146,30 163,30 174,38 C163,46 146,46 138,38 Z M174,38 L185,32 L183,38 L185,44 Z"
+          />
+          <path d="M40,54 C45,49 56,49 63,54 C56,59 45,59 40,54 Z M63,54 L70,50 L69,54 L70,58 Z" />
+        </g>
+      </svg>
+
+      <svg class="school sc2" viewBox="0 0 300 96" preserveAspectRatio="none">
+        <g>
+          <!-- 一條大魚 / 蝠鱝式剪影 -->
+          <path
+            d="M28,52 C58,26 118,20 162,40 C186,51 210,50 232,42
+               C214,60 186,70 158,68 C120,66 66,68 28,52 Z"
+          />
+          <path d="M232,42 L262,30 L254,46 L266,60 Z" />
+          <path
+            d="M86,78 C96,70 116,70 128,78 C116,86 96,86 86,78 Z M128,78 L138,73 L136,78 L138,83 Z"
+          />
+        </g>
+      </svg>
+
+      <svg class="school sc3" viewBox="0 0 150 46" preserveAspectRatio="none">
+        <g>
+          <path d="M8,16 C15,10 30,10 40,16 C30,22 15,22 8,16 Z M40,16 L50,11 L48,16 L50,21 Z" />
+          <path d="M54,32 C60,27 73,27 82,32 C73,37 60,37 54,32 Z M82,32 L91,28 L89,32 L91,36 Z" />
+          <path
+            d="M96,12 C102,7 114,7 122,12 C114,17 102,17 96,12 Z M122,12 L130,8 L128,12 L130,16 Z"
+          />
+        </g>
+      </svg>
+
+      <!-- 有機剪影：底部珊瑚 / 殘骸 -->
+      <svg class="reef" viewBox="0 0 1440 230" preserveAspectRatio="xMidYMax slice">
+        <path
+          d="M0,230 L0,150 C14,142 20,120 16,98 C13,82 22,74 30,86 C36,95 34,112 40,126
+             C46,139 58,138 62,124 C67,106 60,88 66,72 C71,58 84,60 86,76 C88,94 82,112 88,130
+             C94,147 108,150 114,136 C120,121 114,100 122,88 C129,77 140,84 138,98
+             C136,116 130,134 138,152 C144,166 158,168 164,154 L172,230 Z"
+        />
+        <path
+          d="M196,230 L200,168 C186,158 178,136 184,116 C189,100 202,102 204,118
+             C206,134 200,150 208,164 C214,175 228,174 232,160 C237,142 228,120 236,106
+             C243,94 256,100 254,116 C252,134 246,152 254,168 C260,180 274,180 278,166
+             L286,230 Z"
+        />
+        <path
+          d="M1050,230 L1046,164 C1032,154 1024,130 1032,110 C1038,94 1052,98 1054,114
+             C1056,132 1048,150 1058,166 C1065,177 1080,176 1084,160 C1089,140 1080,118 1090,104
+             C1098,92 1112,98 1110,116 C1108,136 1100,154 1110,172 C1117,184 1132,184 1136,168
+             L1146,230 Z"
+        />
+        <path
+          d="M1188,230 L1192,146 C1178,134 1172,108 1180,88 C1187,71 1202,76 1204,94
+             C1206,114 1198,132 1208,150 C1215,163 1232,162 1236,146 C1241,124 1230,100 1242,86
+             C1252,74 1268,82 1264,102 C1260,124 1252,144 1264,164 C1272,178 1290,178 1294,160
+             C1300,136 1290,110 1304,96 C1314,86 1328,94 1324,114 C1320,136 1314,158 1326,178
+             C1334,191 1352,190 1358,172 L1372,230 Z"
+        />
+        <path
+          d="M320,230 L326,196 C314,188 308,172 314,158 C319,147 331,150 332,162
+             C333,175 328,187 336,198 L342,230 Z"
+        />
+        <path
+          d="M980,230 L986,190 C972,180 966,160 974,146 C980,135 993,139 994,153
+             C995,168 989,182 998,194 L1004,230 Z"
+        />
+      </svg>
+
+      <!-- Deterministically varied, mostly cropped silhouettes: never centered clipart. -->
+      <svg class="sea-fan" viewBox="0 0 260 330" preserveAspectRatio="none">
+        <path d="M132 330 C128 258 126 198 132 126 C136 82 140 42 150 4" />
+        <path d="M132 242 C96 214 70 180 48 134 C30 98 20 62 12 20" />
+        <path d="M130 214 C168 182 194 148 214 104 C230 70 240 38 246 8" />
+        <path d="M104 218 C92 174 82 132 80 82 M82 162 C58 142 42 120 28 92" />
+        <path d="M160 190 C170 150 180 112 184 68 M180 130 C204 110 220 88 232 58" />
+      </svg>
+      <svg class="hydroid" viewBox="0 0 180 250" preserveAspectRatio="none">
+        <path d="M96 250 C90 202 94 164 86 126 C78 90 86 52 78 8" />
+        <path d="M88 174 C62 150 50 126 44 98 M86 138 C112 116 124 90 130 62" />
+        <path d="M44 98 C34 82 24 72 12 66 M130 62 C146 50 158 38 168 22" />
+        <path d="M78 8 C72 22 68 34 70 48 M12 66 C22 64 30 66 36 74 M168 22 C158 24 150 30 146 40" />
+      </svg>
+
+      <!-- 溝內垂直海藻 / 纜索 -->
+      <svg class="kelp left" viewBox="0 0 120 560" preserveAspectRatio="none">
+        <path d="M40,560 C24,470 56,404 42,318 C30,244 62,186 48,104 C42,68 52,36 46,0" />
+        <path d="M86,560 C74,486 96,428 84,356 C74,294 94,246 86,186" />
+      </svg>
+      <svg class="kelp right" viewBox="0 0 120 560" preserveAspectRatio="none">
+        <path d="M74,560 C90,478 60,412 76,332 C88,262 58,200 72,122 C78,86 68,44 74,0" />
+        <path d="M28,560 C40,492 18,436 30,368 C40,308 22,258 30,198" />
+      </svg>
+
+      <!-- 氣泡：左溝 8 -->
+      <span class="bub" style="left: 64px; top: 470px; width: 6px; height: 6px"></span>
+      <span class="bub" style="left: 128px; top: 600px; width: 9px; height: 9px"></span>
+      <span class="bub" style="left: 48px; top: 780px; width: 12px; height: 12px"></span>
+      <span class="bub teal" style="left: 150px; top: 930px; width: 10px; height: 10px"></span>
+      <span class="bub teal" style="left: 82px; top: 1080px; width: 16px; height: 16px"></span>
+      <span class="bub teal" style="left: 36px; top: 1230px; width: 14px; height: 14px"></span>
+      <span class="bub teal" style="left: 112px; top: 1350px; width: 22px; height: 22px"></span>
+      <span class="bub teal" style="left: 60px; top: 1490px; width: 18px; height: 18px"></span>
+
+      <!-- 氣泡：右溝 5 -->
+      <span class="bub" style="right: 110px; top: 560px; width: 8px; height: 8px"></span>
+      <span class="bub" style="right: 62px; top: 820px; width: 11px; height: 11px"></span>
+      <span class="bub teal" style="right: 150px; top: 1090px; width: 15px; height: 15px"></span>
+      <span class="bub teal" style="right: 88px; top: 1300px; width: 20px; height: 20px"></span>
+      <span class="bub teal" style="right: 180px; top: 1470px; width: 13px; height: 13px"></span>
+
+      <!-- ★ v7.1 補密度 -->
+      <span class="bub" style="left: 132px; top: 380px; width: 5px; height: 5px"></span>
+      <span class="bub" style="left: 96px; top: 700px; width: 7px; height: 7px"></span>
+      <span class="bub teal" style="left: 140px; top: 1010px; width: 8px; height: 8px"></span>
+      <span class="bub teal" style="left: 24px; top: 1560px; width: 11px; height: 11px"></span>
+      <span class="bub" style="right: 196px; top: 400px; width: 6px; height: 6px"></span>
+      <span class="bub" style="right: 36px; top: 690px; width: 9px; height: 9px"></span>
+      <span class="bub teal" style="right: 118px; top: 960px; width: 12px; height: 12px"></span>
+      <span class="bub teal" style="right: 206px; top: 1620px; width: 17px; height: 17px"></span>
+
+      <!-- ★ v7：海雪 12 粒（左右溝內，不進閱讀柱） -->
+      <span class="snow" style="left: 44px; top: 420px; width: 2px; height: 2px"></span>
+      <span class="snow" style="left: 104px; top: 640px; width: 3px; height: 3px"></span>
+      <span class="snow" style="left: 152px; top: 880px; width: 2px; height: 2px"></span>
+      <span class="snow" style="left: 70px; top: 1150px; width: 2px; height: 2px"></span>
+      <span class="snow" style="left: 126px; top: 1400px; width: 3px; height: 3px"></span>
+      <span class="snow" style="left: 32px; top: 1660px; width: 2px; height: 2px"></span>
+      <span class="snow" style="right: 56px; top: 480px; width: 2px; height: 2px"></span>
+      <span class="snow" style="right: 132px; top: 720px; width: 3px; height: 3px"></span>
+      <span class="snow" style="right: 84px; top: 1000px; width: 2px; height: 2px"></span>
+      <span class="snow" style="right: 166px; top: 1260px; width: 2px; height: 2px"></span>
+      <span class="snow" style="right: 48px; top: 1520px; width: 3px; height: 3px"></span>
+      <span class="snow" style="right: 118px; top: 1740px; width: 2px; height: 2px"></span>
+
+      <!-- 生物光 4 點 -->
+      <span class="dot" style="left: 96px; top: 1180px; width: 3px; height: 3px"></span>
+      <span class="dot" style="left: 150px; top: 1420px; width: 2px; height: 2px"></span>
+      <span class="dot" style="right: 74px; top: 1240px; width: 3px; height: 3px"></span>
+      <span class="dot" style="right: 130px; top: 1550px; width: 2px; height: 2px"></span>
+
+      <!-- ★ v7.1 噴氣孔 ×3：從礁石縫隙持續冒泡 -->
+      <span class="vent" style="left: 118px">
+        <i style="width: 5px; height: 5px"></i><i style="width: 3px; height: 3px"></i>
+        <i style="width: 6px; height: 6px"></i><i style="width: 4px; height: 4px"></i>
+        <i style="width: 3px; height: 3px"></i><i style="width: 5px; height: 5px"></i>
+        <i style="width: 4px; height: 4px"></i>
+      </span>
+      <span class="vent" style="right: 238px; bottom: 150px">
+        <i style="width: 4px; height: 4px"></i><i style="width: 3px; height: 3px"></i>
+        <i style="width: 5px; height: 5px"></i><i style="width: 3px; height: 3px"></i>
+        <i style="width: 4px; height: 4px"></i>
+      </span>
+      <span class="vent" style="right: 146px">
+        <i style="width: 6px; height: 6px"></i><i style="width: 4px; height: 4px"></i>
+        <i style="width: 3px; height: 3px"></i><i style="width: 5px; height: 5px"></i>
+        <i style="width: 4px; height: 4px"></i><i style="width: 3px; height: 3px"></i>
+      </span>
+
+      <!-- ★ v7.1 全幅浮游微粒 ×20（opacity 0.14，含閱讀柱後方；對比實測見回報） -->
+      <span class="mote" style="left: 22%; top: 210px"></span>
+      <span class="mote" style="left: 37%; top: 388px"></span>
+      <span class="mote" style="left: 54%; top: 296px"></span>
+      <span class="mote" style="left: 68%; top: 452px"></span>
+      <span class="mote" style="left: 81%; top: 340px"></span>
+      <span class="mote" style="left: 29%; top: 604px"></span>
+      <span class="mote" style="left: 46%; top: 712px"></span>
+      <span class="mote" style="left: 62%; top: 648px"></span>
+      <span class="mote" style="left: 76%; top: 790px"></span>
+      <span class="mote" style="left: 18%; top: 868px"></span>
+      <span class="mote" style="left: 41%; top: 962px"></span>
+      <span class="mote" style="left: 57%; top: 1044px"></span>
+      <span class="mote" style="left: 72%; top: 1128px"></span>
+      <span class="mote" style="left: 33%; top: 1216px"></span>
+      <span class="mote" style="left: 49%; top: 1308px"></span>
+      <span class="mote" style="left: 66%; top: 1396px"></span>
+      <span class="mote" style="left: 25%; top: 1478px"></span>
+      <span class="mote" style="left: 58%; top: 1566px"></span>
+      <span class="mote" style="left: 78%; top: 1652px"></span>
+      <span class="mote" style="left: 44%; top: 1736px"></span>
+    </div>
+
+    <span class="watermark left" aria-hidden="true">WILDSKY.CC</span>
+    <span class="watermark right" aria-hidden="true">SINCE 2014</span>
+
+    <div class="page">
+      <header class="site-header">
+        <div class="chrome-inner">
+          <a class="brand" href="/"><span class="seal" aria-hidden="true">W</span>WILDSKY</a>
+          <div class="header-actions">
+            <button class="theme-switch plate" type="button" aria-label="切換到亮色主題">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <g class="icon-sun">
+                  <circle cx="12" cy="12" r="3.5" />
+                  <path d="M12 2.5V5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3 7 7M17 17l1.7 1.7M18.7 5.3 17 7M7 17l-1.7 1.7" />
+                </g>
+                <path class="icon-moon" d="M19.5 15.4A8 8 0 0 1 8.6 4.5 8 8 0 1 0 19.5 15.4Z" />
+              </svg>
+            </button>
+            <button class="menu-btn" aria-label="開啟導覽選單" aria-expanded="false">
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <path d="M3 6h18M3 12h18M3 18h18" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div class="hero">
+        <div class="chrome-inner">
+          <div class="hero-band">
+            <span class="hero-anchor" aria-hidden="true"></span>
+            <h1 class="hero-manifesto" aria-label="信仰不確定性，同時用確定性工程過生活">
+              <span>信仰不確定性，</span><span>同時用確定性工程過生活</span>
+            </h1>
+            <span class="hero-count">120 篇文章</span>
+          </div>
+        </div>
+      </div>
+
+      <main>
+        <div class="chrome-inner">
+          <ul class="post-list">
+            <li class="post-row is-latest">
+              <span class="row-rule"></span><span class="row-mark"></span>
+              <div class="row-grid">
+                <div class="row-gutter">
+                  <span class="log-day">2026.08.04</span>
+                </div>
+                <div class="row-main">
+                  <div class="post-meta">
+                    <a class="chip" href="#">軟體工程</a><span class="sep">·</span><span>12 分鐘</span
+                    ><span class="latest-tag">最新</span>
+                  </div>
+                  <h2 class="post-title">
+                    <a href="#">Claude Code 的 Agent View 用久後，對 Vim 的反思</a>
+                  </h2>
+                  <div class="taglist">
+                    <a class="tag" lang="en" href="#">Claude Code</a>
+                    <a class="tag" lang="en" href="#">Vim</a>
+                    <a class="tag" href="#">編輯器</a>
+                    <a class="tag" lang="en" href="#">AI</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="post-row">
+              <span class="row-rule"></span><span class="row-mark"></span>
+              <div class="row-grid">
+                <div class="row-gutter">
+                  <span class="log-day">2026.06.15</span>
+                </div>
+                <div class="row-main">
+                  <div class="post-meta">
+                    <a class="chip" href="#">生活體驗</a><span class="sep">·</span><span>9 分鐘</span>
+                  </div>
+                  <h2 class="post-title">
+                    <a href="#">爆卦 我是某個前端仔的 AI 助理，每天幫他擦屁股擦到想自己刪除系統</a>
+                  </h2>
+                  <div class="taglist">
+                    <a class="tag" lang="en" href="#">AI</a>
+                    <a class="tag" lang="en" href="#">Agent</a>
+                    <a class="tag" lang="en" href="#">Prompt</a>
+                    <a class="tag" href="#">自架</a>
+                    <a class="tag" lang="en" href="#">Obsidian</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="post-row">
+              <span class="row-rule"></span><span class="row-mark"></span>
+              <div class="row-grid">
+                <div class="row-gutter">
+                  <span class="log-day">2026.06.12</span>
+                </div>
+                <div class="row-main">
+                  <div class="post-meta">
+                    <a class="chip" href="#">思考觀點</a><span class="sep">·</span><span>7 分鐘</span>
+                  </div>
+                  <h2 class="post-title"><a href="#">關於駭客精神</a></h2>
+                  <div class="taglist">
+                    <a class="tag" href="#">駭客精神</a>
+                    <a class="tag" href="#">開源</a>
+                    <a class="tag" lang="en" href="#">Enshittification</a>
+                    <a class="tag" href="#">自架</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="post-row">
+              <span class="row-rule"></span><span class="row-mark"></span>
+              <div class="row-grid">
+                <div class="row-gutter">
+                  <span class="log-day">2026.06.07</span>
+                </div>
+                <div class="row-main">
+                  <div class="post-meta">
+                    <a class="chip" href="#">軟體工程</a><span class="sep">·</span><span>11 分鐘</span>
+                  </div>
+                  <h2 class="post-title"><a href="#">為什麼我決定自架一個 AI Agent</a></h2>
+                  <div class="taglist">
+                    <a class="tag" lang="en" href="#">AI</a>
+                    <a class="tag" lang="en" href="#">Agent</a>
+                    <a class="tag" lang="en" href="#">Self-hosted</a>
+                    <a class="tag" href="#">自架</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="post-row">
+              <span class="row-rule"></span><span class="row-mark"></span>
+              <div class="row-grid">
+                <div class="row-gutter">
+                  <span class="log-day">2026.04.19</span>
+                </div>
+                <div class="row-main">
+                  <div class="post-meta">
+                    <a class="chip" href="#">思考觀點</a><span class="sep">·</span><span>14 分鐘</span>
+                  </div>
+                  <h2 class="post-title">
+                    <a href="#">象牙塔隨想：黑天鵝視角下，學者真的都不食人間煙火嗎？</a>
+                  </h2>
+                  <div class="taglist">
+                    <a class="tag" href="#">黑天鵝效應</a>
+                    <a class="tag" href="#">敘事謬誤</a>
+                    <a class="tag" href="#">沈默證據</a>
+                    <a class="tag" href="#">思維實驗</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="pager"><a class="btn plate" href="/page/2" aria-label="下一頁">下一頁</a></div>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <div class="chrome-inner">
+          <div class="social">
+            <a href="https://social.wildsky.cc/@wildsky" aria-label="Mastodon">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 4h14v10a3 3 0 0 1-3 3H9l-4 3z" />
+                <path d="M8.5 12V9.5a1.5 1.5 0 0 1 3 0V12m0-2.5a1.5 1.5 0 0 1 3 0V12" />
+              </svg>
+            </a>
+            <a href="https://github.com/wildskyf" aria-label="GitHub">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9 20v-3c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.4 3.6 1 .1-.8.4-1.4.8-1.7-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.4 1 18.4 1.3 18.4 1.3c.6 1.6.2 2.8.1 3.1a4.6 4.6 0 0 1 1.2 3.2c0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2V20"
+                />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/wildsky/" aria-label="LinkedIn">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 5.2h.01M4 9.5V20M10.5 20V9.5M10.5 13.6c0-2.4 1.4-4.1 3.6-4.1s3.4 1.7 3.4 4.4V20"
+                />
+              </svg>
+            </a>
+            <a href="/rss.xml" aria-label="RSS">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12a7 7 0 0 1 7 7M5 5a14 14 0 0 1 14 14" />
+                <circle cx="5.8" cy="18.2" r="1.3" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+          </div>
+          <span class="copyright">2014—2026 © All Rights Reserved</span>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeSwitch = document.querySelector('.theme-switch');
+      const requestedTheme = new URLSearchParams(window.location.search).get('theme');
+
+      if (requestedTheme === 'light' || requestedTheme === 'dark') {
+        root.dataset.theme = `tide-${requestedTheme}`;
+      }
+
+      function syncThemeControl() {
+        const isDark = root.dataset.theme === 'tide-dark';
+        themeSwitch.setAttribute('aria-label', isDark ? '切換到亮色主題' : '切換到深色主題');
+      }
+
+      themeSwitch.addEventListener('click', () => {
+        root.dataset.theme = root.dataset.theme === 'tide-dark' ? 'tide-light' : 'tide-dark';
+        syncThemeControl();
+      });
+
+      syncThemeControl();
+
+      const supportsIndividualTranslate = CSS.supports('translate', '0 1px');
+      const parallaxLayers = [
+        ['.caustics', -0.012, 0.08, 12, 90],
+        ['.beam', 0.025, 0.15, 24, 170],
+        ['.strata.s1', -0.02, 0.24, 18, 250],
+        ['.strata.s2', 0.025, 0.34, 26, 350],
+        ['.school', 0, 0.22, 0, 230],
+        ['.jelly', -0.018, 0.38, 18, 380],
+        ['.sea-fan, .hydroid', 0.026, 0.4, 28, 400],
+        ['.reef, .kelp', -0.03, 0.42, 30, 190],
+      ].flatMap(([selector, speedX, speedY, maxX, maxY]) =>
+        [...document.querySelectorAll(selector)].map((element) => ({ element, speedX, speedY, maxX, maxY })),
+      );
+      let parallaxFrame = 0;
+      let parallaxSettleTimer = 0;
+
+      function renderParallax() {
+        parallaxFrame = 0;
+        const isMobile = window.innerWidth < 768;
+        const motionScale = isMobile ? 0.9 : 1;
+        const scrollDepth = window.scrollY;
+        const shouldMove = supportsIndividualTranslate;
+
+        parallaxLayers.forEach(({ element, speedX, speedY, maxX, maxY }) => {
+          const offsetX = shouldMove && !isMobile
+            ? Math.max(-maxX, Math.min(maxX, scrollDepth * speedX * motionScale))
+            : 0;
+          const offsetY = shouldMove ? Math.min(maxY, scrollDepth * speedY * motionScale) : 0;
+          element.style.translate = `${offsetX.toFixed(2)}px ${offsetY.toFixed(2)}px`;
+        });
+      }
+
+      function queueParallax() {
+        if (!parallaxFrame) {
+          parallaxFrame = window.requestAnimationFrame(renderParallax);
+        }
+        if (supportsIndividualTranslate) {
+          parallaxLayers.forEach(({ element }) => {
+            element.style.willChange = 'translate';
+          });
+          window.clearTimeout(parallaxSettleTimer);
+          parallaxSettleTimer = window.setTimeout(() => {
+            parallaxLayers.forEach(({ element }) => {
+              element.style.willChange = '';
+            });
+          }, 180);
+        }
+      }
+
+      window.addEventListener('scroll', queueParallax, { passive: true });
+      window.addEventListener('resize', queueParallax);
+      queueParallax();
+    </script>
+  </body>
+</html>

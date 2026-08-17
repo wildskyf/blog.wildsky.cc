@@ -7,104 +7,107 @@
 [data-theme='tide-dark'] {
   color-scheme: dark;
 
-  --bg: #0a1420;
-  --bg-surface: #0d1b2a;
-  --bg-raised: #12253a;
-  --bg-sunken: #060e17;
+  --bg: #07181a;
+  --bg-surface: #0a2325;
+  --bg-raised: #123234;
+  --bg-sunken: #041113;
 
-  --fg: #e8ecf0;
-  --fg-muted: #8faebc;
-  --fg-faint: #4a7a8c;
-  --fg-on-accent: #e8ecf0;
+  --fg: #ddebec;
+  --fg-muted: #a3c0c3;
+  --fg-faint: #76a0a5;
+  --fg-on-accent: #f5f8f8;
 
-  --rule: #2d4a5e;
+  --rule: #2d575b;
 
   --accent: #c8323e;
-  --accent-text: #e4525c;
-  --accent-fill: #a8202c;
+  --accent-text: #f06e78;
+  --accent-fill: #9f1f2b;
 
-  --glow: #7fd4d4;
-  --glow-dim: #5fb8bc;
-  --glow-line: #7fd4d4;
+  --glow: #7fd3d4;
+  --glow-dim: #62b7b9;
+  --glow-line: #3f9b9e;
+  --ember: #e8895a;
 
   --body-smoothing: antialiased;
 
-  /* 環境層（HSL 192–198，綠得發黑的水） */
-  --env-surface: #16323a;
-  --env-mid: #0e2129;
-  --env-deep: #081519;
-  --env-abyss: #050d0f;
-  --env-raised: #1b3a42;
-  --env-silhouette: #030a0c;
+  /* Environment tokens stay in the 180–189 degree petrol/teal range. */
+  --env-surface: #15383a;
+  --env-mid: #0e292b;
+  --env-deep: #081d1f;
+  --env-abyss: #041315;
+  --env-raised: #1a4143;
+  --env-silhouette: #020a0b;
 
   /* 光的顏色。暗色的光是青綠（生物光／深水散射） */
-  --env-beam: #4a7a8c;
-  --env-caustic: #7fd4d4;
-  --env-spark: #7fd4d4;
+  --env-beam: #76a0a5;
+  --env-caustic: #7fd3d4;
+  --env-spark: #3f9b9e;
 
   /* 環境層強度 —— 見 DESIGN.md「環境層強度」表，這些是實測解出的上限 */
   --env-grain-blend: screen;
   --env-strata-op: 0.5;
-  --env-organic-op: 1;
-  --env-mote-op: 0.14;
+  --env-organic-op: 0.82;
+  --env-mote-op: 0.11;
+  --mobile-page-veil: 0.78;
 }
 
 [data-theme='tide-light'] {
   color-scheme: light;
 
-  --bg: #edf2f4;
-  --bg-surface: #f7f9fa;
-  --bg-raised: #e4edf0;
-  --bg-sunken: #dfe9ec;
+  --bg: #e7f0f1;
+  --bg-surface: #f4f8f8;
+  --bg-raised: #dbe9ea;
+  --bg-sunken: #d2e1e2;
 
-  --fg: #16283a;
-  --fg-muted: #3f6273;
-  --fg-faint: #3d8a9e;
-  --fg-on-accent: #f7f9fa;
+  --fg: #102c2f;
+  --fg-muted: #365f63;
+  --fg-faint: #3c666a;
+  --fg-on-accent: #f9fbfb;
 
-  --rule: #c5d5dc;
+  --rule: #a7c2c4;
 
   --accent: #c8323e;
-  --accent-text: #b82a36;
+  --accent-text: #98212c;
   --accent-fill: #c8323e;
 
-  --glow: #166363;
-  --glow-dim: #1b7272;
-  --glow-line: #2ba3a3;
+  --glow: #075d60;
+  --glow-dim: #23696c;
+  --glow-line: #26898d;
+  --ember: #9e431f;
 
   --body-smoothing: auto;
 
   /* 淺灘：同一條明度軸、同一個色相帶，但落在紙的亮度區間 */
-  --env-surface: #f2f7f8;
-  --env-mid: #e4eef0;
-  --env-deep: #d5e4e7;
-  --env-abyss: #cadce0;
-  --env-raised: #ddeaec;
-  --env-silhouette: #afc7cd;
+  --env-surface: #edf5f5;
+  --env-mid: #dce9ea;
+  --env-deep: #ccdde0;
+  --env-abyss: #c0d4d6;
+  --env-raised: #e3eeee;
+  --env-silhouette: #a8c4c6;
 
-  --env-beam: #eaf7f9;
-  --env-caustic: #eaf7f9;
-  --env-spark: #eaf7f9;
+  --env-beam: #f4f8f8;
+  --env-caustic: #f4f8f8;
+  --env-spark: #26898d;
 
   /* 亮色的剪影與微粒是「深色物」，會扣掉正文背景亮度 —— 必須壓弱。
-     0.42 / 0.08 是讓 --fg-muted 保住 AA 的實測上限，不是品味。 */
+     0.24 / 0.055 是讓 --fg-muted 保住 AA 的實測上限，不是品味。 */
   --env-grain-blend: multiply;
   --env-strata-op: 0.55;
-  --env-organic-op: 0.42;
-  --env-mote-op: 0.08;
+  --env-organic-op: 0.24;
+  --env-mote-op: 0.055;
+  --mobile-page-veil: 0.88;
 }
 
 /* ============================================================
    非色彩 token
    ============================================================ */
 :root {
-  /* 三支拉丁字體分工，見 DESIGN.md「Typography / Character」 */
-  --font-chrome: 'Cinzel Variable', 'Noto Serif TC', Georgia, serif;
-  --font-display: 'Bodoni Moda Variable', 'Noto Serif TC', Georgia, serif;
-  --font-label: 'EB Garamond Variable', 'Noto Serif TC', Georgia, serif;
-  /* 正文是襯線 —— 站上原本就是 font-serif，且與碑刻／Didone 的 chrome 同材質。
-     Source Serif 4 是 Source Sans 的襯線姊妹，專為螢幕長文設計。 */
-  --font-body: 'Source Serif 4 Variable', 'Noto Serif TC', Georgia, serif;
+  --font-display: 'Cormorant SC', 'EB Garamond Variable', 'Noto Serif TC Variable', Georgia, serif;
+  --font-cjk-display: 'Noto Serif TC Variable', Georgia, serif;
+  --font-headline: 'EB Garamond Variable', 'Noto Serif TC Variable', Georgia, serif;
+  --font-label: 'EB Garamond Variable', 'Noto Serif TC Variable', Georgia, serif;
+  --font-meta: 'Space Mono', 'JetBrains Mono Variable', monospace;
+  --font-body: 'EB Garamond Variable', 'Noto Serif TC Variable', Georgia, serif;
   --font-code: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* 版面骨架 */
@@ -119,8 +122,15 @@
   --t: 120ms;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 1119px) {
+  :root {
+    --gutter-col: 96px;
+  }
+}
+
+@media (max-width: 767px) {
   :root {
     --page-gutter: 20px;
+    --gutter-col: 0px;
   }
 }

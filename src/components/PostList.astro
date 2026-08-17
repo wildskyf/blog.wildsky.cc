@@ -41,8 +41,7 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
           <div class="ds-row-grid">
             <div class="ds-row-gutter">
               <time datetime={new Date(post.date).toISOString()}>
-                <span class="ds-log-year">{d.format('YYYY')}</span>
-                <span class="ds-log-day">{d.format('MM.DD')}</span>
+                <span class="ds-log-day">{d.format('YYYY.MM.DD')}</span>
               </time>
             </div>
 
@@ -54,7 +53,7 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
                     {post.category}
                   </a>
                 )}
-                {post.category && post.readingTime && <span class="ds-meta-sep">/</span>}
+                {post.category && post.readingTime && <span class="ds-meta-sep">·</span>}
                 {post.readingTime && <span>{post.readingTime}</span>}
                 {showLatest && index === 0 && <span class="ds-seal-tag">{latestLabel}</span>}
               </div>
@@ -125,6 +124,10 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
     transform: scaleY(1);
   }
 
+  .ds-row.is-latest .ds-row-mark {
+    transform: scaleY(1);
+  }
+
   .ds-row:focus-within .ds-log-day {
     color: var(--fg);
   }
@@ -173,23 +176,12 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
     background: var(--glow-line);
   }
 
-  .ds-log-year {
-    display: block;
-    font-family: var(--font-label);
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    color: var(--fg-muted);
-    line-height: 1.4;
-    transition: color var(--t) var(--ease);
-  }
-
   .ds-log-day {
     display: block;
-    font-family: var(--font-chrome);
-    font-size: 24px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
+    font-family: var(--font-headline);
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: 0.015em;
     color: var(--fg-muted);
     line-height: 1.3;
     transition: color var(--t) var(--ease);
@@ -206,27 +198,26 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
     gap: 10px;
     margin-bottom: 10px;
     font-family: var(--font-label);
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 500;
     line-height: 1.3;
-    letter-spacing: 0.06em;
-    font-variant: small-caps;
+    letter-spacing: 0.015em;
     color: var(--fg-muted);
   }
 
   .ds-meta-sep {
-    color: var(--rule);
+    color: var(--fg-faint);
   }
 
   /* 分類：沒有框。是「刻線標題」不是按鈕。 */
   .ds-chip {
     display: inline-flex;
     align-items: center;
-    font-family: var(--font-chrome);
-    font-size: 13px;
+    font-family: var(--font-label);
+    font-size: 15px;
     font-weight: 500;
     line-height: 1.3;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.015em;
     color: var(--fg-muted);
     text-decoration-line: underline;
     text-decoration-color: var(--rule);
@@ -247,11 +238,11 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
 
   .ds-row-title {
     margin: 0 0 14px;
-    font-family: var(--font-display);
-    font-size: 27px;
+    font-family: var(--font-headline);
+    font-size: 28px;
     font-weight: 600;
     line-height: 1.45;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.008em;
     color: var(--fg);
   }
 
@@ -283,38 +274,24 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 899px) {
     .ds-row-grid {
-      grid-template-columns: auto minmax(0, 1fr);
-      column-gap: 12px;
-      row-gap: 4px;
-      padding: 18px 0;
+      grid-template-columns: 1fr;
+      padding: 24px 0 28px;
     }
 
     .ds-row-gutter {
       grid-column: 1;
-      grid-row: 1;
-      display: flex;
-      align-items: baseline;
-      min-height: 44px;
-    }
-
-    .ds-row-gutter time {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
+      padding-left: 18px;
     }
 
     .ds-row-main {
-      display: contents;
+      grid-column: 1;
+      padding-left: 18px;
     }
 
     .ds-row-meta {
-      grid-column: 2;
-      grid-row: 1;
-      align-self: start;
-      min-height: 44px;
-      margin: 0;
+      margin: 8px 0 10px;
       gap: 8px;
     }
 
@@ -322,24 +299,18 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
       min-height: 44px;
     }
 
+    .ds-row-title {
+      font-size: 26px;
+    }
+  }
+
+  @media (max-width: 767px) {
     .ds-log-day {
-      font-size: 19px;
+      font-size: 21px;
     }
 
     .ds-row-title {
-      grid-column: 1 / -1;
-      grid-row: 2;
-      margin: 0;
       font-size: 24px;
-    }
-
-    .ds-row-title a {
-      min-height: 44px;
-    }
-
-    .ds-row-main :global(.ds-taglist) {
-      grid-column: 1 / -1;
-      grid-row: 3;
     }
   }
 </style>
