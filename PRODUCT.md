@@ -28,7 +28,7 @@ Wildsky（范耿誌 Rance）的個人網站與部落格，站台為 https://blog
 
 ## Positioning
 
-一個由本人手刻自架、跨十年持續更新的個人站：技術實作紀錄（`/posts`、`/series/ai-agent/`）、
+一個由本人手刻自架、跨十年持續更新的個人站：技術實作紀錄（`/posts`）、
 近況與生活面（`/now`、`/notes`、`/bookshelf`）、專業履歷與接案（`/experiences`、`/freelancer`）
 同時存在於同一個網域下，並由作者完全控制。這個「同一個人的技術、生活與工作全在自己的地基上」
 的組合，是平台型寫作服務無法複製的部分。
@@ -69,7 +69,7 @@ v7（`comp/index-v7.html`）確立的「哥德航海 + 有機深淵」是 canon�
 現有功能：
 
 - 雙語站台：預設語系 `tw`（無前綴），英文為 `/en/` 前綴；英文導覽項目少於中文（僅 home / about / blogroll / tags）。
-- 文章列表分頁（每頁 16 篇）、分類 `/categories`、標籤 `/tags`、系列 `/series/ai-agent/`。
+- 文章列表分頁（每頁 16 篇）、分類 `/categories`、標籤 `/tags`。
 - 靜態頁：`/about`、`/now`、`/experiences`、`/freelancer`、`/bookshelf`、`/more-links`、`/donate`、`/notes`。
 - 深色／淺色主題切換（原生 CSS token + localStorage；首次造訪跟隨系統偏好）。
 - RSS、sitemap（含 i18n）、SchemaOrg 結構化資料、`_redirects` 與 Astro `redirects` 維持舊網址。

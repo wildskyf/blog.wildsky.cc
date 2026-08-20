@@ -19,7 +19,6 @@ export default defineConfig({
     '/en/page/1': '/en',
     '/feed.xml': '/rss.xml',
     '/index.xml': '/rss.xml',
-    '/ai-agent-series': '/series/ai-agent/',
   },
   vite: {
     plugins: [tailwindcss()],

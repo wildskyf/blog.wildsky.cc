@@ -6,9 +6,6 @@ excerpt: "AI 的能力早就不是瓶頸了，瓶頸是我跟它之間的 harnes
 guid: "why-i-decided-to-self-host-an-ai-agent"
 category: "軟體工程"
 tags: [AI, Agent, Self-hosted, 自架]
-series:
-  name: "Self-hosted AI Agent 實戰系列"
-  url: "/series/ai-agent/"
 ---
 
 我每天大概花六到八個小時跟 AI 對話。有時可能更多。
@@ -17,7 +14,7 @@ series:
 
 不過目前有個煩人的點就是我每次開一個新 conversation，前面花的力氣就感覺都喪失大半。
 
-最近開始比較認真的在研究 AI Agent，這篇是我系列文的第一篇（希望不要也是最後一篇😆），我想先聊聊我思考了好一陣子的問題：到底什麼叫做「駕馭 AI」？
+最近開始比較認真的在研究 AI Agent，我想先聊聊我思考了好一陣子的問題：到底什麼叫做「駕馭 AI」？
 
 ## Harness （翻譯為馬具、韁具）
 
@@ -142,13 +139,3 @@ Self-hosted agent 不是唯一的解法，但它是目前我認為最能往 harn
 但這跟所有 own-vs-rent 的決策一樣：如果用得淺，SaaS 絕對夠用，自己架反而是浪費時間。如果用得深，深到開始碰天花板、開始覺得「我想改但我改不了，好痛苦」，那自己架就變成值得的投資了。
 
 對我來說，那條線在大約三個月前就已經被跨過了。
-
-## 這個系列要做的事
-
-接下來的系列文，我會把我從零開始架一個 self-hosted AI agent 的過程攤開來寫。包括我怎麼選框架、怎麼部署、怎麼把 context window 的 token 數砍掉 65%、怎麼把 64 個 tool 精簡到 35 個、怎麼串接 Obsidian vault 和 Discord⋯⋯
-
-我不打算寫成 step-by-step 的教學——那種東西看官方文件就好了。（現在這個年代可能問問 AI Agent 就好了）我更想記錄的是**每個決策背後的 why，以及我踩過的、那些搜不太到的坑。**
-
-這系列不是要說服讀者非得自己架不可。我寫的是我的路，大家讀完之後可以自己判斷這條路適不適合自己。
-
-下一篇預計會聊框架選型——市面上一堆 agent framework，我怎麼挑、挑的時候在意什麼、為什麼最後選了 Hermes Agent。
