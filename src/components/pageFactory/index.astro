@@ -26,10 +26,7 @@ const homeSchema = {
   '@type': 'Blog',
   name: "Wildsky's blog",
   url: new URL(getRelativeLocaleUrl(currentLocale, ''), Astro.site).toString(),
-  description:
-    currentLocale === 'en'
-      ? 'Technical and reflective notes by Wildsky, focused on AI agent deployment, self-hosting, web development, and systems thinking.'
-      : '軟體工程師 Wildsky 的技術與思考筆記，專注於 AI Agent 部署、self-hosting、Web 開發與系統思維。',
+  description: t.site.homeDescription,
   author: {
     '@type': 'Person',
     name: authorProfile.schemaName,

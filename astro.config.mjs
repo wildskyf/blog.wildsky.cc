@@ -19,6 +19,9 @@ export default defineConfig({
     '/en/page/1': '/en',
     '/feed.xml': '/rss.xml',
     '/index.xml': '/rss.xml',
+    '/en/tags/C': '/en/tags/C-sharp',
+    '/posts/vim-buffer-winodw-tab': '/posts/vim-buffer-window-tab',
+    '/tags/沈默證據': '/tags/沉默證據',
   },
   vite: {
     plugins: [tailwindcss()],

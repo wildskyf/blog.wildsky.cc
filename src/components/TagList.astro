@@ -1,4 +1,6 @@
 ---
+import { getTagPath } from '@/utils';
+
 const {
   tags = [],
   lang,
@@ -8,7 +10,6 @@ const {
   lang?: 'tw' | 'en';
   currentTag?: string;
 };
-const root_path = lang === 'en' ? '/en' : '';
 const isLatinTag = (tag: string) => !/[\u3400-\u9fff]/u.test(tag);
 ---
 
@@ -17,7 +18,7 @@ const isLatinTag = (tag: string) => !/[\u3400-\u9fff]/u.test(tag);
     <div class="ds-taglist">
       {tags.map((tag) => (
         <a
-          href={`${root_path}/tags/${tag}`}
+          href={getTagPath(tag, lang)}
           class:list={['ds-tag', tag === currentTag && 'is-current']}
           lang={isLatinTag(tag) ? 'en' : undefined}
         >

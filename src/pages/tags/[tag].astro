@@ -3,7 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '@/layouts/page.astro';
 import PageHead from '@/components/PageHead.astro';
 import PostList from '@/components/PostList.astro';
-import { articleMapper, formatReadingTime } from '@/utils';
+import { articleMapper, formatReadingTime, getTagRouteSegment } from '@/utils';
 
 type PostEntry = CollectionEntry<'posts-tw'>;
 
@@ -25,7 +25,7 @@ export const getStaticPaths = async () => {
 
   // 為每個標籤生成路由
   return Array.from(tagPosts.entries()).map(([tag, taggedPosts]) => ({
-    params: { tag },
+    params: { tag: getTagRouteSegment(tag) },
     props: {
       tag,
       posts: taggedPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),

@@ -12,7 +12,7 @@ tags: [Claude Code, Vim, 編輯器, AI]
 
 仔細想了一下才發現差在哪。
 
-之前寫過一篇整理 vim 的 buffer / window / tab 的文章：[vim 中使用 buffer, window, tab 的方式](https://blog.wildsky.cc/posts/vim-buffer-winodw-tab/)，結論大概是 buffer 是 file proxy、window 是 viewport、tab 是 workspace。
+之前寫過一篇整理 vim 的 buffer / window / tab 的文章：[vim 中使用 buffer, window, tab 的方式](https://blog.wildsky.cc/posts/vim-buffer-window-tab/)，結論大概是 buffer 是 file proxy、window 是 viewport、tab 是 workspace。
 
 現在看，這三層有個共同點：全部都是 **空間** 的切法。哪些檔案、切幾格、幾組 layout。而 agent session 不是空間的切法，是 **意圖** 的切法。
 

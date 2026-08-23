@@ -1,11 +1,11 @@
 ---
 title: "vim 中使用 buffer, window, tab 的方式"
 date: 2025-11-06T11:43:29+08:00
-slug: "vim-buffer-winodw-tab"
+slug: "vim-buffer-window-tab"
 excerpt: "最近讀到 stackoverflow 上 why-do-vim-experts-prefer-buffers-over-tabs 的討論，來修整一下我的 LazyVim （看來是不夠 Lazy 才會還在一直調這些有的沒的XD）"
 feature_image: "lazy-cat.jpg"
 feature_image_caption: "懶惰ㄉ貓"
-guid: "vim-buffer-winodw-tab"
+guid: "vim-buffer-window-tab"
 category: "軟體工程"
 tags: [Vim, 編輯器]
 ---

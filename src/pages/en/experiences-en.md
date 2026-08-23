@@ -260,4 +260,4 @@ Later, I became a Firefox Addon Reviewer with him, which was an interesting expe
 
 If you need a website engineer, please contact me via email: [poppin.wildsky+blog\[at\]gmail.com](mailto:poppin.wildsky+blog@gmail.com)
 
-If you want to see my resume, you can click here >> [My Resume](/files/reseme.pdf)
+If you want to see my resume, you can click here >> [My Resume](/files/resume.pdf)

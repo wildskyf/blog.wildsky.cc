@@ -264,4 +264,4 @@ Demo 連結： <a href="http://vrv2023.wildsky.cc/" target='_blank'>
 
 如果你需要網站工程師的話，歡迎用 Email 與我聯絡： [poppin.wildsky+blog\[at\]gmail.com](mailto:poppin.wildsky+blog@gmail.com)
 
-如果想看我的履歷，可以點這裡 >> [我的履歷](/files/reseme.pdf)
+如果想看我的履歷，可以點這裡 >> [我的履歷](/files/resume.pdf)

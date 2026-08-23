@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/page.astro';
 import PageHead from '@/components/PageHead.astro';
+import { getTagPath } from '@/utils';
 
 // Get all English posts
 const posts = await getCollection('posts-en');
@@ -216,7 +217,7 @@ Index`}
                 <h2 class="ds-section-title">{category}</h2>
                 <div class="ds-cloud">
                   {tags.map((tag) => (
-                    <a class="ds-cloud-item" href={`/en/tags/${tag.name}`}>
+                    <a class="ds-cloud-item" href={getTagPath(tag.name, 'en')}>
                       {tag.name}
                       <span class="ds-count">{tag.count}</span>
                     </a>

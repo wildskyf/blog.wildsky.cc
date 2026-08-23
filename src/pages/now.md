@@ -2,7 +2,7 @@
 layout: '@/layouts/article.astro'
 title: /NOW 最近在幹嘛
 feature_image: ''
-excerpt: ''
+excerpt: 'Wildsky 的近況更新：工作、生活、網路活動、最近看的與聽的，以及正在玩的遊戲。'
 ---
 
 ## 近況
@@ -15,7 +15,7 @@ excerpt: ''
 
 - 忘記從什麼時候開始把 Facebook 關起來了，偶爾會有朋友問到，但關掉之後到現在從來沒有一刻覺得後悔！Facebook 上的資訊密度太低、廣告太多、能讓我有興趣的內容又太少了。最近也開始在斷斷續續地戒掉 Instagram & Threads，多花點心思在更重要的事情上。
   - ref: <https://wiwi.blog/docs/wisdom/why-i-dont-use-social-media>
-- 歡迎來 Mastodon 追蹤我 <https://social.wildsky.cc/@wildsky>，最近從 g0v.socail 脫離出來，自行弄了 mastodon instance。
+- 歡迎來 Mastodon 追蹤我 <https://social.wildsky.cc/@wildsky>，最近從 g0v.social 脫離出來，自行弄了 mastodon instance。
 
 ## 最近看的/聽的
 

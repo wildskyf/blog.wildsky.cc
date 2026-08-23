@@ -3,7 +3,8 @@ export const translations = {
     site: {
       title: "Wildsky's Blog",
       description: 'Easy things should be easy, and hard things should be possible.',
-      homeDescription: 'Humans can make mistakes. Always review before running the code.',
+      homeDescription:
+        '軟體工程師 Wildsky 的技術與思考筆記，記錄 AI Agent、self-hosting、Web 開發，以及工作、生活與世界觀察。',
       manifesto: '信仰不確定性，同時用確定性工程過生活',
     },
     nav: {
