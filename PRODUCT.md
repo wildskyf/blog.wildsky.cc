@@ -68,8 +68,10 @@ v7（`comp/index-v7.html`）確立的「哥德航海 + 有機深淵」是 canon�
 
 現有功能：
 
-- 雙語站台：預設語系 `tw`（無前綴），英文為 `/en/` 前綴；英文導覽項目少於中文（僅 home / about / blogroll / tags）。
+- 雙語站台：預設語系 `tw`（無前綴），英文為 `/en/` 前綴；兩種語系的導覽皆提供搜尋與文章彙整。
 - 文章列表分頁（每頁 16 篇）、分類 `/categories`、標籤 `/tags`。
+- 雙語文章搜尋：`/search/` 與 `/en/search/` 使用 Fuse.js 在瀏覽器端搜尋各語系的靜態 JSON 索引；索引包含標題、標籤、分類、摘要與文章正文，目前涵蓋 109 篇繁中、13 篇英文文章。查詢同步至 `?q=`，並處理初始、載入、搜尋中、無結果與錯誤狀態。
+- 雙語完整文章彙整：`/archive/` 與 `/en/archive/` 依年份分組列出各語系所有文章，目前涵蓋 109 篇繁中、13 篇英文文章。
 - 靜態頁：`/about`、`/now`、`/experiences`、`/freelancer`、`/bookshelf`、`/more-links`、`/donate`、`/notes`。
 - 深色／淺色主題切換（原生 CSS token + localStorage；首次造訪跟隨系統偏好）。
 - RSS、sitemap（含 i18n）、SchemaOrg 結構化資料、`_redirects` 與 Astro `redirects` 維持舊網址。

@@ -1,0 +1,15 @@
+---
+import Layout from '@/layouts/page.astro';
+import PageHead from '@/components/PageHead.astro';
+import SearchPage from '@/components/SearchPage.astro';
+
+const pageTitle = '搜尋';
+const pageDescription = '搜尋 Wildsky 的中文文章。';
+---
+
+<Layout pageName={pageTitle} pageDesc={pageDescription}>
+  <div class="chrome-inner">
+    <PageHead showKicker={false} title={pageTitle} desc={pageDescription} />
+    <SearchPage lang="tw" indexUrl="/search-index.json" />
+  </div>
+</Layout>

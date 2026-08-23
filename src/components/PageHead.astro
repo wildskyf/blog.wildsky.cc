@@ -5,12 +5,14 @@ type Crumb = { label: string; href?: string };
 
 const {
   kicker,
+  showKicker = true,
   title,
   desc,
   count,
   crumbs = [],
 } = Astro.props as {
   kicker?: string;
+  showKicker?: boolean;
   title: string;
   desc?: string;
   count?: string;
@@ -33,7 +35,7 @@ const {
   }
 
   <div class="ds-head-band">
-    <span class="ds-head-kicker">{kicker ?? 'Index'}</span>
+    {showKicker && <span class="ds-head-kicker">{kicker ?? 'Index'}</span>}
 
     <div class="ds-head-main">
       <h1 class="ds-head-title">{title}</h1>

@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/page.astro';
+import PageHead from '@/components/PageHead.astro';
+import ArchiveTimeline from '@/components/ArchiveTimeline.astro';
+import { articleMapper } from '@/utils';
+
+const posts = (await getCollection('posts-tw'))
+  .map(articleMapper)
+  .sort((a, b) => Number(b.date) - Number(a.date));
+
+const pageTitle = '文章彙整';
+const pageDescription = '依時間瀏覽 Wildsky 歷年發布的所有中文文章。';
+---
+
+<Layout pageName={pageTitle} pageDesc={pageDescription}>
+  <div class="chrome-inner">
+    <PageHead
+      showKicker={false}
+      title={pageTitle}
+      desc={pageDescription}
+      count={`${posts.length} 篇`}
+    />
+    <ArchiveTimeline lang="tw" posts={posts} />
+  </div>
+</Layout>

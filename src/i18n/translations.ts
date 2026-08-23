@@ -16,6 +16,8 @@ export const translations = {
       blogroll: 'Blogroll',
       tags: 'tags',
       categories: 'categories',
+      search: 'search',
+      archive: 'archive',
       languages: 'Languages',
     },
     home: {
@@ -58,6 +60,8 @@ export const translations = {
       blogroll: 'Blogroll',
       tags: 'tags',
       categories: 'categories',
+      search: 'search',
+      archive: 'archive',
       languages: 'Languages',
     },
     home: {

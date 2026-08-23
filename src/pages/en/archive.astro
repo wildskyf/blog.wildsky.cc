@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/page.astro';
+import PageHead from '@/components/PageHead.astro';
+import ArchiveTimeline from '@/components/ArchiveTimeline.astro';
+import { articleMapper } from '@/utils';
+
+const posts = (await getCollection('posts-en'))
+  .map(articleMapper)
+  .sort((a, b) => Number(b.date) - Number(a.date));
+
+const pageTitle = 'Archive';
+const pageDescription = 'Browse every English post by publication date.';
+---
+
+<Layout pageName={pageTitle} pageDesc={pageDescription}>
+  <div class="chrome-inner">
+    <PageHead
+      showKicker={false}
+      title={pageTitle}
+      desc={pageDescription}
+      count={`${posts.length} Posts`}
+    />
+    <ArchiveTimeline lang="en" posts={posts} />
+  </div>
+</Layout>

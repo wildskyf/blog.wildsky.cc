@@ -399,6 +399,8 @@ Space Mono 只承載真實日期、頁碼或技術數值，字距上限 0.06em�
 - `<768px`：兩層同寬 `100% - 40px`，overhang 合法退場，不用負 margin 偽造。
 - 側邊直排導軌只在 `≥1280px` 出現，`aria-hidden="true"`，不承載連結與資訊。
 - 文章索引永遠是單欄表列，不是卡片網格；每列上緣 1px rule，日期／meta／標題／tag 依序掃讀。
+- 搜尋頁沿用 720px 閱讀柱，表單是直角的 plain input／action；結果維持有 rule 的單欄表列，不做卡片。
+- 文章彙整以年份分組；desktop 年份放在 gutter，mobile 移到該年份列上方，文章列保持緊密且只呈現日期與標題。
 
 **The Overhang Rule.** `chrome computed width > reading computed width` 時，rule 與 meta 延伸到 chrome；
 兩層等寬時規則停用。code block 只在可用寬度 ≥840px 時 overhang。
@@ -464,6 +466,10 @@ Light 底部海藻不得做成連續深色污漬：剪影總寬度覆蓋 ≤35%�
 - 首頁不加文章列表別名；exact tagline「信仰不確定性，同時用確定性工程過生活」是唯一 h1，header 不重複副標。
 - 導覽、搜尋、關於與分頁一律使用功能本名，不使用航海／下潛替代詞。
 
+### Page head
+
+- 索引頁預設保留 kicker；搜尋與文章彙整的中英文四個頁面例外，使用 `showKicker={false}`，讓主標題直接開始。
+
 ### Post index row
 
 - 表列而非卡片；上緣 1px `--rule`，padding 30px 0 32px。
@@ -472,6 +478,17 @@ Light 底部海藻不得做成連續深色污漬：剪影總寬度覆蓋 ≤35%�
 - 單欄斷點下 `.row-main` 左側 padding 18px，避免 2px 紅線貼住標題與 tags。
 - tag 是真連結，touch target ≥44px；hover/focus 同時把文字升到 `--fg`、下線轉 `--accent`，
   並以 `text-underline-offset: 0.28em` 明確表達可點，不只靠顏色。
+
+### Search
+
+- 表單直接坐在閱讀柱上；58px 直角 input 與透明 action 並排，mobile 改為上下堆疊，action 高 50px。
+- 結果不是卡片；每列以 1px `--rule` 分隔，標題、日期與摘要依序建立層級，hover／focus 只顯示左側 2px `--accent`。
+- 初始、載入、搜尋中、無結果與錯誤訊息共用固定高度 status 區，避免結果載入時版面跳動。
+
+### Archive timeline
+
+- 每個年份形成一組 dense ruled rows；desktop 年份置於 gutter，mobile 則移至該組文章上方。
+- 每列只呈現 `MM.DD` 與標題，不加入摘要、分類或 tag；hover／focus 使用與文章索引一致的左側 2px `--accent`，背景不填色。
 
 ### Buttons
 

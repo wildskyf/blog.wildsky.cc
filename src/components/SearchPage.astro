@@ -1,0 +1,431 @@
+---
+const { lang, indexUrl } = Astro.props as { lang: 'tw' | 'en'; indexUrl: string };
+
+const copy =
+  lang === 'en'
+    ? {
+        label: 'Search the archive',
+        placeholder: 'Search titles and article text',
+        action: 'Search',
+        initial: 'Enter a word or phrase to search the archive.',
+        loading: 'Loading the search index…',
+        searching: 'Searching…',
+        empty: 'No matching pages. Try a shorter or different phrase.',
+        error: 'The search index could not be loaded. Reload the page and try again.',
+      }
+    : {
+        label: '搜尋文章庫',
+        placeholder: '搜尋標題與文章內容',
+        action: '搜尋',
+        initial: '輸入關鍵字或片語，搜尋文章庫。',
+        loading: '正在載入搜尋索引…',
+        searching: '搜尋中…',
+        empty: '找不到符合的內容，請試試較短或不同的關鍵字。',
+        error: '無法載入搜尋索引，請重新整理頁面後再試一次。',
+      };
+---
+
+<section
+  class="ds-search"
+  data-search-root
+  data-index-url={indexUrl}
+  data-copy={JSON.stringify({
+    initial: copy.initial,
+    loading: copy.loading,
+    searching: copy.searching,
+    empty: copy.empty,
+    error: copy.error,
+    resultSingular: lang === 'en' ? 'result' : '',
+    resultPlural: lang === 'en' ? 'results' : '',
+    resultPrefix: lang === 'en' ? '' : '找到 ',
+    resultSuffix: lang === 'en' ? '' : ' 筆結果',
+  })}
+>
+  <form class="ds-search-form" role="search" data-search-form>
+    <label for={`site-search-${lang}`}>{copy.label}</label>
+    <div class="ds-search-controls">
+      <input
+        id={`site-search-${lang}`}
+        type="search"
+        name="q"
+        placeholder={copy.placeholder}
+        autocomplete="off"
+        enterkeyhint="search"
+        aria-describedby={`search-status-${lang}`}
+        data-search-input
+      />
+      <button type="submit">{copy.action}</button>
+    </div>
+  </form>
+
+  <p class="ds-search-status" id={`search-status-${lang}`} aria-live="polite" data-search-status>
+    {copy.initial}
+  </p>
+
+  <ol class="ds-search-results" data-search-results></ol>
+
+  <noscript>
+    <p class="ds-search-status">
+      {
+        lang === 'en'
+          ? 'JavaScript is required to search this archive.'
+          : '搜尋功能需要啟用 JavaScript。'
+      }
+    </p>
+  </noscript>
+</section>
+
+<script>
+  import Fuse from 'fuse.js';
+
+  type SearchEntry = {
+    url: string;
+    title: string;
+    date: string;
+    excerpt: string;
+    tags: string[];
+    category: string;
+    content: string;
+  };
+
+  type SearchCopy = {
+    initial: string;
+    loading: string;
+    searching: string;
+    empty: string;
+    error: string;
+    resultSingular: string;
+    resultPlural: string;
+    resultPrefix: string;
+    resultSuffix: string;
+  };
+
+  document.querySelectorAll<HTMLElement>('[data-search-root]').forEach((root) => {
+    const form = root.querySelector<HTMLFormElement>('[data-search-form]');
+    const input = root.querySelector<HTMLInputElement>('[data-search-input]');
+    const status = root.querySelector<HTMLElement>('[data-search-status]');
+    const results = root.querySelector<HTMLOListElement>('[data-search-results]');
+    const copy = JSON.parse(root.dataset.copy ?? '{}') as SearchCopy;
+    const indexUrl = root.dataset.indexUrl;
+    let fusePromise: Promise<Fuse<SearchEntry>> | null = null;
+    let debounceTimer = 0;
+    let requestId = 0;
+
+    if (!form || !input || !status || !results || !indexUrl) return;
+
+    const loadFuse = () => {
+      if (fusePromise) return fusePromise;
+      status.textContent = copy.loading;
+      fusePromise = fetch(indexUrl)
+        .then((response) => {
+          if (!response.ok) throw new Error(`Search index returned ${response.status}`);
+          return response.json() as Promise<SearchEntry[]>;
+        })
+        .then(
+          (entries) =>
+            new Fuse(entries, {
+              keys: [
+                { name: 'title', weight: 0.45 },
+                { name: 'tags', weight: 0.2 },
+                { name: 'category', weight: 0.15 },
+                { name: 'excerpt', weight: 0.12 },
+                { name: 'content', weight: 0.08 },
+              ],
+              ignoreLocation: true,
+              minMatchCharLength: 1,
+              threshold: 0.3,
+            })
+        )
+        .catch((error) => {
+          fusePromise = null;
+          throw error;
+        });
+      return fusePromise;
+    };
+
+    const resultCount = (count: number) => {
+      if (copy.resultPrefix) return `${copy.resultPrefix}${count}${copy.resultSuffix}`;
+      return `${count} ${count === 1 ? copy.resultSingular : copy.resultPlural}`;
+    };
+
+    const renderResult = (data: SearchEntry) => {
+      const item = document.createElement('li');
+      item.className = 'ds-search-result';
+
+      const link = document.createElement('a');
+      link.href = data.url;
+      link.className = 'ds-search-result-link';
+
+      const title = document.createElement('h2');
+      title.textContent = data.title;
+      link.append(title);
+
+      const date = document.createElement('span');
+      date.className = 'ds-search-result-date';
+      date.textContent = data.date;
+      link.append(date);
+
+      const excerpt = document.createElement('p');
+      excerpt.className = 'ds-search-result-excerpt';
+      excerpt.textContent = data.excerpt;
+
+      item.append(link, excerpt);
+      return item;
+    };
+
+    const runSearch = async (query: string) => {
+      const normalizedQuery = query.trim();
+      const currentRequest = ++requestId;
+
+      if (!normalizedQuery) {
+        results.replaceChildren();
+        status.textContent = copy.initial;
+        return;
+      }
+
+      status.textContent = copy.searching;
+
+      try {
+        const fuse = await loadFuse();
+        if (currentRequest !== requestId) return;
+
+        const matches = fuse.search(normalizedQuery).map((result) => result.item);
+        results.replaceChildren(...matches.map(renderResult));
+        status.textContent = matches.length ? resultCount(matches.length) : copy.empty;
+      } catch (error) {
+        console.error('Fuse search failed', error);
+        if (currentRequest !== requestId) return;
+        results.replaceChildren();
+        status.textContent = copy.error;
+      }
+    };
+
+    input.addEventListener(
+      'focus',
+      () => {
+        void loadFuse().catch(() => {
+          status.textContent = copy.error;
+        });
+      },
+      { once: true }
+    );
+
+    input.addEventListener('input', () => {
+      const url = new URL(window.location.href);
+      const query = input.value.trim();
+      if (query) url.searchParams.set('q', query);
+      else url.searchParams.delete('q');
+      history.replaceState(null, '', url);
+
+      window.clearTimeout(debounceTimer);
+      debounceTimer = window.setTimeout(() => {
+        void runSearch(input.value);
+      }, 180);
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      window.clearTimeout(debounceTimer);
+      void runSearch(input.value);
+    });
+
+    const initialQuery = new URLSearchParams(window.location.search).get('q') ?? '';
+    if (initialQuery) {
+      input.value = initialQuery;
+      void runSearch(initialQuery);
+    }
+  });
+</script>
+
+<style>
+  .ds-search {
+    display: grid;
+    grid-template-columns: var(--gutter-col) minmax(0, var(--measure));
+    padding-top: 36px;
+  }
+
+  .ds-search > * {
+    grid-column: 2;
+  }
+
+  .ds-search-form label {
+    display: block;
+    margin-bottom: 12px;
+    font-family: var(--font-label);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.45;
+    color: var(--fg-muted);
+  }
+
+  .ds-search-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .ds-search-controls input {
+    min-width: 0;
+    height: 58px;
+    border: 1px solid var(--fg-faint);
+    border-right: 0;
+    border-radius: 0;
+    background: var(--bg-surface);
+    padding: 0 18px;
+    font: inherit;
+    font-size: 19px;
+    line-height: 1;
+    color: var(--fg);
+    caret-color: var(--accent-text);
+    appearance: none;
+  }
+
+  .ds-search-controls input::placeholder {
+    color: var(--fg-muted);
+    opacity: 1;
+  }
+
+  .ds-search-controls input:focus-visible,
+  .ds-search-controls button:focus-visible,
+  :global(.ds-search-result-link):focus-visible {
+    position: relative;
+    z-index: 2;
+    outline: 2px solid var(--glow);
+    outline-offset: 3px;
+  }
+
+  .ds-search-controls button {
+    min-width: 104px;
+    height: 58px;
+    border: 1px solid var(--fg-faint);
+    border-radius: 0;
+    background: transparent;
+    padding: 0 26px;
+    font-family: var(--font-label);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.055em;
+    color: var(--fg);
+    cursor: pointer;
+    transition: border-color var(--t) var(--ease);
+  }
+
+  .ds-search-controls button:hover {
+    border-color: var(--accent);
+  }
+
+  .ds-search-status {
+    min-height: 29px;
+    margin: 16px 0 10px;
+    font-family: var(--font-label);
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--fg-muted);
+  }
+
+  .ds-search-results {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  :global(.ds-search-result) {
+    position: relative;
+    padding: 24px 0 26px 18px;
+    border-top: 1px solid var(--rule);
+  }
+
+  :global(.ds-search-result)::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 2px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 180ms var(--ease);
+  }
+
+  :global(.ds-search-result):focus-within::before {
+    transform: scaleY(1);
+  }
+
+  :global(.ds-search-result-link) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px 20px;
+    color: var(--fg);
+    text-decoration: none;
+  }
+
+  :global(.ds-search-result-link h2) {
+    margin: 0;
+    font-family: var(--font-headline);
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  :global(.ds-search-result-date) {
+    font-family: var(--font-meta);
+    font-size: 12px;
+    letter-spacing: 0.045em;
+    color: var(--fg-muted);
+  }
+
+  :global(.ds-search-result-excerpt) {
+    margin: 8px 0 0;
+    font-family: var(--font-body);
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--fg-muted);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    :global(.ds-search-result):hover::before {
+      transform: scaleY(1);
+    }
+  }
+
+  @media (max-width: 1119px) {
+    .ds-search {
+      grid-template-columns: 96px minmax(0, var(--measure));
+    }
+  }
+
+  @media (max-width: 767px) {
+    .ds-search {
+      grid-template-columns: 1fr;
+      padding-top: 28px;
+    }
+
+    .ds-search > * {
+      grid-column: 1;
+    }
+
+    .ds-search-controls {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .ds-search-controls input,
+    .ds-search-controls button {
+      width: 100%;
+      border: 1px solid var(--fg-faint);
+    }
+
+    .ds-search-controls button {
+      height: 50px;
+    }
+
+    :global(.ds-search-result) {
+      padding: 20px 0 22px 14px;
+    }
+
+    :global(.ds-search-result-link h2) {
+      font-size: 24px;
+    }
+  }
+</style>
