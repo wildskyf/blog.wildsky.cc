@@ -40,6 +40,10 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, sch
         </nav>
 
         <span class="ds-copyright">2014—{dayjs().year()} &copy; All Rights Reserved</span>
+
+        <p class="ds-footer-disclaimer">
+          Wildsky can make mistakes. Always review before running the code.
+        </p>
       </div>
     </footer>
   </div>
@@ -102,19 +106,35 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, sch
   }
 
   .ds-footer-inner {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+    column-gap: 24px;
+    row-gap: 16px;
   }
 
   /* --fg-faint 於 --bg-sunken 上實測 4.49，13px 小字未過 AA → 一律 --fg-muted（8.30） */
   .ds-copyright {
+    justify-self: end;
     font-family: var(--font-meta);
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 0.045em;
     color: var(--fg-muted);
+  }
+
+  .ds-footer-disclaimer {
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin: 0;
+    color: var(--fg-muted);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.008em;
+    text-align: center;
+    text-wrap: balance;
   }
 
   .ds-watermark {
@@ -164,9 +184,15 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, sch
     }
 
     .ds-footer-inner {
-      flex-direction: column;
-      gap: 20px;
-      text-align: center;
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 12px;
+    }
+
+    .ds-footer-inner nav,
+    .ds-copyright,
+    .ds-footer-disclaimer {
+      grid-column: 1;
+      justify-self: center;
     }
   }
 </style>
