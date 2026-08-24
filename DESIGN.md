@@ -54,7 +54,7 @@ colors:
   light-env-spark: '#26898D'
 typography:
   display:
-    fontFamily: "'Cormorant SC', 'EB Garamond Variable', 'Noto Serif TC Variable', serif"
+    fontFamily: "'Cormorant SC', 'EB Garamond Variable', ui-serif, 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', serif"
     fontSize: 'clamp(2.25rem, 5vw, 3.5rem)'
     fontWeight: 600
     lineHeight: 1.05
@@ -66,19 +66,19 @@ typography:
     lineHeight: 1.28
     letterSpacing: '0.008em'
   headline:
-    fontFamily: "'EB Garamond Variable', 'Noto Serif TC Variable', serif"
+    fontFamily: "'EB Garamond Variable', ui-serif, 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', serif"
     fontSize: 'clamp(1.5rem, 2.7vw, 1.875rem)'
     fontWeight: 600
     lineHeight: 1.4
     letterSpacing: '0.008em'
   title:
-    fontFamily: "'EB Garamond Variable', 'Noto Serif TC Variable', serif"
+    fontFamily: "'EB Garamond Variable', ui-serif, 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', serif"
     fontSize: '1.5rem'
     fontWeight: 600
     lineHeight: 1.45
     letterSpacing: '0'
   body:
-    fontFamily: "'EB Garamond Variable', 'Noto Serif TC Variable', serif"
+    fontFamily: "'EB Garamond Variable', ui-serif, 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', serif"
     fontSize: '1.1875rem'
     fontWeight: 400
     lineHeight: 1.9
@@ -326,28 +326,30 @@ SVG 也必須用 `currentColor` 或 CSS custom property。
 
 ### Canonical stack and licensing
 
-| 角色                        | 字體                   | 授權        | 官方來源                                                                  | 決策                                |
-| --------------------------- | ---------------------- | ----------- | ------------------------------------------------------------------------- | ----------------------------------- |
-| 繁中 body／heading fallback | Noto Serif TC Variable | SIL OFL 1.1 | [notofonts/noto-cjk](https://github.com/notofonts/noto-cjk)               | 覆蓋與 webfont 穩定優先，正式定案。 |
-| Latin body／true small caps | EB Garamond Variable   | SIL OFL 1.1 | [octaviopardo/EBGaramond12](https://github.com/octaviopardo/EBGaramond12) | 人文襯線；`smcp`／`c2sc`。          |
-| Display                     | Cormorant SC           | SIL OFL 1.1 | [CatharsisFonts/Cormorant](https://github.com/CatharsisFonts/Cormorant)   | 只用 ≥36px 的短標題。               |
-| 氛圍 meta                   | Space Mono             | SIL OFL 1.1 | [googlefonts/spacemono](https://github.com/googlefonts/spacemono)         | 只限英文縮寫、日期與技術數值。      |
-| Code                        | JetBrains Mono         | SIL OFL 1.1 | [JetBrains/JetBrainsMono](https://github.com/JetBrains/JetBrainsMono)     | 沿用；只負責程式碼。                |
+| 角色                        | 字體                   | 授權        | 官方來源                                                                  | 決策                                  |
+| --------------------------- | ---------------------- | ----------- | ------------------------------------------------------------------------- | ------------------------------------- |
+| 繁中 display                | Noto Serif TC Variable | SIL OFL 1.1 | [notofonts/noto-cjk](https://github.com/notofonts/noto-cjk)               | 僅用於中文大標，保留站台辨識度。      |
+| 繁中 body／heading fallback | OS CJK serif stack     | 系統字體    | `ui-serif`、Songti TC、Noto Serif CJK TC、PMingLiU                        | 避免長文觸發大量 CJK webfont shards。 |
+| Latin body／true small caps | EB Garamond Variable   | SIL OFL 1.1 | [octaviopardo/EBGaramond12](https://github.com/octaviopardo/EBGaramond12) | 人文襯線；`smcp`／`c2sc`。            |
+| Display                     | Cormorant SC           | SIL OFL 1.1 | [CatharsisFonts/Cormorant](https://github.com/CatharsisFonts/Cormorant)   | 只用 ≥36px 的短標題。                 |
+| 氛圍 meta                   | Space Mono             | SIL OFL 1.1 | [googlefonts/spacemono](https://github.com/googlefonts/spacemono)         | 只限英文縮寫、日期與技術數值。        |
+| Code                        | JetBrains Mono         | SIL OFL 1.1 | [JetBrains/JetBrainsMono](https://github.com/JetBrains/JetBrainsMono)     | 沿用；只負責程式碼。                  |
 
 **Cormorant SC 而非 Playfair Display SC。** Cormorant 有獨立 Small Caps 家族，字身較窄長、細銳，
 更接近航海銅版刻字；Playfair 的報刊／維多利亞編輯感較強，容易把首頁拉成時尚雜誌。
 代價是小尺寸細筆脆弱，所以 Cormorant SC 僅限 `≥36px`、600 weight、短行，不用於導覽、meta 或正文。
 
-**Noto Serif TC 而非源流明體。** 改版前使用的 Fontsource static package，其 full Traditional Chinese 400 WOFF2 約 1.81 MiB；
+**Noto Serif TC 僅用於中文 display。** 改版前使用的 Fontsource static package，其 full Traditional Chinese 400 WOFF2 約 1.81 MiB；
 Fontsource variable 5.3.0 全包約 5.85 MiB，依 unicode-range 切為多個 WOFF2。以 v7 可見字元估算，實際命中的 15 個
-variable shards 約 1.24 MiB，並同時涵蓋所需字重。源流明體 2.100 的七個 TW OTF 各約 16.0–16.4 MiB，
-官方沒有 WOFF2／unicode-range 發行；雖可自建逐頁 subset，但 120 篇文章會帶來字元盤點、缺字回歸與快取碎片成本。static Noto package 已從 production 移除。
+variable shards 約 1.24 MiB，並同時涵蓋所需字重。讓它承擔全文會使一般列表與文章下載 1 MiB 以上的字型；
+production 因此只讓短中文大標命中這套 webfont，body、heading、label 改由作業系統 CJK serif stack 承擔。
+這個取捨會讓不同平台的中文字形略有差異，但可避免逐篇 subset 與缺字回歸的維護成本。static Noto package 已從 production 移除。
 
 正式載入策略：
 
-1. CJK 由 `@fontsource-variable/noto-serif-tc` 載入 `wght 400–600` 的 unicode-range shards。
+1. 中文 display 由 `@fontsource-variable/noto-serif-tc` 載入 unicode-range shards；英文頁不命中 Noto。
 2. Latin 優先由 EB Garamond、Cormorant SC、Space Mono 各自承擔，避免 Noto CJK shard 為 ASCII 重複下載。
-3. production 預載只限首屏真正命中的 Latin WOFF2；不預載全部 CJK shards。
+3. 中文 body、heading 與 label 使用 OS CJK serif stack；production 不預載 CJK shards。
 4. `font-display: swap`；fallback 指標以 `size-adjust`／`font-size-adjust` 校正時，需重新做 CLS smoke test。
 5. Chakra Petch、Source Sans 3、Source Serif 4、Cinzel、Bodoni Moda 全面退場，不留隱性 fallback。
 
@@ -355,19 +357,19 @@ variable shards 約 1.24 MiB，並同時涵蓋所需字重。源流明體 2.100 
 
 - **Display:** Cormorant SC 600，`clamp(36px, 5vw, 56px)`，行高 1.05，字距 0.035em；只排短 Latin 標題。
 - **CJK display:** Noto Serif TC 600，`clamp(36px, 4.2vw, 56px)`；mobile 可降到 30px，行高 1.28，字距 ≤0.015em。
-- **Headline:** EB Garamond／Noto Serif TC 600，24–30px，行高 1.4。
-- **Body:** EB Garamond 400 + Noto Serif TC 400，19px，行高 1.9，字距 0.008em，量尺 720px。
+- **Headline:** EB Garamond／OS CJK serif 600，24–30px，行高 1.4。
+- **Body:** EB Garamond 400 + OS CJK serif 400，19px，行高 1.9，字距 0.008em，量尺 720px。
 - **Compact body:** 16px 是連續襯線文字硬下限，行高至少 1.75；只用於摘要、圖說與短段落。
 - **Small caps meta:** EB Garamond 500，15px，行高 1.45，字距 0.055em，`font-variant-caps: all-small-caps`，
   並顯式開啟 `font-feature-settings: 'smcp' 1, 'c2sc' 1`。
 - **Atmospheric meta:** Space Mono 400，12px，行高 1.5，字距 0.045em；一組最多 24 個 Latin 字元，不排 CJK。
-- **Navigation:** EB Garamond／Noto Serif TC 500，18px，正常大小寫；觸控高度 ≥44px。
+- **Navigation:** EB Garamond／OS CJK serif 500，18px，正常大小寫；觸控高度 ≥44px。
 - **Code:** JetBrains Mono 400，15px，行高 1.7。
 
 ### 15–16px serif readability assessment
 
-Noto Serif TC 在 16px／400 weight、正常像素密度下可讀，但細橫筆與標點在 dark 背景會比無襯線更易糊；
-因此 16px 只准短摘要與圖說，採 `--fg`／`--fg-muted`、行高 ≥1.75。15px 的 Noto Serif TC 不用於連續 CJK 句子。
+繁中系統襯線字在 16px／400 weight 的實際字形依平台而異，且細橫筆與標點在 dark 背景較易糊；
+因此 16px 只准短摘要與圖說，採 `--fg`／`--fg-muted`、行高 ≥1.75。15px 的 CJK serif 不用於連續句子。
 
 EB Garamond 的 x-height 偏小；15px 合法範圍只限 true small caps meta，需 500 weight、`--fg-muted` 以上對比、
 短行且不可全段斜體。正文與導覽分別維持 19px、18px，不以提高對比換取縮小字級。
@@ -375,7 +377,7 @@ EB Garamond 的 x-height 偏小；15px 合法範圍只限 true small caps meta�
 ### Named typography rules
 
 **The Chrome Frontier Rule.** Cormorant SC 與 Space Mono 只活在 display、導覽外殼、meta 與裝飾；
-EB Garamond／Noto Serif TC 承擔內容。正文段落不得出現 display face 或 atmospheric mono。
+EB Garamond／OS CJK serif 承擔內容。正文段落不得出現 display face 或 atmospheric mono。
 
 **The Uppercase Latin Rule.** 一般 meta 不再用 CSS `text-transform: uppercase` 配寬字距；必要的英文縮寫改用 EB Garamond true small caps。
 Space Mono 只承載真實日期、頁碼或技術數值，字距上限 0.06em，不用來替普通介面文字製造儀表感。

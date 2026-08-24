@@ -1,18 +1,23 @@
 ---
 layout: '@/layouts/article.astro'
-title: About me
-description: About Wildsky — software engineer, AI agent practitioner, and self-hosting enthusiast
+title: About Wildsky
+description: Meet Wildsky (Rance Fan), a Taiwan-based software engineer working on AI agents, knowledge systems, self-hosting, and durable web products.
 feature_image: ''
 ---
 
-Hi, I am Wildsky
+Hi, I’m Rance Fan (范耿誌), better known online as **Wildsky**. I’m a software engineer based in Taiwan, currently working at [Taiwan AI Labs](https://ailabs.tw/ 'Taiwan AI Labs official website').
 
-Currently I am a software engineer in [Taiwan AILabs](https://ailabs.tw/ 'Taiwan AILabs Official Website') , and I am a volunteer in [Mozilla Taiwan Community](https://moztw.org/).
+I enjoy turning ambiguous problems into systems that can keep working. My work spans web applications, product interfaces, backend services, and system integration. Recently, I’ve focused on AI agents, knowledge systems, self-hosted infrastructure, and making software reliable inside real workflows. Past projects include genomic analysis and reporting, knowledge bases and agent builders, and energy analytics platforms.
 
-- If you feel like work with me, you could find my projects in this page: [My experiences](/en/experiences-en)
-- If you would like to make websites, please refer to this page [As a Freelancer](/en/freelancer-en)
+Outside work, I’ve spent years contributing to open-source communities and building independent projects. I was a volunteer with the [Mozilla Taiwan Community](https://moztw.org/), and I’ve built Firefox extensions, public-interest websites, and other web projects. This blog has been my place for writing about technology, work, life, and internet culture since 2014. I also maintain my own homelab and personal knowledge systems.
 
-Feel free to contact with me via Email: poppin.wildsky at gmail.com
+To learn more about my work, see:
+
+- [Experience and projects](/en/experiences-en)
+- [Freelance and web development](/en/freelancer-en)
+- [Writing archive](/en/archive)
+
+If you’d like to work together, discuss a problem, or simply say hello, email me at [poppin.wildsky@gmail.com](mailto:poppin.wildsky@gmail.com).
 
 <!--
 ## Blogroll

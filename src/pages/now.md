@@ -5,6 +5,8 @@ feature_image: ''
 excerpt: 'Wildsky 的近況更新：工作、生活、網路活動、最近看的與聽的，以及正在玩的遊戲。'
 ---
 
+_最後更新：2026 年 6 月 22 日_
+
 ## 近況
 
 - 目前任職 [Taiwan AI Labs](https://ailabs.tw/)，不過因為是 hybrid，所以一週只有幾天在台北中山區～

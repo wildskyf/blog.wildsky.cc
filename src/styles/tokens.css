@@ -102,12 +102,13 @@
    非色彩 token
    ============================================================ */
 :root {
-  --font-display: 'Cormorant SC', 'EB Garamond Variable', 'Noto Serif TC Variable', Georgia, serif;
-  --font-cjk-display: 'Noto Serif TC Variable', Georgia, serif;
-  --font-headline: 'EB Garamond Variable', 'Noto Serif TC Variable', Georgia, serif;
-  --font-label: 'EB Garamond Variable', 'Noto Serif TC Variable', Georgia, serif;
+  --font-system-cjk-serif: ui-serif, 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', serif;
+  --font-display: 'Cormorant SC', 'EB Garamond Variable', var(--font-system-cjk-serif);
+  --font-cjk-display: 'Noto Serif TC Variable', var(--font-system-cjk-serif);
+  --font-headline: 'EB Garamond Variable', var(--font-system-cjk-serif);
+  --font-label: 'EB Garamond Variable', var(--font-system-cjk-serif);
   --font-meta: 'Space Mono', 'JetBrains Mono Variable', monospace;
-  --font-body: 'EB Garamond Variable', 'Noto Serif TC Variable', Georgia, serif;
+  --font-body: 'EB Garamond Variable', var(--font-system-cjk-serif);
   --font-code: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* 版面骨架 */
@@ -120,6 +121,10 @@
 
   --ease: cubic-bezier(0.2, 0, 0, 1);
   --t: 120ms;
+}
+
+html:lang(en) {
+  --font-cjk-display: 'EB Garamond Variable', Georgia, serif;
 }
 
 @media (max-width: 1119px) {
