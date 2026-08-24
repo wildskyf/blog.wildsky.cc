@@ -1,0 +1,229 @@
+---
+type CategoryItem = {
+  name: string;
+  description: string;
+  count: number;
+  href: string;
+};
+
+const { categories, lang = 'tw' } = Astro.props as {
+  categories: CategoryItem[];
+  lang?: 'tw' | 'en';
+};
+
+const isEnglish = lang === 'en';
+---
+
+{
+  categories.length > 0 ? (
+    <ul class="ds-category-index">
+      {categories.map((category) => (
+        <li>
+          <a class="ds-category-row" href={category.href}>
+            <span class="ds-category-count">
+              <strong>{category.count}</strong>
+              <span>{isEnglish ? (category.count === 1 ? 'post' : 'posts') : '篇文章'}</span>
+            </span>
+
+            <span class="ds-category-copy">
+              <span class="ds-category-name">{category.name}</span>
+              <span class="ds-category-description">{category.description}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <div class="ds-taxonomy-empty">
+      <p>{isEnglish ? 'No categories have posts yet.' : '目前沒有任何分類底下有文章。'}</p>
+      <a href={isEnglish ? '/en/' : '/'}>{isEnglish ? 'Go home' : '回到首頁'}</a>
+    </div>
+  )
+}
+
+<style>
+  .ds-category-index {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-category-index li {
+    border-top: 1px solid var(--rule);
+  }
+
+  .ds-category-index li:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .ds-category-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--gutter-col) minmax(0, 1fr);
+    min-height: 126px;
+    color: var(--fg);
+    text-decoration: none;
+  }
+
+  .ds-category-row::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    bottom: 22px;
+    left: var(--gutter-col);
+    width: 2px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 180ms var(--ease);
+  }
+
+  .ds-category-row:hover::before,
+  .ds-category-row:focus-visible::before {
+    transform: scaleY(1);
+  }
+
+  .ds-category-count {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-right: 24px;
+    font-family: var(--font-meta);
+    color: var(--fg-faint);
+  }
+
+  .ds-category-count strong {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.25;
+    font-variant-numeric: lining-nums tabular-nums;
+    color: var(--fg-muted);
+    transition: color var(--t) var(--ease);
+  }
+
+  .ds-category-count span {
+    font-size: 11px;
+    line-height: 1.5;
+    letter-spacing: 0.045em;
+  }
+
+  .ds-category-copy {
+    min-width: 0;
+    align-self: center;
+    display: block;
+    padding: 24px 0 26px 20px;
+  }
+
+  .ds-category-name {
+    display: block;
+    font-family: var(--font-headline);
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.008em;
+    color: var(--fg);
+  }
+
+  .ds-category-description {
+    display: block;
+    max-width: 68ch;
+    margin-top: 7px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.75;
+    letter-spacing: 0.008em;
+    color: var(--fg-muted);
+  }
+
+  .ds-category-row:hover .ds-category-count strong,
+  .ds-category-row:focus-visible .ds-category-count strong {
+    color: var(--fg);
+  }
+
+  .ds-taxonomy-empty {
+    max-width: var(--measure);
+    margin-left: var(--gutter-col);
+    padding: 30px 0 30px 20px;
+    border-left: 2px solid var(--accent);
+    color: var(--fg-muted);
+  }
+
+  .ds-taxonomy-empty p {
+    margin: 0;
+  }
+
+  .ds-taxonomy-empty a {
+    color: var(--fg);
+    text-underline-offset: 0.28em;
+    text-decoration-color: var(--rule);
+  }
+
+  .ds-taxonomy-empty a:hover {
+    text-decoration-color: var(--accent);
+  }
+
+  @media (max-width: 1119px) {
+    .ds-category-row {
+      grid-template-columns: 96px minmax(0, 1fr);
+    }
+
+    .ds-category-row::before {
+      left: 96px;
+    }
+
+    .ds-taxonomy-empty {
+      margin-left: 96px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .ds-category-row {
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 25px 0 28px 18px;
+    }
+
+    .ds-category-row::before {
+      top: 22px;
+      bottom: 22px;
+      left: 0;
+    }
+
+    .ds-category-count {
+      align-self: auto;
+      flex-direction: row;
+      align-items: baseline;
+      gap: 7px;
+      padding: 0;
+    }
+
+    .ds-category-count strong {
+      font-size: 15px;
+    }
+
+    .ds-category-copy {
+      align-self: auto;
+      padding: 8px 0 0;
+    }
+
+    .ds-category-name {
+      font-size: 22px;
+    }
+
+    .ds-category-description {
+      font-size: 15px;
+    }
+
+    .ds-taxonomy-empty {
+      margin-left: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ds-category-row::before,
+    .ds-category-count strong {
+      transition: none;
+    }
+  }
+</style>

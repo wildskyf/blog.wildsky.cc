@@ -493,6 +493,13 @@ Light 底部海藻不得做成連續深色污漬：剪影總寬度覆蓋 ≤35%�
 - 每個年份形成一組 dense ruled rows；desktop 年份置於 gutter，mobile 則移至該組文章上方。
 - 每列只呈現 `MM.DD` 與標題，不加入摘要、分類或 tag；hover／focus 使用與文章索引一致的左側 2px `--accent`，背景不填色。
 
+### Category and tag indexes
+
+- Category index 是章節式 ruled rows：desktop 將文章數放在 gutter、名稱與說明放在主欄，mobile 改為同欄堆疊；不做卡片格或圖示牆。
+- Tag index 先提供即時文字篩選，再依既有語意群組排列；群組名稱在 desktop gutter、mobile 移到標籤列上方。
+- Tag 不再使用密集小型大寫 cloud；每個標籤是至少 52px 高的 ruled index entry，名稱與文章數左右對齊，desktop 三欄、tablet 兩欄、mobile 單欄。
+- Category 與 tag 的 hover／focus 沿用文章索引的左側 2px `--accent`，不填背景、不加陰影；查無篩選結果時保留明確空狀態。
+
 ### Buttons
 
 - 主要按鈕可用 The Plate，58px 高，左右 padding 36–40px；預設透明底。

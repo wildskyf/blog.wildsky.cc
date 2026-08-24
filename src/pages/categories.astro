@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/page.astro';
 import PageHead from '@/components/PageHead.astro';
+import CategoryIndex from '@/components/CategoryIndex.astro';
 
 // Get all posts
 const posts = await getCollection('posts-tw');
@@ -10,31 +11,24 @@ const posts = await getCollection('posts-tw');
 const categoryInfo = {
   軟體工程: {
     description: '程式設計、網頁開發、系統管理等技術相關文章',
-    icon: 'mdi:wrench-outline',
   },
   職涯工作: {
     description: '工作經驗、職涯發展、專業成長相關分享',
-    icon: 'mdi:work-outline',
   },
   生活體驗: {
     description: '旅遊、音樂、藝術等生活體驗與觀察',
-    icon: 'mdi:person-outline',
   },
   思考觀點: {
     description: '人生哲學、價值觀念、思辨與反思',
-    icon: 'mdi:thought-bubble-outline',
   },
   理財投資: {
     description: '理財規劃、投資心得、財務觀念分享',
-    icon: 'mdi:money',
   },
   資訊科學: {
     description: '電腦科學理論、數學、學術知識',
-    icon: 'mdi:computer',
   },
   其他: {
     description: '其他未分類的文章內容',
-    icon: 'mdi:note-multiple-outline',
   },
 };
 
@@ -71,30 +65,12 @@ Index`}
       count={`${categories.length} Categories`}
     />
 
-    <div class="ds-body">
-      {
-        categories.length === 0 && (
-          <p class="ds-empty">
-            目前沒有任何分類底下有文章。<a href="/">回到首頁</a>看看最新的文章。
-          </p>
-        )
-      }
-      <ul class="ds-catlist">
-        {
-          categories.map((category) => (
-            <li class="ds-cat">
-              <span class="ds-cat-mark" aria-hidden="true" />
-              <a class="ds-cat-link" href={`/categories/${category.name}`}>
-                <span>
-                  <span class="ds-cat-name">{category.name}</span>
-                  <span class="ds-cat-desc">{category.description}</span>
-                </span>
-                <span class="ds-cat-count">{category.count} 篇</span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+    <CategoryIndex
+      lang="tw"
+      categories={categories.map((category) => ({
+        ...category,
+        href: `/categories/${encodeURIComponent(category.name)}/`,
+      }))}
+    />
   </div>
 </Layout>

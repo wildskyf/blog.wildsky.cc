@@ -1,0 +1,355 @@
+---
+type TagItem = {
+  name: string;
+  count: number;
+  href: string;
+};
+
+type TagGroup = {
+  name: string;
+  tags: TagItem[];
+};
+
+const { groups, lang = 'tw' } = Astro.props as {
+  groups: TagGroup[];
+  lang?: 'tw' | 'en';
+};
+
+const isEnglish = lang === 'en';
+const total = groups.reduce((sum, group) => sum + group.tags.length, 0);
+const inputId = `tag-filter-${lang}`;
+const filterLabel = isEnglish ? 'Filter tags' : '篩選標籤';
+const filterPlaceholder = isEnglish ? 'Enter a tag name' : '輸入標籤名稱';
+---
+
+<div class="ds-tag-index" data-lang={lang} data-total={total}>
+  <div class="ds-tag-filter">
+    <label for={inputId}>{filterLabel}</label>
+    <div class="ds-tag-filter-main">
+      <input
+        id={inputId}
+        type="search"
+        inputmode="search"
+        autocomplete="off"
+        placeholder={filterPlaceholder}
+      />
+      <p class="ds-tag-status" aria-live="polite">
+        {isEnglish ? `${total} tags shown` : `顯示 ${total} 個標籤`}
+      </p>
+    </div>
+  </div>
+
+  {
+    groups.map((group) => (
+      <section class="ds-tag-group" data-tag-group>
+        <header class="ds-tag-group-head">
+          <h2>{group.name}</h2>
+          <p class="ds-tag-group-count">
+            {isEnglish ? `${group.tags.length} tags` : `${group.tags.length} 個標籤`}
+          </p>
+        </header>
+
+        <ul class="ds-tag-list">
+          {group.tags.map((tag) => (
+            <li data-tag-item data-tag-name={tag.name}>
+              <a href={tag.href}>
+                <span class="ds-tag-name">{tag.name}</span>
+                <span class="ds-tag-count">{tag.count}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+
+  <p class="ds-tag-no-results" data-tag-no-results hidden={total > 0}>
+    {isEnglish ? 'No tags match this filter.' : '找不到符合的標籤。'}
+  </p>
+</div>
+
+<style>
+  .ds-tag-filter,
+  .ds-tag-group {
+    display: grid;
+    grid-template-columns: var(--gutter-col) minmax(0, 1fr);
+  }
+
+  .ds-tag-filter {
+    align-items: start;
+    padding: 34px 0 38px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .ds-tag-filter label,
+  .ds-tag-group-head h2 {
+    margin: 0;
+    padding-right: 24px;
+    font-family: var(--font-label);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: 0.055em;
+    font-variant-caps: all-small-caps;
+    font-feature-settings:
+      'smcp' 1,
+      'c2sc' 1;
+    color: var(--fg-muted);
+  }
+
+  .ds-tag-filter-main {
+    min-width: 0;
+  }
+
+  .ds-tag-filter input {
+    width: min(100%, 560px);
+    height: 58px;
+    padding: 0 18px;
+    border: 1px solid var(--fg-faint);
+    border-radius: 0;
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0.008em;
+    color: var(--fg);
+    caret-color: var(--accent);
+    appearance: none;
+    transition: border-color var(--t) var(--ease);
+  }
+
+  .ds-tag-filter input::placeholder {
+    color: var(--fg-faint);
+    opacity: 1;
+  }
+
+  .ds-tag-filter input:hover {
+    border-color: var(--fg-muted);
+  }
+
+  .ds-tag-filter input:focus-visible {
+    border-color: var(--glow);
+    outline: 2px solid var(--glow);
+    outline-offset: 3px;
+  }
+
+  .ds-tag-filter input::-webkit-search-cancel-button {
+    cursor: pointer;
+  }
+
+  .ds-tag-status {
+    min-height: 18px;
+    margin: 10px 0 0;
+    font-family: var(--font-meta);
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 0.045em;
+    color: var(--fg-faint);
+  }
+
+  .ds-tag-group {
+    align-items: start;
+    padding: 34px 0 42px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .ds-tag-group-head p {
+    margin: 7px 0 0;
+    padding-right: 24px;
+    font-family: var(--font-meta);
+    font-size: 11px;
+    line-height: 1.5;
+    letter-spacing: 0.045em;
+    color: var(--fg-faint);
+  }
+
+  .ds-tag-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-tag-list li {
+    min-width: 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .ds-tag-list a {
+    position: relative;
+    min-height: 52px;
+    padding: 10px 8px 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-family: var(--font-label);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: 0.015em;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color var(--t) var(--ease);
+  }
+
+  .ds-tag-list a::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    width: 2px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 180ms var(--ease);
+  }
+
+  .ds-tag-list a:hover,
+  .ds-tag-list a:focus-visible {
+    color: var(--fg);
+  }
+
+  .ds-tag-list a:hover::before,
+  .ds-tag-list a:focus-visible::before {
+    transform: scaleY(1);
+  }
+
+  .ds-tag-name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .ds-tag-count {
+    flex: none;
+    font-family: var(--font-meta);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0;
+    font-variant-numeric: lining-nums tabular-nums;
+    color: var(--fg-faint);
+  }
+
+  .ds-tag-no-results {
+    max-width: var(--measure);
+    margin: 34px 0 0 var(--gutter-col);
+    padding: 8px 0 8px 20px;
+    border-left: 2px solid var(--accent);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--fg-muted);
+  }
+
+  [hidden] {
+    display: none;
+  }
+
+  @media (max-width: 1119px) {
+    .ds-tag-filter,
+    .ds-tag-group {
+      grid-template-columns: 96px minmax(0, 1fr);
+    }
+
+    .ds-tag-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ds-tag-no-results {
+      margin-left: 96px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .ds-tag-filter,
+    .ds-tag-group {
+      grid-template-columns: 1fr;
+    }
+
+    .ds-tag-filter {
+      gap: 12px;
+      padding: 28px 0 32px;
+    }
+
+    .ds-tag-filter label,
+    .ds-tag-group-head h2,
+    .ds-tag-group-head p {
+      padding-right: 0;
+    }
+
+    .ds-tag-filter input {
+      width: 100%;
+    }
+
+    .ds-tag-group {
+      gap: 16px;
+      padding: 30px 0 34px;
+    }
+
+    .ds-tag-list {
+      grid-template-columns: 1fr;
+    }
+
+    .ds-tag-no-results {
+      margin-left: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ds-tag-filter input,
+    .ds-tag-list a,
+    .ds-tag-list a::before {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const normalizeTag = (value: string) => value.normalize('NFKC').toLocaleLowerCase();
+
+  document.querySelectorAll<HTMLElement>('.ds-tag-index').forEach((index) => {
+    const input = index.querySelector<HTMLInputElement>('input[type="search"]');
+    const status = index.querySelector<HTMLElement>('.ds-tag-status');
+    const noResults = index.querySelector<HTMLElement>('[data-tag-no-results]');
+    const groups = Array.from(index.querySelectorAll<HTMLElement>('[data-tag-group]'));
+    const total = Number(index.dataset.total ?? 0);
+    const isEnglish = index.dataset.lang === 'en';
+
+    if (!input || !status || !noResults) return;
+
+    const update = () => {
+      const query = normalizeTag(input.value.trim());
+      let visible = 0;
+
+      groups.forEach((group) => {
+        let groupVisible = 0;
+        const groupCount = group.querySelector<HTMLElement>('.ds-tag-group-count');
+
+        group.querySelectorAll<HTMLElement>('[data-tag-item]').forEach((item) => {
+          const matches = normalizeTag(item.dataset.tagName ?? '').includes(query);
+          item.hidden = !matches;
+          if (matches) groupVisible += 1;
+        });
+
+        if (groupCount) {
+          groupCount.textContent = isEnglish
+            ? `${groupVisible} ${groupVisible === 1 ? 'tag' : 'tags'}`
+            : `${groupVisible} 個標籤`;
+        }
+        group.hidden = groupVisible === 0;
+        visible += groupVisible;
+      });
+
+      noResults.hidden = visible > 0;
+      status.textContent = isEnglish
+        ? `${visible} of ${total} tags shown`
+        : `顯示 ${visible} / ${total} 個標籤`;
+    };
+
+    input.addEventListener('input', update);
+  });
+</script>

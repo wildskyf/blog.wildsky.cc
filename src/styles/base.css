@@ -203,7 +203,7 @@ body {
 }
 
 /* ------------------------------------------------------------
-   索引頁共用（標籤列表、分類列表、標籤/分類內頁、404）
+   索引頁共用（標籤/分類內頁、404）
    ------------------------------------------------------------ */
 
 /* 內容欄：與文章索引同一條柱線，靠 gutter 對齊而不是靠內距 */
@@ -214,146 +214,6 @@ body {
 
 .ds-body > * {
   grid-column: 2;
-}
-
-.ds-section {
-  padding: 34px 0 6px;
-  border-top: 1px solid var(--rule);
-}
-
-.ds-section:first-of-type {
-  border-top: 0;
-}
-
-.ds-section-title {
-  margin: 0 0 18px;
-  font-family: var(--font-label);
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.055em;
-  font-variant-caps: all-small-caps;
-  font-feature-settings:
-    'smcp' 1,
-    'c2sc' 1;
-  color: var(--fg-muted);
-}
-
-/* 標籤雲：無膠囊、無底色、無圓角。靠留白與小型大寫分隔。 */
-.ds-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 26px;
-  margin-bottom: 30px;
-}
-
-.ds-cloud-item {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 7px;
-  font-family: var(--font-label);
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 0.055em;
-  font-variant-caps: all-small-caps;
-  font-feature-settings:
-    'smcp' 1,
-    'c2sc' 1;
-  color: var(--fg-muted);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 1px;
-  transition:
-    color var(--t) var(--ease),
-    border-color var(--t) var(--ease);
-}
-
-.ds-cloud-item:hover,
-.ds-cloud-item:focus-visible {
-  color: var(--fg);
-  border-bottom-color: var(--accent);
-}
-
-/* 計數是次要資訊，不做成徽章；數字使用 atmospheric meta。 */
-.ds-count {
-  font-family: var(--font-meta);
-  font-size: 12px;
-  font-weight: 500;
-  font-variant-numeric: lining-nums tabular-nums;
-  letter-spacing: 0;
-  color: var(--fg-faint);
-}
-
-.ds-cloud-item:hover .ds-count {
-  color: var(--fg-muted);
-}
-
-/* 分類列表：表列而非卡片格 —— 與文章索引同一種掃讀邏輯 */
-.ds-catlist {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.ds-cat {
-  position: relative;
-  border-top: 1px solid var(--rule);
-}
-
-.ds-cat:last-child {
-  border-bottom: 1px solid var(--rule);
-}
-
-.ds-cat-mark {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 2px;
-  height: 100%;
-  background: var(--accent);
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 180ms var(--ease);
-}
-
-.ds-cat:hover .ds-cat-mark,
-.ds-cat:focus-within .ds-cat-mark {
-  transform: scaleY(1);
-}
-
-.ds-cat-link {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: baseline;
-  gap: 20px;
-  padding: 24px 0 26px;
-  text-decoration: none;
-}
-
-.ds-cat-name {
-  display: block;
-  font-family: var(--font-headline);
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.4;
-  color: var(--fg);
-}
-
-.ds-cat-desc {
-  display: block;
-  margin: 6px 0 0;
-  font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.8;
-  color: var(--fg-muted);
-}
-
-.ds-cat-count {
-  font-family: var(--font-meta);
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.045em;
-  color: var(--fg-muted);
-  white-space: nowrap;
 }
 
 /* 空狀態：一條紅線 ＋ 說明，不放插圖。
@@ -395,13 +255,6 @@ body {
   }
   .ds-body > * {
     grid-column: 1;
-  }
-  .ds-cat-link {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  .ds-cat-name {
-    font-size: 19px;
   }
 }
 
