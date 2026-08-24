@@ -13,6 +13,7 @@ const {
   tags,
   readingTime,
   series,
+  translation,
 } = Astro.props;
 const currentLocale = lang || Astro.currentLocale || 'tw';
 const root_path = currentLocale === 'en' ? '/en' : '';
@@ -46,6 +47,19 @@ const publish_time =
     </div>
 
     <h1 class="ds-article-title" set:html={title} />
+
+    {
+      translation && (
+        <a
+          class="ds-translation-link"
+          href={translation.href}
+          hreflang={translation.hreflang}
+          lang={translation.hreflang}
+        >
+          {translation.label}
+        </a>
+      )
+    }
 
     <TagList tags={tags} lang={currentLocale} />
   </header>
@@ -113,6 +127,42 @@ const publish_time =
     line-height: 1.2;
     letter-spacing: 0.01em;
     color: var(--fg);
+  }
+
+  .ds-translation-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    margin: 0 0 20px;
+    padding: 8px 14px;
+    border: 1px solid var(--rule);
+    background: var(--bg-surface);
+    color: var(--fg);
+    font-family: var(--font-label);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    transition:
+      border-color 160ms ease,
+      color 160ms ease,
+      background-color 160ms ease;
+  }
+
+  .ds-translation-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .ds-translation-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ds-translation-link {
+      transition: none;
+    }
   }
 
   /* 首圖：無圓角、無底色塊，只有一條細線 */

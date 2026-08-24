@@ -86,10 +86,80 @@ const TRANSLATION_PAIRS = [
   ['/tags/', '/en/tags/'],
 ];
 
-export const getSitemapTranslationLinks = (siteUrl) => {
+const parseFrontmatterScalar = (frontmatter, field) => {
+  const match = frontmatter.match(new RegExp(`^${field}:\\s*(.+?)\\s*$`, 'm'));
+  if (!match) return null;
+
+  const value = match[1].trim();
+  if (
+    (value.startsWith('"') && value.endsWith('"')) ||
+    (value.startsWith("'") && value.endsWith("'"))
+  ) {
+    return value.slice(1, -1).trim();
+  }
+
+  return value;
+};
+
+const getPostSlug = (filename, frontmatter) => {
+  const explicitSlug = parseFrontmatterScalar(frontmatter, 'slug');
+  if (explicitSlug) return explicitSlug;
+
+  const basename = filename.replace(/\.md$/, '');
+  const timestampedSlug = basename.match(/^\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}_(.+)$/);
+  return timestampedSlug ? timestampedSlug[1] : basename;
+};
+
+export const collectPostTranslationPairs = (projectRoot) => {
+  const entriesByKey = new Map();
+  const sources = [
+    [join(projectRoot, 'src/content/posts-tw'), 'tw'],
+    [join(projectRoot, 'src/content/posts-en'), 'en'],
+  ];
+
+  for (const [directory, locale] of sources) {
+    for (const filename of readdirSync(directory).filter((file) => file.endsWith('.md'))) {
+      const sourcePath = join(directory, filename);
+      const source = readFileSync(sourcePath, 'utf8');
+      const frontmatterMatch = source.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+      if (!frontmatterMatch) continue;
+
+      const frontmatter = frontmatterMatch[1];
+      const translationKey = parseFrontmatterScalar(frontmatter, 'translationKey');
+      if (!translationKey) continue;
+
+      const entries = entriesByKey.get(translationKey) ?? [];
+      entries.push({
+        locale,
+        path: `${locale === 'en' ? '/en' : ''}/posts/${getPostSlug(filename, frontmatter)}/`,
+        sourcePath,
+      });
+      entriesByKey.set(translationKey, entries);
+    }
+  }
+
+  const pairs = [];
+  for (const [translationKey, entries] of entriesByKey) {
+    const twEntries = entries.filter(({ locale }) => locale === 'tw');
+    const enEntries = entries.filter(({ locale }) => locale === 'en');
+
+    if (twEntries.length !== 1 || enEntries.length !== 1) {
+      const sources = entries.map(({ sourcePath }) => sourcePath).join(', ');
+      throw new Error(
+        `translationKey "${translationKey}" must identify exactly one TW and one EN post; found: ${sources}`
+      );
+    }
+
+    pairs.push([twEntries[0].path, enEntries[0].path]);
+  }
+
+  return pairs;
+};
+
+export const getSitemapTranslationLinks = (siteUrl, postTranslationPairs = []) => {
   const linksByPath = new Map();
 
-  for (const [twPath, enPath] of TRANSLATION_PAIRS) {
+  for (const [twPath, enPath] of [...TRANSLATION_PAIRS, ...postTranslationPairs]) {
     const links = [
       { lang: 'zh-Hant-TW', url: new URL(twPath, siteUrl).toString() },
       { lang: 'en-US', url: new URL(enPath, siteUrl).toString() },

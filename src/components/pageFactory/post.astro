@@ -1,5 +1,5 @@
 ---
-import { render } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 import PageLayout from '@/layouts/page.astro';
 import Article from '@/components/Article.astro';
@@ -11,6 +11,41 @@ const { Content } = await render(entry);
 const data = articleMapper(entry);
 const readingTime = data.readingMinutes ? formatReadingTime(data.readingMinutes, lang) : null;
 const series = entry.data.series ?? null;
+const translationKey = entry.data.translationKey;
+const otherLang = lang === 'en' ? 'tw' : 'en';
+const otherCollection = otherLang === 'en' ? 'posts-en' : 'posts-tw';
+const translatedEntries = translationKey
+  ? (await getCollection(otherCollection)).filter(
+      (candidate) => candidate.data.translationKey === translationKey
+    )
+  : [];
+
+if (translatedEntries.length > 1) {
+  throw new Error(`Duplicate ${otherLang} translationKey: ${translationKey}`);
+}
+
+const translatedEntry = translatedEntries[0];
+const translatedData = translatedEntry ? articleMapper(translatedEntry) : null;
+const translation = translatedData
+  ? {
+      href: `${otherLang === 'en' ? '/en' : ''}/posts/${translatedData.slug}/`,
+      hreflang: otherLang === 'en' ? 'en-US' : 'zh-Hant-TW',
+      label: otherLang === 'en' ? 'Read in English' : '閱讀中文版',
+    }
+  : null;
+const currentHref = `${lang === 'en' ? '/en' : ''}/posts/${data.slug}/`;
+const languageAlternates = translation
+  ? [
+      {
+        hreflang: lang === 'en' ? 'en-US' : 'zh-Hant-TW',
+        href: currentHref,
+      },
+      {
+        hreflang: translation.hreflang,
+        href: translation.href,
+      },
+    ]
+  : [];
 ---
 
 <PageLayout
@@ -21,8 +56,15 @@ const series = entry.data.series ?? null;
   pageType="article"
   pagePublished={entry.data.date}
   pageUpdated={entry.data.updated ?? entry.data.date}
+  languageAlternates={languageAlternates}
 >
-  <Article {...data} lang={lang} readingTime={readingTime} series={series}>
+  <Article
+    {...data}
+    lang={lang}
+    readingTime={readingTime}
+    series={series}
+    translation={translation}
+  >
     <Content />
   </Article>
 

@@ -3,11 +3,16 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
 import { shouldIndexPath, normalizePathname } from './src/utils/indexPolicy.mjs';
-import { collectTagPostCounts, getSitemapTranslationLinks } from './scripts/sitemapPolicy.mjs';
+import {
+  collectPostTranslationPairs,
+  collectTagPostCounts,
+  getSitemapTranslationLinks,
+} from './scripts/sitemapPolicy.mjs';
 
 const siteUrl = 'https://blog.wildsky.cc';
 const tagPostCounts = collectTagPostCounts(import.meta.dirname);
-const sitemapTranslationLinks = getSitemapTranslationLinks(siteUrl);
+const postTranslationPairs = collectPostTranslationPairs(import.meta.dirname);
+const sitemapTranslationLinks = getSitemapTranslationLinks(siteUrl, postTranslationPairs);
 
 // https://astro.build/config
 export default defineConfig({

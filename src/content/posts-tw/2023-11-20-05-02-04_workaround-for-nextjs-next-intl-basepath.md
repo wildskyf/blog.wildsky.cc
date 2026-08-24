@@ -2,6 +2,7 @@
 title: "解決在 Next.js 的 app dir 下同時使用 basePath 和 next-intl 會遇到的問題"
 date: 2023-11-20T17:02:04+08:00
 slug: "workaround-for-nextjs-next-intl-basepath"
+translationKey: "nextjs-next-intl-basepath-workaround"
 excerpt: "這次的專案因為比較單純，想說來嘗試看看 next.js 的 app dir；恰好之前在推上有看
 過有人推薦 next-intl 和 next.js 的搭配，便嘗試了一下。結果卻發現不支援 basePath ..."
 feature_image: "maze.jpg"

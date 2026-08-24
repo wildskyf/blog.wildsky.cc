@@ -2,6 +2,7 @@
 title: "The Mystery of Missing Socks and Silent Evidence"
 date: 2025-09-06T11:42:06+08:00
 slug: "why-do-socks-disappear-but-only-one-en"
+translationKey: "missing-socks-and-silent-evidence"
 excerpt: "Recently, while folding laundry, I encountered an old problem again: I clearly remember putting pairs of socks into the washing machine, so why do I always end up with a single sock when hanging them out to dry?"
 feature_image: "black-cat.jpeg"
 guid: "why-do-socks-disappear-but-only-one-en"

@@ -2,6 +2,7 @@
 title: "How to flash QMK Config Keymap into Mint60 on Mac"
 date: 2021-01-07T17:35:39
 slug: "hot-to-flash-qmk-config-keymap-into-mint60-on-mac-en"
+translationKey: "flash-qmk-keymap-into-mint60-on-mac"
 excerpt: "Foreword I just buy a keyboard named mint60 from ErgoTa..."
 feature_image: ergo-taiwan-mint60-2.jpg
 guid: "https://blog.wildsky.cc/?p=1706"

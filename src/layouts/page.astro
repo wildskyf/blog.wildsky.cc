@@ -9,8 +9,17 @@ const currentLocale = Astro.currentLocale || 'tw';
 const lang_code = currentLocale === 'tw' ? 'zh-Hant-TW' : 'en';
 const footerNavLabel = currentLocale === 'en' ? 'Footer links' : '頁尾連結';
 
-const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, schema, robots } =
-  Astro.props;
+const {
+  pageName,
+  pageDesc,
+  pageImage,
+  pageType,
+  pagePublished,
+  pageUpdated,
+  schema,
+  robots,
+  languageAlternates,
+} = Astro.props;
 ---
 
 <RootLayout
@@ -22,6 +31,7 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, sch
   pageUpdated={pageUpdated}
   schema={schema}
   robots={robots}
+  languageAlternates={languageAlternates}
 >
   <BackgroundField />
 

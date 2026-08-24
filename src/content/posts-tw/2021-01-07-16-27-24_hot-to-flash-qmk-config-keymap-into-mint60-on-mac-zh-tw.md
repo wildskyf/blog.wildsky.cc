@@ -2,6 +2,7 @@
 title: "如何在 Mac 上將 QMK Config Keymap 刷進 Mint60"
 date: 2021-01-07T16:27:24
 slug: "hot-to-flash-qmk-config-keymap-into-mint60-on-mac-zh-tw"
+translationKey: "flash-qmk-keymap-into-mint60-on-mac"
 excerpt: "前言 最近因為肩膀不太舒服，感覺就是上班太久（？），所以想從調整姿勢開始，便從 ErgoTaiwan 買了個 ..."
 feature_image: ergo-taiwan-mint60-2.jpg
 guid: "https://blog.wildsky.cc/?p=1692"

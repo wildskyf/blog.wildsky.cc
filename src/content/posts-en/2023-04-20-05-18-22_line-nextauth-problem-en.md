@@ -2,6 +2,7 @@
 title: "Potential Issues When Integrating LINE Login with NextAuth.js"
 date: 2023-04-20T17:18:22+08:00
 slug: "line-nextauth-problem-en"
+translationKey: "nextauth-line-login-issues"
 excerpt: "I recently had the opportunity to integrate the LINE Login API into a project. Along the way, I ran into a few issues, so I decided to document them and share the solutions."
 feature_image: "nextauth-line.jpg"
 guid: "line-nextauth-problem-en"

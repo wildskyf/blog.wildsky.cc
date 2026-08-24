@@ -2,6 +2,7 @@
 title: "A Workaround for Using basePath with next-intl in the Next.js App Directory"
 date: 2023-11-20T17:02:04+08:00
 slug: "workaround-for-nextjs-next-intl-basepath-en"
+translationKey: "nextjs-next-intl-basepath-workaround"
 excerpt: "Since this project was relatively simple, I decided to try the Next.js App Directory. I had also seen someone recommend using next-intl with Next.js, so I gave it a try—only to discover that it did not support basePath."
 feature_image: "maze.jpg"
 guid: "workaround-for-nextjs-next-intl-basepath-en"
