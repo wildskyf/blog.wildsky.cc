@@ -12,5 +12,5 @@
 /posts/vim-buffer-winodw-tab/ /posts/vim-buffer-window-tab/ 301
 /tags/%E6%B2%88%E9%BB%98%E8%AD%89%E6%93%9A /tags/%E6%B2%89%E9%BB%98%E8%AD%89%E6%93%9A/ 301
 /tags/%E6%B2%88%E9%BB%98%E8%AD%89%E6%93%9A/ /tags/%E6%B2%89%E9%BB%98%E8%AD%89%E6%93%9A/ 301
-/.well-known/webfinger:info* https://fed.brid.gy/.well-known/webfinger:info* 302
-/.well-known/host-meta:splat https://fed.brid.gy/.well-known/host-meta:splat* 302
+/.well-known/webfinger* https://fed.brid.gy/.well-known/webfinger:splat 302
+/.well-known/host-meta* https://fed.brid.gy/.well-known/host-meta:splat 302
