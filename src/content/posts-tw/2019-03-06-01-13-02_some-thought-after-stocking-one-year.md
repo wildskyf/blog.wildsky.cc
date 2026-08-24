@@ -55,4 +55,4 @@ tags: ["股票投資", "投資心得", "價值投資", "投資策略", "財務�
 
 所以，我在股市中的投資，除了錢，還有我自身的理財能力。
 
-其他關於理財的文章，可以參考： [http://blog.wildsky.cc/categories/理財](http://blog.wildsky.cc/categories/理財)
+其他關於理財的文章，可以參考：[理財投資](/categories/理財投資/)

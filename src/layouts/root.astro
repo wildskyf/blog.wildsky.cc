@@ -25,6 +25,17 @@ const {
 
 <html lang={htmlLang}>
   <head>
+    <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-QJC649ZTNK"></script>
+    <script id="google-analytics" is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-QJC649ZTNK');
+    </script>
+
     <script is:inline>
       // 舊主題名遷移：dim / forest → tide-dark，nord → tide-light
       const LEGACY = { dim: 'tide-dark', forest: 'tide-dark', nord: 'tide-light' };
@@ -87,16 +98,5 @@ const {
     <div class="page-container">
       <slot />
     </div>
-
-    <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-QJC649ZTNK"></script>
-    <script id="google-analytics" is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-
-      gtag('config', 'G-QJC649ZTNK');
-    </script>
   </body>
 </html>

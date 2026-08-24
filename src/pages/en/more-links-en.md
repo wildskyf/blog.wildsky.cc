@@ -1,6 +1,7 @@
 ---
 layout: '@/layouts/article.astro'
 title: Blogroll
+description: Friends, blogs, and websites Wildsky recommends and appreciates.
 feature_image: null
 ---
 

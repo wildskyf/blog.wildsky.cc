@@ -51,4 +51,4 @@ In fact, the StackOverflow Answer did solve my problem, but I just couldn’t fi
 - [https://stackoverflow.com/questions/43145267/xcode-how-to-config-a-project-for-team-working](https://stackoverflow.com/questions/43145267/xcode-how-to-config-a-project-for-team-working)
 - [https://stackoverflow.com/questions/39524148/xcode-error-code-signing-is-required-for-product-type-application-in-sdk-ios](https://stackoverflow.com/questions/39524148/xcode-error-code-signing-is-required-for-product-type-application-in-sdk-ios)
 - The example project in the screenshots: [ios-ptt.ai](https://github.com/ailabstw/ios-ptt.ai)
-- Maybe you will like my other experiences about [sweeping landmine](http://blog.wildsky.cc/tags/sweep-landmine/).
+- Maybe you will like my other experiences with [error fixes](/en/tags/Error%20Fix/).

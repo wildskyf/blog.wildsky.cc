@@ -17,6 +17,11 @@ const {
 } = Astro.props;
 const currentLocale = lang || Astro.currentLocale || 'tw';
 const root_path = currentLocale === 'en' ? '/en' : '';
+const feature_image_alt =
+  feature_image_caption
+    ?.replace(/<[^>]*>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim() ?? '';
 
 const publish_time =
   currentLocale === 'en'
@@ -69,7 +74,7 @@ const publish_time =
   {
     feature_image_url && (
       <figure class="ds-figure">
-        <img src={feature_image_url} alt={feature_image_caption ?? ''} width="750" height="410" />
+        <img src={feature_image_url} alt={feature_image_alt} width="750" height="410" />
         {feature_image_caption && <figcaption set:html={feature_image_caption} />}
       </figure>
     )

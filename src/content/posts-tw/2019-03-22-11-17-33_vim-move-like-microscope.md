@@ -31,7 +31,7 @@ config 裡的設定其實也蠻簡單的，把這段放在 `~/.vimrc` 裡面就�
 
 ## 其他連結
 
-- 本站其他和 Vim 相關的文章: [vim](http://blog.wildsky.cc/tags/vim/)
+- 本站其他和 Vim 相關的文章：[Vim](/tags/Vim/)
 - [www.vim.tw](https://www.vim.tw/)
 - Vim Taiwan 的 telegram group: [http://t.me/vim_tw](http://t.me/vim_tw)
 

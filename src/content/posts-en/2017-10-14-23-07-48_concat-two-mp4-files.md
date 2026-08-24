@@ -23,4 +23,4 @@ That’s it!
 ## Reference
 
 - [https://superuser.com/a/1059261](https://superuser.com/a/1059261)
-- … more articles about Linux: [http://blog.wildsky.cc/categories/linux](http://blog.wildsky.cc/categories/linux)
+- … more articles about Linux: [Linux](/en/tags/Linux/)

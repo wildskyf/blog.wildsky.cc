@@ -1,6 +1,7 @@
 ---
 layout: '@/layouts/article.astro'
 title: 捐款贊助
+description: 支持 Wildsky 持續撰寫軟體工程、AI Agent、自架系統與生活思考文章的贊助方式。
 feature_image: 'do-something-great.jpg'
 ---
 

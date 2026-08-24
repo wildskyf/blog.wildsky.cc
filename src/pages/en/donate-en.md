@@ -1,6 +1,7 @@
 ---
 layout: '@/layouts/article.astro'
 title: Give Wildsky Donation
+description: Ways to support Wildsky's independent writing on software engineering, AI agents, self-hosting, and life.
 feature_image: 'do-something-great.jpg'
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: '@/layouts/article.astro'
 title: 友站連結
+description: Wildsky 推薦與感謝的朋友、部落格與網站連結。
 feature_image: null
 ---
 

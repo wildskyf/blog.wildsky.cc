@@ -64,4 +64,4 @@ Make it work, make it right, make it fast，right 不代表一定要完美無錯
 
 > 你的時間值得更要緊的事！
 
-工程實在是博大精深，也許你有興趣看看我其他關於這方面的體悟：[http://blog.wildsky.cc/categories/工程心法/](http://blog.wildsky.cc/categories/工程心法/)
+工程實在是博大精深，也許你有興趣看看我其他關於這方面的體悟：[職涯工作](/categories/職涯工作/)

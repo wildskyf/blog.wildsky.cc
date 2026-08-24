@@ -23,4 +23,4 @@ category: "軟體工程"
 
 參考： [出現 com.google.process.gapps 錯誤](http://www.asus.com/zentalk/tw/forum.php?mod=viewthread&tid=82226)
 
-你可能也想看看其他關於 Android 的文章： [http://blog.wildsky.cc/categories/android/](http://blog.wildsky.cc/categories/android/)
+你可能也想看看其他關於 Android 的文章：[Android](/tags/Android/)

@@ -1,5 +1,5 @@
 ---
-title: "git push 中，`--force` 與 `--force-with-lease` 的差異"
+title: "git push 中，--force 與 --force-with-lease 的差異"
 date: 2026-01-23T15:18:40+08:00
 slug: "git-push-with-two-force"
 excerpt: "前陣子看到有人說他在 force push 時會用 `--force-with-lease` 而不是 `--force`，且聲稱前者會比較好，但我一直沒有去看他們的差異。"

@@ -28,7 +28,7 @@ and I gave terminal a command `ps aux | grep adb` to show all processes which is
 
 If I kill 9842 (adb -P 5037 fork-server server), it will become `<defunct>`, and create anthor `adb -P 5037 fork-server server`, which means if I just delete the surface progress, the criminal behind the scenes will still alive. In another words: I can’t kill adb server forever…
 
-![I already kill you but you still live. What's wrong with you, adb server?](http://blog.wildsky.cc/wp-content/uploads/2017/11/kyle-simmons-74218-unsplash-1024x683.jpg)
+![I already kill you but you still live. What's wrong with you, adb server?](/images/kyle-simmons-74218-unsplash-e1553233521391.jpg)
 
 However, I notice that there are two kinds of progress about adb: `adb.linux.64` & `adb -P 5037 fork-server server`
 
@@ -56,4 +56,4 @@ So I decide to write down this problem, and copy the error message “error: cou
 - [What does aux mean in \`ps aux\`?](https://unix.stackexchange.com/questions/106847/what-does-aux-mean-in-ps-aux)
 - [Why does “ps aux | grep x” give better results than “pgrep x”?](https://askubuntu.com/questions/157075/why-does-ps-aux-grep-x-give-better-results-than-pgrep-x)
 
-… maybe you might be interested in my other posts about android: [http://blog.wildsky.cc/categories/android/](http://blog.wildsky.cc/categories/android/).
+… maybe you might be interested in my other posts about Android: [Android](/en/tags/Android/).
