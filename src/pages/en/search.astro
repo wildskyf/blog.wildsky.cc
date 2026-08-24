@@ -2,12 +2,17 @@
 import Layout from '@/layouts/page.astro';
 import PageHead from '@/components/PageHead.astro';
 import SearchPage from '@/components/SearchPage.astro';
+import { getRobotsDirective, shouldIndexPath } from '@/utils/indexPolicy.mjs';
 
 const pageTitle = 'Search';
 const pageDescription = "Search Wildsky's English posts.";
 ---
 
-<Layout pageName={pageTitle} pageDesc={pageDescription}>
+<Layout
+  pageName={pageTitle}
+  pageDesc={pageDescription}
+  robots={getRobotsDirective(shouldIndexPath(Astro.url.pathname))}
+>
   <div class="chrome-inner">
     <PageHead showKicker={false} title={pageTitle} desc={pageDescription} />
     <SearchPage lang="en" indexUrl="/en/search-index.json" />

@@ -10,7 +10,8 @@ dayjs.tz.setDefault('Asia/Taipei');
 const currentLocale = Astro.currentLocale || 'tw';
 const htmlLang = currentLocale === 'tw' ? 'zh-hant-tw' : 'en';
 
-const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, schema } = Astro.props;
+const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, schema, robots } =
+  Astro.props;
 ---
 
 <html lang={htmlLang}>
@@ -60,6 +61,7 @@ const { pageName, pageDesc, pageImage, pageType, pagePublished, pageUpdated, sch
       pagePublished={pagePublished}
       pageUpdated={pageUpdated}
       schema={schema}
+      robots={robots}
     />
   </head>
 

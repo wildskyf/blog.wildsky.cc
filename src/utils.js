@@ -1,4 +1,7 @@
 import { base_url } from '@/data/blog_info';
+import { getTagRouteSegment } from '@/utils/indexPolicy.mjs';
+
+export { getTagRouteSegment } from '@/utils/indexPolicy.mjs';
 
 export const jsonify = (r) => r.json();
 
@@ -25,8 +28,6 @@ export const computeReadingMinutes = (rawBody = '') => {
 
 export const formatReadingTime = (minutes, lang) =>
   lang === 'en' ? `${minutes} min` : `${minutes} 分鐘`;
-
-export const getTagRouteSegment = (tag) => (tag === 'C#' ? 'C-sharp' : tag);
 
 export const getTagPath = (tag, lang) =>
   `${lang === 'en' ? '/en' : ''}/tags/${encodeURIComponent(getTagRouteSegment(tag))}`;

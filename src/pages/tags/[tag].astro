@@ -4,6 +4,7 @@ import Layout from '@/layouts/page.astro';
 import PageHead from '@/components/PageHead.astro';
 import PostList from '@/components/PostList.astro';
 import { articleMapper, formatReadingTime, getTagRouteSegment } from '@/utils';
+import { getRobotsDirective, shouldIndexPath } from '@/utils/indexPolicy.mjs';
 
 type PostEntry = CollectionEntry<'posts-tw'>;
 
@@ -47,7 +48,11 @@ const rows = posts.map((post) => {
 });
 ---
 
-<Layout pageName={pageTitle} pageDesc={pageDescription}>
+<Layout
+  pageName={pageTitle}
+  pageDesc={pageDescription}
+  robots={getRobotsDirective(shouldIndexPath(Astro.url.pathname, posts.length))}
+>
   <div class="chrome-inner">
     <PageHead
       kicker={`Tag

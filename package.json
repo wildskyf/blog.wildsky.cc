@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "check:seo": "node scripts/checkIndexPolicy.mjs",
     "preview": "astro preview",
     "new": "sh ./scripts/newArticle.sh",
     "out": "yarn build",

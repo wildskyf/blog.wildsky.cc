@@ -1,5 +1,6 @@
 ---
 import PageLayout from '@/layouts/page.astro';
+import { NOINDEX_ROBOTS } from '@/utils/indexPolicy.mjs';
 import PageHead from '@/components/PageHead.astro';
 
 const LANG = 'en';
@@ -7,7 +8,7 @@ const pageName = 'Not Found';
 const pageDesc = 'This page has drifted out of reach.';
 ---
 
-<PageLayout lang={LANG} pageName="404 Not Found" pageDesc={pageDesc}>
+<PageLayout lang={LANG} pageName="404 Not Found" pageDesc={pageDesc} robots={NOINDEX_ROBOTS}>
   <div class="chrome-inner">
     <PageHead
       kicker={`Lost

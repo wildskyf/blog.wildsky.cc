@@ -26,6 +26,7 @@ type Props = {
   currentPage?: number;
   lastPage?: number;
   totalPosts?: number;
+  robots?: string;
 };
 
 const {
@@ -39,6 +40,7 @@ const {
   currentPage = 1,
   lastPage = 1,
   totalPosts,
+  robots,
 } = Astro.props as Props;
 
 const currentLocale = (Astro.currentLocale || lang || 'tw') as Locale;
@@ -63,7 +65,7 @@ const manifestoParts =
 const manifestoLabel = manifestoParts.join('');
 ---
 
-<PageLayout lang={lang} pageName={pageName} pageDesc={pageDesc} schema={schema}>
+<PageLayout lang={lang} pageName={pageName} pageDesc={pageDesc} schema={schema} robots={robots}>
   <slot />
 
   <div class="chrome-inner">

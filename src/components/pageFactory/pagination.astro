@@ -2,6 +2,7 @@
 import ListLayout from '@/layouts/list.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import type { Locale } from '@/i18n/translations.ts';
+import { NOINDEX_ROBOTS } from '@/utils/indexPolicy.mjs';
 
 const currentLocale = (Astro.currentLocale === 'en' ? 'en' : 'tw') as Locale;
 const { page } = Astro.props;
@@ -31,5 +32,6 @@ const next_page_path =
     currentPage,
     lastPage,
     totalPosts: total,
+    robots: NOINDEX_ROBOTS,
   }}
 />

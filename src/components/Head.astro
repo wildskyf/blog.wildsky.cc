@@ -11,6 +11,7 @@ const {
   pagePublished,
   pageUpdated,
   schema,
+  robots,
 } = Astro.props;
 const pageTitle = `${pageName ?? 404} | ${blog_info.name}`;
 const desc = pageDesc;
@@ -61,6 +62,7 @@ const schemas = [articleJsonLd, ...additionalSchemas].filter(Boolean);
 <title>{pageTitle}</title>
 <meta name="description" content={desc} />
 <meta name="author" content={authorProfile.name} />
+{robots && <meta name="robots" content={robots} />}
 <link rel="canonical" href={canonicalUrl} />
 <link
   rel="alternate"

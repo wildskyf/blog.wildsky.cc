@@ -2,10 +2,16 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
+import { shouldIndexPath, normalizePathname } from './src/utils/indexPolicy.mjs';
+import { collectTagPostCounts, getSitemapTranslationLinks } from './scripts/sitemapPolicy.mjs';
+
+const siteUrl = 'https://blog.wildsky.cc';
+const tagPostCounts = collectTagPostCounts(import.meta.dirname);
+const sitemapTranslationLinks = getSitemapTranslationLinks(siteUrl);
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://blog.wildsky.cc',
+  site: siteUrl,
   outDir: './out',
   i18n: {
     defaultLocale: 'tw',
@@ -29,12 +35,14 @@ export default defineConfig({
   integrations: [
     icon(),
     sitemap({
-      i18n: {
-        defaultLocale: 'tw',
-        locales: {
-          tw: 'zh-Hant-TW',
-          en: 'en-US',
-        },
+      filter(page) {
+        const pathname = normalizePathname(page);
+        return shouldIndexPath(pathname, tagPostCounts.get(pathname));
+      },
+      serialize(item) {
+        const links = sitemapTranslationLinks.get(normalizePathname(item.url));
+        if (links) item.links = links;
+        return item;
       },
     }),
   ],
