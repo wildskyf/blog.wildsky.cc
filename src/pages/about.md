@@ -17,7 +17,7 @@ feature_image: ''
 - [合作與網站開發](/freelancer)
 - [文章封存](/archive)
 
-如果你想一起工作、討論一個問題，或只是打聲招呼，歡迎寄信到 [poppin.wildsky@gmail.com](mailto:poppin.wildsky@gmail.com)。
+如果你想一起工作、討論問題，或只是打聲招呼，歡迎寄信到 [poppin.wildsky@gmail.com](mailto:poppin.wildsky@gmail.com)。
 
 <!--
 時間軸

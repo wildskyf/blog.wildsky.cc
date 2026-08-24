@@ -102,7 +102,9 @@
    非色彩 token
    ============================================================ */
 :root {
-  --font-system-cjk-serif: ui-serif, 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', serif;
+  /* Keep ui-serif out: some platforms resolve its missing CJK glyphs through a UI sans fallback. */
+  --font-system-cjk-serif:
+    'Songti TC', 'Noto Serif CJK TC', 'Noto Serif TC', 'PMingLiU', 'MingLiU', serif;
   --font-display: 'Cormorant SC', 'EB Garamond Variable', var(--font-system-cjk-serif);
   --font-cjk-display: 'Noto Serif TC Variable', var(--font-system-cjk-serif);
   --font-headline: 'EB Garamond Variable', var(--font-system-cjk-serif);

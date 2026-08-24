@@ -54,7 +54,7 @@ colors:
   light-env-spark: '#26898D'
 typography:
   display:
-    fontFamily: "'Cormorant SC', 'EB Garamond Variable', ui-serif, 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', serif"
+    fontFamily: "'Cormorant SC', 'EB Garamond Variable', 'Songti TC', 'Noto Serif CJK TC', 'Noto Serif TC', 'PMingLiU', 'MingLiU', serif"
     fontSize: 'clamp(2.25rem, 5vw, 3.5rem)'
     fontWeight: 600
     lineHeight: 1.05
@@ -66,19 +66,19 @@ typography:
     lineHeight: 1.28
     letterSpacing: '0.008em'
   headline:
-    fontFamily: "'EB Garamond Variable', ui-serif, 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', serif"
+    fontFamily: "'EB Garamond Variable', 'Songti TC', 'Noto Serif CJK TC', 'Noto Serif TC', 'PMingLiU', 'MingLiU', serif"
     fontSize: 'clamp(1.5rem, 2.7vw, 1.875rem)'
     fontWeight: 600
     lineHeight: 1.4
     letterSpacing: '0.008em'
   title:
-    fontFamily: "'EB Garamond Variable', ui-serif, 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', serif"
+    fontFamily: "'EB Garamond Variable', 'Songti TC', 'Noto Serif CJK TC', 'Noto Serif TC', 'PMingLiU', 'MingLiU', serif"
     fontSize: '1.5rem'
     fontWeight: 600
     lineHeight: 1.45
     letterSpacing: '0'
   body:
-    fontFamily: "'EB Garamond Variable', ui-serif, 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', serif"
+    fontFamily: "'EB Garamond Variable', 'Songti TC', 'Noto Serif CJK TC', 'Noto Serif TC', 'PMingLiU', 'MingLiU', serif"
     fontSize: '1.1875rem'
     fontWeight: 400
     lineHeight: 1.9
@@ -329,7 +329,7 @@ SVG 也必須用 `currentColor` 或 CSS custom property。
 | 角色                        | 字體                   | 授權        | 官方來源                                                                  | 決策                                  |
 | --------------------------- | ---------------------- | ----------- | ------------------------------------------------------------------------- | ------------------------------------- |
 | 繁中 display                | Noto Serif TC Variable | SIL OFL 1.1 | [notofonts/noto-cjk](https://github.com/notofonts/noto-cjk)               | 僅用於中文大標，保留站台辨識度。      |
-| 繁中 body／heading fallback | OS CJK serif stack     | 系統字體    | `ui-serif`、Songti TC、Noto Serif CJK TC、PMingLiU                        | 避免長文觸發大量 CJK webfont shards。 |
+| 繁中 body／heading fallback | OS CJK serif stack     | 系統字體    | Songti TC、Noto Serif CJK TC／TC、PMingLiU／MingLiU                       | 避免長文觸發大量 CJK webfont shards。 |
 | Latin body／true small caps | EB Garamond Variable   | SIL OFL 1.1 | [octaviopardo/EBGaramond12](https://github.com/octaviopardo/EBGaramond12) | 人文襯線；`smcp`／`c2sc`。            |
 | Display                     | Cormorant SC           | SIL OFL 1.1 | [CatharsisFonts/Cormorant](https://github.com/CatharsisFonts/Cormorant)   | 只用 ≥36px 的短標題。                 |
 | 氛圍 meta                   | Space Mono             | SIL OFL 1.1 | [googlefonts/spacemono](https://github.com/googlefonts/spacemono)         | 只限英文縮寫、日期與技術數值。        |
@@ -344,6 +344,7 @@ Fontsource variable 5.3.0 全包約 5.85 MiB，依 unicode-range 切為多個 WO
 variable shards 約 1.24 MiB，並同時涵蓋所需字重。讓它承擔全文會使一般列表與文章下載 1 MiB 以上的字型；
 production 因此只讓短中文大標命中這套 webfont，body、heading、label 改由作業系統 CJK serif stack 承擔。
 這個取捨會讓不同平台的中文字形略有差異，但可避免逐篇 subset 與缺字回歸的維護成本。static Noto package 已從 production 移除。
+`ui-serif` 不得放在繁中字體名稱之前：部分平台會先用 UI sans 補它缺少的中文字，而不再往後嘗試 Songti／明體。
 
 正式載入策略：
 
