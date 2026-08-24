@@ -6,7 +6,7 @@ excerpt: "之前的文章曾裝了 Ubuntu + windows 雙系統，某天又不意�
 feature_image: "grub-error.png"
 guid: "http://blog.wildsky.cc/?p=55"
 category: "軟體工程"
-tags: [Ubuntu, Windows, GRUB, 系統修復, 雙系統, 故障排除]
+tags: ["故障排除"]
 ---
 
 ## 前言

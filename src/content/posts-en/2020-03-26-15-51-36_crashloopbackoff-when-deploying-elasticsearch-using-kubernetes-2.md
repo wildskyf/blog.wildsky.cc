@@ -5,7 +5,7 @@ slug: "crashloopbackoff-when-deploying-elasticsearch-using-kubernetes-2"
 excerpt: "When we deploy elasticsearch via kubernetes, sometimes ..."
 feature_image: benjamin-dada-EDZTb2SQ6j0-unsplash.jpg
 guid: "https://blog.wildsky.cc/?p=1597"
-tags: ["Kubernetes", "Elasticsearch", "DevOps", "Troubleshooting", "Docker"]
+tags: ["Kubernetes","DevOps","Troubleshooting"]
 ---
 
 When we deploy elasticsearch via kubernetes, sometimes we might get `CrashLoopBackOff`.

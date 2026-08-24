@@ -7,7 +7,7 @@ excerpt: "Since this project was relatively simple, I decided to try the Next.js
 feature_image: "maze.jpg"
 guid: "workaround-for-nextjs-next-intl-basepath-en"
 category: "Software Engineering"
-tags: [Next.js, next-intl, basePath, Internationalization, i18n, Troubleshooting]
+tags: ["Next.js","Internationalization","Troubleshooting"]
 ---
 
 ## Why I Chose next-intl

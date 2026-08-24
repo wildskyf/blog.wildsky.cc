@@ -8,7 +8,7 @@ excerpt: "這次的專案因為比較單純，想說來嘗試看看 next.js 的 
 feature_image: "maze.jpg"
 guid: "workaround-for-nextjs-next-intl-basepath"
 category: "軟體工程"
-tags: [Next.js, next-intl, basePath, 國際化, i18n, 故障排除]
+tags: ["Next.js","國際化","故障排除"]
 ---
 
 ## 當初為什麼選 next-intl ？

@@ -6,7 +6,7 @@ translationKey: "flash-qmk-keymap-into-mint60-on-mac"
 excerpt: "Foreword I just buy a keyboard named mint60 from ErgoTa..."
 feature_image: ergo-taiwan-mint60-2.jpg
 guid: "https://blog.wildsky.cc/?p=1706"
-tags: ["QMK", "Keyboard", "Mint60", "Mac", "Hardware"]
+tags: ["QMK","Hardware"]
 ---
 
 ## Foreword

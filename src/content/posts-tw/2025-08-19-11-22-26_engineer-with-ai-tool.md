@@ -6,7 +6,7 @@ excerpt: '最近開始用 Cursor 和 Claude Code 之類的Al協助寫程式的�
 feature_image: 'tamsui-sad-cat-draw.jpeg'
 guid: 'engineer-with-ai-tool'
 category: "職涯工作"
-tags: ["工程師", "工作態度", "專業發展", "技能培養", "職涯思考"]
+tags: ["工程師職涯","職場經驗","學習成長"]
 ---
 
 難得發個比較感性的文章小小哀嘆一下。

@@ -5,7 +5,7 @@ slug: "claude-code-agent-view-made-me-rethink-vim"
 excerpt: "Claude Code 的 Agent View 讓我重新意識到：vim 的 buffer、window、tab 都是在切空間，而 agent session 切的是意圖。"
 guid: "claude-code-agent-view-made-me-rethink-vim"
 category: "軟體工程"
-tags: [Claude Code, Vim, 編輯器, AI]
+tags: ["Claude Code","Vim","AI"]
 ---
 
 最近 Claude Code 的 [Agent View](https://code.claude.com/docs/zh-TW/agent-view) 用得挺順手，開一條、跑一跑、切走做別的事，回來再 attach 回那條 session。用了一陣子後，回頭再看 vim 的使用模式，一時有種說不上來的不對勁。

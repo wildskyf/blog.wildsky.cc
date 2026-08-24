@@ -6,7 +6,7 @@ excerpt: '最近在工作上使用了 xstate。今天這篇文章想討論的是
 feature_image: 'harli-marten-two-talking.jpg'
 guid: 'using-xstate-in-react'
 category: "軟體工程"
-tags: [XState, React, 狀態管理, 前端開發, 狀態機]
+tags: ["React","前端開發"]
 ---
 
 最近在工作上使用了 xstate，這是一套狀態管理工具，其基底概念就是 state machine，

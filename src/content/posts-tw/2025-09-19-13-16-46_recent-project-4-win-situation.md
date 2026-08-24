@@ -7,7 +7,7 @@ feature_image: "eos-v1.1-sreenshot.png"
 feature_image_caption: "ePowerOS 螢幕截圖"
 guid: "recent-project-4-win-situation"
 category: "職涯工作"
-tags: ["專案管理", "職場經驗", "工程師", "商業價值", "團隊合作"]
+tags: ["專案管理","職場經驗","工程師職涯"]
 ---
 
 

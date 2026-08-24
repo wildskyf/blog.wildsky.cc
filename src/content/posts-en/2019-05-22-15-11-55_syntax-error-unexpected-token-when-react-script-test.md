@@ -5,7 +5,7 @@ slug: "syntax-error-unexpected-token-when-react-script-test"
 excerpt: "Environment I created my project by create-react-app, a..."
 feature_image: 螢幕快照-2019-05-22-15.06.12.png.webp
 guid: "http://blog.wildsky.cc/?p=929"
-tags: ["React", "Jest", "Testing", "Error Fix", "JavaScript"]
+tags: ["React","Testing","Troubleshooting"]
 ---
 
 ## Environment

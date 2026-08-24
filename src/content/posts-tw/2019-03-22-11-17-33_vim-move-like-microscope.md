@@ -6,7 +6,7 @@ excerpt: "我一直很喜歡自己 Vimrc 裡的一個設定，就是讓 ctrl 上
 feature_image: ousa-chea-552189-unsplash-e1553233367397.jpg
 guid: "http://blog.wildsky.cc/?p=578"
 category: "生活體驗"
-tags: [Vim, 編輯器, 游標操作, protips]
+tags: ["Vim"]
 ---
 
 我一直很喜歡自己 Vimrc 裡的一個設定，就是讓 ctrl 上下變成一次移動五行，使游標移動有像顯微鏡般的粗細調節輪。

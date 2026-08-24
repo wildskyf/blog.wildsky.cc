@@ -6,7 +6,7 @@ excerpt: "最近開始想要學點後端的東西，WM 便建議我可以去學 
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=172"
 category: "軟體工程"
-tags: [Hugo, 靜態網站, 部落格, Golang]
+tags: ["靜態網站","部落格"]
 ---
 
 最近開始想要學點後端的東西，WM 便建議我可以去學 Golang，於是我就將身邊會用的幾 個東西變得跟 Golang 相關：

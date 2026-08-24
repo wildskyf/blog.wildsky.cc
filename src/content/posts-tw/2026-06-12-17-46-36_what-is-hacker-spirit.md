@@ -5,7 +5,7 @@ slug: "what-is-hacker-spirit"
 excerpt: "從 Phrack 71 的開場文〈Breaking The Spell〉出發，聊聊 hacker spirit 到底是什麼、它如何看待越做越爛的商業軟體，以及在大公司規模碾壓之下，駭客還剩下什麼武器。"
 guid: "what-is-hacker-spirit"
 category: "思考觀點"
-tags: [駭客精神, 開源, Enshittification, 自架]
+tags: ["開源","自架"]
 ---
 
 前陣子看到 [poga 的文章](https://devpoga.org/breaking-the-spell/)，他翻譯了一篇叫〈Breaking The Spell〉的短文，裡面有幾段話讓我印象深刻：

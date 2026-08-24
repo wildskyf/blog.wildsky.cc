@@ -7,7 +7,7 @@ excerpt: "最近工作上在寫 TypeScript 時有個發現，有些寫法 typesc
 feature_image: "eslint-n-typescript-yelling-me.jpg"
 guid: "typescript-generic-in-function"
 category: "軟體工程"
-tags: [TypeScript, Generic, 程式設計, 前端開發, ESLint]
+tags: ["TypeScript","前端開發"]
 ---
 
 最近工作上在寫 TypeScript 時有個發現，有些寫法 typescript compiler 和 lint 都會

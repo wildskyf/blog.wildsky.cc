@@ -7,7 +7,7 @@ excerpt: "最近在學吉他，除了單音和和弦之外，免不了要接觸�
 feature_image: "marius-masalar-rPOmLGwai2w-unsplash.jpg"
 guid: "words-about-music-pitch-names-syllable-names-interval"
 category: "生活體驗"
-tags: ["音樂", "吉他", "樂理", "音程", "學習體驗"]
+tags: ["音樂","吉他","學習成長"]
 ---
 
 最近在學吉他，除了單音和和弦之外，免不了要接觸一些樂理，

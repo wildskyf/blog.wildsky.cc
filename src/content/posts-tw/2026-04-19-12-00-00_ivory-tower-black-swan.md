@@ -5,7 +5,7 @@ slug: "ivory-tower-black-swan"
 excerpt: "從音樂課上的一句話出發，用《黑天鵝效應》的敘事謬誤與沉默證據，重新思考「學者都住在象牙塔」這個常見論述。"
 guid: "ivory-tower-black-swan"
 category: "思考觀點"
-tags: [黑天鵝效應, 敘事謬誤, 沉默證據, 思維實驗, 學術觀察]
+tags: ["黑天鵝效應"]
 ---
 
 前陣子上音樂課時，老師講到費曼學習法的精髓：

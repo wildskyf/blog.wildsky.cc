@@ -5,7 +5,7 @@ slug: "vim-typescriptreact-redrawtime-exceeded-syntax-highlighting-disabled"
 excerpt: "I am a front-end developer, and I use vim as my editor ..."
 feature_image: null
 guid: "https://blog.wildsky.cc/?p=1670"
-tags: ["Vim", "TypeScript", "React", "Editor", "Syntax Highlighting"]
+tags: ["Vim","TypeScript","React"]
 ---
 
 I am a front-end developer, and I use vim as my editor for daily use. Sometimes I need to program React.js in TypeScript, but there are some troubles in vim when I want the syntax highlight for React.js & TypeScript.

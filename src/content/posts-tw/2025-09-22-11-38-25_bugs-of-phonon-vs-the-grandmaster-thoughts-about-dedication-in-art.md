@@ -7,7 +7,7 @@ feature_image: "bugs-of-phonon-hands-with-wife.JPG"
 feature_image_caption: "來聽專場一定要拍一下的手章：虫虫虫 with 伴侶"
 guid: "bugs-of-phonon-vs-the-grandmaster-thoughts-about-dedication-in-art"
 category: "生活體驗"
-tags: ["音樂", "演唱會", "電影評論", "藝術鑑賞", "文化評論"]
+tags: ["音樂","文化觀察"]
 ---
 
 上個週末做了兩件事：週六晚上去看聲子蟲的專場，週日晚上在家，用 Disney Plus 看《一代宗師》。

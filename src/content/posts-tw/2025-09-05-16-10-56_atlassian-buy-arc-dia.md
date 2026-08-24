@@ -7,7 +7,7 @@ feature_image: "banana-ship-in-Boracay.jpeg"
 feature_image_caption: "這是去長灘島時玩香蕉船的照片（備註：右邊的船翻了XD）"
 guid: "atlassian-buy-arc-dia"
 category: "其他"
-tags: [瀏覽器, 軟體評論, Arc, 科技新聞]
+tags: ["軟體工程文化"]
 ---
 
 這兩天的一個很趣味的新聞是 Jira 的母公司 Atlassian 居然收購了開發 Arc 和 Dia 瀏覽器的公司 The Browser Company。（附上[部落格文章連結](https://www.atlassian.com/blog/announcements/atlassian-acquires-the-browser-company)）

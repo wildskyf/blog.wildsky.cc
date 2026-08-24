@@ -6,7 +6,7 @@ excerpt: 'iPhone 上 Instagram 或其他會播放影片的程式裡，有時候�
 feature_image: '6E73AB89-C35B-4778-9190-3A7259281C32.jpeg'
 guid: 'instagram-video-on-ios-too-glaring'
 category: "其他"
-tags: [Instagram, iOS, protips]
+tags: []
 ---
 
 iPhone 上 Instagram 或其他會播放影片的程式裡，有時候滑一滑會突然發現影片變得超亮，本來螢幕亮度很低時都會突然被亮到，很不舒服。

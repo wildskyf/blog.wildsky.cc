@@ -6,7 +6,7 @@ excerpt: "有些人可能有注意到了，我的部落格最近把英文額外�
 feature_image: nicola-nuttall-721063-unsplash-e1556882829604.jpg
 guid: "http://blog.wildsky.cc/?p=905"
 category: "軟體工程"
-tags: [WordPress, 多語言網站, Polylang, 網站建置, 國際化]
+tags: ["WordPress","國際化","靜態網站"]
 ---
 
 有些人可能有注意到了，我的部落格最近把英文額外分出來。

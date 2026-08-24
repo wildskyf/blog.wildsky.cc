@@ -25,16 +25,22 @@ const {
 
 <html lang={htmlLang}>
   <head>
-    <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-QJC649ZTNK"></script>
     <script id="google-analytics" is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag('js', new Date());
 
-      gtag('config', 'G-QJC649ZTNK');
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+      });
+      gtag('set', 'ads_data_redaction', true);
+      gtag('js', new Date());
     </script>
+    <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-QJC649ZTNK"></script>
 
     <script is:inline>
       // 舊主題名遷移：dim / forest → tide-dark，nord → tide-light
@@ -84,6 +90,29 @@ const {
       robots={robots}
       languageAlternates={languageAlternates}
     />
+    <script is:inline>
+      const sanitizedLocation = `${window.location.origin}${window.location.pathname}`;
+      let sanitizedReferrer = '';
+
+      if (document.referrer) {
+        const referrer = new URL(document.referrer);
+        sanitizedReferrer =
+          referrer.origin === window.location.origin
+            ? `${referrer.origin}${referrer.pathname}`
+            : referrer.origin;
+      }
+
+      gtag('config', 'G-QJC649ZTNK', {
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false,
+        send_page_view: false,
+      });
+      gtag('event', 'page_view', {
+        page_location: sanitizedLocation,
+        page_referrer: sanitizedReferrer,
+        page_title: document.title,
+      });
+    </script>
   </head>
 
   <body>

@@ -6,7 +6,7 @@ excerpt: "以前天天都在寫 Code，但最近開始不務正業，下班後�
 feature_image: william-iven-8514-unsplash-e1553233535307.jpg
 guid: "http://blog.wildsky.cc/?p=109"
 category: "理財投資"
-tags: ["理財教育", "投資入門", "投資心態", "理財觀念", "金錢思維"]
+tags: ["投資"]
 ---
 
 以前天天都在寫 Code，但最近開始不務正業，下班後都在研究理財相關的東西。持續了大約一兩個月，也是該寫篇文章來記錄記錄。

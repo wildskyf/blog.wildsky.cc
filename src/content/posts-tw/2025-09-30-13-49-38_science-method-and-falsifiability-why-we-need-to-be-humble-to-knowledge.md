@@ -7,7 +7,7 @@ feature_image: ""
 feature_image_caption: ""
 guid: "science-method-and-falsifiability-why-we-need-to-be-humble-to-knowledge"
 category: "思考觀點"
-tags: ["科學方法", "可證偽性", "黑天鵝效應", "知識謙遜"]
+tags: ["科學方法","黑天鵝效應"]
 ---
 
 前陣子讀 Taleb 的《黑天鵝效應》，讓我重新思考了「科學方法」這件事。

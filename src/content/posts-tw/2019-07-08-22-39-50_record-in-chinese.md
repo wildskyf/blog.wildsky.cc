@@ -6,7 +6,7 @@ excerpt: "先前跟朋友在討論這兩個詞的用法，發現過去學的和�
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=1080"
 category: "其他"
-tags: [記錄, 紀錄, 語言使用, 中文]
+tags: ["生活記錄"]
 ---
 
 先前跟朋友在討論這兩個詞的用法，發現過去學的和現在常見的有點不太一樣，這邊記一下差異：

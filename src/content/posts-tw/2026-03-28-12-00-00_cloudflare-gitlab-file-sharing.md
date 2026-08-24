@@ -7,7 +7,7 @@ feature_image: "the-qrcode.png"
 feature_image_caption: "我就靜靜地在這邊放一個 QR Code，看看有沒有人會掃（其實有人掃了我也不會知道XD）"
 guid: "cloudflare-gitlab-file-sharing"
 category: "軟體工程"
-tags: [Cloudflare, GitLab, DevOps]
+tags: ["Cloudflare"]
 reference: "[記錄 ＆ 紀錄 兩者差異為何](/posts/record-in-chinese/)"
 ---
 

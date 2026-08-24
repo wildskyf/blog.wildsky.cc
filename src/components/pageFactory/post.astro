@@ -1,10 +1,12 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 
 import PageLayout from '@/layouts/page.astro';
 import Article from '@/components/Article.astro';
 import AuthorBio from '@/components/AuthorBio.astro';
+import RelatedPosts from '@/components/RelatedPosts.astro';
 import { articleMapper, formatReadingTime } from '@/utils';
+import { selectRelatedPosts } from '@/utils/relatedPosts.mjs';
 
 const { lang, entry } = Astro.props;
 const { Content } = await render(entry);
@@ -12,6 +14,8 @@ const data = articleMapper(entry);
 const readingTime = data.readingMinutes ? formatReadingTime(data.readingMinutes, lang) : null;
 const series = entry.data.series ?? null;
 const translationKey = entry.data.translationKey;
+const currentCollection = lang === 'en' ? 'posts-en' : 'posts-tw';
+const sameLanguageEntries = await getCollection(currentCollection);
 const otherLang = lang === 'en' ? 'tw' : 'en';
 const otherCollection = otherLang === 'en' ? 'posts-en' : 'posts-tw';
 const translatedEntries = translationKey
@@ -46,6 +50,16 @@ const languageAlternates = translation
       },
     ]
   : [];
+const relatedPosts = selectRelatedPosts(entry, sameLanguageEntries).map(
+  ({ entry: related }: { entry: CollectionEntry<'posts-en'> | CollectionEntry<'posts-tw'> }) => {
+    const relatedData = articleMapper(related);
+    return {
+      date: related.data.date,
+      href: `${lang === 'en' ? '/en' : ''}/posts/${relatedData.slug}/`,
+      title: relatedData.title,
+    };
+  }
+);
 ---
 
 <PageLayout
@@ -68,5 +82,6 @@ const languageAlternates = translation
     <Content />
   </Article>
 
+  <RelatedPosts lang={lang} posts={relatedPosts} />
   <AuthorBio lang={lang} />
 </PageLayout>

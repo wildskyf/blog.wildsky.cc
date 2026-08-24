@@ -10,7 +10,7 @@ feature_image_caption:
   實際上：請別讓 Wildsky 發現我讓他損失襪子
 guid: "why-do-socks-disappear-but-only-one"
 category: "思考觀點"
-tags: ["生活觀察", "黑天鵝效應", "日常記錄", "思維實驗", "生活哲學"]
+tags: ["生活記錄","黑天鵝效應","人生哲學"]
 ---
 
 最近在摺衣服的時候又遇到了一個老問題：明明記得丟進洗衣機的是成雙成對的襪子，為什麼晾出來總是會少一隻？

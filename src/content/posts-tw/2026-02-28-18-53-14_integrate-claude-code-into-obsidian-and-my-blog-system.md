@@ -5,7 +5,7 @@ slug: "integrate-claude-code-into-obsidian-and-my-blog-system"
 excerpt: "你現在讀到的這篇文章，是我躺在沙發上用手機發布的。不是用什麼 WordPress app 或 Medium，而是透過 Happy Coder 叫 Raspberry Pi 上的 Claude Code 幫我處理。"
 guid: "integrate-claude-code-into-obsidian-and-my-blog-system"
 category: "軟體工程"
-tags: [Raspberry Pi, Obsidian, AI, 自架, 筆記系統]
+tags: ["Obsidian","AI","自架"]
 ---
 
 你現在讀到的這篇文章，是我躺在沙發上用手機發布的。

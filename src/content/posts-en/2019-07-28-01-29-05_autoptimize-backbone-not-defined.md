@@ -5,7 +5,7 @@ slug: "autoptimize-backbone-not-defined"
 excerpt: "When enabling Autoptimize for wordpress site, there mig..."
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=1184"
-tags: ["WordPress", "Autoptimize", "JavaScript", "Backbone.js", "Error Fix"]
+tags: ["WordPress","JavaScript","Troubleshooting"]
 ---
 
 When enabling Autoptimize for wordpress site, there might be some error messages in console.

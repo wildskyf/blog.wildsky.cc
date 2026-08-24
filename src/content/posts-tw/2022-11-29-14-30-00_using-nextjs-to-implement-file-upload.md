@@ -7,7 +7,7 @@ excerpt: "最近在玩 next.js 時，發現他有提供製作 api 的方式。�
 feature_image: nextjs-cover-photo.png
 guid: "using-nextjs-to-implement-file-upload"
 category: "軟體工程"
-tags: [Next.js, 檔案上傳, 前端開發, React, API]
+tags: ["Next.js","檔案上傳","前端開發"]
 ---
 
 最近在玩 next.js 時，發現他有提供製作 api 的方式。

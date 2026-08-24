@@ -5,7 +5,7 @@ slug: "concat-two-mp4-files"
 excerpt: "I want to concat two mp4 files together, so I found a c..."
 feature_image: null
 guid: "http://blog.wildsky.cc/?p=296"
-tags: ["FFmpeg", "Video Processing", "Command Line", "Linux", "MP4"]
+tags: ["FFmpeg","Linux"]
 ---
 
 I want to concat two mp4 files together, so I found a command:

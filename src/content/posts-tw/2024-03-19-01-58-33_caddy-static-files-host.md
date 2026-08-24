@@ -6,7 +6,7 @@ excerpt: '因為偶爾會需要找個地方來放不需要權限就能存取的�
 feature_image: 'viktor-talashuk-05HLFQu8bFw-unsplash.jpg'
 guid: 'caddy-static-files-host'
 category: "軟體工程"
-tags: [Caddy, 網頁伺服器, 靜態檔案, HTTP, 伺服器管理]
+tags: ["HTTP","系統管理"]
 ---
 
 因為偶爾會需要找個地方來放不需要權限就能存取的檔案，剛好手上有台機器裡面有 Caddy，

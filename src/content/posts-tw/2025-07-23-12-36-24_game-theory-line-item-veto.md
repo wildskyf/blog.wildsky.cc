@@ -6,7 +6,7 @@ excerpt: '前陣子在看賽局理論的書，看到一個很有趣的例子來�
 feature_image: 'boicu-andrei-from-unsplash.jpg'
 guid: 'game-theory-line-item-veto'
 category: "思考觀點"
-tags: [賽局理論, 政治思考, 邏輯思維]
+tags: ["邏輯思維","政治"]
 ---
 
 前陣子在看賽局理論的書，看到一個很有趣的例子跟各位分享。

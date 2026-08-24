@@ -6,7 +6,7 @@ excerpt: '會寫這篇文章主要是為了幫忙我的同學安裝好 win8 + ub
 feature_image: null
 guid: 'http://blog.wildsky.cc/?p=56'
 category: "軟體工程"
-tags: [系統安裝, Ubuntu, Windows, 雙系統, Linux]
+tags: ["Linux"]
 ---
 
 會寫這篇文章主要是為了幫忙我的同學安裝好 win8 + ubuntu 12.04 雙系統，ubuntu 13.10 似乎可以完整搭配 win8 安裝雙系統，但 12.04 仍不行，所以我決定寫這篇文章，希望能幫助到想裝 ubuntu 的人！

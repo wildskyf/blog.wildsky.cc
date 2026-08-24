@@ -8,7 +8,7 @@ excerpt: |
 feature_image: 'pipeline.jpg'
 guid: 'use-ramda-pipe-in-typescript'
 category: "軟體工程"
-tags: [TypeScript, Ramda.js, Functional Programming, 程式設計, JavaScript]
+tags: ["TypeScript","JavaScript"]
 ---
 
 今年的其中一個目標是熟悉 functional programming，所以前陣子很常在專案中嘗試

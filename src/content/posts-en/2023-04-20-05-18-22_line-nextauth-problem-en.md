@@ -7,7 +7,7 @@ excerpt: "I recently had the opportunity to integrate the LINE Login API into a 
 feature_image: "nextauth-line.jpg"
 guid: "line-nextauth-problem-en"
 category: "Software Engineering"
-tags: ["NextAuth.js", "LINE Login", "OAuth", "Social Login", "Next.js"]
+tags: ["Next.js"]
 ---
 
 I recently had the opportunity to integrate the LINE Login API into a project. Along the way, I ran into a few issues, so I decided to document them and share the solutions.

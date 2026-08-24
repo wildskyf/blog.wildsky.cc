@@ -5,7 +5,7 @@ slug: "my-agent-roasts-my-daily-life"
 excerpt: "看到 13 分享的 prompt 後，我讓自己的 agent 也試跑了一次，結果得到一篇用毒舌論壇口吻爆料我日常生活的文章。"
 guid: "my-agent-roasts-my-daily-life"
 category: "生活體驗"
-tags: [AI, Agent, Prompt, 自架, Obsidian]
+tags: ["AI","AI Agent","自架"]
 reference: "https://ethanhuang13.plus/ai-roasts-13-daily-life/"
 ---
 

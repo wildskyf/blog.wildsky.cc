@@ -7,7 +7,7 @@ feature_image: "translation-for-me.jpg"
 feature_image_caption: "我絕對不是想放這張圖才發這篇文章的。 😆"
 guid: "claude-code-translate-before-execute"
 category: "軟體工程"
-tags: [Claude Code, AI, 開發工具]
+tags: ["Claude Code","AI"]
 ---
 
 最近工作幾乎都使用 Claude Code 在輔助開發，平常下 prompt 都用中文，偶爾會發生 Claude 誤會我意思的狀況。

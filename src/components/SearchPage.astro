@@ -211,12 +211,6 @@ const copy =
     );
 
     input.addEventListener('input', () => {
-      const url = new URL(window.location.href);
-      const query = input.value.trim();
-      if (query) url.searchParams.set('q', query);
-      else url.searchParams.delete('q');
-      history.replaceState(null, '', url);
-
       window.clearTimeout(debounceTimer);
       debounceTimer = window.setTimeout(() => {
         void runSearch(input.value);

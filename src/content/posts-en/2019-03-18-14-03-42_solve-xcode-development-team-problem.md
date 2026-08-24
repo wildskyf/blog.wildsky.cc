@@ -5,7 +5,7 @@ slug: "solve-xcode-development-team-problem"
 excerpt: "When developing iOS app, sometimes we might face this d..."
 feature_image: 2019-03-18-14.01.10-e1553233406372.png
 guid: "http://blog.wildsky.cc/?p=508"
-tags: ["Xcode", "iOS", "Development Team", "Code Signing", "Error Fix"]
+tags: ["iOS","Troubleshooting"]
 ---
 
 When developing iOS app, sometimes we might face this development team related problem:
@@ -51,4 +51,4 @@ In fact, the StackOverflow Answer did solve my problem, but I just couldn’t fi
 - [https://stackoverflow.com/questions/43145267/xcode-how-to-config-a-project-for-team-working](https://stackoverflow.com/questions/43145267/xcode-how-to-config-a-project-for-team-working)
 - [https://stackoverflow.com/questions/39524148/xcode-error-code-signing-is-required-for-product-type-application-in-sdk-ios](https://stackoverflow.com/questions/39524148/xcode-error-code-signing-is-required-for-product-type-application-in-sdk-ios)
 - The example project in the screenshots: [ios-ptt.ai](https://github.com/ailabstw/ios-ptt.ai)
-- Maybe you will like my other experiences with [error fixes](/en/tags/Error%20Fix/).
+- Maybe you will like my other [troubleshooting notes](/en/tags/Troubleshooting/).

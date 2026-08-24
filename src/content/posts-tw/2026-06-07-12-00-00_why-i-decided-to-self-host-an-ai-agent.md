@@ -5,7 +5,7 @@ slug: "why-i-decided-to-self-host-an-ai-agent"
 excerpt: "AI 的能力早就不是瓶頸了，瓶頸是我跟它之間的 harness。多數人每天用 ChatGPT，但用法停在一問一答——這不是 harness，這是 consult。"
 guid: "why-i-decided-to-self-host-an-ai-agent"
 category: "軟體工程"
-tags: [AI, Agent, Self-hosted, 自架]
+tags: ["AI","AI Agent","自架"]
 ---
 
 我每天大概花六到八個小時跟 AI 對話。有時可能更多。

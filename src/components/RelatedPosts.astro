@@ -1,0 +1,126 @@
+---
+import dayjs from 'dayjs';
+
+type RelatedPost = {
+  date: Date | string;
+  href: string;
+  title: string;
+};
+
+const { lang, posts = [] } = Astro.props as {
+  lang: 'tw' | 'en';
+  posts?: RelatedPost[];
+};
+
+const heading = lang === 'en' ? 'Related reading' : '延伸閱讀';
+const sectionLabel = lang === 'en' ? 'Continue exploring' : '沿著同一條脈絡繼續讀';
+const headingId = `related-posts-${lang}`;
+---
+
+{
+  posts.length > 0 && (
+    <aside class="ds-related" aria-labelledby={headingId}>
+      <p class="ds-related-label">{sectionLabel}</p>
+      <h2 id={headingId}>{heading}</h2>
+
+      <ul>
+        {posts.map((post) => (
+          <li>
+            <time datetime={new Date(post.date).toISOString()}>
+              {dayjs(post.date).format('YYYY.MM.DD')}
+            </time>
+            <a class="ds-related-link" href={post.href}>
+              {post.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  )
+}
+
+<style>
+  .ds-related {
+    width: min(var(--measure), 100% - var(--page-gutter) * 2);
+    margin: -32px auto 64px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .ds-related-label {
+    margin: 0 0 6px;
+    color: var(--fg-muted);
+    font-family: var(--font-label);
+    font-size: 15px;
+    letter-spacing: 0.045em;
+  }
+
+  .ds-related h2 {
+    margin: 0 0 18px;
+    color: var(--fg);
+    font-family: var(--font-headline);
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .ds-related ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ds-related li {
+    display: grid;
+    grid-template-columns: 104px minmax(0, 1fr);
+    gap: 18px;
+    align-items: baseline;
+    padding: 13px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .ds-related time {
+    color: var(--fg-muted);
+    font-family: var(--font-meta);
+    font-size: 13px;
+    letter-spacing: 0.035em;
+  }
+
+  .ds-related-link {
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.55;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition:
+      color var(--t) var(--ease),
+      text-decoration-color var(--t) var(--ease);
+  }
+
+  .ds-related-link:hover,
+  .ds-related-link:focus-visible {
+    color: var(--accent);
+    text-decoration-color: currentColor;
+  }
+
+  @media (max-width: 639px) {
+    .ds-related li {
+      grid-template-columns: 1fr;
+      gap: 4px;
+      padding: 15px 0;
+    }
+
+    .ds-related-link {
+      min-height: 44px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ds-related-link {
+      transition: none;
+    }
+  }
+</style>

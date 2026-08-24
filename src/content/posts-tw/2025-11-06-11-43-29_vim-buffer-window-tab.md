@@ -7,7 +7,7 @@ feature_image: "lazy-cat.jpg"
 feature_image_caption: "懶惰ㄉ貓"
 guid: "vim-buffer-window-tab"
 category: "軟體工程"
-tags: [Vim, 編輯器]
+tags: ["Vim"]
 ---
 
 最近讀到這個討論 <https://stackoverflow.com/questions/26708822/why-do-vim-experts-prefer-buffers-over-tabs>

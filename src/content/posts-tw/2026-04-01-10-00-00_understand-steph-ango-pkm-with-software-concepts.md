@@ -5,7 +5,7 @@ slug: "understand-steph-ango-pkm-with-software-concepts"
 excerpt: "Obsidian CEO Steph Ango 的筆記架構，用 ORM、pure function、transaction log 等軟體開發概念來類比，竟然出奇地合理。"
 guid: "understand-steph-ango-pkm-with-software-concepts"
 category: "軟體工程"
-tags: [Obsidian, PKM, 筆記方法, 軟體架構]
+tags: ["Obsidian","PKM","軟體架構"]
 reference: "https://stephango.com/vault"
 ---
 
