@@ -7,36 +7,58 @@ const currentLocale = (Astro.currentLocale === 'en' ? 'en' : 'tw') as Locale;
 const otherLocale = currentLocale === 'tw' ? 'en' : 'tw';
 const t = getTranslation(currentLocale);
 
-const pages =
+const groups =
   currentLocale === 'tw'
     ? [
-        { title: t.nav.home, url: '/', group: 'main' },
-        { title: t.nav.about, url: '/about/', group: 'main' },
-        { title: t.nav.now, url: '/now/', group: 'main' },
-        { title: t.nav.notes, url: '/notes/', group: 'main' },
-        { title: t.nav.blogroll, url: '/more-links/', group: 'main' },
-        { title: t.nav.search, url: '/search/', group: 'content' },
-        { title: t.nav.archive, url: '/archive/', group: 'content' },
-        { title: t.nav.bookshelf, url: '/bookshelf/', group: 'content' },
-        { title: t.nav.categories, url: '/categories/', group: 'content' },
+        {
+          label: 'Explore',
+          items: [
+            { title: t.nav.search, url: '/search/' },
+            { title: t.nav.archive, url: '/archive/' },
+            { title: t.nav.notes, url: '/notes/' },
+            { title: t.nav.bookshelf, url: '/bookshelf/' },
+            { title: t.nav.categories, url: '/categories/' },
+          ],
+        },
+        {
+          label: 'Wildsky',
+          items: [
+            { title: t.nav.about, url: '/about/' },
+            { title: t.nav.now, url: '/now/' },
+            { title: t.nav.blogroll, url: '/more-links/' },
+          ],
+        },
       ]
     : [
-        { title: t.nav.home, url: '/en/', group: 'main' },
-        { title: t.nav.about, url: '/en/about-en/', group: 'main' },
-        { title: t.nav.blogroll, url: '/en/more-links-en/', group: 'main' },
-        { title: t.nav.search, url: '/en/search/', group: 'content' },
-        { title: t.nav.archive, url: '/en/archive/', group: 'content' },
+        {
+          label: 'Explore',
+          items: [
+            { title: t.nav.search, url: '/en/search/' },
+            { title: t.nav.archive, url: '/en/archive/' },
+          ],
+        },
+        {
+          label: 'Wildsky',
+          items: [
+            { title: t.nav.about, url: '/en/about-en/' },
+            { title: t.nav.blogroll, url: '/en/more-links-en/' },
+          ],
+        },
       ];
 
 const otherLocaleUrl = getRelativeLocaleUrl(otherLocale, '');
 const otherLocaleLabel = otherLocale === 'tw' ? '中文' : 'English';
-const navLabel = currentLocale === 'en' ? 'Primary navigation' : '主要導覽';
+const navLabel = currentLocale === 'en' ? 'Full navigation' : '完整導覽';
 const menuLabel = currentLocale === 'en' ? 'Open navigation menu' : '開啟導覽選單';
+
+const normalizePath = (path: string) => (path === '/' ? path : path.replace(/\/+$/, ''));
+const currentPath = normalizePath(Astro.url.pathname);
+const isCurrent = (url: string) => currentPath === normalizePath(url);
 ---
 
 <nav class="ds-nav" aria-label={navLabel}>
   <details class="ds-nav-details">
-    <summary class="ds-nav-toggle" aria-label={menuLabel}>
+    <summary class="ds-nav-toggle" aria-label={menuLabel} title={menuLabel}>
       <svg
         viewBox="0 0 24 24"
         width="18"
@@ -51,24 +73,35 @@ const menuLabel = currentLocale === 'en' ? 'Open navigation menu' : '開啟導�
       </svg>
     </summary>
 
-    <ul class="ds-nav-menu ds-plate">
-      {
-        pages.map((item, index) => (
-          <>
-            {index > 0 && pages[index - 1].group !== item.group && <li class="ds-nav-sep" />}
-            <li>
-              <a class="ds-nav-item" href={item.url}>
-                {item.title}
-              </a>
-            </li>
-          </>
-        ))
-      }
-      <li class="ds-nav-sep"></li>
-      <li>
-        <a class="ds-nav-item" href={otherLocaleUrl}>{otherLocaleLabel}</a>
-      </li>
-    </ul>
+    <div class="ds-nav-menu ds-plate">
+      <div class="ds-nav-groups">
+        {
+          groups.map((group) => (
+            <section class="ds-nav-group">
+              <p class="ds-nav-group-label">{group.label}</p>
+              <ul aria-label={group.label}>
+                {group.items.map((item) => (
+                  <li>
+                    <a
+                      class="ds-nav-item"
+                      href={item.url}
+                      aria-current={isCurrent(item.url) ? 'page' : undefined}
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+        }
+      </div>
+
+      <div class="ds-nav-language">
+        <span>Language</span>
+        <a href={otherLocaleUrl}>{otherLocaleLabel}</a>
+      </div>
+    </div>
   </details>
 </nav>
 
@@ -98,45 +131,79 @@ const menuLabel = currentLocale === 'en' ? 'Open navigation menu' : '開啟導�
   }
 
   .ds-nav-toggle:hover,
+  .ds-nav-toggle:focus-visible,
   .ds-nav-details[open] .ds-nav-toggle {
     color: var(--fg);
   }
 
-  /* 下拉：The Plate 雙細線，直角，無陰影（The Zero Shadow Rule） */
+  .ds-nav-toggle:focus-visible {
+    outline: 2px solid var(--glow);
+    outline-offset: 2px;
+  }
+
   .ds-nav-menu {
     position: absolute;
     top: calc(100% + 12px);
     right: 0;
     z-index: 60;
-    width: 248px;
+    width: min(500px, calc(100vw - 40px));
+    max-height: calc(100dvh - 96px);
     margin: 0;
-    padding: 14px;
-    list-style: none;
+    padding: 18px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-color: var(--rule) var(--bg-surface);
     background: var(--bg-surface);
   }
 
-  .ds-nav-item {
-    display: block;
+  .ds-nav-groups {
     position: relative;
-    padding: 10px 10px 10px 16px;
-    /* 19px 正常字，不用小型大寫 —— 導覽是要被點的目標，
-       13px 小型大寫在下拉選單裡讀不動。可讀性優先於一致性。 */
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ds-nav-group-label {
+    margin: 0 8px 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--font-meta);
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+  }
+
+  .ds-nav-group ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 4px 10px 4px 16px;
     font-family: var(--font-label);
     font-size: 18px;
     font-weight: 500;
+    line-height: 1.4;
     letter-spacing: 0.02em;
     color: var(--fg-muted);
     text-decoration: none;
     transition: color var(--t) var(--ease);
   }
 
-  /* hover 是一條紅線，不是一塊底色 */
   .ds-nav-item::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 6px;
-    bottom: 6px;
+    top: 8px;
+    bottom: 8px;
     width: 2px;
     background: var(--accent);
     transform: scaleY(0);
@@ -145,34 +212,89 @@ const menuLabel = currentLocale === 'en' ? 'Open navigation menu' : '開啟導�
   }
 
   .ds-nav-item:hover,
-  .ds-nav-item:focus-visible {
+  .ds-nav-item:focus-visible,
+  .ds-nav-item[aria-current='page'] {
     color: var(--fg);
   }
 
   .ds-nav-item:hover::before,
-  .ds-nav-item:focus-visible::before {
+  .ds-nav-item:focus-visible::before,
+  .ds-nav-item[aria-current='page']::before {
     transform: scaleY(1);
   }
 
-  .ds-nav-sep {
-    height: 1px;
-    margin: 8px 0;
-    background: var(--rule);
+  .ds-nav-item:focus-visible,
+  .ds-nav-language a:focus-visible {
+    outline: 2px solid var(--glow);
+    outline-offset: 1px;
+  }
+
+  .ds-nav-language {
+    position: relative;
+    z-index: 1;
+    min-height: 44px;
+    margin-top: 16px;
+    padding: 12px 8px 0;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    font-family: var(--font-meta);
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 0.055em;
+    color: var(--fg-faint);
+  }
+
+  .ds-nav-language a {
+    padding: 8px 4px;
+    font-family: var(--font-label);
+    font-size: 17px;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    color: var(--fg);
+    text-decoration-color: var(--rule);
+    text-underline-offset: 0.28em;
+  }
+
+  .ds-nav-language a:hover {
+    text-decoration-color: var(--accent);
+  }
+
+  @media (min-width: 560px) {
+    .ds-nav-menu {
+      padding: 20px;
+    }
+
+    .ds-nav-groups {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ds-nav-toggle,
+    .ds-nav-item,
+    .ds-nav-item::before {
+      transition: none;
+    }
   }
 </style>
 
 <script>
-  // 點擊外部與 Esc 關閉；details 原生不做這件事
-  document.addEventListener('click', (e) => {
-    document.querySelectorAll<HTMLDetailsElement>('.ds-nav-details[open]').forEach((d) => {
-      if (!d.contains(e.target as Node)) d.open = false;
+  // Native details does not close itself when focus or pointer moves outside.
+  document.addEventListener('click', (event) => {
+    document.querySelectorAll<HTMLDetailsElement>('.ds-nav-details[open]').forEach((details) => {
+      if (!details.contains(event.target as Node)) details.open = false;
     });
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key !== 'Escape') return;
-    document.querySelectorAll<HTMLDetailsElement>('.ds-nav-details[open]').forEach((d) => {
-      d.open = false;
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    document.querySelectorAll<HTMLDetailsElement>('.ds-nav-details[open]').forEach((details) => {
+      details.open = false;
+      details.querySelector<HTMLElement>('.ds-nav-toggle')?.focus();
     });
   });
 </script>

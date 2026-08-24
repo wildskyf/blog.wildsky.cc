@@ -465,6 +465,9 @@ Light 底部海藻不得做成連續深色污漬：剪影總寬度覆蓋 ≤35%�
 - 站名與 30px 品牌印使用 EB Garamond true small caps（站名 32px、印內字 19px）；Cormorant SC 只留給 ≥36px display。
 - 首頁不加文章列表別名；exact tagline「信仰不確定性，同時用確定性工程過生活」是唯一 h1，header 不重複副標。
 - 導覽、搜尋、關於與分頁一律使用功能本名，不使用航海／下潛替代詞。
+- `≥768px` 的 header 直接顯示 `about · search · archive`；中英文順序一致，目前頁面以 1px `--accent` 底線標示。
+- 完整選單維持同一套 `Explore`／`Wildsky` 資訊架構，語言切換獨立置底；品牌連結已能回首頁，因此選單不重複 `home`。
+- 選單在窄螢幕為單欄、空間足夠時為雙欄，且兩者包含相同連結；文字 touch target 至少 44px，面板高度受 viewport 限制並可獨立捲動。
 
 ### Page head
 

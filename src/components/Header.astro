@@ -2,10 +2,21 @@
 import Nav from '@/components/Nav.astro';
 import ThemeToggle from '@/components/ThemeToggle.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getTranslation } from '@/i18n/utils.ts';
 import type { Locale } from '@/i18n/translations.ts';
 
 const currentLocale = (Astro.currentLocale === 'en' ? 'en' : 'tw') as Locale;
 const home_url = getRelativeLocaleUrl(currentLocale, '');
+const t = getTranslation(currentLocale);
+
+const quickLinks = [
+  { title: t.nav.about, url: currentLocale === 'en' ? '/en/about-en/' : '/about/' },
+  { title: t.nav.search, url: currentLocale === 'en' ? '/en/search/' : '/search/' },
+  { title: t.nav.archive, url: currentLocale === 'en' ? '/en/archive/' : '/archive/' },
+];
+const quickNavLabel = currentLocale === 'en' ? 'Primary navigation' : '主要導覽';
+const normalizePath = (path: string) => (path === '/' ? path : path.replace(/\/+$/, ''));
+const currentPath = normalizePath(Astro.url.pathname);
 
 // 品牌印的字母：站名首字。方括號 lockup 是 HUD 語彙，已退場。
 const seal = 'W';
@@ -19,6 +30,22 @@ const seal = 'W';
     </a>
 
     <div class="ds-header-actions">
+      <nav class="ds-header-quick-nav" aria-label={quickNavLabel}>
+        <ul>
+          {
+            quickLinks.map((item) => (
+              <li>
+                <a
+                  href={item.url}
+                  aria-current={currentPath === normalizePath(item.url) ? 'page' : undefined}
+                >
+                  {item.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
       <ThemeToggle />
       <Nav />
     </div>
@@ -69,9 +96,9 @@ const seal = 'W';
 
   .ds-brand-name {
     font-family: var(--font-label);
-    font-size: 32px;
+    font-size: 19px;
     font-weight: 600;
-    letter-spacing: 0.055em;
+    letter-spacing: 0.08em;
     font-variant-caps: all-small-caps;
     font-feature-settings:
       'smcp' 1,
@@ -87,10 +114,80 @@ const seal = 'W';
     gap: 4px;
   }
 
-  @media (max-width: 767px) {
+  .ds-header-quick-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin: 0 10px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ds-header-quick-nav {
+    display: none;
+  }
+
+  .ds-header-quick-nav a {
+    position: relative;
+    min-height: 44px;
+    padding: 0 11px;
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-label);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color var(--t) var(--ease);
+  }
+
+  .ds-header-quick-nav a::after {
+    content: '';
+    position: absolute;
+    right: 11px;
+    bottom: 5px;
+    left: 11px;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 180ms var(--ease);
+  }
+
+  .ds-header-quick-nav a:hover,
+  .ds-header-quick-nav a:focus-visible,
+  .ds-header-quick-nav a[aria-current='page'] {
+    color: var(--fg);
+  }
+
+  .ds-header-quick-nav a:hover::after,
+  .ds-header-quick-nav a:focus-visible::after,
+  .ds-header-quick-nav a[aria-current='page']::after {
+    transform: scaleX(1);
+  }
+
+  .ds-header-quick-nav a:focus-visible {
+    outline: 2px solid var(--glow);
+    outline-offset: 2px;
+  }
+
+  @media (min-width: 768px) {
+    .ds-header-quick-nav {
+      display: block;
+    }
+
     .ds-brand-name {
-      font-size: 19px;
-      letter-spacing: 0.08em;
+      font-size: 32px;
+      letter-spacing: 0.055em;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ds-header-quick-nav a,
+    .ds-header-quick-nav a::after {
+      transition: none;
     }
   }
 </style>
