@@ -47,7 +47,3 @@ now I have 3.2.1 …. though this is not the really newest version of Mercurial,
 It allow me to move on, so I think it’s a solution for people who use Fedora, and want to build Firefox, but face the not-new-enough-version mercurial problem. Hope this article could help you finish the preparation for building Firefox.
 
 … maybe you might be interested in my other articles about Linux: [Linux](/en/tags/Linux/)
-
-![Firefox is cute, isn't it?](http://blog.wildsky.cc/wp-content/uploads/2019/03/nathan-anderson-158540-unsplash-1024x684.jpg)
-
-Photo by [Nathan Anderson](https://unsplash.com/photos/KGNaQcD8zdM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/search/photos/fire-fox?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)

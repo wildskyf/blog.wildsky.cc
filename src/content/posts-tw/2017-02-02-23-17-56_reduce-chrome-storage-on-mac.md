@@ -8,8 +8,6 @@ guid: "http://blog.wildsky.cc/?p=306"
 category: "生活體驗"
 ---
 
-![about chrome](http://blog.wildsky.cc/wp-content/uploads/2017/02/02-chrome.png)
-
 剛剛在整理電腦時，發現 chrome 居然佔用了 2GB 的空間⋯⋯ 迅速查了一下才發現原來是他把一堆舊版本的資料全部都保留下來了。 （都存放在 `/Applications/Google Chrome.app/Contents/Versions/` 下面）
 
 這種行為真的很詭異，所以就花了點時間看看有沒有人跟我有一樣的問題， 才知道原來是權限問題。

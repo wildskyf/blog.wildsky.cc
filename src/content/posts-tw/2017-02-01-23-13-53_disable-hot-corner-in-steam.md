@@ -8,8 +8,6 @@ guid: "http://blog.wildsky.cc/?p=301"
 category: "其他"
 ---
 
-![Steam Screenshot](http://blog.wildsky.cc/wp-content/uploads/2017/02/01-steam.png)
-
 最近過年很無聊，又把 Dota2 抓回來玩了。很幸運地在 Mac 上可以玩這款遊戲！ 但是一開進去後就發現一個問題，當我滑鼠撞到邊緣時就會觸發熱角（hot corners）
 
 我不可能為了玩遊戲就把我最愛用的功能取消啊⋯⋯所以就花了一點時間在尋找「在特定應 用程式中停用熱角」的解法，但 Irvin 說「這是系統底層的功能，沒得處理吧」， 而 Steam 中也沒有暫時停用熱角的選項，因而作罷。

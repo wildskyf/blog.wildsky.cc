@@ -42,10 +42,6 @@ tags: ["學習成長","工程師職涯","職場經驗"]
 
 > You need to take control of the timelines so that you are always and without fail delivering high quality work exactly on time. This is incredibly difficult at first. It means having to say “no” and having to push back.
 
-![Time Management](http://blog.wildsky.cc/wp-content/uploads/2019/02/image-1-e1553233655151.jpg)
-
-Photo by Eric Rothermel on Unsplash
-
 ### D. 要注意投資報酬率
 
 Make it work, make it right, make it fast，right 不代表一定要完美無錯、fast 也不表示要快到極致。
