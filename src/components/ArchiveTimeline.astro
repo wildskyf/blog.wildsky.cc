@@ -100,12 +100,12 @@ posts.forEach((post) => {
 
   .ds-archive-mark {
     position: absolute;
-    inset: 0 auto 0 0;
-    width: 2px;
-    background: var(--accent);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 180ms var(--ease);
+    inset: auto 0 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--glow), var(--fg) 70%, transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 550ms var(--ease);
   }
 
   .ds-archive-row time {
@@ -132,12 +132,12 @@ posts.forEach((post) => {
   }
 
   .ds-archive-row:focus-within .ds-archive-mark {
-    transform: scaleY(1);
+    transform: scaleX(1);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .ds-archive-row:hover .ds-archive-mark {
-      transform: scaleY(1);
+      transform: scaleX(1);
     }
   }
 

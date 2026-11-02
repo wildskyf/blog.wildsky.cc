@@ -82,7 +82,7 @@
 .article-content mark {
   background: transparent;
   color: var(--fg);
-  border-bottom: 2px solid var(--accent);
+  border-bottom: 2px solid var(--gold);
   padding: 0 0.1em;
   font-weight: 600;
 }
@@ -218,7 +218,7 @@
 
 .note-permalink:hover {
   color: var(--fg);
-  border-bottom-color: var(--accent);
+  border-bottom-color: var(--glow);
 }
 
 .notes-muted {
@@ -260,7 +260,7 @@
 
 .notes-load-more:hover:not(:disabled) {
   background: transparent;
-  border-color: var(--accent);
+  border-color: var(--glow);
   color: var(--fg);
   text-decoration: underline;
   text-underline-offset: 0.28em;

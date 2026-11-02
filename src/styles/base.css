@@ -179,7 +179,7 @@ body {
 .ds-btn:hover {
   background: transparent;
   color: var(--fg);
-  --stroke: var(--accent);
+  --stroke: var(--glow);
   --stroke-inner: var(--ember);
 }
 
@@ -195,7 +195,7 @@ body {
 
 .ds-link:hover,
 .ds-link:focus-visible {
-  border-bottom-color: var(--accent);
+  border-bottom-color: var(--glow);
 }
 
 /* ------------------------------------------------------------
@@ -217,7 +217,7 @@ body {
 .ds-empty {
   max-width: var(--measure);
   padding: 30px 0 30px 20px;
-  border-left: 2px solid var(--accent);
+  border-left: 2px solid var(--glow-line);
   font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.9;
@@ -232,7 +232,7 @@ body {
 }
 
 .ds-empty a:hover {
-  border-bottom-color: var(--accent);
+  border-bottom-color: var(--glow);
 }
 
 .ds-back {

@@ -304,7 +304,7 @@ const copy =
   }
 
   .ds-search-controls button:hover {
-    border-color: var(--accent);
+    border-color: var(--glow);
   }
 
   .ds-search-status {
@@ -331,16 +331,16 @@ const copy =
   :global(.ds-search-result)::before {
     content: '';
     position: absolute;
-    inset: 0 auto 0 0;
-    width: 2px;
-    background: var(--accent);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 180ms var(--ease);
+    inset: auto 0 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--glow), var(--fg) 70%, transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 550ms var(--ease);
   }
 
   :global(.ds-search-result):focus-within::before {
-    transform: scaleY(1);
+    transform: scaleX(1);
   }
 
   :global(.ds-search-result-link) {
@@ -379,7 +379,7 @@ const copy =
 
   @media (hover: hover) and (pointer: fine) {
     :global(.ds-search-result):hover::before {
-      transform: scaleY(1);
+      transform: scaleX(1);
     }
   }
 
