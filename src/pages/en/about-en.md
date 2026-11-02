@@ -22,6 +22,7 @@ If you’d like to work together, discuss a problem, or simply say hello, email 
 ## Timeline
 
 - **Now**: Deployed on Cloudflare Pages
+- **2026/11/2**: Re-sampled the colours from the reference art and switched to the current blue-graphite sea
 - **2026/8/16**: Rewrote the visual system as “Under Tides”
 - **2026/6**: Added a live GoToSocial notes feed; the RSS feed now carries full posts
 - **2025/9**: Added a light/dark theme switch
@@ -38,11 +39,15 @@ If you’d like to work together, discuss a problem, or simply say hello, email 
 
 ## About this blog’s design
 
-The visual theme of this blog is the deep sea. It draws on the Abyssal Hunters art in _Arknights_, especially the key art and story illustrations of the “Under Tides” and “Stultifera Navis” events. No official artwork is used anywhere on the site. Instead, I sampled colours from the reference art, worked out its visual vocabulary, and translated that into the site’s palette, type and motion.
+The theme here is the deep sea. Most of the inspiration comes from the Abyssal Hunters art in _Arknights_, especially the key art and story CGs from the “Under Tides” and “Stultifera Navis” events.
+
+The site’s design doesn’t reuse any official artwork, though. What I did was more like taking it apart: what the colours are, where the light comes from, where the red shows up. Then I slowly translated that into colours and motion for the web.
 
 ### Colour
 
-The palette was sampled from the reference art with a script (k-means clustering), not picked by eye. The water in those images isn’t a saturated teal; it’s a **blue-tinted graphite** at only about 20% saturation. Silver-white carries the picture, and colour only shows up in small areas.
+I assumed the sea in those pictures was teal. Then I actually sampled the colours with a script (k-means clustering) and found it’s a **blue-tinted graphite**, only about 20% saturated. The previous version of this blog was way too green, which is probably why it looked a bit tacky XD
+
+The real star of the picture is silver-white. Colour only shows up in small spots:
 
 | | Hex | Name | Where it’s used |
 |---|---|---|---|
@@ -50,18 +55,20 @@ The palette was sampled from the reference art with a script (k-means clustering
 | <span style="display:inline-block;width:1.4em;height:1.4em;background:#14191f;border:1px solid #888;vertical-align:middle"></span> | `#14191f` | Graphite blue | Main background |
 | <span style="display:inline-block;width:1.4em;height:1.4em;background:#28343e;border:1px solid #888;vertical-align:middle"></span> | `#28343e` | Light below the surface | The water near the top of the page |
 | <span style="display:inline-block;width:1.4em;height:1.4em;background:#e6e8e9;border:1px solid #888;vertical-align:middle"></span> | `#e6e8e9` | Silver | Body text, taken from the hunters’ silver hair |
-| <span style="display:inline-block;width:1.4em;height:1.4em;background:#7eb5ac;border:1px solid #888;vertical-align:middle"></span> | `#7eb5ac` | Tide teal | Links and reading progress; taken from the Under Tides title lettering |
-| <span style="display:inline-block;width:1.4em;height:1.4em;background:#b3262f;border:1px solid #888;vertical-align:middle"></span> | `#b3262f` | Hunter red | Only the logo, quote rules and “NEW”, echoing the red eyes and blood in the art |
-| <span style="display:inline-block;width:1.4em;height:1.4em;background:#d9c89d;border:1px solid #888;vertical-align:middle"></span> | `#d9c89d` | Lamplight gold | Section numerals and text selection; taken from the lights on the Stultifera Navis |
+| <span style="display:inline-block;width:1.4em;height:1.4em;background:#7eb5ac;border:1px solid #888;vertical-align:middle"></span> | `#7eb5ac` | Tide teal | Links and reading progress; taken from the [Under Tides title lettering](#ref-under-tides-music) |
+| <span style="display:inline-block;width:1.4em;height:1.4em;background:#b3262f;border:1px solid #888;vertical-align:middle"></span> | `#b3262f` | Hunter red | Only the logo, quote rules and “NEW”, echoing the [red eyes and blood](#ref-cg-gladiia-retal) in the art |
+| <span style="display:inline-block;width:1.4em;height:1.4em;background:#d9c89d;border:1px solid #888;vertical-align:middle"></span> | `#d9c89d` | Lamplight gold | Section numerals and text selection; taken from the [lights on the Stultifera Navis](#ref-stultifera) |
 
 ### Visual vocabulary
 
-- **Light comes from above**: slow, swaying shafts of light near the top of the page, with fine dust drifting inside them.
-- **The further you read, the deeper you go**: the background is a column of water that darkens downward, and scrolling sinks you through it. On article pages, a depth gauge on the right turns reading progress into depth.
-- **Life in the deep**: marine snow drifts upward; bioluminescence and jellyfish are barely visible near the surface and grow brighter as you sink. Fish sometimes pass in the distance, and past the halfway point a huge shadow crosses far away.
-- **Very little red**: cool colours make up the whole scene, and red appears only at a few focal points, just as only the eyes and the blood are red in the reference art.
-- **Broken strokes and a current**: the W on the home page is drawn in strokes with small gaps, like two spires side by side above a waterline, and a slow current line draws itself beneath the tagline.
-- **Literature beside engineering**: body text is set in serif; dates, categories and reading time in monospace; the logo and small headings in widely spaced classical capitals.
+Think of the whole site as a column of water: the further you read, the deeper you sink.
+
+- Near the top, light comes down from the surface, with a bit of dust floating in it.
+- The background gets darker as you scroll. The depth gauge on the right of article pages just turns your reading progress into depth (the numbers are made up, obviously).
+- There’s hardly anything alive near the surface. The deeper you read, the brighter the glowing specks and jellyfish get. Fish pass by in the distance now and then, and past the halfway point a huge shadow drifts by far away.
+- I kept red to a minimum: the logo, quote lines and “NEW”. Same as in the reference art, where red usually only shows up in eyes and blood.
+- The W on the home page is drawn with broken strokes, like two spires side by side. The line that draws itself under the tagline is a current.
+- Body text is serif, dates and categories are monospace, and the logo and small headings are widely spaced classical capitals. Literature next to engineering, which is pretty much what this blog is about anyway.
 
 ### Fonts
 
@@ -69,15 +76,51 @@ The palette was sampled from the reference art with a script (k-means clustering
 - Logo and small headings: [Cinzel](https://fonts.google.com/specimen/Cinzel)
 - Dates and metadata: [Space Mono](https://fonts.google.com/specimen/Space+Mono)
 
-All of them are released under the SIL Open Font License.
+All of them are under the SIL Open Font License.
 
 ### Sources
 
 - [Arknights official website](https://ak.hypergryph.com/)
 - [Monster Siren Records](https://monster-siren.hypergryph.com/): the Under Tides soundtrack
+- PRTS: [覆潮之下 (Under Tides)](https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B), [愚人号 (Stultifera Navis)](https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7)
 - Arknights Wiki: [Under Tides](https://arknights.fandom.com/wiki/Under_Tides), [Stultifera Navis](https://arknights.fandom.com/wiki/Stultifera_Navis)
 
-_Arknights_ and its artwork are copyright of Hypergryph. This site only references its visual language and uses no official assets.
+### Reference images
+
+These are the main pictures I worked from. Clicking one takes you to the matching event page on [PRTS](https://prts.wiki/):
+
+<div class="ds-ref-grid">
+<figure id="ref-under-tides-music">
+<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/under-tides-music.jpg" alt="Under Tides soundtrack cover. The tide teal comes from its title lettering" width="960" height="960" loading="lazy" /></a>
+<figcaption>Under Tides soundtrack cover. The tide teal comes from its title lettering (<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B">PRTS</a> · <a href="https://arknights.fandom.com/wiki/File:Under_Tides_music.png">original</a>)</figcaption>
+</figure>
+<figure id="ref-under-tides-ost">
+<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/under-tides-ost.jpg" alt="Under Tides OST" width="960" height="960" loading="lazy" /></a>
+<figcaption>Under Tides OST (<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B">PRTS</a> · <a href="https://arknights.fandom.com/wiki/File:Under_Tides_OST.png">original</a>)</figcaption>
+</figure>
+<figure id="ref-stultifera">
+<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7"><img src="/images/about-design/stultifera.jpg" alt="Stultifera Navis key art. The lamplight gold comes from the ship’s lights" width="960" height="540" loading="lazy" /></a>
+<figcaption>Stultifera Navis key art. The lamplight gold comes from the ship’s lights (<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7">PRTS</a> · <a href="https://arknights.fandom.com/wiki/File:Stultifera_Navis.png">original</a>)</figcaption>
+</figure>
+<figure id="ref-stultifera-ost">
+<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7"><img src="/images/about-design/stultifera-ost.jpg" alt="Stultifera Navis OST" width="960" height="960" loading="lazy" /></a>
+<figcaption>Stultifera Navis OST (<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7">PRTS</a> · <a href="https://arknights.fandom.com/wiki/File:Stultifera_Navis_OST.png">original</a>)</figcaption>
+</figure>
+<figure id="ref-cg-specter-imprisoned">
+<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/cg-specter-imprisoned.jpg" alt="Story CG: Specter imprisoned. Light from above and bubbles in the water, which became the light shafts up top" width="960" height="540" loading="lazy" /></a>
+<figcaption>Story CG: Specter imprisoned. Light from above and bubbles in the water, which became the light shafts up top (<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B">PRTS</a> · <a href="https://arknights.fandom.com/wiki/File:Specter_Imprisoned.png">original</a>)</figcaption>
+</figure>
+<figure id="ref-cg-gladiia-abducts">
+<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/cg-gladiia-abducts.jpg" alt="Story CG: Gladiia" width="960" height="540" loading="lazy" /></a>
+<figcaption>Story CG: Gladiia (<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B">PRTS</a> · <a href="https://arknights.fandom.com/wiki/File:Gladiia_Abducts_Specter.png">original</a>)</figcaption>
+</figure>
+<figure id="ref-cg-gladiia-retal">
+<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/cg-gladiia-retal.jpg" alt="Story CG: Gladiia strikes back. Only the eyes and the blood are red" width="960" height="540" loading="lazy" /></a>
+<figcaption>Story CG: Gladiia strikes back. Only the eyes and the blood are red (<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B">PRTS</a> · <a href="https://arknights.fandom.com/wiki/File:Gladiia_Retalliates.png">original</a>)</figcaption>
+</figure>
+</div>
+
+_Arknights_ and the images above belong to Hypergryph. They’re here only to show where the design came from. If that’s a problem for anyone, please [email me](mailto:poppin.wildsky@gmail.com) and I’ll take them down right away.
 
 <!--
 ## Blogroll

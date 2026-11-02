@@ -301,6 +301,43 @@ const minutes = readingMinutes ? `${readingMinutes} MIN` : readingTime;
     color: var(--fg-muted);
   }
 
+  /* Reference gallery (About page): two columns, captions read as notes */
+  .ds-prose :global(.ds-ref-grid) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 20px;
+    margin: 0 0 32px;
+  }
+  .ds-prose :global(.ds-ref-grid figure) {
+    margin: 0;
+    scroll-margin-top: calc(var(--header-h) + 24px);
+  }
+  .ds-prose :global(.ds-ref-grid a) {
+    border-bottom: 0;
+  }
+  .ds-prose :global(.ds-ref-grid img) {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+  .ds-prose :global(.ds-ref-grid figcaption) {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: left;
+    color: var(--fg-muted);
+  }
+  .ds-prose :global(.ds-ref-grid figcaption a) {
+    color: var(--glow-text);
+    border-bottom: 1px solid color-mix(in oklab, var(--glow) 45%, transparent);
+  }
+
+  @media (max-width: 639px) {
+    .ds-prose :global(.ds-ref-grid) {
+      grid-template-columns: 1fr;
+    }
+  }
+
   /* code block 可溢出到 840px（兩側各 60px），呼應 Overhang Rule */
   .ds-prose :global(pre) {
     width: calc(100% + 120px);
