@@ -118,7 +118,7 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
   .ds-row::before {
     content: '';
     position: absolute;
-    inset: 0 -24px;
+    inset: 0 calc(-1 * min(24px, var(--page-gutter)));
     opacity: 0;
     pointer-events: none;
     background: linear-gradient(

@@ -322,6 +322,8 @@ const manifestoLabel = manifestoParts.join('');
   @media (max-width: 767px) {
     .ds-hero {
       padding: 80px 0 56px;
+      /* the current line and the W bleed past the column; clip them so the page never scrolls sideways */
+      overflow-x: clip;
     }
     .ds-hero-manifesto {
       font-size: clamp(28px, 8vw, 34px);
