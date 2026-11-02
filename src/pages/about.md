@@ -19,6 +19,23 @@ feature_image: ''
 
 如果你想一起工作、討論問題，或只是打聲招呼，歡迎寄信到 [poppin.wildsky@gmail.com](mailto:poppin.wildsky@gmail.com)。
 
+## 時間軸
+
+- **現在**：部署在 Cloudflare Pages
+- **2026/8/16**：視覺系統改寫為「覆潮之下」
+- **2026/6**：加入即時的 GoToSocial 短文動態；RSS 改為輸出全文
+- **2025/9**：加入亮色／暗色主題切換
+- **2025/7**：改用 Astro 內建的多語系功能
+- **2024/4/30**：從 Next.js 改用 Astro
+- **2024/3**：從 Netlify 搬到 Vercel
+- **2021/4**：部署到 Netlify
+- **2021/3**：用 Next.js 重寫，開始提供中英文版
+- **2018/11**：用推文分享按鈕當作留言功能
+- **2017/11**：從 Middleman 改用 Hugo
+- **2016/1**：從 WordPress 搬到 Middleman 靜態網站，部署在 surge，網址為 blog.wildsky.cc
+- **2014/4/26**：在 WordPress 架起部落格
+- **2014/1/8**：開始撰寫文章
+
 ## 關於這個部落格的設計
 
 這個部落格的視覺主題是「深海」。靈感來自《明日方舟》深海獵人一系列的美術，特別是活動「覆潮之下（Under Tides）」與「愚人號（Stultifera Navis）」的主視覺與劇情插圖。站上沒有使用任何官方圖像；我做的是從參考圖裡取色、整理出它的視覺語彙，再轉譯成網頁的配色、字型與動態。
@@ -61,13 +78,3 @@ feature_image: ''
 - Arknights Wiki：[Under Tides](https://arknights.fandom.com/wiki/Under_Tides)、[Stultifera Navis](https://arknights.fandom.com/wiki/Stultifera_Navis)
 
 《明日方舟》及相關美術的著作權屬於鷹角網路（Hypergryph）。本站只參考它的美術語言，沒有使用任何官方素材。
-
-<!--
-時間軸
----
-
-*   開始撰寫文章：2014/1/8
-*   首次架起本部落格：2014/4/26
-
-
--->
