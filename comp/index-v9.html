@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WILDSKY — tide v2 comp (index-v9)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;600;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* ---------- tokens (sampled from Under Tides / Abyssal Hunters key art) ---------- */
+:root {
+  --font-display: "Cinzel", "EB Garamond", serif;
+  --font-body: "EB Garamond", "Noto Serif TC", "Songti TC", serif;
+  --font-meta: "Space Mono", "JetBrains Mono", ui-monospace, monospace;
+  --font-code: "JetBrains Mono", ui-monospace, monospace;
+  --chrome: 1120px;
+  --measure: 700px;
+  --ease: cubic-bezier(.2, 0, 0, 1);
+  --depth: 0;               /* 0 at the surface, 1 at the bottom of the page */
+}
+[data-theme=dark] {
+  color-scheme: dark;
+  /* water column, top -> abyss */
+  --water-1: #2a3843;
+  --water-2: #1a222b;
+  --water-3: #12171d;
+  --water-4: #0b0e11;
+  --fg: #e6e8e9;            /* hunter silver */
+  --fg-muted: #aaaeb7;
+  --fg-faint: #74808c;
+  --rule: rgba(116, 128, 140, .22);
+  --rule-strong: rgba(116, 128, 140, .42);
+  --tide: #7eb5ac;          /* Under Tides title teal */
+  --tide-deep: #4da89a;
+  --tide-text: #93c9bf;
+  --blood: #b3262f;         /* eyes and wounds only */
+  --blood-text: #d6424c;    /* same red, lifted for small type on dark water */
+  --blood-glow: rgba(179, 38, 47, .55);
+  --aegir-glow: rgba(217, 200, 157, .45);
+  --aegir: #d9c89d;         /* Stultifera Navis lamplight */
+  --ray: rgba(190, 215, 225, .075);
+  --snow: 205, 225, 230;
+  --grain-op: .07;
+  --grain-blend: overlay;
+  --title-grad: linear-gradient(100deg, #8fc9be 0%, #cfe3df 30%, #eef0f0 55%, #e6e8e9 100%);
+  --fog-op: .11;
+  --dust: 225, 236, 238;
+  --lumen: 126, 214, 200;   /* bioluminescence, a brighter cousin of --tide */
+  --lantern: rgba(190, 220, 228, .07);
+  --sil: rgba(6, 9, 12, .62);        /* distant silhouettes, a shade darker than the water */
+  --sil-near: #06080b;
+  --sil-far: #10161c;
+  --fish: 3, 6, 9;
+  --fish-a: .72;
+  -webkit-font-smoothing: antialiased;
+}
+/* Light = the foggy Iberian shore above the water */
+[data-theme=light] {
+  color-scheme: light;
+  --water-1: #f2f4f5;
+  --water-2: #e6eaec;
+  --water-3: #dbe1e4;
+  --water-4: #cfd7db;
+  --fg: #161c22;
+  --fg-muted: #46525d;
+  --fg-faint: #6f7b86;
+  --rule: rgba(70, 82, 93, .2);
+  --rule-strong: rgba(70, 82, 93, .38);
+  --tide: #2f7d72;
+  --tide-deep: #2a6b62;
+  --tide-text: #236a60;
+  --blood: #9e1f28;
+  --blood-text: #9e1f28;
+  --blood-glow: transparent;
+  --aegir-glow: transparent;
+  --aegir: #8a6d2c;
+  --ray: rgba(255, 255, 255, .5);
+  --snow: 40, 55, 65;
+  --grain-op: .09;
+  --grain-blend: multiply;
+  --title-grad: linear-gradient(100deg, #2f7d72 0%, #1d3a3a 35%, #161c22 60%, #161c22 100%);
+  --fog-op: .4;
+  --dust: 90, 105, 115;
+  --lumen: 40, 125, 112;
+  --lantern: rgba(255, 255, 255, .25);
+  --sil: rgba(70, 85, 96, .16);
+  --sil-near: #b9c4ca;
+  --sil-far: #ccd5da;
+  --fish: 55, 70, 82;
+  --fish-a: .3;
+}
+
+* { box-sizing: border-box; }
+h1, h2 { text-wrap: balance; }
+html { background: var(--water-4); }
+body { margin: 0; color: var(--fg); font: 400 19px/1.85 var(--font-body); background: transparent; }
+a { color: inherit; text-decoration: none; }
+/* Selection: Aegir gold by default; red / teal kept for comparison in the preview */
+::selection { background: var(--sel-bg); color: var(--sel-fg); }
+[data-theme=dark]  { --sel-bg: rgba(217, 200, 157, .3);  --sel-fg: #fff; }
+[data-theme=light] { --sel-bg: rgba(138, 109, 44, .22); --sel-fg: #161c22; }
+[data-theme=dark][data-sel=red]  { --sel-bg: rgba(179, 38, 47, .62); --sel-fg: #fff; }
+[data-theme=light][data-sel=red] { --sel-bg: rgba(158, 31, 40, .2);  --sel-fg: #161c22; }
+[data-theme=dark][data-sel=tide]  { --sel-bg: rgba(126, 181, 172, .32); --sel-fg: #fff; }
+[data-theme=light][data-sel=tide] { --sel-bg: rgba(47, 125, 114, .2);  --sel-fg: #161c22; }
+
+/* ---------- the sea (fixed environment layers) ---------- */
+.sea { position: fixed; inset: 0; z-index: -3; pointer-events: none;
+  background: linear-gradient(180deg, var(--water-1) 0%, var(--water-2) 30%, var(--water-3) 62%, var(--water-4) 100%); }
+/* Sinking: the deeper you scroll, the darker the water */
+.sea::after { content: ""; position: absolute; inset: 0; background: var(--water-4); opacity: calc(var(--depth) * .5); }
+
+.rays { position: fixed; inset: -10% -20% 0; z-index: -2; pointer-events: none;
+  opacity: calc(1 - var(--depth) * .9);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.6) 40%, transparent 85%);
+          mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.6) 40%, transparent 85%); }
+.rays i { position: absolute; top: -10%; height: 120%; transform-origin: top center;
+  background: linear-gradient(180deg, var(--ray), transparent 90%); filter: blur(14px);
+  animation: sway 18s ease-in-out infinite alternate; }
+.rays i:nth-child(1) { left: 22%; width: 120px; transform: rotate(16deg); animation-duration: 21s; }
+.rays i:nth-child(2) { left: 38%; width: 60px;  transform: rotate(13deg); animation-duration: 17s; animation-delay: -6s; }
+.rays i:nth-child(3) { left: 52%; width: 180px; transform: rotate(18deg); animation-duration: 24s; animation-delay: -3s; }
+.rays i:nth-child(4) { left: 70%; width: 80px;  transform: rotate(14deg); animation-duration: 19s; animation-delay: -9s; }
+.rays i:nth-child(5) { left: 84%; width: 140px; transform: rotate(17deg); animation-duration: 26s; }
+@keyframes sway { from { translate: -24px 0; opacity: .55; } to { translate: 24px 0; opacity: 1; } }
+
+#snow { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+
+/* 夕霧: two banks of mist; the upper one warmed by Aegir lamplight, the lower one cold */
+.fog { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; opacity: var(--fog-op); }
+.fog i { position: absolute; left: 0; will-change: transform; filter: blur(4px);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 35%, #000 65%, transparent);
+          mask-image: linear-gradient(180deg, transparent, #000 35%, #000 65%, transparent); }
+.fog i:nth-child(1) { top: 4%; height: 46%; width: calc(100% + 1400px); background-size: 1400px 100%; animation: fog-a 110s linear infinite;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1400' height='500' preserveAspectRatio='none'><filter id='f' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='.0035714 .012' numOctaves='4' seed='7' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .86 0 0 0 0 .83 0 0 0 0 .74 1.9 0 0 0 -.62'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>"); }
+.fog i:nth-child(2) { top: 48%; height: 50%; width: calc(100% + 1800px); left: -1800px; background-size: 1800px 100%; animation: fog-b 160s linear infinite; opacity: .8;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1800' height='600' preserveAspectRatio='none'><filter id='f' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='.0027778 .01' numOctaves='4' seed='21' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .72 0 0 0 0 .82 0 0 0 0 .86 1.9 0 0 0 -.64'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>"); }
+@keyframes fog-a { to { transform: translateX(-1400px); } }
+@keyframes fog-b { to { transform: translateX(1800px); } }
+
+/* ---------- creatures ---------- */
+body { position: relative; }
+.par { position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none; will-change: transform; }
+
+#fish, #jellies { position: fixed; inset: 0; pointer-events: none; }
+#fish { z-index: -2; }      /* far: behind the mist */
+#jellies { z-index: -1; }   /* near: in front of it */
+
+/* The leviathan: a Seaborn-like shadow that only surfaces past the halfway point */
+.levi { width: 100vw; height: 260px; top: 30vh; position: fixed; left: 0; z-index: -1; pointer-events: none; overflow: hidden;
+  opacity: calc(clamp(0, (var(--depth) - .4) * 2.2, 1) * .6); transition: opacity .6s; }
+.levi svg { position: absolute; top: 0; width: 760px; height: 220px; fill: var(--sil); filter: blur(4px);
+  animation: levi 240s linear infinite; }
+@keyframes levi { from { transform: translateX(calc(100vw + 60px)) rotate(-2deg); } to { transform: translateX(-820px) rotate(2deg); } }
+
+/* Sea floor: stone needles rising out of the murk; sits behind the mist */
+.floor { position: absolute; left: 0; right: 0; bottom: 0; height: 300px; z-index: -2; pointer-events: none; overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.35) 35%, #000 85%);
+          mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.35) 35%, #000 85%); }
+.floor svg { position: absolute; bottom: 0; left: -2%; width: 104%; height: 100%; }
+.floor .far { fill: var(--sil-far); opacity: .55; filter: blur(3px); }
+.floor .near { fill: var(--sil-near); opacity: .8; filter: blur(.6px); }
+
+[data-no-jelly] #jellies, [data-no-fish] #fish, [data-no-levi] .levi, [data-no-floor] .floor { display: none; }
+@media (max-width: 760px) { .floor { height: 180px; } }
+
+/* Lantern: a faint diving light that follows the pointer */
+.lantern { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .6s;
+  background: radial-gradient(circle 240px at var(--mx, 50%) var(--my, 40%), var(--lantern), transparent 70%); }
+body.has-pointer .lantern { opacity: 1; }
+
+/* Effect toggles (preview only) */
+[data-no-rays] .rays, [data-no-fog] .fog, [data-no-grain] .grain, [data-no-lantern] .lantern { display: none; }
+
+/* Rock / ink grain over everything (SVG turbulence) */
+.grain { position: fixed; inset: 0; z-index: 30; pointer-events: none; opacity: var(--grain-op); mix-blend-mode: var(--grain-blend);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1.1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+
+.wrap { position: relative; max-width: var(--chrome); margin: 0 auto; padding: 0 32px; }
+
+/* ---------- reading progress ---------- */
+.progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; z-index: 40;
+  background: linear-gradient(90deg, transparent, var(--tide) 40%, var(--fg)); transition: width .08s linear; }
+
+/* ---------- header ---------- */
+header.site { position: sticky; top: 0; z-index: 20;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--water-1) 82%, transparent), color-mix(in srgb, var(--water-1) 55%, transparent));
+  backdrop-filter: blur(10px) saturate(1.1); border-bottom: 1px solid var(--rule); }
+header.site .wrap { display: flex; align-items: center; gap: 20px; height: 68px; }
+.logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.seal { width: 28px; height: 28px; display: grid; place-items: center; background: var(--blood); color: #f3eeee;
+  font: 600 14px/1 var(--font-display); box-shadow: inset 0 0 0 2px var(--blood), inset 0 0 0 3px rgba(255,255,255,.45); }
+.wordmark { font: 500 16px/1 var(--font-display); letter-spacing: .28em; }
+.leader { flex: 1; display: flex; align-items: center; gap: 10px; min-width: 0;
+  font: 400 11px/1 var(--font-meta); color: var(--fg-faint); letter-spacing: .06em; }
+.leader::before { content: ""; flex: 1; height: 1px; opacity: .8;
+  background-image: radial-gradient(var(--fg-faint) .8px, transparent 1px); background-size: 6px 1px; background-repeat: repeat-x; }
+.leader .loc { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 260px; }
+.leader .loc::before { content: ": "; color: var(--tide); }
+nav.main { display: flex; gap: 26px; font: 500 12px/1 var(--font-display); letter-spacing: .2em; }
+nav.main a { color: var(--fg-muted); padding: 6px 0; border-bottom: 1px solid transparent; transition: color .15s, border-color .15s; }
+nav.main a:hover, nav.main a[aria-current] { color: var(--fg); border-color: var(--tide); }
+.theme-btn { width: 34px; height: 34px; border: 1px solid var(--rule-strong); background: none; color: var(--fg-muted);
+  display: grid; place-items: center; cursor: pointer; transition: color .15s, border-color .15s; }
+.theme-btn:hover { color: var(--fg); border-color: var(--tide); }
+
+/* ---------- views ---------- */
+.view { display: none; }
+.view.on { display: block; animation: surface .7s var(--ease); }
+@keyframes surface { from { opacity: 0; transform: translateY(10px); filter: blur(3px); } to { opacity: 1; transform: none; filter: none; } }
+
+/* ---------- home hero: Under Tides title treatment ---------- */
+.hero { position: relative; padding: 128px 0 84px; border-bottom: 1px solid var(--rule); }
+.sigil { position: absolute; right: 2%; top: 36px; width: min(360px, 40vw); height: auto; color: var(--fg); opacity: .07; pointer-events: none; }
+.kicker { font: 500 12px/1 var(--font-display); letter-spacing: .5em; color: var(--tide); margin: 0 0 34px; }
+.hero h1 { position: relative; display: inline-block; margin: 0; font: 600 clamp(36px, 5.2vw, 64px)/1.3 "Noto Serif TC", var(--font-body);
+  letter-spacing: .03em; background: var(--title-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+/* The harpoon stroke that cuts through the title */
+.slash { position: absolute; left: -6%; right: -14%; top: 54%; height: 3px; pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, var(--tide) 18%, var(--fg) 62%, transparent 100%);
+  clip-path: polygon(0 50%, 12% 0, 100% 45%, 100% 55%, 12% 100%);
+  transform: rotate(-3.5deg); opacity: .85; }
+.slash.b { top: 58%; left: 30%; right: -20%; height: 1.5px; opacity: .45; transform: rotate(-3deg); }
+.hero-foot { margin-top: 52px; display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap;
+  font: 400 12px/1.6 var(--font-meta); color: var(--fg-faint); letter-spacing: .08em; }
+.hero-foot b { color: var(--fg); font-weight: 400; }
+.hero-foot .gold { color: var(--aegir); }
+
+/* ---------- list ---------- */
+.list { list-style: none; margin: 0; padding: 0; }
+.item a { display: grid; grid-template-columns: 150px 1fr; gap: 8px 40px; padding: 40px 0; border-bottom: 1px solid var(--rule); position: relative; }
+.item a::before { content: ""; position: absolute; inset: 0; left: -24px; right: -24px; opacity: 0; transition: opacity .4s var(--ease);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--tide) 7%, transparent) 30%, transparent); }
+.item a:hover::before { opacity: 1; }
+.item a::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 0;
+  background: linear-gradient(90deg, var(--tide), var(--fg) 70%, transparent); transition: width .55s var(--ease); }
+.item a:hover::after { width: 100%; }
+.date { font: 400 13px/2.2 var(--font-meta); color: var(--fg-muted); letter-spacing: .04em; }
+.meta { font: 400 12px/1 var(--font-meta); color: var(--fg-faint); letter-spacing: .06em; display: flex; gap: 10px; align-items: center; margin-bottom: 14px; position: relative; }
+.meta .sep { color: var(--rule-strong); }
+.new { color: var(--blood); font: 600 10px/1 var(--font-display); letter-spacing: .3em; display: inline-flex; align-items: center; gap: 6px; }
+.new::before { content: ""; width: 6px; height: 6px; background: var(--blood); transform: rotate(45deg); box-shadow: 0 0 10px var(--blood); }
+.item h2 { margin: 0; font: 500 27px/1.45 var(--font-body); position: relative; }
+.item .excerpt { margin: 12px 0 0; color: var(--fg-muted); font-size: 17px; line-height: 1.75; max-width: 640px; position: relative; }
+.tags { margin-top: 16px; display: flex; gap: 18px; font: 500 11px/1 var(--font-display); letter-spacing: .2em; color: var(--fg-faint); text-transform: uppercase; position: relative; }
+
+.signoff { padding: 88px 0 64px; display: flex; align-items: center; gap: 18px;
+  font: 500 12px/1 var(--font-display); letter-spacing: .6em; color: var(--fg-faint); }
+.signoff::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--rule-strong), transparent); }
+
+/* ---------- post ---------- */
+.post { max-width: var(--measure); margin: 0 auto; padding: 100px 0 40px; }
+.post .meta { margin-bottom: 28px; }
+.post h1 { margin: 0 0 24px; font: 600 clamp(32px, 4.4vw, 46px)/1.4 "Noto Serif TC", var(--font-body); letter-spacing: .01em;
+  background: var(--title-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.post .lede { color: var(--fg-muted); font-size: 18px; margin: 0 0 48px; padding-bottom: 40px; border-bottom: 1px solid var(--rule); }
+.prose p { margin: 0 0 1.25em; }
+.prose h2 { margin: 2.4em 0 .8em; font: 600 26px/1.5 "Noto Serif TC", var(--font-body); display: flex; align-items: baseline; gap: 16px; }
+.prose h2 .no { font: 500 13px/1 var(--font-display); color: var(--aegir); letter-spacing: .15em; text-shadow: 0 0 8px var(--aegir-glow); }
+.prose a { color: var(--tide-text); border-bottom: 1px solid color-mix(in srgb, var(--tide) 45%, transparent); }
+.prose strong { font-weight: 600; color: var(--fg); }
+.prose blockquote { position: relative; margin: 2.2em 0; padding: 6px 0 6px 28px; color: var(--fg-muted); font-style: italic; }
+.prose blockquote::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(180deg, var(--blood-text), transparent); box-shadow: 0 0 8px var(--blood-glow); }
+.prose ol { padding-left: 1.2em; }
+.prose ol li { margin: .5em 0; padding-left: .3em; }
+.prose ol li::marker { font: 500 13px var(--font-display); color: var(--tide); }
+.prose pre { margin: 2em 0; padding: 20px 22px; background: color-mix(in srgb, var(--water-4) 70%, transparent);
+  border: 1px solid var(--rule); border-left: 2px solid var(--tide-deep); font: 400 14px/1.7 var(--font-code); overflow-x: auto; color: var(--fg-muted); }
+.prose pre .c { color: var(--fg-faint); }
+.prose pre .k { color: var(--tide); }
+.prose pre .s { color: var(--aegir); }
+
+/* Depth gauge */
+.gauge { position: fixed; right: 32px; top: 50%; transform: translateY(-50%); display: none; flex-direction: column; align-items: end; gap: 10px;
+  font: 400 10px/1 var(--font-meta); color: var(--fg-faint); letter-spacing: .12em; z-index: 10; }
+.gauge .track { width: 1px; height: 200px; background: var(--rule-strong); position: relative; }
+.gauge .track::before, .gauge .track::after { content: ""; position: absolute; left: -3px; width: 7px; height: 1px; background: var(--rule-strong); }
+.gauge .track::before { top: 0; } .gauge .track::after { bottom: 0; }
+.gauge .fill { position: absolute; top: 0; left: 0; width: 1px; height: 0; background: linear-gradient(180deg, var(--fg), var(--tide)); }
+.gauge .fill::after { content: ""; position: absolute; bottom: -3px; left: -3px; width: 7px; height: 7px; background: var(--tide); transform: rotate(45deg); box-shadow: 0 0 8px var(--tide); }
+.gauge .val { color: var(--fg-muted); }
+body.reading .gauge { display: flex; }
+
+footer.site { border-top: 1px solid var(--rule); }
+footer.site .wrap { display: flex; justify-content: space-between; padding: 28px 32px; font: 400 11px/1.6 var(--font-meta); color: var(--fg-faint); letter-spacing: .1em; }
+
+/* ---------- preview chrome (not part of the design) ---------- */
+.pv { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 50; display: flex; gap: 4px; padding: 5px; border-radius: 999px;
+  background: rgba(14,14,16,.88); backdrop-filter: blur(10px); font: 500 12px/1 -apple-system, "PingFang TC", sans-serif; box-shadow: 0 8px 30px rgba(0,0,0,.35); }
+.pv button, .pv a { all: unset; cursor: pointer; color: #bbb; padding: 9px 14px; border-radius: 999px; white-space: nowrap; }
+.pv .div { width: 1px; background: #444; margin: 6px 4px; }
+.pv button.on { background: #fff; color: #111; }
+.pv a { color: #8fd; }
+.fxp { position: fixed; left: 50%; bottom: 72px; transform: translateX(-50%); z-index: 50; display: none; flex-wrap: wrap; justify-content: center; gap: 6px 14px;
+  max-width: min(560px, 92vw); padding: 12px 16px; border-radius: 14px; background: rgba(14,14,16,.9); backdrop-filter: blur(10px);
+  font: 500 12px/1 -apple-system, "PingFang TC", sans-serif; color: #ccc; box-shadow: 0 8px 30px rgba(0,0,0,.35); }
+.fxp.on { display: flex; }
+.fxp label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; padding: 4px 0; white-space: nowrap; }
+.fxp input { accent-color: #7eb5ac; }
+
+@media (max-width: 760px) {
+  body { font-size: 17px; }
+  .wrap { padding: 0 20px; }
+  .leader, nav.main { display: none; }
+  header.site .wrap { justify-content: space-between; }
+  .hero { padding: 80px 0 52px; }
+  .hero h1 { font-size: 32px; }
+  .slash { top: auto; bottom: -18px; left: -4%; right: -10%; }
+  .slash.b { display: none; }
+  .kicker { letter-spacing: .35em; }
+  .item a { grid-template-columns: 1fr; padding: 32px 0; }
+  .item h2 { font-size: 23px; }
+  .post { padding-top: 64px; }
+  .gauge { display: none !important; }
+  .signoff { letter-spacing: .3em; }
+  .pv { bottom: 12px; }
+  .pv button, .pv a { padding: 8px 9px; }
+}
+</style>
+</head>
+<body>
+<div class="sea" aria-hidden="true"></div>
+<div class="rays" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+<canvas id="fish" aria-hidden="true"></canvas>
+<div class="fog" aria-hidden="true"><i></i><i></i></div>
+<!-- creatures: data-top is the page offset, data-speed the parallax (lower = farther) -->
+<div class="levi" aria-hidden="true"><svg viewBox="0 0 760 220"><path d="M760,104 C700,70 610,52 520,58 C430,64 360,86 280,96 C210,104 150,98 96,110 C70,116 40,132 0,128 C38,118 62,104 80,96 C52,84 26,64 6,40 C44,58 82,72 118,80 C170,70 222,60 286,52 C300,30 326,10 360,2 C352,22 350,38 356,50 C420,44 490,40 560,48 C640,56 712,78 760,104 Z M430,92 C450,128 448,170 420,214 C440,176 438,136 410,98 Z M560,90 C590,120 600,160 586,200 C584,164 570,128 540,96 Z"/></svg></div>
+<canvas id="jellies" aria-hidden="true"></canvas>
+<div class="lantern" aria-hidden="true"></div>
+<canvas id="snow" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress"></div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#home"><span class="seal">W</span><span class="wordmark">WILDSKY</span></a>
+    <div class="leader"><span class="loc" id="loc">首頁</span></div>
+    <nav class="main">
+      <a href="#home" id="nav-home">INDEX</a>
+      <a href="#post" id="nav-post">POST</a>
+      <a href="#home">ARCHIVE</a>
+      <a href="#home">ABOUT</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" aria-label="切換主題">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- ======== HOME ======== -->
+  <section class="view" id="view-home">
+    <div class="hero">
+      <!-- W sigil in the Under Tides broken-stroke manner: two spires, chipped strokes, a waterline -->
+      <svg class="sigil" viewBox="0 0 200 220" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
+        <path d="M14 20 L58 196"/><path d="M58 196 L79 128"/><path d="M88 99 L100 62"/>
+        <path d="M100 62 L142 196"/><path d="M142 196 L158 145"/><path d="M166 118 L188 20"/>
+        <path d="M2 20 L30 20" stroke-width="1.5"/><path d="M174 20 L200 20" stroke-width="1.5"/>
+        <path d="M0 214 L200 214" stroke-width="1"/><path d="M40 206 L120 206" stroke-width=".8"/>
+      </svg>
+      <p class="kicker">UNDER THE TIDE</p>
+      <h1>信仰不確定性，<br>同時用確定性工程過生活<span class="slash"></span><span class="slash b"></span></h1>
+      <div class="hero-foot">
+        <span>ENTRIES <b>110</b> &nbsp;:&nbsp; LAST <b>2026.09.29</b></span>
+        <span>DEPTH 0 m &nbsp;:&nbsp; <span class="gold">SINCE 2014</span></span>
+      </div>
+    </div>
+
+    <ol class="list">
+      <li class="item"><a href="#post">
+        <span class="date">2026.09.29</span>
+        <div>
+          <div class="meta">思考觀點 <span class="sep">/</span> 1 MIN <span class="new">NEW</span></div>
+          <h2>繼續努力，好好行路</h2>
+          <div class="tags"><span>人生哲學</span></div>
+        </div>
+      </a></li>
+      <li class="item"><a href="#post">
+        <span class="date">2026.08.20</span>
+        <div>
+          <div class="meta">思考觀點 <span class="sep">/</span> 6 MIN</div>
+          <h2>信仰之躍 Leap of Faith：蜘蛛人新宇宙、刺客教條、尼爾自動人形與存在主義</h2>
+          <p class="excerpt">信仰之躍不是感性壓過理性，而是理性誠實地走到自己的盡頭之後，由激情接手的那一步。</p>
+          <div class="tags"><span>人生哲學</span><span>存在主義</span></div>
+        </div>
+      </a></li>
+      <li class="item"><a href="#post">
+        <span class="date">2026.08.04</span>
+        <div>
+          <div class="meta">軟體工程 <span class="sep">/</span> 3 MIN</div>
+          <h2>Claude Code 的 Agent View 用久後，對 Vim 的反思</h2>
+          <div class="tags"><span>Claude Code</span><span>Vim</span><span>AI</span></div>
+        </div>
+      </a></li>
+      <li class="item"><a href="#post">
+        <span class="date">2026.07.12</span>
+        <div>
+          <div class="meta">軟體工程 <span class="sep">/</span> 8 MIN</div>
+          <h2>為什麼我決定自架一個 AI Agent</h2>
+          <div class="tags"><span>Self-hosted</span><span>AI</span></div>
+        </div>
+      </a></li>
+    </ol>
+
+    <div class="signoff">WILDSKY · SINCE 2014</div>
+  </section>
+
+  <!-- ======== POST ======== -->
+  <section class="view" id="view-post">
+    <article class="post">
+      <div class="meta">思考觀點 <span class="sep">/</span> 6 MIN <span class="sep">/</span> 2026.08.20</div>
+      <h1>信仰之躍 Leap of Faith：蜘蛛人新宇宙、刺客教條、尼爾自動人形與存在主義</h1>
+      <p class="lede">前陣子看了《蜘蛛人：新宇宙》，覺得信仰之躍的概念很讓人激動，去查了之後才知道 leap of faith 最初是存在主義之父齊克果提出的概念。</p>
+
+      <div class="prose">
+        <p>今天便想藉此機會來聊聊與記錄我在看了各種解析文章與細細品味之後的想法。</p>
+
+        <h2><span class="no">I</span>黑格爾的絕對唯心論</h2>
+        <p>我想簡單地從「存在主義為什麼會出現」開始聊起。</p>
+        <blockquote>凡合理的即現實的，凡現實的即合理的</blockquote>
+        <p>黑格爾提出說「這個世界是一個理性大精神，這個世界的過往——包含歷史與人類的思想、藝術、宗教、哲學——都是這個精神一步一步認識自身的過程。」</p>
+
+        <h2><span class="no">II</span>齊克果：最初的信仰之躍</h2>
+        <p>齊克果覺得「黑格爾這樣的理性大系統實在太總體了」、「我們個體難道必須融在理性系統中嗎？」、「我們難道沒有選擇嗎？」</p>
+        <p>不，齊克果說：我們應該把目光放回自己，人的「選擇」是有意義的。齊克果把人生的道路分成三種境界，彼此由低到高遞進：</p>
+        <ol>
+          <li><strong>感性階段</strong>：追求官能享樂、新鮮感與浪漫，容易陷入空虛與厭倦。</li>
+          <li><strong>倫理階段</strong>：意識到社會責任與道德普遍規範，認真承擔義務與選擇對錯。</li>
+          <li><strong>宗教階段</strong>：超越世俗倫理，個體直接地面對上帝，透過「信仰之躍」確立真實自我。</li>
+        </ol>
+        <p>齊克果認為，面對生命毫無道理的絕望與深淵時，人類的理性是有極限的——但「理性有極限」不等於「放棄思考」。躍的前提恰恰是你已經想清楚了：客觀上沒有任何證據能保證上帝會接住你。看清這一點之後，人仍然憑藉內心的激情（passion）與個人意志，<strong>在完全的不確定中投身進去</strong>。</p>
+
+        <pre><span class="c"># 關鍵字用潮汐青，字串用阿戈爾金</span>
+<span class="k">while</span> uncertain:
+    think_it_through(<span class="s">"until reason ends"</span>)
+<span class="k">leap</span>()</pre>
+
+        <h2><span class="no">III</span>尼爾：自動人形</h2>
+        <p>因此，我們便能看出：存在主義的核心，即是「選擇」。信仰之躍不是感性壓過理性，而是理性誠實地走到自己的盡頭之後，由激情接手的那一步。更多延伸可以參考 <a href="#post">齊克果《恐懼與戰慄》</a>。</p>
+        <p>（以下為示意用的重複段落，用來測試長文下潛時背景變暗與深度計的效果。）</p>
+        <p>齊克果認為，面對生命毫無道理的絕望與深淵時，人類的理性是有極限的——但「理性有極限」不等於「放棄思考」。看清這一點之後，人仍然憑藉內心的激情與個人意志，在完全的不確定中投身進去。</p>
+        <p>信仰之躍不是感性壓過理性，而是理性誠實地走到自己的盡頭之後，由激情接手的那一步。</p>
+        <p>齊克果認為，面對生命毫無道理的絕望與深淵時，人類的理性是有極限的。看清這一點之後，人仍然憑藉內心的激情與個人意志，在完全的不確定中投身進去。</p>
+      </div>
+    </article>
+  </section>
+</main>
+
+<div class="gauge" aria-hidden="true">
+  <span>DEPTH</span>
+  <div class="track"><div class="fill" id="gaugeFill"></div></div>
+  <span class="val" id="gaugeVal">000 m</span>
+</div>
+
+<div class="floor" aria-hidden="true"><svg viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice">
+  <path class="far" d="M0,300 L0,256 Q40,240 80,248 Q120,240 160,252 Q200,238 240,246 Q280,238 320,246 Q360,238 400,260 Q440,252 480,262 Q520,232 560,240 Q600,232 640,255 Q680,247 720,256 Q760,228 800,236 Q840,228 880,250 Q920,232 960,240 Q1000,232 1040,250 Q1080,238 1120,245 Q1160,238 1200,258 Q1240,238 1280,245 Q1320,232 1360,239 Q1400,232 1440,248 L1440,300 Z M0,300 L0,268 L35,268 C57,241 70,186 76,118 C83,193 84,246 105,268 L202,268 C220,234 222,164 226,78 C232,173 241,240 258,268 L590,268 C603,252 610,218 613,178 C617,223 618,254 630,268 L1078,268 C1098,237 1099,174 1104,98 C1110,183 1123,242 1142,268 L1268,268 C1282,246 1290,202 1294,148 C1298,208 1299,250 1312,268 L1440,268 L1440,300 Z"/>
+  <path class="near" d="M0,300 L0,280 Q40,275 80,281 Q120,277 160,284 Q200,270 240,274 Q280,270 320,286 Q360,275 400,279 Q440,269 480,273 Q520,269 560,285 Q600,274 640,278 Q680,273 720,277 Q760,273 800,285 Q840,276 880,281 Q920,272 960,276 Q1000,272 1040,280 Q1080,272 1120,276 Q1160,272 1200,284 Q1240,278 1280,283 Q1320,278 1360,284 Q1400,275 1440,279 L1440,300 Z M0,300 L0,290 L-9,290 C20,249 37,164 44,60 C53,175 54,256 81,290 L102,290 C114,270 114,230 117,180 C121,235 127,274 138,290 L1192,290 C1218,247 1219,158 1225,50 C1233,170 1248,254 1272,290 L1344,290 C1361,263 1371,208 1375,140 C1380,215 1380,268 1396,290 L1440,290 L1440,300 Z"/>
+</svg></div>
+<footer class="site"><div class="wrap"><span>© WILDSKY 2014—2026</span><span>RSS : GITHUB : MAIL</span></div></footer>
+
+<div class="pv">
+  <button data-v="home" class="on">首頁</button>
+  <button data-v="post">文章</button>
+  <span class="div"></span>
+  <button data-t="dark" class="on">暗</button>
+  <button data-t="light">亮</button>
+  <span class="div"></span>
+  <button id="fxBtn">特效</button>
+  <a href="https://blog.wildsky.cc/" target="_blank" rel="noopener">現行 ↗</a>
+</div>
+
+<div class="fxp" id="fxp">
+  <label><input type="checkbox" data-fx="rays" checked>光柱</label>
+  <label><input type="checkbox" data-fx="dust" checked>光中微塵</label>
+  <label><input type="checkbox" data-fx="snow" checked>海雪</label>
+  <label><input type="checkbox" data-fx="lumen" checked>生物螢光</label>
+  <label><input type="checkbox" data-fx="fog" checked>夕霧</label>
+  <label><input type="checkbox" data-fx="lantern" checked>探照燈</label>
+  <label><input type="checkbox" data-fx="jelly" checked>水母</label>
+  <label><input type="checkbox" data-fx="fish" checked>魚群</label>
+  <label><input type="checkbox" data-fx="levi" checked>深海巨影</label>
+  <label><input type="checkbox" data-fx="floor" checked>岩柱海床</label>
+  <label><input type="checkbox" data-fx="grain" checked>岩石顆粒</label>
+  <span style="flex-basis:100%;height:0"></span>
+  <span style="color:#888">反白選取：</span>
+  <label><input type="radio" name="sel" value="red">獵人紅</label>
+  <label><input type="radio" name="sel" value="gold" checked>阿戈爾金</label>
+  <label><input type="radio" name="sel" value="tide">潮汐青</label>
+</div>
+
+<script>
+const root = document.documentElement;
+const views = { home: '首頁', post: '信仰之躍 Leap of Faith' };
+function show(v) {
+  if (!views[v]) v = 'home';
+  document.querySelectorAll('.view').forEach(s => s.classList.toggle('on', s.id === 'view-' + v));
+  document.querySelectorAll('.pv [data-v]').forEach(b => b.classList.toggle('on', b.dataset.v === v));
+  document.getElementById('nav-home').toggleAttribute('aria-current', v === 'home');
+  document.getElementById('nav-post').toggleAttribute('aria-current', v === 'post');
+  document.getElementById('loc').textContent = views[v];
+  document.body.classList.toggle('reading', v === 'post');
+  window.scrollTo(0, 0); onScroll();
+}
+function setTheme(t) {
+  root.dataset.theme = t;
+  document.querySelectorAll('.pv [data-t]').forEach(b => b.classList.toggle('on', b.dataset.t === t));
+}
+function onScroll() {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  const p = max > 0 ? Math.min(1, scrollY / max) : 0;
+  root.style.setProperty('--depth', p.toFixed(3));
+  document.getElementById('progress').style.width = (p * 100) + '%';
+  document.getElementById('gaugeFill').style.height = (p * 100) + '%';
+  document.getElementById('gaugeVal').textContent = String(Math.round(p * 200)).padStart(3, '0') + ' m';
+}
+document.querySelectorAll('.pv [data-v]').forEach(b => b.onclick = () => location.hash = b.dataset.v);
+document.querySelectorAll('.pv [data-t]').forEach(b => b.onclick = () => setTheme(b.dataset.t));
+document.getElementById('themeBtn').onclick = () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+addEventListener('hashchange', () => show(location.hash.slice(1)));
+addEventListener('scroll', onScroll, { passive: true });
+show(location.hash.slice(1));
+
+// Fx toggles (preview only)
+const fxOn = k => !root.hasAttribute('data-no-' + k);
+document.getElementById('fxBtn').onclick = e => { document.getElementById('fxp').classList.toggle('on'); e.currentTarget.classList.toggle('on'); };
+document.querySelectorAll('#fxp input[data-fx]').forEach(i => i.onchange = () => root.toggleAttribute('data-no-' + i.dataset.fx, !i.checked));
+document.querySelectorAll('#fxp input[name=sel]').forEach(i => i.onchange = () => { if (i.checked) root.dataset.sel = i.value; });
+
+// Pointer for lantern + particle current
+const ptr = { x: -9999, y: -9999, on: false };
+if (matchMedia('(pointer: fine)').matches) {
+  addEventListener('pointermove', e => {
+    ptr.x = e.clientX; ptr.y = e.clientY; ptr.on = true;
+    root.style.setProperty('--mx', e.clientX + 'px'); root.style.setProperty('--my', e.clientY + 'px');
+    document.body.classList.add('has-pointer');
+  }, { passive: true });
+  document.addEventListener('pointerleave', () => { ptr.on = false; document.body.classList.remove('has-pointer'); });
+}
+
+// Particles: marine snow, dust that only shows inside the light shafts, and bioluminescence that grows with depth
+(() => {
+  const c = document.getElementById('snow'), x = c.getContext('2d');
+  // Mirror of the CSS rays: left %, width px, angle deg (container is inset -10% -20%)
+  const RAYS = [[.22, 120, 16], [.38, 60, 13], [.52, 180, 18], [.70, 80, 14], [.84, 140, 17]];
+  let W, H, dpr, snow = [], dust = [], lumen = [];
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  function size() {
+    dpr = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight;
+    c.width = W * dpr; c.height = H * dpr; c.style.width = W + 'px'; c.style.height = H + 'px';
+    x.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const area = W * H;
+    snow = Array.from({ length: Math.round(Math.min(70, area / 22000)) }, () => ({
+      x: rnd(0, W), y: rnd(0, H), r: rnd(.3, 1.7), vy: -rnd(.04, .22), ph: rnd(0, 6.28), a: rnd(.08, .43), glint: Math.random() < .12 }));
+    dust = Array.from({ length: Math.round(Math.min(220, area / 6000)) }, () => ({
+      x: rnd(0, W), y: rnd(0, H * .8), r: rnd(.35, 1.1), vx: rnd(-.06, .06), vy: rnd(-.05, .05), ph: rnd(0, 6.28) }));
+    lumen = Array.from({ length: Math.round(Math.min(14, area / 90000)) + 3 }, () => ({
+      x: rnd(0, W), y: rnd(0, H), r: rnd(1.4, 2.6), ph: rnd(0, 6.28), sp: rnd(.6, 1.4), dir: rnd(0, 6.28) }));
+  }
+  // Brightness of the shafts at a point, 0..1
+  function shaft(px, py) {
+    const cw = W * 1.4, cl = -W * .2, top = -H * .1;
+    let v = 0;
+    for (const [l, w, a] of RAYS) {
+      const t = Math.tan(a * Math.PI / 180), cx = cl + cw * l + w / 2;
+      const d = Math.abs(px - (cx - (py - top) * t)) * Math.cos(a * Math.PI / 180);
+      v += Math.exp(-(d * d) / (w * w * .35));
+    }
+    return Math.min(1, v) * Math.max(0, 1 - py / (H * .85));
+  }
+  function push(p, k) {
+    if (!ptr.on) return 0;
+    const dx = p.x - ptr.x, dy = p.y - ptr.y, d2 = dx * dx + dy * dy;
+    if (d2 > 160 * 160) return 0;
+    const d = Math.sqrt(d2) || 1, f = (1 - d / 160);
+    p.x += dx / d * f * k; p.y += dy / d * f * k;
+    return f;
+  }
+  function frame(t) {
+    x.clearRect(0, 0, W, H);
+    const cs = getComputedStyle(root);
+    const depth = parseFloat(cs.getPropertyValue('--depth')) || 0;
+    const sRGB = cs.getPropertyValue('--snow').trim(), dRGB = cs.getPropertyValue('--dust').trim(), lRGB = cs.getPropertyValue('--lumen').trim();
+    const move = true;
+
+    if (fxOn('dust') && fxOn('rays')) {
+      const fade = 1 - depth * .9;
+      for (const p of dust) {
+        if (move) {
+          p.x += p.vx + Math.sin(t / 2600 + p.ph) * .05; p.y += p.vy + Math.cos(t / 3100 + p.ph) * .04;
+          if (p.x < -4) p.x = W + 4; if (p.x > W + 4) p.x = -4; if (p.y < -4) p.y = H * .8; if (p.y > H * .85) p.y = 0;
+        }
+        const lit = shaft(p.x, p.y) * fade + push(p, move ? .25 : 0) * .4;
+        if (lit < .03) continue;
+        x.beginPath(); x.arc(p.x, p.y, p.r, 0, 6.283);
+        x.fillStyle = `rgba(${dRGB},${(lit * .75).toFixed(3)})`; x.fill();
+      }
+    }
+    if (fxOn('snow')) {
+      for (const p of snow) {
+        if (move) { p.y += p.vy; p.x += Math.sin(t / 3000 + p.ph) * .12; if (p.y < -5) { p.y = H + 5; p.x = rnd(0, W); } }
+        const near = push(p, move ? .6 : 0);
+        const tw = p.glint ? (.5 + .5 * Math.sin(t / 900 + p.ph)) : 1;
+        x.beginPath(); x.arc(p.x, p.y, p.r * (p.glint ? 1.4 : 1), 0, 6.283);
+        x.fillStyle = `rgba(${sRGB},${Math.min(1, p.a * tw + near * .35).toFixed(3)})`; x.fill();
+      }
+    }
+    if (fxOn('lumen')) {
+      // Few near the surface, more as you sink
+      const vis = .18 + depth * .82;
+      x.save(); x.shadowColor = `rgb(${lRGB})`;
+      for (const p of lumen) {
+        if (move) {
+          p.dir += Math.sin(t / 4000 + p.ph) * .01;
+          p.x += Math.cos(p.dir) * .12 * p.sp; p.y += Math.sin(p.dir) * .08 * p.sp - .03;
+          if (p.x < -10) p.x = W + 10; if (p.x > W + 10) p.x = -10; if (p.y < -10) p.y = H + 10; if (p.y > H + 10) p.y = -10;
+        }
+        const near = push(p, move ? -.15 : 0);   // curious: drifts toward the light
+        const breathe = .35 + .65 * Math.pow(.5 + .5 * Math.sin(t / (1400 * p.sp) + p.ph), 2);
+        const a = Math.min(1, vis * breathe + near * .4);
+        x.shadowBlur = 10 + 10 * breathe;
+        x.beginPath(); x.arc(p.x, p.y, p.r, 0, 6.283);
+        x.fillStyle = `rgba(${lRGB},${(a * .9).toFixed(3)})`; x.fill();
+      }
+      x.restore();
+    }
+    if (move) requestAnimationFrame(frame);
+  }
+  addEventListener('resize', size); size(); requestAnimationFrame(frame);
+})();
+// Creatures: fish schools (far, behind the mist) and jellyfish (near), simulated on canvas
+(() => {
+  const fc = document.getElementById('fish'), jc = document.getElementById('jellies');
+  const fx = fc.getContext('2d'), jx = jc.getContext('2d');
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  let W, H, dpr, schools = [], jellies = [];
+
+  function makeSchool(dir, pageY, par, n, scale) {
+    const fish = Array.from({ length: n }, () => ({
+      ox: rnd(-90, 90), oy: rnd(-26, 26), s: rnd(.75, 1.15) * scale, ph: rnd(0, 6.28), wag: rnd(.9, 1.2) }));
+    return { dir, pageY, par, fish, x: dir > 0 ? rnd(-200, W * .4) : rnd(W * .6, W + 200), v: rnd(.32, .45), ph: rnd(0, 6.28) };
+  }
+  function makeJelly(xf, pageY, par, w) {
+    return { xf, pageY, par, w, x: xf * W, oy: 0, vy: 0, T: rnd(3600, 5200), ph: rnd(0, 5000), tp: rnd(0, 6.28),
+      tl: Array.from({ length: 8 }, () => rnd(3.2, 4.6)) };
+  }
+  function size() {
+    dpr = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight;
+    for (const [c, x] of [[fc, fx], [jc, jx]]) {
+      c.width = W * dpr; c.height = H * dpr; c.style.width = W + 'px'; c.style.height = H + 'px'; x.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    schools = [makeSchool(1, 520, .32, 11, 1.25), makeSchool(-1, 1150, .24, 8, 1), makeSchool(1, 1900, .2, 6, .8)];
+    // Jellies live in the side gutters only; none on narrow screens
+    jellies = W < 900 ? [] : [makeJelly(.06, 620, .55, 22), makeJelly(.935, 1250, .7, 14), makeJelly(.9, 2100, .45, 10)];
+  }
+
+  // A fish facing +x, length ~ 22*s, tail angle a
+  function drawFish(x, f, a) {
+    const L = 22 * f.s;
+    x.beginPath();
+    x.moveTo(L * .5, 0);
+    x.bezierCurveTo(L * .38, -L * .2, -L * .18, -L * .2, -L * .32, 0);
+    x.bezierCurveTo(-L * .18, L * .2, L * .38, L * .2, L * .5, 0);
+    x.fill();
+    x.save(); x.translate(-L * .3, 0); x.rotate(a);
+    x.beginPath(); x.moveTo(0, 0); x.lineTo(-L * .26, -L * .17); x.lineTo(-L * .2, 0); x.lineTo(-L * .26, L * .17); x.closePath(); x.fill();
+    x.restore();
+  }
+
+  function drawJelly(x, j, k, A, t, L) {
+    const w = j.w, bw = w * (1 - .2 * k), bh = w * .85 * (1 + .16 * k);
+    // tentacles first, behind the bell
+    const tg = x.createLinearGradient(0, 0, 0, w * 4.6);
+    tg.addColorStop(0, `rgba(${L},${(.2 * A).toFixed(3)})`); tg.addColorStop(1, `rgba(${L},0)`);
+    x.strokeStyle = tg; x.lineWidth = .7;
+    const slack = 1 - Math.min(1, Math.abs(j.vy) * 1.6);   // fast strokes pull the tentacles straight
+    for (let i = 0; i < 8; i++) {
+      const rx = -bw * .85 + (bw * 1.7) * i / 7, len = w * j.tl[i], m = 16;
+      x.beginPath(); x.moveTo(rx, bh * .04);
+      for (let s = 1; s <= m; s++) {
+        const q = s / m;
+        const wave = Math.sin(t / 650 - s * .5 + i * 1.7) * (1.5 + 9 * q) * (.35 + .65 * slack);
+        x.lineTo(rx * (1 + q * .25 * slack) + wave, bh * .04 + len * q * (1 - .12 * k));
+      }
+      x.stroke();
+    }
+    // oral arms: short frilly ribbons
+    x.lineWidth = 2; x.strokeStyle = `rgba(${L},${(.07 * A).toFixed(3)})`;
+    for (let i = -1; i <= 1; i++) {
+      x.beginPath(); x.moveTo(i * bw * .18, 0);
+      for (let s = 1; s <= 10; s++) x.lineTo(i * bw * .18 + Math.sin(t / 500 + s * .8 + i) * 2.2, s * w * .16);
+      x.stroke();
+    }
+    // bell
+    x.beginPath();
+    x.moveTo(-bw, 0);
+    x.bezierCurveTo(-bw, -bh * 1.3, bw, -bh * 1.3, bw, 0);
+    x.quadraticCurveTo(bw * .7, bh * .14, 0, bh * .08);
+    x.quadraticCurveTo(-bw * .7, bh * .14, -bw, 0);
+    const g = x.createRadialGradient(0, -bh * .55, 0, 0, -bh * .4, bw * 1.25);
+    g.addColorStop(0, `rgba(${L},${(.11 * A).toFixed(3)})`);
+    g.addColorStop(.65, `rgba(${L},${(.04 * A).toFixed(3)})`);
+    g.addColorStop(1, `rgba(${L},${(.015 * A).toFixed(3)})`);
+    x.fillStyle = g; x.fill();
+    x.save(); x.shadowColor = `rgba(${L},${(.5 * A).toFixed(3)})`; x.shadowBlur = 8;
+    x.strokeStyle = `rgba(${L},${(.24 * A).toFixed(3)})`; x.lineWidth = .8; x.stroke(); x.restore();
+    // subumbrella and gonads, barely there
+    x.beginPath(); x.moveTo(-bw * .72, -bh * .02); x.quadraticCurveTo(0, -bh * .78, bw * .72, -bh * .02);
+    x.strokeStyle = `rgba(${L},${(.09 * A).toFixed(3)})`; x.lineWidth = .7; x.stroke();
+    x.fillStyle = `rgba(${L},${(.06 * A).toFixed(3)})`;
+    for (const sx of [-1, 1]) { x.beginPath(); x.ellipse(sx * bw * .27, -bh * .5, bw * .17, bh * .11, sx * .5, 0, 6.283); x.fill(); }
+  }
+
+  let last = performance.now();
+  function frame(t) {
+    const f = Math.min(3, (t - last) / 16.67); last = t;
+    const cs = getComputedStyle(root);
+    const depth = parseFloat(cs.getPropertyValue('--depth')) || 0;
+    const L = cs.getPropertyValue('--lumen').trim(), F = cs.getPropertyValue('--fish').trim(), FA = parseFloat(cs.getPropertyValue('--fish-a'));
+    const move = true;
+
+    fx.clearRect(0, 0, W, H);
+    if (fxOn('fish')) {
+      fx.fillStyle = `rgba(${F},${FA})`;
+      for (const sc of schools) {
+        if (move) {
+          sc.x += sc.v * sc.dir * f;
+          if (sc.dir > 0 && sc.x > W + 220) sc.x = -220;
+          if (sc.dir < 0 && sc.x < -220) sc.x = W + 220;
+        }
+        const sy = sc.pageY - scrollY * sc.par + Math.sin(t / 5200 + sc.ph) * 26;
+        if (sy < -120 || sy > H + 120) continue;
+        const slope = Math.cos(t / 5200 + sc.ph) * 26 / 5200 * 16.67 / (sc.v || 1);   // heading follows the wave
+        for (const fi of sc.fish) {
+          const x = sc.x + fi.ox * sc.dir + Math.sin(t / 1300 + fi.ph) * 5, y = sy + fi.oy + Math.cos(t / 1700 + fi.ph) * 4;
+          fx.save(); fx.translate(x, y); fx.scale(sc.dir, 1); fx.rotate(slope * .6);
+          drawFish(fx, fi, Math.sin(t / 160 * fi.wag + fi.ph) * .35);
+          fx.restore();
+        }
+      }
+    }
+
+    jx.clearRect(0, 0, W, H);
+    if (fxOn('jelly')) {
+      const A = .55 + depth * .45;
+      for (const j of jellies) {
+        const ph = ((t + j.ph) % j.T) / j.T;
+        // contraction: quick squeeze (0-22%), slow relaxation
+        const k = ph < .22 ? Math.sin(ph / .22 * Math.PI / 2) : Math.pow(1 - (ph - .22) / .78, 2);
+        const tilt = Math.sin(t / 7000 + j.tp) * .2;
+        if (move) {
+          const steer = j.oy < -140 ? .35 : j.oy > 140 ? 1.5 : 1;
+          if (ph < .22) j.vy -= .014 * steer * f * (j.w / 18);
+          j.vy += .0045 * f;                 // negative buoyancy: sinks between strokes
+          j.vy *= Math.exp(-f / 50);         // water drag
+          j.oy += j.vy * f;
+          j.x += Math.sin(tilt) * -j.vy * f + (j.xf * W - j.x) * .002 * f;
+        }
+        const y = j.pageY - scrollY * j.par + j.oy;
+        if (y < -200 || y > H + 200) continue;
+        jx.save(); jx.translate(j.x, y); jx.rotate(tilt);
+        drawJelly(jx, j, k, A, t, L);
+        jx.restore();
+      }
+    }
+    if (move) requestAnimationFrame(frame);
+  }
+  addEventListener('resize', size); size(); requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
