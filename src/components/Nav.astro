@@ -201,14 +201,12 @@ const isCurrent = (url: string) => currentPath === normalizePath(url);
   .ds-nav-item::before {
     content: '';
     position: absolute;
-    left: 0;
-    top: 8px;
-    bottom: 8px;
-    width: 2px;
-    background: var(--accent);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 180ms var(--ease);
+    inset: auto 0 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--glow), var(--fg) 70%, transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 550ms var(--ease);
   }
 
   .ds-nav-item:hover,
@@ -220,7 +218,7 @@ const isCurrent = (url: string) => currentPath === normalizePath(url);
   .ds-nav-item:hover::before,
   .ds-nav-item:focus-visible::before,
   .ds-nav-item[aria-current='page']::before {
-    transform: scaleY(1);
+    transform: scaleX(1);
   }
 
   .ds-nav-item:focus-visible,
@@ -259,7 +257,7 @@ const isCurrent = (url: string) => currentPath === normalizePath(url);
   }
 
   .ds-nav-language a:hover {
-    text-decoration-color: var(--accent);
+    text-decoration-color: var(--glow);
   }
 
   @media (min-width: 560px) {

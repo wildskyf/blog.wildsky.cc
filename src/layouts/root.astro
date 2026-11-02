@@ -61,7 +61,7 @@ const {
         const meta = document.querySelector('meta[name="theme-color"]');
         const sync = () => {
           const t = document.documentElement.getAttribute('data-theme');
-          if (meta) meta.setAttribute('content', t === 'tide-dark' ? '#07181A' : '#E7F0F1');
+          if (meta) meta.setAttribute('content', t === 'tide-dark' ? '#2A3843' : '#F2F4F5');
         };
         sync();
         new MutationObserver(sync).observe(document.documentElement, {
@@ -75,7 +75,7 @@ const {
     <link rel="me" href="https://www.linkedin.com/in/wildsky/" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta content="dark light" name="color-scheme" />
-    <meta name="theme-color" content="#07181A" />
+    <meta name="theme-color" content="#2A3843" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -117,11 +117,11 @@ const {
 
   <body>
     <!--
-      THESIS: A decade of technical writing becomes a private folio descending through petrol water; it refuses the dashboard/HUD arrangement.
-      OWN-WORLD: Teal-black water and wet paper, serif typography, hairlines, deckle strata, cropped monochrome marine silhouettes, scarce blood red and one coral beacon.
+      THESIS: A decade of technical writing read as a slow descent through a blue-graphite water column; reading deeper sinks the page.
+      OWN-WORLD: Graphite water, silver type, light shafts and dust, marine snow, bioluminescence, jellyfish, far shoals, a stone-needle floor; red only at a few focal points, gold the single warm note.
       STORY: The visitor recognizes Wildsky, reads the exact manifesto, scans real posts by date and topic, then continues into the archive.
-      FIRST VIEWPORT: A 72px seal header, oversized two-line manifesto, article count, and the newest post cross the first moving depth boundary.
-      FORM: Approved comp v8 canon; seed key approved-v8-canon.
+      FIRST VIEWPORT: A translucent header with a dotted leader, the two-line manifesto over a drifting current line, an English HUD readout, and the newest post.
+      FORM: Approved comp v9 canon (comp/index-v9.html).
       FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
     -->
     <div class="page-container">

@@ -1366,10 +1366,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/cormorant-sc@npm:^5.2.8":
+"@fontsource/cinzel@npm:^5.3.0":
   version: 5.3.0
-  resolution: "@fontsource/cormorant-sc@npm:5.3.0"
-  checksum: 7202000b6b65042b7951ae7ffdadd2d0836e960480b2903a258cc95fb6ea086a5be7674ea06e3a03ae74f11ab8810a2910a65b80073b11b75dcb3f233628caa1
+  resolution: "@fontsource/cinzel@npm:5.3.0"
+  checksum: ea9b13911c69e904991e7a72e0019a4288a0c8e9a4f5cc6278ee7d42e29d6b41d1dfc4fd0763e232fe6322bce03c6582d26756da91998f558d7b27b8ceb1ef75
   languageName: node
   linkType: hard
 
@@ -6843,7 +6843,7 @@ __metadata:
     "@fontsource-variable/eb-garamond": ^5.3.0
     "@fontsource-variable/jetbrains-mono": ^5.3.0
     "@fontsource-variable/noto-serif-tc": ^5.2.8
-    "@fontsource/cormorant-sc": ^5.2.8
+    "@fontsource/cinzel": ^5.3.0
     "@fontsource/space-mono": ^5.2.8
     "@iconify-json/ant-design": 1.2.5
     "@iconify-json/bx": 1.2.2

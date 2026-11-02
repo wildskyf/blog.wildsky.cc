@@ -39,19 +39,17 @@ North Star：**覆潮之下 — 哥德航海 × 有機深淵**。
 
 氣質：**沉靜、精確、略帶敬畏；技術文件的清晰是主體，深海航行日誌是外殼。**
 
-這個站像一冊在深水中持續書寫的私人航海誌：暗青綠的水、帶青冷白的紙、極少量血紅錨點，
-以及不足 1% 的珊瑚暖光。Dark 是深淵中的日誌，Light 是陰天海面上的紙頁；兩者不是機械反相，
-但共享同一套襯線排版、有機邊界、航海線稿與稀缺暖色紀律。
+這個站像一道會隨閱讀下沉的水柱：石墨藍的水、銀白的字、只在焦點出現的血紅，以及唯一的暖色燈火金。
+Dark 是深水，Light 是起霧的海岸；兩者共用同一套襯線排版、環境層與稀缺色紀律。
 
-v7（`comp/index-v7.html`）確立的「哥德航海 + 有機深淵」是 canon。早期「科技切角 HUD」方向已退場：
-精確斜線網格、遙測式讀數、方正科技字身與切角面板都不再代表 Wildsky。視覺語言的 token、字體、
-形狀、對比與面積預算以 `DESIGN.md` 為唯一規格。
+v9（`comp/index-v9.html`，2026-11-02 定案）是 canon，取代 v7／v8 的「哥德航海 + 有機深淵」。
+視覺語言的 token、字體、環境層、對比與面積預算以 `DESIGN.md` 為唯一規格。
 
 這個方向適合產品的原因：
 
 - 「自己的堡壘」由可長期維護的排版與 token 建立，不靠平台模板或遊戲資產。
 - 「工作或商業機會」需要長文可讀與技術可信度，因此正文永遠優先於氣氛裝飾。
-- 「個人數位形象」需要節制；血紅 <5%、珊瑚 <1% 是具體而可驗收的品牌紀律。
+- 「個人數位形象」需要節制；血紅 <5%、燈火金只做少數點綴，是具體而可驗收的品牌紀律。
 - 十年內容的深度由時間、排版與環境層自然呈現，不靠一套航海術語要求讀者解碼。
 
 ## Operating Context
@@ -84,7 +82,7 @@ v7（`comp/index-v7.html`）確立的「哥德航海 + 有機深淵」是 canon�
 
 技術現況（既有 codebase 已回答，非新決策）：Astro 7 + Tailwind CSS v4，Yarn 3，
 輸出目錄 `./out`。視覺系統不依賴元件主題套件；字型套件為 Noto Serif TC Variable、EB Garamond Variable、
-Cormorant SC 600、Space Mono 400／700 與 JetBrains Mono Variable，退場字體及 daisyUI／`theme-change` 均已移除。
+Cinzel 400／500／600、Space Mono 400／700 與 JetBrains Mono Variable，退場字體（含 Cormorant SC）及 daisyUI／`theme-change` 均已移除。
 
 明確未定案（不得自行發明）：
 
@@ -105,17 +103,16 @@ Cormorant SC 600、Space Mono 400／700 與 JetBrains Mono Variable，退場字�
 
 ## Interface Language
 
-Wayfinding 與 metadata 使用讀者不需學習的直白名稱。深海是視覺外殼，不是介面字典。
+2026-11-02 起，chrome 使用短英文大寫的 HUD 讀數（使用者決定，取代先前「一律直白名稱、DEPTH 等詞退出介面」的規則）：
 
-- 文章列表不再冠上 `DESCENT LOG`；首頁以品牌 tagline 作唯一主標題。
-- 日期直接顯示日期；分類直接顯示分類；閱讀時間使用「12 分鐘」等自然語言。
-- 最新內容標成「最新」；搜尋、關於、留言、下一頁皆使用原本功能名稱。
+- 導覽：`ABOUT`、`SEARCH`、`ARCHIVE`；`aria-label` 保留各語系原名。
+- 首頁：kicker `UNDER THE TIDE`，manifesto 下方顯示 `ENTRIES`／`LAST`／`DEPTH 0 m`／`SINCE 2014`。
+- 列表與文章 meta：`分類 / 6 MIN / 2026.08.20`；最新一篇標 `NEW`。
+- 文章頁右側深度計顯示 `DEPTH` 與 `000–200 m`；數值是閱讀進度換算，不代表真實資料。
 - 主題切換只顯示太陽／月亮 SVG，並以 `aria-label` 說明「切換到亮色／深色主題」。
-- `DESCENT LOG`、`DESCEND`、`SURFACE`、`BEACON`、`SOUNDING`、`ECHO`、`DEPTH`、`BEARING`、
-  `TIDE TABLE`、`CURRENT` 全數退出可見介面，不另創替代隱喻。
+- 首頁 manifesto 仍是唯一主標題，且必須逐字維持 tagline。
 
-英文 true small caps 與 Space Mono 仍可用於真正的英文縮寫、日期或技術數值；中文維持明體正常字形、
-字距不超過 0.02em，不因氣氛強行翻成英文。
+正文、文章標題、分類名稱與既有文章內容不因 HUD 而改寫；HUD 只存在於 chrome 與 meta。
 
 ## Legal and Taste Boundaries
 
@@ -127,8 +124,8 @@ Wayfinding 與 metadata 使用讀者不需學習的直白名稱。深海是視�
 - 遊戲專有名詞作站內品牌、導覽或元件名稱：海嗣／Seaborn、阿戈爾／Ægir、深海教會／Church of the Deep、
   深海獵人／Abyssal Hunter、濱海壞印／Nethersea Brand、伊比利亞之眼／Eye of Iberia、Rhodes Island、
   幹員／Operator、Monster Siren，以及任何角色名。
-- 仿製活動 logo 的字型、比例、圖文鎖定或標題排版；不得使用遊戲字型。
-- 把站台描述成某角色、陣營或活動的主題站；本專案的風格必須能獨立於來源被辨識。
+- 仿製活動 logo 的字型、比例、圖文鎖定或標題排版；不得使用遊戲字型。首頁的海流線是原創造型，不得改成參照活動標題字的斜線；W 標誌的斷筆造型經使用者判定不像活動標準字（2026-11-02）。
+- 把站台描述成某角色、陣營或活動的主題站；本專案的風格必須能獨立於來源被辨識。About 頁可以說明靈感來源與取色過程，但不放官方圖像。
 
 視覺 anti-references 的完整規格在 `DESIGN.md`。
 

@@ -5,20 +5,32 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 import { getTranslation } from '@/i18n/utils.ts';
 import type { Locale } from '@/i18n/translations.ts';
 
+const { pageName } = Astro.props as { pageName?: string };
 const currentLocale = (Astro.currentLocale === 'en' ? 'en' : 'tw') as Locale;
 const home_url = getRelativeLocaleUrl(currentLocale, '');
 const t = getTranslation(currentLocale);
 
+// v9: chrome speaks in short English capitals (product decision 2026-11-02); aria keeps the locale wording
 const quickLinks = [
-  { title: t.nav.about, url: currentLocale === 'en' ? '/en/about-en/' : '/about/' },
-  { title: t.nav.search, url: currentLocale === 'en' ? '/en/search/' : '/search/' },
-  { title: t.nav.archive, url: currentLocale === 'en' ? '/en/archive/' : '/archive/' },
+  { title: 'About', label: t.nav.about, url: currentLocale === 'en' ? '/en/about-en/' : '/about/' },
+  {
+    title: 'Search',
+    label: t.nav.search,
+    url: currentLocale === 'en' ? '/en/search/' : '/search/',
+  },
+  {
+    title: 'Archive',
+    label: t.nav.archive,
+    url: currentLocale === 'en' ? '/en/archive/' : '/archive/',
+  },
 ];
 const quickNavLabel = currentLocale === 'en' ? 'Primary navigation' : '主要導覽';
 const normalizePath = (path: string) => (path === '/' ? path : path.replace(/\/+$/, ''));
 const currentPath = normalizePath(Astro.url.pathname);
+const isHome = currentPath === normalizePath(home_url);
+const location = isHome ? (currentLocale === 'en' ? 'Home' : '首頁') : pageName;
 
-// 品牌印的字母：站名首字。方括號 lockup 是 HUD 語彙，已退場。
+// 品牌印的字母：站名首字
 const seal = 'W';
 ---
 
@@ -26,8 +38,12 @@ const seal = 'W';
   <div class="chrome-inner ds-header-inner">
     <a class="ds-brand" href={home_url}>
       <span class="ds-seal" aria-hidden="true">{seal}</span>
-      <span class="ds-brand-name">Wildsky</span>
+      <span class="ds-brand-name" lang="en">Wildsky</span>
     </a>
+
+    <div class="ds-leader" aria-hidden="true">
+      {location && <span class="ds-leader-loc">{location}</span>}
+    </div>
 
     <div class="ds-header-actions">
       <nav class="ds-header-quick-nav" aria-label={quickNavLabel}>
@@ -37,6 +53,8 @@ const seal = 'W';
               <li>
                 <a
                   href={item.url}
+                  lang="en"
+                  aria-label={item.label}
                   aria-current={currentPath === normalizePath(item.url) ? 'page' : undefined}
                 >
                   {item.title}
@@ -53,58 +71,80 @@ const seal = 'W';
 </header>
 
 <style>
+  /* Sticky, translucent; the water shows through under a light blur */
   .ds-header {
-    position: relative;
-    z-index: 3;
+    position: sticky;
+    top: 0;
+    z-index: 20;
     flex: none;
-    height: 72px;
-    background: var(--bg-surface);
-  }
-
-  /* 尾端 40px 的紅 —— 紅色作為「線」的標準用法 */
-  .ds-header::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
+    height: var(--header-h);
     background: linear-gradient(
-      to right,
-      var(--rule) 0,
-      var(--rule) calc(100% - 40px),
-      var(--accent) calc(100% - 40px),
-      var(--accent) 100%
+      180deg,
+      color-mix(in oklab, var(--water-1) 82%, transparent),
+      color-mix(in oklab, var(--water-1) 55%, transparent)
     );
+    backdrop-filter: blur(10px) saturate(1.1);
+    -webkit-backdrop-filter: blur(10px) saturate(1.1);
+    border-bottom: 1px solid var(--rule);
   }
 
   .ds-header-inner {
     height: 100%;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 20px;
   }
 
   .ds-brand {
     display: inline-flex;
     align-items: center;
-    gap: 13px;
+    gap: 12px;
     flex: none;
     color: var(--fg);
     text-decoration: none;
   }
 
   .ds-brand-name {
-    font-family: var(--font-label);
-    font-size: 19px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    font-variant-caps: all-small-caps;
-    font-feature-settings:
-      'smcp' 1,
-      'c2sc' 1;
-    line-height: 1.4;
+    font-family: var(--font-caps);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
     white-space: nowrap;
+  }
+
+  /* A dotted leader running to the current page name */
+  .ds-leader {
+    flex: 1;
+    min-width: 0;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-meta);
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 0.06em;
+    color: var(--fg-faint);
+  }
+  .ds-leader::before {
+    content: '';
+    flex: 1;
+    height: 1px;
+    opacity: 0.8;
+    background-image: radial-gradient(var(--fg-faint) 0.8px, transparent 1px);
+    background-size: 6px 1px;
+    background-repeat: repeat-x;
+  }
+  .ds-leader-loc {
+    max-width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .ds-leader-loc::before {
+    content: ': ';
+    color: var(--glow);
   }
 
   .ds-header-actions {
@@ -114,58 +154,42 @@ const seal = 'W';
     gap: 4px;
   }
 
-  .ds-header-quick-nav ul {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    margin: 0 10px 0 0;
-    padding: 0;
-    list-style: none;
-  }
-
   .ds-header-quick-nav {
     display: none;
   }
 
-  .ds-header-quick-nav a {
-    position: relative;
-    min-height: 44px;
-    padding: 0 11px;
-    display: inline-flex;
+  .ds-header-quick-nav ul {
+    display: flex;
     align-items: center;
-    font-family: var(--font-label);
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.4;
-    letter-spacing: 0.02em;
-    color: var(--fg-muted);
-    text-decoration: none;
-    transition: color var(--t) var(--ease);
+    gap: 22px;
+    margin: 0 18px 0 0;
+    padding: 0;
+    list-style: none;
   }
 
-  .ds-header-quick-nav a::after {
-    content: '';
-    position: absolute;
-    right: 11px;
-    bottom: 5px;
-    left: 11px;
-    height: 1px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 180ms var(--ease);
+  .ds-header-quick-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-family: var(--font-caps);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition:
+      color var(--t) var(--ease),
+      border-color var(--t) var(--ease);
   }
 
   .ds-header-quick-nav a:hover,
   .ds-header-quick-nav a:focus-visible,
   .ds-header-quick-nav a[aria-current='page'] {
     color: var(--fg);
-  }
-
-  .ds-header-quick-nav a:hover::after,
-  .ds-header-quick-nav a:focus-visible::after,
-  .ds-header-quick-nav a[aria-current='page']::after {
-    transform: scaleX(1);
+    border-bottom-color: var(--glow);
   }
 
   .ds-header-quick-nav a:focus-visible {
@@ -177,17 +201,8 @@ const seal = 'W';
     .ds-header-quick-nav {
       display: block;
     }
-
-    .ds-brand-name {
-      font-size: 32px;
-      letter-spacing: 0.055em;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .ds-header-quick-nav a,
-    .ds-header-quick-nav a::after {
-      transition: none;
+    .ds-leader {
+      display: flex;
     }
   }
 </style>

@@ -1,101 +1,137 @@
 /* ============================================================
    TOKEN LAYER — 唯一允許出現色值的地方
-   來源：DESIGN.md「Colors / Token 契約」與「環境層 token」
+   來源：DESIGN.md「Colors / Token 契約」（v9 canon，comp/index-v9.html）
    任何 component 寫死色值（hex 或 Tailwind 調色盤 class）即違規。
+
+   色值取自參考美術的 k-means 取色：水是偏藍的石墨（H≈205–215°、S≈15–25%），
+   不是飽和青綠。銀白是主角；潮汐青是功能色；血紅只做焦點；燈火金是唯一暖色。
    ============================================================ */
 
 [data-theme='tide-dark'] {
   color-scheme: dark;
 
-  --bg: #07181a;
-  --bg-surface: #0a2325;
-  --bg-raised: #123234;
-  --bg-sunken: #041113;
+  /* 水柱：頁首 → 深淵。背景是一道由上往下變暗的梯度，捲動時再整體下沉。 */
+  --water-1: #2a3843;
+  --water-2: #1a222b;
+  --water-3: #12171d;
+  --water-4: #0b0e11;
 
-  --fg: #ddebec;
-  --fg-muted: #a3c0c3;
-  --fg-faint: #76a0a5;
-  --fg-on-accent: #f5f8f8;
+  --bg: #14191f;
+  --bg-surface: #181e25;
+  --bg-raised: #1e252d;
+  --bg-sunken: #0b0e11;
 
-  --rule: #2d575b;
+  /* 文字：小字一律以最亮的 --water-1 驗算（頁首的 meta 就坐在那裡）。
+     --fg-muted 6.4、--fg-faint 4.8（on --water-1）。 */
+  --fg: #e6e8e9;
+  --fg-muted: #b9bdc5;
+  --fg-faint: #9aa4b0;
+  --fg-on-accent: #f5f5f6;
 
-  --accent: #c8323e;
-  --accent-text: #f06e78;
-  --accent-fill: #9f1f2b;
+  --rule: #2c353d;
+  --rule-strong: #46515b;
 
-  --glow: #7fd3d4;
-  --glow-dim: #62b7b9;
-  --glow-line: #3f9b9e;
-  --ember: #e8895a;
+  /* 血紅：標誌、引言線、NEW 的菱形。--accent-text 只給小字（on --water-1 4.1、on --bg 6.0）。 */
+  --accent: #b3262f;
+  --accent-text: #ec6f78;
+  --accent-fill: #b3262f;
+  --accent-glow: color-mix(in oklab, #b3262f 55%, transparent);
+
+  /* 潮汐青：連結、進度、焦點。只做功能，不做氣氛大面積。 */
+  --glow: #7eb5ac;
+  --glow-dim: #4f8f90;
+  --glow-line: #4f8f90;
+  --glow-text: #93c9bf;
+
+  /* 燈火金：唯一暖色。小標題編號、反白選取、程式碼字串。 */
+  --gold: #d9c89d;
+  --gold-text: #d9c89d;
+  --gold-glow: color-mix(in oklab, #d9c89d 45%, transparent);
+  --ember: #d9c89d;
+
+  --selection-bg: color-mix(in oklab, #d9c89d 30%, transparent);
+  --selection-fg: #ffffff;
+
+  --title-grad: linear-gradient(100deg, #8fc9be 0%, #cfe3df 30%, #eef0f0 55%, #e6e8e9 100%);
 
   --body-smoothing: antialiased;
 
-  /* Environment tokens stay in the 180–189 degree petrol/teal range. */
-  --env-surface: #15383a;
-  --env-mid: #0e292b;
-  --env-deep: #081d1f;
-  --env-abyss: #041315;
-  --env-raised: #1a4143;
-  --env-silhouette: #020a0b;
-
-  /* 光的顏色。暗色的光是青綠（生物光／深水散射） */
-  --env-beam: #76a0a5;
-  --env-caustic: #7fd3d4;
-  --env-spark: #3f9b9e;
-
-  /* 環境層強度 —— 見 DESIGN.md「環境層強度」表，這些是實測解出的上限 */
-  --env-grain-blend: screen;
-  --env-strata-op: 0.5;
-  --env-organic-op: 0.82;
-  --env-mote-op: 0.11;
-  --mobile-page-veil: 0.78;
+  /* 環境層 */
+  --env-ray: color-mix(in oklab, #bed7e1 7.5%, transparent);
+  --env-snow: 205, 225, 230;
+  --env-dust: 225, 236, 238;
+  --env-lumen: 126, 214, 200;
+  --env-fish: 3, 6, 9;
+  --env-fish-a: 0.72;
+  --env-sil: color-mix(in oklab, #06090c 62%, transparent);
+  --env-sil-near: #06080b;
+  --env-sil-far: #10161c;
+  --env-lantern: color-mix(in oklab, #bedce4 7%, transparent);
+  --env-grain-op: 0.07;
+  --env-grain-blend: overlay;
+  --env-fog-op: 0.11;
+  --env-sigil-op: 0.07;
 }
 
+/* Light ＝ 起霧的海岸：同一套水柱，落在紙的亮度區間 */
 [data-theme='tide-light'] {
   color-scheme: light;
 
-  --bg: #e7f0f1;
-  --bg-surface: #f4f8f8;
-  --bg-raised: #dbe9ea;
-  --bg-sunken: #d2e1e2;
+  --water-1: #f2f4f5;
+  --water-2: #e6eaec;
+  --water-3: #dbe1e4;
+  --water-4: #cfd7db;
 
-  --fg: #102c2f;
-  --fg-muted: #365f63;
-  --fg-faint: #3c666a;
-  --fg-on-accent: #f9fbfb;
+  --bg: #e6eaec;
+  --bg-surface: #f2f4f5;
+  --bg-raised: #dbe1e4;
+  --bg-sunken: #d4dbdf;
 
-  --rule: #a7c2c4;
+  /* on --water-4（最暗底）：--fg-muted 6.2、--fg-faint 4.3（只用於 ≥12px 的 meta） */
+  --fg: #161c22;
+  --fg-muted: #3e4a55;
+  --fg-faint: #56626d;
+  --fg-on-accent: #f9fafa;
 
-  --accent: #c8323e;
-  --accent-text: #98212c;
-  --accent-fill: #c8323e;
+  --rule: #c7cfd3;
+  --rule-strong: #a3adb3;
 
-  --glow: #075d60;
-  --glow-dim: #23696c;
-  --glow-line: #26898d;
-  --ember: #9e431f;
+  --accent: #9e1f28;
+  --accent-text: #9e1f28;
+  --accent-fill: #9e1f28;
+  --accent-glow: transparent;
+
+  --glow: #2f7d72;
+  --glow-dim: #2a6b62;
+  --glow-line: #6f9e98;
+  --glow-text: #1f6157;
+
+  --gold: #8a6d2c;
+  --gold-text: #6e5420;
+  --gold-glow: transparent;
+  --ember: #8a6d2c;
+
+  --selection-bg: color-mix(in oklab, #8a6d2c 22%, transparent);
+  --selection-fg: #161c22;
+
+  --title-grad: linear-gradient(100deg, #2f7d72 0%, #1d3a3a 35%, #161c22 60%, #161c22 100%);
 
   --body-smoothing: auto;
 
-  /* 淺灘：同一條明度軸、同一個色相帶，但落在紙的亮度區間 */
-  --env-surface: #edf5f5;
-  --env-mid: #dce9ea;
-  --env-deep: #ccdde0;
-  --env-abyss: #c0d4d6;
-  --env-raised: #e3eeee;
-  --env-silhouette: #a8c4c6;
-
-  --env-beam: #f4f8f8;
-  --env-caustic: #f4f8f8;
-  --env-spark: #26898d;
-
-  /* 亮色的剪影與微粒是「深色物」，會扣掉正文背景亮度 —— 必須壓弱。
-     0.24 / 0.055 是讓 --fg-muted 保住 AA 的實測上限，不是品味。 */
+  --env-ray: color-mix(in oklab, #ffffff 50%, transparent);
+  --env-snow: 40, 55, 65;
+  --env-dust: 90, 105, 115;
+  --env-lumen: 40, 125, 112;
+  --env-fish: 55, 70, 82;
+  --env-fish-a: 0.3;
+  --env-sil: color-mix(in oklab, #465560 16%, transparent);
+  --env-sil-near: #b9c4ca;
+  --env-sil-far: #ccd5da;
+  --env-lantern: color-mix(in oklab, #ffffff 25%, transparent);
+  --env-grain-op: 0.09;
   --env-grain-blend: multiply;
-  --env-strata-op: 0.55;
-  --env-organic-op: 0.24;
-  --env-mote-op: 0.055;
-  --mobile-page-veil: 0.88;
+  --env-fog-op: 0.4;
+  --env-sigil-op: 0.1;
 }
 
 /* ============================================================
@@ -105,7 +141,9 @@
   /* Keep ui-serif out: some platforms resolve its missing CJK glyphs through a UI sans fallback. */
   --font-system-cjk-serif:
     'Songti TC', 'Noto Serif CJK TC', 'Noto Serif TC', 'PMingLiU', 'MingLiU', serif;
-  --font-display: 'Cormorant SC', 'EB Garamond Variable', var(--font-system-cjk-serif);
+  /* 字距拉開的古典大寫：標誌、導覽、小標、編號 */
+  --font-caps: 'Cinzel', 'EB Garamond Variable', var(--font-system-cjk-serif);
+  --font-display: var(--font-caps);
   --font-cjk-display: 'Noto Serif TC Variable', var(--font-system-cjk-serif);
   --font-headline: 'EB Garamond Variable', var(--font-system-cjk-serif);
   --font-label: 'EB Garamond Variable', var(--font-system-cjk-serif);
@@ -115,14 +153,16 @@
 
   /* 版面骨架 */
   --chrome: 1120px;
-  --gutter-col: 140px;
+  --gutter-col: 150px;
   --measure: 720px;
-  --page-gutter: 24px;
-
-  --fs-watermark: 132px;
+  --page-gutter: 32px;
+  --header-h: 68px;
 
   --ease: cubic-bezier(0.2, 0, 0, 1);
   --t: 120ms;
+
+  /* 0 在水面、1 在頁底；由環境層的捲動腳本寫入 */
+  --depth: 0;
 }
 
 html:lang(en) {
@@ -131,7 +171,7 @@ html:lang(en) {
 
 @media (max-width: 1119px) {
   :root {
-    --gutter-col: 96px;
+    --gutter-col: 110px;
   }
 }
 

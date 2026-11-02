@@ -113,7 +113,7 @@ const filterPlaceholder = isEnglish ? 'Enter a tag name' : '輸入標籤名稱';
     line-height: 1.5;
     letter-spacing: 0.008em;
     color: var(--fg);
-    caret-color: var(--accent);
+    caret-color: var(--glow);
     appearance: none;
     transition: border-color var(--t) var(--ease);
   }
@@ -198,14 +198,12 @@ const filterPlaceholder = isEnglish ? 'Enter a tag name' : '輸入標籤名稱';
   .ds-tag-list a::before {
     content: '';
     position: absolute;
-    top: 10px;
-    bottom: 10px;
-    left: 0;
-    width: 2px;
-    background: var(--accent);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 180ms var(--ease);
+    inset: auto 0 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--glow), var(--fg) 70%, transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 550ms var(--ease);
   }
 
   .ds-tag-list a:hover,
@@ -215,7 +213,7 @@ const filterPlaceholder = isEnglish ? 'Enter a tag name' : '輸入標籤名稱';
 
   .ds-tag-list a:hover::before,
   .ds-tag-list a:focus-visible::before {
-    transform: scaleY(1);
+    transform: scaleX(1);
   }
 
   .ds-tag-name {
@@ -238,7 +236,7 @@ const filterPlaceholder = isEnglish ? 'Enter a tag name' : '輸入標籤名稱';
     max-width: var(--measure);
     margin: 34px 0 0 var(--gutter-col);
     padding: 8px 0 8px 20px;
-    border-left: 2px solid var(--accent);
+    border-left: 2px solid var(--glow-line);
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.8;

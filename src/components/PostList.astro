@@ -9,6 +9,7 @@ type PostListItem = {
   title: string;
   tags?: string[];
   readingTime?: string | null;
+  readingMinutes?: number | null;
 };
 
 const {
@@ -21,7 +22,10 @@ const {
   showLatest?: boolean;
 };
 const root_path = lang == 'en' ? '/en' : '';
-const latestLabel = lang === 'en' ? 'Latest' : '最新';
+// v9 HUD wording (product decision 2026-11-02)
+const latestLabel = 'New';
+const minutes = (post: PostListItem) =>
+  post.readingMinutes ? `${post.readingMinutes} MIN` : (post.readingTime ?? null);
 const titleSegmenter = new Intl.Segmenter(lang === 'en' ? 'en' : 'zh-Hant', {
   granularity: 'word',
 });
@@ -36,7 +40,6 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
       return (
         <li class:list={['ds-row', showLatest && index === 0 && 'is-latest']}>
           <span class="ds-row-rule" aria-hidden="true" />
-          <span class="ds-row-mark" aria-hidden="true" />
 
           <div class="ds-row-grid">
             <div class="ds-row-gutter">
@@ -53,9 +56,13 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
                     {post.category}
                   </a>
                 )}
-                {post.category && post.readingTime && <span class="ds-meta-sep">·</span>}
-                {post.readingTime && <span>{post.readingTime}</span>}
-                {showLatest && index === 0 && <span class="ds-seal-tag">{latestLabel}</span>}
+                {post.category && minutes(post) && <span class="ds-meta-sep">/</span>}
+                {minutes(post) && <span lang="en">{minutes(post)}</span>}
+                {showLatest && index === 0 && (
+                  <span class="ds-new" lang="en">
+                    {latestLabel}
+                  </span>
+                )}
               </div>
 
               <h2 class="ds-row-title">
@@ -90,100 +97,73 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
     position: relative;
   }
 
+  /* Rows are separated by a hairline; hover draws a current along it */
   .ds-row-rule {
     position: absolute;
-    top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     height: 1px;
     background: var(--rule);
-    z-index: 1;
   }
-
-  /* The hero already closes with a double rule; avoid a third adjacent separator. */
-  .ds-row:first-child .ds-row-rule {
-    display: none;
-  }
-
-  /* hover 只做兩件事：紅線長出、日期升亮。整列底色不變 ——
-     填色面板是軟體 UI 的語彙，在紙與金屬的世界裡不成立。 */
-  .ds-row-mark {
+  .ds-row-rule::after {
+    content: '';
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 2px;
-    height: 100%;
-    background: var(--accent);
-    z-index: 2;
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 180ms var(--ease);
+    inset: 0;
+    width: 0;
+    background: linear-gradient(90deg, var(--glow), var(--fg) 70%, transparent);
+    transition: width 550ms var(--ease);
   }
 
-  .ds-row:focus-within .ds-row-mark {
-    transform: scaleY(1);
+  .ds-row::before {
+    content: '';
+    position: absolute;
+    inset: 0 calc(-1 * min(24px, var(--page-gutter)));
+    opacity: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--glow) 7%, transparent) 30%,
+      transparent
+    );
+    transition: opacity 400ms var(--ease);
   }
 
-  .ds-row.is-latest .ds-row-mark {
-    transform: scaleY(1);
+  .ds-row:focus-within .ds-row-rule::after {
+    width: 100%;
   }
-
-  .ds-row:focus-within .ds-log-day {
-    color: var(--fg);
+  .ds-row:focus-within::before {
+    opacity: 1;
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .ds-row:hover .ds-row-mark {
-      transform: scaleY(1);
+    .ds-row:hover .ds-row-rule::after {
+      width: 100%;
     }
-
+    .ds-row:hover::before {
+      opacity: 1;
+    }
     .ds-row:hover .ds-log-day {
-      color: var(--fg);
-    }
-  }
-
-  @media (hover: none), (pointer: coarse) {
-    .ds-row:active .ds-row-mark {
-      transform: scaleY(1);
-    }
-
-    .ds-row:active .ds-log-day {
       color: var(--fg);
     }
   }
 
   .ds-row-grid {
     position: relative;
-    z-index: 2;
     display: grid;
     grid-template-columns: var(--gutter-col) minmax(0, var(--measure));
-    padding: 30px 0 32px;
-  }
-
-  .ds-row-gutter {
-    position: relative;
-    padding-left: 18px;
-  }
-
-  /* 柱首刻線 —— 唯一的青色裝飾線 */
-  .ds-row-gutter::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 7px;
-    width: 9px;
-    height: 1px;
-    background: var(--glow-line);
+    gap: 8px 40px;
+    padding: 40px 0;
   }
 
   .ds-log-day {
     display: block;
-    font-family: var(--font-headline);
-    font-size: 23px;
-    font-weight: 600;
-    letter-spacing: 0.015em;
+    font-family: var(--font-meta);
+    font-size: 13px;
+    line-height: 2.2;
+    letter-spacing: 0.04em;
     color: var(--fg-muted);
-    line-height: 1.3;
     transition: color var(--t) var(--ease);
   }
 
@@ -194,53 +174,59 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
   .ds-row-meta {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
+    align-items: center;
     gap: 10px;
-    margin-bottom: 10px;
-    font-family: var(--font-label);
-    font-size: 15px;
-    font-weight: 500;
+    margin-bottom: 14px;
+    font-family: var(--font-meta);
+    font-size: 12px;
     line-height: 1.3;
-    letter-spacing: 0.015em;
-    color: var(--fg-muted);
-  }
-
-  .ds-meta-sep {
+    letter-spacing: 0.06em;
     color: var(--fg-faint);
   }
 
-  /* 分類：沒有框。是「刻線標題」不是按鈕。 */
+  .ds-meta-sep {
+    color: var(--rule-strong);
+  }
+
   .ds-chip {
     display: inline-flex;
     align-items: center;
-    font-family: var(--font-label);
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 1.3;
-    letter-spacing: 0.015em;
-    color: var(--fg-muted);
-    text-decoration-line: underline;
-    text-decoration-color: var(--rule);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
-    transition:
-      color var(--t) var(--ease),
-      text-decoration-color var(--t) var(--ease);
+    color: var(--fg-faint);
+    text-decoration: none;
+    transition: color var(--t) var(--ease);
   }
-
-  /* 不轉紅字：13px 的 --accent-text 在環境層上實測 3.83–4.17，過不了 AA。
-     紅色留在線上，文字升到 --fg。 */
   .ds-chip:hover,
   .ds-chip:focus-visible {
     color: var(--fg);
-    text-decoration-color: var(--accent);
+  }
+
+  /* NEW: a red diamond and red capitals — one of the few places red is allowed */
+  .ds-new {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-caps);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+  }
+  .ds-new::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px var(--accent-glow);
   }
 
   .ds-row-title {
-    margin: 0 0 14px;
+    margin: 0 0 16px;
     font-family: var(--font-headline);
-    font-size: 28px;
-    font-weight: 600;
+    font-size: 27px;
+    font-weight: 500;
     line-height: 1.45;
     letter-spacing: 0.008em;
     color: var(--fg);
@@ -263,35 +249,20 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
     white-space: nowrap;
   }
 
-  /* 標題不加底線 —— 底線是網頁語彙，紅線才是這套系統的語彙 */
-  .ds-row-title a:hover {
-    color: var(--fg);
-  }
-
   @media (max-width: 1119px) {
     .ds-row-grid {
-      grid-template-columns: 96px minmax(0, var(--measure));
+      grid-template-columns: var(--gutter-col) minmax(0, var(--measure));
+      column-gap: 28px;
     }
   }
 
-  @media (max-width: 899px) {
+  @media (max-width: 767px) {
     .ds-row-grid {
       grid-template-columns: 1fr;
-      padding: 24px 0 28px;
-    }
-
-    .ds-row-gutter {
-      grid-column: 1;
-      padding-left: 18px;
-    }
-
-    .ds-row-main {
-      grid-column: 1;
-      padding-left: 18px;
+      padding: 32px 0;
     }
 
     .ds-row-meta {
-      margin: 8px 0 10px;
       gap: 8px;
     }
 
@@ -300,17 +271,7 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
     }
 
     .ds-row-title {
-      font-size: 26px;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .ds-log-day {
-      font-size: 21px;
-    }
-
-    .ds-row-title {
-      font-size: 24px;
+      font-size: 23px;
     }
   }
 </style>

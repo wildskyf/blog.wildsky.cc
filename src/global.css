@@ -1,7 +1,9 @@
 /* 自架字體（PRODUCT.md 硬性約束：手刻自架、不依賴平台 —— 不走 Google Fonts CDN） */
 @import '@fontsource-variable/eb-garamond';
 @import '@fontsource-variable/jetbrains-mono';
-@import '@fontsource/cormorant-sc/600.css';
+@import '@fontsource/cinzel/400.css';
+@import '@fontsource/cinzel/500.css';
+@import '@fontsource/cinzel/600.css';
 @import '@fontsource/space-mono/400.css';
 @import '@fontsource/space-mono/700.css';
 @import '@fontsource-variable/noto-serif-tc';
@@ -44,8 +46,8 @@
 }
 
 ::selection {
-  background: var(--accent-fill);
-  color: var(--fg-on-accent);
+  background: var(--selection-bg);
+  color: var(--selection-fg);
 }
 
 /* ============================================================
@@ -58,9 +60,9 @@
 }
 
 .article-content a {
-  color: var(--fg);
+  color: var(--glow-text);
   text-decoration: none;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid color-mix(in oklab, var(--glow) 45%, transparent);
   transition:
     color var(--t) var(--ease),
     border-color var(--t) var(--ease);
@@ -69,7 +71,8 @@
 }
 
 .article-content a:hover {
-  border-bottom-color: var(--accent);
+  color: var(--fg);
+  border-bottom-color: var(--glow);
 }
 
 .article-content strong {
@@ -79,19 +82,31 @@
 .article-content mark {
   background: transparent;
   color: var(--fg);
-  border-bottom: 2px solid var(--accent);
+  border-bottom: 2px solid var(--gold);
   padding: 0 0.1em;
   font-weight: 600;
 }
 
-/* 引言：僅左側一道線 ＋ 透明底。無底色塊、無圓角。 */
+/* 引言：左側一道往下淡出的血紅線（v9） */
 .article-content blockquote {
-  margin: 28px 0;
-  padding: 4px 0 4px 22px;
+  position: relative;
+  margin: 2.2em 0;
+  padding: 6px 0 6px 28px;
   background: transparent;
-  border-left: 2px solid var(--accent);
-  font-style: normal;
+  border: 0;
+  font-style: italic;
   color: var(--fg-muted);
+}
+
+.article-content blockquote::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-text), transparent);
+  box-shadow: 0 0 8px var(--accent-glow);
 }
 
 .article-content blockquote p::before,
@@ -203,7 +218,7 @@
 
 .note-permalink:hover {
   color: var(--fg);
-  border-bottom-color: var(--accent);
+  border-bottom-color: var(--glow);
 }
 
 .notes-muted {
@@ -245,7 +260,7 @@
 
 .notes-load-more:hover:not(:disabled) {
   background: transparent;
-  border-color: var(--accent);
+  border-color: var(--glow);
   color: var(--fg);
   text-decoration: underline;
   text-underline-offset: 0.28em;
