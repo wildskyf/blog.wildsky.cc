@@ -22,7 +22,7 @@
   --bg-sunken: #0b0e11;
 
   /* 文字：小字一律以最亮的 --water-1 驗算（頁首的 meta 就坐在那裡）。
-     --fg-muted 5.9、--fg-faint 4.8（on --water-1）。 */
+     --fg-muted 6.4、--fg-faint 4.8（on --water-1）。 */
   --fg: #e6e8e9;
   --fg-muted: #b9bdc5;
   --fg-faint: #9aa4b0;
@@ -87,7 +87,7 @@
   --bg-raised: #dbe1e4;
   --bg-sunken: #d4dbdf;
 
-  /* on --water-4（最暗底）：--fg-muted 6.0、--fg-faint 4.3（只用於 ≥13px 的 meta） */
+  /* on --water-4（最暗底）：--fg-muted 6.2、--fg-faint 4.3（只用於 ≥12px 的 meta） */
   --fg: #161c22;
   --fg-muted: #3e4a55;
   --fg-faint: #56626d;

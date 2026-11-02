@@ -60,7 +60,7 @@ The palette was sampled from the reference art with a script (k-means clustering
 - **The further you read, the deeper you go**: the background is a column of water that darkens downward, and scrolling sinks you through it. On article pages, a depth gauge on the right turns reading progress into depth.
 - **Life in the deep**: marine snow drifts upward; bioluminescence and jellyfish are barely visible near the surface and grow brighter as you sink. Fish sometimes pass in the distance, and past the halfway point a huge shadow crosses far away.
 - **Very little red**: cool colours make up the whole scene, and red appears only at a few focal points, just as only the eyes and the blood are red in the reference art.
-- **Broken strokes and a slash**: the W mark and the line cutting through the title borrow the broken triangle and harpoon-like strokes of the Under Tides lettering.
+- **Waves and a current**: the W on the home page is drawn as two wave troughs over a baseline with three knots, and a slow current line draws itself beneath the tagline.
 - **Literature beside engineering**: body text is set in serif; dates, categories and reading time in monospace; the logo and small headings in widely spaced classical capitals.
 
 ### Fonts
