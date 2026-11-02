@@ -124,7 +124,7 @@ Cinzel 400／500／600、Space Mono 400／700 與 JetBrains Mono Variable，退�
 - 遊戲專有名詞作站內品牌、導覽或元件名稱：海嗣／Seaborn、阿戈爾／Ægir、深海教會／Church of the Deep、
   深海獵人／Abyssal Hunter、濱海壞印／Nethersea Brand、伊比利亞之眼／Eye of Iberia、Rhodes Island、
   幹員／Operator、Monster Siren，以及任何角色名。
-- 仿製活動 logo 的字型、比例、圖文鎖定或標題排版；不得使用遊戲字型。首頁的 W 標誌與海流線是原創的波浪造型，不得改成參照活動標題字的形狀。
+- 仿製活動 logo 的字型、比例、圖文鎖定或標題排版；不得使用遊戲字型。首頁的海流線是原創造型，不得改成參照活動標題字的斜線；W 標誌的斷筆造型經使用者判定不像活動標準字（2026-11-02）。
 - 把站台描述成某角色、陣營或活動的主題站；本專案的風格必須能獨立於來源被辨識。About 頁可以說明靈感來源與取色過程，但不放官方圖像。
 
 視覺 anti-references 的完整規格在 `DESIGN.md`。
