@@ -12,6 +12,7 @@ const {
   category,
   tags,
   readingTime,
+  readingMinutes,
   series,
   translation,
 } = Astro.props;
@@ -23,10 +24,9 @@ const feature_image_alt =
     .replace(/\s+/g, ' ')
     .trim() ?? '';
 
-const publish_time =
-  currentLocale === 'en'
-    ? dayjs(date).format('MMMM D, YYYY')
-    : dayjs(date).format('YYYY 年 MM 月 DD 日');
+// v9 HUD meta (product decision 2026-11-02)
+const publish_time = dayjs(date).format('YYYY.MM.DD');
+const minutes = readingMinutes ? `${readingMinutes} MIN` : readingTime;
 ---
 
 <article class="ds-article">
@@ -39,8 +39,8 @@ const publish_time =
           </a>
         )
       }
-      {category && readingTime && <span class="ds-meta-sep">/</span>}
-      {readingTime && <span>{readingTime}</span>}
+      {category && minutes && <span class="ds-meta-sep">/</span>}
+      {minutes && <span lang="en">{minutes}</span>}
       {
         date && (
           <>
@@ -91,7 +91,7 @@ const publish_time =
   .ds-article {
     width: min(var(--measure), 100% - var(--page-gutter) * 2);
     margin-inline: auto;
-    padding: 56px 0 96px;
+    padding: 100px 0 96px;
   }
 
   .ds-article-head {
@@ -103,35 +103,38 @@ const publish_time =
     flex-wrap: wrap;
     align-items: baseline;
     gap: 10px;
-    margin-bottom: 18px;
-    font-family: var(--font-label);
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.015em;
-    color: var(--fg-muted);
-  }
-
-  .ds-article-kicker :global(.ds-meta-sep) {
+    margin-bottom: 28px;
+    font-family: var(--font-meta);
+    font-size: 12px;
+    letter-spacing: 0.06em;
     color: var(--fg-faint);
   }
 
-  .ds-article-kicker:lang(en) {
-    letter-spacing: 0.055em;
-    font-variant-caps: all-small-caps;
-    font-feature-settings:
-      'smcp' 1,
-      'c2sc' 1;
+  .ds-article-kicker :global(.ds-meta-sep) {
+    color: var(--rule-strong);
+  }
+
+  .ds-article-kicker :global(.ds-chip) {
+    color: var(--fg-faint);
+    text-decoration: none;
+  }
+  .ds-article-kicker :global(.ds-chip:hover) {
+    color: var(--fg);
   }
 
   /* Display 級 —— 全站唯一使用 clamp 的字級 */
   .ds-article-title {
-    margin: 0 0 20px;
+    margin: 0 0 24px;
     font-family: var(--font-cjk-display);
-    font-size: clamp(2rem, 4.5vw, 2.75rem);
+    font-size: clamp(32px, 4.4vw, 46px);
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 1.4;
     letter-spacing: 0.01em;
-    color: var(--fg);
+    text-wrap: balance;
+    background: var(--title-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .ds-translation-link {
@@ -195,17 +198,33 @@ const publish_time =
   .ds-prose {
     font-family: var(--font-body);
     font-size: 19px;
-    line-height: 1.9;
+    line-height: 1.85;
     color: var(--fg);
+    counter-reset: ds-h2;
   }
 
+  /* Section numerals in lamplight gold */
   .ds-prose :global(h2) {
-    margin: 56px 0 16px;
-    font-family: var(--font-headline);
-    font-size: 27px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin: 2.4em 0 0.8em;
+    font-family: var(--font-cjk-display);
+    font-size: 26px;
     font-weight: 600;
-    line-height: 1.45;
+    line-height: 1.5;
     color: var(--fg);
+    counter-increment: ds-h2;
+  }
+  .ds-prose :global(h2)::before {
+    content: counter(ds-h2, upper-roman);
+    flex: none;
+    font-family: var(--font-caps);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--gold-text);
+    text-shadow: 0 0 8px var(--gold-glow);
   }
 
   .ds-prose :global(h3) {
@@ -238,6 +257,12 @@ const publish_time =
 
   .ds-prose :global(li) {
     margin-bottom: 8px;
+  }
+
+  .ds-prose :global(ol > li)::marker {
+    font-family: var(--font-caps);
+    font-size: 13px;
+    color: var(--glow);
   }
 
   .ds-prose :global(img) {

@@ -1,1029 +1,804 @@
 ---
-// 環境層 —— The Organic Layer Rule 的管轄範圍。
-// 紀律（DESIGN.md「環境層與文字的分界」，全部是實測結論）：
-//   1. 最亮／最暗的元素不得進入 chrome 內側 —— 用 .ds-rail 把它們鎖在外側留白帶
-//   2. 暗角用 calc((100% - chrome)/2)，不用百分比
-//   3. 全幅微粒的強度由 --env-mote-op 控制，兩主題不同值
-// 位置一律用百分比，讓它在 1500px 的首頁與 12000px 的長文都成立。
-
-const BUBBLES = [
-  { t: 26, s: 6 },
-  { t: 34, s: 9 },
-  { t: 45, s: 12 },
-  { t: 54, s: 10, teal: true },
-  { t: 63, s: 16, teal: true },
-  { t: 72, s: 14, teal: true },
-  { t: 80, s: 22, teal: true },
-  { t: 88, s: 18, teal: true },
-];
-const BUBBLES_R = [
-  { t: 31, s: 8 },
-  { t: 43, s: 11 },
-  { t: 58, s: 15, teal: true },
-  { t: 69, s: 20, teal: true },
-  { t: 84, s: 13, teal: true },
-];
-const SNOW = [22, 37, 51, 66, 78, 91];
-const MOTES = [
-  [22, 12],
-  [37, 22],
-  [54, 17],
-  [68, 26],
-  [81, 20],
-  [29, 35],
-  [46, 42],
-  [62, 38],
-  [76, 46],
-  [18, 51],
-  [41, 56],
-  [57, 61],
-  [72, 66],
-  [33, 71],
-  [49, 76],
-  [66, 81],
-  [25, 86],
-  [58, 91],
-  [78, 95],
-  [44, 99],
-];
-const FISH = 'M0,10 C8,3 24,3 36,10 C24,17 8,17 0,10 Z M36,10 L46,4 L44,10 L46,16 Z';
+// 環境層 —— 一道會隨閱讀下沉的水柱（DESIGN.md「Environment」，v9 canon）。
+//   * 水色由上往下變暗；捲動時 --depth 由 0 → 1，整道水再沉一階。
+//   * 越深：光柱、微塵淡出；生物螢光、水母變亮；過半之後遠方的巨影才浮現。
+//   * 這一層允許從閱讀柱後方經過（產品決策 2026-11-02）；可讀性由 token 對比與低不透明度保證。
+//   * 刻意不讀 prefers-reduced-motion（產品決策 2026-11-02）。
 ---
 
-<div class="ds-field" aria-hidden="true">
-  <span class="ds-depth"></span>
-
-  <svg class="ds-strata s1" viewBox="0 0 1440 420" preserveAspectRatio="none">
+<div class="ds-sea" aria-hidden="true"></div>
+<div class="ds-rays" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+<canvas class="ds-fish" aria-hidden="true"></canvas>
+<div class="ds-fog" aria-hidden="true"><i></i><i></i></div>
+<div class="ds-levi" aria-hidden="true">
+  <svg viewBox="0 0 760 220"
+    ><path
+      d="M760,104 C700,70 610,52 520,58 C430,64 360,86 280,96 C210,104 150,98 96,110 C70,116 40,132 0,128 C38,118 62,104 80,96 C52,84 26,64 6,40 C44,58 82,72 118,80 C170,70 222,60 286,52 C300,30 326,10 360,2 C352,22 350,38 356,50 C420,44 490,40 560,48 C640,56 712,78 760,104 Z M430,92 C450,128 448,170 420,214 C440,176 438,136 410,98 Z M560,90 C590,120 600,160 586,200 C584,164 570,128 540,96 Z"
+    ></path></svg
+  >
+</div>
+<canvas class="ds-jellies" aria-hidden="true"></canvas>
+<div class="ds-lantern" aria-hidden="true"></div>
+<canvas class="ds-snow" aria-hidden="true"></canvas>
+<div class="ds-floor" aria-hidden="true">
+  <svg viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice">
     <path
-      d="M0,58 C90,30 170,72 258,50 C330,32 392,74 470,60 C556,44 620,86 706,68
-         C790,50 852,90 940,72 C1024,55 1090,94 1178,76 C1258,60 1330,96 1440,66
-         L1440,352 C1350,382 1276,344 1192,364 C1108,384 1042,346 956,366
-         C866,386 800,348 712,368 C624,388 560,350 470,370 C384,389 316,352 228,372
-         C148,390 78,356 0,378 Z"
-    ></path>
-  </svg>
-  <svg class="ds-strata s2" viewBox="0 0 1440 300" preserveAspectRatio="none">
-    <path
-      d="M0,40 C110,72 200,26 300,52 C398,78 470,34 566,58 C664,82 740,38 838,62
-         C934,86 1008,40 1104,64 C1196,87 1290,44 1440,74 L1440,246
-         C1348,270 1262,238 1168,258 C1074,278 990,240 894,264 C798,286 714,246 620,268
-         C526,288 442,248 348,270 C254,290 170,250 82,274 C48,282 24,270 0,266 Z"
-    ></path>
-  </svg>
-
-  <svg width="0" height="0" focusable="false">
-    <defs>
-      <filter id="ds-deckle-f" x="-3%" y="-8%" width="106%" height="116%">
-        <feTurbulence
-          type="fractalNoise"
-          baseFrequency="0.012 0.05"
-          numOctaves="2"
-          seed="17"
-          result="noise"></feTurbulence>
-        <feDisplacementMap
-          in="SourceGraphic"
-          in2="noise"
-          scale="12"
-          xChannelSelector="R"
-          yChannelSelector="G"></feDisplacementMap>
-      </filter>
-    </defs>
-  </svg>
-
-  <span class="ds-vignette"></span>
-
-  <span class="ds-grain"></span>
-
-  <span class="ds-caustics"></span>
-
-  <span class="ds-beam b1"></span>
-  <span class="ds-beam b2"></span>
-  <span class="ds-ember-beacon"></span>
-  <svg class="ds-compass-mark" viewBox="0 0 58 58">
-    <circle cx="29" cy="29" r="22"></circle>
-    <path d="M29 2V14M29 44V56M2 29H14M44 29H56M29 15L34 29L29 43L24 29Z"></path>
-  </svg>
-
-  <!-- 魚群：比背景更暗的剪影，橫越畫面 -->
-  <svg class="ds-school sc1" viewBox="0 0 210 64" preserveAspectRatio="none">
-    <g>
-      <path d={FISH} transform="translate(6,10)"></path>
-      <path d={FISH} transform="translate(62,32) scale(0.85)"></path>
-      <path d={FISH} transform="translate(112,4) scale(0.7)"></path>
-      <path d={FISH} transform="translate(140,28)"></path>
-      <path d={FISH} transform="translate(40,46) scale(0.6)"></path>
-    </g>
-  </svg>
-  <svg class="ds-school sc2" viewBox="0 0 300 96" preserveAspectRatio="none">
-    <g>
-      <path
-        d="M28,52 C58,26 118,20 162,40 C186,51 210,50 232,42
-           C214,60 186,70 158,68 C120,66 66,68 28,52 Z"
-      ></path>
-      <path d="M232,42 L262,30 L254,46 L266,60 Z"></path>
-      <path d={FISH} transform="translate(86,68) scale(0.9)"></path>
-    </g>
-  </svg>
-
-  <svg class="ds-sea-fan" viewBox="0 0 260 330" preserveAspectRatio="none">
-    <path d="M132 330 C128 258 126 198 132 126 C136 82 140 42 150 4"></path>
-    <path d="M132 242 C96 214 70 180 48 134 C30 98 20 62 12 20"></path>
-    <path d="M130 214 C168 182 194 148 214 104 C230 70 240 38 246 8"></path>
-    <path d="M104 218 C92 174 82 132 80 82 M82 162 C58 142 42 120 28 92"></path>
-    <path d="M160 190 C170 150 180 112 184 68 M180 130 C204 110 220 88 232 58"></path>
-  </svg>
-  <svg class="ds-hydroid" viewBox="0 0 180 250" preserveAspectRatio="none">
-    <path d="M96 250 C90 202 94 164 86 126 C78 90 86 52 78 8"></path>
-    <path d="M88 174 C62 150 50 126 44 98 M86 138 C112 116 124 90 130 62"></path>
-    <path d="M44 98 C34 82 24 72 12 66 M130 62 C146 50 158 38 168 22"></path>
-    <path d="M78 8 C72 22 68 34 70 48 M12 66 C22 64 30 66 36 74 M168 22 C158 24 150 30 146 40"
-    ></path>
-  </svg>
-  <svg class="ds-school sc3" viewBox="0 0 150 46" preserveAspectRatio="none">
-    <g>
-      <path d={FISH} transform="translate(8,6) scale(0.8)"></path>
-      <path d={FISH} transform="translate(54,22) scale(0.7)"></path>
-      <path d={FISH} transform="translate(96,2) scale(0.6)"></path>
-    </g>
-  </svg>
-
-  <!-- 水母：唯一有生物節奏的東西（收縮推進） -->
-  <span class="ds-jelly j1">
-    <svg viewBox="0 0 66 130">
-      <path
-        class="bell"
-        d="M4,44 C4,20 18,4 33,4 C48,4 62,20 62,44 C62,50 56,54 50,50
-           C45,46 40,52 33,52 C26,52 21,46 16,50 C10,54 4,50 4,44 Z"
-      ></path>
-      <path class="tendril" d="M18,52 C16,74 22,88 18,112"></path>
-      <path class="tendril" d="M27,52 C25,78 31,94 26,124"></path>
-      <path class="tendril" d="M39,52 C41,76 35,92 40,120"></path>
-      <path class="tendril" d="M48,52 C50,72 44,86 49,108"></path>
-    </svg>
-  </span>
-  <span class="ds-jelly j2">
-    <svg viewBox="0 0 66 130">
-      <path
-        class="bell"
-        d="M4,44 C4,20 18,4 33,4 C48,4 62,20 62,44 C62,50 56,54 50,50
-           C45,46 40,52 33,52 C26,52 21,46 16,50 C10,54 4,50 4,44 Z"
-      ></path>
-      <path class="tendril" d="M20,52 C18,76 24,90 19,116"></path>
-      <path class="tendril" d="M33,52 C31,80 37,96 32,126"></path>
-      <path class="tendril" d="M46,52 C48,74 42,88 47,114"></path>
-    </svg>
-  </span>
-
-  <!-- 底部礁石與海藻 -->
-  <svg class="ds-reef" viewBox="0 0 1440 230" preserveAspectRatio="xMidYMax slice">
-    <path
-      d="M0,230 L0,150 C14,142 20,120 16,98 C13,82 22,74 30,86 C36,95 34,112 40,126
-         C46,139 58,138 62,124 C67,106 60,88 66,72 C71,58 84,60 86,76 C88,94 82,112 88,130
-         C94,147 108,150 114,136 C120,121 114,100 122,88 C129,77 140,84 138,98
-         C136,116 130,134 138,152 C144,166 158,168 164,154 L172,230 Z"
+      class="far"
+      d="M0,300 L0,256 Q40,240 80,248 Q120,240 160,252 Q200,238 240,246 Q280,238 320,246 Q360,238 400,260 Q440,252 480,262 Q520,232 560,240 Q600,232 640,255 Q680,247 720,256 Q760,228 800,236 Q840,228 880,250 Q920,232 960,240 Q1000,232 1040,250 Q1080,238 1120,245 Q1160,238 1200,258 Q1240,238 1280,245 Q1320,232 1360,239 Q1400,232 1440,248 L1440,300 Z M0,300 L0,268 L35,268 C57,241 70,186 76,118 C83,193 84,246 105,268 L202,268 C220,234 222,164 226,78 C232,173 241,240 258,268 L590,268 C603,252 610,218 613,178 C617,223 618,254 630,268 L1078,268 C1098,237 1099,174 1104,98 C1110,183 1123,242 1142,268 L1268,268 C1282,246 1290,202 1294,148 C1298,208 1299,250 1312,268 L1440,268 L1440,300 Z"
     ></path>
     <path
-      d="M196,230 L200,168 C186,158 178,136 184,116 C189,100 202,102 204,118
-         C206,134 200,150 208,164 C214,175 228,174 232,160 C237,142 228,120 236,106
-         C243,94 256,100 254,116 C252,134 246,152 254,168 C260,180 274,180 278,166
-         L286,230 Z"
-    ></path>
-    <path
-      d="M1050,230 L1046,164 C1032,154 1024,130 1032,110 C1038,94 1052,98 1054,114
-         C1056,132 1048,150 1058,166 C1065,177 1080,176 1084,160 C1089,140 1080,118 1090,104
-         C1098,92 1112,98 1110,116 C1108,136 1100,154 1110,172 C1117,184 1132,184 1136,168
-         L1146,230 Z"
-    ></path>
-    <path
-      d="M1188,230 L1192,146 C1178,134 1172,108 1180,88 C1187,71 1202,76 1204,94
-         C1206,114 1198,132 1208,150 C1215,163 1232,162 1236,146 C1241,124 1230,100 1242,86
-         C1252,74 1268,82 1264,102 C1260,124 1252,144 1264,164 C1272,178 1290,178 1294,160
-         C1300,136 1290,110 1304,96 C1314,86 1328,94 1324,114 C1320,136 1314,158 1326,178
-         C1334,191 1352,190 1358,172 L1372,230 Z"
-    ></path>
-    <path
-      d="M320,230 L326,196 C314,188 308,172 314,158 C319,147 331,150 332,162
-         C333,175 328,187 336,198 L342,230 Z"
-    ></path>
-    <path
-      d="M980,230 L986,190 C972,180 966,160 974,146 C980,135 993,139 994,153
-         C995,168 989,182 998,194 L1004,230 Z"
+      class="near"
+      d="M0,300 L0,280 Q40,275 80,281 Q120,277 160,284 Q200,270 240,274 Q280,270 320,286 Q360,275 400,279 Q440,269 480,273 Q520,269 560,285 Q600,274 640,278 Q680,273 720,277 Q760,273 800,285 Q840,276 880,281 Q920,272 960,276 Q1000,272 1040,280 Q1080,272 1120,276 Q1160,272 1200,284 Q1240,278 1280,283 Q1320,278 1360,284 Q1400,275 1440,279 L1440,300 Z M0,300 L0,290 L-9,290 C20,249 37,164 44,60 C53,175 54,256 81,290 L102,290 C114,270 114,230 117,180 C121,235 127,274 138,290 L1192,290 C1218,247 1219,158 1225,50 C1233,170 1248,254 1272,290 L1344,290 C1361,263 1371,208 1375,140 C1380,215 1380,268 1396,290 L1440,290 L1440,300 Z"
     ></path>
   </svg>
-
-  <svg class="ds-kelp left" viewBox="0 0 120 560" preserveAspectRatio="none">
-    <path d="M40,560 C24,470 56,404 42,318 C30,244 62,186 48,104 C42,68 52,36 46,0"></path>
-    <path d="M86,560 C74,486 96,428 84,356 C74,294 94,246 86,186"></path>
-  </svg>
-  <svg class="ds-kelp right" viewBox="0 0 120 560" preserveAspectRatio="none">
-    <path d="M74,560 C90,478 60,412 76,332 C88,262 58,200 72,122 C78,86 68,44 74,0"></path>
-    <path d="M28,560 C40,492 18,436 30,368 C40,308 22,258 30,198"></path>
-  </svg>
-
-  <!-- 側軌：所有「亮的移動物」都鎖在 chrome 外側的留白帶內 -->
-  <span class="ds-rail l">
-    {
-      BUBBLES.map((b) => (
-        <span
-          class:list={['ds-bub', b.teal && 'teal']}
-          style={`top:${b.t}%;left:${18 + (b.s % 5) * 9}%;width:${b.s}px;height:${b.s}px`}
-        />
-      ))
-    }
-    {
-      SNOW.map((t, i) => (
-        <span
-          class="ds-snow"
-          style={`top:${t}%;left:${24 + ((i * 13) % 52)}%;width:${2 + (i % 2)}px;height:${2 + (i % 2)}px`}
-        />
-      ))
-    }
-    <span class="ds-vent v1">
-      {[5, 3, 6, 4, 3, 5, 4].map((s) => <i style={`width:${s}px;height:${s}px`} />)}
-    </span>
-    <span class="ds-dot" style="top:63%;left:52%;width:3px;height:3px"></span>
-    <span class="ds-dot" style="top:79%;left:30%;width:2px;height:2px"></span>
-  </span>
-
-  <span class="ds-rail r">
-    {
-      BUBBLES_R.map((b) => (
-        <span
-          class:list={['ds-bub', b.teal && 'teal']}
-          style={`top:${b.t}%;right:${16 + (b.s % 5) * 10}%;width:${b.s}px;height:${b.s}px`}
-        />
-      ))
-    }
-    {
-      SNOW.map((t, i) => (
-        <span
-          class="ds-snow"
-          style={`top:${(t + 7) % 100}%;right:${20 + ((i * 17) % 56)}%;width:${2 + ((i + 1) % 2)}px;height:${2 + ((i + 1) % 2)}px`}
-        />
-      ))
-    }
-    <span class="ds-vent v2">
-      {[6, 4, 3, 5, 4, 3].map((s) => <i style={`width:${s}px;height:${s}px`} />)}
-    </span>
-    <span class="ds-dot" style="top:67%;right:44%;width:3px;height:3px"></span>
-    <span class="ds-dot" style="top:86%;right:24%;width:2px;height:2px"></span>
-  </span>
-
-  <!-- 全幅微粒：唯一允許進入閱讀柱後方的環境元素，強度由 --env-mote-op 鎖死 -->
-  {MOTES.map(([l, t]) => <span class="ds-mote" style={`left:${l}%;top:${t}%`} />)}
+</div>
+<div class="ds-grain" aria-hidden="true"></div>
+<div class="ds-progress" aria-hidden="true"></div>
+<div class="ds-gauge" aria-hidden="true">
+  <span>DEPTH</span>
+  <div class="ds-gauge-track"><div class="ds-gauge-fill"></div></div>
+  <span class="ds-gauge-val">000 m</span>
 </div>
 
-<style>
-  .ds-field {
-    position: absolute;
+<style is:global>
+  /* ---------- the water column ---------- */
+  .ds-sea {
+    position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: -4;
     pointer-events: none;
-    overflow: hidden;
+    background: linear-gradient(
+      180deg,
+      var(--water-1) 0%,
+      var(--water-2) 30%,
+      var(--water-3) 62%,
+      var(--water-4) 100%
+    );
   }
-
-  .ds-depth {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(
-        ellipse 88% 28% at 24% -4%,
-        color-mix(in oklab, var(--env-raised) 58%, transparent) 0%,
-        color-mix(in oklab, var(--env-surface) 18%, transparent) 48%,
-        transparent 78%
-      ),
-      radial-gradient(
-        ellipse 54% 38% at 96% 27%,
-        color-mix(in oklab, var(--env-surface) 30%, transparent) 0%,
-        transparent 74%
-      ),
-      radial-gradient(
-        ellipse 66% 36% at 5% 65%,
-        color-mix(in oklab, var(--env-deep) 28%, transparent) 0%,
-        transparent 76%
-      ),
-      linear-gradient(
-        to bottom,
-        var(--env-surface) 0%,
-        var(--env-surface) 8%,
-        var(--env-mid) 26%,
-        var(--env-deep) 55%,
-        var(--env-abyss) 88%,
-        var(--env-abyss) 100%
-      );
-  }
-
-  /* 暗角綁死在 chrome 外側 —— 用百分比會隨視窗寬度漫進閱讀欄 */
-  .ds-vignette {
-    position: absolute;
-    inset: 0;
-    --vig: calc((100% - var(--chrome)) / 2);
-  }
-
-  .ds-vignette::before {
+  /* Sinking: the deeper you read, the darker the water */
+  .ds-sea::after {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(to right, var(--env-abyss) 0%, transparent var(--vig)),
-      linear-gradient(to left, var(--env-abyss) 0%, transparent var(--vig)),
-      linear-gradient(to top, var(--env-abyss) 0%, transparent 22%);
+    background: var(--water-4);
+    opacity: calc(var(--depth) * 0.5);
   }
 
-  .ds-grain {
+  .ds-rays {
+    position: fixed;
+    inset: -10% -20% 0;
+    z-index: -3;
+    pointer-events: none;
+    opacity: calc(1 - var(--depth) * 0.9);
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, rgb(0 0 0 / 0.6) 40%, transparent 85%);
+    mask-image: linear-gradient(180deg, #000 0%, rgb(0 0 0 / 0.6) 40%, transparent 85%);
+  }
+  .ds-rays i {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--env-abyss);
-    opacity: 0.035;
-    mix-blend-mode: var(--env-grain-blend);
-    -webkit-mask-image: url('/images/grain-mask.svg');
-    mask-image: url('/images/grain-mask.svg');
-    -webkit-mask-size: 128px 128px;
-    mask-size: 128px 128px;
-    -webkit-mask-repeat: repeat;
-    mask-repeat: repeat;
-  }
-
-  .ds-strata {
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 100%;
-  }
-  .ds-strata.s1 {
-    top: 540px;
-    height: 420px;
-  }
-  .ds-strata.s2 {
-    top: 1330px;
-    height: 300px;
-  }
-  .ds-strata path {
-    fill: var(--env-surface);
-    opacity: var(--env-strata-op);
-    filter: url(#ds-deckle-f);
-  }
-  .ds-strata.s2 path {
-    fill: var(--env-mid);
-    opacity: calc(var(--env-strata-op) * 0.68);
-  }
-
-  .ds-caustics {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 460px;
-    background:
-      radial-gradient(
-        ellipse 34% 92% at 10% -18%,
-        color-mix(in oklab, var(--env-caustic) 10%, transparent),
-        transparent 72%
-      ),
-      radial-gradient(
-        ellipse 24% 74% at 64% -10%,
-        color-mix(in oklab, var(--env-caustic) 7%, transparent),
-        transparent 76%
-      ),
-      radial-gradient(
-        ellipse 18% 66% at 92% -14%,
-        color-mix(in oklab, var(--env-caustic) 5%, transparent),
-        transparent 78%
-      );
-    -webkit-mask-image: linear-gradient(to bottom, var(--fg) 0, transparent 100%);
-    mask-image: linear-gradient(to bottom, var(--fg) 0, transparent 100%);
-    animation: ds-caustic 46s ease-in-out infinite alternate;
-  }
-
-  .ds-beam {
-    position: absolute;
-    top: -90px;
-    width: clamp(280px, 28vw, 440px);
-    height: 900px;
-    transform: rotate(-14deg);
+    top: -10%;
+    height: 120%;
     transform-origin: top center;
-    background: radial-gradient(
-      ellipse 46% 100% at 38% 0%,
-      color-mix(in oklab, var(--env-beam) 18%, transparent) 0%,
-      color-mix(in oklab, var(--env-beam) 7%, transparent) 42%,
-      transparent 76%
-    );
-    clip-path: polygon(18% 0, 56% 0, 100% 100%, 0 100%);
-    -webkit-mask-image: linear-gradient(to bottom, var(--fg) 0 18%, transparent 88%);
-    mask-image: linear-gradient(to bottom, var(--fg) 0 18%, transparent 88%);
-    animation: ds-breathe 34s ease-in-out infinite;
+    background: linear-gradient(180deg, var(--env-ray), transparent 90%);
+    filter: blur(14px);
+    animation: ds-sway 18s ease-in-out infinite alternate;
   }
-  .ds-beam.b1 {
-    left: 40px;
+  .ds-rays i:nth-child(1) {
+    left: 22%;
+    width: 120px;
+    transform: rotate(16deg);
+    animation-duration: 21s;
   }
-  .ds-beam.b2 {
-    display: none;
+  .ds-rays i:nth-child(2) {
+    left: 38%;
+    width: 60px;
+    transform: rotate(13deg);
+    animation-duration: 17s;
+    animation-delay: -6s;
+  }
+  .ds-rays i:nth-child(3) {
+    left: 52%;
+    width: 180px;
+    transform: rotate(18deg);
+    animation-duration: 24s;
+    animation-delay: -3s;
+  }
+  .ds-rays i:nth-child(4) {
+    left: 70%;
+    width: 80px;
+    transform: rotate(14deg);
+    animation-duration: 19s;
+    animation-delay: -9s;
+  }
+  .ds-rays i:nth-child(5) {
+    left: 84%;
+    width: 140px;
+    transform: rotate(17deg);
+    animation-duration: 26s;
+  }
+  @keyframes ds-sway {
+    from {
+      translate: -24px 0;
+      opacity: 0.55;
+    }
+    to {
+      translate: 24px 0;
+      opacity: 1;
+    }
   }
 
-  .ds-ember-beacon {
+  .ds-fish,
+  .ds-jellies,
+  .ds-snow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+  .ds-fish {
+    z-index: -3;
+  } /* far: behind the mist */
+  .ds-jellies {
+    z-index: -1;
+  } /* near: in front of it */
+  .ds-snow {
+    z-index: -1;
+  }
+
+  /* 夕霧: two banks of mist; the upper one warmed by lamplight, the lower one cold.
+     Filter matrices live here, not in tokens: they are noise coefficients, not UI colour. */
+  .ds-fog {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: var(--env-fog-op);
+  }
+  .ds-fog i {
     position: absolute;
-    z-index: 1;
-    top: 180px;
-    right: max(32px, calc((100% - var(--chrome)) / 2 + 22px));
-    width: 2px;
-    height: 180px;
-    background: color-mix(in oklab, var(--ember) 18%, transparent);
+    left: 0;
+    will-change: transform;
+    filter: blur(4px);
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 35%, #000 65%, transparent);
+    mask-image: linear-gradient(180deg, transparent, #000 35%, #000 65%, transparent);
+  }
+  .ds-fog i:nth-child(1) {
+    top: 4%;
+    height: 46%;
+    width: calc(100% + 1400px);
+    background-size: 1400px 100%;
+    animation: ds-fog-a 110s linear infinite;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1400' height='500' preserveAspectRatio='none'><filter id='f' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='.0035714 .012' numOctaves='4' seed='7' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .86 0 0 0 0 .83 0 0 0 0 .74 1.9 0 0 0 -.62'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
+  }
+  .ds-fog i:nth-child(2) {
+    top: 48%;
+    height: 50%;
+    width: calc(100% + 1800px);
+    left: -1800px;
+    background-size: 1800px 100%;
+    animation: ds-fog-b 160s linear infinite;
+    opacity: 0.8;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1800' height='600' preserveAspectRatio='none'><filter id='f' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='.0027778 .01' numOctaves='4' seed='21' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .72 0 0 0 0 .82 0 0 0 0 .86 1.9 0 0 0 -.64'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
+  }
+  @keyframes ds-fog-a {
+    to {
+      transform: translateX(-1400px);
+    }
+  }
+  @keyframes ds-fog-b {
+    to {
+      transform: translateX(1800px);
+    }
   }
 
-  .ds-ember-beacon::before {
+  /* The far shadow: surfaces only past the halfway point */
+  .ds-levi {
+    position: fixed;
+    left: 0;
+    top: 30vh;
+    z-index: -2;
+    width: 100vw;
+    height: 260px;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: calc(clamp(0, (var(--depth) - 0.4) * 2.2, 1) * 0.6);
+    transition: opacity 0.6s;
+  }
+  .ds-levi svg {
+    position: absolute;
+    top: 0;
+    width: 760px;
+    height: 220px;
+    fill: var(--env-sil);
+    filter: blur(4px);
+    animation: ds-levi 240s linear infinite;
+  }
+  @keyframes ds-levi {
+    from {
+      transform: translateX(calc(100vw + 60px)) rotate(-2deg);
+    }
+    to {
+      transform: translateX(-820px) rotate(2deg);
+    }
+  }
+
+  .ds-lantern {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.6s;
+    background: radial-gradient(
+      circle 240px at var(--mx, 50%) var(--my, 40%),
+      var(--env-lantern),
+      transparent 70%
+    );
+  }
+  html.has-pointer .ds-lantern {
+    opacity: 1;
+  }
+
+  /* Sea floor: stone needles rising out of the murk, behind the mist */
+  .ds-floor {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -3;
+    height: 300px;
+    pointer-events: none;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgb(0 0 0 / 0.35) 35%, #000 85%);
+    mask-image: linear-gradient(180deg, transparent 0%, rgb(0 0 0 / 0.35) 35%, #000 85%);
+  }
+  .ds-floor svg {
+    position: absolute;
+    bottom: 0;
+    left: -2%;
+    width: 104%;
+    height: 100%;
+  }
+  .ds-floor .far {
+    fill: var(--env-sil-far);
+    opacity: 0.55;
+    filter: blur(3px);
+  }
+  .ds-floor .near {
+    fill: var(--env-sil-near);
+    opacity: 0.8;
+    filter: blur(0.6px);
+  }
+
+  /* Rock / ink grain over everything */
+  .ds-grain {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    pointer-events: none;
+    opacity: var(--env-grain-op);
+    mix-blend-mode: var(--env-grain-blend);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1.1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* ---------- reading progress + depth gauge ---------- */
+  .ds-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 40;
+    height: 2px;
+    width: calc(var(--depth) * 100%);
+    background: linear-gradient(90deg, transparent, var(--glow) 40%, var(--fg));
+  }
+
+  .ds-gauge {
+    position: fixed;
+    right: 32px;
+    top: 50%;
+    z-index: 10;
+    display: none;
+    flex-direction: column;
+    align-items: end;
+    gap: 10px;
+    transform: translateY(-50%);
+    font: 400 10px/1 var(--font-meta);
+    letter-spacing: 0.12em;
+    color: var(--fg-faint);
+    pointer-events: none;
+  }
+  html.is-reading .ds-gauge {
+    display: flex;
+  }
+  .ds-gauge-track {
+    position: relative;
+    width: 1px;
+    height: 200px;
+    background: var(--rule-strong);
+  }
+  .ds-gauge-track::before,
+  .ds-gauge-track::after {
     content: '';
     position: absolute;
     left: -3px;
-    top: -3px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--ember);
+    width: 7px;
+    height: 1px;
+    background: var(--rule-strong);
   }
-
-  .ds-compass-mark {
-    position: absolute;
-    top: 164px;
-    left: max(24px, calc((100% - var(--chrome)) / 2 - 84px));
-    width: 58px;
-    height: 58px;
-    color: var(--rule);
-    opacity: 0.38;
+  .ds-gauge-track::before {
+    top: 0;
   }
-
-  .ds-compass-mark circle,
-  .ds-compass-mark path {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1;
+  .ds-gauge-track::after {
+    bottom: 0;
   }
-
-  /* 有機剪影 —— 強度兩主題不同（結構性不對稱，見 DESIGN.md） */
-  .ds-reef {
-    position: absolute;
-    left: -5%;
-    bottom: -88px;
-    width: 110%;
-    height: 260px;
-    opacity: var(--env-organic-op);
-  }
-  .ds-reef path {
-    fill: var(--env-silhouette);
-  }
-
-  .ds-kelp {
-    position: absolute;
-    bottom: -118px;
-    height: 560px;
-    width: 120px;
-    opacity: var(--env-organic-op);
-    transform-origin: bottom center;
-    animation: ds-sway 44s ease-in-out infinite;
-  }
-  .ds-kelp.left {
-    left: -38px;
-    rotate: -5deg;
-  }
-  .ds-kelp.right {
-    right: -46px;
-    rotate: 7deg;
-    animation-duration: 52s;
-    animation-delay: -21s;
-  }
-  .ds-kelp path {
-    fill: none;
-    stroke: var(--env-silhouette);
-    stroke-width: 9;
-    stroke-linecap: round;
-  }
-
-  .ds-school {
-    position: absolute;
-    left: 0;
-    fill: var(--env-silhouette);
-    opacity: calc(0.62 * var(--env-organic-op));
-  }
-  .ds-school.sc1 {
-    top: 690px;
-    width: 210px;
-    height: 64px;
-    animation: ds-swim-r 128s linear infinite;
-  }
-  .ds-school.sc2 {
-    top: 1180px;
-    width: 300px;
-    height: 96px;
-    opacity: calc(0.5 * var(--env-organic-op));
-    animation: ds-swim-l 186s linear infinite -60s;
-  }
-  .ds-school.sc3 {
-    top: 1620px;
-    width: 150px;
-    height: 46px;
-    opacity: calc(0.7 * var(--env-organic-op));
-    animation: ds-swim-r 154s linear infinite -95s;
-  }
-
-  .ds-jelly {
-    position: absolute;
-    width: 66px;
-    height: 130px;
-    animation: ds-pulse 31s ease-in-out infinite;
-  }
-  .ds-jelly svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-  .ds-jelly.j1 {
-    left: -48px;
-    top: 610px;
-    width: 104px;
-    height: 198px;
-  }
-  .ds-jelly.j2 {
-    right: 210px;
-    top: 1460px;
-    width: 46px;
-    height: 92px;
-    animation-duration: 43s;
-    animation-delay: -6s;
-  }
-  .ds-jelly .bell {
-    fill: var(--env-silhouette);
-    opacity: calc(0.72 * var(--env-organic-op));
-  }
-  .ds-jelly .tendril {
-    fill: none;
-    stroke: var(--env-silhouette);
-    stroke-width: 2;
-    opacity: calc(0.6 * var(--env-organic-op));
-  }
-
-  .ds-sea-fan,
-  .ds-hydroid {
-    position: absolute;
-    color: var(--env-silhouette);
-    opacity: var(--env-organic-op);
-  }
-
-  .ds-sea-fan {
-    right: -82px;
-    bottom: 22px;
-    width: 260px;
-    height: 330px;
-    transform: rotate(-7deg);
-  }
-
-  .ds-hydroid {
-    left: -54px;
-    top: 58%;
-    width: 180px;
-    height: 250px;
-    transform: rotate(9deg);
-  }
-
-  .ds-sea-fan path,
-  .ds-hydroid path {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 5;
-    stroke-linecap: round;
-  }
-
-  :global([data-theme='tide-light']) .ds-reef,
-  :global([data-theme='tide-light']) .ds-kelp,
-  :global([data-theme='tide-light']) .ds-sea-fan,
-  :global([data-theme='tide-light']) .ds-hydroid {
-    opacity: 0.22;
-  }
-
-  :global([data-theme='tide-light']) .ds-reef {
-    display: none;
-  }
-
-  /* 側軌 —— chrome 外側的留白帶。所有亮的移動物只能住在這裡。 */
-  .ds-rail {
+  .ds-gauge-fill {
     position: absolute;
     top: 0;
-    bottom: 0;
-    width: calc((100% - var(--chrome)) / 2 + var(--gutter-col));
-  }
-  .ds-rail.l {
     left: 0;
+    width: 1px;
+    height: calc(var(--depth) * 100%);
+    background: linear-gradient(180deg, var(--fg), var(--glow));
   }
-  .ds-rail.r {
-    right: 0;
-  }
-
-  .ds-bub {
-    --bubble-peak: 0.56;
+  .ds-gauge-fill::after {
+    content: '';
     position: absolute;
-    border: 1px solid var(--fg-faint);
-    border-radius: 50%;
-    animation: ds-rise 29s cubic-bezier(0.45, 0.08, 0.55, 0.92) infinite;
-  }
-  .ds-bub.teal {
-    border-color: var(--glow-line);
-  }
-  .ds-bub:nth-of-type(3n) {
-    --bubble-peak: 0.72;
-    animation-name: ds-rise-b;
-    animation-duration: 37s;
-  }
-  .ds-bub:nth-of-type(4n + 1) {
-    --bubble-peak: 0.34;
-    animation-duration: 24s;
-  }
-  .ds-bub:nth-of-type(5n + 2) {
-    --bubble-peak: 0.46;
-    animation-duration: 43s;
-  }
-  .ds-bub:nth-of-type(7n) {
-    --bubble-peak: 0.62;
-    animation-duration: 33s;
-  }
-  .ds-bub:nth-of-type(2n) {
-    animation-delay: -9s;
-  }
-  .ds-bub:nth-of-type(3n + 1) {
-    animation-delay: -14s;
-  }
-
-  .ds-vent {
-    position: absolute;
-    bottom: 8%;
-    width: 26px;
-    height: 620px;
-  }
-  .ds-vent.v1 {
-    left: 34%;
-  }
-  .ds-vent.v2 {
-    right: 30%;
-    bottom: 11%;
-  }
-  .ds-vent i {
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    border: 1px solid var(--glow-line);
-    border-radius: 50%;
-    animation: ds-vent 24s linear infinite;
-  }
-  .ds-vent i:nth-child(2n) {
-    animation-duration: 29s;
-    animation-delay: -3s;
-  }
-  .ds-vent i:nth-child(3n) {
-    animation-duration: 21s;
-    animation-delay: -6s;
-  }
-  .ds-vent i:nth-child(4n + 1) {
-    animation-duration: 33s;
-    animation-delay: -11s;
-  }
-  .ds-vent i:nth-child(5n + 2) {
-    animation-delay: -8s;
-  }
-
-  .ds-dot {
-    position: absolute;
+    bottom: -3px;
+    left: -3px;
+    width: 7px;
+    height: 7px;
     background: var(--glow);
-    border-radius: 50%;
-    animation: ds-blink 23s ease-in-out infinite;
+    transform: rotate(45deg);
+    box-shadow: 0 0 8px var(--glow);
   }
-  .ds-dot:nth-of-type(2n) {
-    animation-duration: 31s;
-    animation-delay: -8s;
-  }
-
-  .ds-snow {
-    position: absolute;
-    background: var(--fg-faint);
-    border-radius: 50%;
-    opacity: 0.35;
-    animation: ds-fall 58s linear infinite;
-  }
-  .ds-snow:nth-of-type(2n) {
-    animation-duration: 76s;
-    animation-delay: -19s;
-  }
-  .ds-snow:nth-of-type(3n) {
-    animation-duration: 91s;
-    animation-delay: -37s;
+  .ds-gauge-val {
+    color: var(--fg-muted);
   }
 
-  .ds-mote {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    border-radius: 50%;
-    background: var(--fg-faint);
-    opacity: var(--env-mote-op);
-    animation: ds-drift 42s linear infinite;
-  }
-  .ds-mote:nth-of-type(2n) {
-    animation-duration: 57s;
-    animation-delay: -14s;
-  }
-  .ds-mote:nth-of-type(3n) {
-    animation-duration: 68s;
-    animation-delay: -31s;
-  }
-  .ds-mote:nth-of-type(5n + 3) {
-    animation-duration: 75s;
-    animation-delay: -44s;
-  }
-
-  /* ---- 只動 transform / opacity（The Ambient Motion Rule） ---- */
-  @keyframes ds-rise {
-    0% {
-      transform: translate3d(0, 60px, 0);
-      opacity: 0;
-    }
-    17% {
-      transform: translate3d(5px, -10px, 0);
-      opacity: var(--bubble-peak);
-    }
-    39% {
-      transform: translate3d(18px, -156px, 0);
-    }
-    64% {
-      transform: translate3d(9px, -246px, 0);
-      opacity: var(--bubble-peak);
-    }
-    84% {
-      transform: translate3d(-8px, -390px, 0);
-      opacity: calc(var(--bubble-peak) * 0.58);
-    }
-    100% {
-      transform: translate3d(-4px, -470px, 0);
-      opacity: 0;
-    }
-  }
-  @keyframes ds-rise-b {
-    0% {
-      transform: translate3d(0, 72px, 0);
-      opacity: 0;
-    }
-    13% {
-      transform: translate3d(-7px, 10px, 0);
-      opacity: calc(var(--bubble-peak) * 0.72);
-    }
-    31% {
-      transform: translate3d(-22px, -96px, 0);
-      opacity: var(--bubble-peak);
-    }
-    59% {
-      transform: translate3d(-10px, -206px, 0);
-    }
-    77% {
-      transform: translate3d(12px, -335px, 0);
-      opacity: calc(var(--bubble-peak) * 0.64);
-    }
-    100% {
-      transform: translate3d(4px, -445px, 0);
-      opacity: 0;
-    }
-  }
-  @keyframes ds-vent {
-    0% {
-      transform: translate3d(-50%, 0, 0) scale(0.5);
-      opacity: 0;
-    }
-    14% {
-      opacity: 0.7;
-    }
-    86% {
-      opacity: 0.5;
-    }
-    100% {
-      transform: translate3d(-50%, -600px, 0) scale(1.25);
-      opacity: 0;
-    }
-  }
-  @keyframes ds-fall {
-    0% {
-      transform: translate3d(0, -30px, 0);
-      opacity: 0;
-    }
-    16% {
-      opacity: 0.35;
-    }
-    78% {
-      opacity: 0.35;
-    }
-    100% {
-      transform: translate3d(-10px, 240px, 0);
-      opacity: 0;
-    }
-  }
-  @keyframes ds-drift {
-    0% {
-      transform: translate3d(0, 0, 0);
-      opacity: 0;
-    }
-    20% {
-      opacity: var(--env-mote-op);
-    }
-    80% {
-      opacity: var(--env-mote-op);
-    }
-    100% {
-      transform: translate3d(46px, -70px, 0);
-      opacity: 0;
-    }
-  }
-  @keyframes ds-caustic {
-    0% {
-      transform: translate3d(0, 0, 0);
-      opacity: 0.55;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      transform: translate3d(128px, 0, 0);
-      opacity: 0.55;
-    }
-  }
-  @keyframes ds-swim-r {
-    from {
-      transform: translate3d(-22vw, 0, 0) scaleX(-1);
-    }
-    to {
-      transform: translate3d(118vw, 0, 0) scaleX(-1);
-    }
-  }
-  @keyframes ds-swim-l {
-    from {
-      transform: translate3d(118vw, 0, 0);
-    }
-    to {
-      transform: translate3d(-22vw, 0, 0);
-    }
-  }
-  @keyframes ds-pulse {
-    0% {
-      transform: translate3d(0, 0, 0) scaleY(1) scaleX(1);
-    }
-    16% {
-      transform: translate3d(0, -14px, 0) scaleY(0.82) scaleX(1.14);
-    }
-    46% {
-      transform: translate3d(0, -34px, 0) scaleY(1.06) scaleX(0.95);
-    }
-    100% {
-      transform: translate3d(0, -4px, 0) scaleY(1) scaleX(1);
-    }
-  }
-  @keyframes ds-breathe {
-    0%,
-    100% {
-      opacity: 0.72;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
-  @keyframes ds-blink {
-    0%,
-    100% {
-      opacity: 0.3;
-    }
-    42% {
-      opacity: 1;
-    }
-  }
-  @keyframes ds-sway {
-    0%,
-    100% {
-      transform: rotate(-0.7deg);
-    }
-    50% {
-      transform: rotate(0.7deg);
-    }
-  }
-
-  @keyframes ds-reduced {
-    0%,
-    100% {
-      opacity: 0.58;
-    }
-    50% {
-      opacity: 0.82;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .ds-vent i,
-    .ds-mote,
-    .ds-jelly,
-    .ds-snow,
-    .ds-school,
-    .ds-beam,
-    .ds-dot,
-    .ds-kelp,
-    .ds-caustics {
-      transform: none;
-      animation: ds-reduced 46s ease-in-out infinite;
-    }
-  }
-
-  /* Narrow layouts keep visible depth anchors instead of flattening the scene. */
-  @media (max-width: 1023px) {
-    .ds-kelp,
-    .ds-school,
-    .ds-vent,
-    .ds-sea-fan,
-    .ds-hydroid {
+  @media (max-width: 1279px) {
+    html.is-reading .ds-gauge {
       display: none;
     }
-
-    .ds-compass-mark {
-      display: none;
-    }
-
-    .ds-rail {
-      width: 48%;
-    }
   }
-
-  @media (max-width: 767px) {
-    .ds-dot,
-    .ds-snow {
-      display: none;
-    }
-
-    .ds-strata path {
-      opacity: 0.92;
-    }
-
-    .ds-strata.s2 path {
-      opacity: 0.78;
+  @media (max-width: 760px) {
+    .ds-floor {
+      height: 180px;
     }
   }
 </style>
 
 <script>
-  const supportsIndividualTranslate = CSS.supports('translate', '0 1px');
-  const parallaxLayers = [
-    ['.ds-caustics', -0.012, 0.08, 12, 90],
-    ['.ds-beam', 0.025, 0.15, 24, 170],
-    ['.ds-strata.s1', -0.02, 0.24, 18, 250],
-    ['.ds-strata.s2', 0.025, 0.34, 26, 350],
-    ['.ds-school', 0, 0.22, 0, 230],
-    ['.ds-jelly', -0.018, 0.38, 18, 380],
-    ['.ds-sea-fan, .ds-hydroid', 0.026, 0.4, 28, 400],
-    ['.ds-reef, .ds-kelp', -0.03, 0.42, 30, 190],
-  ].flatMap(([selector, speedX, speedY, maxX, maxY]) =>
-    [...document.querySelectorAll<HTMLElement>(selector as string)].map((element) => ({
-      element,
-      speedX: speedX as number,
-      speedY: speedY as number,
-      maxX: maxX as number,
-      maxY: maxY as number,
-    }))
-  );
-  let parallaxFrame = 0;
-  let parallaxSettleTimer = 0;
+  const root = document.documentElement;
+  root.classList.toggle('is-reading', !!document.querySelector('.ds-article'));
 
-  const renderParallax = () => {
-    parallaxFrame = 0;
-    const isMobile = window.innerWidth < 768;
-    const motionScale = isMobile ? 0.9 : 1;
-    const scrollDepth = window.scrollY;
+  // ---------- depth: one passive scroll listener writes --depth ----------
+  const gaugeVal = document.querySelector<HTMLElement>('.ds-gauge-val');
+  let depthFrame = 0;
+  const writeDepth = () => {
+    depthFrame = 0;
+    const max = document.documentElement.scrollHeight - innerHeight;
+    const p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
+    root.style.setProperty('--depth', p.toFixed(3));
+    if (gaugeVal) gaugeVal.textContent = String(Math.round(p * 200)).padStart(3, '0') + ' m';
+  };
+  const queueDepth = () => {
+    if (!depthFrame) depthFrame = requestAnimationFrame(writeDepth);
+  };
+  addEventListener('scroll', queueDepth, { passive: true });
+  addEventListener('resize', queueDepth);
+  writeDepth();
 
-    parallaxLayers.forEach(({ element, speedX, speedY, maxX, maxY }) => {
-      const offsetX =
-        supportsIndividualTranslate && !isMobile
-          ? Math.max(-maxX, Math.min(maxX, scrollDepth * speedX * motionScale))
-          : 0;
-      const offsetY = supportsIndividualTranslate
-        ? Math.min(maxY, scrollDepth * speedY * motionScale)
-        : 0;
-      element.style.translate = `${offsetX.toFixed(2)}px ${offsetY.toFixed(2)}px`;
+  // ---------- pointer: lantern + a gentle current in the particles ----------
+  const ptr = { x: -9999, y: -9999, on: false };
+  if (matchMedia('(pointer: fine)').matches) {
+    addEventListener(
+      'pointermove',
+      (e) => {
+        ptr.x = e.clientX;
+        ptr.y = e.clientY;
+        ptr.on = true;
+        root.style.setProperty('--mx', e.clientX + 'px');
+        root.style.setProperty('--my', e.clientY + 'px');
+        root.classList.add('has-pointer');
+      },
+      { passive: true }
+    );
+    document.addEventListener('pointerleave', () => {
+      ptr.on = false;
+      root.classList.remove('has-pointer');
     });
+  }
+
+  const rnd = (a: number, b: number) => a + Math.random() * (b - a);
+  const css = () => getComputedStyle(root);
+  const setup = (c: HTMLCanvasElement, W: number, H: number, dpr: number) => {
+    c.width = W * dpr;
+    c.height = H * dpr;
+    c.style.width = W + 'px';
+    c.style.height = H + 'px';
+    const x = c.getContext('2d')!;
+    x.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return x;
+  };
+  // Push particles away from the pointer (k > 0) or draw them in (k < 0); returns closeness 0..1
+  const push = (p: { x: number; y: number }, k: number) => {
+    if (!ptr.on) return 0;
+    const dx = p.x - ptr.x;
+    const dy = p.y - ptr.y;
+    const d2 = dx * dx + dy * dy;
+    if (d2 > 160 * 160) return 0;
+    const d = Math.sqrt(d2) || 1;
+    const f = 1 - d / 160;
+    p.x += (dx / d) * f * k;
+    p.y += (dy / d) * f * k;
+    return f;
   };
 
-  const queueParallax = () => {
-    if (!parallaxFrame) parallaxFrame = window.requestAnimationFrame(renderParallax);
-    if (!supportsIndividualTranslate) return;
+  // ---------- particles: marine snow, dust lit only inside the shafts, bioluminescence ----------
+  type Snow = {
+    x: number;
+    y: number;
+    r: number;
+    vy: number;
+    ph: number;
+    a: number;
+    glint: boolean;
+  };
+  type Dust = { x: number; y: number; r: number; vx: number; vy: number; ph: number };
+  type Lumen = { x: number; y: number; r: number; ph: number; sp: number; dir: number };
+  // Mirror of the CSS rays: left fraction, width px, angle deg (container is inset -10% -20%)
+  const RAYS: [number, number, number][] = [
+    [0.22, 120, 16],
+    [0.38, 60, 13],
+    [0.52, 180, 18],
+    [0.7, 80, 14],
+    [0.84, 140, 17],
+  ];
 
-    parallaxLayers.forEach(({ element }) => {
-      element.style.willChange = 'translate';
-    });
-    window.clearTimeout(parallaxSettleTimer);
-    parallaxSettleTimer = window.setTimeout(() => {
-      parallaxLayers.forEach(({ element }) => {
-        element.style.willChange = '';
-      });
-    }, 180);
+  // ---------- creatures ----------
+  type Fish = { ox: number; oy: number; s: number; ph: number; wag: number };
+  type School = {
+    dir: number;
+    pageY: number;
+    par: number;
+    fish: Fish[];
+    x: number;
+    v: number;
+    ph: number;
+  };
+  type Jelly = {
+    xf: number;
+    pageY: number;
+    par: number;
+    w: number;
+    x: number;
+    oy: number;
+    vy: number;
+    T: number;
+    ph: number;
+    tp: number;
+    tl: number[];
   };
 
-  window.addEventListener('scroll', queueParallax, { passive: true });
-  window.addEventListener('resize', queueParallax);
-  queueParallax();
+  const snowC = document.querySelector<HTMLCanvasElement>('.ds-snow')!;
+  const fishC = document.querySelector<HTMLCanvasElement>('.ds-fish')!;
+  const jellyC = document.querySelector<HTMLCanvasElement>('.ds-jellies')!;
+  let W = 0;
+  let H = 0;
+  let sx: CanvasRenderingContext2D;
+  let fx: CanvasRenderingContext2D;
+  let jx: CanvasRenderingContext2D;
+  let snow: Snow[] = [];
+  let dust: Dust[] = [];
+  let lumen: Lumen[] = [];
+  let schools: School[] = [];
+  let jellies: Jelly[] = [];
+
+  const makeSchool = (
+    dir: number,
+    pageY: number,
+    par: number,
+    n: number,
+    scale: number
+  ): School => ({
+    dir,
+    pageY,
+    par,
+    fish: Array.from({ length: n }, () => ({
+      ox: rnd(-90, 90),
+      oy: rnd(-26, 26),
+      s: rnd(0.75, 1.15) * scale,
+      ph: rnd(0, 6.28),
+      wag: rnd(0.9, 1.2),
+    })),
+    x: dir > 0 ? rnd(-200, W * 0.4) : rnd(W * 0.6, W + 200),
+    v: rnd(0.32, 0.45),
+    ph: rnd(0, 6.28),
+  });
+  const makeJelly = (xf: number, pageY: number, par: number, w: number): Jelly => ({
+    xf,
+    pageY,
+    par,
+    w,
+    x: xf * W,
+    oy: 0,
+    vy: 0,
+    T: rnd(3600, 5200),
+    ph: rnd(0, 5000),
+    tp: rnd(0, 6.28),
+    tl: Array.from({ length: 8 }, () => rnd(3.2, 4.6)),
+  });
+
+  const size = () => {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = innerWidth;
+    H = innerHeight;
+    sx = setup(snowC, W, H, dpr);
+    fx = setup(fishC, W, H, dpr);
+    jx = setup(jellyC, W, H, dpr);
+    const area = W * H;
+    snow = Array.from({ length: Math.round(Math.min(70, area / 22000)) }, () => ({
+      x: rnd(0, W),
+      y: rnd(0, H),
+      r: rnd(0.3, 1.7),
+      vy: -rnd(0.04, 0.22),
+      ph: rnd(0, 6.28),
+      a: rnd(0.08, 0.43),
+      glint: Math.random() < 0.12,
+    }));
+    dust = Array.from({ length: Math.round(Math.min(220, area / 6000)) }, () => ({
+      x: rnd(0, W),
+      y: rnd(0, H * 0.8),
+      r: rnd(0.35, 1.1),
+      vx: rnd(-0.06, 0.06),
+      vy: rnd(-0.05, 0.05),
+      ph: rnd(0, 6.28),
+    }));
+    lumen = Array.from({ length: Math.round(Math.min(14, area / 90000)) + 3 }, () => ({
+      x: rnd(0, W),
+      y: rnd(0, H),
+      r: rnd(1.4, 2.6),
+      ph: rnd(0, 6.28),
+      sp: rnd(0.6, 1.4),
+      dir: rnd(0, 6.28),
+    }));
+    schools = [
+      makeSchool(1, 520, 0.32, 11, 1.25),
+      makeSchool(-1, 1150, 0.24, 8, 1),
+      makeSchool(1, 1900, 0.2, 6, 0.8),
+    ];
+    // Jellies live in the side gutters; none where the gutters are too narrow
+    jellies =
+      W < 900
+        ? []
+        : [
+            makeJelly(0.06, 620, 0.55, 22),
+            makeJelly(0.935, 1250, 0.7, 14),
+            makeJelly(0.9, 2100, 0.45, 10),
+          ];
+  };
+
+  // Brightness of the light shafts at a point, 0..1
+  const shaft = (px: number, py: number) => {
+    const cw = W * 1.4;
+    const cl = -W * 0.2;
+    const top = -H * 0.1;
+    let v = 0;
+    for (const [l, w, a] of RAYS) {
+      const rad = (a * Math.PI) / 180;
+      const cx = cl + cw * l + w / 2;
+      const d = Math.abs(px - (cx - (py - top) * Math.tan(rad))) * Math.cos(rad);
+      v += Math.exp(-(d * d) / (w * w * 0.35));
+    }
+    return Math.min(1, v) * Math.max(0, 1 - py / (H * 0.85));
+  };
+
+  // A fish facing +x, length ~ 22*s, tail angle a
+  const drawFish = (x: CanvasRenderingContext2D, s: number, a: number) => {
+    const L = 22 * s;
+    x.beginPath();
+    x.moveTo(L * 0.5, 0);
+    x.bezierCurveTo(L * 0.38, -L * 0.2, -L * 0.18, -L * 0.2, -L * 0.32, 0);
+    x.bezierCurveTo(-L * 0.18, L * 0.2, L * 0.38, L * 0.2, L * 0.5, 0);
+    x.fill();
+    x.save();
+    x.translate(-L * 0.3, 0);
+    x.rotate(a);
+    x.beginPath();
+    x.moveTo(0, 0);
+    x.lineTo(-L * 0.26, -L * 0.17);
+    x.lineTo(-L * 0.2, 0);
+    x.lineTo(-L * 0.26, L * 0.17);
+    x.closePath();
+    x.fill();
+    x.restore();
+  };
+
+  const drawJelly = (
+    x: CanvasRenderingContext2D,
+    j: Jelly,
+    k: number,
+    A: number,
+    t: number,
+    L: string
+  ) => {
+    const w = j.w;
+    const bw = w * (1 - 0.2 * k);
+    const bh = w * 0.85 * (1 + 0.16 * k);
+    // tentacles first, behind the bell
+    const tg = x.createLinearGradient(0, 0, 0, w * 4.6);
+    tg.addColorStop(0, `rgba(${L},${(0.2 * A).toFixed(3)})`);
+    tg.addColorStop(1, `rgba(${L},0)`);
+    x.strokeStyle = tg;
+    x.lineWidth = 0.7;
+    const slack = 1 - Math.min(1, Math.abs(j.vy) * 1.6); // fast strokes pull the tentacles straight
+    for (let i = 0; i < 8; i++) {
+      const rx = -bw * 0.85 + (bw * 1.7 * i) / 7;
+      const len = w * j.tl[i];
+      x.beginPath();
+      x.moveTo(rx, bh * 0.04);
+      for (let s = 1; s <= 16; s++) {
+        const q = s / 16;
+        const wave = Math.sin(t / 650 - s * 0.5 + i * 1.7) * (1.5 + 9 * q) * (0.35 + 0.65 * slack);
+        x.lineTo(rx * (1 + q * 0.25 * slack) + wave, bh * 0.04 + len * q * (1 - 0.12 * k));
+      }
+      x.stroke();
+    }
+    // oral arms
+    x.lineWidth = 2;
+    x.strokeStyle = `rgba(${L},${(0.07 * A).toFixed(3)})`;
+    for (let i = -1; i <= 1; i++) {
+      x.beginPath();
+      x.moveTo(i * bw * 0.18, 0);
+      for (let s = 1; s <= 10; s++)
+        x.lineTo(i * bw * 0.18 + Math.sin(t / 500 + s * 0.8 + i) * 2.2, s * w * 0.16);
+      x.stroke();
+    }
+    // bell
+    x.beginPath();
+    x.moveTo(-bw, 0);
+    x.bezierCurveTo(-bw, -bh * 1.3, bw, -bh * 1.3, bw, 0);
+    x.quadraticCurveTo(bw * 0.7, bh * 0.14, 0, bh * 0.08);
+    x.quadraticCurveTo(-bw * 0.7, bh * 0.14, -bw, 0);
+    const g = x.createRadialGradient(0, -bh * 0.55, 0, 0, -bh * 0.4, bw * 1.25);
+    g.addColorStop(0, `rgba(${L},${(0.11 * A).toFixed(3)})`);
+    g.addColorStop(0.65, `rgba(${L},${(0.04 * A).toFixed(3)})`);
+    g.addColorStop(1, `rgba(${L},${(0.015 * A).toFixed(3)})`);
+    x.fillStyle = g;
+    x.fill();
+    x.save();
+    x.shadowColor = `rgba(${L},${(0.5 * A).toFixed(3)})`;
+    x.shadowBlur = 8;
+    x.strokeStyle = `rgba(${L},${(0.24 * A).toFixed(3)})`;
+    x.lineWidth = 0.8;
+    x.stroke();
+    x.restore();
+    x.beginPath();
+    x.moveTo(-bw * 0.72, -bh * 0.02);
+    x.quadraticCurveTo(0, -bh * 0.78, bw * 0.72, -bh * 0.02);
+    x.strokeStyle = `rgba(${L},${(0.09 * A).toFixed(3)})`;
+    x.lineWidth = 0.7;
+    x.stroke();
+    x.fillStyle = `rgba(${L},${(0.06 * A).toFixed(3)})`;
+    for (const s of [-1, 1]) {
+      x.beginPath();
+      x.ellipse(s * bw * 0.27, -bh * 0.5, bw * 0.17, bh * 0.11, s * 0.5, 0, 6.283);
+      x.fill();
+    }
+  };
+
+  let last = performance.now();
+  const frame = (t: number) => {
+    const f = Math.min(3, (t - last) / 16.67);
+    last = t;
+    const cs = css();
+    const depth = parseFloat(cs.getPropertyValue('--depth')) || 0;
+    const sRGB = cs.getPropertyValue('--env-snow').trim();
+    const dRGB = cs.getPropertyValue('--env-dust').trim();
+    const lRGB = cs.getPropertyValue('--env-lumen').trim();
+    const F = cs.getPropertyValue('--env-fish').trim();
+    const FA = parseFloat(cs.getPropertyValue('--env-fish-a')) || 0.5;
+
+    // particles
+    sx.clearRect(0, 0, W, H);
+    const fade = 1 - depth * 0.9;
+    for (const p of dust) {
+      p.x += p.vx + Math.sin(t / 2600 + p.ph) * 0.05;
+      p.y += p.vy + Math.cos(t / 3100 + p.ph) * 0.04;
+      if (p.x < -4) p.x = W + 4;
+      if (p.x > W + 4) p.x = -4;
+      if (p.y < -4) p.y = H * 0.8;
+      if (p.y > H * 0.85) p.y = 0;
+      const lit = shaft(p.x, p.y) * fade + push(p, 0.25) * 0.4;
+      if (lit < 0.03) continue;
+      sx.beginPath();
+      sx.arc(p.x, p.y, p.r, 0, 6.283);
+      sx.fillStyle = `rgba(${dRGB},${(lit * 0.75).toFixed(3)})`;
+      sx.fill();
+    }
+    for (const p of snow) {
+      p.y += p.vy;
+      p.x += Math.sin(t / 3000 + p.ph) * 0.12;
+      if (p.y < -5) {
+        p.y = H + 5;
+        p.x = rnd(0, W);
+      }
+      const near = push(p, 0.6);
+      const tw = p.glint ? 0.5 + 0.5 * Math.sin(t / 900 + p.ph) : 1;
+      sx.beginPath();
+      sx.arc(p.x, p.y, p.r * (p.glint ? 1.4 : 1), 0, 6.283);
+      sx.fillStyle = `rgba(${sRGB},${Math.min(1, p.a * tw + near * 0.35).toFixed(3)})`;
+      sx.fill();
+    }
+    // bioluminescence: few near the surface, more as you sink
+    const vis = 0.18 + depth * 0.82;
+    sx.save();
+    sx.shadowColor = `rgb(${lRGB})`;
+    for (const p of lumen) {
+      p.dir += Math.sin(t / 4000 + p.ph) * 0.01;
+      p.x += Math.cos(p.dir) * 0.12 * p.sp;
+      p.y += Math.sin(p.dir) * 0.08 * p.sp - 0.03;
+      if (p.x < -10) p.x = W + 10;
+      if (p.x > W + 10) p.x = -10;
+      if (p.y < -10) p.y = H + 10;
+      if (p.y > H + 10) p.y = -10;
+      const near = push(p, -0.15); // curious: drifts toward the light
+      const breathe = 0.35 + 0.65 * Math.pow(0.5 + 0.5 * Math.sin(t / (1400 * p.sp) + p.ph), 2);
+      sx.shadowBlur = 10 + 10 * breathe;
+      sx.beginPath();
+      sx.arc(p.x, p.y, p.r, 0, 6.283);
+      sx.fillStyle = `rgba(${lRGB},${(Math.min(1, vis * breathe + near * 0.4) * 0.9).toFixed(3)})`;
+      sx.fill();
+    }
+    sx.restore();
+
+    // fish schools
+    fx.clearRect(0, 0, W, H);
+    fx.fillStyle = `rgba(${F},${FA})`;
+    for (const sc of schools) {
+      sc.x += sc.v * sc.dir * f;
+      if (sc.dir > 0 && sc.x > W + 220) sc.x = -220;
+      if (sc.dir < 0 && sc.x < -220) sc.x = W + 220;
+      const sy = sc.pageY - scrollY * sc.par + Math.sin(t / 5200 + sc.ph) * 26;
+      if (sy < -120 || sy > H + 120) continue;
+      const slope = (((Math.cos(t / 5200 + sc.ph) * 26) / 5200) * 16.67) / (sc.v || 1); // heading follows the wave
+      for (const fi of sc.fish) {
+        const x = sc.x + fi.ox * sc.dir + Math.sin(t / 1300 + fi.ph) * 5;
+        const y = sy + fi.oy + Math.cos(t / 1700 + fi.ph) * 4;
+        fx.save();
+        fx.translate(x, y);
+        fx.scale(sc.dir, 1);
+        fx.rotate(slope * 0.6);
+        drawFish(fx, fi.s, Math.sin((t / 160) * fi.wag + fi.ph) * 0.35);
+        fx.restore();
+      }
+    }
+
+    // jellyfish: squeeze, glide, sink
+    jx.clearRect(0, 0, W, H);
+    const A = 0.55 + depth * 0.45;
+    for (const j of jellies) {
+      const ph = ((t + j.ph) % j.T) / j.T;
+      const k =
+        ph < 0.22 ? Math.sin(((ph / 0.22) * Math.PI) / 2) : Math.pow(1 - (ph - 0.22) / 0.78, 2);
+      const tilt = Math.sin(t / 7000 + j.tp) * 0.2;
+      const steer = j.oy < -140 ? 0.35 : j.oy > 140 ? 1.5 : 1;
+      if (ph < 0.22) j.vy -= 0.014 * steer * f * (j.w / 18);
+      j.vy += 0.0045 * f; // negative buoyancy: sinks between strokes
+      j.vy *= Math.exp(-f / 50); // water drag
+      j.oy += j.vy * f;
+      j.x += Math.sin(tilt) * -j.vy * f + (j.xf * W - j.x) * 0.002 * f;
+      const y = j.pageY - scrollY * j.par + j.oy;
+      if (y < -200 || y > H + 200) continue;
+      jx.save();
+      jx.translate(j.x, y);
+      jx.rotate(tilt);
+      drawJelly(jx, j, k, A, t, lRGB);
+      jx.restore();
+    }
+
+    requestAnimationFrame(frame);
+  };
+
+  addEventListener('resize', size);
+  size();
+  requestAnimationFrame(frame);
 </script>

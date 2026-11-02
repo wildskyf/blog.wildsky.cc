@@ -11,7 +11,7 @@ body {
 
 body {
   position: relative;
-  background: var(--env-abyss);
+  background: var(--water-4);
   color: var(--fg);
   font-family: var(--font-body);
   font-size: 19px;
@@ -22,8 +22,8 @@ body {
 }
 
 ::selection {
-  background: var(--accent-fill);
-  color: var(--fg-on-accent);
+  background: var(--selection-bg);
+  color: var(--selection-fg);
 }
 
 /* ------------------------------------------------------------
@@ -70,17 +70,13 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   background: var(--accent-fill);
   color: var(--fg-on-accent);
-  font-family: var(--font-label);
-  font-size: 19px;
+  font-family: var(--font-caps);
+  font-size: 14px;
   font-weight: 600;
-  font-variant-caps: all-small-caps;
-  font-feature-settings:
-    'smcp' 1,
-    'c2sc' 1;
   line-height: 1;
   letter-spacing: 0;
 }
@@ -88,8 +84,8 @@ body {
 .ds-seal::after {
   content: '';
   position: absolute;
-  inset: 3px;
-  border: 1px solid color-mix(in oklab, var(--fg-on-accent) 42%, transparent);
+  inset: 2px;
+  border: 1px solid color-mix(in oklab, var(--fg-on-accent) 50%, transparent);
 }
 
 /* 狀態印（Latest）：橫向的印，不是方印 */

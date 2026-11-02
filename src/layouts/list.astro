@@ -2,6 +2,7 @@
 import PageLayout from './page.astro';
 import PostList from '@/components/PostList.astro';
 import { getTranslation } from '@/i18n/utils.ts';
+import dayjs from 'dayjs';
 import { formatReadingTime } from '@/utils';
 
 type Locale = 'tw' | 'en';
@@ -51,13 +52,9 @@ const rows = postList.map((p) => ({
   readingTime: p.readingMinutes ? formatReadingTime(p.readingMinutes, lang) : null,
 }));
 
-const countLabel = totalPosts
-  ? currentLocale === 'en'
-    ? `${totalPosts} articles`
-    : `${totalPosts} 篇文章`
-  : currentLocale === 'en'
-    ? `Page ${currentPage} of ${lastPage}`
-    : `第 ${currentPage} / ${lastPage} 頁`;
+// HUD readout under the manifesto (v9; product decision 2026-11-02)
+const latest =
+  currentPage === 1 && postList[0] ? dayjs(postList[0].date).format('YYYY.MM.DD') : null;
 const manifestoParts =
   currentLocale === 'en'
     ? ['Faith in uncertainty, ', 'while engineering life with certainty']
@@ -70,11 +67,69 @@ const manifestoLabel = manifestoParts.join('');
 
   <div class="chrome-inner">
     <div class="ds-hero">
-      <span class="ds-hero-anchor" aria-hidden="true"></span>
+      {
+        /* W drawn as two wave troughs over a sounding line: original mark, not traced from any lettering */
+      }
+      <svg class="ds-hero-sigil" viewBox="0 0 220 210" aria-hidden="true">
+        <path
+          class="wave"
+          d="M8,30 C28,30 36,170 58,170 C80,170 86,72 110,72 C134,72 140,170 162,170 C184,170 192,30 212,30"
+        ></path>
+        <path
+          class="echo"
+          d="M8,46 C28,46 36,184 58,184 C80,184 86,88 110,88 C134,88 140,184 162,184 C184,184 192,46 212,46"
+        ></path>
+        <path class="base" d="M0,200 L220,200"></path>
+        <circle cx="58" cy="200" r="2.5"></circle>
+        <circle cx="110" cy="200" r="2.5"></circle>
+        <circle cx="162" cy="200" r="2.5"></circle>
+      </svg>
+
+      <p class="ds-hero-kicker" lang="en">Under the Tide</p>
       <h1 class="ds-hero-manifesto" aria-label={manifestoLabel}>
         {manifestoParts.map((part) => <span>{part}</span>)}
+        {/* The current: a single drifting line under the manifesto */}
+        <svg
+          class="ds-hero-current"
+          viewBox="0 0 1240 28"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <defs>
+            <linearGradient id="ds-current-grad" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" style="stop-color: var(--glow); stop-opacity: 0"></stop>
+              <stop offset="0.2" style="stop-color: var(--glow); stop-opacity: 1"></stop>
+              <stop offset="0.65" style="stop-color: var(--fg); stop-opacity: 0.9"></stop>
+              <stop offset="1" style="stop-color: var(--fg); stop-opacity: 0"></stop>
+            </linearGradient>
+          </defs>
+          <path d="M0,16 C140,4 260,26 400,15 S680,4 820,14 S1100,26 1240,12"></path>
+        </svg>
       </h1>
-      <span class="ds-hero-count">{countLabel}</span>
+      <div class="ds-hero-foot" lang="en">
+        <span>
+          {
+            totalPosts ? (
+              <>
+                ENTRIES <b>{totalPosts}</b>
+              </>
+            ) : (
+              <>
+                PAGE <b>{currentPage}</b> / {lastPage}
+              </>
+            )
+          }
+          {
+            latest && (
+              <>
+                {' '}
+                &nbsp;:&nbsp; LAST <b>{latest}</b>
+              </>
+            )
+          }
+        </span>
+        <span>DEPTH 0 m &nbsp;:&nbsp; <span class="ds-hero-since">SINCE 2014</span></span>
+      </div>
     </div>
 
     <PostList lang={lang} postList={rows} showLatest={currentPage === 1} />
@@ -105,68 +160,114 @@ const manifestoLabel = manifestoParts.join('');
 <style>
   .ds-hero {
     position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 24px;
-    margin: 56px 0 4px;
-    padding: 34px 0 30px 18px;
-    border-top: 1px solid var(--rule);
+    padding: 128px 0 84px;
     border-bottom: 1px solid var(--rule);
   }
 
-  .ds-hero::before,
-  .ds-hero::after {
-    content: '';
+  .ds-hero-sigil {
     position: absolute;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: color-mix(in oklab, var(--rule) 55%, transparent);
+    right: 2%;
+    top: 20px;
+    width: min(320px, 36vw);
+    height: auto;
+    pointer-events: none;
+    opacity: var(--env-sigil-op);
+    fill: none;
+    stroke: var(--fg);
+    stroke-linecap: round;
   }
-  .ds-hero::before {
-    top: 4px;
+  .ds-hero-sigil .wave {
+    stroke-width: 3;
   }
-  .ds-hero::after {
-    bottom: 4px;
+  .ds-hero-sigil .echo {
+    stroke-width: 1;
+    stroke-dasharray: 2 6;
+    opacity: 0.7;
+  }
+  .ds-hero-sigil .base {
+    stroke-width: 1;
+  }
+  .ds-hero-sigil circle {
+    fill: var(--fg);
+    stroke: none;
   }
 
-  .ds-hero-anchor {
-    position: absolute;
-    left: 0;
-    top: 28px;
-    bottom: 26px;
-    width: 1px;
-    background: var(--accent);
+  .ds-hero-kicker {
+    position: relative;
+    margin: 0 0 34px;
+    font-family: var(--font-caps);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--glow);
   }
 
   .ds-hero-manifesto {
-    grid-column: 1;
+    position: relative;
+    display: inline-block;
     margin: 0;
     font-family: var(--font-cjk-display);
-    font-size: clamp(36px, 4.2vw, 56px);
+    font-size: clamp(36px, 5.2vw, 64px);
     font-weight: 600;
-    line-height: 1.28;
-    letter-spacing: 0.008em;
-    color: var(--fg);
+    line-height: 1.3;
+    letter-spacing: 0.03em;
+    background: var(--title-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .ds-hero-manifesto span {
     display: block;
+    text-wrap: balance;
   }
 
-  .ds-hero-count {
-    grid-column: 2;
-    align-self: end;
-    white-space: nowrap;
-    font-family: var(--font-label);
-    font-size: 15px;
-    font-variant-caps: all-small-caps;
-    font-feature-settings:
-      'smcp' 1,
-      'c2sc' 1;
-    letter-spacing: 0.055em;
-    color: var(--fg-muted);
+  .ds-hero-current {
+    position: absolute;
+    left: -4%;
+    right: -10%;
+    bottom: -30px;
+    width: 114%;
+    height: 28px;
+    overflow: visible;
+    pointer-events: none;
+  }
+  .ds-hero-current path {
+    fill: none;
+    stroke: url(#ds-current-grad);
+    stroke-width: 1.5;
+    stroke-dasharray: 1400;
+    stroke-dashoffset: 1400;
+    animation: ds-current-in 2.6s var(--ease) 0.3s forwards;
+  }
+  @keyframes ds-current-in {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .ds-hero-foot {
+    position: relative;
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: end;
+    gap: 12px 24px;
+    font-family: var(--font-meta);
+    font-size: 12px;
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+    color: var(--fg-faint);
+  }
+  .ds-hero-foot b {
+    font-weight: 400;
+    color: var(--fg);
+  }
+  .ds-hero-since {
+    color: var(--gold-text);
   }
 
   .ds-pager {
@@ -218,23 +319,19 @@ const manifestoLabel = manifestoParts.join('');
     }
   }
 
-  @media (max-width: 899px) {
-    .ds-hero {
-      grid-template-columns: 1fr;
-    }
-    .ds-hero-count {
-      grid-column: 1;
-    }
-  }
-
   @media (max-width: 767px) {
     .ds-hero {
-      gap: 18px;
-      margin-top: 32px;
-      padding: 28px 0 24px 18px;
+      padding: 80px 0 56px;
     }
     .ds-hero-manifesto {
-      font-size: clamp(30px, 8vw, 38px);
+      font-size: clamp(28px, 8vw, 34px);
+    }
+    .ds-hero-kicker {
+      letter-spacing: 0.35em;
+    }
+    .ds-hero-sigil {
+      top: 40px;
+      width: 46vw;
     }
     .ds-pager {
       grid-template-columns: 1fr 1fr;

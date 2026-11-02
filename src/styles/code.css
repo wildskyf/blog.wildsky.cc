@@ -58,14 +58,15 @@
 .article-content .token.cdata,
 .article-content .token.punctuation,
 .article-content .token.operator {
-  color: var(--glow-dim);
+  color: var(--fg-faint);
 }
 
+/* 字串用燈火金：程式碼裡唯一的暖色 */
 .article-content .token.string,
 .article-content .token.char,
 .article-content .token.attr-value,
 .article-content .token.regex {
-  color: var(--fg-muted);
+  color: var(--gold-text);
 }
 
 .article-content .token.number,

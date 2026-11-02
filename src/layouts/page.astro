@@ -35,11 +35,8 @@ const {
 >
   <BackgroundField />
 
-  <span class="ds-watermark left" aria-hidden="true">WILDSKY.CC</span>
-  <span class="ds-watermark right" aria-hidden="true">SINCE 2014</span>
-
   <div id="page" class="ds-page">
-    <Header />
+    <Header pageName={pageName} />
 
     <main class="ds-main" lang={lang_code}>
       <slot />
@@ -70,39 +67,6 @@ const {
     flex-direction: column;
   }
 
-  .ds-page::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    inset: 72px 0 0;
-    background: linear-gradient(
-      to bottom,
-      var(--bg-surface) 0%,
-      var(--bg) 20%,
-      var(--bg) 58%,
-      var(--bg-sunken) 100%
-    );
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent calc(50% - 560px),
-      var(--fg) calc(50% - 500px),
-      var(--fg) calc(50% - 410px),
-      var(--fg) calc(50% + 410px),
-      var(--fg) calc(50% + 500px),
-      transparent calc(50% + 560px)
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent calc(50% - 560px),
-      var(--fg) calc(50% - 500px),
-      var(--fg) calc(50% - 410px),
-      var(--fg) calc(50% + 410px),
-      var(--fg) calc(50% + 500px),
-      transparent calc(50% + 560px)
-    );
-    pointer-events: none;
-  }
-
   .ds-main {
     flex: 1 0 auto;
     padding: 0 0 96px;
@@ -112,9 +76,9 @@ const {
     position: relative;
     z-index: 3;
     flex: none;
-    background: var(--bg-sunken);
+    background: transparent;
     border-top: 1px solid var(--rule);
-    padding: 30px 0 34px;
+    padding: 28px 0 34px;
   }
 
   .ds-footer-inner {
@@ -149,52 +113,7 @@ const {
     text-wrap: balance;
   }
 
-  .ds-watermark {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    z-index: 0;
-    display: none;
-    align-items: center;
-    writing-mode: vertical-rl;
-    font-family: var(--font-display);
-    font-size: var(--fs-watermark);
-    font-weight: 600;
-    letter-spacing: 0.045em;
-    line-height: 1;
-    color: var(--env-mid);
-    user-select: none;
-    pointer-events: none;
-    white-space: nowrap;
-  }
-  .ds-watermark.left {
-    left: -28px;
-  }
-  .ds-watermark.right {
-    right: -28px;
-    transform: rotate(180deg);
-  }
-
-  @media (min-width: 1280px) {
-    .ds-watermark {
-      display: flex;
-    }
-  }
-
   @media (max-width: 767px) {
-    .ds-page::before {
-      background: linear-gradient(
-        to bottom,
-        var(--bg-surface) 0%,
-        var(--bg) 22%,
-        var(--bg) 60%,
-        var(--bg-sunken) 100%
-      );
-      -webkit-mask-image: none;
-      mask-image: none;
-      opacity: var(--mobile-page-veil);
-    }
-
     .ds-footer-inner {
       grid-template-columns: minmax(0, 1fr);
       row-gap: 12px;
