@@ -44,7 +44,12 @@
   /* ---------- the water column ---------- */
   .ds-sea {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* lvh: the toolbar-collapsed height; it does not change while mobile Safari's toolbar slides */
+    height: 100vh;
+    height: 100lvh;
     z-index: -4;
     pointer-events: none;
     background: linear-gradient(
@@ -66,7 +71,12 @@
 
   .ds-rays {
     position: fixed;
-    inset: -10% -20% 0;
+    top: -10vh;
+    top: -10lvh;
+    left: -20%;
+    right: -20%;
+    height: 110vh;
+    height: 110lvh;
     z-index: -3;
     pointer-events: none;
     opacity: calc(1 - var(--depth) * 0.9);
@@ -130,7 +140,12 @@
   .ds-jellies,
   .ds-snow {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* lvh: the toolbar-collapsed height; it does not change while mobile Safari's toolbar slides */
+    height: 100vh;
+    height: 100lvh;
     pointer-events: none;
   }
   .ds-fish {
@@ -147,7 +162,12 @@
      Filter matrices live here, not in tokens: they are noise coefficients, not UI colour. */
   .ds-fog {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* lvh: the toolbar-collapsed height; it does not change while mobile Safari's toolbar slides */
+    height: 100vh;
+    height: 100lvh;
     z-index: -2;
     pointer-events: none;
     overflow: hidden;
@@ -195,6 +215,7 @@
     position: fixed;
     left: 0;
     top: 30vh;
+    top: 30lvh;
     z-index: -2;
     width: 100vw;
     height: 260px;
@@ -223,7 +244,12 @@
 
   .ds-lantern {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* lvh: the toolbar-collapsed height; it does not change while mobile Safari's toolbar slides */
+    height: 100vh;
+    height: 100lvh;
     z-index: -1;
     pointer-events: none;
     opacity: 0;
@@ -272,7 +298,12 @@
   /* Rock / ink grain over everything */
   .ds-grain {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* lvh: the toolbar-collapsed height; it does not change while mobile Safari's toolbar slides */
+    height: 100vh;
+    height: 100lvh;
     z-index: 30;
     pointer-events: none;
     opacity: var(--env-grain-op);
@@ -369,12 +400,18 @@
   const root = document.documentElement;
   root.classList.toggle('is-reading', !!document.querySelector('.ds-article'));
 
+  // Mobile Safari changes innerHeight every time its toolbar slides in or out. Every size
+  // decision below reads the large-viewport height (.ds-sea is 100lvh) instead, so the
+  // scene stays put while scrolling.
+  const seaEl = document.querySelector<HTMLElement>('.ds-sea');
+  const stableH = () => seaEl?.clientHeight || innerHeight;
+
   // ---------- depth: one passive scroll listener writes --depth ----------
   const gaugeVal = document.querySelector<HTMLElement>('.ds-gauge-val');
   let depthFrame = 0;
   const writeDepth = () => {
     depthFrame = 0;
-    const max = document.documentElement.scrollHeight - innerHeight;
+    const max = document.documentElement.scrollHeight - stableH();
     const p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
     root.style.setProperty('--depth', p.toFixed(3));
     if (gaugeVal) gaugeVal.textContent = String(Math.round(p * 200)).padStart(3, '0') + ' m';
@@ -529,11 +566,18 @@
 
   const size = () => {
     const dpr = Math.min(devicePixelRatio || 1, 2);
-    W = innerWidth;
-    H = innerHeight;
+    const nextW = innerWidth;
+    const nextH = stableH();
+    if (nextW === W && nextH === H) return;
+    const widthChanged = nextW !== W;
+    W = nextW;
+    H = nextH;
     sx = setup(snowC, W, H, dpr);
     fx = setup(fishC, W, H, dpr);
     jx = setup(jellyC, W, H, dpr);
+    // Only a real width change (rotation, window resize) re-seeds the creatures;
+    // re-seeding on every height change is what made fish and jellies jump on iOS.
+    if (!widthChanged) return;
     const area = W * H;
     snow = Array.from({ length: Math.round(Math.min(70, area / 22000)) }, () => ({
       x: rnd(0, W),
@@ -798,7 +842,11 @@
     requestAnimationFrame(frame);
   };
 
-  addEventListener('resize', size);
+  let resizeTimer = 0;
+  addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(size, 150);
+  });
   size();
   requestAnimationFrame(frame);
 </script>
