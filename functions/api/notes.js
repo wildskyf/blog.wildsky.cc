@@ -1,17 +1,19 @@
-const DEFAULT_FEED_URL = 'https://social.wildsky.cc/@wildsky/feed.rss';
+// social.wildsky.cc runs snac (it replaced GoToSocial in 2026-11). Notes come from the
+// Mastodon-compatible public API, which pages natively with max_id.
+const DEFAULT_INSTANCE_URL = 'https://social.wildsky.cc';
+const DEFAULT_ACCOUNT = 'wildsky';
 const DEFAULT_CACHE_SECONDS = 60;
 const UPSTREAM_TIMEOUT_MS = 4000;
 const DEFAULT_PAGE_SIZE = 10;
 const MAX_PAGE_SIZE = 20;
 const MAX_MEDIA_PER_NOTE = 4;
+// Upstream pages are filtered (no replies, boosts or unlisted posts), so a page of notes may
+// need more than one upstream request.
+const UPSTREAM_PAGE_SIZE = 40;
+const MAX_UPSTREAM_PAGES = 3;
 const ALLOWED_MEDIA_HOST = 'social.wildsky.cc';
-const ALLOWED_MEDIA_PATH_PREFIX = '/fileserver/';
-const ALLOWED_IMAGE_TYPES = new Set([
-  'image/gif',
-  'image/jpeg',
-  'image/png',
-  'image/webp',
-]);
+// /fileserver/ serves media of posts imported from GoToSocial; /users/wildsky/s/ is snac's.
+const ALLOWED_MEDIA_PATH_PREFIXES = ['/fileserver/', '/users/wildsky/s/'];
 
 export async function onRequestGet(context) {
   const { request, env, waitUntil } = context;
@@ -50,37 +52,56 @@ export async function onRequestOptions() {
 }
 
 async function buildNotesResponse(env, cacheSeconds, page) {
-  const baseFeedUrl = env.GTS_NOTES_FEED_URL || DEFAULT_FEED_URL;
-  let feedUrl = baseFeedUrl;
+  const instanceUrl = env.NOTES_INSTANCE_URL || DEFAULT_INSTANCE_URL;
+  const account = env.NOTES_ACCOUNT || DEFAULT_ACCOUNT;
+  let feedUrl = instanceUrl;
 
   try {
-    feedUrl = buildFeedUrl(baseFeedUrl, page);
-    const rss = await fetchTextWithTimeout(feedUrl, UPSTREAM_TIMEOUT_MS, cacheSeconds);
-    const items = parseRssItems(rss);
-    const parsedNotes = items
-      .map(toNote)
-      .filter((note) => note.url && (note.html.trim() || note.media.length > 0));
-    const notes = parsedNotes.slice(0, page.limit);
-    const lastNote = notes[notes.length - 1];
-    const hasMore = parsedNotes.length > page.limit;
+    const accountId = await lookupAccountId(instanceUrl, account, cacheSeconds);
+    const notes = [];
+    let upstreamCursor = page.cursor;
+    let upstreamDone = false;
+
+    for (let i = 0; i < MAX_UPSTREAM_PAGES && notes.length <= page.limit && !upstreamDone; i += 1) {
+      feedUrl = buildStatusesUrl(instanceUrl, accountId, upstreamCursor);
+      const statuses = await fetchJsonWithTimeout(feedUrl, UPSTREAM_TIMEOUT_MS, cacheSeconds);
+
+      if (!Array.isArray(statuses) || statuses.length === 0) {
+        upstreamDone = true;
+        break;
+      }
+
+      for (const status of statuses) {
+        if (!isListedNote(status)) continue;
+        const note = toNote(status);
+        if (note.url && (note.html.trim() || note.media.length > 0)) notes.push(note);
+      }
+
+      upstreamCursor = sanitizeCursor(statuses[statuses.length - 1].id);
+      upstreamDone = statuses.length < UPSTREAM_PAGE_SIZE || !upstreamCursor;
+    }
+
+    const pageNotes = notes.slice(0, page.limit);
+    const lastNote = pageNotes[pageNotes.length - 1];
+    const hasMore = notes.length > page.limit || (!upstreamDone && pageNotes.length === page.limit);
 
     return jsonResponse({
       ok: true,
-      count: notes.length,
-      source: baseFeedUrl,
+      count: pageNotes.length,
+      source: instanceUrl,
       feed: feedUrl,
       limit: page.limit,
       cursor: page.cursor || null,
       hasMore,
-      nextCursor: hasMore && lastNote ? extractStatusId(lastNote.url) || null : null,
+      nextCursor: hasMore && lastNote ? lastNote.id || null : null,
       fetchedAt: new Date().toISOString(),
-      html: renderNotes(notes),
+      html: renderNotes(pageNotes),
     }, cacheSeconds);
   } catch (error) {
     return jsonResponse({
       ok: true,
       count: 0,
-      source: baseFeedUrl,
+      source: instanceUrl,
       feed: feedUrl,
       limit: page.limit,
       cursor: page.cursor || null,
@@ -100,37 +121,38 @@ function getPageParams(requestUrl) {
   };
 }
 
-function buildFeedUrl(baseFeedUrl, page) {
-  const url = new URL(baseFeedUrl);
-  url.searchParams.set('limit', String(Math.min(page.limit + 1, MAX_PAGE_SIZE + 1)));
+async function lookupAccountId(instanceUrl, account, cacheSeconds) {
+  const url = new URL('/api/v1/accounts/lookup', instanceUrl);
+  url.searchParams.set('acct', account);
+  const result = await fetchJsonWithTimeout(url.toString(), UPSTREAM_TIMEOUT_MS, cacheSeconds);
+  const id = sanitizeCursor(result && result.id);
 
-  if (page.cursor) {
-    url.searchParams.set('max_id', page.cursor);
-  } else {
-    url.searchParams.delete('max_id');
+  if (!id) {
+    throw new Error(`account ${account} not found`);
+  }
+
+  return id;
+}
+
+function buildStatusesUrl(instanceUrl, accountId, cursor) {
+  const url = new URL(`/api/v1/accounts/${accountId}/statuses`, instanceUrl);
+  url.searchParams.set('limit', String(UPSTREAM_PAGE_SIZE));
+
+  if (cursor) {
+    url.searchParams.set('max_id', cursor);
   }
 
   return url.toString();
 }
 
-function extractStatusId(statusUrl) {
-  try {
-    const url = new URL(statusUrl);
-    const id = url.pathname.split('/').filter(Boolean).pop();
-    return sanitizeCursor(id);
-  } catch (_error) {
-    return '';
-  }
-}
-
-async function fetchTextWithTimeout(url, timeoutMs, cacheSeconds) {
+async function fetchJsonWithTimeout(url, timeoutMs, cacheSeconds) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort('upstream timeout'), timeoutMs);
 
   try {
     const response = await fetch(url, {
       headers: {
-        accept: 'application/rss+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.1',
+        accept: 'application/json',
         'user-agent': 'blog.wildsky.cc notes feed proxy',
       },
       signal: controller.signal,
@@ -141,67 +163,41 @@ async function fetchTextWithTimeout(url, timeoutMs, cacheSeconds) {
       throw new Error(`upstream returned ${response.status}`);
     }
 
-    return await response.text();
+    return await response.json();
   } finally {
     clearTimeout(timeout);
   }
 }
 
-function parseRssItems(xml) {
-  return Array.from(xml.matchAll(/<item\b[\s\S]*?<\/item>/gi), (match) => match[0]);
+// Same selection as the old GoToSocial RSS feed: public top-level posts, no boosts.
+function isListedNote(status) {
+  return Boolean(status) &&
+    status.visibility === 'public' &&
+    !status.in_reply_to_id &&
+    !status.reblog;
 }
 
-function toNote(itemXml) {
-  const rawHtml = extractTag(itemXml, 'content:encoded') || extractTag(itemXml, 'description');
-  const pubDate = decodeXml(extractTag(itemXml, 'pubDate'));
-  const link = decodeXml(extractTag(itemXml, 'link') || extractTag(itemXml, 'guid'));
-  const isoDate = toIsoDate(pubDate);
+function toNote(status) {
+  const isoDate = toIsoDate(status.created_at);
 
   return {
-    html: sanitizeHtml(rawHtml),
-    media: extractMediaEnclosures(itemXml),
-    url: sanitizeUrl(link) || '',
+    id: sanitizeCursor(status.id),
+    html: sanitizeHtml(status.content),
+    media: extractMedia(status.media_attachments),
+    url: sanitizeUrl(status.url || status.uri) || '',
     date: isoDate,
     displayDate: formatDate(isoDate),
   };
 }
 
-function extractMediaEnclosures(itemXml) {
-  return Array.from(String(itemXml || '').matchAll(/<enclosure\b([^>]*)>/gi), (match) => {
-    const attrs = parseXmlAttrs(match[1]);
-    const type = String(attrs.type || '').toLowerCase();
-    const url = sanitizeMediaUrl(attrs.url);
-
-    if (!url || !ALLOWED_IMAGE_TYPES.has(type)) {
-      return null;
-    }
-
-    return {
-      url,
-      type,
-    };
-  })
+function extractMedia(attachments) {
+  return (Array.isArray(attachments) ? attachments : [])
+    .map((item) => {
+      const url = sanitizeMediaUrl(item && item.url);
+      return url && item.type === 'image' ? { url, type: item.type } : null;
+    })
     .filter(Boolean)
     .slice(0, MAX_MEDIA_PER_NOTE);
-}
-
-function parseXmlAttrs(rawAttrs) {
-  const attrs = {};
-  for (const match of String(rawAttrs || '').matchAll(/([a-zA-Z:-]+)\s*=\s*("[^"]*"|'[^']*'|[^\s"'>]+)/g)) {
-    attrs[match[1].toLowerCase()] = decodeXml(stripQuotes(match[2]));
-  }
-
-  return attrs;
-}
-
-function extractTag(xml, tagName) {
-  const tag = escapeRegExp(tagName);
-  const match = xml.match(new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${tag}>`, 'i'));
-  if (!match) return '';
-
-  const inner = match[1].trim();
-  const cdata = inner.match(/^<!\[CDATA\[([\s\S]*)\]\]>$/);
-  return cdata ? cdata[1] : decodeXml(inner);
 }
 
 function sanitizeHtml(input) {
@@ -356,7 +352,7 @@ function sanitizeMediaUrl(value) {
     if (
       url.protocol === 'https:' &&
       url.hostname === ALLOWED_MEDIA_HOST &&
-      url.pathname.startsWith(ALLOWED_MEDIA_PATH_PREFIX)
+      ALLOWED_MEDIA_PATH_PREFIXES.some((prefix) => url.pathname.startsWith(prefix))
     ) {
       return url.toString();
     }
