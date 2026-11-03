@@ -6,7 +6,8 @@
 @import '@fontsource/cinzel/600.css';
 @import '@fontsource/space-mono/400.css';
 @import '@fontsource/space-mono/700.css';
-@import '@fontsource-variable/noto-serif-tc';
+/* Headings only use 600; the static cut is about half the bytes of the variable font */
+@import '@fontsource/noto-serif-tc/600.css';
 
 @import 'tailwindcss';
 

@@ -49,7 +49,7 @@ feature_image: ''
 
 畫面真正的主角其實是銀白色，彩色都只出現在很小的地方：
 
-| | 色碼 | 名字 | 用在哪裡 |
+| <span class="sr-only">色塊</span> | 色碼 | 名字 | 用在哪裡 |
 |---|---|---|---|
 | <span style="display:inline-block;width:1.4em;height:1.4em;background:#0b0e11;border:1px solid #888;vertical-align:middle"></span> | `#0b0e11` | 深淵 | 頁面最深處 |
 | <span style="display:inline-block;width:1.4em;height:1.4em;background:#14191f;border:1px solid #888;vertical-align:middle"></span> | `#14191f` | 石墨藍 | 主背景 |
@@ -91,31 +91,31 @@ feature_image: ''
 
 <div class="ds-ref-grid">
 <figure id="ref-under-tides-music">
-<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/under-tides-music.jpg" alt="覆潮之下原聲帶封面。潮汐青就是從這裡的標題字取的" width="960" height="960" loading="lazy" /></a>
+<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/under-tides-music-960.webp" srcset="/images/about-design/under-tides-music-480.webp 480w, /images/about-design/under-tides-music-960.webp 960w" sizes="(max-width: 767px) 45vw, 350px" alt="覆潮之下原聲帶封面。潮汐青就是從這裡的標題字取的" width="960" height="960" loading="lazy" /></a>
 <figcaption>覆潮之下原聲帶封面。潮汐青就是從這裡的標題字取的（<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B">PRTS</a>・<a href="https://arknights.fandom.com/wiki/File:Under_Tides_music.png">原圖</a>）</figcaption>
 </figure>
 <figure id="ref-under-tides-ost">
-<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/under-tides-ost.jpg" alt="覆潮之下 OST" width="960" height="960" loading="lazy" /></a>
+<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/under-tides-ost-960.webp" srcset="/images/about-design/under-tides-ost-480.webp 480w, /images/about-design/under-tides-ost-960.webp 960w" sizes="(max-width: 767px) 45vw, 350px" alt="覆潮之下 OST" width="960" height="960" loading="lazy" /></a>
 <figcaption>覆潮之下 OST（<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B">PRTS</a>・<a href="https://arknights.fandom.com/wiki/File:Under_Tides_OST.png">原圖</a>）</figcaption>
 </figure>
 <figure id="ref-stultifera">
-<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7"><img src="/images/about-design/stultifera.jpg" alt="愚人號主視覺。燈火金來自船上的燈光" width="960" height="540" loading="lazy" /></a>
+<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7"><img src="/images/about-design/stultifera-960.webp" srcset="/images/about-design/stultifera-480.webp 480w, /images/about-design/stultifera-960.webp 960w" sizes="(max-width: 767px) 45vw, 350px" alt="愚人號主視覺。燈火金來自船上的燈光" width="960" height="540" loading="lazy" /></a>
 <figcaption>愚人號主視覺。燈火金來自船上的燈光（<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7">PRTS</a>・<a href="https://arknights.fandom.com/wiki/File:Stultifera_Navis.png">原圖</a>）</figcaption>
 </figure>
 <figure id="ref-stultifera-ost">
-<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7"><img src="/images/about-design/stultifera-ost.jpg" alt="愚人號 OST" width="960" height="960" loading="lazy" /></a>
+<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7"><img src="/images/about-design/stultifera-ost-960.webp" srcset="/images/about-design/stultifera-ost-480.webp 480w, /images/about-design/stultifera-ost-960.webp 960w" sizes="(max-width: 767px) 45vw, 350px" alt="愚人號 OST" width="960" height="960" loading="lazy" /></a>
 <figcaption>愚人號 OST（<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7">PRTS</a>・<a href="https://arknights.fandom.com/wiki/File:Stultifera_Navis_OST.png">原圖</a>）</figcaption>
 </figure>
 <figure id="ref-cg-specter-imprisoned">
-<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/cg-specter-imprisoned.jpg" alt="劇情 CG：幽靈鯊被囚。光從上面照下來、水裡有氣泡，就是頁首光柱的參考" width="960" height="540" loading="lazy" /></a>
+<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/cg-specter-imprisoned-960.webp" srcset="/images/about-design/cg-specter-imprisoned-480.webp 480w, /images/about-design/cg-specter-imprisoned-960.webp 960w" sizes="(max-width: 767px) 45vw, 350px" alt="劇情 CG：幽靈鯊被囚。光從上面照下來、水裡有氣泡，就是頁首光柱的參考" width="960" height="540" loading="lazy" /></a>
 <figcaption>劇情 CG：幽靈鯊被囚。光從上面照下來、水裡有氣泡，就是頁首光柱的參考（<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B">PRTS</a>・<a href="https://arknights.fandom.com/wiki/File:Specter_Imprisoned.png">原圖</a>）</figcaption>
 </figure>
 <figure id="ref-cg-gladiia-abducts">
-<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/cg-gladiia-abducts.jpg" alt="劇情 CG：歌蕾蒂婭" width="960" height="540" loading="lazy" /></a>
+<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/cg-gladiia-abducts-960.webp" srcset="/images/about-design/cg-gladiia-abducts-480.webp 480w, /images/about-design/cg-gladiia-abducts-960.webp 960w" sizes="(max-width: 767px) 45vw, 350px" alt="劇情 CG：歌蕾蒂婭" width="960" height="540" loading="lazy" /></a>
 <figcaption>劇情 CG：歌蕾蒂婭（<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B">PRTS</a>・<a href="https://arknights.fandom.com/wiki/File:Gladiia_Abducts_Specter.png">原圖</a>）</figcaption>
 </figure>
 <figure id="ref-cg-gladiia-retal">
-<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/cg-gladiia-retal.jpg" alt="劇情 CG：歌蕾蒂婭反擊。整張圖只有眼睛跟血跡是紅的" width="960" height="540" loading="lazy" /></a>
+<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/cg-gladiia-retal-960.webp" srcset="/images/about-design/cg-gladiia-retal-480.webp 480w, /images/about-design/cg-gladiia-retal-960.webp 960w" sizes="(max-width: 767px) 45vw, 350px" alt="劇情 CG：歌蕾蒂婭反擊。整張圖只有眼睛跟血跡是紅的" width="960" height="540" loading="lazy" /></a>
 <figcaption>劇情 CG：歌蕾蒂婭反擊。整張圖只有眼睛跟血跡是紅的（<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B">PRTS</a>・<a href="https://arknights.fandom.com/wiki/File:Gladiia_Retalliates.png">原圖</a>）</figcaption>
 </figure>
 </div>

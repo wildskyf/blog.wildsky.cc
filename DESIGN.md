@@ -32,7 +32,7 @@ colors:
   light-bg-sunken: '#D4DBDF'
   light-fg: '#161C22'
   light-fg-muted: '#3E4A55'
-  light-fg-faint: '#56626D'
+  light-fg-faint: '#4F5B66'
   light-fg-on-accent: '#F9FAFA'
   light-rule: '#C7CFD3'
   light-rule-strong: '#A3ADB3'
@@ -52,23 +52,78 @@ typography:
     letterSpacing: '0.2em'
     textTransform: 'uppercase'
   cjk-display:
-    fontFamily: "'Noto Serif TC Variable', serif"
+    fontFamily: "'Noto Serif TC', serif"
     fontSize: 'clamp(2.25rem, 5.2vw, 4rem)'
     fontWeight: 600
     lineHeight: 1.3
     letterSpacing: '0.03em'
   headline:
-    fontFamily: "'EB Garamond Variable', 'Songti TC', 'Noto Serif CJK TC', 'Noto Serif TC', 'PMingLiU', 'MingLiU', serif"
+    fontFamily: "'EB Garamond Variable', 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', 'MingLiU', serif"
     fontSize: '1.6875rem'
     fontWeight: 500
     lineHeight: 1.45
     letterSpacing: '0.008em'
   body:
-    fontFamily: "'EB Garamond Variable', 'Songti TC', 'Noto Serif CJK TC', 'Noto Serif TC', 'PMingLiU', 'MingLiU', serif"
+    fontFamily: "'EB Garamond Variable', 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', 'MingLiU', serif"
     fontSize: '1.1875rem'
     fontWeight: 400
     lineHeight: 1.85
     letterSpacing: '0.008em'
+  cjk-title:
+    fontFamily: "'Noto Serif TC', serif"
+    fontSize: 'clamp(2rem, 4.4vw, 2.875rem)'
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: '0.01em'
+  cjk-h2:
+    fontFamily: "'Noto Serif TC', serif"
+    fontSize: '1.625rem'
+    fontWeight: 600
+    lineHeight: 1.5
+  caps-small:
+    fontFamily: "'Cinzel', 'EB Garamond Variable', serif"
+    fontSize: '0.6875rem'
+    fontWeight: 500
+    lineHeight: 1.6
+    letterSpacing: '0.08em'
+    textTransform: 'uppercase'
+  title-index:
+    fontFamily: "'EB Garamond Variable', 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', 'MingLiU', serif"
+    fontSize: '1.5rem'
+    fontWeight: 500
+    lineHeight: 1.45
+  title-small:
+    fontFamily: "'EB Garamond Variable', 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', 'MingLiU', serif"
+    fontSize: '1.125rem'
+    fontWeight: 500
+    lineHeight: 1.5
+  body-small:
+    fontFamily: "'EB Garamond Variable', 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', 'MingLiU', serif"
+    fontSize: '1.0625rem'
+    fontWeight: 400
+    lineHeight: 1.8
+  ui-body:
+    fontFamily: "'EB Garamond Variable', 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', 'MingLiU', serif"
+    fontSize: '1rem'
+    fontWeight: 400
+    lineHeight: 1.7
+  ui-label:
+    fontFamily: "'EB Garamond Variable', 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', 'MingLiU', serif"
+    fontSize: '0.9375rem'
+    fontWeight: 400
+    lineHeight: 1.6
+    letterSpacing: '0.015em'
+  caption:
+    fontFamily: "'EB Garamond Variable', 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', 'MingLiU', serif"
+    fontSize: '0.875rem'
+    fontWeight: 400
+    lineHeight: 1.6
+  meta-date:
+    fontFamily: "'Space Mono', monospace"
+    fontSize: '0.8125rem'
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: '0.06em'
   meta:
     fontFamily: "'Space Mono', monospace"
     fontSize: '0.75rem'
@@ -162,13 +217,13 @@ v9 的色值與語彙來自參考美術的實際取色（k-means 分群），過
 |---|---|---|
 | `--fg` | 9.8 / 14.4 | 15.6 / 11.8 |
 | `--fg-muted` | 6.4 / 9.4 | 8.2 / 6.2 |
-| `--fg-faint` | 4.8 / 7.0 | 5.7 / 4.3 |
+| `--fg-faint` | 4.8 / 7.0 | 6.3 / 4.77 |
 | `--glow-text` | 6.5 / 9.5 | 6.6 / 5.0 |
 | `--gold-text` | 7.3 / 10.7 | 6.4 / 4.9 |
 | `--accent-text` | 4.1 / 6.0 | 7.1 / 5.4 |
 
 - `--accent`（填色紅）不排小字；紅色小字只用 `--accent-text`。
-- light 的 `--fg-faint` 在最暗水色上只有 4.3，只用於 ≥12px 的等寬 meta，不排正文。
+- light 的 `--fg-faint` 2026-11-03 由 `#56626D`（4.3）調到 `#4F5B66`，在最暗水色上也過 4.5（audit P1）。
 
 ### Named color rules
 
@@ -182,12 +237,17 @@ v9 的色值與語彙來自參考美術的實際取色（k-means 分群），過
 | 角色 | 字體 | 用途 |
 |---|---|---|
 | Caps | Cinzel 400／500／600 | 站名、導覽、標籤、小標題編號、NEW |
-| CJK display | Noto Serif TC Variable 600 | 首頁 manifesto、文章標題、h2 |
+| CJK display | Noto Serif TC 600（靜態字重） | 首頁 manifesto、文章標題、h2 |
 | Headline / Body | EB Garamond Variable ＋ 系統宋體 | 列表標題、正文 |
 | Meta | Space Mono 400／700 | 日期、分類、閱讀時間、HUD 讀數、深度計 |
 | Code | JetBrains Mono Variable | 程式碼 |
 
 全部以 `@fontsource` 自架（PRODUCT.md 硬性約束），皆為 SIL OFL。
+
+- Noto Serif TC 只載 600 的靜態字重：標題只用 600，靜態版大約是 variable 的一半大小。
+  系統宋體堆疊（`--font-system-cjk-serif`）**不得列 `'Noto Serif TC'`**：那個名字就是這套只有 600 的網路字型，列進去會讓中文正文下載它並變成粗體。
+- 字級表以 frontmatter `typography` 為準（11、12、13、14、15、16、17、18、19、24、26、27px 與三個 clamp）。
+  新元件從表中挑；不在表上的尺寸（目前分類索引的 20、22px 與 mobile manifesto 的 clamp）屬於個別元件的既有例外，不再新增。
 
 - 首頁 manifesto `clamp(36px, 5.2vw, 64px)`、文章標題 `clamp(32px, 4.4vw, 46px)`，兩者用 `--title-grad` 做文字漸層。
 - 正文 19px／1.85，連續 CJK 文字 ≥16px。
@@ -205,7 +265,7 @@ v9 的色值與語彙來自參考美術的實際取色（k-means 分群），過
 
 v9 的 chrome 使用短英文大寫讀數（產品決策 2026-11-02，取代 PRODUCT.md 舊的「直白名稱」規則）：
 
-- 導覽：`ABOUT` `SEARCH` `ARCHIVE`；`aria-label` 保留各語系的原名。
+- 導覽：`ABOUT` `SEARCH` `ARCHIVE`，不加 `aria-label`：無障礙名稱必須包含畫面上的字（WCAG 2.5.3），語音控制才能說「About」。
 - Header 中段一條點線，尾端顯示 `: 目前頁名`。
 - 首頁不放 kicker，也不放 HUD 讀數；manifesto 下方是作者自我介紹（2026-11-03 起，見 Home hero）。
 - 列表與文章 meta：`分類 / 6 MIN / 2026.08.20`；最新一篇且發布未滿 30 天才標 `NEW`（build 時判斷，讀者瀏覽器再判斷一次）。
@@ -219,6 +279,8 @@ v9 的 chrome 使用短英文大寫讀數（產品決策 2026-11-02，取代 PRO
 - 68px，sticky；背景是 `--water-1` 97% → 94% 的漸層加 `blur(16px)`，底部 1px `--rule`。不要再調得更透明：捲動時標題會從導覽後面透出來（2026-11-03 critique）。
 - 品牌印 28×28 實心 `--accent`、Cinzel 600 14px「W」、內縮 2px 的白色細框；站名 Cinzel 500、字距 0.28em。
 - 目前頁面以 1px `--glow` 底線標示。
+- 右側依序：快速導覽、背景動畫暫停鈕、主題切換、選單。
+- 每頁第一個 Tab 停點是「跳到內容」連結，聚焦時才出現，目標是 `<main id="main">`。
 
 ### Home hero
 
@@ -237,6 +299,7 @@ v9 的 chrome 使用短英文大寫讀數（產品決策 2026-11-02，取代 PRO
 ### Tags
 
 - Cinzel 大寫、11px、`#` 前綴；英文標籤字距 0.2em，中文 0.08em；hover 升到 `--fg`。
+- 每個標籤至少 24px 高、列間距 0（WCAG 2.5.8）；mobile 44px。
 
 ### Article
 
@@ -271,13 +334,17 @@ v9 的 chrome 使用短英文大寫讀數（產品決策 2026-11-02，取代 PRO
 
 - 環境動畫只動 `transform`／`opacity`／canvas；正文與 chrome 除 120ms 狀態回饋外不動。
 - 只用一個 passive scroll listener ＋ `requestAnimationFrame` 寫入 `--depth`；canvas 共用一個動畫迴圈。
-- **刻意不讀 `prefers-reduced-motion`**（產品決策 2026-11-02）：所有環境動畫在 reduce 模式下照常播放。這是專案接受的可及性例外。
+- **刻意不讀 `prefers-reduced-motion`**（產品決策 2026-11-02）：所有環境動畫在 reduce 模式下照常播放。
+- **手動暫停（WCAG 2.2.2）。** Header 的暫停鈕（`MotionToggle.astro`）在 `<html>` 設 `data-motion="paused"` 並存進 `localStorage.motion`；`root.astro` 在第一次繪製前就讀回來。
+  暫停時 CSS 圖層停在原地，canvas 停止迴圈；捲動、縮放、切換主題時以凍結的時間重畫一格，所以場景仍跟著捲動與換色，但不會自己動。
+- canvas 用的 `--env-*` token 只在 `data-theme` 改變時讀一次，`--depth` 由捲動腳本直接傳給迴圈，動畫迴圈裡不呼叫 `getComputedStyle`。
 
 ## Anti-references
 
 ### 法律與品牌紅線
 
-- 禁用任何官方圖像資產：立繪、活動 KV、logo、UI 截圖、PV／EP 畫面、手辦照。About 頁只放文字、色票與來源連結。
+- 禁用任何官方圖像資產：立繪、活動 KV、logo、UI 截圖、PV／EP 畫面、手辦照。
+  唯一例外是 About 頁「參考圖」一節（使用者 2026-11-03 決定）：7 張縮圖、連到 PRTS 與原圖、附下架聯絡方式；站內其他地方仍然不放。
 - 不以遊戲專有名詞當站內元件、導覽或品牌名稱（About 頁標註靈感來源不在此限）。
 - **禁止仿製活動 logo、標題 lockup 與標題字的造型**：海流線不得做成魚叉斜線或穿過標題的刀鋒；W 標誌維持現行斷筆造型，不再往活動標題字的三角「A」靠攏。
 
@@ -291,9 +358,9 @@ v9 的 chrome 使用短英文大寫讀數（產品決策 2026-11-02，取代 PRO
 ## Acceptance checklist
 
 - 兩主題 token 與本文件一致；component 無 hardcoded color。
-- 小字對 `--water-1` 與最暗水色都 ≥4.5（light `--fg-faint` 例外見上）。
+- 小字對 `--water-1` 與最暗水色都 ≥4.5，沒有例外。
 - 首頁首屏紅色像素 `<5%`，並回報實測比率。
 - 320、390、430、1440px 的 `documentElement.scrollWidth` 等於 `clientWidth`。
 - 魚頭朝游動方向；水母只在 ≥900px 出現。
 - `astro check` 0 error，`yarn build` 成功。
-- 無官方資產、無仿製活動標題字造型。
+- About 參考圖以外無官方資產、無仿製活動標題字造型。

@@ -87,10 +87,10 @@
   --bg-raised: #dbe1e4;
   --bg-sunken: #d4dbdf;
 
-  /* on --water-4（最暗底）：--fg-muted 6.2、--fg-faint 4.3（只用於 ≥12px 的 meta） */
+  /* on --water-4（最暗底）：--fg-muted 6.2、--fg-faint 4.77（AA 4.5 之上，小字也成立） */
   --fg: #161c22;
   --fg-muted: #3e4a55;
-  --fg-faint: #56626d;
+  --fg-faint: #4f5b66;
   --fg-on-accent: #f9fafa;
 
   --rule: #c7cfd3;
@@ -138,13 +138,14 @@
    非色彩 token
    ============================================================ */
 :root {
-  /* Keep ui-serif out: some platforms resolve its missing CJK glyphs through a UI sans fallback. */
-  --font-system-cjk-serif:
-    'Songti TC', 'Noto Serif CJK TC', 'Noto Serif TC', 'PMingLiU', 'MingLiU', serif;
+  /* Keep ui-serif out: some platforms resolve its missing CJK glyphs through a UI sans fallback.
+     'Noto Serif TC' is deliberately absent: that name is the 600-only heading webfont, and listing it
+     here would make CJK body text download it and render bold. */
+  --font-system-cjk-serif: 'Songti TC', 'Noto Serif CJK TC', 'PMingLiU', 'MingLiU', serif;
   /* 字距拉開的古典大寫：標誌、導覽、小標、編號 */
   --font-caps: 'Cinzel', 'EB Garamond Variable', var(--font-system-cjk-serif);
   --font-display: var(--font-caps);
-  --font-cjk-display: 'Noto Serif TC Variable', var(--font-system-cjk-serif);
+  --font-cjk-display: 'Noto Serif TC', var(--font-system-cjk-serif);
   --font-headline: 'EB Garamond Variable', var(--font-system-cjk-serif);
   --font-label: 'EB Garamond Variable', var(--font-system-cjk-serif);
   --font-meta: 'Space Mono', 'JetBrains Mono Variable', monospace;

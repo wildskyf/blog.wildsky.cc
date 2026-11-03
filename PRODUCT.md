@@ -81,7 +81,7 @@ v9（`comp/index-v9.html`，2026-11-02 定案）是 canon，取代 v7／v8 的�
 - **手刻自架、不依賴平台**：維持自己控制的 static site，不遷往 Medium／Substack 這類平台。
 
 技術現況（既有 codebase 已回答，非新決策）：Astro 7 + Tailwind CSS v4，Yarn 3，
-輸出目錄 `./out`。視覺系統不依賴元件主題套件；字型套件為 Noto Serif TC Variable、EB Garamond Variable、
+輸出目錄 `./out`。視覺系統不依賴元件主題套件；字型套件為 Noto Serif TC（600）、EB Garamond Variable、
 Cinzel 400／500／600、Space Mono 400／700 與 JetBrains Mono Variable，退場字體（含 Cormorant SC）及 daisyUI／`theme-change` 均已移除。
 
 明確未定案（不得自行發明）：

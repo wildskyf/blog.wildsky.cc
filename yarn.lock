@@ -1359,17 +1359,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource-variable/noto-serif-tc@npm:^5.2.8":
-  version: 5.3.0
-  resolution: "@fontsource-variable/noto-serif-tc@npm:5.3.0"
-  checksum: ec0e7f3313e7e55666749ba5203590122ea626e209c19c9151965f8149332e2f461bf4075fdacc0df48e4595b8677fdb9089f91a2e16427bcf3b27223b1f239d
-  languageName: node
-  linkType: hard
-
 "@fontsource/cinzel@npm:^5.3.0":
   version: 5.3.0
   resolution: "@fontsource/cinzel@npm:5.3.0"
   checksum: ea9b13911c69e904991e7a72e0019a4288a0c8e9a4f5cc6278ee7d42e29d6b41d1dfc4fd0763e232fe6322bce03c6582d26756da91998f558d7b27b8ceb1ef75
+  languageName: node
+  linkType: hard
+
+"@fontsource/noto-serif-tc@npm:^5.2.0":
+  version: 5.3.1
+  resolution: "@fontsource/noto-serif-tc@npm:5.3.1"
+  checksum: 55200a00fcac7368b145e910cfbe963fb03b9d1cd7110dc23247c6e81dfb3c7244e05330a9ec1d0aaada3fdd0fd65fd3294eda19dcce0fa898ae86a955e4591c
   languageName: node
   linkType: hard
 
@@ -6842,8 +6842,8 @@ __metadata:
     "@astrojs/sitemap": ^3.7.3
     "@fontsource-variable/eb-garamond": ^5.3.0
     "@fontsource-variable/jetbrains-mono": ^5.3.0
-    "@fontsource-variable/noto-serif-tc": ^5.2.8
     "@fontsource/cinzel": ^5.3.0
+    "@fontsource/noto-serif-tc": ^5.2.0
     "@fontsource/space-mono": ^5.2.8
     "@iconify-json/ant-design": 1.2.5
     "@iconify-json/bx": 1.2.2

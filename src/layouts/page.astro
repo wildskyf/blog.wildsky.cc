@@ -38,7 +38,7 @@ const {
   <div id="page" class="ds-page">
     <Header pageName={pageName} />
 
-    <main class="ds-main" lang={lang_code}>
+    <main id="main" class="ds-main" lang={lang_code} tabindex="-1">
       <slot />
     </main>
 
@@ -65,6 +65,11 @@ const {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+  }
+
+  /* Skip-link target; focus lands here without drawing a frame around the whole page */
+  .ds-main:focus {
+    outline: none;
   }
 
   .ds-main {

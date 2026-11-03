@@ -56,6 +56,9 @@ const {
         saved ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'tide-dark' : 'tide-light');
       document.documentElement.setAttribute('data-theme', theme);
 
+      // Background motion pause (MotionToggle); set before paint so nothing starts moving first
+      if (localStorage.getItem('motion') === 'paused') document.documentElement.dataset.motion = 'paused';
+
       // theme-color 必須跟著主題走，否則行動裝置的網址列會是另一套色
       document.addEventListener('DOMContentLoaded', () => {
         const meta = document.querySelector('meta[name="theme-color"]');

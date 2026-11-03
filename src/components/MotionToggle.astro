@@ -1,0 +1,90 @@
+---
+// Pause for the ambient layer (WCAG 2.2.2). This is a manual switch on purpose: the site
+// still ignores prefers-reduced-motion (product decision 2026-11-02).
+const currentLocale = Astro.currentLocale === 'en' ? 'en' : 'tw';
+const label = currentLocale === 'en' ? 'Pause background motion' : '暫停背景動畫';
+---
+
+<button
+  class="ds-motion-toggle"
+  type="button"
+  aria-label={label}
+  aria-pressed="false"
+  title={label}
+>
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path class="ds-icon-pause" d="M9 6.5v11M15 6.5v11"></path>
+    <path class="ds-icon-play" d="M8.5 6.2v11.6L18 12Z"></path>
+  </svg>
+</button>
+
+<style>
+  .ds-motion-toggle {
+    width: 44px;
+    height: 44px;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    color: var(--fg-muted);
+    cursor: pointer;
+    transition: color var(--t) var(--ease);
+  }
+
+  .ds-motion-toggle:hover,
+  .ds-motion-toggle:focus-visible {
+    color: var(--glow);
+  }
+
+  .ds-motion-toggle:focus-visible {
+    outline: 2px solid var(--glow);
+    outline-offset: -4px;
+  }
+
+  .ds-motion-toggle svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.35;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .ds-icon-play {
+    display: none;
+  }
+
+  :global(html[data-motion='paused']) .ds-icon-pause {
+    display: none;
+  }
+
+  :global(html[data-motion='paused']) .ds-icon-play {
+    display: block;
+  }
+</style>
+
+<script>
+  // BackgroundField watches data-motion on <html>; this button only flips it and remembers it.
+  document.querySelectorAll<HTMLButtonElement>('.ds-motion-toggle').forEach((button) => {
+    const root = document.documentElement;
+    const sync = () =>
+      button.setAttribute('aria-pressed', root.dataset.motion === 'paused' ? 'true' : 'false');
+
+    button.addEventListener('click', () => {
+      if (root.dataset.motion === 'paused') {
+        delete root.dataset.motion;
+        localStorage.removeItem('motion');
+      } else {
+        root.dataset.motion = 'paused';
+        localStorage.setItem('motion', 'paused');
+      }
+      sync();
+    });
+
+    sync();
+  });
+</script>

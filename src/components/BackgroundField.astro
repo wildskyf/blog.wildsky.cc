@@ -125,6 +125,10 @@
     transform: rotate(17deg);
     animation-duration: 26s;
   }
+  /* MotionToggle: freeze the CSS layers where they are */
+  html[data-motion='paused'] :is(.ds-rays i, .ds-fog i, .ds-levi svg) {
+    animation-play-state: paused;
+  }
   @keyframes ds-sway {
     from {
       translate: -24px 0;
@@ -409,10 +413,12 @@
   // ---------- depth: one passive scroll listener writes --depth ----------
   const gaugeVal = document.querySelector<HTMLElement>('.ds-gauge-val');
   let depthFrame = 0;
+  let depth = 0;
   const writeDepth = () => {
     depthFrame = 0;
     const max = document.documentElement.scrollHeight - stableH();
     const p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
+    depth = p;
     root.style.setProperty('--depth', p.toFixed(3));
     if (gaugeVal) gaugeVal.textContent = String(Math.round(p * 200)).padStart(3, '0') + ' m';
   };
@@ -445,7 +451,17 @@
   }
 
   const rnd = (a: number, b: number) => a + Math.random() * (b - a);
-  const css = () => getComputedStyle(root);
+  // Theme tokens for the canvases; read once per theme switch, not every frame
+  const env = { snow: '', dust: '', lumen: '', fish: '', fishA: 0.5 };
+  const readEnv = () => {
+    const cs = getComputedStyle(root);
+    env.snow = cs.getPropertyValue('--env-snow').trim();
+    env.dust = cs.getPropertyValue('--env-dust').trim();
+    env.lumen = cs.getPropertyValue('--env-lumen').trim();
+    env.fish = cs.getPropertyValue('--env-fish').trim();
+    env.fishA = parseFloat(cs.getPropertyValue('--env-fish-a')) || 0.5;
+  };
+  readEnv();
   const setup = (c: HTMLCanvasElement, W: number, H: number, dpr: number) => {
     c.width = W * dpr;
     c.height = H * dpr;
@@ -733,13 +749,7 @@
   const frame = (t: number) => {
     const f = Math.min(3, (t - last) / 16.67);
     last = t;
-    const cs = css();
-    const depth = parseFloat(cs.getPropertyValue('--depth')) || 0;
-    const sRGB = cs.getPropertyValue('--env-snow').trim();
-    const dRGB = cs.getPropertyValue('--env-dust').trim();
-    const lRGB = cs.getPropertyValue('--env-lumen').trim();
-    const F = cs.getPropertyValue('--env-fish').trim();
-    const FA = parseFloat(cs.getPropertyValue('--env-fish-a')) || 0.5;
+    const { snow: sRGB, dust: dRGB, lumen: lRGB, fish: F, fishA: FA } = env;
 
     // particles
     sx.clearRect(0, 0, W, H);
@@ -849,15 +859,54 @@
       drawJelly(jx, j, k, A, t, lRGB);
       jx.restore();
     }
-
-    requestAnimationFrame(frame);
   };
+
+  // ---------- run / pause (MotionToggle sets data-motion="paused" on <html>) ----------
+  // While paused the scene is redrawn with time frozen, so scrolling and theme switches
+  // still move and recolour it, but nothing moves on its own.
+  const paused = () => root.dataset.motion === 'paused';
+  let running = false;
+  let frozenT = performance.now();
+  let stillFrame = 0;
+  const loop = (t: number) => {
+    if (paused()) {
+      running = false;
+      frozenT = last;
+      return;
+    }
+    frame(t);
+    requestAnimationFrame(loop);
+  };
+  const start = () => {
+    if (running || paused()) return;
+    running = true;
+    last = performance.now();
+    requestAnimationFrame(loop);
+  };
+  const drawStill = () => {
+    if (!paused() || stillFrame) return;
+    stillFrame = requestAnimationFrame(() => {
+      stillFrame = 0;
+      last = frozenT;
+      frame(frozenT);
+    });
+  };
+  new MutationObserver(() => {
+    readEnv();
+    if (paused()) drawStill();
+    else start();
+  }).observe(root, { attributes: true, attributeFilter: ['data-theme', 'data-motion'] });
+  addEventListener('scroll', drawStill, { passive: true });
 
   let resizeTimer = 0;
   addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(size, 150);
+    resizeTimer = window.setTimeout(() => {
+      size();
+      drawStill();
+    }, 150);
   });
   size();
-  requestAnimationFrame(frame);
+  if (paused()) drawStill();
+  else start();
 </script>

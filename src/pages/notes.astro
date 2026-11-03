@@ -1,45 +1,43 @@
 ---
 import PageLayout from '@/layouts/page.astro';
+import PageHead from '@/components/PageHead.astro';
 
 const pageName = 'Notes';
 const pageDesc = '我的一些 murmur；想看更新可以 follow @wildsky@social.wildsky.cc。';
 ---
 
 <PageLayout lang="tw" pageName={pageName} pageDesc={pageDesc}>
-  <article
-    class="prose prose-xl max-md:prose-lg max-w-none bg-base-100 px-6 lg:px-12 mt-0 lg:mt-4 pt-8 pb-16 prose-zh tracking-tw-normal"
-  >
-    <header class="not-prose mb-8">
-      <p class="text-sm uppercase tracking-[0.18em] text-secondary/80 mb-2">GoToSocial</p>
-      <h1 class="text-3xl lg:text-4xl font-bold text-base-content mb-4 tracking-tw-normal">
-        Notes
-      </h1>
-      <p class="text-base lg:text-lg text-base-content/70 leading-8 max-w-2xl">
-        這裡是我的一些 murmur。想看更新，可以直接 follow
+  <div class="chrome-inner">
+    <PageHead kicker={`Social
+Feed`} title={pageName} desc="這裡是我的一些 murmur，從 GoToSocial 即時讀進來。" />
+
+    <div class="notes-body">
+      <p class="notes-follow">
+        想看更新，可以直接 follow{' '}
         <a class="ds-link" href="https://social.wildsky.cc/@wildsky" rel="me"
           >@wildsky@social.wildsky.cc</a
         >。
       </p>
-    </header>
 
-    <section
-      id="notes-feed"
-      class="notes-feed not-prose"
-      data-notes-endpoint="/api/notes"
-      aria-live="polite"
-      aria-busy="true"
-    >
-      <p class="notes-muted" data-notes-loading>載入 notes 中…</p>
-      <noscript>
-        <p class="notes-muted">
-          需要 JavaScript 才能載入即時 notes。你也可以直接查看 <a
-            class="ds-link"
-            href="https://social.wildsky.cc/@wildsky/feed.rss">RSS feed</a
-          >。
-        </p>
-      </noscript>
-    </section>
-  </article>
+      <section
+        id="notes-feed"
+        class="notes-feed"
+        data-notes-endpoint="/api/notes"
+        aria-live="polite"
+        aria-busy="true"
+      >
+        <p class="notes-muted" data-notes-loading>載入 notes 中…</p>
+        <noscript>
+          <p class="notes-muted">
+            需要 JavaScript 才能載入即時 notes。你也可以直接查看 <a
+              class="ds-link"
+              href="https://social.wildsky.cc/@wildsky/feed.rss">RSS feed</a
+            >。
+          </p>
+        </noscript>
+      </section>
+    </div>
+  </div>
 
   <script is:inline>
     (() => {
@@ -153,3 +151,34 @@ const pageDesc = '我的一些 murmur；想看更新可以 follow @wildsky@socia
     })();
   </script>
 </PageLayout>
+
+<style>
+  /* Same reading column as the index pages: text starts where the PageHead title starts */
+  .notes-body {
+    --notes-indent: calc(var(--gutter-col) + 24px);
+    max-width: calc(var(--notes-indent) + var(--measure));
+    padding-left: var(--notes-indent);
+    margin-top: 36px;
+  }
+
+  /* PageHead narrows its label column to 96px below 1120px */
+  @media (max-width: 1119px) {
+    .notes-body {
+      --notes-indent: calc(96px + 24px);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .notes-body {
+      --notes-indent: 0px;
+    }
+  }
+
+  .notes-follow {
+    margin: 0 0 28px;
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--fg-muted);
+  }
+</style>

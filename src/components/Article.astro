@@ -114,7 +114,11 @@ const minutes = readingMinutes ? `${readingMinutes} MIN` : readingTime;
     color: var(--rule-strong);
   }
 
+  /* The padding grows the target to ~31px tall; the negative margin keeps the line where it was */
   .ds-article-kicker :global(.ds-chip) {
+    display: inline-block;
+    padding-block: 4px;
+    margin-block: -4px;
     color: var(--fg-faint);
     text-decoration: none;
   }

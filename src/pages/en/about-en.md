@@ -49,7 +49,7 @@ I assumed the sea in those pictures was teal. Then I actually sampled the colour
 
 The real star of the picture is silver-white. Colour only shows up in small spots:
 
-| | Hex | Name | Where it’s used |
+| <span class="sr-only">Swatch</span> | Hex | Name | Where it’s used |
 |---|---|---|---|
 | <span style="display:inline-block;width:1.4em;height:1.4em;background:#0b0e11;border:1px solid #888;vertical-align:middle"></span> | `#0b0e11` | Abyss | The deepest part of the page |
 | <span style="display:inline-block;width:1.4em;height:1.4em;background:#14191f;border:1px solid #888;vertical-align:middle"></span> | `#14191f` | Graphite blue | Main background |
@@ -91,31 +91,31 @@ These are the main pictures I worked from. Clicking one takes you to the matchin
 
 <div class="ds-ref-grid">
 <figure id="ref-under-tides-music">
-<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/under-tides-music.jpg" alt="Under Tides soundtrack cover. The tide teal comes from its title lettering" width="960" height="960" loading="lazy" /></a>
+<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/under-tides-music-960.webp" srcset="/images/about-design/under-tides-music-480.webp 480w, /images/about-design/under-tides-music-960.webp 960w" sizes="(max-width: 767px) 45vw, 350px" alt="Under Tides soundtrack cover. The tide teal comes from its title lettering" width="960" height="960" loading="lazy" /></a>
 <figcaption>Under Tides soundtrack cover. The tide teal comes from its title lettering (<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B">PRTS</a> · <a href="https://arknights.fandom.com/wiki/File:Under_Tides_music.png">original</a>)</figcaption>
 </figure>
 <figure id="ref-under-tides-ost">
-<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/under-tides-ost.jpg" alt="Under Tides OST" width="960" height="960" loading="lazy" /></a>
+<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/under-tides-ost-960.webp" srcset="/images/about-design/under-tides-ost-480.webp 480w, /images/about-design/under-tides-ost-960.webp 960w" sizes="(max-width: 767px) 45vw, 350px" alt="Under Tides OST" width="960" height="960" loading="lazy" /></a>
 <figcaption>Under Tides OST (<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B">PRTS</a> · <a href="https://arknights.fandom.com/wiki/File:Under_Tides_OST.png">original</a>)</figcaption>
 </figure>
 <figure id="ref-stultifera">
-<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7"><img src="/images/about-design/stultifera.jpg" alt="Stultifera Navis key art. The lamplight gold comes from the ship’s lights" width="960" height="540" loading="lazy" /></a>
+<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7"><img src="/images/about-design/stultifera-960.webp" srcset="/images/about-design/stultifera-480.webp 480w, /images/about-design/stultifera-960.webp 960w" sizes="(max-width: 767px) 45vw, 350px" alt="Stultifera Navis key art. The lamplight gold comes from the ship’s lights" width="960" height="540" loading="lazy" /></a>
 <figcaption>Stultifera Navis key art. The lamplight gold comes from the ship’s lights (<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7">PRTS</a> · <a href="https://arknights.fandom.com/wiki/File:Stultifera_Navis.png">original</a>)</figcaption>
 </figure>
 <figure id="ref-stultifera-ost">
-<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7"><img src="/images/about-design/stultifera-ost.jpg" alt="Stultifera Navis OST" width="960" height="960" loading="lazy" /></a>
+<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7"><img src="/images/about-design/stultifera-ost-960.webp" srcset="/images/about-design/stultifera-ost-480.webp 480w, /images/about-design/stultifera-ost-960.webp 960w" sizes="(max-width: 767px) 45vw, 350px" alt="Stultifera Navis OST" width="960" height="960" loading="lazy" /></a>
 <figcaption>Stultifera Navis OST (<a href="https://prts.wiki/w/%E6%84%9A%E4%BA%BA%E5%8F%B7">PRTS</a> · <a href="https://arknights.fandom.com/wiki/File:Stultifera_Navis_OST.png">original</a>)</figcaption>
 </figure>
 <figure id="ref-cg-specter-imprisoned">
-<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/cg-specter-imprisoned.jpg" alt="Story CG: Specter imprisoned. Light from above and bubbles in the water, which became the light shafts up top" width="960" height="540" loading="lazy" /></a>
+<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/cg-specter-imprisoned-960.webp" srcset="/images/about-design/cg-specter-imprisoned-480.webp 480w, /images/about-design/cg-specter-imprisoned-960.webp 960w" sizes="(max-width: 767px) 45vw, 350px" alt="Story CG: Specter imprisoned. Light from above and bubbles in the water, which became the light shafts up top" width="960" height="540" loading="lazy" /></a>
 <figcaption>Story CG: Specter imprisoned. Light from above and bubbles in the water, which became the light shafts up top (<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B">PRTS</a> · <a href="https://arknights.fandom.com/wiki/File:Specter_Imprisoned.png">original</a>)</figcaption>
 </figure>
 <figure id="ref-cg-gladiia-abducts">
-<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/cg-gladiia-abducts.jpg" alt="Story CG: Gladiia" width="960" height="540" loading="lazy" /></a>
+<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/cg-gladiia-abducts-960.webp" srcset="/images/about-design/cg-gladiia-abducts-480.webp 480w, /images/about-design/cg-gladiia-abducts-960.webp 960w" sizes="(max-width: 767px) 45vw, 350px" alt="Story CG: Gladiia" width="960" height="540" loading="lazy" /></a>
 <figcaption>Story CG: Gladiia (<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B">PRTS</a> · <a href="https://arknights.fandom.com/wiki/File:Gladiia_Abducts_Specter.png">original</a>)</figcaption>
 </figure>
 <figure id="ref-cg-gladiia-retal">
-<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/cg-gladiia-retal.jpg" alt="Story CG: Gladiia strikes back. Only the eyes and the blood are red" width="960" height="540" loading="lazy" /></a>
+<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B"><img src="/images/about-design/cg-gladiia-retal-960.webp" srcset="/images/about-design/cg-gladiia-retal-480.webp 480w, /images/about-design/cg-gladiia-retal-960.webp 960w" sizes="(max-width: 767px) 45vw, 350px" alt="Story CG: Gladiia strikes back. Only the eyes and the blood are red" width="960" height="540" loading="lazy" /></a>
 <figcaption>Story CG: Gladiia strikes back. Only the eyes and the blood are red (<a href="https://prts.wiki/w/%E8%A6%86%E6%BD%AE%E4%B9%8B%E4%B8%8B">PRTS</a> · <a href="https://arknights.fandom.com/wiki/File:Gladiia_Retalliates.png">original</a>)</figcaption>
 </figure>
 </div>
