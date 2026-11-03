@@ -796,7 +796,15 @@
 
     // fish schools
     fx.clearRect(0, 0, W, H);
-    fx.fillStyle = `rgba(${F},${FA})`;
+    // While reading, fish keep clear of the text: fully faded within the 720px column,
+    // back to full strength ~140px outside it.
+    const reading = root.classList.contains('is-reading');
+    const colHalf = 380;
+    const fishAlpha = (x: number) => {
+      if (!reading) return FA;
+      const d = Math.abs(x - W / 2) - colHalf;
+      return FA * Math.min(1, Math.max(0, d / 140));
+    };
     for (const sc of schools) {
       sc.x += sc.v * sc.dir * f;
       if (sc.dir > 0 && sc.x > W + 220) sc.x = -220;
@@ -807,6 +815,9 @@
       for (const fi of sc.fish) {
         const x = sc.x + fi.ox * sc.dir + Math.sin(t / 1300 + fi.ph) * 5;
         const y = sy + fi.oy + Math.cos(t / 1700 + fi.ph) * 4;
+        const a = fishAlpha(x);
+        if (a < 0.01) continue;
+        fx.fillStyle = `rgba(${F},${a.toFixed(3)})`;
         fx.save();
         fx.translate(x, y);
         fx.scale(sc.dir, 1);

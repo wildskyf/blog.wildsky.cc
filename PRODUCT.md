@@ -106,8 +106,8 @@ Cinzel 400／500／600、Space Mono 400／700 與 JetBrains Mono Variable，退�
 2026-11-02 起，chrome 使用短英文大寫的 HUD 讀數（使用者決定，取代先前「一律直白名稱、DEPTH 等詞退出介面」的規則）：
 
 - 導覽：`ABOUT`、`SEARCH`、`ARCHIVE`；`aria-label` 保留各語系原名。
-- 首頁：kicker `UNDER THE TIDE`，manifesto 下方顯示 `ENTRIES`／`LAST`／`DEPTH 0 m`／`SINCE 2014`。
-- 列表與文章 meta：`分類 / 6 MIN / 2026.08.20`；最新一篇標 `NEW`。
+- 首頁：manifesto 上方不放 kicker；下方是一段作者自我介紹（只用 About 頁已寫明的事實）與「關於我／經歷與作品」連結（2026-11-03 起，取代 `UNDER THE TIDE` 與 `ENTRIES`／`LAST`／`DEPTH 0 m`／`SINCE 2014` 讀數）。
+- 列表與文章 meta：`分類 / 6 MIN / 2026.08.20`；最新一篇且發布未滿 30 天才標 `NEW`。
 - 文章頁右側深度計顯示 `DEPTH` 與 `000–200 m`；數值是閱讀進度換算，不代表真實資料。
 - 主題切換只顯示太陽／月亮 SVG，並以 `aria-label` 說明「切換到亮色／深色主題」。
 - 首頁 manifesto 仍是唯一主標題，且必須逐字維持 tagline。

@@ -94,8 +94,13 @@
   padding: 6px 0 6px 28px;
   background: transparent;
   border: 0;
-  font-style: italic;
+  font-style: normal;
   color: var(--fg-muted);
+}
+
+/* Songti / Noto Serif TC have no italic: the browser would fake a slant. Only Latin quotes lean. */
+.article-content:lang(en) blockquote {
+  font-style: italic;
 }
 
 .article-content blockquote::before {

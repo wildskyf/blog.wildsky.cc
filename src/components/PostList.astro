@@ -24,6 +24,13 @@ const {
 const root_path = lang == 'en' ? '/en' : '';
 // v9 HUD wording (product decision 2026-11-02)
 const latestLabel = 'New';
+// NEW means recent, not merely first: only posts younger than this window qualify.
+// Checked at build time and again in the reader's browser, since builds only happen on deploy.
+const NEW_WINDOW_DAYS = 30;
+const newUntil = (post: PostListItem) =>
+  new Date(post.date).getTime() + NEW_WINDOW_DAYS * 24 * 60 * 60 * 1000;
+const isNew = (post: PostListItem, index: number) =>
+  showLatest && index === 0 && newUntil(post) > Date.now();
 const minutes = (post: PostListItem) =>
   post.readingMinutes ? `${post.readingMinutes} MIN` : (post.readingTime ?? null);
 const titleSegmenter = new Intl.Segmenter(lang === 'en' ? 'en' : 'zh-Hant', {
@@ -38,7 +45,7 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
       const d = dayjs(post.date);
       const titleSegments = [...titleSegmenter.segment(post.title)];
       return (
-        <li class:list={['ds-row', showLatest && index === 0 && 'is-latest']}>
+        <li class:list={['ds-row', isNew(post, index) && 'is-latest']}>
           <span class="ds-row-rule" aria-hidden="true" />
 
           <div class="ds-row-grid">
@@ -58,8 +65,8 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
                 )}
                 {post.category && minutes(post) && <span class="ds-meta-sep">/</span>}
                 {minutes(post) && <span lang="en">{minutes(post)}</span>}
-                {showLatest && index === 0 && (
-                  <span class="ds-new" lang="en">
+                {isNew(post, index) && (
+                  <span class="ds-new" lang="en" data-new-until={newUntil(post)}>
                     {latestLabel}
                   </span>
                 )}
@@ -85,6 +92,14 @@ const containsHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
     })
   }
 </ul>
+
+<script>
+  // Expire NEW badges whose window has passed since the last build.
+  const now = Date.now();
+  document.querySelectorAll<HTMLElement>('.ds-new[data-new-until]').forEach((badge) => {
+    if (Number(badge.dataset.newUntil) <= now) badge.remove();
+  });
+</script>
 
 <style>
   .ds-index {

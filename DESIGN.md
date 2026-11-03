@@ -90,7 +90,7 @@ layout:
   pageGutterMobile: '20px'
 components:
   header-bar:
-    backgroundColor: 'color-mix(water-1 82% → 55%) + blur(10px)'
+    backgroundColor: 'color-mix(water-1 97% → 94%) + blur(16px)'
     textColor: '{colors.dark-fg}'
     height: '68px'
   brand-seal:
@@ -181,7 +181,7 @@ v9 的色值與語彙來自參考美術的實際取色（k-means 分群），過
 
 | 角色 | 字體 | 用途 |
 |---|---|---|
-| Caps | Cinzel 400／500／600 | 站名、導覽、首頁 kicker、標籤、小標題編號、NEW |
+| Caps | Cinzel 400／500／600 | 站名、導覽、標籤、小標題編號、NEW |
 | CJK display | Noto Serif TC Variable 600 | 首頁 manifesto、文章標題、h2 |
 | Headline / Body | EB Garamond Variable ＋ 系統宋體 | 列表標題、正文 |
 | Meta | Space Mono 400／700 | 日期、分類、閱讀時間、HUD 讀數、深度計 |
@@ -207,8 +207,8 @@ v9 的 chrome 使用短英文大寫讀數（產品決策 2026-11-02，取代 PRO
 
 - 導覽：`ABOUT` `SEARCH` `ARCHIVE`；`aria-label` 保留各語系的原名。
 - Header 中段一條點線，尾端顯示 `: 目前頁名`。
-- 首頁 kicker `UNDER THE TIDE`；manifesto 下方讀數 `ENTRIES 110 : LAST 2026.09.29` 與 `DEPTH 0 m : SINCE 2014`。
-- 列表與文章 meta：`分類 / 6 MIN / 2026.08.20`；最新一篇標 `NEW`。
+- 首頁不放 kicker，也不放 HUD 讀數；manifesto 下方是作者自我介紹（2026-11-03 起，見 Home hero）。
+- 列表與文章 meta：`分類 / 6 MIN / 2026.08.20`；最新一篇且發布未滿 30 天才標 `NEW`（build 時判斷，讀者瀏覽器再判斷一次）。
 - 文章頁右側深度計 `DEPTH` ＋ `000–200 m`，數值是閱讀進度的換算，不是真實資料。
 - manifesto 文字必須逐字維持「信仰不確定性，同時用確定性工程過生活」。
 
@@ -216,13 +216,14 @@ v9 的 chrome 使用短英文大寫讀數（產品決策 2026-11-02，取代 PRO
 
 ### Header
 
-- 68px，sticky；背景是 `--water-1` 82% → 55% 的漸層加 `blur(10px)`，底部 1px `--rule`。
+- 68px，sticky；背景是 `--water-1` 97% → 94% 的漸層加 `blur(16px)`，底部 1px `--rule`。不要再調得更透明：捲動時標題會從導覽後面透出來（2026-11-03 critique）。
 - 品牌印 28×28 實心 `--accent`、Cinzel 600 14px「W」、內縮 2px 的白色細框；站名 Cinzel 500、字距 0.28em。
 - 目前頁面以 1px `--glow` 底線標示。
 
 ### Home hero
 
-- kicker（Cinzel、`--glow`、字距 0.5em）→ manifesto → 讀數列；hero 底部 1px `--rule`。
+- manifesto → 自我介紹 → 「關於我／經歷與作品 →」兩個連結；hero 底部 1px `--rule`。標題上方不放 kicker／eyebrow。
+- 自我介紹：EB Garamond 18px（mobile 17px）、`--fg-muted`、最寬 34em；只用 About 頁已寫明的事實，中文以 `Intl.Segmenter` 保持詞組不斷行。連結 `--glow-text`、底線 `--glow` 45%、touch target 44px。
 - **W 標誌**：斷筆的 W（兩座尖塔、接點處留缺口、頂端短襯線、底部一長一短兩條水線），直角端點；`--fg`、不透明度 `--env-sigil-op`。使用者 2026-11-02 判定它不像活動標準字，採用此造型。
 - **海流線**：manifesto 下方一條平緩的波浪線，青 → 銀 → 淡出，載入時由左往右畫出。
 - 海流線是原創造型，不得改回穿過標題的魚叉斜線（見 Anti-references）。
@@ -241,7 +242,7 @@ v9 的 chrome 使用短英文大寫讀數（產品決策 2026-11-02，取代 PRO
 
 - meta 列用 Space Mono 12px；標題用 `--title-grad`；h2 前有燈火金羅馬數字。
 - 連結 `--glow-text`，底線為 `--glow` 45%；hover 升到 `--fg`。
-- 引言：左側 2px、由 `--accent-text` 往下淡出的血紅線，斜體 `--fg-muted`。
+- 引言：左側 2px、由 `--accent-text` 往下淡出的血紅線，`--fg-muted`。只有英文引言用斜體；中文字型沒有斜體，套 italic 會變成瀏覽器合成的歪斜字。
 - 程式碼：`--bg-sunken`、1px `--rule`；keyword `--glow`、string `--gold-text`、comment／punctuation `--fg-faint`、number `--accent-text`。
 
 ## Environment
@@ -252,7 +253,7 @@ v9 的 chrome 使用短英文大寫讀數（產品決策 2026-11-02，取代 PRO
 |---|---|---|
 | 水柱 | `--water-1…4` 垂直梯度，再疊一層 `--water-4` | 疊層不透明度 0 → 0.5（下沉） |
 | 光柱 | 5 道斜光，18–26s 緩慢擺動 | 0.9 倍淡出 |
-| 魚群 | canvas，3 群、頭朝游向、尾巴擺動，在霧後方 | 視差 0.2–0.32 |
+| 魚群 | canvas，3 群、頭朝游向、尾巴擺動，在霧後方；文章頁在閱讀柱（中央 ±380px）內完全淡出，外側 140px 漸回 | 視差 0.2–0.32 |
 | 夕霧 | 兩層噪聲霧，上層微暖、下層偏冷，110s／160s 橫移 | — |
 | 遠方巨影 | 模糊的大型剪影，240s 橫越 | `depth > 0.4` 才浮現 |
 | 水母 | canvas，收縮推進 → 滑行 → 下沉，觸手隨速度拉直或散開；只在 ≥900px 的兩側 | 亮度 0.55 → 1 |

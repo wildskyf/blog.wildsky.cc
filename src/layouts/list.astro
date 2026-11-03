@@ -2,7 +2,6 @@
 import PageLayout from './page.astro';
 import PostList from '@/components/PostList.astro';
 import { getTranslation } from '@/i18n/utils.ts';
-import dayjs from 'dayjs';
 import { formatReadingTime } from '@/utils';
 
 type Locale = 'tw' | 'en';
@@ -52,9 +51,29 @@ const rows = postList.map((p) => ({
   readingTime: p.readingMinutes ? formatReadingTime(p.readingMinutes, lang) : null,
 }));
 
-// HUD readout under the manifesto (v9; product decision 2026-11-02)
-const latest =
-  currentPage === 1 && postList[0] ? dayjs(postList[0].date).format('YYYY.MM.DD') : null;
+// Who is writing: facts only, taken from the About page (owner request 2026-11-03)
+const intro =
+  currentLocale === 'en'
+    ? {
+        text: 'I’m Rance (Wildsky), a software engineer at Taiwan AI Labs. Lately I’ve been focused on AI agents, knowledge systems and self-hosting. I’ve been writing here since 2014: tech notes, life, and whatever I’m thinking about.',
+        links: [
+          { label: 'About me', href: '/en/about-en/' },
+          { label: 'Experience', href: '/en/experiences-en/' },
+        ],
+      }
+    : {
+        text: '我是 Rance（范耿誌），在 Taiwan AI Labs 當軟體工程師，最近特別關注 AI agent、知識系統跟 self-hosting。這個部落格從 2014 年寫到現在，有技術筆記，也有生活跟一些想法。',
+        links: [
+          { label: '關於我', href: '/about/' },
+          { label: '經歷與作品', href: '/experiences/' },
+        ],
+      };
+// Keep CJK words whole when the intro wraps (same approach as the post titles)
+const introSegmenter = new Intl.Segmenter(currentLocale === 'en' ? 'en' : 'zh-Hant', {
+  granularity: 'word',
+});
+const introSegments = [...introSegmenter.segment(intro.text)];
+const hasHan = (value: string) => /[\u3400-\u9fff]/u.test(value);
 const manifestoParts =
   currentLocale === 'en'
     ? ['Faith in uncertainty, ', 'while engineering life with certainty']
@@ -83,7 +102,6 @@ const manifestoLabel = manifestoParts.join('');
         <path class="hair" d="M40 206 L120 206"></path>
       </svg>
 
-      <p class="ds-hero-kicker" lang="en">Under the Tide</p>
       <h1 class="ds-hero-manifesto" aria-label={manifestoLabel}>
         {manifestoParts.map((part) => <span>{part}</span>)}
         {/* The current: a single drifting line under the manifesto */}
@@ -104,29 +122,17 @@ const manifestoLabel = manifestoParts.join('');
           <path d="M0,16 C140,4 260,26 400,15 S680,4 820,14 S1100,26 1240,12"></path>
         </svg>
       </h1>
-      <div class="ds-hero-foot" lang="en">
-        <span>
+      <div class="ds-hero-intro">
+        <p>
           {
-            totalPosts ? (
-              <>
-                ENTRIES <b>{totalPosts}</b>
-              </>
-            ) : (
-              <>
-                PAGE <b>{currentPage}</b> / {lastPage}
-              </>
+            introSegments.map(({ segment, isWordLike }) =>
+              isWordLike && hasHan(segment) ? <span class="ds-phrase">{segment}</span> : segment
             )
           }
-          {
-            latest && (
-              <>
-                {' '}
-                &nbsp;:&nbsp; LAST <b>{latest}</b>
-              </>
-            )
-          }
-        </span>
-        <span>DEPTH 0 m &nbsp;:&nbsp; <span class="ds-hero-since">SINCE 2014</span></span>
+        </p>
+        <p class="ds-hero-links">
+          {intro.links.map((link) => <a href={link.href}>{link.label}</a>)}
+        </p>
       </div>
     </div>
 
@@ -185,18 +191,6 @@ const manifestoLabel = manifestoParts.join('');
     stroke-width: 0.8;
   }
 
-  .ds-hero-kicker {
-    position: relative;
-    margin: 0 0 34px;
-    font-family: var(--font-caps);
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
-    color: var(--glow);
-  }
-
   .ds-hero-manifesto {
     position: relative;
     display: inline-block;
@@ -241,26 +235,51 @@ const manifestoLabel = manifestoParts.join('');
     }
   }
 
-  .ds-hero-foot {
+  .ds-hero-intro {
     position: relative;
-    margin-top: 60px;
+    z-index: 1;
+    max-width: 34em;
+    margin-top: 64px;
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--fg-muted);
+  }
+  .ds-hero-intro p {
+    margin: 0;
+  }
+  .ds-hero-links {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: end;
-    gap: 12px 24px;
-    font-family: var(--font-meta);
-    font-size: 12px;
-    line-height: 1.6;
-    letter-spacing: 0.08em;
-    color: var(--fg-faint);
+    gap: 6px 22px;
+    margin-top: 14px !important;
   }
-  .ds-hero-foot b {
-    font-weight: 400;
+  .ds-hero-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--glow-text);
+    /* underline, not a border: the 44px touch box would push a border far below the text */
+    text-decoration: underline;
+    text-decoration-color: color-mix(in oklab, var(--glow) 45%, transparent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+    line-height: 1.3;
+    transition:
+      color var(--t) var(--ease),
+      text-decoration-color var(--t) var(--ease);
+  }
+  .ds-hero-links a::after {
+    content: '→';
+    margin-left: 0.3em;
+  }
+  .ds-phrase {
+    white-space: nowrap;
+  }
+  .ds-hero-links a:hover,
+  .ds-hero-links a:focus-visible {
     color: var(--fg);
-  }
-  .ds-hero-since {
-    color: var(--gold-text);
+    text-decoration-color: var(--glow);
   }
 
   .ds-pager {
@@ -321,8 +340,9 @@ const manifestoLabel = manifestoParts.join('');
     .ds-hero-manifesto {
       font-size: clamp(24px, 7.4vw, 34px);
     }
-    .ds-hero-kicker {
-      letter-spacing: 0.35em;
+    .ds-hero-intro {
+      margin-top: 52px;
+      font-size: 17px;
     }
     .ds-hero-sigil {
       top: 40px;
