@@ -43,6 +43,9 @@ colors:
   light-glow-text: '#1F6157'
   light-gold: '#8A6D2C'
   light-gold-text: '#6E5420'
+  dark-title-grad-mid: '#CFE3DF'
+  dark-env-lantern: '#BEDCE4'
+  light-title-grad-mid: '#1D3A3A'
 typography:
   caps:
     fontFamily: "'Cinzel', 'EB Garamond Variable', serif"
@@ -204,7 +207,7 @@ v9 的色值與語彙來自參考美術的實際取色（k-means 分群），過
 | `--glow` / `--glow-dim` / `--glow-text` | 潮汐青 | `#7EB5AC` / `#4F8F90` / `#93C9BF` | `#2F7D72` / `#2A6B62` / `#1F6157` |
 | `--gold` / `--gold-text` | 燈火金 | `#D9C89D` | `#8A6D2C` / `#6E5420` |
 | `--selection-bg` / `--selection-fg` | 反白選取 | 金 30% / `#FFF` | 金 22% / `--fg` |
-| `--title-grad` | 大標題漸層（青 → 銀） | | |
+| `--title-grad` | 大標題漸層（青 → 銀） | `#8FC9BE` → `#CFE3DF` → `#EEF0F0` → `#E6E8E9` | `#2F7D72` → `#1D3A3A` → `#161C22` |
 | `--env-*` | 環境層（光、微粒、生物光、魚、剪影、霧、顆粒） | | |
 
 `--ember` 保留為 `--gold` 的別名，只為了舊 component（Plate 按鈕的內框）不必一次改完。
