@@ -3,6 +3,9 @@ import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import Head from '@/components/Head.astro';
 import '../global.css';
+// Heading font rules (~120KB of @font-face before compression) stay off the render-blocking path
+import notoSerifTcCss from '@fontsource/noto-serif-tc/600.css?url';
+import ebGaramondLatin from '@fontsource-variable/eb-garamond/files/eb-garamond-latin-wght-normal.woff2?url';
 
 dayjs.extend(timezone);
 dayjs.tz.setDefault('Asia/Taipei');
@@ -81,6 +84,19 @@ const {
     <meta name="theme-color" content="#2A3843" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {/* Body Latin face: fetch it alongside the CSS so it is usually ready by first paint (less swap shift) */}
+    <link rel="preload" href={ebGaramondLatin} as="font" type="font/woff2" crossorigin />
+    {
+      currentLocale === 'tw' && (
+        <>
+          <link rel="preload" href={notoSerifTcCss} as="style" onload="this.onload=null;this.rel='stylesheet'" />
+          <noscript>
+            <link rel="stylesheet" href={notoSerifTcCss} />
+          </noscript>
+        </>
+      )
+    }
 
     <Head
       pageName={pageName}

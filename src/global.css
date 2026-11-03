@@ -6,8 +6,8 @@
 @import '@fontsource/cinzel/600.css';
 @import '@fontsource/space-mono/400.css';
 @import '@fontsource/space-mono/700.css';
-/* Headings only use 600; the static cut is about half the bytes of the variable font */
-@import '@fontsource/noto-serif-tc/600.css';
+/* Noto Serif TC (headings, 600 only) is not imported here: its 108 @font-face rules are loaded
+   as a separate non-blocking stylesheet from root.astro, and only on Chinese pages. */
 
 @import 'tailwindcss';
 
