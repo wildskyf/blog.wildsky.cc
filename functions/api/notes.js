@@ -200,7 +200,7 @@ function extractMedia(attachments) {
     .slice(0, MAX_MEDIA_PER_NOTE);
 }
 
-function sanitizeHtml(input) {
+export function sanitizeHtml(input) {
   let html = String(input || '').slice(0, 50000);
 
   html = html
@@ -288,7 +288,7 @@ function renderNoteMedia(media) {
   return `<figure class="note-media">${images}</figure>`;
 }
 
-function jsonResponse(body, cacheSeconds) {
+export function jsonResponse(body, cacheSeconds) {
   const ttl = Math.max(0, cacheSeconds || 0);
   return new Response(JSON.stringify(body), {
     status: 200,
@@ -323,7 +323,7 @@ function toIsoDate(value) {
   return Number.isNaN(date.getTime()) ? new Date().toISOString() : date.toISOString();
 }
 
-function formatDate(value) {
+export function formatDate(value) {
   return new Intl.DateTimeFormat('zh-TW', {
     timeZone: 'Asia/Taipei',
     year: 'numeric',
@@ -334,7 +334,7 @@ function formatDate(value) {
   }).format(new Date(value));
 }
 
-function sanitizeUrl(value) {
+export function sanitizeUrl(value) {
   try {
     const url = new URL(decodeXml(value || ''), 'https://social.wildsky.cc');
     if (url.protocol === 'http:' || url.protocol === 'https:' || url.protocol === 'mailto:') {
@@ -378,7 +378,7 @@ function stripQuotes(value) {
   return String(value || '').replace(/^['"]|['"]$/g, '');
 }
 
-function escapeHtml(value) {
+export function escapeHtml(value) {
   return String(value || '')
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -387,7 +387,7 @@ function escapeHtml(value) {
     .replace(/'/g, '&#39;');
 }
 
-function escapeAttr(value) {
+export function escapeAttr(value) {
   return escapeHtml(value).replace(/`/g, '&#96;');
 }
 

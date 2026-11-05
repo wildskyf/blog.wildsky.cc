@@ -3,6 +3,7 @@ import { getCollection, render, type CollectionEntry } from 'astro:content';
 
 import PageLayout from '@/layouts/page.astro';
 import Article from '@/components/Article.astro';
+import FediComments from '@/components/FediComments.astro';
 import AuthorBio from '@/components/AuthorBio.astro';
 import RelatedPosts from '@/components/RelatedPosts.astro';
 import { articleMapper, formatReadingTime } from '@/utils';
@@ -83,6 +84,7 @@ const relatedPosts = selectRelatedPosts(entry, sameLanguageEntries).map(
     <Content />
   </Article>
 
+  <FediComments />
   <RelatedPosts lang={lang} posts={relatedPosts} />
   <AuthorBio lang={lang} />
 </PageLayout>

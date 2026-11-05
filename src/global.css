@@ -227,6 +227,43 @@
   border-bottom-color: var(--glow);
 }
 
+.fedi-comments {
+  margin-top: 48px;
+}
+
+.fedi-comments .notes-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.fedi-comment-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.fedi-comment-avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin: 0;
+}
+
+.fedi-comment-who {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.fedi-comment-who span {
+  color: var(--fg-muted);
+  font-size: 14px;
+}
+
 .notes-muted {
   border: 1px solid var(--rule);
   border-radius: 0;
