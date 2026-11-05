@@ -23,6 +23,13 @@ yarn new <article-slug>
 # or directly: sh ./newArticle.sh <article-slug>
 ```
 
+## Deployment
+
+- Pushing the `production` branch deploys to Cloudflare Pages; there is no staging step. Commit, push and branch deletion happen only when the owner asks for that batch of changes.
+- HTTPS push has no stored credentials on the Mac mini: `git -c credential.helper= -c credential.helper='!gh auth git-credential' push origin production`
+- Deploy status: `gh api repos/wildskyf/blog.wildsky.cc/commits/<sha>/check-runs --jq '.check_runs[0]|"\(.status) \(.conclusion)"'`. Builds take 1–7 minutes, so check this before treating stale content as a failed deploy.
+- Run tooling through `mise exec --` (for example `mise exec -- yarn build`).
+
 ## Architecture & Structure
 
 ### Content Management
