@@ -15,6 +15,7 @@ const {
   readingMinutes,
   series,
   translation,
+  headings = [],
 } = Astro.props;
 const currentLocale = lang || Astro.currentLocale || 'tw';
 const root_path = currentLocale === 'en' ? '/en' : '';
@@ -27,6 +28,15 @@ const feature_image_alt =
 // v9 HUD meta (product decision 2026-11-02)
 const publish_time = dayjs(date).format('YYYY.MM.DD');
 const minutes = readingMinutes ? `${readingMinutes} MIN` : readingTime;
+
+// Contents for longer pieces. Astro lists the sr-only footnotes heading too; it is not a section.
+const sections = headings.filter(
+  (h: { depth: number; slug: string }) => h.depth === 2 && h.slug !== 'footnote-label'
+);
+const showContents = sections.length >= 4;
+const contentsOpen = sections.length <= 8;
+const contentsLabel = currentLocale === 'en' ? 'Table of contents' : '本文目錄';
+const anchorLabel = currentLocale === 'en' ? 'Link to this section:' : '連結到這一節：';
 ---
 
 <article class="ds-article">
@@ -80,10 +90,53 @@ const minutes = readingMinutes ? `${readingMinutes} MIN` : readingTime;
     )
   }
 
-  <div class="article-content ds-prose" lang={currentLocale === 'tw' ? 'zh-Hant-TW' : 'en'}>
+  {
+    showContents && (
+      <nav class="ds-toc" aria-label={contentsLabel}>
+        <details open={contentsOpen}>
+          <summary>
+            <span class="ds-toc-title" lang="en">
+              Contents
+            </span>
+            <span class="ds-toc-count">{sections.length}</span>
+            <svg viewBox="0 0 12 12" aria-hidden="true">
+              <path d="M2.5 4.5 6 8l3.5-3.5" />
+            </svg>
+          </summary>
+          <ol>
+            {sections.map((h: { slug: string; text: string }) => (
+              <li>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ol>
+        </details>
+      </nav>
+    )
+  }
+
+  <div
+    class="article-content ds-prose"
+    lang={currentLocale === 'tw' ? 'zh-Hant-TW' : 'en'}
+    data-anchor-label={anchorLabel}
+  >
     <slot />
   </div>
 </article>
+
+<script>
+  // Section links: a "#" in the left gutter of each h2, shown on hover or keyboard focus
+  document.querySelectorAll<HTMLElement>('.ds-prose').forEach((prose) => {
+    prose.querySelectorAll<HTMLElement>('h2[id]:not(#footnote-label)').forEach((h2) => {
+      const a = document.createElement('a');
+      a.className = 'ds-anchor';
+      a.href = `#${h2.id}`;
+      a.textContent = '#';
+      a.setAttribute('aria-label', `${prose.dataset.anchorLabel} ${h2.textContent?.trim()}`);
+      h2.append(a);
+    });
+  });
+</script>
 
 <style>
   /* Read mode —— The Boring Body Rule。
@@ -207,12 +260,14 @@ const minutes = readingMinutes ? `${readingMinutes} MIN` : readingTime;
     counter-reset: ds-h2;
   }
 
-  /* Section numerals in lamplight gold */
+  /* Section numerals in lamplight gold. Hanging indent rather than flex: flex would split a
+     heading with inline code or bold into separate columns. */
   .ds-prose :global(h2) {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
+    position: relative;
     margin: 2.4em 0 0.8em;
+    padding-left: 40px;
+    text-indent: -40px;
+    scroll-margin-top: calc(var(--header-h) + 24px);
     font-family: var(--font-cjk-display);
     font-size: 26px;
     font-weight: 600;
@@ -221,14 +276,135 @@ const minutes = readingMinutes ? `${readingMinutes} MIN` : readingTime;
     counter-increment: ds-h2;
   }
   .ds-prose :global(h2)::before {
-    content: counter(ds-h2, upper-roman);
-    flex: none;
+    /* The period keeps a lone "I" from reading as a stray bar */
+    content: counter(ds-h2, upper-roman) '.';
+    display: inline-block;
+    box-sizing: border-box;
+    min-width: 40px;
+    padding-right: 10px;
+    text-indent: 0;
     font-family: var(--font-caps);
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.15em;
     color: var(--gold-text);
     text-shadow: 0 0 8px var(--gold-glow);
+  }
+
+  .ds-prose :global(.ds-anchor) {
+    position: absolute;
+    top: 0;
+    left: -20px;
+    text-indent: 0;
+    font-family: var(--font-meta);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 39px;
+    color: var(--glow-text);
+    text-decoration: none;
+    border-bottom: 0;
+    opacity: 0;
+    transition: opacity var(--t) var(--ease);
+  }
+  .ds-prose :global(h2:hover .ds-anchor),
+  .ds-prose :global(.ds-anchor:focus-visible) {
+    opacity: 1;
+  }
+  @media (hover: none) {
+    .ds-prose :global(.ds-anchor) {
+      display: none;
+    }
+  }
+
+  /* Contents: two rules and a plain list, numbered like the headings it points to */
+  .ds-toc {
+    margin: 0 0 40px;
+    border-block: 1px solid var(--rule);
+  }
+  .ds-toc summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    cursor: pointer;
+    list-style: none;
+    color: var(--fg-muted);
+    transition: color var(--t) var(--ease);
+  }
+  .ds-toc summary::-webkit-details-marker {
+    display: none;
+  }
+  .ds-toc summary:hover {
+    color: var(--fg);
+  }
+  .ds-toc-title {
+    font-family: var(--font-caps);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .ds-toc-count {
+    font-family: var(--font-meta);
+    font-size: 12px;
+    line-height: 1;
+    color: var(--fg-faint);
+  }
+  .ds-toc svg {
+    width: 12px;
+    height: 12px;
+    margin-left: auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: rotate var(--t) var(--ease);
+  }
+  .ds-toc details[open] svg {
+    rotate: 180deg;
+  }
+  /* The numeral column grows with the longest numeral (XXXVIII.); subgrid keeps every row aligned */
+  .ds-toc ol {
+    display: grid;
+    grid-template-columns: minmax(26px, max-content) minmax(0, 1fr);
+    column-gap: 14px;
+    margin: 0;
+    padding: 0 0 14px;
+    list-style: none;
+    counter-reset: ds-toc;
+  }
+  .ds-toc li {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    align-items: baseline;
+    counter-increment: ds-toc;
+  }
+  .ds-toc li::before {
+    content: counter(ds-toc, upper-roman) '.';
+    font-family: var(--font-caps);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--gold-text);
+  }
+  .ds-toc a {
+    padding-block: 3px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color var(--t) var(--ease);
+  }
+  .ds-toc a:hover,
+  .ds-toc a:focus-visible {
+    color: var(--fg);
+    text-decoration: underline;
+    text-decoration-color: var(--glow);
+    text-underline-offset: 0.25em;
   }
 
   .ds-prose :global(h3) {

@@ -4,7 +4,7 @@ import ArticleSection from '@/components/Article.astro';
 import { articleMapper } from '@/utils';
 import { authorProfile } from '@/data/author';
 
-const { frontmatter } = Astro.props;
+const { frontmatter, headings } = Astro.props;
 const data = articleMapper({ data: frontmatter });
 const series = frontmatter.series ?? null;
 
@@ -29,7 +29,7 @@ const personSchema = isAboutPage
 ---
 
 <PageLayout lang={currentLocale} pageName={data.title} pageDesc={pageDesc} schema={personSchema}>
-  <ArticleSection {...data} series={series}>
+  <ArticleSection {...data} series={series} headings={headings}>
     <slot />
   </ArticleSection>
 </PageLayout>

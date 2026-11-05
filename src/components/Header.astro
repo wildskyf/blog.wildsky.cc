@@ -99,8 +99,9 @@ const seal = 'W';
       color-mix(in oklab, var(--water-1) 97%, transparent),
       color-mix(in oklab, var(--water-1) 94%, transparent)
     );
-    backdrop-filter: blur(16px) saturate(1.1);
+    /* Standard property last: the CSS minifier keeps only the final one of the pair */
     -webkit-backdrop-filter: blur(16px) saturate(1.1);
+    backdrop-filter: blur(16px) saturate(1.1);
     border-bottom: 1px solid var(--rule);
   }
 
@@ -152,7 +153,12 @@ const seal = 'W';
     background-size: 6px 1px;
     background-repeat: repeat-x;
   }
+  /* On an article the name would repeat the h1, so it appears once the h1 has scrolled away */
+  :global(html:has(.ds-article-title):not(.title-passed)) .ds-leader-loc {
+    opacity: 0;
+  }
   .ds-leader-loc {
+    transition: opacity var(--t) var(--ease);
     max-width: 260px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -238,3 +244,19 @@ const seal = 'W';
     }
   }
 </style>
+
+<script>
+  const title = document.querySelector('.ds-article-title');
+  if (title) {
+    const headerH = document.querySelector<HTMLElement>('.ds-header')?.offsetHeight ?? 0;
+    new IntersectionObserver(
+      ([entry]) => {
+        document.documentElement.classList.toggle(
+          'title-passed',
+          !entry.isIntersecting && entry.boundingClientRect.top < headerH
+        );
+      },
+      { rootMargin: `-${headerH}px 0px 0px 0px` }
+    ).observe(title);
+  }
+</script>

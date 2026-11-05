@@ -254,7 +254,7 @@ v9 的色值與語彙來自參考美術的實際取色（k-means 分群），過
 
 - 首頁 manifesto `clamp(36px, 5.2vw, 64px)`、文章標題 `clamp(32px, 4.4vw, 46px)`，兩者用 `--title-grad` 做文字漸層。
 - 正文 19px／1.85，連續 CJK 文字 ≥16px。
-- 文章 h2 由 CSS counter 自動加上燈火金的大寫羅馬數字（`I`、`II`…）。
+- 文章 h2 由 CSS counter 自動加上燈火金的大寫羅馬數字（`I.`、`II.`…），用懸掛縮排讓換行對齊；不要改回 flex，標題裡的 inline code 或粗體會被拆成好幾欄。
 - 有序清單的編號用 Cinzel、潮汐青。
 - **The Chrome Frontier Rule.** Cinzel 與 Space Mono 只活在 chrome、meta、編號與裝飾；正文段落不使用。
 
@@ -269,7 +269,7 @@ v9 的色值與語彙來自參考美術的實際取色（k-means 分群），過
 v9 的 chrome 使用短英文大寫讀數（產品決策 2026-11-02，取代 PRODUCT.md 舊的「直白名稱」規則）：
 
 - 導覽：`ABOUT` `SEARCH` `ARCHIVE`，不加 `aria-label`：無障礙名稱必須包含畫面上的字（WCAG 2.5.3），語音控制才能說「About」。
-- Header 中段一條點線，尾端顯示 `: 目前頁名`。
+- Header 中段一條點線，尾端顯示 `: 目前頁名`；文章頁等 h1 捲出畫面才顯示，避免跟 h1 重複。
 - 首頁不放 kicker，也不放 HUD 讀數；manifesto 下方是作者自我介紹（2026-11-03 起，見 Home hero）。
 - 列表與文章 meta：`分類 / 6 MIN / 2026.08.20`；最新一篇且發布未滿 30 天才標 `NEW`（build 時判斷，讀者瀏覽器再判斷一次）。
 - 文章頁右側深度計 `DEPTH` ＋ `000–200 m`，數值是閱讀進度的換算，不是真實資料。
@@ -307,6 +307,8 @@ v9 的 chrome 使用短英文大寫讀數（產品決策 2026-11-02，取代 PRO
 ### Article
 
 - meta 列用 Space Mono 12px；標題用 `--title-grad`；h2 前有燈火金羅馬數字。
+- 目錄：h2 有 4 個以上才出現，放在正文前，上下兩條 `--rule`、編號與 h2 相同；8 個以內預設展開，超過則收合。
+- 每個 h2 左側有 `#` 錨點，滑過或鍵盤聚焦才顯示；觸控裝置不顯示。
 - 連結 `--glow-text`，底線為 `--glow` 45%；hover 升到 `--fg`。
 - 引言：左側 2px、由 `--accent-text` 往下淡出的血紅線，`--fg-muted`。只有英文引言用斜體；中文字型沒有斜體，套 italic 會變成瀏覽器合成的歪斜字。
 - 程式碼：`--bg-sunken`、1px `--rule`；keyword `--glow`、string `--gold-text`、comment／punctuation `--fg-faint`、number `--accent-text`。

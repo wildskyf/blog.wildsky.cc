@@ -9,7 +9,7 @@ import { articleMapper, formatReadingTime } from '@/utils';
 import { selectRelatedPosts } from '@/utils/relatedPosts.mjs';
 
 const { lang, entry } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
 const data = articleMapper(entry);
 const readingTime = data.readingMinutes ? formatReadingTime(data.readingMinutes, lang) : null;
 const series = entry.data.series ?? null;
@@ -78,6 +78,7 @@ const relatedPosts = selectRelatedPosts(entry, sameLanguageEntries).map(
     readingTime={readingTime}
     series={series}
     translation={translation}
+    headings={headings}
   >
     <Content />
   </Article>
