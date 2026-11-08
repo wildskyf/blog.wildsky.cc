@@ -237,6 +237,22 @@ Demo 連結： <a href="http://vrv2023.wildsky.cc/" target='_blank'>
 
 我也有寫篇 [文章](/posts/addon-tab-notes/) 介紹這個瀏覽器套件。
 
+### Page Memo
+
+連結：<https://addons.mozilla.org/en-US/firefox/addon/page-memo/>
+
+讓你在瀏覽網頁時可以隨時隨地做筆記，筆記會記在那個頁面上。
+
+也可以把它當成提醒你要去買雞蛋的小工具，把要記得的事情記在你常瀏覽的頁面上。
+
+### 新聞小幫手
+
+連結：<https://addons.mozilla.org/firefox/addon/newshelper/>
+
+這個套件是我從 [g0v](https://github.com/g0v/newshelper-extension) 上撿來的。
+原本有 Firefox 版，但因為 SDK 架構被廢了，導致套件不能動了，
+我便直接從 Chrome 版套件修改掉一些 API，移植到 Firefox 上。
+
 ## 開源社群
 
 ### Mozilla Taiwan Community
@@ -254,7 +270,20 @@ Demo 連結： <a href="http://vrv2023.wildsky.cc/" target='_blank'>
   持有者過世後，domain 被別人撿走，現在已經看不到了。
 - [**Lollypop – Gnome Player Website**](https://wildskyf.github.io/lollypop-web/)：
   這個是一個 Linux 上的開源音樂播放器的網站，那時是看到他在徵求網站開發，我便去協助。
+- [**Fedora 台灣社群網站**](http://fedora.linux.org.tw/)：
+  參與網站的開發，像是 RWD、把安裝說明從 yum 改成 dnf、更新到 Fedora 22 等等。
+- [**Vim 台灣社群網站**](https://www.vim.tw/)：
+  幫忙把網站搬上 GitHub Pages，並調整了一些樣式。
+- [**前端社群 F2ETW 網站**](https://www.fed.tw/)：
+  參與網站的開發，像是用 `fetch()` 把 jQuery 拿掉、加上 Disqus 留言等等。
 - 這個部落格：這個部落格也是我從零開始打造的。
+
+## 師大學生會網站
+
+大學時幫師大學生會做了兩屆的官網：
+
+- [第 20 屆](https://ntnusa.github.io/)
+- [第 19 屆](https://ntnusa.github.io/ntnusa-site-19th)
 
 ## Awards
 

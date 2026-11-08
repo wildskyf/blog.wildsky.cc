@@ -233,6 +233,22 @@ You will see the text written here on the page.
 
 I also wrote an [article](/posts/addon-tab-notes/) introducing this browser suite.
 
+### Page Memo
+
+Link: <https://addons.mozilla.org/en-US/firefox/addon/page-memo/>
+
+Take notes on any page while you browse. The notes stay on that page.
+
+You can also use it to remind yourself to buy eggs, by leaving a note on a page you visit often.
+
+### News Helper
+
+Link: <https://addons.mozilla.org/firefox/addon/newshelper/>
+
+I picked this one up from [g0v](https://github.com/g0v/newshelper-extension).
+It used to have a Firefox version, but it stopped working after Firefox dropped the Add-on SDK,
+so I took the Chrome version, changed some of its APIs, and ported it to Firefox.
+
 ## Open source community
 
 ### Mozilla Taiwan Community
@@ -250,7 +266,20 @@ Later, I became a Firefox Addon Reviewer with him, which was an interesting expe
   After the holder passed away, the domain was picked up by others and can no longer be seen.
 - [**Lollypop – Gnome Player Website**](https://wildskyf.github.io/lollypop-web/)：
   This is a website for an open source music player on Linux. At that time, I saw that he was soliciting website development, so I went to help.
+- [**Fedora Taiwan Community Website**](http://fedora.linux.org.tw/):
+  Helped build the site, such as RWD, switching the install guide from yum to dnf, and updating it for Fedora 22.
+- [**Vim Taiwan Community Website**](https://www.vim.tw/):
+  Helped move the site to GitHub Pages and adjusted some of its styles.
+- [**F2ETW Front-end Community Website**](https://www.fed.tw/):
+  Helped build the site, such as removing jQuery with `fetch()` and adding Disqus comments.
 - This blog: I also created this blog from scratch. The style I see now is taken from an event in the game Arknights - **Elegy of the Tide**.
+
+## NTNU Student Association Websites
+
+In college, I built the official websites for two terms of the NTNU Student Association:
+
+- [20th](https://ntnusa.github.io/)
+- [19th](https://ntnusa.github.io/ntnusa-site-19th)
 
 ## Awards
 
