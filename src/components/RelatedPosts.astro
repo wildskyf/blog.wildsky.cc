@@ -13,14 +13,12 @@ const { lang, posts = [] } = Astro.props as {
 };
 
 const heading = lang === 'en' ? 'Related reading' : '延伸閱讀';
-const sectionLabel = lang === 'en' ? 'Continue exploring' : '沿著同一條脈絡繼續讀';
 const headingId = `related-posts-${lang}`;
 ---
 
 {
   posts.length > 0 && (
     <aside class="ds-related" aria-labelledby={headingId}>
-      <p class="ds-related-label">{sectionLabel}</p>
       <h2 id={headingId}>{heading}</h2>
 
       <ul>
@@ -45,14 +43,6 @@ const headingId = `related-posts-${lang}`;
     margin: -32px auto 64px;
     padding-top: 28px;
     border-top: 1px solid var(--rule);
-  }
-
-  .ds-related-label {
-    margin: 0 0 6px;
-    color: var(--fg-muted);
-    font-family: var(--font-label);
-    font-size: 15px;
-    letter-spacing: 0.045em;
   }
 
   .ds-related h2 {
