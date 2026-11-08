@@ -227,14 +227,41 @@
   border-bottom-color: var(--glow);
 }
 
+/* Same column and rule as RelatedPosts. The -32px pulls into the article's bottom padding; the
+   96px bottom leaves RelatedPosts' own -32px with the usual 64px gap. */
 .fedi-comments {
-  margin-top: 48px;
+  width: min(var(--measure), 100% - var(--page-gutter) * 2);
+  margin: -32px auto 96px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
 }
 
+.fedi-comments h2 {
+  margin: 0 0 10px;
+  color: var(--fg);
+  font-family: var(--font-headline);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.fedi-comments-hint {
+  margin: 0;
+  color: var(--fg-muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* minmax(0, 1fr): an auto track grows to fit an unbreakable URL in a reply. */
 .fedi-comments .notes-list {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
-  margin-top: 16px;
+  margin-top: 24px;
+}
+
+.fedi-comments .notes-list:empty {
+  display: none;
 }
 
 .fedi-comment-head {
