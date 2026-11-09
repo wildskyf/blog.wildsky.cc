@@ -3,7 +3,7 @@ title: "一些音樂的基本名詞：音名、唱名、音程"
 date: 2024-05-05T00:59:10+08:00
 slug: "words-about-music-pitch-names-syllable-names-interval"
 excerpt: "最近在學吉他，除了單音和和弦之外，免不了要接觸一些樂理，
-這邊來整理一下一些相關名詞，之後忘記說不定可以更快速地幫助恢復記憶。"
+  這邊來整理一下一些相關名詞，之後忘記說不定可以更快速地幫助恢復記憶。"
 feature_image: "marius-masalar-rPOmLGwai2w-unsplash.jpg"
 guid: "words-about-music-pitch-names-syllable-names-interval"
 category: "生活體驗"

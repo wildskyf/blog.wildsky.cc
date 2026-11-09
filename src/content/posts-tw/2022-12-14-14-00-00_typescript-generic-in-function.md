@@ -3,7 +3,7 @@ title: "在 function 中使用 TypeScript Generic"
 date: 2022-12-14T14:00:00
 slug: "typescript-generic-in-function"
 excerpt: "最近工作上在寫 TypeScript 時有個發現，有些寫法 typescript compiler 和 lint 都會
-不滿，不特別改寫法的話兩邊都會一直哇哇叫。"
+  不滿，不特別改寫法的話兩邊都會一直哇哇叫。"
 feature_image: "eslint-n-typescript-yelling-me.jpg"
 guid: "typescript-generic-in-function"
 category: "軟體工程"

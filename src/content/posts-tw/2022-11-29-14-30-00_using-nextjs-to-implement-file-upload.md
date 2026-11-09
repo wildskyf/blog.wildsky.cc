@@ -3,7 +3,7 @@ title: "用 Nextjs 實作檔案上傳功能時要注意的事"
 date: 2022-11-29T14:30:00
 slug: "using-nextjs-to-implement-file-upload"
 excerpt: "最近在玩 next.js 時，發現他有提供製作 api 的方式。但在實作檔案上傳功
-能時，遇到了一些問題。"
+  能時，遇到了一些問題。"
 feature_image: nextjs-cover-photo.png
 guid: "using-nextjs-to-implement-file-upload"
 category: "軟體工程"
