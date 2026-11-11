@@ -10,6 +10,7 @@ export const translations = {
     nav: {
       home: 'home',
       bookshelf: 'bookshelf',
+      excerpts: 'excerpts',
       about: 'about',
       now: 'now',
       notes: 'notes',
@@ -54,6 +55,7 @@ export const translations = {
     nav: {
       home: 'home',
       bookshelf: 'bookshelf',
+      excerpts: 'excerpts',
       about: 'about',
       now: 'now',
       notes: 'notes',
