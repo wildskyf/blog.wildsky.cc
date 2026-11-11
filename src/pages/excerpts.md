@@ -21,11 +21,11 @@ excerpt: '這頁放一些我喜歡的短文。'
 
 > Of all the monsters who fill the nightmares of our folklore, none terrify more than werewolves, because they transform unexpectedly from the familiar into horrors. For these, we seek bullets of silver that can magically lay them to rest.
 >
-> The familiar software project has something of this character (at least as seen by the non-technical manager), usually innocent and straightforward, but capable of becoming a monster of missed schedules, blown budgets, and flawed products. So we hear desperate cries for a silver bullet, something to make software costs drop as rapidly as computer hardware costs do.
+> […]
 >
 > But, as we look to the horizon of a decade hence, we see no silver bullet. There is no single development, in either technology or management technique, which by itself promises even one order of magnitude improvement in productivity, in reliability, in simplicity.
 >
-> Skepticism is not pessimism, however. Although we see no startling breakthroughs, and indeed, believe such to be inconsistent with the nature of software, many encouraging innovations are under way. A disciplined, consistent effort to develop, propagate, and exploit them should indeed yield an order-of-magnitude improvement. There is no royal road, but there is a road.
+> […] There is no royal road, but there is a road.
 
 ——Frederick P. Brooks, Jr.〈No Silver Bullet—Essence and Accident in Software Engineering〉（1986）
 
@@ -73,7 +73,7 @@ excerpt: '這頁放一些我喜歡的短文。'
 
 > 永遠不要以粗心為藉口原諒自己。
 >
-> 責任再大，只要是你的，就要自己承擔。
+> 責任再大，是你的，就要自己承擔。
 >
 > 既然是自己的選擇，就沒有理由說辛苦。
 >
@@ -88,6 +88,8 @@ excerpt: '這頁放一些我喜歡的短文。'
 > 寫計算過程時，請把教授當作一無所知，分數是他給，不是你自己評。
 >
 > 機會，是留給準備好的人！
+
+——〈[十週考上台清交資工所的那些小事](https://hackmd.io/WMwseuLVSZa5bX1buq8gYA)〉
 
 ## 艾連說
 
@@ -154,4 +156,4 @@ excerpt: '這頁放一些我喜歡的短文。'
 > この<ruby>世<rt>よ</rt></ruby>から <ruby>駆逐<rt>くちく</rt></ruby>するまで<br>
 > 從這世上  驅逐殆盡
 
-——《進擊的巨人》
+——《進擊的巨人》，原文與假名標音整理自珀森Pocen〈[地鸣宣言＆艾伦·耶格尔 日文原文+假名标音](https://m.bilibili.com/opus/614526428980276202)〉
