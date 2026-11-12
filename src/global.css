@@ -100,8 +100,14 @@
 }
 
 /* Songti / Noto Serif TC have no italic: the browser would fake a slant. Only Latin quotes lean. */
-.article-content:lang(en) blockquote {
+.article-content blockquote:lang(en) {
   font-style: italic;
+}
+
+/* Japanese passages inside a zh-Hant page: use a Japanese Mincho so kanji get Japanese glyph forms. */
+.article-content :lang(ja) {
+  font-family: 'EB Garamond Variable', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif CJK JP',
+    var(--font-system-cjk-serif);
 }
 
 .article-content blockquote::before {
